@@ -1,0 +1,15 @@
+﻿formula_id,depends_on_field,dependency_type,formula_version
+F-STATUTORY-LIMIT,general_debt_limit_100m,input,v1.0
+F-STATUTORY-LIMIT,special_debt_limit_100m,input,v1.0
+F-STATUTORY-BALANCE,general_debt_balance_100m,input,v1.0
+F-STATUTORY-BALANCE,special_debt_balance_100m,input,v1.0
+F-DEBT-LIMIT-UTIL,statutory_debt_balance_100m,input,v1.0
+F-DEBT-LIMIT-UTIL,statutory_debt_limit_100m,input,v1.0
+F-DEBT-GDP,statutory_debt_balance_100m,input,v1.0
+F-DEBT-GDP,gdp_current_100m,input,v1.0
+F-DEBT-REV,statutory_debt_balance_100m,input,v1.0
+F-DEBT-REV,general_public_revenue_100m,input,v1.0
+F-FISCAL-SELF,general_public_revenue_100m,input,v1.0
+F-FISCAL-SELF,general_public_expenditure_100m,input,v1.0
+F-FUND-DEPEND,gov_fund_revenue_100m,input,v1.0
+F-FUND-DEPEND,general_public_revenue_100m,input,v1.0

@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# 本地临时克隆目录不应再次嵌套进项目
+github_checkout/
