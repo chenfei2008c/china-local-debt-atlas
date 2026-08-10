@@ -1,0 +1,906 @@
+{
+  "CN-130100": [
+    "石家庄市",
+    "hebei-shijiazhuang"
+  ],
+  "CN-130200": [
+    "唐山市",
+    "hebei-tangshan"
+  ],
+  "CN-130300": [
+    "秦皇岛市",
+    "hebei-qinhuangdao"
+  ],
+  "CN-130400": [
+    "邯郸市",
+    "hebei-handan"
+  ],
+  "CN-130500": [
+    "邢台市",
+    "hebei-xingtai"
+  ],
+  "CN-130600": [
+    "保定市",
+    "hebei-baoding"
+  ],
+  "CN-130700": [
+    "张家口市",
+    "hebei-zhangjiakou"
+  ],
+  "CN-130800": [
+    "承德市",
+    "hebei-chengde"
+  ],
+  "CN-130900": [
+    "沧州市",
+    "hebei-cangzhou"
+  ],
+  "CN-131000": [
+    "廊坊市",
+    "hebei-langfang"
+  ],
+  "CN-131100": [
+    "衡水市",
+    "hebei-hengshui"
+  ],
+  "CN-140100": [
+    "太原市",
+    "shanxi-taiyuan"
+  ],
+  "CN-150100": [
+    "呼和浩特市",
+    "inner-mongolia-hohhot"
+  ],
+  "CN-150200": [
+    "包头市",
+    "inner-mongolia-baotou"
+  ],
+  "CN-150300": [
+    "乌海市",
+    "inner-mongolia-wuhai"
+  ],
+  "CN-150400": [
+    "赤峰市",
+    "inner-mongolia-chifeng"
+  ],
+  "CN-150600": [
+    "鄂尔多斯市",
+    "inner-mongolia-erdos"
+  ],
+  "CN-150700": [
+    "呼伦贝尔市",
+    "inner-mongolia-hulunbeier"
+  ],
+  "CN-150800": [
+    "巴彦淖尔市",
+    "inner-mongolia-bayannaoer"
+  ],
+  "CN-150900": [
+    "乌兰察布市",
+    "inner-mongolia-wulanchabu"
+  ],
+  "CN-210100": [
+    "沈阳市",
+    "liaoning-shenyang"
+  ],
+  "CN-210400": [
+    "抚顺市",
+    "liaoning-fushun"
+  ],
+  "CN-210600": [
+    "丹东市",
+    "liaoning-dandong"
+  ],
+  "CN-210700": [
+    "锦州市",
+    "liaoning-jinzhou"
+  ],
+  "CN-210800": [
+    "营口市",
+    "liaoning-yingkou"
+  ],
+  "CN-210900": [
+    "阜新市",
+    "liaoning-fuxin"
+  ],
+  "CN-211000": [
+    "辽阳市",
+    "liaoning-liaoyang"
+  ],
+  "CN-211100": [
+    "盘锦市",
+    "liaoning-panjin"
+  ],
+  "CN-211200": [
+    "铁岭市",
+    "liaoning-tieling"
+  ],
+  "CN-211300": [
+    "朝阳市",
+    "liaoning-chaoyang"
+  ],
+  "CN-211400": [
+    "葫芦岛市",
+    "liaoning-huludao"
+  ],
+  "CN-220100": [
+    "长春市",
+    "jilin-changchun"
+  ],
+  "CN-230100": [
+    "哈尔滨市",
+    "heilongjiang-harbin"
+  ],
+  "CN-230200": [
+    "齐齐哈尔市",
+    "heilongjiang-qiqihar"
+  ],
+  "CN-230300": [
+    "鸡西市",
+    "heilongjiang-jixi"
+  ],
+  "CN-230400": [
+    "鹤岗市",
+    "heilongjiang-hegang"
+  ],
+  "CN-230600": [
+    "大庆市",
+    "heilongjiang-daqing"
+  ],
+  "CN-230700": [
+    "伊春市",
+    "heilongjiang-yichun"
+  ],
+  "CN-230800": [
+    "佳木斯市",
+    "heilongjiang-jiamusi"
+  ],
+  "CN-230900": [
+    "七台河市",
+    "heilongjiang-qitaihe"
+  ],
+  "CN-231000": [
+    "牡丹江市",
+    "heilongjiang-mudanjiang"
+  ],
+  "CN-231100": [
+    "黑河市",
+    "heilongjiang-heihe"
+  ],
+  "CN-231200": [
+    "绥化市",
+    "heilongjiang-suihua"
+  ],
+  "CN-320100": [
+    "南京市",
+    "jiangsu-nanjing"
+  ],
+  "CN-320200": [
+    "无锡市",
+    "jiangsu-wuxi"
+  ],
+  "CN-320300": [
+    "徐州市",
+    "jiangsu-xuzhou"
+  ],
+  "CN-320500": [
+    "苏州市",
+    "jiangsu-suzhou"
+  ],
+  "CN-320600": [
+    "南通市",
+    "jiangsu-nantong"
+  ],
+  "CN-320700": [
+    "连云港市",
+    "jiangsu-lianyungang"
+  ],
+  "CN-320800": [
+    "淮安市",
+    "jiangsu-huaian"
+  ],
+  "CN-320900": [
+    "盐城市",
+    "jiangsu-yancheng"
+  ],
+  "CN-321000": [
+    "扬州市",
+    "jiangsu-yangzhou"
+  ],
+  "CN-321200": [
+    "泰州市",
+    "jiangsu-taizhou"
+  ],
+  "CN-321300": [
+    "宿迁市",
+    "jiangsu-suqian"
+  ],
+  "CN-330100": [
+    "杭州市",
+    "zhejiang-hangzhou"
+  ],
+  "CN-330300": [
+    "温州市",
+    "zhejiang-wenzhou"
+  ],
+  "CN-330500": [
+    "湖州市",
+    "zhejiang-huzhou"
+  ],
+  "CN-330600": [
+    "绍兴市",
+    "zhejiang-shaoxing"
+  ],
+  "CN-330900": [
+    "舟山市",
+    "zhejiang-zhoushan"
+  ],
+  "CN-331000": [
+    "台州市",
+    "zhejiang-taizhou"
+  ],
+  "CN-331100": [
+    "丽水市",
+    "zhejiang-lishui"
+  ],
+  "CN-340100": [
+    "合肥市",
+    "anhui-hefei"
+  ],
+  "CN-340200": [
+    "芜湖市",
+    "anhui-wuhu"
+  ],
+  "CN-340300": [
+    "蚌埠市",
+    "anhui-bengbu"
+  ],
+  "CN-340400": [
+    "淮南市",
+    "anhui-huainan"
+  ],
+  "CN-340500": [
+    "马鞍山市",
+    "anhui-maanshan"
+  ],
+  "CN-340600": [
+    "淮北市",
+    "anhui-huaibei"
+  ],
+  "CN-340700": [
+    "铜陵市",
+    "anhui-tongling"
+  ],
+  "CN-340800": [
+    "安庆市",
+    "anhui-anqing"
+  ],
+  "CN-341000": [
+    "黄山市",
+    "anhui-huangshan"
+  ],
+  "CN-341100": [
+    "滁州市",
+    "anhui-chuzhou"
+  ],
+  "CN-341200": [
+    "阜阳市",
+    "anhui-fuyang"
+  ],
+  "CN-341300": [
+    "宿州市",
+    "anhui-suzhou"
+  ],
+  "CN-341600": [
+    "亳州市",
+    "anhui-bozhou"
+  ],
+  "CN-341700": [
+    "池州市",
+    "anhui-chizhou"
+  ],
+  "CN-341800": [
+    "宣城市",
+    "anhui-xuancheng"
+  ],
+  "CN-350100": [
+    "福州市",
+    "fujian-fuzhou"
+  ],
+  "CN-350300": [
+    "莆田市",
+    "fujian-putian"
+  ],
+  "CN-350400": [
+    "三明市",
+    "fujian-sanming"
+  ],
+  "CN-350500": [
+    "泉州市",
+    "fujian-quanzhou"
+  ],
+  "CN-350600": [
+    "漳州市",
+    "fujian-zhangzhou"
+  ],
+  "CN-350800": [
+    "龙岩市",
+    "fujian-longyan"
+  ],
+  "CN-360100": [
+    "南昌市",
+    "jiangxi-nanchang"
+  ],
+  "CN-360200": [
+    "景德镇市",
+    "jiangxi-jingdezhen"
+  ],
+  "CN-360300": [
+    "萍乡市",
+    "jiangxi-pingxiang"
+  ],
+  "CN-360400": [
+    "九江市",
+    "jiangxi-jiujiang"
+  ],
+  "CN-360500": [
+    "新余市",
+    "jiangxi-xinyu"
+  ],
+  "CN-360600": [
+    "鹰潭市",
+    "jiangxi-yingtan"
+  ],
+  "CN-360700": [
+    "赣州市",
+    "jiangxi-ganzhou"
+  ],
+  "CN-360800": [
+    "吉安市",
+    "jiangxi-jian"
+  ],
+  "CN-360900": [
+    "宜春市",
+    "jiangxi-yichun"
+  ],
+  "CN-361000": [
+    "抚州市",
+    "jiangxi-fuzhou"
+  ],
+  "CN-361100": [
+    "上饶市",
+    "jiangxi-shangrao"
+  ],
+  "CN-370100": [
+    "济南市",
+    "shandong-jinan"
+  ],
+  "CN-370300": [
+    "淄博市",
+    "shandong-zibo"
+  ],
+  "CN-370400": [
+    "枣庄市",
+    "shandong-zaozhuang"
+  ],
+  "CN-370500": [
+    "东营市",
+    "shandong-dongying"
+  ],
+  "CN-370600": [
+    "烟台市",
+    "shandong-yantai"
+  ],
+  "CN-370700": [
+    "潍坊市",
+    "shandong-weifang"
+  ],
+  "CN-370800": [
+    "济宁市",
+    "shandong-jining"
+  ],
+  "CN-370900": [
+    "泰安市",
+    "shandong-taian"
+  ],
+  "CN-371000": [
+    "威海市",
+    "shandong-weihai"
+  ],
+  "CN-371100": [
+    "日照市",
+    "shandong-rizhao"
+  ],
+  "CN-371300": [
+    "临沂市",
+    "shandong-linyi"
+  ],
+  "CN-371400": [
+    "德州市",
+    "shandong-dezhou"
+  ],
+  "CN-371500": [
+    "聊城市",
+    "shandong-liaocheng"
+  ],
+  "CN-371600": [
+    "滨州市",
+    "shandong-binzhou"
+  ],
+  "CN-371700": [
+    "菏泽市",
+    "shandong-heze"
+  ],
+  "CN-410100": [
+    "郑州市",
+    "henan-zhengzhou"
+  ],
+  "CN-420100": [
+    "武汉市",
+    "hubei-wuhan"
+  ],
+  "CN-420200": [
+    "黄石市",
+    "hubei-huangshi"
+  ],
+  "CN-420300": [
+    "十堰市",
+    "hubei-shiyan"
+  ],
+  "CN-420500": [
+    "宜昌市",
+    "hubei-yichang"
+  ],
+  "CN-420600": [
+    "襄阳市",
+    "hubei-xiangyang"
+  ],
+  "CN-420700": [
+    "鄂州市",
+    "hubei-ezhou"
+  ],
+  "CN-420800": [
+    "荆门市",
+    "hubei-jingmen"
+  ],
+  "CN-420900": [
+    "孝感市",
+    "hubei-xiaogan"
+  ],
+  "CN-421000": [
+    "荆州市",
+    "hubei-jingzhou"
+  ],
+  "CN-421100": [
+    "黄冈市",
+    "hubei-huanggang"
+  ],
+  "CN-421200": [
+    "咸宁市",
+    "hubei-xianning"
+  ],
+  "CN-430100": [
+    "长沙市",
+    "hunan-changsha"
+  ],
+  "CN-430300": [
+    "湘潭市",
+    "hunan-xiangtan"
+  ],
+  "CN-430400": [
+    "衡阳市",
+    "hunan-hengyang"
+  ],
+  "CN-430500": [
+    "邵阳市",
+    "hunan-shaoyang"
+  ],
+  "CN-430600": [
+    "岳阳市",
+    "hunan-yueyang"
+  ],
+  "CN-430700": [
+    "常德市",
+    "hunan-changde"
+  ],
+  "CN-430900": [
+    "益阳市",
+    "hunan-yiyang"
+  ],
+  "CN-431000": [
+    "郴州市",
+    "hunan-chenzhou"
+  ],
+  "CN-431100": [
+    "永州市",
+    "hunan-yongzhou"
+  ],
+  "CN-431200": [
+    "怀化市",
+    "hunan-huaihua"
+  ],
+  "CN-431300": [
+    "娄底市",
+    "hunan-loudi"
+  ],
+  "CN-440100": [
+    "广州市",
+    "guangdong-guangzhou"
+  ],
+  "CN-440400": [
+    "珠海市",
+    "guangdong-zhuhai"
+  ],
+  "CN-440500": [
+    "汕头市",
+    "guangdong-shantou"
+  ],
+  "CN-440600": [
+    "佛山市",
+    "guangdong-foshan"
+  ],
+  "CN-440700": [
+    "江门市",
+    "guangdong-jiangmen"
+  ],
+  "CN-440800": [
+    "湛江市",
+    "guangdong-zhanjiang"
+  ],
+  "CN-440900": [
+    "茂名市",
+    "guangdong-maoming"
+  ],
+  "CN-441200": [
+    "肇庆市",
+    "guangdong-zhaoqing"
+  ],
+  "CN-441300": [
+    "惠州市",
+    "guangdong-huizhou"
+  ],
+  "CN-441400": [
+    "梅州市",
+    "guangdong-meizhou"
+  ],
+  "CN-441500": [
+    "汕尾市",
+    "guangdong-shanwei"
+  ],
+  "CN-441600": [
+    "河源市",
+    "guangdong-heyuan"
+  ],
+  "CN-441700": [
+    "阳江市",
+    "guangdong-yangjiang"
+  ],
+  "CN-441800": [
+    "清远市",
+    "guangdong-qingyuan"
+  ],
+  "CN-441900": [
+    "东莞市",
+    "guangdong-dongguan"
+  ],
+  "CN-442000": [
+    "中山市",
+    "guangdong-zhongshan"
+  ],
+  "CN-445100": [
+    "潮州市",
+    "guangdong-chaozhou"
+  ],
+  "CN-445200": [
+    "揭阳市",
+    "guangdong-jieyang"
+  ],
+  "CN-445300": [
+    "云浮市",
+    "guangdong-yunfu"
+  ],
+  "CN-450100": [
+    "南宁市",
+    "guangxi-nanning"
+  ],
+  "CN-450200": [
+    "柳州市",
+    "guangxi-liuzhou"
+  ],
+  "CN-450300": [
+    "桂林市",
+    "guangxi-guilin"
+  ],
+  "CN-450400": [
+    "梧州市",
+    "guangxi-wuzhou"
+  ],
+  "CN-450500": [
+    "北海市",
+    "guangxi-beihai"
+  ],
+  "CN-450600": [
+    "防城港市",
+    "guangxi-fangchenggang"
+  ],
+  "CN-450700": [
+    "钦州市",
+    "guangxi-qinzhou"
+  ],
+  "CN-450800": [
+    "贵港市",
+    "guangxi-guigang"
+  ],
+  "CN-450900": [
+    "玉林市",
+    "guangxi-yulin"
+  ],
+  "CN-451000": [
+    "百色市",
+    "guangxi-baise"
+  ],
+  "CN-451100": [
+    "贺州市",
+    "guangxi-hezhou"
+  ],
+  "CN-451200": [
+    "河池市",
+    "guangxi-hechi"
+  ],
+  "CN-451400": [
+    "崇左市",
+    "guangxi-chongzuo"
+  ],
+  "CN-460100": [
+    "海口市",
+    "hainan-haikou"
+  ],
+  "CN-460200": [
+    "三亚市",
+    "hainan-sanya"
+  ],
+  "CN-460400": [
+    "儋州市",
+    "hainan-danzhou"
+  ],
+  "CN-510100": [
+    "成都市",
+    "sichuan-chengdu"
+  ],
+  "CN-510300": [
+    "自贡市",
+    "sichuan-zigong"
+  ],
+  "CN-510500": [
+    "泸州市",
+    "sichuan-luzhou"
+  ],
+  "CN-510600": [
+    "德阳市",
+    "sichuan-deyang"
+  ],
+  "CN-510700": [
+    "绵阳市",
+    "sichuan-mianyang"
+  ],
+  "CN-510800": [
+    "广元市",
+    "sichuan-guangyuan"
+  ],
+  "CN-510900": [
+    "遂宁市",
+    "sichuan-suining"
+  ],
+  "CN-511000": [
+    "内江市",
+    "sichuan-neijiang"
+  ],
+  "CN-511100": [
+    "乐山市",
+    "sichuan-leshan"
+  ],
+  "CN-511300": [
+    "南充市",
+    "sichuan-nanchong"
+  ],
+  "CN-511400": [
+    "眉山市",
+    "sichuan-meishan"
+  ],
+  "CN-511500": [
+    "宜宾市",
+    "sichuan-yibin"
+  ],
+  "CN-511600": [
+    "广安市",
+    "sichuan-guangan"
+  ],
+  "CN-511700": [
+    "达州市",
+    "sichuan-dazhou"
+  ],
+  "CN-511800": [
+    "雅安市",
+    "sichuan-yaan"
+  ],
+  "CN-511900": [
+    "巴中市",
+    "sichuan-bazhong"
+  ],
+  "CN-512000": [
+    "资阳市",
+    "sichuan-ziyang"
+  ],
+  "CN-520100": [
+    "贵阳市",
+    "guizhou-guiyang"
+  ],
+  "CN-520200": [
+    "六盘水市",
+    "guizhou-liupanshui"
+  ],
+  "CN-520300": [
+    "遵义市",
+    "guizhou-zunyi"
+  ],
+  "CN-520400": [
+    "安顺市",
+    "guizhou-anshun"
+  ],
+  "CN-520500": [
+    "毕节市",
+    "guizhou-bijie"
+  ],
+  "CN-520600": [
+    "铜仁市",
+    "guizhou-tongren"
+  ],
+  "CN-530100": [
+    "昆明市",
+    "yunnan-kunming"
+  ],
+  "CN-530300": [
+    "曲靖市",
+    "yunnan-qujing"
+  ],
+  "CN-530400": [
+    "玉溪市",
+    "yunnan-yuxi"
+  ],
+  "CN-530500": [
+    "保山市",
+    "yunnan-baoshan"
+  ],
+  "CN-530600": [
+    "昭通市",
+    "yunnan-zhaotong"
+  ],
+  "CN-530700": [
+    "丽江市",
+    "yunnan-lijiang"
+  ],
+  "CN-530800": [
+    "普洱市",
+    "yunnan-puer"
+  ],
+  "CN-530900": [
+    "临沧市",
+    "yunnan-lincang"
+  ],
+  "CN-610100": [
+    "西安市",
+    "shaanxi-xian"
+  ],
+  "CN-610200": [
+    "铜川市",
+    "shaanxi-tongchuan"
+  ],
+  "CN-610300": [
+    "宝鸡市",
+    "shaanxi-baoji"
+  ],
+  "CN-610500": [
+    "渭南市",
+    "shaanxi-weinan"
+  ],
+  "CN-610600": [
+    "延安市",
+    "shaanxi-yanan"
+  ],
+  "CN-610800": [
+    "榆林市",
+    "shaanxi-yulin"
+  ],
+  "CN-610900": [
+    "安康市",
+    "shaanxi-ankang"
+  ],
+  "CN-611000": [
+    "商洛市",
+    "shaanxi-shangluo"
+  ],
+  "CN-620100": [
+    "兰州市",
+    "gansu-lanzhou"
+  ],
+  "CN-620200": [
+    "嘉峪关市",
+    "gansu-jiayuguan"
+  ],
+  "CN-620400": [
+    "白银市",
+    "gansu-baiyin"
+  ],
+  "CN-620500": [
+    "天水市",
+    "gansu-tianshui"
+  ],
+  "CN-620600": [
+    "武威市",
+    "gansu-wuwei"
+  ],
+  "CN-620700": [
+    "张掖市",
+    "gansu-zhangye"
+  ],
+  "CN-620800": [
+    "平凉市",
+    "gansu-pingliang"
+  ],
+  "CN-621000": [
+    "庆阳市",
+    "gansu-qingyang"
+  ],
+  "CN-621100": [
+    "定西市",
+    "gansu-dingxi"
+  ],
+  "CN-621200": [
+    "陇南市",
+    "gansu-longnan"
+  ],
+  "CN-630100": [
+    "西宁市",
+    "qinghai-xining"
+  ],
+  "CN-630200": [
+    "海东市",
+    "qinghai-haidong"
+  ],
+  "CN-640100": [
+    "银川市",
+    "ningxia-yinchuan"
+  ],
+  "CN-640200": [
+    "石嘴山市",
+    "ningxia-shizuishan"
+  ],
+  "CN-640300": [
+    "吴忠市",
+    "ningxia-wuzhong"
+  ],
+  "CN-640400": [
+    "固原市",
+    "ningxia-guyuan"
+  ],
+  "CN-640500": [
+    "中卫市",
+    "ningxia-zhongwei"
+  ],
+  "CN-650100": [
+    "乌鲁木齐市",
+    "xinjiang-urumqi"
+  ],
+  "CN-650200": [
+    "克拉玛依市",
+    "xinjiang-karamay"
+  ],
+  "CN-650400": [
+    "吐鲁番市",
+    "xinjiang-turpan"
+  ],
+  "CN-650500": [
+    "哈密市",
+    "xinjiang-hami"
+  ]
+}
