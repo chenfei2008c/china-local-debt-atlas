@@ -1,0 +1,22 @@
+表：鄂尔多斯市2018年地方政府债务限额及余额决算情况表
+鄂尔多斯市 1477.3327491537 1432.8827491537 44.45 1451.8048173817 1413.9866058617 37.81821152
+
+表：鄂尔多斯市2019年地方政府债务限额及余额决算情况表
+鄂尔多斯市 1588.072 1491.092 96.98 1537.6909505721 1467.0971930237 70.5937575484
+
+表：鄂尔多斯市2020年地方政府债务限额及余额预算情况表
+鄂尔多斯市 1655.3 1505.3 150 1623.31710623 1481.4084061516 141.9087000784
+
+表：鄂尔多斯市2022年地方政府债务限额及余额预算情况表
+鄂尔多斯市 1737.5 1557.5 180 1677.36 1507.78 169.58
+
+表：鄂尔多斯市2024年地方政府债务限额及余额预算情况表
+鄂尔多斯市 1948.818177335 1582.7836772566 366.0345000784
+
+原始证据：内蒙古自治区财政厅集中预算公开平台鄂尔多斯市政府债务债券公开附件。
+2018文章：https://czt.nmg.gov.cn/yjs/business/article/select/1b26f0ba5e521283934d9567befb347c；附件：https://czt.nmg.gov.cn/yjs/business/file/download/c6d15be4dcfd44ecaa9a6b72604887f6
+2019文章：https://czt.nmg.gov.cn/yjs/business/article/select/6b5f89dd8ab58fddb532dafbac3d55ed；附件：https://czt.nmg.gov.cn/yjs/business/file/download/fa5f70e372314a58a591aa1ec0da6321
+2020文章：https://czt.nmg.gov.cn/yjs/business/article/select/827e492a47c27e409d0f55d3d622201d；附件：https://czt.nmg.gov.cn/yjs/business/file/download/949da97fefa14bb1b9f4067972d2db09
+2022文章：https://czt.nmg.gov.cn/yjs/business/article/select/07c42a428e186a65afb17ee161d29fb2；附件：https://czt.nmg.gov.cn/yjs/business/file/download/1103b27773ce472c9883a8b0d0d60dd0
+2024文章：https://czt.nmg.gov.cn/yjs/business/article/select/471fe7049473cf99d3d77e48074bd0cf；附件：https://czt.nmg.gov.cn/yjs/business/file/download/fb27529573474faca37ec35a18a94c3e
+口径说明：只接入原表“鄂尔多斯市”全市行；2024公开表未列债务限额，仅接入余额总额及一般、专项分项；本级和旗县行不并入地级市全域。

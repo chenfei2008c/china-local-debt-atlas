@@ -1,0 +1,36 @@
+表：乌兰察布市2018年地方政府债务限额及余额决算情况表
+乌兰察布市 570.7 495.85 74.85 552.5064 477.4857 75.0207
+
+表：乌兰察布市2019年地方政府债务限额及余额决算情况表
+乌兰察布市 618.6 509.33 109.27 595.79879597 486.5572 109.24159597
+
+表：乌兰察布市2020年地方政府债务限额及余额决算情况表
+乌兰察布市 717.81 533.26 184.55 683.019 510.3778 172.6412
+
+表：乌兰察布市2021年地方政府债务限额及余额决算情况表
+乌兰察布市 750 550 200 739.8543 544.4726 195.3817
+
+表：乌兰察布市2022年地方政府债务限额及余额预算情况表
+乌兰察布市 800.11 565.1 235.01 781.53 558.06 223.47
+
+表：乌兰察布市2023年地方政府一般债务限额和余额情况表
+乌兰察布市 649 647.33
+
+表：乌兰察布市2023年地方政府专项债务限额和余额情况表
+乌兰察布市 288 286.25
+
+表：乌兰察布市2024年地方政府一般债务限额和余额情况表
+乌兰察布市 657 655.33
+
+表：乌兰察布市2024年地方政府专项债务限额和余额情况表
+乌兰察布市 456 351.48
+
+原始证据：内蒙古自治区财政厅集中预算公开平台乌兰察布市政府债务债券公开附件。
+2018文章：https://czt.nmg.gov.cn/yjs/business/article/select/178f406a6f680aa7d17320053c86806c；附件：https://czt.nmg.gov.cn/yjs/business/file/download/19ca5c34326c4c78a22e54973246b5ea
+2019文章：https://czt.nmg.gov.cn/yjs/business/article/select/7707cc22a9b47fc2d527a06abf7b89ee；附件：https://czt.nmg.gov.cn/yjs/business/file/download/0ba6eafab447493a9d95fd9e92218b05
+2020文章：https://czt.nmg.gov.cn/yjs/business/article/select/e8bd7396d1022780cee26383a0ad87ba；附件：https://czt.nmg.gov.cn/yjs/business/file/download/53b447f6e64b4486bfefbfc210795c6b
+2021文章：https://czt.nmg.gov.cn/yjs/business/article/select/36f9bb5b751f6d8173756f4d31653b24；附件：https://czt.nmg.gov.cn/yjs/business/file/download/0cfb16fd40d64431aec654d959c84582
+2022文章：https://czt.nmg.gov.cn/yjs/business/article/select/e8d6e622d46331af8798c500bae9b3b3；附件：https://czt.nmg.gov.cn/yjs/business/file/download/e30d79930f3b4c2bb666a4bcf2a0d18c
+2023文章：https://czt.nmg.gov.cn/yjs/business/article/select/d0127a5f4d215f57c54878ed7fe60c91；一般附件：https://czt.nmg.gov.cn/yjs/business/file/download/2615f6d49f92442b87e9321d0fdaef12；专项附件：https://czt.nmg.gov.cn/yjs/business/file/download/76a8a1f2f1c54cb1ba21249df069599b
+2024文章：https://czt.nmg.gov.cn/yjs/business/article/select/87fb8d20169c917d8a9b49996c5c2864；一般附件：https://czt.nmg.gov.cn/yjs/business/file/download/93e23d20284d4b84a7a4aff1ce38978c；专项附件：https://czt.nmg.gov.cn/yjs/business/file/download/dfc067f37f55487a8021831f40d64361
+口径说明：2018—2022直接采用全市表的余额决算数/预计执行数；2023—2024分别从官方一般、专项余额表读取分项，合计由系统按一般加专项计算；本级和旗县行不并入地级市全域。

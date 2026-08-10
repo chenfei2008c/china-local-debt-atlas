@@ -1,0 +1,18 @@
+表：阿拉善盟2018年地方政府债务限额及余额决算情况表
+阿拉善盟 163 131.52 31.48 159.59 128.27 31.3219502943
+
+表：阿拉善盟2019年地方政府债务限额及余额决算情况表
+阿拉善盟 214.88 149.72 65.16 208.5446128711 144.1823665934 64.3622462777
+
+表：阿拉善盟2020年地方政府债务限额及余额决算情况表
+阿拉善盟 243.5 156.8 86.7 242.0291 155.5288 86.5003
+
+表：阿拉善盟2021年地方政府债务限额及余额预算情况表
+阿拉善盟 258 164 94 249.11 156.52 92.59
+
+原始证据：内蒙古自治区财政厅集中预算公开平台阿拉善盟政府债务债券公开附件。
+2018文章：https://czt.nmg.gov.cn/yjs/business/article/select/bfcbd3d1310281a83ae90a351e10f68e；附件：https://czt.nmg.gov.cn/yjs/business/file/download/84d4cdc6f25441139252049150d82b05
+2019文章：https://czt.nmg.gov.cn/yjs/business/article/select/bd27f90ee964e244d5ec1db5f82fcd74；附件：https://czt.nmg.gov.cn/yjs/business/file/download/6d23ef2dc118466389649713d2d46c0c
+2020文章：https://czt.nmg.gov.cn/yjs/business/article/select/ad4cd96ade7c0f399760d936e71a6612；附件：https://czt.nmg.gov.cn/yjs/business/file/download/b8b1803c90ca486b9eb906adf47e4e8e
+2021文章：https://czt.nmg.gov.cn/yjs/business/article/select/bda332d18d501bf495193f8581f40ca5；附件：https://czt.nmg.gov.cn/yjs/business/file/download/e89f444ea1634ce0867443487adea760
+口径说明：只接入原表“阿拉善盟”全盟行；盟本级及旗区行不并入全盟地级行政单元。2022年及以后当前公开目录未见可对应的全盟年末余额表，暂保留缺失。

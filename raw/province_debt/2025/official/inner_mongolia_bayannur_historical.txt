@@ -1,0 +1,14 @@
+表：巴彦淖尔市2018年地方政府债务限额及余额决算情况表
+巴彦淖尔市 290.57 247.82 42.75 305.5167 257.5332 47.9835
+
+表：巴彦淖尔市2019年地方政府债务限额及余额决算情况表
+巴彦淖尔市 333.39 271.93 61.46 332.8613611017 270.7067292068 62.1546318949
+
+表：巴彦淖尔市2020年地方政府债务限额及余额决算情况表
+巴彦淖尔市 451.12 313.37 137.75 414.0511711545 284.2098382612 129.8413328933
+
+原始证据：内蒙古自治区财政厅集中预算公开平台巴彦淖尔市政府债务债券公开附件。
+2018文章：https://czt.nmg.gov.cn/yjs/business/article/select/25d086a787acb4dd379a4176acdec756；附件：https://czt.nmg.gov.cn/yjs/business/file/download/96577540d8de4dcc807b3e9ff4e4a9dd
+2019文章：https://czt.nmg.gov.cn/yjs/business/article/select/2682f81b3573408d7b5b19c1b31d8370；附件：https://czt.nmg.gov.cn/yjs/business/file/download/80c48d33f600424ea10965da062b1138
+2020文章：https://czt.nmg.gov.cn/yjs/business/article/select/6871a4f38e09403eb89cf5950367c5cf；附件：https://czt.nmg.gov.cn/yjs/business/file/download/0e028749a4dc4152a3c6cb3443be1201
+口径说明：只接入原表“巴彦淖尔市”全市行；本级和旗县行不并入地级市全域。2021年及以后未在当前公开目录中找到可对应的全市年末余额表，暂保留缺失。

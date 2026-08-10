@@ -1,0 +1,34 @@
+表：兴安盟2018年地方政府债务限额及余额决算情况表
+兴安盟 220.94 188.57 32.37 220.316 189.8921 30.4239
+
+表：兴安盟2019年地方政府债务限额及余额决算情况表
+兴安盟 281.69 220.09 61.6 278.9437 218.8211 60.1226
+
+表：兴安盟2020年地方政府债务限额及余额预算情况表
+兴安盟 334.4 236.4 98 333.7362710859 235.9777710859 97.7585
+
+表：2021年兴安盟政府债务发行、余额、限额及还本付息公开数据表
+兴安盟 359.6696146 250.7361146 108.9335
+
+表：兴安盟2022年地方政府债务限额及余额决算情况表
+兴安盟 403.5 271.2 132.3 391.8674429469 264.2581429469 127.6093
+
+表：兴安盟2023年地方政府债务限额及余额决算情况表
+兴安盟 436 290 146 433.4929324985 288.5437324985 144.9492
+
+表：兴安盟2024年地方政府债务限额及余额预算情况表
+兴安盟 469.7523948901 299.1125948901 170.6398
+
+表：兴安盟2025年地方政府债务限额及余额预算情况表
+兴安盟 513.9032460481 308.7051460481 205.1981
+
+原始证据：内蒙古自治区财政厅集中预算公开平台兴安盟政府债务债券公开附件。
+2018文章：https://czt.nmg.gov.cn/yjs/business/article/select/c3f2420cd2e0f124d7c951d104bad990；附件：https://czt.nmg.gov.cn/yjs/business/file/download/4f54ade760f2492c92b32f032ece9cc0
+2019文章：https://czt.nmg.gov.cn/yjs/business/article/select/badbb41caaa88da46ed278370d0a2ba5；附件：https://czt.nmg.gov.cn/yjs/business/file/download/3ee1033466704f0bb70ae2f2cc97cf5f
+2020文章：https://czt.nmg.gov.cn/yjs/business/article/select/33cbe59d25c412a9b6beb33e40eddbe6；附件：https://czt.nmg.gov.cn/yjs/business/file/download/736d2854b408423387de5cdd286d9470
+2021文章：https://czt.nmg.gov.cn/yjs/business/article/select/398791e417b3ca8b0bbafcb3e423af1b；附件：https://czt.nmg.gov.cn/yjs/business/file/download/8471174091114c2ead97cbfa39c5b5f8
+2022文章：https://czt.nmg.gov.cn/yjs/business/article/select/51087c910173b813197a41619945e52f；附件：https://czt.nmg.gov.cn/yjs/business/file/download/7082654bfbe0410b9c309e076779d88b
+2023文章：https://czt.nmg.gov.cn/yjs/business/article/select/0223dc8a043acdce72163c6fe440a129；附件：https://czt.nmg.gov.cn/yjs/business/file/download/7fd41ffa287b409ba1c48cb11fc27f34
+2024文章：https://czt.nmg.gov.cn/yjs/business/article/select/31b0a38d85c5e22ce552a3d4ea33a1b；附件：https://czt.nmg.gov.cn/yjs/business/file/download/9ecce1d6a10f4a5197b91e02d0dc03bf
+2025文章：https://czt.nmg.gov.cn/yjs/business/article/select/50efa07be9337f442a1d24d0cd6eab08；附件：https://czt.nmg.gov.cn/yjs/business/file/download/aa9309655c3f4b6c8b5f9a56b8f0b8b3
+口径说明：2021年官方表直接列示余额总额及一般、专项分项，2024—2025采用预算公开的余额预计执行数；其余采用全盟行，盟本级及旗县行不并入地级行政单元。
