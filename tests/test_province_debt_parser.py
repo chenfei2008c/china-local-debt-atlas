@@ -73,6 +73,21 @@ class ProvinceDebtParserTests(unittest.TestCase):
         self.assertEqual(row["special_debt_limit_100m"], Decimal("1469.7083"))
         self.assertEqual(row["special_debt_balance_100m"], Decimal("1461.4159"))
 
+    def test_extracts_direct_general_special_rows_after_year(self):
+        text = "怒江州 2025 200.09 113.50 86.59"
+        rows = extract_city_rows(
+            text,
+            expected_city_names={"怒江州"},
+            year=2025,
+            province_name="云南省",
+            source_doc_id="SRC-TEST-NUJIANG",
+            layout="direct3_general_special_after_year",
+        )
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["statutory_debt_balance_100m"], Decimal("200.09"))
+        self.assertEqual(rows[0]["general_debt_balance_100m"], Decimal("113.50"))
+        self.assertEqual(rows[0]["special_debt_balance_100m"], Decimal("86.59"))
+
     def test_extracts_city_rows_from_shared_string_xlsx(self):
         sheet = """<?xml version='1.0'?><worksheet xmlns='http://schemas.openxmlformats.org/spreadsheetml/2006/main'><sheetData>
         <row r='10'><c r='C10' t='s'><v>0</v></c><c r='D10'><v>100</v></c><c r='E10'><v>40</v></c><c r='F10'><v>60</v></c><c r='G10'><v>90</v></c><c r='H10'><v>35</v></c><c r='I10'><v>55</v></c></row>

@@ -371,9 +371,7 @@ CN-231200,绥化市,黑龙江省,2019,core,provisional,SRC-CITY-PANEL-1990-2023,
 CN-232700,大兴安岭地区,黑龙江省,2019,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-530100,昆明市,云南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-530400,玉溪市,云南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530700,丽江市,云南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-530800,普洱市,云南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530900,临沧市,云南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-532500,红河哈尼族彝族自治州,云南省,2020,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-532600,文山壮族苗族自治州,云南省,2020,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-532800,西双版纳傣族自治州,云南省,2020,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
@@ -393,8 +391,6 @@ CN-513200,阿坝藏族羌族自治州,四川省,2020,extended,not_collected,,,ne
 CN-513300,甘孜藏族自治州,四川省,2020,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-513400,凉山彝族自治州,四川省,2020,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-340100,合肥市,安徽省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-340200,芜湖市,安徽省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-340300,蚌埠市,安徽省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-340400,淮南市,安徽省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-340500,马鞍山市,安徽省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-340600,淮北市,安徽省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -461,19 +457,6 @@ CN-654000,伊犁哈萨克自治州,新疆维吾尔自治区,2020,extended,not_co
 CN-654200,塔城地区,新疆维吾尔自治区,2020,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-320100,南京市,江苏省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-320200,无锡市,江苏省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-320300,徐州市,江苏省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-320400,常州市,江苏省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-320500,苏州市,江苏省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-320600,南通市,江苏省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-320700,连云港市,江苏省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-320800,淮安市,江苏省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-320900,盐城市,江苏省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-321000,扬州市,江苏省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-321100,镇江市,江苏省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-321200,泰州市,江苏省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-321300,宿迁市,江苏省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-360100,南昌市,江西省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-360200,景德镇市,江西省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-360300,萍乡市,江西省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -494,22 +477,14 @@ CN-130700,张家口市,河北省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,
 CN-130900,沧州市,河北省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-131000,廊坊市,河北省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-131100,衡水市,河北省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-410100,郑州市,河南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-410200,开封市,河南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410300,洛阳市,河南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-410400,平顶山市,河南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410500,安阳市,河南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410600,鹤壁市,河南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410700,新乡市,河南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-410800,焦作市,河南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410900,濮阳市,河南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411000,许昌市,河南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411100,漯河市,河南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-411200,三门峡市,河南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-411300,南阳市,河南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411400,商丘市,河南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-411500,信阳市,河南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-411600,周口市,河南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411700,驻马店市,河南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-419000,省直辖县级行政区划,河南省,2020,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-330100,杭州市,浙江省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -546,12 +521,7 @@ CN-540400,林芝市,西藏自治区,2020,core,provisional,SRC-CITY-PANEL-1990-20
 CN-540500,山南市,西藏自治区,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-540600,那曲市,西藏自治区,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-542500,阿里地区,西藏自治区,2020,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-610100,西安市,陕西省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-610300,宝鸡市,陕西省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-610400,咸阳市,陕西省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610500,渭南市,陕西省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-610600,延安市,陕西省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-610700,汉中市,陕西省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-611000,商洛市,陕西省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-530100,昆明市,云南省,2021,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-530400,玉溪市,云南省,2021,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。

@@ -4007,7 +4007,6 @@ CN-530700,丽江市,云南省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-530700,丽江市,云南省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-530700,丽江市,云南省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-530700,丽江市,云南省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530700,丽江市,云南省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-530700,丽江市,云南省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-530800,普洱市,云南省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-530800,普洱市,云南省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -4023,7 +4022,6 @@ CN-530900,临沧市,云南省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-530900,临沧市,云南省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-530900,临沧市,云南省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-530900,临沧市,云南省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530900,临沧市,云南省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-530900,临沧市,云南省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-532300,楚雄彝族自治州,云南省,2020,gdp_current_100m,地区生产总值（现价，亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-CHUXIONG-2020,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-532300,楚雄彝族自治州,云南省,2020,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-CHUXIONG-2020,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
@@ -4409,7 +4407,6 @@ CN-340200,芜湖市,安徽省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-340200,芜湖市,安徽省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-340200,芜湖市,安徽省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-340200,芜湖市,安徽省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-340200,芜湖市,安徽省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-340200,芜湖市,安徽省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-340300,蚌埠市,安徽省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-340300,蚌埠市,安徽省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -4417,7 +4414,6 @@ CN-340300,蚌埠市,安徽省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-340300,蚌埠市,安徽省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-340300,蚌埠市,安徽省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-340300,蚌埠市,安徽省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-340300,蚌埠市,安徽省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-340300,蚌埠市,安徽省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-340400,淮南市,安徽省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-340400,淮南市,安徽省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -5054,7 +5050,6 @@ CN-320100,南京市,江苏省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-320100,南京市,江苏省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320100,南京市,江苏省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320100,南京市,江苏省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-320100,南京市,江苏省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320100,南京市,江苏省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320200,无锡市,江苏省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320200,无锡市,江苏省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -5062,7 +5057,6 @@ CN-320200,无锡市,江苏省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-320200,无锡市,江苏省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320200,无锡市,江苏省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320200,无锡市,江苏省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-320200,无锡市,江苏省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320200,无锡市,江苏省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320300,徐州市,江苏省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320300,徐州市,江苏省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -5070,7 +5064,6 @@ CN-320300,徐州市,江苏省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-320300,徐州市,江苏省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320300,徐州市,江苏省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320300,徐州市,江苏省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-320300,徐州市,江苏省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320300,徐州市,江苏省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320400,常州市,江苏省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320400,常州市,江苏省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -5078,7 +5071,6 @@ CN-320400,常州市,江苏省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-320400,常州市,江苏省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320400,常州市,江苏省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320400,常州市,江苏省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-320400,常州市,江苏省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320400,常州市,江苏省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320500,苏州市,江苏省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320500,苏州市,江苏省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -5086,7 +5078,6 @@ CN-320500,苏州市,江苏省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-320500,苏州市,江苏省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320500,苏州市,江苏省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320500,苏州市,江苏省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-320500,苏州市,江苏省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320500,苏州市,江苏省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320600,南通市,江苏省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320600,南通市,江苏省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -5094,7 +5085,6 @@ CN-320600,南通市,江苏省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-320600,南通市,江苏省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320600,南通市,江苏省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320600,南通市,江苏省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-320600,南通市,江苏省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320600,南通市,江苏省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320700,连云港市,江苏省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320700,连云港市,江苏省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -5102,7 +5092,6 @@ CN-320700,连云港市,江苏省,2020,gov_fund_revenue_100m,政府性基金预�
 CN-320700,连云港市,江苏省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320700,连云港市,江苏省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320700,连云港市,江苏省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-320700,连云港市,江苏省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320700,连云港市,江苏省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320800,淮安市,江苏省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320800,淮安市,江苏省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -5110,7 +5099,6 @@ CN-320800,淮安市,江苏省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-320800,淮安市,江苏省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320800,淮安市,江苏省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320800,淮安市,江苏省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-320800,淮安市,江苏省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320800,淮安市,江苏省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320900,盐城市,江苏省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320900,盐城市,江苏省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -5118,7 +5106,6 @@ CN-320900,盐城市,江苏省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-320900,盐城市,江苏省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320900,盐城市,江苏省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320900,盐城市,江苏省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-320900,盐城市,江苏省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-320900,盐城市,江苏省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-321000,扬州市,江苏省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-321000,扬州市,江苏省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -5126,7 +5113,6 @@ CN-321000,扬州市,江苏省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-321000,扬州市,江苏省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-321000,扬州市,江苏省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-321000,扬州市,江苏省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-321000,扬州市,江苏省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-321000,扬州市,江苏省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-321100,镇江市,江苏省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-321100,镇江市,江苏省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -5134,7 +5120,6 @@ CN-321100,镇江市,江苏省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-321100,镇江市,江苏省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-321100,镇江市,江苏省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-321100,镇江市,江苏省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-321100,镇江市,江苏省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-321100,镇江市,江苏省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-321200,泰州市,江苏省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-321200,泰州市,江苏省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -5142,7 +5127,6 @@ CN-321200,泰州市,江苏省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-321200,泰州市,江苏省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-321200,泰州市,江苏省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-321200,泰州市,江苏省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-321200,泰州市,江苏省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-321200,泰州市,江苏省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-321300,宿迁市,江苏省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-321300,宿迁市,江苏省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -5150,7 +5134,6 @@ CN-321300,宿迁市,江苏省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-321300,宿迁市,江苏省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-321300,宿迁市,江苏省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-321300,宿迁市,江苏省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-321300,宿迁市,江苏省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-321300,宿迁市,江苏省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-360100,南昌市,江西省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-360100,南昌市,江西省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -5330,7 +5313,6 @@ CN-410100,郑州市,河南省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-410100,郑州市,河南省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410100,郑州市,河南省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410100,郑州市,河南省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-410100,郑州市,河南省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410100,郑州市,河南省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410200,开封市,河南省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410200,开封市,河南省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -5338,7 +5320,6 @@ CN-410200,开封市,河南省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-410200,开封市,河南省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410200,开封市,河南省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410200,开封市,河南省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-410200,开封市,河南省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410200,开封市,河南省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410300,洛阳市,河南省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410300,洛阳市,河南省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -5354,7 +5335,6 @@ CN-410400,平顶山市,河南省,2020,gov_fund_revenue_100m,政府性基金预�
 CN-410400,平顶山市,河南省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410400,平顶山市,河南省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410400,平顶山市,河南省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-410400,平顶山市,河南省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410400,平顶山市,河南省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410500,安阳市,河南省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410500,安阳市,河南省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -5386,7 +5366,6 @@ CN-410800,焦作市,河南省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-410800,焦作市,河南省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410800,焦作市,河南省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410800,焦作市,河南省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-410800,焦作市,河南省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410800,焦作市,河南省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410900,濮阳市,河南省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-410900,濮阳市,河南省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -5418,7 +5397,6 @@ CN-411200,三门峡市,河南省,2020,gov_fund_revenue_100m,政府性基金预�
 CN-411200,三门峡市,河南省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411200,三门峡市,河南省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411200,三门峡市,河南省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-411200,三门峡市,河南省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411200,三门峡市,河南省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411300,南阳市,河南省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411300,南阳市,河南省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -5426,7 +5404,6 @@ CN-411300,南阳市,河南省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-411300,南阳市,河南省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411300,南阳市,河南省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411300,南阳市,河南省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-411300,南阳市,河南省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411300,南阳市,河南省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411400,商丘市,河南省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411400,商丘市,河南省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -5442,7 +5419,6 @@ CN-411500,信阳市,河南省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-411500,信阳市,河南省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411500,信阳市,河南省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411500,信阳市,河南省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-411500,信阳市,河南省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411500,信阳市,河南省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411600,周口市,河南省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411600,周口市,河南省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -5450,7 +5426,6 @@ CN-411600,周口市,河南省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-411600,周口市,河南省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411600,周口市,河南省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411600,周口市,河南省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-411600,周口市,河南省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411600,周口市,河南省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411700,驻马店市,河南省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-411700,驻马店市,河南省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -6004,13 +5979,10 @@ CN-211400,葫芦岛市,辽宁省,2020,special_debt_limit_100m,专项债务限额
 CN-211400,葫芦岛市,辽宁省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-LIAONING-CITIES-2020,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-500000,重庆市,重庆市,2020,gov_fund_revenue_100m,政府性基金预算收入（亿元）,separate,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-CHONGQING-2020,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-500000,重庆市,重庆市,2020,resident_population_10k,年末常住人口（万人）,separate,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-CHONGQING-2020,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-610100,西安市,陕西省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610100,西安市,陕西省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610100,西安市,陕西省,2020,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610100,西安市,陕西省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-610100,西安市,陕西省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610100,西安市,陕西省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-610100,西安市,陕西省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610100,西安市,陕西省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610200,铜川市,陕西省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-610200,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
 CN-610200,铜川市,陕西省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-610200,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
@@ -6025,7 +5997,6 @@ CN-610300,宝鸡市,陕西省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-610300,宝鸡市,陕西省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610300,宝鸡市,陕西省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610300,宝鸡市,陕西省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-610300,宝鸡市,陕西省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610300,宝鸡市,陕西省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610400,咸阳市,陕西省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610400,咸阳市,陕西省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -6033,7 +6004,6 @@ CN-610400,咸阳市,陕西省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-610400,咸阳市,陕西省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610400,咸阳市,陕西省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610400,咸阳市,陕西省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-610400,咸阳市,陕西省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610400,咸阳市,陕西省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610500,渭南市,陕西省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610500,渭南市,陕西省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -6049,7 +6019,6 @@ CN-610600,延安市,陕西省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-610600,延安市,陕西省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610600,延安市,陕西省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610600,延安市,陕西省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-610600,延安市,陕西省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610600,延安市,陕西省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610700,汉中市,陕西省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610700,汉中市,陕西省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -6057,7 +6026,6 @@ CN-610700,汉中市,陕西省,2020,gov_fund_revenue_100m,政府性基金预算�
 CN-610700,汉中市,陕西省,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610700,汉中市,陕西省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610700,汉中市,陕西省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-610700,汉中市,陕西省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610700,汉中市,陕西省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-610800,榆林市,陕西省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-610800,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
 CN-610800,榆林市,陕西省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-610800,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。

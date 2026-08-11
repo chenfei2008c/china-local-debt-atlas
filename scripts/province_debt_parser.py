@@ -90,7 +90,7 @@ def extract_city_rows(
             continue
         numbers = parse_numeric_tokens(line)
         evidence_line = line
-        required_count = 9 if layout == "total9" else (6 if layout in {"total6", "balance6", "total6_balance_first"} else (3 if layout in {"component3", "balance3", "direct3_general_special"} else (1 if layout == "direct1" else 2)))
+        required_count = 9 if layout == "total9" else (6 if layout in {"total6", "balance6", "total6_balance_first"} else (3 if layout in {"component3", "balance3", "direct3_general_special", "direct3_general_special_after_year"} else (1 if layout == "direct1" else 2)))
         # 部分 PDF 会把较长的自治州名称拆成两行，但数字仍在下一行；
         # 仅在已匹配白名单且当前数字列不足时合并下一行，避免跨行误配。
         if len(numbers) < required_count and index + 1 < len(lines):
@@ -108,6 +108,8 @@ def extract_city_rows(
         if layout == "balance3" and len(numbers) < 3:
             continue
         if layout == "direct3_general_special" and len(numbers) < 3:
+            continue
+        if layout == "direct3_general_special_after_year" and len(numbers) < 4:
             continue
         if layout == "direct1" and len(numbers) < 1:
             continue
@@ -204,6 +206,17 @@ def extract_city_rows(
             row["statutory_debt_balance_100m"] = values[0]
         elif layout == "direct3_general_special":
             total_balance, general_balance, special_balance = values[:3]
+            row.update(
+                {
+                    "general_debt_balance_100m": general_balance,
+                    "special_debt_balance_100m": special_balance,
+                    "statutory_debt_balance_100m": total_balance,
+                }
+            )
+        elif layout == "direct3_general_special_after_year":
+            # 有些叙述行先列年份，再列全市总额、一般债券和专项债券余额。
+            # 年份不是债务金额，必须跳过第一列，避免把年份误作总余额。
+            total_balance, general_balance, special_balance = values[1:4]
             row.update(
                 {
                     "general_debt_balance_100m": general_balance,
