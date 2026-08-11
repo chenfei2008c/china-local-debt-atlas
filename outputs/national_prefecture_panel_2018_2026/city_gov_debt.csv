@@ -976,12 +976,12 @@ DEBT-CN-610100-2020-PREFECTURE,CN-610100,2020,2020-12-31,prefecture_whole,,904.8
 DEBT-CN-610200-2020-PREFECTURE,CN-610200,2020,2020-12-31,prefecture_whole,,,,,,162.94,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-610200,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-610300-2020-PREFECTURE,CN-610300,2020,2020-12-31,prefecture_whole,,,,,,261.55,official_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-SHAANXI-BAOJI-2020,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-610400-2020-PREFECTURE,CN-610400,2020,2020-12-31,prefecture_whole,,,,,,268.26,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-SHAANXI-XIANYANG-2020,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
-DEBT-CN-610500-2020-PREFECTURE,CN-610500,2020,2020-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
+DEBT-CN-610500-2020-PREFECTURE,CN-610500,2020,2020-12-31,prefecture_whole,,229.94,,177.55,,407.49,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-SHAANXI-WEINAN-2020,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-610600-2020-PREFECTURE,CN-610600,2020,2020-12-31,prefecture_whole,,,,,,498.11,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-SHAANXI-YANAN-2020,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-610700-2020-PREFECTURE,CN-610700,2020,2020-12-31,prefecture_whole,,,,,,324.97,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-SHAANXI-HANZHONG-2020,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-610800-2020-PREFECTURE,CN-610800,2020,2020-12-31,prefecture_whole,,,,,,496.04,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-610800,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-610900-2020-PREFECTURE,CN-610900,2020,2020-12-31,prefecture_whole,,,,,,430.59,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-610900,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
-DEBT-CN-611000-2020-PREFECTURE,CN-611000,2020,2020-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
+DEBT-CN-611000-2020-PREFECTURE,CN-611000,2020,2020-12-31,prefecture_whole,,237.15,,50.80,,287.95,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-SHAANXI-SHANGLUO-2020,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-620100-2020-PREFECTURE,CN-620100,2020,2020-12-31,prefecture_whole,,,,,,645.60,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-620100,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-620200-2020-PREFECTURE,CN-620200,2020,2020-12-31,prefecture_whole,,,,,,47.75,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-620200,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-620300-2020-PREFECTURE,CN-620300,2020,2020-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
