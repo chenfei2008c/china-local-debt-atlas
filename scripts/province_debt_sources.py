@@ -2693,6 +2693,25 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
             "table_name": "2021年玉溪市全市地方政府债务余额",
             "note": "公开研究报告列示2021年玉溪市全市余额622亿元；当前按B2接入，待玉溪市财政局全市决算债务表复核。",
         },
+        {
+            "source_doc_id": "SRC-SECONDARY-DEBT-YUNNAN-LIJIANG-2021",
+            "province_name": "云南省",
+            "year": 2021,
+            "path": RAW_DIR / "2021" / "official" / "yunnan_lijiang_2021_secondary.txt",
+            "text_path": RAW_DIR / "2021" / "official" / "yunnan_lijiang_2021_secondary.txt",
+            "source_url": "https://www.gcs66.com/document_detail/114024.html",
+            "document_title": "关于丽江市2021年地方财政预算执行情况和2022年地方财政预算草案的报告",
+            "publication_date": "2022-02-15",
+            "publisher": "公开转载页面（原文署名丽江市财政局）",
+            "publisher_level": "公开二手研究资料",
+            "source_grade": "B2",
+            "unit": "亿元",
+            "layout": "direct3_general_special",
+            "start": "【2021年丽江市全市政府债务余额（单位：亿元）】",
+            "end": None,
+            "table_name": "2021年丽江市全市政府债务余额",
+            "note": "公开转载页面保留原文署名丽江市财政局的报告，明确给出2021年末全市余额287.88亿元，其中一般债务108.20、专项债务179.68；报告注明为快报数，待正式决算复核。",
+        },
     ]
 )
 

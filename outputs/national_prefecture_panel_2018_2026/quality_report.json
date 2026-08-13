@@ -5,9 +5,9 @@
   "city_master_unique_key": true,
   "macro_rows": 3074,
   "macro_unique_key": true,
-  "field_lineage_rows": 25449,
-  "calculation_lineage_rows": 10518,
-  "non_null_macro_field_lineage_rows": 25449,
+  "field_lineage_rows": 25454,
+  "calculation_lineage_rows": 10521,
+  "non_null_macro_field_lineage_rows": 25454,
   "debt_limit_balance_violations": [
     "DEBT-CN-150800-2018-PREFECTURE"
   ],
@@ -39,8 +39,8 @@
       2025
     ],
     "target_key_count": 2732,
-    "covered_key_count": 2644,
-    "missing_key_count": 88,
+    "covered_key_count": 2645,
+    "missing_key_count": 87,
     "passed": false,
     "missing_keys_sample": [
       "CN-130300-2019",
@@ -99,7 +99,6 @@
       "CN-469000-2024",
       "CN-469000-2025",
       "CN-530700-2019",
-      "CN-530700-2021",
       "CN-530800-2018",
       "CN-530900-2019",
       "CN-532800-2022",

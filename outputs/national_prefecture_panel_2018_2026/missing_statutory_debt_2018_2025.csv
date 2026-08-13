@@ -46,7 +46,6 @@ CN-620800,平凉市,甘肃省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,n
 CN-620900,酒泉市,甘肃省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-622900,临夏回族自治州,甘肃省,2020,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-623000,甘南藏族自治州,甘肃省,2020,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-530700,丽江市,云南省,2021,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-150200,包头市,内蒙古自治区,2021,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-150600,鄂尔多斯市,内蒙古自治区,2021,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-152500,锡林郭勒盟,内蒙古自治区,2021,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
