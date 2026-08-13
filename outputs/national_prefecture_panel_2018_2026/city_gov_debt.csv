@@ -610,7 +610,7 @@ DEBT-CN-522600-2019-PREFECTURE,CN-522600,2019,2019-12-31,prefecture_whole,357.21
 DEBT-CN-522700-2019-PREFECTURE,CN-522700,2019,2019-12-31,prefecture_whole,506.98,493.12,405.04,388.08,912.03,881.20,official_debt,SRC-PROVINCE-DEBT-GUIZHOU-2019,A1,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-530100-2019-PREFECTURE,CN-530100,2019,2019-12-31,prefecture_whole,,,,,,2059.86,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CCXI-YUNNAN-KUNMING-2019,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-530300-2019-PREFECTURE,CN-530300,2019,2019-12-31,prefecture_whole,,,,,,362.00,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-530300,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
-DEBT-CN-530400-2019-PREFECTURE,CN-530400,2019,2019-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
+DEBT-CN-530400-2019-PREFECTURE,CN-530400,2019,2019-12-31,prefecture_whole,,351.20,,205.90,,557.10,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-YUNNAN-YUXI-2019-FROM-2020-REPORT,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-530500-2019-PREFECTURE,CN-530500,2019,2019-12-31,prefecture_whole,,,,,,318.50,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-530500,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-530600-2019-PREFECTURE,CN-530600,2019,2019-12-31,prefecture_whole,,,,,,493.60,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-530600,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-530700-2019-PREFECTURE,CN-530700,2019,2019-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。

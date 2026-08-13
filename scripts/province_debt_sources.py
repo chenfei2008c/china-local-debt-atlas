@@ -1417,6 +1417,25 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
 OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
     [
         {
+            "source_doc_id": "SRC-OFFICIAL-DEBT-YUNNAN-YUXI-2019-FROM-2020-REPORT",
+            "province_name": "云南省",
+            "year": 2019,
+            "path": RAW_DIR / "2019" / "official" / "yunnan_yuxi_2019_from_2020_report.txt",
+            "text_path": RAW_DIR / "2019" / "official" / "yunnan_yuxi_2019_from_2020_report.txt",
+            "source_url": "https://www.yuxi.gov.cn/u/cms/yxszfxxgk/202109/10174037x1y7.pdf",
+            "document_title": "玉溪市2020年地方财政决算（草案）的报告——2020年玉溪市政府债务限额和余额情况表",
+            "publication_date": "2021-09-10",
+            "publisher": "玉溪市财政局",
+            "publisher_level": "市级财政部门",
+            "source_grade": "A2",
+            "unit": "亿元",
+            "layout": "direct3_general_special",
+            "start": "【2019年玉溪市全市政府债务余额（单位：亿元）】",
+            "end": None,
+            "table_name": "表二十五 2020年玉溪市政府债务限额和余额情况表（2019年决算数）",
+            "note": "同一官方决算表二十五的2019年决算数列直接列示2019年全市年末政府债务余额557.1亿元，其中一般债务351.2亿元、专项债务205.9亿元；使用全市列，不使用市本级列。",
+        },
+        {
             "source_doc_id": "SRC-OFFICIAL-DEBT-YUNNAN-YUXI-2020",
             "province_name": "云南省",
             "year": 2020,
