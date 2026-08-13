@@ -31,13 +31,10 @@ CN-530600,昭通市,云南省,2018,gov_fund_revenue_100m,政府性基金预算�
 CN-530600,昭通市,云南省,2018,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-530600,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
 CN-530600,昭通市,云南省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-530600,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
 CN-530600,昭通市,云南省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-530600,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
-CN-530700,丽江市,云南省,2018,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530700,丽江市,云南省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530700,丽江市,云南省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530700,丽江市,云南省,2018,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530700,丽江市,云南省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530700,丽江市,云南省,2018,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530700,丽江市,云南省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-530700,丽江市,云南省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-YUNNAN-LIJIANG-2018,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-530700,丽江市,云南省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-YUNNAN-LIJIANG-2018,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-530700,丽江市,云南省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-YUNNAN-LIJIANG-2018,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-530700,丽江市,云南省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-YUNNAN-LIJIANG-2018,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-530800,普洱市,云南省,2018,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-530800,普洱市,云南省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-530800,普洱市,云南省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -45,13 +42,10 @@ CN-530800,普洱市,云南省,2018,special_debt_balance_100m,专项债务余额�
 CN-530800,普洱市,云南省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-530800,普洱市,云南省,2018,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-530800,普洱市,云南省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530900,临沧市,云南省,2018,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530900,临沧市,云南省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530900,临沧市,云南省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530900,临沧市,云南省,2018,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530900,临沧市,云南省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530900,临沧市,云南省,2018,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530900,临沧市,云南省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-530900,临沧市,云南省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-YUNNAN-LINCANG-2018,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-530900,临沧市,云南省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-YUNNAN-LINCANG-2018,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-530900,临沧市,云南省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-YUNNAN-LINCANG-2018,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-530900,临沧市,云南省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-YUNNAN-LINCANG-2018,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-532300,楚雄彝族自治州,云南省,2018,gdp_current_100m,地区生产总值（现价，亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-CHUXIONG-2018,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-532300,楚雄彝族自治州,云南省,2018,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-CHUXIONG-2018,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-532300,楚雄彝族自治州,云南省,2018,general_debt_limit_100m,一般债务限额（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-CHUXIONG-2018,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
@@ -72,18 +66,15 @@ CN-532500,红河哈尼族彝族自治州,云南省,2018,resident_population_10k,
 CN-532500,红河哈尼族彝族自治州,云南省,2018,special_debt_balance_100m,专项债务余额（亿元）,extended,secondary_debt,SRC-SECONDARY-EBS-YUNNAN-2018,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-532500,红河哈尼族彝族自治州,云南省,2018,special_debt_limit_100m,专项债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-EBS-YUNNAN-2018,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-532500,红河哈尼族彝族自治州,云南省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-EBS-YUNNAN-2018,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-532600,文山壮族苗族自治州,云南省,2018,gdp_current_100m,地区生产总值（现价，亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-532600,文山壮族苗族自治州,云南省,2018,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-532600,文山壮族苗族自治州,云南省,2018,general_debt_balance_100m,一般债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-532600,文山壮族苗族自治州,云南省,2018,general_debt_limit_100m,一般债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-532600,文山壮族苗族自治州,云南省,2018,general_public_expenditure_100m,一般公共预算支出（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-532600,文山壮族苗族自治州,云南省,2018,general_public_revenue_100m,一般公共预算收入（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-532600,文山壮族苗族自治州,云南省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-532600,文山壮族苗族自治州,云南省,2018,resident_population_10k,年末常住人口（万人）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-532600,文山壮族苗族自治州,云南省,2018,special_debt_balance_100m,专项债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-532600,文山壮族苗族自治州,云南省,2018,special_debt_limit_100m,专项债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-532600,文山壮族苗族自治州,云南省,2018,statutory_debt_balance_100m,法定债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-532600,文山壮族苗族自治州,云南省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
+CN-532600,文山壮族苗族自治州,云南省,2018,gdp_current_100m,地区生产总值（现价，亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-WENSHAN-2018-FROM-2019-REPORT,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-532600,文山壮族苗族自治州,云南省,2018,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-WENSHAN-2018-FROM-2019-REPORT,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-532600,文山壮族苗族自治州,云南省,2018,general_debt_limit_100m,一般债务限额（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-WENSHAN-2018-FROM-2019-REPORT,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-532600,文山壮族苗族自治州,云南省,2018,general_public_expenditure_100m,一般公共预算支出（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-WENSHAN-2018-FROM-2019-REPORT,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-532600,文山壮族苗族自治州,云南省,2018,general_public_revenue_100m,一般公共预算收入（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-WENSHAN-2018-FROM-2019-REPORT,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-532600,文山壮族苗族自治州,云南省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-WENSHAN-2018-FROM-2019-REPORT,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-532600,文山壮族苗族自治州,云南省,2018,resident_population_10k,年末常住人口（万人）,extended,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-WENSHAN-2018-FROM-2019-REPORT,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-532600,文山壮族苗族自治州,云南省,2018,special_debt_limit_100m,专项债务限额（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-WENSHAN-2018-FROM-2019-REPORT,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-532600,文山壮族苗族自治州,云南省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-WENSHAN-2018-FROM-2019-REPORT,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-532800,西双版纳傣族自治州,云南省,2018,gdp_current_100m,地区生产总值（现价，亿元）,extended,secondary_debt,SRC-SECONDARY-EBS-YUNNAN-2018,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-532800,西双版纳傣族自治州,云南省,2018,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,secondary_debt,SRC-SECONDARY-EBS-YUNNAN-2018,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-532800,西双版纳傣族自治州,云南省,2018,general_debt_balance_100m,一般债务余额（亿元）,extended,secondary_debt,SRC-SECONDARY-EBS-YUNNAN-2018,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
