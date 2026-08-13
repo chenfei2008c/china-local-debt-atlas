@@ -1636,13 +1636,10 @@ CN-230100,哈尔滨市,黑龙江省,2018,general_debt_limit_100m,一般债务限
 CN-230100,哈尔滨市,黑龙江省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEILONGJIANG-2018-EBS-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-230100,哈尔滨市,黑龙江省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEILONGJIANG-2018-EBS-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-230100,哈尔滨市,黑龙江省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEILONGJIANG-2018-EBS-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-230200,齐齐哈尔市,黑龙江省,2018,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-230200,齐齐哈尔市,黑龙江省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-230200,齐齐哈尔市,黑龙江省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-230200,齐齐哈尔市,黑龙江省,2018,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-230200,齐齐哈尔市,黑龙江省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-230200,齐齐哈尔市,黑龙江省,2018,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-230200,齐齐哈尔市,黑龙江省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-230200,齐齐哈尔市,黑龙江省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HEILONGJIANG-2018-FROM-2019-FINAL,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-230200,齐齐哈尔市,黑龙江省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HEILONGJIANG-2018-FROM-2019-FINAL,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-230200,齐齐哈尔市,黑龙江省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HEILONGJIANG-2018-FROM-2019-FINAL,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-230200,齐齐哈尔市,黑龙江省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HEILONGJIANG-2018-FROM-2019-FINAL,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-230300,鸡西市,黑龙江省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HEILONGJIANG-JIXI-2018,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-230300,鸡西市,黑龙江省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HEILONGJIANG-JIXI-2018,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-230300,鸡西市,黑龙江省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HEILONGJIANG-JIXI-2018,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
@@ -1663,13 +1660,10 @@ CN-230700,伊春市,黑龙江省,2018,general_debt_limit_100m,一般债务限额
 CN-230700,伊春市,黑龙江省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEILONGJIANG-2018-EBS-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-230700,伊春市,黑龙江省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEILONGJIANG-2018-EBS-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-230700,伊春市,黑龙江省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEILONGJIANG-2018-EBS-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-230800,佳木斯市,黑龙江省,2018,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-230800,佳木斯市,黑龙江省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-230800,佳木斯市,黑龙江省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-230800,佳木斯市,黑龙江省,2018,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-230800,佳木斯市,黑龙江省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-230800,佳木斯市,黑龙江省,2018,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-230800,佳木斯市,黑龙江省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-230800,佳木斯市,黑龙江省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HEILONGJIANG-2018-FROM-2019-FINAL,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-230800,佳木斯市,黑龙江省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HEILONGJIANG-2018-FROM-2019-FINAL,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-230800,佳木斯市,黑龙江省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HEILONGJIANG-2018-FROM-2019-FINAL,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-230800,佳木斯市,黑龙江省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HEILONGJIANG-2018-FROM-2019-FINAL,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-230900,七台河市,黑龙江省,2018,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEILONGJIANG-QITAIHE-2018,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-230900,七台河市,黑龙江省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEILONGJIANG-QITAIHE-2018,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-230900,七台河市,黑龙江省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEILONGJIANG-QITAIHE-2018,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
@@ -1682,13 +1676,10 @@ CN-231000,牡丹江市,黑龙江省,2018,gov_fund_revenue_100m,政府性基金�
 CN-231000,牡丹江市,黑龙江省,2018,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEILONGJIANG-MUDANJIANG-2018,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-231000,牡丹江市,黑龙江省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEILONGJIANG-MUDANJIANG-2018,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-231000,牡丹江市,黑龙江省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEILONGJIANG-MUDANJIANG-2018,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-231100,黑河市,黑龙江省,2018,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-231100,黑河市,黑龙江省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-231100,黑河市,黑龙江省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-231100,黑河市,黑龙江省,2018,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-231100,黑河市,黑龙江省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-231100,黑河市,黑龙江省,2018,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-231100,黑河市,黑龙江省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-231100,黑河市,黑龙江省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HEILONGJIANG-2018-FROM-2019-FINAL,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-231100,黑河市,黑龙江省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HEILONGJIANG-2018-FROM-2019-FINAL,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-231100,黑河市,黑龙江省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HEILONGJIANG-2018-FROM-2019-FINAL,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-231100,黑河市,黑龙江省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HEILONGJIANG-2018-FROM-2019-FINAL,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-231200,绥化市,黑龙江省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEILONGJIANG-2018-EBS-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-231200,绥化市,黑龙江省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEILONGJIANG-2018-EBS-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-231200,绥化市,黑龙江省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEILONGJIANG-2018-EBS-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
