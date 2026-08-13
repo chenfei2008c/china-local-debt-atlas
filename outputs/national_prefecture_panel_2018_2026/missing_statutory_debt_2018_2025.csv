@@ -95,7 +95,6 @@ CN-422800,恩施土家族苗族自治州,湖北省,2022,extended,not_collected,,
 CN-429000,省直辖县级行政区划,湖北省,2022,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-350700,南平市,福建省,2022,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-350900,宁德市,福建省,2022,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-611000,商洛市,陕西省,2022,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-530700,丽江市,云南省,2023,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-533300,怒江傈僳族自治州,云南省,2023,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-152500,锡林郭勒盟,内蒙古自治区,2023,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。

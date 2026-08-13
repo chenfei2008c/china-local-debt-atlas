@@ -2662,6 +2662,25 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
             "table_name": "2022年渭南市全市政府债务余额",
             "note": "评级报告明确给出2022年末渭南市全市总额及一般/专项分项，并引用渭南市财政公开报告；接入B2，待市级财政原始表复核。",
         },
+        {
+            "source_doc_id": "SRC-OFFICIAL-DEBT-SHAANXI-SHANGLUO-2022",
+            "province_name": "陕西省",
+            "year": 2022,
+            "path": RAW_DIR / "2022" / "official" / "shaanxi_shangluo_2022_city_debt.txt",
+            "text_path": RAW_DIR / "2022" / "official" / "shaanxi_shangluo_2022_city_debt.txt",
+            "source_url": "https://www.mof.gov.cn/zhuantihuigu/2023ysbghb/202302/P020230214612503171187.pdf",
+            "document_title": "陕西省2022年财政预算执行情况",
+            "publication_date": "2023-02-14",
+            "publisher": "陕西省财政厅",
+            "publisher_level": "省级财政部门",
+            "source_grade": "A2",
+            "unit": "亿元",
+            "layout": "direct3_general_special",
+            "start": "【2022年商洛市全市政府债务余额】",
+            "end": None,
+            "table_name": "2022年商洛市全市政府债务余额",
+            "note": "陕西省财政厅官方附件分别列示商洛市一般债务余额309.07亿元、专项债务余额95.90亿元；法定债务余额404.97亿元为两项官方分项的精确加总，不使用限额。",
+        },
     ]
 )
 
