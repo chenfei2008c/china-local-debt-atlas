@@ -3359,6 +3359,32 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
 OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
     [
         {
+            "source_doc_id": "SRC-OFFICIAL-DEBT-TIBET-CITIES-2018",
+            "province_name": "西藏自治区",
+            "year": 2018,
+            "path": RAW_DIR / "2018" / "official" / "xizang_2018_city_debt.txt",
+            "text_path": RAW_DIR / "2018" / "official" / "xizang_2018_city_debt.txt",
+            "source_url": "https://www.xizang.gov.cn/zwgk/xxgk_424/zxxxgk/201905/t20190508_69105.html",
+            "attachment_url": "https://www.xizang.gov.cn/zwgk/xxgk_424/zxxxgk/201905/W020190508567014355489.xlsx",
+            "document_title": "西藏自治区2018年地方政府债务限额及余额决算情况表",
+            "publication_date": "2019-03-26",
+            "publisher": "西藏自治区财政厅",
+            "publisher_level": "省级财政部门",
+            "source_grade": "A1",
+            "unit": "亿元",
+            "layout": "total6",
+            "start": "【2018年西藏自治区各地市政府债务余额（单位：亿元）】",
+            "end": None,
+            "aliases": {
+                "昌都地区": "昌都市",
+                "山南地区": "山南市",
+                "日喀则地区": "日喀则市",
+                "林芝地区": "林芝市",
+            },
+            "table_name": "表4-1 2018年西藏自治区地方政府债务限额及余额决算情况表",
+            "note": "西藏自治区财政厅官方附件表4-1直接列示7个地市（地区）全辖行；以官方表中的债务余额合计、一般债务余额和专项债务余额接入，旧行政名称按别名映射到现行城市主表。",
+        },
+        {
             "source_doc_id": "SRC-CITY-DEBT-TIBET-LHASA-2019",
             "province_name": "西藏自治区",
             "year": 2019,
