@@ -126,7 +126,7 @@ DEBT-CN-360200-2018-PREFECTURE,CN-360200,2018,2018-12-31,prefecture_whole,,,,,,1
 DEBT-CN-360300-2018-PREFECTURE,CN-360300,2018,2018-12-31,prefecture_whole,,137.95,,44.75,,182.70,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-JIANGXI-PINGXIANG-2018-FAR-EAST,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-360400-2018-PREFECTURE,CN-360400,2018,2018-12-31,prefecture_whole,,,,,,622.31,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-360400,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-360500-2018-PREFECTURE,CN-360500,2018,2018-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
-DEBT-CN-360600-2018-PREFECTURE,CN-360600,2018,2018-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
+DEBT-CN-360600-2018-PREFECTURE,CN-360600,2018,2018-12-31,prefecture_whole,,,,,,38.90,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-JIANGXI-YINGTAN-2018-FAR-EAST,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-360700-2018-PREFECTURE,CN-360700,2018,2018-12-31,prefecture_whole,,324.64,,237.34,,561.97,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-JIANGXI-GANZHOU-2018,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-360800-2018-PREFECTURE,CN-360800,2018,2018-12-31,prefecture_whole,,152.11,,140.67,,292.79,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-JIANGXI-JIAN-2018,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-360900-2018-PREFECTURE,CN-360900,2018,2018-12-31,prefecture_whole,,53.99,,32.38,,86.37,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-JIANGXI-YICHUN-2018,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
