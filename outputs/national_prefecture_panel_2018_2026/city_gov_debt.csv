@@ -5,9 +5,9 @@ DEBT-CN-130100-2018-PREFECTURE,CN-130100,2018,2018-12-31,prefecture_whole,807.86
 DEBT-CN-130200-2018-PREFECTURE,CN-130200,2018,2018-12-31,prefecture_whole,,,,,,444.85,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-EBS-HEBEI-2018,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-130300-2018-PREFECTURE,CN-130300,2018,2018-12-31,prefecture_whole,,,,,,237.32,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-EBS-HEBEI-2018,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-130400-2018-PREFECTURE,CN-130400,2018,2018-12-31,prefecture_whole,,,,,,277.41,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-EBS-HEBEI-2018,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
-DEBT-CN-130500-2018-PREFECTURE,CN-130500,2018,2018-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
+DEBT-CN-130500-2018-PREFECTURE,CN-130500,2018,2018-12-31,prefecture_whole,,,,,,389.67,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEBEI-XINGTAI-2018-RATING,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-130600-2018-PREFECTURE,CN-130600,2018,2018-12-31,prefecture_whole,,124.36,,272.48,,396.84,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HEBEI-BAODING-2018,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
-DEBT-CN-130700-2018-PREFECTURE,CN-130700,2018,2018-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
+DEBT-CN-130700-2018-PREFECTURE,CN-130700,2018,2018-12-31,prefecture_whole,,,,,,278.90,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEBEI-ZHANGJIAKOU-2018-RATING,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-130800-2018-PREFECTURE,CN-130800,2018,2018-12-31,prefecture_whole,,319.58,,181.45,,501.03,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HEBEI-CHENGDE-2018,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-130900-2018-PREFECTURE,CN-130900,2018,2018-12-31,prefecture_whole,,,,,,376.57,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-EBS-HEBEI-2018,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-131000-2018-PREFECTURE,CN-131000,2018,2018-12-31,prefecture_whole,,,,,,278.95,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-EBS-HEBEI-2018,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
