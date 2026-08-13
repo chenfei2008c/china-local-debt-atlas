@@ -920,6 +920,30 @@ for _year, (_url, _date) in _JILIN_HISTORICAL_PDFS.items():
 OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
     [
         {
+            "source_doc_id": "SRC-OFFICIAL-DEBT-GUIZHOU-TONGREN-2018",
+            "province_name": "贵州省",
+            "year": 2018,
+            "path": RAW_DIR / "2018" / "official" / "guizhou_tongren_2018.txt",
+            "text_path": RAW_DIR / "2018" / "official" / "guizhou_tongren_2018.txt",
+            "source_url": "https://www.tiyanjintop.com/ztzl/gzsczzjxxgkzl/gszczyjsjsgjf/trs/202110/t20211014_70882615.html",
+            "document_title": "铜仁市2018年全市和市本级预算执行情况与2019年全市和市本级预算草案的报告",
+            "publication_date": "2019-01-01",
+            "publisher": "铜仁市财政局",
+            "publisher_level": "市级财政部门",
+            "source_grade": "A2",
+            "unit": "亿元",
+            "layout": "direct1",
+            "start": "【2018年铜仁市全市地方政府债务余额】",
+            "end": None,
+            "table_name": "2018年铜仁市全市地方政府债务余额",
+            "note": "官方预算执行报告明确披露2018年末铜仁市全市政府债务余额641.82亿元；未在该段落披露一般/专项拆分，因此只接入法定债务余额。",
+        },
+    ]
+)
+
+OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
+    [
+        {
             "source_doc_id": "SRC-OFFICIAL-DEBT-YUNNAN-YUXI-2018-FROM-2019-REPORT",
             "province_name": "云南省",
             "year": 2018,
