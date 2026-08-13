@@ -1977,7 +1977,7 @@ DEBT-CN-530300-2023-PREFECTURE,CN-530300,2023,2023-12-31,prefecture_whole,,,,,,9
 DEBT-CN-530400-2023-PREFECTURE,CN-530400,2023,2023-12-31,prefecture_whole,,,,,,744.99,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-YUNNAN-YUXI-2023,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-530500-2023-PREFECTURE,CN-530500,2023,2023-12-31,prefecture_whole,293.42,290.50,346.22,341.49,639.64,631.99,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CITY-DEBT-YUNNAN-BAOSHAN-2023,A1,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-530600-2023-PREFECTURE,CN-530600,2023,2023-12-31,prefecture_whole,,,,,,1089.70,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-YUNNAN-2023-TOP3,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
-DEBT-CN-530700-2023-PREFECTURE,CN-530700,2023,2023-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
+DEBT-CN-530700-2023-PREFECTURE,CN-530700,2023,2023-12-31,prefecture_whole,,,,,,419.34,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-YUNNAN-LIJIANG-2023,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-530800-2023-PREFECTURE,CN-530800,2023,2023-12-31,prefecture_whole,,,,,,516.35,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-YUNNAN-PUER-2023,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-530900-2023-PREFECTURE,CN-530900,2023,2023-12-31,prefecture_whole,,,,,,525.69,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-YUNNAN-LINCANG-2023,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-532300-2023-PREFECTURE,CN-532300,2023,2023-12-31,prefecture_whole,,,,,,589.41,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-CHUXIONG-2023,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
