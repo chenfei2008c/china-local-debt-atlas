@@ -9648,40 +9648,31 @@ CN-540100,拉萨市,西藏自治区,2023,gov_fund_revenue_100m,政府性基金�
 CN-540100,拉萨市,西藏自治区,2023,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CITY-DEBT-TIBET-LHASA-2023,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-540100,拉萨市,西藏自治区,2023,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CITY-DEBT-TIBET-LHASA-2023,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-540100,拉萨市,西藏自治区,2023,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CITY-DEBT-TIBET-LHASA-2023,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-540200,日喀则市,西藏自治区,2023,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-540200,日喀则市,西藏自治区,2023,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-540200,日喀则市,西藏自治区,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-540200,日喀则市,西藏自治区,2023,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-540200,日喀则市,西藏自治区,2023,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-540200,日喀则市,西藏自治区,2023,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-540200,日喀则市,西藏自治区,2023,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-540200,日喀则市,西藏自治区,2023,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-540200,日喀则市,西藏自治区,2023,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-TIBET-CITIES-2023-FROM-2024-DECISION,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-540200,日喀则市,西藏自治区,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-TIBET-CITIES-2023-FROM-2024-DECISION,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-540200,日喀则市,西藏自治区,2023,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-TIBET-CITIES-2023-FROM-2024-DECISION,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-540200,日喀则市,西藏自治区,2023,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-TIBET-CITIES-2023-FROM-2024-DECISION,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-540200,日喀则市,西藏自治区,2023,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-TIBET-CITIES-2023-FROM-2024-DECISION,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-540300,昌都市,西藏自治区,2023,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CITY-DEBT-TIBET-CHANGDU-2023,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-540300,昌都市,西藏自治区,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CITY-DEBT-TIBET-CHANGDU-2023,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-540300,昌都市,西藏自治区,2023,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CITY-DEBT-TIBET-CHANGDU-2023,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-540300,昌都市,西藏自治区,2023,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CITY-DEBT-TIBET-CHANGDU-2023,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-540300,昌都市,西藏自治区,2023,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CITY-DEBT-TIBET-CHANGDU-2023,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-540400,林芝市,西藏自治区,2023,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-540400,林芝市,西藏自治区,2023,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-540400,林芝市,西藏自治区,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-540400,林芝市,西藏自治区,2023,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-540400,林芝市,西藏自治区,2023,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-540400,林芝市,西藏自治区,2023,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-540400,林芝市,西藏自治区,2023,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-540400,林芝市,西藏自治区,2023,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-540400,林芝市,西藏自治区,2023,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-TIBET-CITIES-2023-FROM-2024-DECISION,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-540400,林芝市,西藏自治区,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-TIBET-CITIES-2023-FROM-2024-DECISION,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-540400,林芝市,西藏自治区,2023,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-TIBET-CITIES-2023-FROM-2024-DECISION,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-540400,林芝市,西藏自治区,2023,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-TIBET-CITIES-2023-FROM-2024-DECISION,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-540400,林芝市,西藏自治区,2023,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-TIBET-CITIES-2023-FROM-2024-DECISION,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-540500,山南市,西藏自治区,2023,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CITY-DEBT-TIBET-SHANNAN-2023,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-540500,山南市,西藏自治区,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CITY-DEBT-TIBET-SHANNAN-2023,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-540500,山南市,西藏自治区,2023,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CITY-DEBT-TIBET-SHANNAN-2023,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-540500,山南市,西藏自治区,2023,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CITY-DEBT-TIBET-SHANNAN-2023,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-540500,山南市,西藏自治区,2023,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CITY-DEBT-TIBET-SHANNAN-2023,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-540600,那曲市,西藏自治区,2023,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-540600,那曲市,西藏自治区,2023,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-540600,那曲市,西藏自治区,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-540600,那曲市,西藏自治区,2023,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-540600,那曲市,西藏自治区,2023,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-540600,那曲市,西藏自治区,2023,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-540600,那曲市,西藏自治区,2023,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-540600,那曲市,西藏自治区,2023,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-540600,那曲市,西藏自治区,2023,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-TIBET-CITIES-2023-FROM-2024-DECISION,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-540600,那曲市,西藏自治区,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-TIBET-CITIES-2023-FROM-2024-DECISION,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-540600,那曲市,西藏自治区,2023,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-TIBET-CITIES-2023-FROM-2024-DECISION,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-540600,那曲市,西藏自治区,2023,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-TIBET-CITIES-2023-FROM-2024-DECISION,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-540600,那曲市,西藏自治区,2023,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-TIBET-CITIES-2023-FROM-2024-DECISION,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-542500,阿里地区,西藏自治区,2023,gdp_current_100m,地区生产总值（现价，亿元）,extended,official_debt,SRC-CITY-DEBT-TIBET-ALI-2023,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-542500,阿里地区,西藏自治区,2023,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,official_debt,SRC-CITY-DEBT-TIBET-ALI-2023,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-542500,阿里地区,西藏自治区,2023,general_debt_limit_100m,一般债务限额（亿元）,extended,official_debt,SRC-CITY-DEBT-TIBET-ALI-2023,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。

@@ -3604,6 +3604,26 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
             "table_name": "阿里地区2023年地方政府债务限额及余额决算情况表",
             "note": "阿里地区财政局2024年公开附件中的2023年债务决算表，直接列示阿里地区合计年末余额379500万元，其中一般债务271200万元、专项债务108300万元；按0.0001换算为亿元，不使用本级行。",
         },
+        {
+            "source_doc_id": "SRC-OFFICIAL-DEBT-TIBET-CITIES-2023-FROM-2024-DECISION",
+            "province_name": "西藏自治区",
+            "year": 2023,
+            "path": RAW_DIR / "2023" / "official" / "xizang_2023_city_debt_from_2024_decision.txt",
+            "text_path": RAW_DIR / "2023" / "official" / "xizang_2023_city_debt_from_2024_decision.txt",
+            "source_url": "https://www.xizang.gov.cn/zwgk/zdxxlygk/czyjsgk/202510/t20251015_503936.html",
+            "attachment_url": "https://www.xizang.gov.cn/gjbs/xxgk/202510/W020251015448106540162.xlsx",
+            "document_title": "2024年末西藏自治区地方政府债务限额及余额决算情况表（回列2023年末余额）",
+            "publication_date": "2025-10-15",
+            "publisher": "西藏自治区财政厅",
+            "publisher_level": "省级财政部门",
+            "source_grade": "A1",
+            "unit": "亿元",
+            "layout": "direct3_general_special",
+            "start": "【2023年西藏自治区各地市政府债务余额（单位：亿元）】",
+            "end": None,
+            "table_name": "2023年西藏自治区各地市政府债务余额",
+            "note": "西藏自治区财政厅官方决算附件回列2023年末各地市全辖余额及一般/专项分项；仅接入日喀则市、那曲市、林芝市全辖行，不使用市本级或区县行。",
+        },
     ]
 )
 
