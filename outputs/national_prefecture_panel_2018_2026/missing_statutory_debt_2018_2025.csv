@@ -108,7 +108,6 @@ CN-540200,日喀则市,西藏自治区,2023,core,provisional,SRC-CITY-PANEL-1990
 CN-540400,林芝市,西藏自治区,2023,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-540600,那曲市,西藏自治区,2023,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-542500,阿里地区,西藏自治区,2023,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152900,阿拉善盟,内蒙古自治区,2024,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-460300,三沙市,海南省,2024,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-469000,省直辖县级行政区划,海南省,2024,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-150800,巴彦淖尔市,内蒙古自治区,2025,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
