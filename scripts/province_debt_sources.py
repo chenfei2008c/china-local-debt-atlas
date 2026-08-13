@@ -2662,6 +2662,25 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
 OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
     [
         {
+            "source_doc_id": "SRC-SECONDARY-DEBT-GANSU-JINCHANG-2020",
+            "province_name": "甘肃省",
+            "year": 2020,
+            "path": RAW_DIR / "2020" / "official" / "gansu_jinchang_2020_rating.txt",
+            "text_path": RAW_DIR / "2020" / "official" / "gansu_jinchang_2020_rating.txt",
+            "source_url": "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/2021-06-29/4223537602016520854989626.pdf",
+            "document_title": "东方金诚债跟踪评字【2021】481号（金昌市城市建设投资开发（集团）有限公司）",
+            "publication_date": "2021-06-29",
+            "publisher": "东方金诚国际信用评估有限公司",
+            "publisher_level": "评级机构研究报告",
+            "source_grade": "B2",
+            "unit": "亿元",
+            "layout": "direct1",
+            "start": "【2020年金昌市全市政府债务余额（单位：亿元）】",
+            "end": None,
+            "table_name": "2020年金昌市全市政府债务余额",
+            "note": "评级报告明确披露截至2020年末金昌市全市地方政府债务余额68.31亿元；未披露一般/专项分项，仅接入全市总额，标记为B2二手来源，待金昌市财政决算原表复核。",
+        },
+        {
             "source_doc_id": "SRC-SECONDARY-DEBT-GANSU-PINGLIANG-2021",
             "province_name": "甘肃省",
             "year": 2021,
