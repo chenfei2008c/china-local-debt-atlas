@@ -2270,6 +2270,27 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
 OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
     [
         {
+            "source_doc_id": "SRC-SECONDARY-DEBT-YUNNAN-XISHUANGBANNA-2022",
+            "province_name": "云南省",
+            "year": 2022,
+            "path": RAW_DIR / "secondary" / "yunnan_xishuangbanna_2022_secondary.txt",
+            "text_path": RAW_DIR / "secondary" / "yunnan_xishuangbanna_2022_secondary.txt",
+            "source_url": "https://finance.sina.com.cn/money/bond/market/2023-02-22/doc-imyhprua8486537.shtml",
+            "attachment_url": "https://n.sinaimg.cn/spider20230222/481/w855h426/20230222/b8ba-b5c76b814dd106b99afb8dc886b91c4a.png",
+            "document_title": "外部支持增加，云南城投怎么看（表9：2022年云南省各市、州主要债务指标）",
+            "publication_date": "2023-02-22",
+            "publisher": "方正证券（经新浪财经公开转载）",
+            "publisher_level": "公开研究报告",
+            "source_grade": "B2",
+            "unit": "亿元",
+            "layout": "direct3_general_special",
+            "start": "【2022年西双版纳州全州政府债务余额】",
+            "end": None,
+            "aliases": {"西双版纳州": "西双版纳傣族自治州"},
+            "table_name": "表9：2022年云南省各市、州主要债务指标",
+            "note": "公开研究报告表9列示2022年西双版纳州政府债务余额299.2亿元，其中一般债务95亿元、专项债务204亿元；按B2二手来源接入，待州级财政决算附件复核，不使用州本级数据替代全州。",
+        },
+        {
             "source_doc_id": "SRC-OFFICIAL-DEBT-YUNNAN-DALI-2022",
             "province_name": "云南省",
             "year": 2022,

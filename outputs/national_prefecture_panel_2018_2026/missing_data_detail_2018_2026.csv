@@ -6702,18 +6702,15 @@ CN-532600,文山壮族苗族自治州,云南省,2022,resident_population_10k,年
 CN-532600,文山壮族苗族自治州,云南省,2022,special_debt_balance_100m,专项债务余额（亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-GCS66-YUNNAN-WENSHAN-2022,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-532600,文山壮族苗族自治州,云南省,2022,special_debt_limit_100m,专项债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-GCS66-YUNNAN-WENSHAN-2022,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-532600,文山壮族苗族自治州,云南省,2022,statutory_debt_limit_100m,法定债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-GCS66-YUNNAN-WENSHAN-2022,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-532800,西双版纳傣族自治州,云南省,2022,gdp_current_100m,地区生产总值（现价，亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-532800,西双版纳傣族自治州,云南省,2022,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-532800,西双版纳傣族自治州,云南省,2022,general_debt_balance_100m,一般债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-532800,西双版纳傣族自治州,云南省,2022,general_debt_limit_100m,一般债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-532800,西双版纳傣族自治州,云南省,2022,general_public_expenditure_100m,一般公共预算支出（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-532800,西双版纳傣族自治州,云南省,2022,general_public_revenue_100m,一般公共预算收入（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-532800,西双版纳傣族自治州,云南省,2022,gov_fund_revenue_100m,政府性基金预算收入（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-532800,西双版纳傣族自治州,云南省,2022,resident_population_10k,年末常住人口（万人）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-532800,西双版纳傣族自治州,云南省,2022,special_debt_balance_100m,专项债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-532800,西双版纳傣族自治州,云南省,2022,special_debt_limit_100m,专项债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-532800,西双版纳傣族自治州,云南省,2022,statutory_debt_balance_100m,法定债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-532800,西双版纳傣族自治州,云南省,2022,statutory_debt_limit_100m,法定债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
+CN-532800,西双版纳傣族自治州,云南省,2022,gdp_current_100m,地区生产总值（现价，亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-YUNNAN-XISHUANGBANNA-2022,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-532800,西双版纳傣族自治州,云南省,2022,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,secondary_debt,SRC-SECONDARY-DEBT-YUNNAN-XISHUANGBANNA-2022,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-532800,西双版纳傣族自治州,云南省,2022,general_debt_limit_100m,一般债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-YUNNAN-XISHUANGBANNA-2022,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-532800,西双版纳傣族自治州,云南省,2022,general_public_expenditure_100m,一般公共预算支出（亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-YUNNAN-XISHUANGBANNA-2022,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-532800,西双版纳傣族自治州,云南省,2022,general_public_revenue_100m,一般公共预算收入（亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-YUNNAN-XISHUANGBANNA-2022,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-532800,西双版纳傣族自治州,云南省,2022,gov_fund_revenue_100m,政府性基金预算收入（亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-YUNNAN-XISHUANGBANNA-2022,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-532800,西双版纳傣族自治州,云南省,2022,resident_population_10k,年末常住人口（万人）,extended,secondary_debt,SRC-SECONDARY-DEBT-YUNNAN-XISHUANGBANNA-2022,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-532800,西双版纳傣族自治州,云南省,2022,special_debt_limit_100m,专项债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-YUNNAN-XISHUANGBANNA-2022,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-532800,西双版纳傣族自治州,云南省,2022,statutory_debt_limit_100m,法定债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-YUNNAN-XISHUANGBANNA-2022,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-532900,大理白族自治州,云南省,2022,gdp_current_100m,地区生产总值（现价，亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-DALI-2022,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-532900,大理白族自治州,云南省,2022,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-DALI-2022,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-532900,大理白族自治州,云南省,2022,general_debt_limit_100m,一般债务限额（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-DALI-2022,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
