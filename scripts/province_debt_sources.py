@@ -3505,6 +3505,27 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
             "table_name": "2023年山南市全市政府债务余额",
             "note": "山南市财政局公开表列示山南市全市行余额764678万元，其中一般债务424978万元、专项债务339700万元；按0.0001换算为亿元。",
         },
+        {
+            "source_doc_id": "SRC-CITY-DEBT-TIBET-ALI-2023",
+            "province_name": "西藏自治区",
+            "year": 2023,
+            "path": RAW_DIR / "2023" / "official" / "xizang_ali_2023_city_debt.txt",
+            "text_path": RAW_DIR / "2023" / "official" / "xizang_ali_2023_city_debt.txt",
+            "source_url": "https://cz.al.gov.cn/info/2143/17382.htm",
+            "attachment_url": "https://cz.al.gov.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2060058648&wbfileid=5BF41C474AD7E48A8DDC7D617A14B33E",
+            "document_title": "阿里地区2024年地方政府债务信息公开——附件5：阿里地区2023年地方政府债务信息公开套表",
+            "publication_date": "2024-04-28",
+            "publisher": "阿里地区财政局",
+            "publisher_level": "地区级财政部门",
+            "source_grade": "A1",
+            "unit": "万元",
+            "unit_factor": Decimal("0.0001"),
+            "layout": "direct3_general_special",
+            "start": "【2023年阿里地区全辖政府债务余额（单位：万元）】",
+            "end": None,
+            "table_name": "阿里地区2023年地方政府债务限额及余额决算情况表",
+            "note": "阿里地区财政局2024年公开附件中的2023年债务决算表，直接列示阿里地区合计年末余额379500万元，其中一般债务271200万元、专项债务108300万元；按0.0001换算为亿元，不使用本级行。",
+        },
     ]
 )
 

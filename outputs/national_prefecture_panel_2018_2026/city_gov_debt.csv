@@ -1994,7 +1994,7 @@ DEBT-CN-540300-2023-PREFECTURE,CN-540300,2023,2023-12-31,prefecture_whole,,81.86
 DEBT-CN-540400-2023-PREFECTURE,CN-540400,2023,2023-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-540500-2023-PREFECTURE,CN-540500,2023,2023-12-31,prefecture_whole,,42.50,,33.97,,76.47,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CITY-DEBT-TIBET-SHANNAN-2023,A1,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-540600-2023-PREFECTURE,CN-540600,2023,2023-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
-DEBT-CN-542500-2023-PREFECTURE,CN-542500,2023,2023-12-31,prefecture_whole,,,,,,,not_collected,,,missing,false,法定债务四个分项保持独立；缺失值保留 null。
+DEBT-CN-542500-2023-PREFECTURE,CN-542500,2023,2023-12-31,prefecture_whole,,27.12,,10.83,,37.95,official_debt,SRC-CITY-DEBT-TIBET-ALI-2023,A1,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-610100-2023-PREFECTURE,CN-610100,2023,2023-12-31,prefecture_whole,1146.46,1071.45,3065.97,2958.24,4212.43,4029.69,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-SHAANXI-2023,A1,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-610200-2023-PREFECTURE,CN-610200,2023,2023-12-31,prefecture_whole,108.96,104.19,120.29,117.22,229.25,221.40,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-SHAANXI-2023,A1,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-610300-2023-PREFECTURE,CN-610300,2023,2023-12-31,prefecture_whole,223.61,204.10,247.93,229.55,471.54,433.65,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-SHAANXI-2023,A1,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
