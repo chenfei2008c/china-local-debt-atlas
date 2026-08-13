@@ -317,6 +317,32 @@ class ProvinceDebtParserTests(unittest.TestCase):
         self.assertEqual(facts[("CN-140700", "2022")]["general_debt_balance_100m"], Decimal("254.2280"))
         self.assertEqual(facts[("CN-140700", "2022")]["special_debt_balance_100m"], Decimal("256.5535"))
 
+    def test_shanxi_taiyuan_2022_secondary_total_is_registered_and_extracted(self):
+        from scripts.province_debt_sources import OFFICIAL_PROVINCE_DEBT_SOURCES, extract_official_debt_facts
+
+        source_ids = {str(source["source_doc_id"]) for source in OFFICIAL_PROVINCE_DEBT_SOURCES}
+        self.assertIn("SRC-SECONDARY-DEBT-SHANXI-TAIYUAN-2022", source_ids)
+        city_master = [
+            {"city_id": "CN-140100", "province_name": "山西省", "city_name_cn": "太原市", "metric_year": 2022},
+        ]
+        facts, _ = extract_official_debt_facts(city_master)
+        self.assertEqual(facts[("CN-140100", "2022")]["statutory_debt_balance_100m"], Decimal("983.15"))
+        self.assertIsNone(facts[("CN-140100", "2022")]["general_debt_balance_100m"])
+        self.assertIsNone(facts[("CN-140100", "2022")]["special_debt_balance_100m"])
+
+    def test_shanxi_yangquan_2023_official_whole_city_total_is_registered_and_extracted(self):
+        from scripts.province_debt_sources import OFFICIAL_PROVINCE_DEBT_SOURCES, extract_official_debt_facts
+
+        source_ids = {str(source["source_doc_id"]) for source in OFFICIAL_PROVINCE_DEBT_SOURCES}
+        self.assertIn("SRC-OFFICIAL-DEBT-SHANXI-YANGQUAN-2023", source_ids)
+        city_master = [
+            {"city_id": "CN-140300", "province_name": "山西省", "city_name_cn": "阳泉市", "metric_year": 2023},
+        ]
+        facts, _ = extract_official_debt_facts(city_master)
+        self.assertEqual(facts[("CN-140300", "2023")]["statutory_debt_balance_100m"], Decimal("313.70"))
+        self.assertIsNone(facts[("CN-140300", "2023")]["general_debt_balance_100m"])
+        self.assertIsNone(facts[("CN-140300", "2023")]["special_debt_balance_100m"])
+
     def test_shanxi_datong_linfen_2022_city_debt_sources_are_registered_and_extracted(self):
         from scripts.province_debt_sources import OFFICIAL_PROVINCE_DEBT_SOURCES, extract_official_debt_facts
 
@@ -1049,6 +1075,20 @@ class ProvinceDebtParserTests(unittest.TestCase):
         self.assertEqual(facts[("CN-152900", "2023")]["statutory_debt_balance_100m"], Decimal("306.58"))
         self.assertIsNone(facts[("CN-150200", "2023")]["general_debt_balance_100m"])
         self.assertIsNone(facts[("CN-152900", "2023")]["special_debt_balance_100m"])
+
+    def test_inner_mongolia_xilingol_2018_whole_league_official_debt_is_registered_and_extracted(self):
+        from scripts.province_debt_sources import OFFICIAL_PROVINCE_DEBT_SOURCES, extract_official_debt_facts
+
+        source_ids = {str(source["source_doc_id"]) for source in OFFICIAL_PROVINCE_DEBT_SOURCES}
+        self.assertIn("SRC-OFFICIAL-DEBT-INNER-MONGOLIA-XILINGOL-2018", source_ids)
+        city_master = [
+            {"city_id": "CN-152500", "province_name": "内蒙古自治区", "city_name_cn": "锡林郭勒盟", "metric_year": 2018},
+        ]
+        facts, _ = extract_official_debt_facts(city_master)
+        fact = facts[("CN-152500", "2018")]
+        self.assertEqual(fact["statutory_debt_balance_100m"], Decimal("337.2350574131"))
+        self.assertEqual(fact["general_debt_balance_100m"], Decimal("323.6195574128"))
+        self.assertEqual(fact["special_debt_balance_100m"], Decimal("13.6155000003"))
 
     def test_guangxi_2018_secondary_city_debt_sources_are_registered_and_extracted(self):
         from scripts.province_debt_sources import OFFICIAL_PROVINCE_DEBT_SOURCES, extract_official_debt_facts
