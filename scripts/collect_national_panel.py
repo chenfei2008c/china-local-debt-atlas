@@ -436,6 +436,10 @@ def build_macro_rows(
                 row["collection_status"] = "needs_review"
                 row["data_status"] = "secondary_debt"
                 row["note"] = "已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。"
+            # 公开表可能明确标注“预计执行数/快报数”。保留该状态，
+            # 避免把阶段性数值误标为最终决算。
+            if debt_fact.get("data_status"):
+                row["data_status"] = str(debt_fact["data_status"])
             for field in RAW_NUMERIC_FIELDS:
                 if field not in {"general_debt_limit_100m", "general_debt_balance_100m", "special_debt_limit_100m", "special_debt_balance_100m"}:
                     continue
@@ -552,6 +556,20 @@ def _lineage_for_official_debt(row: Mapping[str, Any], field: str, fact: Mapping
         raw_unit = "百万元人民币"
         normalization_rule = "CEIC 页面百万元人民币按 100 百万元=1亿元换算；主表保留 prefecture_whole，全额直接披露或一般+专项计算。"
         confidence = "0.70" if value_origin == "disclosed" else "0.60"
+    elif source_doc_id.startswith("SRC-SECONDARY-RATING"):
+        locator = f"评级报告公开图表；CSV归档第 {fact.get('line_number', '')} 行；表={fact.get('table_name', '')}"
+        selection_reason = "评级机构公开报告图表的阶段性估读补缺；保留 chart_digitized 标记，待官方财政/人大决算表复核。"
+        method = "pdf-chart-digitization"
+        raw_unit = "亿元"
+        normalization_rule = "按报告纵轴刻度将城市政府债务余额柱形图转录为亿元估计值；主表保留 prefecture_whole，不反推一般/专项分项。"
+        confidence = "0.65"
+    elif source_doc_id.startswith("SRC-SECONDARY-SHANDONG"):
+        locator = f"公开研究文章图表；CSV归档第 {fact.get('line_number', '')} 行；表={fact.get('table_name', '')}"
+        selection_reason = "公开研究文章图表标签转录的阶段性补缺；保留 chart_digitized 标记，待山东省财政厅历史分地区债务表复核。"
+        method = "published-chart-label-transcription"
+        raw_unit = "亿元"
+        normalization_rule = "按公开图表标签直接转录为亿元；主表保留 prefecture_whole，不反推一般/专项分项。"
+        confidence = "0.80"
     elif source_grade in {"A1", "A2"}:
         locator = f"官方归档文本第 {fact.get('line_number', '')} 行；表={fact.get('table_name', '')}"
         selection_reason = "官方财政/人大公开债务表，严格匹配行政单元白名单并排除本级/区县行。"
@@ -877,7 +895,7 @@ def source_document_rows(
         path = Path(source.get("path", ""))
         content_hash = sha256(path) if path.exists() else ""
         source_grade = source.get("source_grade", "A1")
-        is_secondary = source_id.startswith("SRC-SECONDARY-CEIC")
+        is_secondary = source_id.startswith("SRC-SECONDARY-")
         attachment_url = str(source.get("attachment_url") or source.get("source_url") or "")
         rows.append(
             {
@@ -887,7 +905,7 @@ def source_document_rows(
                 "document_title": source.get("document_title", ""),
                 "title_source": "secondary_public_page" if is_secondary else "official_attachment",
                 "attachment_title": path.name,
-                "document_type": "商业数据库城市债务页面" if is_secondary else "地方政府债务限额及余额公开表",
+                "document_type": "二手公开城市债务图表" if is_secondary else "地方政府债务限额及余额公开表",
                 "source_url": source.get("source_url", ""),
                 "landing_page_url": source.get("source_url", ""),
                 "attachment_url": attachment_url,

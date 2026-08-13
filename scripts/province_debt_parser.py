@@ -88,9 +88,20 @@ def extract_city_rows(
         city_key = _find_city(line, expected_lookup)
         if city_key is None:
             continue
+        # 叙述标题常以“城市名+年份”开头，例如“新余市2023年末地方政府债务余额”。
+        # 这类标题本身不是数据行；若把标题中的年份当作第一列，会把 2023、2024
+        # 等年份错误写入余额字段。真实数据行通常是“城市名 数值”，因此在匹配
+        # 行级白名单后，先排除紧跟年份的标题行。
+        normalized_tail = _normal_text(line)[len(city_key) :]
+        if (
+            layout != "direct3_general_special_after_year"
+            and normalized_tail.startswith(str(year))
+            and normalized_tail[len(str(year)) :].startswith("年")
+        ):
+            continue
         numbers = parse_numeric_tokens(line)
         evidence_line = line
-        required_count = 9 if layout == "total9" else (6 if layout in {"total6", "balance6", "total6_balance_first"} else (3 if layout in {"component3", "balance3", "direct3_general_special", "direct3_general_special_after_year"} else (1 if layout == "direct1" else 2)))
+        required_count = 9 if layout == "total9" else (6 if layout in {"total6", "balance6", "total6_balance_first"} else (3 if layout in {"component3", "component3_previous_balance", "balance3", "direct3_general_special", "direct3_general_special_after_year"} else (1 if layout == "direct1" else 2)))
         # 部分 PDF 会把较长的自治州名称拆成两行，但数字仍在下一行；
         # 仅在已匹配白名单且当前数字列不足时合并下一行，避免跨行误配。
         if len(numbers) < required_count and index + 1 < len(lines):
@@ -189,6 +200,10 @@ def extract_city_rows(
             _, limit, balance = values[:3]
             row[f"{component}_debt_limit_100m"] = limit
             row[f"{component}_debt_balance_100m"] = balance
+        elif layout == "component3_previous_balance" and component in {"general", "special"}:
+            # 复用下一年度决算表中的“上年末余额”列，只接入历史余额；
+            # 下一年度限额和下一年度余额不得误标为历史年度字段。
+            row[f"{component}_debt_balance_100m"] = values[0]
         elif layout == "component2" and component in {"general", "special"}:
             limit, balance = values[:2]
             row[f"{component}_debt_limit_100m"] = limit

@@ -74,6 +74,25 @@ def _decode_hex(value: str, mapping: dict[int, str]) -> str:
     return "".join(mapping.get(int(value[index : index + 4], 16), "") for index in range(0, len(value) - 3, 4))
 
 
+def _decode_literal(value: str) -> str:
+    """Decode literal PDF strings, including UTF-16BE strings emitted by iText.
+
+    Some Chinese government PDFs do not expose a usable ToUnicode CMap but do
+    write each literal text string as a UTF-16BE byte sequence.  Returning the
+    raw Latin-1 representation makes an otherwise text-readable PDF appear as
+    mojibake and prevents downstream row parsing.
+    """
+    raw = value.encode("latin1")
+    if len(raw) % 2 == 0 and (b"\x00" in raw or raw.startswith(b"\xfe\xff")):
+        try:
+            decoded = raw.decode("utf-16-be")
+            if decoded:
+                return decoded
+        except UnicodeDecodeError:
+            pass
+    return value
+
+
 def extract_pdf_text(path: Path) -> str:
     objects = _objects(path.read_bytes())
     mappings: dict[int, dict[int, str]] = {}
@@ -126,7 +145,7 @@ def extract_pdf_text(path: Path) -> str:
                     )
                 else:
                     raw = groups[8] if groups[8] is not None else groups[9]
-                    text = _decode_hex(raw, mappings.get(font, {})) if groups[8] is not None else raw
+                    text = _decode_hex(raw, mappings.get(font, {})) if groups[8] is not None else _decode_literal(raw)
                 if text.strip():
                     events.append((y, x, text))
         events.sort()
