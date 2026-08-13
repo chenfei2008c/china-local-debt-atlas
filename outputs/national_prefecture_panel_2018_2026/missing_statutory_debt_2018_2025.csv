@@ -76,7 +76,6 @@ CN-152500,锡林郭勒盟,内蒙古自治区,2023,extended,not_collected,,,needs
 CN-341700,池州市,安徽省,2023,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-140300,阳泉市,山西省,2023,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-140900,忻州市,山西省,2023,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-131000,廊坊市,河北省,2023,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-419000,省直辖县级行政区划,河南省,2023,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-460300,三沙市,海南省,2023,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-469000,省直辖县级行政区划,海南省,2023,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
