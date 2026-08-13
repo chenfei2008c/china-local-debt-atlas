@@ -956,7 +956,7 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
             "publisher_level": "市级财政部门",
             "source_grade": "A2",
             "unit": "亿元",
-            "layout": "direct3_general_special",
+            "layout": "direct3_general_special_after_year",
             "start": "【2018年玉溪市全市地方政府债务发行相关情况表】",
             "end": None,
             "table_name": "表三十三 2018年玉溪市全市地方政府债务余额",
