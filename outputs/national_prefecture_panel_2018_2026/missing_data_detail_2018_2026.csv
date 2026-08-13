@@ -3122,13 +3122,7 @@ CN-211100,盘锦市,辽宁省,2019,gov_fund_revenue_100m,政府性基金预算�
 CN-211200,铁岭市,辽宁省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-LIAONING-2019-XLS,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-211300,朝阳市,辽宁省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-LIAONING-2019-XLS,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-211400,葫芦岛市,辽宁省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-LIAONING-2019-XLS,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-500000,重庆市,重庆市,2019,general_debt_balance_100m,一般债务余额（亿元）,separate,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-500000,重庆市,重庆市,2019,general_debt_limit_100m,一般债务限额（亿元）,separate,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-500000,重庆市,重庆市,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,separate,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-500000,重庆市,重庆市,2019,special_debt_balance_100m,专项债务余额（亿元）,separate,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-500000,重庆市,重庆市,2019,special_debt_limit_100m,专项债务限额（亿元）,separate,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-500000,重庆市,重庆市,2019,statutory_debt_balance_100m,法定债务余额（亿元）,separate,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-500000,重庆市,重庆市,2019,statutory_debt_limit_100m,法定债务限额（亿元）,separate,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-500000,重庆市,重庆市,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,separate,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-CHONGQING-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-610100,西安市,陕西省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-SHAANXI-CITIES-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-610100,西安市,陕西省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-SHAANXI-CITIES-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-610100,西安市,陕西省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-SHAANXI-CITIES-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。

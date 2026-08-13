@@ -577,7 +577,7 @@ DEBT-CN-460200-2019-PREFECTURE,CN-460200,2019,2019-12-31,prefecture_whole,,,,,,,
 DEBT-CN-460300-2019-PREFECTURE,CN-460300,2019,2019-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-460400-2019-PREFECTURE,CN-460400,2019,2019-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-469000-2019-PREFECTURE,CN-469000,2019,2019-12-31,prefecture_whole,,,,,,,not_collected,,,missing,false,法定债务四个分项保持独立；缺失值保留 null。
-DEBT-CN-500000-2019-PREFECTURE,CN-500000,2019,2019-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
+DEBT-CN-500000-2019-PREFECTURE,CN-500000,2019,2019-12-31,prefecture_whole,2766.60,2524.30,3282.80,3079.40,6049.40,5603.70,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-CHONGQING-2019,A1,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-510100-2019-PREFECTURE,CN-510100,2019,2019-12-31,prefecture_whole,,,,,,3223.00,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-SICHUAN-CITIES-2019,A1,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-510300-2019-PREFECTURE,CN-510300,2019,2019-12-31,prefecture_whole,,,,,,352.00,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-SICHUAN-CITIES-2019,A1,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-510400-2019-PREFECTURE,CN-510400,2019,2019-12-31,prefecture_whole,,,,,,203.00,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-SICHUAN-CITIES-2019,A1,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
