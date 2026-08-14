@@ -33,26 +33,16 @@ CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,extended,not_collected,,
 CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-460300,三沙市,海南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-469000,省直辖县级行政区划,海南省,2020,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-150200,包头市,内蒙古自治区,2021,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-150600,鄂尔多斯市,内蒙古自治区,2021,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-152500,锡林郭勒盟,内蒙古自治区,2021,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-460300,三沙市,海南省,2021,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-469000,省直辖县级行政区划,海南省,2021,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2021,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2021,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-150200,包头市,内蒙古自治区,2022,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-152500,锡林郭勒盟,内蒙古自治区,2022,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-460300,三沙市,海南省,2022,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-469000,省直辖县级行政区划,海南省,2022,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2022,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2022,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-533300,怒江傈僳族自治州,云南省,2023,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2023,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-140900,忻州市,山西省,2023,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-419000,省直辖县级行政区划,河南省,2023,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-460300,三沙市,海南省,2023,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-469000,省直辖县级行政区划,海南省,2023,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2023,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-460300,三沙市,海南省,2024,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-469000,省直辖县级行政区划,海南省,2024,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-150800,巴彦淖尔市,内蒙古自治区,2025,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。

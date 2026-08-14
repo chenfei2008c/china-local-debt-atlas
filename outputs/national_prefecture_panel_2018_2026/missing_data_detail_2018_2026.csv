@@ -5161,14 +5161,13 @@ CN-150100,呼和浩特市,内蒙古自治区,2021,resident_population_10k,年末
 CN-150100,呼和浩特市,内蒙古自治区,2021,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-150100,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
 CN-150100,呼和浩特市,内蒙古自治区,2021,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-150100,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
 CN-150100,呼和浩特市,内蒙古自治区,2021,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-150100,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
-CN-150200,包头市,内蒙古自治区,2021,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-150200,包头市,内蒙古自治区,2021,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-150200,包头市,内蒙古自治区,2021,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-150200,包头市,内蒙古自治区,2021,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-150200,包头市,内蒙古自治区,2021,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-150200,包头市,内蒙古自治区,2021,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-150200,包头市,内蒙古自治区,2021,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-150200,包头市,内蒙古自治区,2021,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-150200,包头市,内蒙古自治区,2021,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-150200,包头市,内蒙古自治区,2021,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-150200,包头市,内蒙古自治区,2021,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-150200,包头市,内蒙古自治区,2021,resident_population_10k,年末常住人口（万人）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-150200,包头市,内蒙古自治区,2021,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-150200,包头市,内蒙古自治区,2021,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-150200,包头市,内蒙古自治区,2021,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-150300,乌海市,内蒙古自治区,2021,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-INNER-MONGOLIA-WUHAI-2021,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-150300,乌海市,内蒙古自治区,2021,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-INNER-MONGOLIA-WUHAI-2021,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-150300,乌海市,内蒙古自治区,2021,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-INNER-MONGOLIA-WUHAI-2021,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
@@ -5183,14 +5182,13 @@ CN-150400,赤峰市,内蒙古自治区,2021,special_debt_limit_100m,专项债务
 CN-150400,赤峰市,内蒙古自治区,2021,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-150400,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
 CN-150500,通辽市,内蒙古自治区,2021,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-INNER-MONGOLIA-TONGLIAO-2021,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-150500,通辽市,内蒙古自治区,2021,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-INNER-MONGOLIA-TONGLIAO-2021,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-150600,鄂尔多斯市,内蒙古自治区,2021,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-150600,鄂尔多斯市,内蒙古自治区,2021,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-150600,鄂尔多斯市,内蒙古自治区,2021,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-150600,鄂尔多斯市,内蒙古自治区,2021,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-150600,鄂尔多斯市,内蒙古自治区,2021,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-150600,鄂尔多斯市,内蒙古自治区,2021,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-150600,鄂尔多斯市,内蒙古自治区,2021,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-150600,鄂尔多斯市,内蒙古自治区,2021,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-150600,鄂尔多斯市,内蒙古自治区,2021,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-150600,鄂尔多斯市,内蒙古自治区,2021,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-150600,鄂尔多斯市,内蒙古自治区,2021,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-150600,鄂尔多斯市,内蒙古自治区,2021,resident_population_10k,年末常住人口（万人）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-150600,鄂尔多斯市,内蒙古自治区,2021,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-150600,鄂尔多斯市,内蒙古自治区,2021,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-150600,鄂尔多斯市,内蒙古自治区,2021,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-150700,呼伦贝尔市,内蒙古自治区,2021,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-150700,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
 CN-150700,呼伦贝尔市,内蒙古自治区,2021,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-150700,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
 CN-150700,呼伦贝尔市,内蒙古自治区,2021,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-150700,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
@@ -5216,18 +5214,17 @@ CN-152200,兴安盟,内蒙古自治区,2021,gov_fund_revenue_100m,政府性基�
 CN-152200,兴安盟,内蒙古自治区,2021,resident_population_10k,年末常住人口（万人）,extended,official_debt,SRC-OFFICIAL-DEBT-INNER-MONGOLIA-XINGAN-2021,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-152200,兴安盟,内蒙古自治区,2021,special_debt_limit_100m,专项债务限额（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-INNER-MONGOLIA-XINGAN-2021,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-152200,兴安盟,内蒙古自治区,2021,statutory_debt_limit_100m,法定债务限额（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-INNER-MONGOLIA-XINGAN-2021,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-152500,锡林郭勒盟,内蒙古自治区,2021,gdp_current_100m,地区生产总值（现价，亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2021,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2021,general_debt_balance_100m,一般债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2021,general_debt_limit_100m,一般债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2021,general_public_expenditure_100m,一般公共预算支出（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2021,general_public_revenue_100m,一般公共预算收入（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2021,gov_fund_revenue_100m,政府性基金预算收入（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2021,resident_population_10k,年末常住人口（万人）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2021,special_debt_balance_100m,专项债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2021,special_debt_limit_100m,专项债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2021,statutory_debt_balance_100m,法定债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2021,statutory_debt_limit_100m,法定债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
+CN-152500,锡林郭勒盟,内蒙古自治区,2021,gdp_current_100m,地区生产总值（现价，亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-152500,锡林郭勒盟,内蒙古自治区,2021,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-152500,锡林郭勒盟,内蒙古自治区,2021,general_debt_balance_100m,一般债务余额（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-152500,锡林郭勒盟,内蒙古自治区,2021,general_debt_limit_100m,一般债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-152500,锡林郭勒盟,内蒙古自治区,2021,general_public_expenditure_100m,一般公共预算支出（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-152500,锡林郭勒盟,内蒙古自治区,2021,general_public_revenue_100m,一般公共预算收入（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-152500,锡林郭勒盟,内蒙古自治区,2021,gov_fund_revenue_100m,政府性基金预算收入（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-152500,锡林郭勒盟,内蒙古自治区,2021,resident_population_10k,年末常住人口（万人）,extended,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-152500,锡林郭勒盟,内蒙古自治区,2021,special_debt_balance_100m,专项债务余额（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-152500,锡林郭勒盟,内蒙古自治区,2021,special_debt_limit_100m,专项债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-152500,锡林郭勒盟,内蒙古自治区,2021,statutory_debt_limit_100m,法定债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-152900,阿拉善盟,内蒙古自治区,2021,gdp_current_100m,地区生产总值（现价，亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-INNER-MONGOLIA-ALXA-2021,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-152900,阿拉善盟,内蒙古自治区,2021,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,official_debt,SRC-OFFICIAL-DEBT-INNER-MONGOLIA-ALXA-2021,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-152900,阿拉善盟,内蒙古自治区,2021,general_public_expenditure_100m,一般公共预算支出（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-INNER-MONGOLIA-ALXA-2021,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
@@ -6116,30 +6113,28 @@ CN-421300,随州市,湖北省,2021,resident_population_10k,年末常住人口（
 CN-421300,随州市,湖北省,2021,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HUBEI-SUIZHOU-2021,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-421300,随州市,湖北省,2021,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HUBEI-SUIZHOU-2021,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-421300,随州市,湖北省,2021,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HUBEI-SUIZHOU-2021,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-422800,恩施土家族苗族自治州,湖北省,2021,gdp_current_100m,地区生产总值（现价，亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2021,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2021,general_debt_balance_100m,一般债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2021,general_debt_limit_100m,一般债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2021,general_public_expenditure_100m,一般公共预算支出（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2021,general_public_revenue_100m,一般公共预算收入（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2021,gov_fund_revenue_100m,政府性基金预算收入（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2021,resident_population_10k,年末常住人口（万人）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2021,special_debt_balance_100m,专项债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2021,special_debt_limit_100m,专项债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2021,statutory_debt_balance_100m,法定债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2021,statutory_debt_limit_100m,法定债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2021,gdp_current_100m,地区生产总值（现价，亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2021,gdp_real_growth_pct,地区生产总值实际增速（%）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2021,general_debt_balance_100m,一般债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2021,general_debt_limit_100m,一般债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2021,general_public_expenditure_100m,一般公共预算支出（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2021,general_public_revenue_100m,一般公共预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2021,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2021,resident_population_10k,年末常住人口（万人）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2021,special_debt_balance_100m,专项债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2021,special_debt_limit_100m,专项债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2021,statutory_debt_balance_100m,法定债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2021,statutory_debt_limit_100m,法定债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
+CN-422800,恩施土家族苗族自治州,湖北省,2021,gdp_current_100m,地区生产总值（现价，亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-HUBEI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-422800,恩施土家族苗族自治州,湖北省,2021,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,secondary_debt,SRC-SECONDARY-RATING-HUBEI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-422800,恩施土家族苗族自治州,湖北省,2021,general_debt_balance_100m,一般债务余额（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-HUBEI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-422800,恩施土家族苗族自治州,湖北省,2021,general_debt_limit_100m,一般债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-HUBEI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-422800,恩施土家族苗族自治州,湖北省,2021,general_public_expenditure_100m,一般公共预算支出（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-HUBEI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-422800,恩施土家族苗族自治州,湖北省,2021,general_public_revenue_100m,一般公共预算收入（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-HUBEI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-422800,恩施土家族苗族自治州,湖北省,2021,gov_fund_revenue_100m,政府性基金预算收入（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-HUBEI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-422800,恩施土家族苗族自治州,湖北省,2021,resident_population_10k,年末常住人口（万人）,extended,secondary_debt,SRC-SECONDARY-RATING-HUBEI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-422800,恩施土家族苗族自治州,湖北省,2021,special_debt_balance_100m,专项债务余额（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-HUBEI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-422800,恩施土家族苗族自治州,湖北省,2021,special_debt_limit_100m,专项债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-HUBEI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-422800,恩施土家族苗族自治州,湖北省,2021,statutory_debt_limit_100m,法定债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-HUBEI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2021,gdp_current_100m,地区生产总值（现价，亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2021-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2021,gdp_real_growth_pct,地区生产总值实际增速（%）,core,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2021-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2021,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2021-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2021,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2021-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2021,general_public_expenditure_100m,一般公共预算支出（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2021-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2021,general_public_revenue_100m,一般公共预算收入（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2021-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2021,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2021-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2021,resident_population_10k,年末常住人口（万人）,core,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2021-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2021,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2021-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2021,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2021-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2021,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2021-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-430100,长沙市,湖南省,2021,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HUNAN-2021,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-430100,长沙市,湖南省,2021,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HUNAN-2021,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-430200,株洲市,湖南省,2021,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HUNAN-2021,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
@@ -7789,30 +7784,28 @@ CN-421300,随州市,湖北省,2022,resident_population_10k,年末常住人口（
 CN-421300,随州市,湖北省,2022,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HUBEI-SUIZHOU-2022,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-421300,随州市,湖北省,2022,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HUBEI-SUIZHOU-2022,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-421300,随州市,湖北省,2022,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HUBEI-SUIZHOU-2022,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-422800,恩施土家族苗族自治州,湖北省,2022,gdp_current_100m,地区生产总值（现价，亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2022,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2022,general_debt_balance_100m,一般债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2022,general_debt_limit_100m,一般债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2022,general_public_expenditure_100m,一般公共预算支出（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2022,general_public_revenue_100m,一般公共预算收入（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2022,gov_fund_revenue_100m,政府性基金预算收入（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2022,resident_population_10k,年末常住人口（万人）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2022,special_debt_balance_100m,专项债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2022,special_debt_limit_100m,专项债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2022,statutory_debt_balance_100m,法定债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-422800,恩施土家族苗族自治州,湖北省,2022,statutory_debt_limit_100m,法定债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2022,gdp_current_100m,地区生产总值（现价，亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2022,gdp_real_growth_pct,地区生产总值实际增速（%）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2022,general_debt_balance_100m,一般债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2022,general_debt_limit_100m,一般债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2022,general_public_expenditure_100m,一般公共预算支出（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2022,general_public_revenue_100m,一般公共预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2022,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2022,resident_population_10k,年末常住人口（万人）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2022,special_debt_balance_100m,专项债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2022,special_debt_limit_100m,专项债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2022,statutory_debt_balance_100m,法定债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2022,statutory_debt_limit_100m,法定债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
+CN-422800,恩施土家族苗族自治州,湖北省,2022,gdp_current_100m,地区生产总值（现价，亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-HUBEI-2022-DEBT-RATIO-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-422800,恩施土家族苗族自治州,湖北省,2022,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,secondary_debt,SRC-SECONDARY-RATING-HUBEI-2022-DEBT-RATIO-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-422800,恩施土家族苗族自治州,湖北省,2022,general_debt_balance_100m,一般债务余额（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-HUBEI-2022-DEBT-RATIO-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-422800,恩施土家族苗族自治州,湖北省,2022,general_debt_limit_100m,一般债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-HUBEI-2022-DEBT-RATIO-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-422800,恩施土家族苗族自治州,湖北省,2022,general_public_expenditure_100m,一般公共预算支出（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-HUBEI-2022-DEBT-RATIO-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-422800,恩施土家族苗族自治州,湖北省,2022,general_public_revenue_100m,一般公共预算收入（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-HUBEI-2022-DEBT-RATIO-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-422800,恩施土家族苗族自治州,湖北省,2022,gov_fund_revenue_100m,政府性基金预算收入（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-HUBEI-2022-DEBT-RATIO-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-422800,恩施土家族苗族自治州,湖北省,2022,resident_population_10k,年末常住人口（万人）,extended,secondary_debt,SRC-SECONDARY-RATING-HUBEI-2022-DEBT-RATIO-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-422800,恩施土家族苗族自治州,湖北省,2022,special_debt_balance_100m,专项债务余额（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-HUBEI-2022-DEBT-RATIO-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-422800,恩施土家族苗族自治州,湖北省,2022,special_debt_limit_100m,专项债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-HUBEI-2022-DEBT-RATIO-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-422800,恩施土家族苗族自治州,湖北省,2022,statutory_debt_limit_100m,法定债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-HUBEI-2022-DEBT-RATIO-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2022,gdp_current_100m,地区生产总值（现价，亿元）,core,provisional,SRC-SECONDARY-DEBT-HUBEI-2022-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2022,gdp_real_growth_pct,地区生产总值实际增速（%）,core,provisional,SRC-SECONDARY-DEBT-HUBEI-2022-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2022,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-SECONDARY-DEBT-HUBEI-2022-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2022,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-SECONDARY-DEBT-HUBEI-2022-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2022,general_public_expenditure_100m,一般公共预算支出（亿元）,core,provisional,SRC-SECONDARY-DEBT-HUBEI-2022-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2022,general_public_revenue_100m,一般公共预算收入（亿元）,core,provisional,SRC-SECONDARY-DEBT-HUBEI-2022-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2022,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-SECONDARY-DEBT-HUBEI-2022-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2022,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-SECONDARY-DEBT-HUBEI-2022-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2022,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-SECONDARY-DEBT-HUBEI-2022-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2022,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-SECONDARY-DEBT-HUBEI-2022-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2022,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-SECONDARY-DEBT-HUBEI-2022-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-430100,长沙市,湖南省,2022,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HUNAN-2022,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-430100,长沙市,湖南省,2022,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HUNAN-2022,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-430200,株洲市,湖南省,2022,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HUNAN-2022,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
@@ -8456,18 +8449,17 @@ CN-152200,兴安盟,内蒙古自治区,2023,general_public_expenditure_100m,一�
 CN-152200,兴安盟,内蒙古自治区,2023,general_public_revenue_100m,一般公共预算收入（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-INNER-MONGOLIA-XINGAN-2023,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-152200,兴安盟,内蒙古自治区,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-INNER-MONGOLIA-XINGAN-2023,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-152200,兴安盟,内蒙古自治区,2023,resident_population_10k,年末常住人口（万人）,extended,official_debt,SRC-OFFICIAL-DEBT-INNER-MONGOLIA-XINGAN-2023,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-152500,锡林郭勒盟,内蒙古自治区,2023,gdp_current_100m,地区生产总值（现价，亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2023,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2023,general_debt_balance_100m,一般债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2023,general_debt_limit_100m,一般债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2023,general_public_expenditure_100m,一般公共预算支出（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2023,general_public_revenue_100m,一般公共预算收入（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2023,resident_population_10k,年末常住人口（万人）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2023,special_debt_balance_100m,专项债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2023,special_debt_limit_100m,专项债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2023,statutory_debt_balance_100m,法定债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-152500,锡林郭勒盟,内蒙古自治区,2023,statutory_debt_limit_100m,法定债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
+CN-152500,锡林郭勒盟,内蒙古自治区,2023,gdp_current_100m,地区生产总值（现价，亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2024-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-152500,锡林郭勒盟,内蒙古自治区,2023,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2024-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-152500,锡林郭勒盟,内蒙古自治区,2023,general_debt_balance_100m,一般债务余额（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2024-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-152500,锡林郭勒盟,内蒙古自治区,2023,general_debt_limit_100m,一般债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2024-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-152500,锡林郭勒盟,内蒙古自治区,2023,general_public_expenditure_100m,一般公共预算支出（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2024-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-152500,锡林郭勒盟,内蒙古自治区,2023,general_public_revenue_100m,一般公共预算收入（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2024-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-152500,锡林郭勒盟,内蒙古自治区,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2024-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-152500,锡林郭勒盟,内蒙古自治区,2023,resident_population_10k,年末常住人口（万人）,extended,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2024-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-152500,锡林郭勒盟,内蒙古自治区,2023,special_debt_balance_100m,专项债务余额（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2024-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-152500,锡林郭勒盟,内蒙古自治区,2023,special_debt_limit_100m,专项债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2024-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-152500,锡林郭勒盟,内蒙古自治区,2023,statutory_debt_limit_100m,法定债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2024-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-152900,阿拉善盟,内蒙古自治区,2023,gdp_current_100m,地区生产总值（现价，亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-INNER-MONGOLIA-BAOTOU-ALXA-2023,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-152900,阿拉善盟,内蒙古自治区,2023,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,secondary_debt,SRC-SECONDARY-DEBT-INNER-MONGOLIA-BAOTOU-ALXA-2023,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-152900,阿拉善盟,内蒙古自治区,2023,general_debt_balance_100m,一般债务余额（亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-INNER-MONGOLIA-BAOTOU-ALXA-2023,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
@@ -9254,18 +9246,17 @@ CN-411700,驻马店市,河南省,2023,resident_population_10k,年末常住人口
 CN-411700,驻马店市,河南省,2023,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HENAN-2023-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-411700,驻马店市,河南省,2023,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HENAN-2023-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-411700,驻马店市,河南省,2023,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HENAN-2023-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-419000,省直辖县级行政区划,河南省,2023,gdp_current_100m,地区生产总值（现价，亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-419000,省直辖县级行政区划,河南省,2023,gdp_real_growth_pct,地区生产总值实际增速（%）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-419000,省直辖县级行政区划,河南省,2023,general_debt_balance_100m,一般债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-419000,省直辖县级行政区划,河南省,2023,general_debt_limit_100m,一般债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-419000,省直辖县级行政区划,河南省,2023,general_public_expenditure_100m,一般公共预算支出（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-419000,省直辖县级行政区划,河南省,2023,general_public_revenue_100m,一般公共预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-419000,省直辖县级行政区划,河南省,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-419000,省直辖县级行政区划,河南省,2023,resident_population_10k,年末常住人口（万人）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-419000,省直辖县级行政区划,河南省,2023,special_debt_balance_100m,专项债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-419000,省直辖县级行政区划,河南省,2023,special_debt_limit_100m,专项债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-419000,省直辖县级行政区划,河南省,2023,statutory_debt_balance_100m,法定债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-419000,省直辖县级行政区划,河南省,2023,statutory_debt_limit_100m,法定债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
+CN-419000,省直辖县级行政区划,河南省,2023,gdp_current_100m,地区生产总值（现价，亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HENAN-2023-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-419000,省直辖县级行政区划,河南省,2023,gdp_real_growth_pct,地区生产总值实际增速（%）,core,secondary_debt,SRC-SECONDARY-DEBT-HENAN-2023-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-419000,省直辖县级行政区划,河南省,2023,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HENAN-2023-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-419000,省直辖县级行政区划,河南省,2023,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HENAN-2023-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-419000,省直辖县级行政区划,河南省,2023,general_public_expenditure_100m,一般公共预算支出（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HENAN-2023-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-419000,省直辖县级行政区划,河南省,2023,general_public_revenue_100m,一般公共预算收入（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HENAN-2023-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-419000,省直辖县级行政区划,河南省,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HENAN-2023-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-419000,省直辖县级行政区划,河南省,2023,resident_population_10k,年末常住人口（万人）,core,secondary_debt,SRC-SECONDARY-DEBT-HENAN-2023-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-419000,省直辖县级行政区划,河南省,2023,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HENAN-2023-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-419000,省直辖县级行政区划,河南省,2023,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HENAN-2023-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-419000,省直辖县级行政区划,河南省,2023,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HENAN-2023-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-330100,杭州市,浙江省,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-ZHEJIANG-GENERAL-2023,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-330100,杭州市,浙江省,2023,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-ZHEJIANG-GENERAL-2023,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-330200,宁波市,浙江省,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CELMA-API-DEBT-3302-2023,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
@@ -9413,18 +9404,17 @@ CN-422800,恩施土家族苗族自治州,湖北省,2023,resident_population_10k,
 CN-422800,恩施土家族苗族自治州,湖北省,2023,special_debt_balance_100m,专项债务余额（亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2023-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-422800,恩施土家族苗族自治州,湖北省,2023,special_debt_limit_100m,专项债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2023-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-422800,恩施土家族苗族自治州,湖北省,2023,statutory_debt_limit_100m,法定债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2023-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-429000,省直辖县级行政区划,湖北省,2023,gdp_current_100m,地区生产总值（现价，亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2023,gdp_real_growth_pct,地区生产总值实际增速（%）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2023,general_debt_balance_100m,一般债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2023,general_debt_limit_100m,一般债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2023,general_public_expenditure_100m,一般公共预算支出（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2023,general_public_revenue_100m,一般公共预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2023,resident_population_10k,年末常住人口（万人）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2023,special_debt_balance_100m,专项债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2023,special_debt_limit_100m,专项债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2023,statutory_debt_balance_100m,法定债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2023,statutory_debt_limit_100m,法定债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
+CN-429000,省直辖县级行政区划,湖北省,2023,gdp_current_100m,地区生产总值（现价，亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2023-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2023,gdp_real_growth_pct,地区生产总值实际增速（%）,core,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2023-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2023,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2023-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2023,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2023-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2023,general_public_expenditure_100m,一般公共预算支出（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2023-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2023,general_public_revenue_100m,一般公共预算收入（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2023-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2023-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2023,resident_population_10k,年末常住人口（万人）,core,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2023-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2023,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2023-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2023,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2023-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-429000,省直辖县级行政区划,湖北省,2023,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2023-DIRECT-AGG,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-430100,长沙市,湖南省,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HUNAN-2023,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-430100,长沙市,湖南省,2023,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HUNAN-2023,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-430200,株洲市,湖南省,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HUNAN-2023,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。

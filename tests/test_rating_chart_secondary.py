@@ -1,5 +1,6 @@
 import csv
 import unittest
+from decimal import Decimal
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
@@ -126,6 +127,130 @@ class RatingChartSecondaryTests(unittest.TestCase):
             self.assertEqual(rows[key]["statutory_debt_balance_100m"], value)
             self.assertEqual(rows[key]["value_origin"], "chart_digitized")
             self.assertEqual(rows[key]["source_grade"], "B2")
+
+    def test_repository_contains_hubei_2021_direct_counties_aggregate(self):
+        city_master = [
+            {
+                "city_id": "CN-429000",
+                "city_name_cn": "省直辖县级行政区划",
+                "province_name": "湖北省",
+                "metric_year": "2021",
+            }
+        ]
+        facts, sources = province_debt_sources.extract_official_debt_facts(city_master)
+        row = facts[("CN-429000", "2021")]
+        self.assertEqual(row["statutory_debt_balance_100m"], Decimal("276.164"))
+        self.assertEqual(row["source_doc_id"], "SRC-SECONDARY-DEBT-HUBEI-2021-DIRECT-AGG")
+        self.assertEqual(row["source_grade"], "B2")
+        self.assertTrue(any(source["source_doc_id"] == "SRC-SECONDARY-DEBT-HUBEI-2021-DIRECT-AGG" for source in sources))
+
+    def test_repository_contains_hubei_2023_direct_counties_aggregate(self):
+        city_master = [
+            {
+                "city_id": "CN-429000",
+                "city_name_cn": "省直辖县级行政区划",
+                "province_name": "湖北省",
+                "metric_year": "2023",
+            }
+        ]
+        facts, sources = province_debt_sources.extract_official_debt_facts(city_master)
+        row = facts[("CN-429000", "2023")]
+        self.assertEqual(row["statutory_debt_balance_100m"], Decimal("415.92"))
+        self.assertEqual(row["source_doc_id"], "SRC-SECONDARY-DEBT-HUBEI-2023-DIRECT-AGG")
+        self.assertEqual(row["source_grade"], "B2")
+        self.assertTrue(any(source["source_doc_id"] == "SRC-SECONDARY-DEBT-HUBEI-2023-DIRECT-AGG" for source in sources))
+
+    def test_repository_contains_hubei_2022_direct_counties_provisional_aggregate(self):
+        city_master = [
+            {
+                "city_id": "CN-429000",
+                "city_name_cn": "省直辖县级行政区划",
+                "province_name": "湖北省",
+                "metric_year": "2022",
+            }
+        ]
+        facts, sources = province_debt_sources.extract_official_debt_facts(city_master)
+        row = facts[("CN-429000", "2022")]
+        self.assertEqual(row["statutory_debt_balance_100m"], Decimal("345.7402"))
+        self.assertEqual(row["source_doc_id"], "SRC-SECONDARY-DEBT-HUBEI-2022-DIRECT-AGG")
+        self.assertEqual(row["source_grade"], "B2")
+        self.assertTrue(any(source["source_doc_id"] == "SRC-SECONDARY-DEBT-HUBEI-2022-DIRECT-AGG" for source in sources))
+
+    def test_repository_maps_henan_2023_jiyuan_to_direct_county_row(self):
+        city_master = [
+            {
+                "city_id": "CN-419000",
+                "city_name_cn": "省直辖县级行政区划",
+                "province_name": "河南省",
+                "metric_year": "2023",
+            }
+        ]
+        facts, _ = province_debt_sources.extract_official_debt_facts(city_master)
+        row = facts[("CN-419000", "2023")]
+        self.assertEqual(row["statutory_debt_balance_100m"], Decimal("148.71"))
+        self.assertEqual(row["source_doc_id"], "SRC-SECONDARY-DEBT-HENAN-2023-CITY-TOTALS")
+
+    def test_repository_contains_inner_mongolia_2021_chart_rows_for_missing_cities(self):
+        path = Path(__file__).resolve().parents[1] / "raw" / "province_debt" / "secondary" / "rating_chart_city_debt_2018_2025.csv"
+        expected = {
+            ("CN-150600", "2021"): "1670.9",
+            ("CN-150200", "2021"): "1041.1",
+            ("CN-152500", "2021"): "472.3",
+        }
+        with path.open(encoding="utf-8", newline="") as handle:
+            rows = {
+                (row["city_id"], row["metric_year"]): row
+                for row in csv.DictReader(handle)
+                if (row["city_id"], row["metric_year"]) in expected
+            }
+        self.assertEqual(set(rows), set(expected))
+        for key, value in expected.items():
+            self.assertEqual(rows[key]["statutory_debt_balance_100m"], value)
+            self.assertEqual(rows[key]["source_doc_id"], "SRC-SECONDARY-RATING-INNER-MONGOLIA-2021-CITY-CHART")
+            self.assertEqual(rows[key]["value_origin"], "chart_digitized")
+            self.assertEqual(rows[key]["source_grade"], "B2")
+
+    def test_repository_contains_inner_mongolia_xilingol_2023_chart_estimate(self):
+        path = Path(__file__).resolve().parents[1] / "raw" / "province_debt" / "secondary" / "rating_chart_city_debt_2018_2025.csv"
+        with path.open(encoding="utf-8", newline="") as handle:
+            rows = {
+                (row["city_id"], row["metric_year"]): row
+                for row in csv.DictReader(handle)
+                if row.get("city_id") == "CN-152500" and row.get("metric_year") == "2023"
+            }
+        row = rows[("CN-152500", "2023")]
+        self.assertEqual(row["statutory_debt_balance_100m"], "553.7")
+        self.assertEqual(row["source_doc_id"], "SRC-SECONDARY-RATING-INNER-MONGOLIA-2024-CITY-CHART")
+        self.assertEqual(row["value_origin"], "chart_digitized")
+        self.assertEqual(row["source_grade"], "B2")
+
+    def test_repository_contains_hubei_enshi_2021_chart_estimate(self):
+        path = Path(__file__).resolve().parents[1] / "raw" / "province_debt" / "secondary" / "rating_chart_city_debt_2018_2025.csv"
+        with path.open(encoding="utf-8", newline="") as handle:
+            rows = {
+                (row["city_id"], row["metric_year"]): row
+                for row in csv.DictReader(handle)
+                if row.get("city_id") == "CN-422800" and row.get("metric_year") == "2021"
+            }
+        row = rows[("CN-422800", "2021")]
+        self.assertEqual(row["statutory_debt_balance_100m"], "450.0")
+        self.assertEqual(row["source_doc_id"], "SRC-SECONDARY-RATING-HUBEI-2019-2021-CITY-CHART")
+        self.assertEqual(row["value_origin"], "chart_digitized")
+        self.assertEqual(row["source_grade"], "B2")
+
+    def test_repository_contains_hubei_enshi_2022_chart_derived_estimate(self):
+        path = Path(__file__).resolve().parents[1] / "raw" / "province_debt" / "secondary" / "rating_chart_city_debt_2018_2025.csv"
+        with path.open(encoding="utf-8", newline="") as handle:
+            rows = {
+                (row["city_id"], row["metric_year"]): row
+                for row in csv.DictReader(handle)
+                if row.get("city_id") == "CN-422800" and row.get("metric_year") == "2022"
+            }
+        row = rows[("CN-422800", "2022")]
+        self.assertEqual(row["statutory_debt_balance_100m"], "516.0")
+        self.assertEqual(row["source_doc_id"], "SRC-SECONDARY-RATING-HUBEI-2022-DEBT-RATIO-CHART")
+        self.assertEqual(row["value_origin"], "calculated")
+        self.assertEqual(row["source_grade"], "B2")
 
     def test_repository_contains_guangxi_2018_chart_rows_for_missing_cities(self):
         path = Path(__file__).resolve().parents[1] / "raw" / "province_debt" / "secondary" / "rating_chart_city_debt_2018_2025.csv"

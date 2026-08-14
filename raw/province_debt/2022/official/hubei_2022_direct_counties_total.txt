@@ -1,0 +1,15 @@
+2022年湖北省直辖县级行政区划政府债务余额（单位：亿元）
+仙桃市 112.34
+潜江市 94.60
+天门市 114.38
+神农架林区 24.4202
+省直辖县级行政区划 345.7402
+
+口径说明：面板目标行采用仙桃市、潜江市、天门市、神农架林区四个省直管县级行政区的2022年政府债务余额合计。
+仙桃市112.34亿元、潜江市94.60亿元、天门市114.38亿元分别来自公开评级报告或地方政府预算执行材料；神农架林区24.4202亿元（244202万元）来自《神农架林区2022年预算执行情况和2023年预算（草案）的报告》，该报告披露口径为截至2022年11月底，尚未取得年末决算精确值。因此本合计标记为 provisional，待年末决算复核。
+
+原始证据链接：
+https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2024-07-30/270078_20240730_GHRO.pdf
+https://qxb-pdf-osscache.qixin.com/AnBaseinfo/2eecf7a573c8c976864574c24b8e144e.pdf
+https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2023-06-26/139287_20230626_JF94.pdf
+https://www.gcs66.com/document_detail/109962.html
