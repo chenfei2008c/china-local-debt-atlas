@@ -149,7 +149,7 @@ TASK-CN-150100-2018-lgfv_company,CN-150100,2018,城投主体,主体公开发行�
 TASK-CN-150100-2018-lgfv_financial,CN-150100,2018,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-150100-2018-bond,CN-150100,2018,债券,交易场所/发行文件/存续期公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-150100-2018-credit_event,CN-150100,2018,信用/化债事件,政府、司法、交易场所或发行人公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
-TASK-CN-150200-2018-macro,CN-150200,2018,经济财政,城市统计年鉴/统计公报/财政决算,validated,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,补抓官方年度来源
+TASK-CN-150200-2018-macro,CN-150200,2018,经济财政,城市统计年鉴/统计公报/财政决算,needs_review,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,用官方年鉴、公报和决算表逐字段复核
 TASK-CN-150200-2018-debt,CN-150200,2018,法定债务,地方政府债务限额及余额公开表,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-150200-2018-lgfv_company,CN-150200,2018,城投主体,主体公开发行文件、审计报告、评级报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-150200-2018-lgfv_financial,CN-150200,2018,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
@@ -1391,7 +1391,7 @@ TASK-CN-460100-2018-lgfv_company,CN-460100,2018,城投主体,主体公开发行�
 TASK-CN-460100-2018-lgfv_financial,CN-460100,2018,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-460100-2018-bond,CN-460100,2018,债券,交易场所/发行文件/存续期公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-460100-2018-credit_event,CN-460100,2018,信用/化债事件,政府、司法、交易场所或发行人公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
-TASK-CN-460200-2018-macro,CN-460200,2018,经济财政,城市统计年鉴/统计公报/财政决算,validated,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,补抓官方年度来源
+TASK-CN-460200-2018-macro,CN-460200,2018,经济财政,城市统计年鉴/统计公报/财政决算,needs_review,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,用官方年鉴、公报和决算表逐字段复核
 TASK-CN-460200-2018-debt,CN-460200,2018,法定债务,地方政府债务限额及余额公开表,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-460200-2018-lgfv_company,CN-460200,2018,城投主体,主体公开发行文件、审计报告、评级报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-460200-2018-lgfv_financial,CN-460200,2018,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
@@ -2201,7 +2201,7 @@ TASK-CN-150100-2019-lgfv_company,CN-150100,2019,城投主体,主体公开发行�
 TASK-CN-150100-2019-lgfv_financial,CN-150100,2019,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-150100-2019-bond,CN-150100,2019,债券,交易场所/发行文件/存续期公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-150100-2019-credit_event,CN-150100,2019,信用/化债事件,政府、司法、交易场所或发行人公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
-TASK-CN-150200-2019-macro,CN-150200,2019,经济财政,城市统计年鉴/统计公报/财政决算,validated,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,补抓官方年度来源
+TASK-CN-150200-2019-macro,CN-150200,2019,经济财政,城市统计年鉴/统计公报/财政决算,needs_review,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,用官方年鉴、公报和决算表逐字段复核
 TASK-CN-150200-2019-debt,CN-150200,2019,法定债务,地方政府债务限额及余额公开表,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-150200-2019-lgfv_company,CN-150200,2019,城投主体,主体公开发行文件、审计报告、评级报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-150200-2019-lgfv_financial,CN-150200,2019,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
@@ -3683,7 +3683,7 @@ TASK-CN-530600-2019-lgfv_company,CN-530600,2019,城投主体,主体公开发行�
 TASK-CN-530600-2019-lgfv_financial,CN-530600,2019,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-530600-2019-bond,CN-530600,2019,债券,交易场所/发行文件/存续期公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-530600-2019-credit_event,CN-530600,2019,信用/化债事件,政府、司法、交易场所或发行人公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
-TASK-CN-530700-2019-macro,CN-530700,2019,经济财政,城市统计年鉴/统计公报/财政决算,validated,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,补抓官方年度来源
+TASK-CN-530700-2019-macro,CN-530700,2019,经济财政,城市统计年鉴/统计公报/财政决算,needs_review,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,用官方年鉴、公报和决算表逐字段复核
 TASK-CN-530700-2019-debt,CN-530700,2019,法定债务,地方政府债务限额及余额公开表,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-530700-2019-lgfv_company,CN-530700,2019,城投主体,主体公开发行文件、审计报告、评级报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-530700-2019-lgfv_financial,CN-530700,2019,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
@@ -3695,7 +3695,7 @@ TASK-CN-530800-2019-lgfv_company,CN-530800,2019,城投主体,主体公开发行�
 TASK-CN-530800-2019-lgfv_financial,CN-530800,2019,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-530800-2019-bond,CN-530800,2019,债券,交易场所/发行文件/存续期公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-530800-2019-credit_event,CN-530800,2019,信用/化债事件,政府、司法、交易场所或发行人公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
-TASK-CN-530900-2019-macro,CN-530900,2019,经济财政,城市统计年鉴/统计公报/财政决算,validated,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,补抓官方年度来源
+TASK-CN-530900-2019-macro,CN-530900,2019,经济财政,城市统计年鉴/统计公报/财政决算,needs_review,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,用官方年鉴、公报和决算表逐字段复核
 TASK-CN-530900-2019-debt,CN-530900,2019,法定债务,地方政府债务限额及余额公开表,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-530900-2019-lgfv_company,CN-530900,2019,城投主体,主体公开发行文件、审计报告、评级报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-530900-2019-lgfv_financial,CN-530900,2019,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
@@ -4253,7 +4253,7 @@ TASK-CN-150100-2020-lgfv_company,CN-150100,2020,城投主体,主体公开发行�
 TASK-CN-150100-2020-lgfv_financial,CN-150100,2020,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-150100-2020-bond,CN-150100,2020,债券,交易场所/发行文件/存续期公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-150100-2020-credit_event,CN-150100,2020,信用/化债事件,政府、司法、交易场所或发行人公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
-TASK-CN-150200-2020-macro,CN-150200,2020,经济财政,城市统计年鉴/统计公报/财政决算,validated,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,补抓官方年度来源
+TASK-CN-150200-2020-macro,CN-150200,2020,经济财政,城市统计年鉴/统计公报/财政决算,needs_review,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,用官方年鉴、公报和决算表逐字段复核
 TASK-CN-150200-2020-debt,CN-150200,2020,法定债务,地方政府债务限额及余额公开表,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-150200-2020-lgfv_company,CN-150200,2020,城投主体,主体公开发行文件、审计报告、评级报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-150200-2020-lgfv_financial,CN-150200,2020,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
@@ -4307,7 +4307,7 @@ TASK-CN-152200-2020-lgfv_company,CN-152200,2020,城投主体,主体公开发行�
 TASK-CN-152200-2020-lgfv_financial,CN-152200,2020,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-152200-2020-bond,CN-152200,2020,债券,交易场所/发行文件/存续期公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-152200-2020-credit_event,CN-152200,2020,信用/化债事件,政府、司法、交易场所或发行人公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
-TASK-CN-152500-2020-macro,CN-152500,2020,经济财政,城市统计年鉴/统计公报/财政决算,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,未找到已归档且可审计的城市年度来源,NOT_YET_COLLECTED,0,false,补抓官方年度来源
+TASK-CN-152500-2020-macro,CN-152500,2020,经济财政,城市统计年鉴/统计公报/财政决算,needs_review,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,用官方年鉴、公报和决算表逐字段复核
 TASK-CN-152500-2020-debt,CN-152500,2020,法定债务,地方政府债务限额及余额公开表,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-152500-2020-lgfv_company,CN-152500,2020,城投主体,主体公开发行文件、审计报告、评级报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-152500-2020-lgfv_financial,CN-152500,2020,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
@@ -8345,7 +8345,7 @@ TASK-CN-150100-2022-lgfv_company,CN-150100,2022,城投主体,主体公开发行�
 TASK-CN-150100-2022-lgfv_financial,CN-150100,2022,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-150100-2022-bond,CN-150100,2022,债券,交易场所/发行文件/存续期公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-150100-2022-credit_event,CN-150100,2022,信用/化债事件,政府、司法、交易场所或发行人公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
-TASK-CN-150200-2022-macro,CN-150200,2022,经济财政,城市统计年鉴/统计公报/财政决算,validated,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,补抓官方年度来源
+TASK-CN-150200-2022-macro,CN-150200,2022,经济财政,城市统计年鉴/统计公报/财政决算,needs_review,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,用官方年鉴、公报和决算表逐字段复核
 TASK-CN-150200-2022-debt,CN-150200,2022,法定债务,地方政府债务限额及余额公开表,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-150200-2022-lgfv_company,CN-150200,2022,城投主体,主体公开发行文件、审计报告、评级报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-150200-2022-lgfv_financial,CN-150200,2022,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
@@ -8399,7 +8399,7 @@ TASK-CN-152200-2022-lgfv_company,CN-152200,2022,城投主体,主体公开发行�
 TASK-CN-152200-2022-lgfv_financial,CN-152200,2022,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-152200-2022-bond,CN-152200,2022,债券,交易场所/发行文件/存续期公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-152200-2022-credit_event,CN-152200,2022,信用/化债事件,政府、司法、交易场所或发行人公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
-TASK-CN-152500-2022-macro,CN-152500,2022,经济财政,城市统计年鉴/统计公报/财政决算,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,未找到已归档且可审计的城市年度来源,NOT_YET_COLLECTED,0,false,补抓官方年度来源
+TASK-CN-152500-2022-macro,CN-152500,2022,经济财政,城市统计年鉴/统计公报/财政决算,needs_review,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,用官方年鉴、公报和决算表逐字段复核
 TASK-CN-152500-2022-debt,CN-152500,2022,法定债务,地方政府债务限额及余额公开表,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-152500-2022-lgfv_company,CN-152500,2022,城投主体,主体公开发行文件、审计报告、评级报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-152500-2022-lgfv_financial,CN-152500,2022,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
@@ -11921,7 +11921,7 @@ TASK-CN-533100-2023-lgfv_company,CN-533100,2023,城投主体,主体公开发行�
 TASK-CN-533100-2023-lgfv_financial,CN-533100,2023,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-533100-2023-bond,CN-533100,2023,债券,交易场所/发行文件/存续期公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-533100-2023-credit_event,CN-533100,2023,信用/化债事件,政府、司法、交易场所或发行人公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
-TASK-CN-533300-2023-macro,CN-533300,2023,经济财政,城市统计年鉴/统计公报/财政决算,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,未找到已归档且可审计的城市年度来源,NOT_YET_COLLECTED,0,false,补抓官方年度来源
+TASK-CN-533300-2023-macro,CN-533300,2023,经济财政,城市统计年鉴/统计公报/财政决算,needs_review,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,用官方年鉴、公报和决算表逐字段复核
 TASK-CN-533300-2023-debt,CN-533300,2023,法定债务,地方政府债务限额及余额公开表,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-533300-2023-lgfv_company,CN-533300,2023,城投主体,主体公开发行文件、审计报告、评级报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-533300-2023-lgfv_financial,CN-533300,2023,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零

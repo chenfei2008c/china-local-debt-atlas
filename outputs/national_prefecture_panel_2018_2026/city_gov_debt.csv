@@ -24,7 +24,7 @@ DEBT-CN-140900-2018-PREFECTURE,CN-140900,2018,2018-12-31,prefecture_whole,,,,,,1
 DEBT-CN-141000-2018-PREFECTURE,CN-141000,2018,2018-12-31,prefecture_whole,,,,,,271.39,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-EBS-SHANXI-2018,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-141100-2018-PREFECTURE,CN-141100,2018,2018-12-31,prefecture_whole,,,,,,228.31,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-EBS-SHANXI-2018,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-150100-2018-PREFECTURE,CN-150100,2018,2018-12-31,prefecture_whole,,,,,,840.67,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-150100,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
-DEBT-CN-150200-2018-PREFECTURE,CN-150200,2018,2018-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
+DEBT-CN-150200-2018-PREFECTURE,CN-150200,2018,2018-12-31,prefecture_whole,,,,,,860.89,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-150200-COMPONENTS,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-150300-2018-PREFECTURE,CN-150300,2018,2018-12-31,prefecture_whole,,,,,,172.94,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-150300,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-150400-2018-PREFECTURE,CN-150400,2018,2018-12-31,prefecture_whole,,,,,,336.94,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-150400,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-150500-2018-PREFECTURE,CN-150500,2018,2018-12-31,prefecture_whole,347.00,348.00,62.51,53.37,409.51,401.37,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-INNER-MONGOLIA-TONGLIAO-2018,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
@@ -231,7 +231,7 @@ DEBT-CN-451200-2018-PREFECTURE,CN-451200,2018,2018-12-31,prefecture_whole,,,,,,2
 DEBT-CN-451300-2018-PREFECTURE,CN-451300,2018,2018-12-31,prefecture_whole,,139.92,,47.33,,187.25,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-GUANGXI-LAIBIN-2018,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-451400-2018-PREFECTURE,CN-451400,2018,2018-12-31,prefecture_whole,,120.08,,36.04,,156.12,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-GUANGXI-QINZHOU-2018,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-460100-2018-PREFECTURE,CN-460100,2018,2018-12-31,prefecture_whole,,,,,,624.00,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HAINAN-HAIKOU-2018,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
-DEBT-CN-460200-2018-PREFECTURE,CN-460200,2018,2018-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
+DEBT-CN-460200-2018-PREFECTURE,CN-460200,2018,2018-12-31,prefecture_whole,,,,,,220.00,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HAINAN-SANYA-2018-REPORT,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-460300-2018-PREFECTURE,CN-460300,2018,2018-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-460400-2018-PREFECTURE,CN-460400,2018,2018-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-469000-2018-PREFECTURE,CN-469000,2018,2018-12-31,prefecture_whole,,,,,,,not_collected,,,missing,false,法定债务四个分项保持独立；缺失值保留 null。
@@ -366,7 +366,7 @@ DEBT-CN-140900-2019-PREFECTURE,CN-140900,2019,2019-12-31,prefecture_whole,,,,,,2
 DEBT-CN-141000-2019-PREFECTURE,CN-141000,2019,2019-12-31,prefecture_whole,,,,,,303.70,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-SHANXI-2019-2021,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-141100-2019-PREFECTURE,CN-141100,2019,2019-12-31,prefecture_whole,,,,,,252.30,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-SHANXI-2019-2021,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-150100-2019-PREFECTURE,CN-150100,2019,2019-12-31,prefecture_whole,,,,,,899.52,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-150100,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
-DEBT-CN-150200-2019-PREFECTURE,CN-150200,2019,2019-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
+DEBT-CN-150200-2019-PREFECTURE,CN-150200,2019,2019-12-31,prefecture_whole,,,,,,930.11,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-150200-COMPONENTS,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-150300-2019-PREFECTURE,CN-150300,2019,2019-12-31,prefecture_whole,,,,,,189.77,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-150300,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-150400-2019-PREFECTURE,CN-150400,2019,2019-12-31,prefecture_whole,,,,,,430.00,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-150400,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-150500-2019-PREFECTURE,CN-150500,2019,2019-12-31,prefecture_whole,389.85,389.89,88.97,79.81,478.82,469.70,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-INNER-MONGOLIA-TONGLIAO-2019,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
@@ -613,9 +613,9 @@ DEBT-CN-530300-2019-PREFECTURE,CN-530300,2019,2019-12-31,prefecture_whole,,,,,,3
 DEBT-CN-530400-2019-PREFECTURE,CN-530400,2019,2019-12-31,prefecture_whole,,351.20,,205.90,,557.10,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-YUNNAN-YUXI-2019-FROM-2020-REPORT,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-530500-2019-PREFECTURE,CN-530500,2019,2019-12-31,prefecture_whole,,,,,,318.50,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-530500,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-530600-2019-PREFECTURE,CN-530600,2019,2019-12-31,prefecture_whole,,,,,,493.60,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-530600,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
-DEBT-CN-530700-2019-PREFECTURE,CN-530700,2019,2019-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
+DEBT-CN-530700-2019-PREFECTURE,CN-530700,2019,2019-12-31,prefecture_whole,,,,,,180.00,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-YUNNAN-2019-2021,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-530800-2019-PREFECTURE,CN-530800,2019,2019-12-31,prefecture_whole,,,,,,200.00,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-YUNNAN-2019-2021,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
-DEBT-CN-530900-2019-PREFECTURE,CN-530900,2019,2019-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
+DEBT-CN-530900-2019-PREFECTURE,CN-530900,2019,2019-12-31,prefecture_whole,,,,,,198.14,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-YUNNAN-LINCANG-2019,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-532300-2019-PREFECTURE,CN-532300,2019,2019-12-31,prefecture_whole,,151.47,,133.27,,284.74,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-CHUXIONG-2019,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-532500-2019-PREFECTURE,CN-532500,2019,2019-12-31,prefecture_whole,,,,,,309.74,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-HONGHE-2019,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-532600-2019-PREFECTURE,CN-532600,2019,2019-12-31,prefecture_whole,,193.87,,87.03,,280.90,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-WENSHAN-2019,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
@@ -708,7 +708,7 @@ DEBT-CN-140900-2020-PREFECTURE,CN-140900,2020,2020-12-31,prefecture_whole,,,,,,3
 DEBT-CN-141000-2020-PREFECTURE,CN-141000,2020,2020-12-31,prefecture_whole,,,,,,415.50,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-SHANXI-2019-2021,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-141100-2020-PREFECTURE,CN-141100,2020,2020-12-31,prefecture_whole,,,,,,358.10,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-SHANXI-2019-2021,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-150100-2020-PREFECTURE,CN-150100,2020,2020-12-31,prefecture_whole,,,,,,960.40,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-150100,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
-DEBT-CN-150200-2020-PREFECTURE,CN-150200,2020,2020-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
+DEBT-CN-150200-2020-PREFECTURE,CN-150200,2020,2020-12-31,prefecture_whole,,,,,,1000.00,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-INNER-MONGOLIA-2020-2022-CITY-CHART,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-150300-2020-PREFECTURE,CN-150300,2020,2020-12-31,prefecture_whole,,,,,,228.58,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-150300,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-150400-2020-PREFECTURE,CN-150400,2020,2020-12-31,prefecture_whole,,,,,,500.44,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-150400,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-150500-2020-PREFECTURE,CN-150500,2020,2020-12-31,prefecture_whole,422.80,420.29,117.70,115.33,540.50,535.62,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-INNER-MONGOLIA-TONGLIAO-2020,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
@@ -717,7 +717,7 @@ DEBT-CN-150700-2020-PREFECTURE,CN-150700,2020,2020-12-31,prefecture_whole,,,,,,5
 DEBT-CN-150800-2020-PREFECTURE,CN-150800,2020,2020-12-31,prefecture_whole,313.37,284.21,137.75,129.84,451.12,414.05,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-INNER-MONGOLIA-BAYANNUR-2020,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-150900-2020-PREFECTURE,CN-150900,2020,2020-12-31,prefecture_whole,533.26,510.38,184.55,172.64,717.81,683.02,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-INNER-MONGOLIA-ULANQAB-2020,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-152200-2020-PREFECTURE,CN-152200,2020,2020-12-31,prefecture_whole,236.40,235.98,98.00,97.76,334.40,333.74,official_debt,SRC-OFFICIAL-DEBT-INNER-MONGOLIA-XINGAN-2020,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
-DEBT-CN-152500-2020-PREFECTURE,CN-152500,2020,2020-12-31,prefecture_whole,,,,,,,not_collected,,,missing,false,法定债务四个分项保持独立；缺失值保留 null。
+DEBT-CN-152500-2020-PREFECTURE,CN-152500,2020,2020-12-31,prefecture_whole,,,,,,495.00,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2020-2022-CITY-CHART,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-152900-2020-PREFECTURE,CN-152900,2020,2020-12-31,prefecture_whole,156.80,155.53,86.70,86.50,243.50,242.03,official_debt,SRC-OFFICIAL-DEBT-INNER-MONGOLIA-ALXA-2020,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-210100-2020-PREFECTURE,CN-210100,2020,2020-12-31,prefecture_whole,,964.87,,813.43,,1778.12,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-LIAONING-CITIES-2020,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-210200-2020-PREFECTURE,CN-210200,2020,2020-12-31,prefecture_whole,,1368.88,,695.49,,2064.37,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-LIAONING-CITIES-2020,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
@@ -1390,7 +1390,7 @@ DEBT-CN-140900-2022-PREFECTURE,CN-140900,2022,2022-12-31,prefecture_whole,,,,,,4
 DEBT-CN-141000-2022-PREFECTURE,CN-141000,2022,2022-12-31,prefecture_whole,,,,,,506.09,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-SHANXI-LINFEN-2022,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-141100-2022-PREFECTURE,CN-141100,2022,2022-12-31,prefecture_whole,,245.67,,205.26,,450.93,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-SHANXI-LVLIANG-2022,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-150100-2022-PREFECTURE,CN-150100,2022,2022-12-31,prefecture_whole,,,,,,1028.02,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-150100,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
-DEBT-CN-150200-2022-PREFECTURE,CN-150200,2022,2022-12-31,prefecture_whole,,,,,,,provisional,SRC-CITY-PANEL-1990-2023,D,missing,false,法定债务四个分项保持独立；缺失值保留 null。
+DEBT-CN-150200-2022-PREFECTURE,CN-150200,2022,2022-12-31,prefecture_whole,,,,,,1071.90,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-BAOTOU-2022-OFFICIAL,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-150300-2022-PREFECTURE,CN-150300,2022,2022-12-31,prefecture_whole,182.80,175.24,82.15,79.17,264.95,254.41,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-INNER-MONGOLIA-WUHAI-2022,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-150400-2022-PREFECTURE,CN-150400,2022,2022-12-31,prefecture_whole,,,,,,604.20,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-150400,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-150500-2022-PREFECTURE,CN-150500,2022,2022-12-31,prefecture_whole,473.70,450.65,160.82,152.94,634.52,603.59,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-INNER-MONGOLIA-TONGLIAO-2022,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
@@ -1399,7 +1399,7 @@ DEBT-CN-150700-2022-PREFECTURE,CN-150700,2022,2022-12-31,prefecture_whole,,,,,,6
 DEBT-CN-150800-2022-PREFECTURE,CN-150800,2022,2022-12-31,prefecture_whole,,,,,,534.98,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-150800,D,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-150900-2022-PREFECTURE,CN-150900,2022,2022-12-31,prefecture_whole,565.10,558.06,235.01,223.47,800.11,781.53,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-INNER-MONGOLIA-ULANQAB-2022,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-152200-2022-PREFECTURE,CN-152200,2022,2022-12-31,prefecture_whole,271.20,264.26,132.30,127.61,403.50,391.87,official_debt,SRC-OFFICIAL-DEBT-INNER-MONGOLIA-XINGAN-2022,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
-DEBT-CN-152500-2022-PREFECTURE,CN-152500,2022,2022-12-31,prefecture_whole,,,,,,,not_collected,,,missing,false,法定债务四个分项保持独立；缺失值保留 null。
+DEBT-CN-152500-2022-PREFECTURE,CN-152500,2022,2022-12-31,prefecture_whole,,,,,,596.00,secondary_debt,SRC-SECONDARY-RATING-INNER-MONGOLIA-2020-2022-CITY-CHART,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-152900-2022-PREFECTURE,CN-152900,2022,2022-12-31,prefecture_whole,,15.80,,29.24,,45.03,secondary_debt,SRC-SECONDARY-DEBT-INNER-MONGOLIA-ALXA-2022,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-210100-2022-PREFECTURE,CN-210100,2022,2022-12-31,prefecture_whole,,980.41,,927.39,,1907.80,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-LIAONING-CITIES-2022,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-210200-2022-PREFECTURE,CN-210200,2022,2022-12-31,prefecture_whole,,1532.67,,1012.23,,2544.90,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-LIAONING-CITIES-2022,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
@@ -1986,7 +1986,7 @@ DEBT-CN-532600-2023-PREFECTURE,CN-532600,2023,2023-12-31,prefecture_whole,,339.8
 DEBT-CN-532800-2023-PREFECTURE,CN-532800,2023,2023-12-31,prefecture_whole,,,,,,260.60,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-XISHUANGBANNA-2023-FROM-2024-REPORT,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-532900-2023-PREFECTURE,CN-532900,2023,2023-12-31,prefecture_whole,,220.50,,497.27,,717.77,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-DALI-2023,A1,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-533100-2023-PREFECTURE,CN-533100,2023,2023-12-31,prefecture_whole,,204.37,,219.66,,424.03,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-DEHONG-2023,A1,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
-DEBT-CN-533300-2023-PREFECTURE,CN-533300,2023,2023-12-31,prefecture_whole,,,,,,,not_collected,,,missing,false,法定债务四个分项保持独立；缺失值保留 null。
+DEBT-CN-533300-2023-PREFECTURE,CN-533300,2023,2023-12-31,prefecture_whole,,,,,,145.00,secondary_debt,SRC-SECONDARY-RATING-YUNNAN-2022-2023-CITY-CHART,B2,needs_review,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-533400-2023-PREFECTURE,CN-533400,2023,2023-12-31,prefecture_whole,,105.12,,66.10,,171.22,official_debt,SRC-OFFICIAL-DEBT-YUNNAN-DIQING-2023,A2,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-540100-2023-PREFECTURE,CN-540100,2023,2023-12-31,prefecture_whole,,45.85,,58.57,,104.42,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CITY-DEBT-TIBET-LHASA-2023,A1,extracted,true,法定债务四个分项保持独立；缺失值保留 null。
 DEBT-CN-540200-2023-PREFECTURE,CN-540200,2023,2023-12-31,prefecture_whole,,69.78,,47.57,,117.35,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-TIBET-CITIES-2023-FROM-2024-DECISION,A1,extracted,true,法定债务四个分项保持独立；缺失值保留 null。

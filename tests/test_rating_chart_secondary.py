@@ -589,6 +589,33 @@ class RatingChartSecondaryTests(unittest.TestCase):
         })
         self.assertEqual(sources[0]["source_doc_id"], "SRC-SECONDARY-CEIC-TEST")
 
+    def test_repository_contains_next_ten_statutory_debt_gap_rows(self):
+        path = Path(__file__).resolve().parents[1] / "raw" / "province_debt" / "secondary" / "rating_chart_city_debt_2018_2025.csv"
+        expected = {
+            ("CN-150200", "2018"): ("860.88900", "SRC-SECONDARY-CEIC-CN-150200-COMPONENTS", "calculated"),
+            ("CN-150200", "2019"): ("930.11170", "SRC-SECONDARY-CEIC-CN-150200-COMPONENTS", "calculated"),
+            ("CN-150200", "2020"): ("1000.0", "SRC-SECONDARY-RATING-INNER-MONGOLIA-2020-2022-CITY-CHART", "chart_digitized"),
+            ("CN-150200", "2022"): ("1071.9", "SRC-SECONDARY-DEBT-BAOTOU-2022-OFFICIAL", "published_text"),
+            ("CN-152500", "2020"): ("495.0", "SRC-SECONDARY-RATING-INNER-MONGOLIA-2020-2022-CITY-CHART", "chart_digitized"),
+            ("CN-152500", "2022"): ("596.0", "SRC-SECONDARY-RATING-INNER-MONGOLIA-2020-2022-CITY-CHART", "chart_digitized"),
+            ("CN-530900", "2019"): ("198.14", "SRC-SECONDARY-DEBT-YUNNAN-LINCANG-2019", "published_text"),
+            ("CN-533300", "2023"): ("145.0", "SRC-SECONDARY-RATING-YUNNAN-2022-2023-CITY-CHART", "chart_digitized"),
+            ("CN-460200", "2018"): ("220.0", "SRC-SECONDARY-DEBT-HAINAN-SANYA-2018-REPORT", "published_text"),
+            ("CN-530700", "2019"): ("180.0", "SRC-SECONDARY-RATING-YUNNAN-2019-2021", "chart_digitized"),
+        }
+        with path.open(encoding="utf-8", newline="") as handle:
+            rows = {
+                (row["city_id"], row["metric_year"]): row
+                for row in csv.DictReader(handle)
+                if (row["city_id"], row["metric_year"]) in expected
+            }
+        self.assertEqual(set(rows), set(expected))
+        for key, (value, source_doc_id, value_origin) in expected.items():
+            self.assertEqual(rows[key]["statutory_debt_balance_100m"], value)
+            self.assertEqual(rows[key]["source_doc_id"], source_doc_id)
+            self.assertEqual(rows[key]["value_origin"], value_origin)
+            self.assertEqual(rows[key]["source_grade"], "D" if source_doc_id.startswith("SRC-SECONDARY-CEIC") else "B2")
+
 
 if __name__ == "__main__":
     unittest.main()
