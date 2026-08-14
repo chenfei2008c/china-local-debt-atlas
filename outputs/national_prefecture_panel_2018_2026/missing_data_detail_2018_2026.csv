@@ -32,13 +32,12 @@ CN-530700,丽江市,云南省,2018,general_debt_limit_100m,一般债务限额（
 CN-530700,丽江市,云南省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-YUNNAN-LIJIANG-2018,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-530700,丽江市,云南省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-YUNNAN-LIJIANG-2018,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-530700,丽江市,云南省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-YUNNAN-LIJIANG-2018,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-530800,普洱市,云南省,2018,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530800,普洱市,云南省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530800,普洱市,云南省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530800,普洱市,云南省,2018,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530800,普洱市,云南省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530800,普洱市,云南省,2018,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-530800,普洱市,云南省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-530800,普洱市,云南省,2018,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-YUNNAN-2018-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-530800,普洱市,云南省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-YUNNAN-2018-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-530800,普洱市,云南省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-YUNNAN-2018-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-530800,普洱市,云南省,2018,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-YUNNAN-2018-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-530800,普洱市,云南省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-YUNNAN-2018-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-530800,普洱市,云南省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-YUNNAN-2018-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-530900,临沧市,云南省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-YUNNAN-LINCANG-2018,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-530900,临沧市,云南省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-YUNNAN-LINCANG-2018,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-530900,临沧市,云南省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-YUNNAN-LINCANG-2018,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
@@ -504,13 +503,12 @@ CN-371100,日照市,山东省,2018,gov_fund_revenue_100m,政府性基金预算�
 CN-371100,日照市,山东省,2018,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-SHANDONG-2018-CITY-TABLE,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-371100,日照市,山东省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-SHANDONG-2018-CITY-TABLE,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-371100,日照市,山东省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-SHANDONG-2018-CITY-TABLE,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-371200,莱芜市,山东省,2018,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-371200,莱芜市,山东省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-371200,莱芜市,山东省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-371200,莱芜市,山东省,2018,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-371200,莱芜市,山东省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-371200,莱芜市,山东省,2018,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-371200,莱芜市,山东省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-371200,莱芜市,山东省,2018,general_debt_balance_100m,一般债务余额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-JINAN-LAIWU-2018,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-371200,莱芜市,山东省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-JINAN-LAIWU-2018,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-371200,莱芜市,山东省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-JINAN-LAIWU-2018,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-371200,莱芜市,山东省,2018,special_debt_balance_100m,专项债务余额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-JINAN-LAIWU-2018,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-371200,莱芜市,山东省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-JINAN-LAIWU-2018,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-371200,莱芜市,山东省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-JINAN-LAIWU-2018,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-371300,临沂市,山东省,2018,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-SHANDONG-2018-CITY-TABLE,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-371300,临沂市,山东省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-SHANDONG-2018-CITY-TABLE,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-371300,临沂市,山东省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-SHANDONG-2018-CITY-TABLE,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
@@ -859,13 +857,12 @@ CN-360400,九江市,江西省,2018,gov_fund_revenue_100m,政府性基金预算�
 CN-360400,九江市,江西省,2018,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-360400,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
 CN-360400,九江市,江西省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-360400,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
 CN-360400,九江市,江西省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-360400,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
-CN-360500,新余市,江西省,2018,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-360500,新余市,江西省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-360500,新余市,江西省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-360500,新余市,江西省,2018,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-360500,新余市,江西省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-360500,新余市,江西省,2018,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-360500,新余市,江西省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-360500,新余市,江西省,2018,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-360500,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
+CN-360500,新余市,江西省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-360500,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
+CN-360500,新余市,江西省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-360500,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
+CN-360500,新余市,江西省,2018,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-360500,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
+CN-360500,新余市,江西省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-360500,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
+CN-360500,新余市,江西省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-360500,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
 CN-360600,鹰潭市,江西省,2018,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-JIANGXI-YINGTAN-2018-FAR-EAST,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-360600,鹰潭市,江西省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-JIANGXI-YINGTAN-2018-FAR-EAST,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-360600,鹰潭市,江西省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-JIANGXI-YINGTAN-2018-FAR-EAST,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
@@ -1097,13 +1094,12 @@ CN-460300,三沙市,海南省,2018,special_debt_balance_100m,专项债务余额�
 CN-460300,三沙市,海南省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-460300,三沙市,海南省,2018,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-460300,三沙市,海南省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-460400,儋州市,海南省,2018,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-460400,儋州市,海南省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-460400,儋州市,海南省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-460400,儋州市,海南省,2018,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-460400,儋州市,海南省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-460400,儋州市,海南省,2018,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-460400,儋州市,海南省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-460400,儋州市,海南省,2018,general_debt_balance_100m,一般债务余额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-DANZHOU-2018,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-460400,儋州市,海南省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-DANZHOU-2018,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-460400,儋州市,海南省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-DANZHOU-2018,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-460400,儋州市,海南省,2018,special_debt_balance_100m,专项债务余额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-DANZHOU-2018,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-460400,儋州市,海南省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-DANZHOU-2018,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-460400,儋州市,海南省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-DANZHOU-2018,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-469000,省直辖县级行政区划,海南省,2018,gdp_current_100m,地区生产总值（现价，亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-469000,省直辖县级行政区划,海南省,2018,gdp_real_growth_pct,地区生产总值实际增速（%）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-469000,省直辖县级行政区划,海南省,2018,general_debt_balance_100m,一般债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
@@ -1199,18 +1195,17 @@ CN-422800,恩施土家族苗族自治州,湖北省,2018,resident_population_10k,
 CN-422800,恩施土家族苗族自治州,湖北省,2018,special_debt_balance_100m,专项债务余额（亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2018-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-422800,恩施土家族苗族自治州,湖北省,2018,special_debt_limit_100m,专项债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2018-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-422800,恩施土家族苗族自治州,湖北省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-2018-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-429000,省直辖县级行政区划,湖北省,2018,gdp_current_100m,地区生产总值（现价，亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2018,gdp_real_growth_pct,地区生产总值实际增速（%）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2018,general_debt_balance_100m,一般债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2018,general_public_expenditure_100m,一般公共预算支出（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2018,general_public_revenue_100m,一般公共预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2018,resident_population_10k,年末常住人口（万人）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2018,special_debt_balance_100m,专项债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2018,statutory_debt_balance_100m,法定债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
+CN-429000,省直辖县级行政区划,湖北省,2018,gdp_current_100m,地区生产总值（现价，亿元）,core,official_debt,SRC-OFFICIAL-DEBT-HUBEI-2018-DIRECT-AGG,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-429000,省直辖县级行政区划,湖北省,2018,gdp_real_growth_pct,地区生产总值实际增速（%）,core,official_debt,SRC-OFFICIAL-DEBT-HUBEI-2018-DIRECT-AGG,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-429000,省直辖县级行政区划,湖北省,2018,general_debt_balance_100m,一般债务余额（亿元）,core,official_debt,SRC-OFFICIAL-DEBT-HUBEI-2018-DIRECT-AGG,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-429000,省直辖县级行政区划,湖北省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-OFFICIAL-DEBT-HUBEI-2018-DIRECT-AGG,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-429000,省直辖县级行政区划,湖北省,2018,general_public_expenditure_100m,一般公共预算支出（亿元）,core,official_debt,SRC-OFFICIAL-DEBT-HUBEI-2018-DIRECT-AGG,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-429000,省直辖县级行政区划,湖北省,2018,general_public_revenue_100m,一般公共预算收入（亿元）,core,official_debt,SRC-OFFICIAL-DEBT-HUBEI-2018-DIRECT-AGG,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-429000,省直辖县级行政区划,湖北省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-OFFICIAL-DEBT-HUBEI-2018-DIRECT-AGG,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-429000,省直辖县级行政区划,湖北省,2018,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-OFFICIAL-DEBT-HUBEI-2018-DIRECT-AGG,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-429000,省直辖县级行政区划,湖北省,2018,special_debt_balance_100m,专项债务余额（亿元）,core,official_debt,SRC-OFFICIAL-DEBT-HUBEI-2018-DIRECT-AGG,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-429000,省直辖县级行政区划,湖北省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-OFFICIAL-DEBT-HUBEI-2018-DIRECT-AGG,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-429000,省直辖县级行政区划,湖北省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-OFFICIAL-DEBT-HUBEI-2018-DIRECT-AGG,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-430100,长沙市,湖南省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HUNAN-2018,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-430100,长沙市,湖南省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HUNAN-2018,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-430100,长沙市,湖南省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HUNAN-2018,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
@@ -2156,18 +2151,17 @@ CN-371100,日照市,山东省,2019,gov_fund_revenue_100m,政府性基金预算�
 CN-371100,日照市,山东省,2019,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-SHANDONG-2019-2021,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-371100,日照市,山东省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-SHANDONG-2019-2021,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-371100,日照市,山东省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-SHANDONG-2019-2021,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-371200,莱芜市,山东省,2019,gdp_current_100m,地区生产总值（现价，亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-371200,莱芜市,山东省,2019,gdp_real_growth_pct,地区生产总值实际增速（%）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-371200,莱芜市,山东省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-371200,莱芜市,山东省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-371200,莱芜市,山东省,2019,general_public_expenditure_100m,一般公共预算支出（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-371200,莱芜市,山东省,2019,general_public_revenue_100m,一般公共预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-371200,莱芜市,山东省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-371200,莱芜市,山东省,2019,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-371200,莱芜市,山东省,2019,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-371200,莱芜市,山东省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-371200,莱芜市,山东省,2019,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-371200,莱芜市,山东省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-371200,莱芜市,山东省,2019,gdp_current_100m,地区生产总值（现价，亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-JINAN-LAIWU-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-371200,莱芜市,山东省,2019,gdp_real_growth_pct,地区生产总值实际增速（%）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-JINAN-LAIWU-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-371200,莱芜市,山东省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-JINAN-LAIWU-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-371200,莱芜市,山东省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-JINAN-LAIWU-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-371200,莱芜市,山东省,2019,general_public_expenditure_100m,一般公共预算支出（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-JINAN-LAIWU-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-371200,莱芜市,山东省,2019,general_public_revenue_100m,一般公共预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-JINAN-LAIWU-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-371200,莱芜市,山东省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-JINAN-LAIWU-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-371200,莱芜市,山东省,2019,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-JINAN-LAIWU-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-371200,莱芜市,山东省,2019,special_debt_balance_100m,专项债务余额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-JINAN-LAIWU-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-371200,莱芜市,山东省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-JINAN-LAIWU-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-371200,莱芜市,山东省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-JINAN-LAIWU-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-371300,临沂市,山东省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-SHANDONG-2019-2021,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-371300,临沂市,山东省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-SHANDONG-2019-2021,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-371300,临沂市,山东省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-SHANDONG-2019-2021,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
@@ -2542,13 +2536,12 @@ CN-361000,抚州市,江西省,2019,general_debt_limit_100m,一般债务限额（
 CN-361000,抚州市,江西省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-JIANGXI-FUZHOU-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-361000,抚州市,江西省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-JIANGXI-FUZHOU-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-361000,抚州市,江西省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-JIANGXI-FUZHOU-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-361100,上饶市,江西省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-361100,上饶市,江西省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-361100,上饶市,江西省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-361100,上饶市,江西省,2019,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-361100,上饶市,江西省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-361100,上饶市,江西省,2019,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-361100,上饶市,江西省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-361100,上饶市,江西省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-JIANGXI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-361100,上饶市,江西省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-JIANGXI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-361100,上饶市,江西省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-JIANGXI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-361100,上饶市,江西省,2019,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-JIANGXI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-361100,上饶市,江西省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-JIANGXI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-361100,上饶市,江西省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-JIANGXI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-130100,石家庄市,河北省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEBEI-SHIJIAZHUANG-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-130100,石家庄市,河北省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEBEI-SHIJIAZHUANG-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-130100,石家庄市,河北省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEBEI-SHIJIAZHUANG-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
@@ -2561,13 +2554,12 @@ CN-130200,唐山市,河北省,2019,gov_fund_revenue_100m,政府性基金预算�
 CN-130200,唐山市,河北省,2019,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEBEI-TANGSHAN-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-130200,唐山市,河北省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEBEI-TANGSHAN-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-130200,唐山市,河北省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEBEI-TANGSHAN-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-130300,秦皇岛市,河北省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-130300,秦皇岛市,河北省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-130300,秦皇岛市,河北省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-130300,秦皇岛市,河北省,2019,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-130300,秦皇岛市,河北省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-130300,秦皇岛市,河北省,2019,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-130300,秦皇岛市,河北省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-130300,秦皇岛市,河北省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-130300,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
+CN-130300,秦皇岛市,河北省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-130300,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
+CN-130300,秦皇岛市,河北省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-130300,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
+CN-130300,秦皇岛市,河北省,2019,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-130300,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
+CN-130300,秦皇岛市,河北省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-130300,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
+CN-130300,秦皇岛市,河北省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-130300,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
 CN-130400,邯郸市,河北省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEBEI-HANDAN-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-130400,邯郸市,河北省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEBEI-HANDAN-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-130400,邯郸市,河北省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HEBEI-HANDAN-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
@@ -2582,13 +2574,12 @@ CN-130600,保定市,河北省,2019,general_debt_limit_100m,一般债务限额（
 CN-130600,保定市,河北省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HEBEI-BAODING-2019,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-130600,保定市,河北省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HEBEI-BAODING-2019,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-130600,保定市,河北省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HEBEI-BAODING-2019,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-130700,张家口市,河北省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-130700,张家口市,河北省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-130700,张家口市,河北省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-130700,张家口市,河北省,2019,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-130700,张家口市,河北省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-130700,张家口市,河北省,2019,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-130700,张家口市,河北省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-130700,张家口市,河北省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-130700,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
+CN-130700,张家口市,河北省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-130700,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
+CN-130700,张家口市,河北省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-130700,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
+CN-130700,张家口市,河北省,2019,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-130700,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
+CN-130700,张家口市,河北省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-130700,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
+CN-130700,张家口市,河北省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-130700,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
 CN-130800,承德市,河北省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HEBEI-CHENGDE-2019,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-130800,承德市,河北省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HEBEI-CHENGDE-2019,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-130800,承德市,河北省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HEBEI-CHENGDE-2019,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
@@ -2740,13 +2731,12 @@ CN-460100,海口市,海南省,2019,gov_fund_revenue_100m,政府性基金预算�
 CN-460100,海口市,海南省,2019,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HAINAN-HAIKOU-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-460100,海口市,海南省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HAINAN-HAIKOU-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-460100,海口市,海南省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HAINAN-HAIKOU-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-460200,三亚市,海南省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-460200,三亚市,海南省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-460200,三亚市,海南省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-460200,三亚市,海南省,2019,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-460200,三亚市,海南省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-460200,三亚市,海南省,2019,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-460200,三亚市,海南省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-460200,三亚市,海南省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-SANYA-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-460200,三亚市,海南省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-SANYA-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-460200,三亚市,海南省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-SANYA-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-460200,三亚市,海南省,2019,special_debt_balance_100m,专项债务余额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-SANYA-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-460200,三亚市,海南省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-SANYA-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-460200,三亚市,海南省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-SANYA-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-460300,三沙市,海南省,2019,gdp_current_100m,地区生产总值（现价，亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-460300,三沙市,海南省,2019,gdp_real_growth_pct,地区生产总值实际增速（%）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-460300,三沙市,海南省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
@@ -2759,13 +2749,12 @@ CN-460300,三沙市,海南省,2019,special_debt_balance_100m,专项债务余额�
 CN-460300,三沙市,海南省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-460300,三沙市,海南省,2019,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-460300,三沙市,海南省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-460400,儋州市,海南省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-460400,儋州市,海南省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-460400,儋州市,海南省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-460400,儋州市,海南省,2019,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-460400,儋州市,海南省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-460400,儋州市,海南省,2019,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-460400,儋州市,海南省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-460400,儋州市,海南省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-DANZHOU-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-460400,儋州市,海南省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-DANZHOU-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-460400,儋州市,海南省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-DANZHOU-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-460400,儋州市,海南省,2019,special_debt_balance_100m,专项债务余额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-DANZHOU-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-460400,儋州市,海南省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-DANZHOU-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-460400,儋州市,海南省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-DANZHOU-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-469000,省直辖县级行政区划,海南省,2019,gdp_current_100m,地区生产总值（现价，亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-469000,省直辖县级行政区划,海南省,2019,gdp_real_growth_pct,地区生产总值实际增速（%）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-469000,省直辖县级行政区划,海南省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
@@ -2838,18 +2827,17 @@ CN-422800,恩施土家族苗族自治州,湖北省,2019,gov_fund_revenue_100m,�
 CN-422800,恩施土家族苗族自治州,湖北省,2019,resident_population_10k,年末常住人口（万人）,extended,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-ENSHI-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-422800,恩施土家族苗族自治州,湖北省,2019,special_debt_limit_100m,专项债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-ENSHI-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-422800,恩施土家族苗族自治州,湖北省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-HUBEI-ENSHI-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-429000,省直辖县级行政区划,湖北省,2019,gdp_current_100m,地区生产总值（现价，亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2019,gdp_real_growth_pct,地区生产总值实际增速（%）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2019,general_public_expenditure_100m,一般公共预算支出（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2019,general_public_revenue_100m,一般公共预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2019,resident_population_10k,年末常住人口（万人）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2019,special_debt_balance_100m,专项债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2019,statutory_debt_balance_100m,法定债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-429000,省直辖县级行政区划,湖北省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
+CN-429000,省直辖县级行政区划,湖北省,2019,gdp_current_100m,地区生产总值（现价，亿元）,core,official_debt,SRC-OFFICIAL-DEBT-HUBEI-2019-DIRECT-AGG,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-429000,省直辖县级行政区划,湖北省,2019,gdp_real_growth_pct,地区生产总值实际增速（%）,core,official_debt,SRC-OFFICIAL-DEBT-HUBEI-2019-DIRECT-AGG,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-429000,省直辖县级行政区划,湖北省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,official_debt,SRC-OFFICIAL-DEBT-HUBEI-2019-DIRECT-AGG,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-429000,省直辖县级行政区划,湖北省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-OFFICIAL-DEBT-HUBEI-2019-DIRECT-AGG,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-429000,省直辖县级行政区划,湖北省,2019,general_public_expenditure_100m,一般公共预算支出（亿元）,core,official_debt,SRC-OFFICIAL-DEBT-HUBEI-2019-DIRECT-AGG,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-429000,省直辖县级行政区划,湖北省,2019,general_public_revenue_100m,一般公共预算收入（亿元）,core,official_debt,SRC-OFFICIAL-DEBT-HUBEI-2019-DIRECT-AGG,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-429000,省直辖县级行政区划,湖北省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-OFFICIAL-DEBT-HUBEI-2019-DIRECT-AGG,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-429000,省直辖县级行政区划,湖北省,2019,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-OFFICIAL-DEBT-HUBEI-2019-DIRECT-AGG,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-429000,省直辖县级行政区划,湖北省,2019,special_debt_balance_100m,专项债务余额（亿元）,core,official_debt,SRC-OFFICIAL-DEBT-HUBEI-2019-DIRECT-AGG,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-429000,省直辖县级行政区划,湖北省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-OFFICIAL-DEBT-HUBEI-2019-DIRECT-AGG,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-429000,省直辖县级行政区划,湖北省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-OFFICIAL-DEBT-HUBEI-2019-DIRECT-AGG,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-430100,长沙市,湖南省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HUNAN-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-430200,株洲市,湖南省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HUNAN-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-430300,湘潭市,湖南省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HUNAN-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
@@ -2917,13 +2905,12 @@ CN-620800,平凉市,甘肃省,2019,gov_fund_revenue_100m,政府性基金预算�
 CN-620800,平凉市,甘肃省,2019,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-GANSU-PINGLIANG-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-620800,平凉市,甘肃省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-GANSU-PINGLIANG-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-620800,平凉市,甘肃省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-GANSU-PINGLIANG-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-620900,酒泉市,甘肃省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-620900,酒泉市,甘肃省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-620900,酒泉市,甘肃省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-620900,酒泉市,甘肃省,2019,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-620900,酒泉市,甘肃省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-620900,酒泉市,甘肃省,2019,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-620900,酒泉市,甘肃省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-620900,酒泉市,甘肃省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-GANSU-JIUQUAN-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-620900,酒泉市,甘肃省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-GANSU-JIUQUAN-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-620900,酒泉市,甘肃省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-GANSU-JIUQUAN-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-620900,酒泉市,甘肃省,2019,special_debt_balance_100m,专项债务余额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-GANSU-JIUQUAN-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-620900,酒泉市,甘肃省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-GANSU-JIUQUAN-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-620900,酒泉市,甘肃省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-GANSU-JIUQUAN-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-621000,庆阳市,甘肃省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-GANSU-QINGYANG-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-621000,庆阳市,甘肃省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-GANSU-QINGYANG-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-621000,庆阳市,甘肃省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-GANSU-QINGYANG-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
@@ -3903,14 +3890,13 @@ CN-450400,梧州市,广西壮族自治区,2020,gov_fund_revenue_100m,政府性�
 CN-450400,梧州市,广西壮族自治区,2020,resident_population_10k,年末常住人口（万人）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-GUANGXI-WUZHOU-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-450400,梧州市,广西壮族自治区,2020,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-GUANGXI-WUZHOU-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-450400,梧州市,广西壮族自治区,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-GUANGXI-WUZHOU-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-450500,北海市,广西壮族自治区,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-450500,北海市,广西壮族自治区,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-450500,北海市,广西壮族自治区,2020,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-450500,北海市,广西壮族自治区,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-450500,北海市,广西壮族自治区,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-450500,北海市,广西壮族自治区,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-450500,北海市,广西壮族自治区,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-450500,北海市,广西壮族自治区,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-450500,北海市,广西壮族自治区,2020,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-GUANGXI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-450500,北海市,广西壮族自治区,2020,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-GUANGXI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-450500,北海市,广西壮族自治区,2020,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-GUANGXI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-450500,北海市,广西壮族自治区,2020,resident_population_10k,年末常住人口（万人）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-GUANGXI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-450500,北海市,广西壮族自治区,2020,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-GUANGXI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-450500,北海市,广西壮族自治区,2020,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-GUANGXI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-450500,北海市,广西壮族自治区,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-GUANGXI-2019-2021-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-450600,防城港市,广西壮族自治区,2020,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-GUANGXI-FANGCHENGGANG-2020,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-450600,防城港市,广西壮族自治区,2020,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-GUANGXI-FANGCHENGGANG-2020,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-450600,防城港市,广西壮族自治区,2020,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-GUANGXI-FANGCHENGGANG-2020,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
@@ -3972,14 +3958,13 @@ CN-650400,吐鲁番市,新疆维吾尔自治区,2020,gov_fund_revenue_100m,政�
 CN-650400,吐鲁番市,新疆维吾尔自治区,2020,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-XINJIANG-TURPAN-2020,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-650400,吐鲁番市,新疆维吾尔自治区,2020,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-XINJIANG-TURPAN-2020,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-650400,吐鲁番市,新疆维吾尔自治区,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-XINJIANG-TURPAN-2020,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-650500,哈密市,新疆维吾尔自治区,2020,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-650500,哈密市,新疆维吾尔自治区,2020,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-650500,哈密市,新疆维吾尔自治区,2020,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-650500,哈密市,新疆维吾尔自治区,2020,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-650500,哈密市,新疆维吾尔自治区,2020,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-650500,哈密市,新疆维吾尔自治区,2020,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-650500,哈密市,新疆维吾尔自治区,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-650500,哈密市,新疆维吾尔自治区,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-650500,哈密市,新疆维吾尔自治区,2020,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-XINJIANG-HAMI-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-650500,哈密市,新疆维吾尔自治区,2020,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-XINJIANG-HAMI-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-650500,哈密市,新疆维吾尔自治区,2020,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-XINJIANG-HAMI-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-650500,哈密市,新疆维吾尔自治区,2020,resident_population_10k,年末常住人口（万人）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-XINJIANG-HAMI-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-650500,哈密市,新疆维吾尔自治区,2020,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-XINJIANG-HAMI-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-650500,哈密市,新疆维吾尔自治区,2020,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-XINJIANG-HAMI-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-650500,哈密市,新疆维吾尔自治区,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-XINJIANG-HAMI-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-652300,昌吉回族自治州,新疆维吾尔自治区,2020,gdp_current_100m,地区生产总值（现价，亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-XINJIANG-CHANGJI-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-652300,昌吉回族自治州,新疆维吾尔自治区,2020,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,secondary_debt,SRC-SECONDARY-DEBT-XINJIANG-CHANGJI-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-652300,昌吉回族自治州,新疆维吾尔自治区,2020,general_debt_limit_100m,一般债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-XINJIANG-CHANGJI-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
@@ -4069,18 +4054,17 @@ CN-654200,塔城地区,新疆维吾尔自治区,2020,resident_population_10k,年
 CN-654200,塔城地区,新疆维吾尔自治区,2020,special_debt_balance_100m,专项债务余额（亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-XINJIANG-TACHENG-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-654200,塔城地区,新疆维吾尔自治区,2020,special_debt_limit_100m,专项债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-XINJIANG-TACHENG-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-654200,塔城地区,新疆维吾尔自治区,2020,statutory_debt_limit_100m,法定债务限额（亿元）,extended,secondary_debt,SRC-SECONDARY-DEBT-XINJIANG-TACHENG-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,gdp_current_100m,地区生产总值（现价，亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,general_debt_balance_100m,一般债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,general_debt_limit_100m,一般债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,general_public_expenditure_100m,一般公共预算支出（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,general_public_revenue_100m,一般公共预算收入（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,gov_fund_revenue_100m,政府性基金预算收入（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,resident_population_10k,年末常住人口（万人）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,special_debt_balance_100m,专项债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,special_debt_limit_100m,专项债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,statutory_debt_balance_100m,法定债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,statutory_debt_limit_100m,法定债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
+CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,gdp_current_100m,地区生产总值（现价，亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-XINJIANG-ALTAY-2020,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,official_debt,SRC-OFFICIAL-DEBT-XINJIANG-ALTAY-2020,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,general_debt_balance_100m,一般债务余额（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-XINJIANG-ALTAY-2020,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,general_debt_limit_100m,一般债务限额（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-XINJIANG-ALTAY-2020,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,general_public_expenditure_100m,一般公共预算支出（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-XINJIANG-ALTAY-2020,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,general_public_revenue_100m,一般公共预算收入（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-XINJIANG-ALTAY-2020,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,gov_fund_revenue_100m,政府性基金预算收入（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-XINJIANG-ALTAY-2020,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,resident_population_10k,年末常住人口（万人）,extended,official_debt,SRC-OFFICIAL-DEBT-XINJIANG-ALTAY-2020,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,special_debt_balance_100m,专项债务余额（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-XINJIANG-ALTAY-2020,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,special_debt_limit_100m,专项债务限额（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-XINJIANG-ALTAY-2020,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,statutory_debt_limit_100m,法定债务限额（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-XINJIANG-ALTAY-2020,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,gdp_current_100m,地区生产总值（现价，亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,gdp_real_growth_pct,地区生产总值实际增速（%）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,general_debt_balance_100m,一般债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
@@ -8716,14 +8700,13 @@ CN-140800,运城市,山西省,2023,gov_fund_revenue_100m,政府性基金预算�
 CN-140800,运城市,山西省,2023,resident_population_10k,年末常住人口（万人）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-SHANXI-YUNCHENG-2023,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-140800,运城市,山西省,2023,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-SHANXI-YUNCHENG-2023,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-140800,运城市,山西省,2023,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-SHANXI-YUNCHENG-2023,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-140900,忻州市,山西省,2023,general_debt_balance_100m,一般债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-140900,忻州市,山西省,2023,general_debt_limit_100m,一般债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-140900,忻州市,山西省,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-140900,忻州市,山西省,2023,resident_population_10k,年末常住人口（万人）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-140900,忻州市,山西省,2023,special_debt_balance_100m,专项债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-140900,忻州市,山西省,2023,special_debt_limit_100m,专项债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-140900,忻州市,山西省,2023,statutory_debt_balance_100m,法定债务余额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-140900,忻州市,山西省,2023,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-140900,忻州市,山西省,2023,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-SHANXI-2022-2023-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-140900,忻州市,山西省,2023,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-SHANXI-2022-2023-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-140900,忻州市,山西省,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-SHANXI-2022-2023-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-140900,忻州市,山西省,2023,resident_population_10k,年末常住人口（万人）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-SHANXI-2022-2023-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-140900,忻州市,山西省,2023,special_debt_balance_100m,专项债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-SHANXI-2022-2023-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-140900,忻州市,山西省,2023,special_debt_limit_100m,专项债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-SHANXI-2022-2023-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-140900,忻州市,山西省,2023,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-SHANXI-2022-2023-CITY-CHART,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-141000,临汾市,山西省,2023,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-SHANXI-2023-RATING-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-141000,临汾市,山西省,2023,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-SHANXI-2023-RATING-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-141000,临汾市,山西省,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-SHANXI-2023-RATING-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。

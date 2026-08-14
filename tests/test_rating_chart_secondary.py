@@ -616,6 +616,138 @@ class RatingChartSecondaryTests(unittest.TestCase):
             self.assertEqual(rows[key]["value_origin"], value_origin)
             self.assertEqual(rows[key]["source_grade"], "D" if source_doc_id.startswith("SRC-SECONDARY-CEIC") else "B2")
 
+    def test_repository_contains_current_batch_of_ten_statutory_debt_gap_rows(self):
+        path = Path(__file__).resolve().parents[1] / "raw" / "province_debt" / "secondary" / "rating_chart_city_debt_2018_2025.csv"
+        expected = {
+            ("CN-620900", "2019"): ("112.9044", "SRC-OFFICIAL-DEBT-GANSU-JIUQUAN-2019", "disclosed", "A1"),
+            ("CN-650500", "2020"): ("191.54", "SRC-SECONDARY-DEBT-XINJIANG-HAMI-2020", "published_text", "B2"),
+            ("CN-654300", "2020"): ("204.6134", "SRC-OFFICIAL-DEBT-XINJIANG-ALTAY-2020", "disclosed", "A1"),
+            ("CN-460200", "2023"): ("594.99", "SRC-SECONDARY-DEBT-HAINAN-SANYA-2023", "disclosed", "B2"),
+            ("CN-460200", "2024"): ("747.00973", "SRC-OFFICIAL-DEBT-HAINAN-SANYA-2024", "disclosed", "A1"),
+            ("CN-460200", "2025"): ("836.2", "SRC-OFFICIAL-DEBT-HAINAN-SANYA-2025", "disclosed", "A1"),
+            ("CN-450500", "2020"): ("220.0", "SRC-SECONDARY-RATING-GUANGXI-2019-2021-CITY-CHART", "chart_digitized", "B2"),
+            ("CN-140900", "2023"): ("420.0", "SRC-SECONDARY-RATING-SHANXI-2022-2023-CITY-CHART", "chart_digitized", "B2"),
+            ("CN-361100", "2019"): ("510.0", "SRC-SECONDARY-RATING-JIANGXI-2019-2021-CITY-CHART", "chart_digitized", "B2"),
+            ("CN-530800", "2018"): ("200.0", "SRC-SECONDARY-RATING-YUNNAN-2018-CITY-CHART", "chart_digitized", "B2"),
+        }
+        with path.open(encoding="utf-8", newline="") as handle:
+            rows = {
+                (row["city_id"], row["metric_year"]): row
+                for row in csv.DictReader(handle)
+                if (row["city_id"], row["metric_year"]) in expected
+            }
+        self.assertEqual(set(rows), set(expected))
+        for key, (value, source_doc_id, value_origin, source_grade) in expected.items():
+            self.assertEqual(rows[key]["statutory_debt_balance_100m"], value)
+            self.assertEqual(rows[key]["source_doc_id"], source_doc_id)
+            self.assertEqual(rows[key]["value_origin"], value_origin)
+            self.assertEqual(rows[key]["source_grade"], source_grade)
+
+    def test_repository_contains_three_ceic_statutory_debt_gap_rows(self):
+        path = Path(__file__).resolve().parents[1] / "raw" / "province_debt" / "secondary" / "ceic_city_debt_2018_2025.csv"
+        expected = {
+            ("CN-130300", "2019"): ("495.35260", "SRC-SECONDARY-CEIC-CN-130300", "disclosed"),
+            ("CN-130700", "2019"): ("555.55000", "SRC-SECONDARY-CEIC-CN-130700", "disclosed"),
+            ("CN-360500", "2018"): ("191.28000", "SRC-SECONDARY-CEIC-CN-360500", "disclosed"),
+        }
+        with path.open(encoding="utf-8-sig", newline="") as handle:
+            rows = {
+                (row["city_id"], row["metric_year"]): row
+                for row in csv.DictReader(handle)
+                if (row["city_id"], row["metric_year"]) in expected
+            }
+        self.assertEqual(set(rows), set(expected))
+        for key, (value, source_doc_id, value_origin) in expected.items():
+            self.assertEqual(rows[key]["statutory_debt_balance_100m"], value)
+            self.assertEqual(rows[key]["source_doc_id"], source_doc_id)
+            self.assertEqual(rows[key]["value_origin"], value_origin)
+
+    def test_repository_contains_laiwu_legacy_prefecture_debt_rows(self):
+        path = Path(__file__).resolve().parents[1] / "raw" / "province_debt" / "secondary" / "rating_chart_city_debt_2018_2025.csv"
+        expected = {
+            ("CN-371200", "2018"): ("68.9955", "SRC-OFFICIAL-DEBT-JINAN-LAIWU-2018", "disclosed", "A1"),
+            ("CN-371200", "2019"): ("98.1358", "SRC-OFFICIAL-DEBT-JINAN-LAIWU-2019", "disclosed", "A1"),
+        }
+        with path.open(encoding="utf-8", newline="") as handle:
+            rows = {
+                (row["city_id"], row["metric_year"]): row
+                for row in csv.DictReader(handle)
+                if (row["city_id"], row["metric_year"]) in expected
+            }
+        self.assertEqual(set(rows), set(expected))
+        for key, (value, source_doc_id, value_origin, source_grade) in expected.items():
+            self.assertEqual(rows[key]["statutory_debt_balance_100m"], value)
+            self.assertEqual(rows[key]["source_doc_id"], source_doc_id)
+            self.assertEqual(rows[key]["value_origin"], value_origin)
+            self.assertEqual(rows[key]["source_grade"], source_grade)
+
+    def test_repository_contains_danzhou_official_2018_2019_debt_rows(self):
+        path = Path(__file__).resolve().parents[1] / "raw" / "province_debt" / "secondary" / "rating_chart_city_debt_2018_2025.csv"
+        expected = {
+            ("CN-460400", "2018"): ("83.0018397569", "SRC-OFFICIAL-DEBT-HN-DANZHOU-2018", "disclosed", "A1"),
+            ("CN-460400", "2019"): ("119.1320047025", "SRC-OFFICIAL-DEBT-HN-DANZHOU-2019", "disclosed", "A1"),
+        }
+        with path.open(encoding="utf-8", newline="") as handle:
+            rows = {
+                (row["city_id"], row["metric_year"]): row
+                for row in csv.DictReader(handle)
+                if (row["city_id"], row["metric_year"]) in expected
+            }
+        self.assertEqual(set(rows), set(expected))
+        for key, (value, source_doc_id, value_origin, source_grade) in expected.items():
+            self.assertEqual(rows[key]["statutory_debt_balance_100m"], value)
+            self.assertEqual(rows[key]["source_doc_id"], source_doc_id)
+            self.assertEqual(rows[key]["value_origin"], value_origin)
+            self.assertEqual(rows[key]["source_grade"], source_grade)
+
+    def test_repository_contains_sanya_official_2019_debt_row(self):
+        path = Path(__file__).resolve().parents[1] / "raw" / "province_debt" / "secondary" / "rating_chart_city_debt_2018_2025.csv"
+        expected = ("282.6863758905", "SRC-OFFICIAL-DEBT-HN-SANYA-2019", "disclosed", "A1")
+        with path.open(encoding="utf-8", newline="") as handle:
+            rows = {
+                (row["city_id"], row["metric_year"]): row
+                for row in csv.DictReader(handle)
+                if (row["city_id"], row["metric_year"]) == ("CN-460200", "2019")
+            }
+        self.assertEqual(set(rows), { ("CN-460200", "2019") })
+        row = rows[("CN-460200", "2019")]
+        self.assertEqual(
+            (row["statutory_debt_balance_100m"], row["source_doc_id"], row["value_origin"], row["source_grade"]),
+            expected,
+        )
+
+    def test_repository_contains_hubei_2019_direct_counties_official_aggregate(self):
+        city_master = [
+            {
+                "city_id": "CN-429000",
+                "city_name_cn": "省直辖县级行政区划",
+                "province_name": "湖北省",
+                "metric_year": "2019",
+            }
+        ]
+        facts, sources = province_debt_sources.extract_official_debt_facts(city_master)
+        row = facts[("CN-429000", "2019")]
+        self.assertEqual(row["statutory_debt_balance_100m"], Decimal("201.6700542538"))
+        self.assertEqual(row["source_doc_id"], "SRC-OFFICIAL-DEBT-HUBEI-2019-DIRECT-AGG")
+        self.assertEqual(row["source_grade"], "A1")
+        self.assertTrue(any(source["source_doc_id"] == "SRC-OFFICIAL-DEBT-HUBEI-2019-DIRECT-AGG" for source in sources))
+
+    def test_repository_contains_hubei_2018_direct_counties_official_aggregate(self):
+        city_master = [
+            {
+                "city_id": "CN-429000",
+                "city_name_cn": "省直辖县级行政区划",
+                "province_name": "湖北省",
+                "metric_year": "2018",
+            }
+        ]
+        facts, sources = province_debt_sources.extract_official_debt_facts(city_master)
+        row = facts[("CN-429000", "2018")]
+        self.assertEqual(row["statutory_debt_balance_100m"], Decimal("172.9096868225"))
+        self.assertEqual(row["source_doc_id"], "SRC-OFFICIAL-DEBT-HUBEI-2018-DIRECT-AGG")
+        self.assertEqual(row["source_grade"], "A1")
+        self.assertTrue(any(source["source_doc_id"] == "SRC-OFFICIAL-DEBT-HUBEI-2018-DIRECT-AGG" for source in sources))
+
 
 if __name__ == "__main__":
     unittest.main()
