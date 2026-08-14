@@ -108,6 +108,67 @@ class RatingChartSecondaryTests(unittest.TestCase):
             self.assertEqual(rows[key]["value_origin"], "chart_digitized")
             self.assertEqual(rows[key]["source_grade"], "B2")
 
+    def test_repository_contains_gansu_2021_chart_rows_for_jinchang_and_tianshui(self):
+        path = Path(__file__).resolve().parents[1] / "raw" / "province_debt" / "secondary" / "rating_chart_city_debt_2018_2025.csv"
+        expected = {
+            ("CN-620300", "2021"): "96.0",
+            ("CN-620500", "2021"): "232.0",
+        }
+        with path.open(encoding="utf-8", newline="") as handle:
+            rows = {
+                (row["city_id"], row["metric_year"]): row
+                for row in csv.DictReader(handle)
+                if (row["city_id"], row["metric_year"]) in expected
+                and row.get("source_doc_id") == "SRC-SECONDARY-RATING-GANSU-2020-2022"
+            }
+        self.assertEqual(set(rows), set(expected))
+        for key, value in expected.items():
+            self.assertEqual(rows[key]["statutory_debt_balance_100m"], value)
+            self.assertEqual(rows[key]["value_origin"], "chart_digitized")
+            self.assertEqual(rows[key]["source_grade"], "B2")
+
+    def test_repository_contains_guangxi_2018_chart_rows_for_missing_cities(self):
+        path = Path(__file__).resolve().parents[1] / "raw" / "province_debt" / "secondary" / "rating_chart_city_debt_2018_2025.csv"
+        expected = {
+            ("CN-450500", "2018"): "180.0",
+            ("CN-450600", "2018"): "150.0",
+            ("CN-451000", "2018"): "320.0",
+            ("CN-451200", "2018"): "200.0",
+        }
+        with path.open(encoding="utf-8", newline="") as handle:
+            rows = {
+                (row["city_id"], row["metric_year"]): row
+                for row in csv.DictReader(handle)
+                if (row["city_id"], row["metric_year"]) in expected
+            }
+        self.assertEqual(set(rows), set(expected))
+        for key, value in expected.items():
+            self.assertEqual(rows[key]["statutory_debt_balance_100m"], value)
+            self.assertEqual(rows[key]["source_doc_id"], "SRC-SECONDARY-RATING-GUANGXI-2017-2019")
+            self.assertEqual(rows[key]["value_origin"], "chart_digitized")
+            self.assertEqual(rows[key]["source_grade"], "B2")
+
+    def test_repository_contains_xizang_2019_chart_rows_for_currently_missing_city_states(self):
+        path = Path(__file__).resolve().parents[1] / "raw" / "province_debt" / "secondary" / "rating_chart_city_debt_2018_2025.csv"
+        expected = {
+            "CN-540200": "37.8",
+            "CN-540500": "14.5",
+            "CN-540400": "8.0",
+            "CN-542500": "9.3",
+        }
+        with path.open(encoding="utf-8", newline="") as handle:
+            rows = {
+                row["city_id"]: row
+                for row in csv.DictReader(handle)
+                if row.get("source_doc_id") == "SRC-SECONDARY-RATING-TIBET-2019-2021"
+                and row.get("metric_year") == "2019"
+            }
+        self.assertEqual(set(rows), set(expected))
+        for city_id, value in expected.items():
+            self.assertEqual(rows[city_id]["statutory_debt_balance_100m"], value)
+            self.assertEqual(rows[city_id]["value_origin"], "chart_digitized")
+            self.assertEqual(rows[city_id]["source_grade"], "B2")
+
     def test_repository_contains_gansu_2024_chart_rows_for_currently_missing_city_states(self):
         path = Path(__file__).resolve().parents[1] / "raw" / "province_debt" / "secondary" / "rating_chart_city_debt_2018_2025.csv"
         expected = {
