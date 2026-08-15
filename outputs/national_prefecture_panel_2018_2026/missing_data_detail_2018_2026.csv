@@ -1100,18 +1100,15 @@ CN-460400,儋州市,海南省,2018,gov_fund_revenue_100m,政府性基金预算�
 CN-460400,儋州市,海南省,2018,special_debt_balance_100m,专项债务余额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-DANZHOU-2018,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-460400,儋州市,海南省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-DANZHOU-2018,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-460400,儋州市,海南省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-DANZHOU-2018,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-469000,省直辖县级行政区划,海南省,2018,gdp_current_100m,地区生产总值（现价，亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2018,gdp_real_growth_pct,地区生产总值实际增速（%）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2018,general_debt_balance_100m,一般债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2018,general_public_expenditure_100m,一般公共预算支出（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2018,general_public_revenue_100m,一般公共预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2018,resident_population_10k,年末常住人口（万人）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2018,special_debt_balance_100m,专项债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2018,statutory_debt_balance_100m,法定债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
+CN-469000,省直辖县级行政区划,海南省,2018,gdp_current_100m,地区生产总值（现价，亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2018,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2018,gdp_real_growth_pct,地区生产总值实际增速（%）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2018,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2018,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2018,general_public_expenditure_100m,一般公共预算支出（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2018,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2018,general_public_revenue_100m,一般公共预算收入（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2018,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2018,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2018,resident_population_10k,年末常住人口（万人）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2018,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2018,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2018,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2018,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2018,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-420100,武汉市,湖北省,2018,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HUBEI-2018-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-420100,武汉市,湖北省,2018,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HUBEI-2018-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-420100,武汉市,湖北省,2018,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HUBEI-2018-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
@@ -2401,18 +2398,15 @@ CN-654300,阿勒泰地区,新疆维吾尔自治区,2019,general_public_expenditu
 CN-654300,阿勒泰地区,新疆维吾尔自治区,2019,general_public_revenue_100m,一般公共预算收入（亿元）,extended,official_debt,SRC-PROVINCE-DEBT-XINJIANG-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-654300,阿勒泰地区,新疆维吾尔自治区,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,extended,official_debt,SRC-PROVINCE-DEBT-XINJIANG-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-654300,阿勒泰地区,新疆维吾尔自治区,2019,resident_population_10k,年末常住人口（万人）,extended,official_debt,SRC-PROVINCE-DEBT-XINJIANG-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2019,gdp_current_100m,地区生产总值（现价，亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2019,gdp_real_growth_pct,地区生产总值实际增速（%）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2019,general_debt_balance_100m,一般债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2019,general_debt_limit_100m,一般债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2019,general_public_expenditure_100m,一般公共预算支出（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2019,general_public_revenue_100m,一般公共预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2019,resident_population_10k,年末常住人口（万人）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2019,special_debt_balance_100m,专项债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2019,special_debt_limit_100m,专项债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2019,statutory_debt_balance_100m,法定债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
+CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2019,gdp_current_100m,地区生产总值（现价，亿元）,core,official_platform_debt,SRC-OFFICIAL-PLATFORM-DEBT-XINJIANG-BINGTUAN-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2019,gdp_real_growth_pct,地区生产总值实际增速（%）,core,official_platform_debt,SRC-OFFICIAL-PLATFORM-DEBT-XINJIANG-BINGTUAN-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2019,general_debt_limit_100m,一般债务限额（亿元）,core,official_platform_debt,SRC-OFFICIAL-PLATFORM-DEBT-XINJIANG-BINGTUAN-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2019,general_public_expenditure_100m,一般公共预算支出（亿元）,core,official_platform_debt,SRC-OFFICIAL-PLATFORM-DEBT-XINJIANG-BINGTUAN-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2019,general_public_revenue_100m,一般公共预算收入（亿元）,core,official_platform_debt,SRC-OFFICIAL-PLATFORM-DEBT-XINJIANG-BINGTUAN-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_platform_debt,SRC-OFFICIAL-PLATFORM-DEBT-XINJIANG-BINGTUAN-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2019,resident_population_10k,年末常住人口（万人）,core,official_platform_debt,SRC-OFFICIAL-PLATFORM-DEBT-XINJIANG-BINGTUAN-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2019,special_debt_limit_100m,专项债务限额（亿元）,core,official_platform_debt,SRC-OFFICIAL-PLATFORM-DEBT-XINJIANG-BINGTUAN-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_platform_debt,SRC-OFFICIAL-PLATFORM-DEBT-XINJIANG-BINGTUAN-2019,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-320100,南京市,江苏省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-JIANGSU-2019-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-320100,南京市,江苏省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-JIANGSU-2019-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-320100,南京市,江苏省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-RATING-JIANGSU-2019-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
@@ -2755,18 +2749,15 @@ CN-460400,儋州市,海南省,2019,gov_fund_revenue_100m,政府性基金预算�
 CN-460400,儋州市,海南省,2019,special_debt_balance_100m,专项债务余额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-DANZHOU-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-460400,儋州市,海南省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-DANZHOU-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-460400,儋州市,海南省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HN-DANZHOU-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-469000,省直辖县级行政区划,海南省,2019,gdp_current_100m,地区生产总值（现价，亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2019,gdp_real_growth_pct,地区生产总值实际增速（%）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2019,general_public_expenditure_100m,一般公共预算支出（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2019,general_public_revenue_100m,一般公共预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2019,resident_population_10k,年末常住人口（万人）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2019,special_debt_balance_100m,专项债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2019,statutory_debt_balance_100m,法定债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
+CN-469000,省直辖县级行政区划,海南省,2019,gdp_current_100m,地区生产总值（现价，亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2019,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2019,gdp_real_growth_pct,地区生产总值实际增速（%）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2019,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2019,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2019,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2019,general_public_expenditure_100m,一般公共预算支出（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2019,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2019,general_public_revenue_100m,一般公共预算收入（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2019,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2019,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2019,resident_population_10k,年末常住人口（万人）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2019,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2019,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2019,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2019,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2019,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-420100,武汉市,湖北省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HUBEI-WUHAN-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-420200,黄石市,湖北省,2019,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HUBEI-HUANGSHI-2019,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-420300,十堰市,湖北省,2019,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-CEIC-CN-420300,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
@@ -4058,18 +4049,15 @@ CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,resident_population_10k,
 CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,special_debt_balance_100m,专项债务余额（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-XINJIANG-ALTAY-2020,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,special_debt_limit_100m,专项债务限额（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-XINJIANG-ALTAY-2020,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-654300,阿勒泰地区,新疆维吾尔自治区,2020,statutory_debt_limit_100m,法定债务限额（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-XINJIANG-ALTAY-2020,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,gdp_current_100m,地区生产总值（现价，亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,gdp_real_growth_pct,地区生产总值实际增速（%）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,general_debt_balance_100m,一般债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,general_debt_limit_100m,一般债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,general_public_expenditure_100m,一般公共预算支出（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,general_public_revenue_100m,一般公共预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,resident_population_10k,年末常住人口（万人）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,special_debt_balance_100m,专项债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,special_debt_limit_100m,专项债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
+CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,gdp_current_100m,地区生产总值（现价，亿元）,core,official_platform_debt,SRC-OFFICIAL-PLATFORM-DEBT-XINJIANG-BINGTUAN-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,gdp_real_growth_pct,地区生产总值实际增速（%）,core,official_platform_debt,SRC-OFFICIAL-PLATFORM-DEBT-XINJIANG-BINGTUAN-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,general_debt_limit_100m,一般债务限额（亿元）,core,official_platform_debt,SRC-OFFICIAL-PLATFORM-DEBT-XINJIANG-BINGTUAN-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,general_public_expenditure_100m,一般公共预算支出（亿元）,core,official_platform_debt,SRC-OFFICIAL-PLATFORM-DEBT-XINJIANG-BINGTUAN-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,general_public_revenue_100m,一般公共预算收入（亿元）,core,official_platform_debt,SRC-OFFICIAL-PLATFORM-DEBT-XINJIANG-BINGTUAN-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_platform_debt,SRC-OFFICIAL-PLATFORM-DEBT-XINJIANG-BINGTUAN-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,resident_population_10k,年末常住人口（万人）,core,official_platform_debt,SRC-OFFICIAL-PLATFORM-DEBT-XINJIANG-BINGTUAN-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,special_debt_limit_100m,专项债务限额（亿元）,core,official_platform_debt,SRC-OFFICIAL-PLATFORM-DEBT-XINJIANG-BINGTUAN-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-659000,自治区直辖县级行政区划,新疆维吾尔自治区,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_platform_debt,SRC-OFFICIAL-PLATFORM-DEBT-XINJIANG-BINGTUAN-2020,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-320100,南京市,江苏省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-JIANGSU-NANJING-2020,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-320100,南京市,江苏省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-JIANGSU-NANJING-2020,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-320100,南京市,江苏省,2020,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-JIANGSU-NANJING-2020,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
@@ -4463,18 +4451,15 @@ CN-460300,三沙市,海南省,2020,statutory_debt_balance_100m,法定债务余�
 CN-460300,三沙市,海南省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-460400,儋州市,海南省,2020,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CELMA-DEBT-HAINAN-2020-BUDGET-TABLE,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-460400,儋州市,海南省,2020,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CELMA-DEBT-HAINAN-2020-BUDGET-TABLE,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-469000,省直辖县级行政区划,海南省,2020,gdp_current_100m,地区生产总值（现价，亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2020,gdp_real_growth_pct,地区生产总值实际增速（%）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2020,general_debt_balance_100m,一般债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2020,general_public_expenditure_100m,一般公共预算支出（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2020,general_public_revenue_100m,一般公共预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2020,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2020,resident_population_10k,年末常住人口（万人）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2020,special_debt_balance_100m,专项债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2020,statutory_debt_balance_100m,法定债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
+CN-469000,省直辖县级行政区划,海南省,2020,gdp_current_100m,地区生产总值（现价，亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2020,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2020,gdp_real_growth_pct,地区生产总值实际增速（%）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2020,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2020,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2020,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2020,general_public_expenditure_100m,一般公共预算支出（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2020,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2020,general_public_revenue_100m,一般公共预算收入（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2020,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2020,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2020,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2020,resident_population_10k,年末常住人口（万人）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2020,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2020,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2020,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2020,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2020,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-420100,武汉市,湖北省,2020,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HUBEI-2020-RATING,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-420100,武汉市,湖北省,2020,resident_population_10k,年末常住人口（万人）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HUBEI-2020-RATING,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-420200,黄石市,湖北省,2020,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-PROVINCE-DEBT-HUBEI-2020-RATING,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
@@ -6006,18 +5991,15 @@ CN-460300,三沙市,海南省,2021,statutory_debt_balance_100m,法定债务余�
 CN-460300,三沙市,海南省,2021,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-460400,儋州市,海南省,2021,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CELMA-DEBT-HAINAN-2021-BUDGET-TABLE,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-460400,儋州市,海南省,2021,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CELMA-DEBT-HAINAN-2021-BUDGET-TABLE,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-469000,省直辖县级行政区划,海南省,2021,gdp_current_100m,地区生产总值（现价，亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2021,gdp_real_growth_pct,地区生产总值实际增速（%）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2021,general_debt_balance_100m,一般债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2021,general_debt_limit_100m,一般债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2021,general_public_expenditure_100m,一般公共预算支出（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2021,general_public_revenue_100m,一般公共预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2021,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2021,resident_population_10k,年末常住人口（万人）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2021,special_debt_balance_100m,专项债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2021,special_debt_limit_100m,专项债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2021,statutory_debt_balance_100m,法定债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2021,statutory_debt_limit_100m,法定债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
+CN-469000,省直辖县级行政区划,海南省,2021,gdp_current_100m,地区生产总值（现价，亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2021,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2021,gdp_real_growth_pct,地区生产总值实际增速（%）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2021,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2021,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2021,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2021,general_public_expenditure_100m,一般公共预算支出（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2021,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2021,general_public_revenue_100m,一般公共预算收入（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2021,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2021,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2021,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2021,resident_population_10k,年末常住人口（万人）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2021,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2021,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2021,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2021,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2021,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-420100,武汉市,湖北省,2021,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HUBEI-WUHAN-2021,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-420100,武汉市,湖北省,2021,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HUBEI-WUHAN-2021,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-420200,黄石市,湖北省,2021,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HUBEI-HUANGSHI-2021,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
@@ -7671,18 +7653,15 @@ CN-460300,三沙市,海南省,2022,statutory_debt_balance_100m,法定债务余�
 CN-460300,三沙市,海南省,2022,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-460400,儋州市,海南省,2022,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CELMA-DEBT-HAINAN-2022,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-460400,儋州市,海南省,2022,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CELMA-DEBT-HAINAN-2022,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-469000,省直辖县级行政区划,海南省,2022,gdp_current_100m,地区生产总值（现价，亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2022,gdp_real_growth_pct,地区生产总值实际增速（%）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2022,general_debt_balance_100m,一般债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2022,general_debt_limit_100m,一般债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2022,general_public_expenditure_100m,一般公共预算支出（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2022,general_public_revenue_100m,一般公共预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2022,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2022,resident_population_10k,年末常住人口（万人）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2022,special_debt_balance_100m,专项债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2022,special_debt_limit_100m,专项债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2022,statutory_debt_balance_100m,法定债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2022,statutory_debt_limit_100m,法定债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
+CN-469000,省直辖县级行政区划,海南省,2022,gdp_current_100m,地区生产总值（现价，亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2022,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2022,gdp_real_growth_pct,地区生产总值实际增速（%）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2022,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2022,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2022,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2022,general_public_expenditure_100m,一般公共预算支出（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2022,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2022,general_public_revenue_100m,一般公共预算收入（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2022,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2022,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2022,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2022,resident_population_10k,年末常住人口（万人）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2022,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2022,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2022,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2022,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2022,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-420100,武汉市,湖北省,2022,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HUBEI-WUHAN-2022,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-420100,武汉市,湖北省,2022,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HUBEI-WUHAN-2022,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-420200,黄石市,湖北省,2022,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-OFFICIAL-DEBT-HUBEI-HUANGSHI-2022,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
@@ -9263,18 +9242,15 @@ CN-460300,三沙市,海南省,2023,statutory_debt_balance_100m,法定债务余�
 CN-460300,三沙市,海南省,2023,statutory_debt_limit_100m,法定债务限额（亿元）,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-460400,儋州市,海南省,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CELMA-DEBT-HAINAN-2023,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-460400,儋州市,海南省,2023,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-CITY-PANEL-1990-2023;SRC-CELMA-DEBT-HAINAN-2023,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-469000,省直辖县级行政区划,海南省,2023,gdp_current_100m,地区生产总值（现价，亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2023,gdp_real_growth_pct,地区生产总值实际增速（%）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2023,general_debt_balance_100m,一般债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2023,general_debt_limit_100m,一般债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2023,general_public_expenditure_100m,一般公共预算支出（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2023,general_public_revenue_100m,一般公共预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2023,resident_population_10k,年末常住人口（万人）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2023,special_debt_balance_100m,专项债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2023,special_debt_limit_100m,专项债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2023,statutory_debt_balance_100m,法定债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2023,statutory_debt_limit_100m,法定债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
+CN-469000,省直辖县级行政区划,海南省,2023,gdp_current_100m,地区生产总值（现价，亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2023,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2023,gdp_real_growth_pct,地区生产总值实际增速（%）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2023,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2023,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2023,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2023,general_public_expenditure_100m,一般公共预算支出（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2023,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2023,general_public_revenue_100m,一般公共预算收入（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2023,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2023,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2023,resident_population_10k,年末常住人口（万人）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2023,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2023,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2023,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2023,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2023,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-420100,武汉市,湖北省,2023,general_debt_balance_100m,一般债务余额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HUBEI-2023-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-420100,武汉市,湖北省,2023,general_debt_limit_100m,一般债务限额（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HUBEI-2023-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-420100,武汉市,湖北省,2023,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,secondary_debt,SRC-CITY-PANEL-1990-2023;SRC-SECONDARY-DEBT-HUBEI-2023-CITY-TOTALS,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
@@ -11372,18 +11348,15 @@ CN-460400,儋州市,海南省,2024,general_public_expenditure_100m,一般公共�
 CN-460400,儋州市,海南省,2024,general_public_revenue_100m,一般公共预算收入（亿元）,core,official_debt,SRC-OFFICIAL-DEBT-HAINAN-DANZHOU-2024,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-460400,儋州市,海南省,2024,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-OFFICIAL-DEBT-HAINAN-DANZHOU-2024,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-460400,儋州市,海南省,2024,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-OFFICIAL-DEBT-HAINAN-DANZHOU-2024,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-469000,省直辖县级行政区划,海南省,2024,gdp_current_100m,地区生产总值（现价，亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2024,gdp_real_growth_pct,地区生产总值实际增速（%）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2024,general_debt_balance_100m,一般债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2024,general_debt_limit_100m,一般债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2024,general_public_expenditure_100m,一般公共预算支出（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2024,general_public_revenue_100m,一般公共预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2024,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2024,resident_population_10k,年末常住人口（万人）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2024,special_debt_balance_100m,专项债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2024,special_debt_limit_100m,专项债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2024,statutory_debt_balance_100m,法定债务余额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-469000,省直辖县级行政区划,海南省,2024,statutory_debt_limit_100m,法定债务限额（亿元）,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
+CN-469000,省直辖县级行政区划,海南省,2024,gdp_current_100m,地区生产总值（现价，亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2024,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2024,gdp_real_growth_pct,地区生产总值实际增速（%）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2024,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2024,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2024,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2024,general_public_expenditure_100m,一般公共预算支出（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2024,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2024,general_public_revenue_100m,一般公共预算收入（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2024,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2024,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2024,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2024,resident_population_10k,年末常住人口（万人）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2024,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2024,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2024,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-469000,省直辖县级行政区划,海南省,2024,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt_calculated,SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2024,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-420100,武汉市,湖北省,2024,gdp_current_100m,地区生产总值（现价，亿元）,core,official_debt,SRC-CITY-DEBT-HUBEI-WUHAN-2024,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-420100,武汉市,湖北省,2024,gdp_real_growth_pct,地区生产总值实际增速（%）,core,official_debt,SRC-CITY-DEBT-HUBEI-WUHAN-2024,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-420100,武汉市,湖北省,2024,general_public_expenditure_100m,一般公共预算支出（亿元）,core,official_debt,SRC-CITY-DEBT-HUBEI-WUHAN-2024,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
@@ -14573,18 +14546,17 @@ CN-622900,临夏回族自治州,甘肃省,2025,gov_fund_revenue_100m,政府性�
 CN-622900,临夏回族自治州,甘肃省,2025,resident_population_10k,年末常住人口（万人）,extended,official_debt,SRC-OFFICIAL-DEBT-GANSU-LINXIA-2025,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-622900,临夏回族自治州,甘肃省,2025,special_debt_limit_100m,专项债务限额（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-GANSU-LINXIA-2025,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-622900,临夏回族自治州,甘肃省,2025,statutory_debt_limit_100m,法定债务限额（亿元）,extended,official_debt,SRC-OFFICIAL-DEBT-GANSU-LINXIA-2025,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-623000,甘南藏族自治州,甘肃省,2025,gdp_current_100m,地区生产总值（现价，亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-623000,甘南藏族自治州,甘肃省,2025,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-623000,甘南藏族自治州,甘肃省,2025,general_debt_balance_100m,一般债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-623000,甘南藏族自治州,甘肃省,2025,general_debt_limit_100m,一般债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-623000,甘南藏族自治州,甘肃省,2025,general_public_expenditure_100m,一般公共预算支出（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-623000,甘南藏族自治州,甘肃省,2025,general_public_revenue_100m,一般公共预算收入（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-623000,甘南藏族自治州,甘肃省,2025,gov_fund_revenue_100m,政府性基金预算收入（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-623000,甘南藏族自治州,甘肃省,2025,resident_population_10k,年末常住人口（万人）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-623000,甘南藏族自治州,甘肃省,2025,special_debt_balance_100m,专项债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-623000,甘南藏族自治州,甘肃省,2025,special_debt_limit_100m,专项债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-623000,甘南藏族自治州,甘肃省,2025,statutory_debt_balance_100m,法定债务余额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-623000,甘南藏族自治州,甘肃省,2025,statutory_debt_limit_100m,法定债务限额（亿元）,extended,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
+CN-623000,甘南藏族自治州,甘肃省,2025,gdp_current_100m,地区生产总值（现价，亿元）,extended,official_debt_calculated,SRC-OFFICIAL-DEBT-GANSU-GANNAN-2025-CALCULATED,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-623000,甘南藏族自治州,甘肃省,2025,gdp_real_growth_pct,地区生产总值实际增速（%）,extended,official_debt_calculated,SRC-OFFICIAL-DEBT-GANSU-GANNAN-2025-CALCULATED,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-623000,甘南藏族自治州,甘肃省,2025,general_debt_balance_100m,一般债务余额（亿元）,extended,official_debt_calculated,SRC-OFFICIAL-DEBT-GANSU-GANNAN-2025-CALCULATED,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-623000,甘南藏族自治州,甘肃省,2025,general_debt_limit_100m,一般债务限额（亿元）,extended,official_debt_calculated,SRC-OFFICIAL-DEBT-GANSU-GANNAN-2025-CALCULATED,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-623000,甘南藏族自治州,甘肃省,2025,general_public_expenditure_100m,一般公共预算支出（亿元）,extended,official_debt_calculated,SRC-OFFICIAL-DEBT-GANSU-GANNAN-2025-CALCULATED,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-623000,甘南藏族自治州,甘肃省,2025,general_public_revenue_100m,一般公共预算收入（亿元）,extended,official_debt_calculated,SRC-OFFICIAL-DEBT-GANSU-GANNAN-2025-CALCULATED,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-623000,甘南藏族自治州,甘肃省,2025,gov_fund_revenue_100m,政府性基金预算收入（亿元）,extended,official_debt_calculated,SRC-OFFICIAL-DEBT-GANSU-GANNAN-2025-CALCULATED,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-623000,甘南藏族自治州,甘肃省,2025,resident_population_10k,年末常住人口（万人）,extended,official_debt_calculated,SRC-OFFICIAL-DEBT-GANSU-GANNAN-2025-CALCULATED,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-623000,甘南藏族自治州,甘肃省,2025,special_debt_balance_100m,专项债务余额（亿元）,extended,official_debt_calculated,SRC-OFFICIAL-DEBT-GANSU-GANNAN-2025-CALCULATED,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-623000,甘南藏族自治州,甘肃省,2025,special_debt_limit_100m,专项债务限额（亿元）,extended,official_debt_calculated,SRC-OFFICIAL-DEBT-GANSU-GANNAN-2025-CALCULATED,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
+CN-623000,甘南藏族自治州,甘肃省,2025,statutory_debt_limit_100m,法定债务限额（亿元）,extended,official_debt_calculated,SRC-OFFICIAL-DEBT-GANSU-GANNAN-2025-CALCULATED,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-350100,福州市,福建省,2025,gdp_current_100m,地区生产总值（现价，亿元）,core,official_debt,SRC-PROVINCE-DEBT-FUJIAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-350100,福州市,福建省,2025,gdp_real_growth_pct,地区生产总值实际增速（%）,core,official_debt,SRC-PROVINCE-DEBT-FUJIAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-350100,福州市,福建省,2025,general_public_expenditure_100m,一般公共预算支出（亿元）,core,official_debt,SRC-PROVINCE-DEBT-FUJIAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。

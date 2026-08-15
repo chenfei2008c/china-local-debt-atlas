@@ -211,6 +211,86 @@ class RatingChartSecondaryTests(unittest.TestCase):
         source = next(source for source in sources if source["source_doc_id"] == "SRC-OFFICIAL-DEBT-GANSU-GANNAN-2019")
         self.assertEqual(source["attachment_url"], "http://czj.gnzrmzf.gov.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1599680053&wbfileid=7754931")
 
+    def test_repository_contains_bingtuan_2019_2020_platform_values(self):
+        city_master = [
+            {
+                "city_id": "CN-659000",
+                "city_name_cn": "自治区直辖县级行政区划",
+                "province_name": "新疆维吾尔自治区",
+                "metric_year": year,
+            }
+            for year in ("2019", "2020")
+        ]
+        facts, sources = province_debt_sources.extract_official_debt_facts(city_master)
+        expected = {
+            "2019": ("333.04", "95.74", "237.30", "SRC-OFFICIAL-PLATFORM-DEBT-XINJIANG-BINGTUAN-2019"),
+            "2020": ("508.00", "180.00", "328.00", "SRC-OFFICIAL-PLATFORM-DEBT-XINJIANG-BINGTUAN-2020"),
+        }
+        for year, (total, general, special, source_doc_id) in expected.items():
+            row = facts[("CN-659000", year)]
+            self.assertEqual(row["statutory_debt_balance_100m"], Decimal(total))
+            self.assertEqual(row["general_debt_balance_100m"], Decimal(general))
+            self.assertEqual(row["special_debt_balance_100m"], Decimal(special))
+            self.assertEqual(row["source_doc_id"], source_doc_id)
+            self.assertEqual(row["source_grade"], "B2")
+            self.assertEqual(row["data_status"], "official_platform_debt")
+        self.assertEqual(
+            next(source for source in sources if source["source_doc_id"] == expected["2019"][3])["attachment_url"],
+            "https://www.celma.org.cn/ndsjmx/index.jhtml?ad_code=66",
+        )
+
+    def test_repository_contains_gannan_2025_calculated_total(self):
+        city_master = [
+            {
+                "city_id": "CN-623000",
+                "city_name_cn": "甘南藏族自治州",
+                "province_name": "甘肃省",
+                "metric_year": "2025",
+            }
+        ]
+        facts, sources = province_debt_sources.extract_official_debt_facts(city_master)
+        row = facts[("CN-623000", "2025")]
+        self.assertEqual(row["statutory_debt_balance_100m"], Decimal("308.98"))
+        self.assertEqual(row["source_doc_id"], "SRC-OFFICIAL-DEBT-GANSU-GANNAN-2025-CALCULATED")
+        self.assertEqual(row["source_grade"], "B2")
+        self.assertEqual(row["value_origin"], "calculated")
+        self.assertEqual(row["data_status"], "official_debt_calculated")
+        self.assertTrue(any(source["source_doc_id"] == "SRC-OFFICIAL-DEBT-GANSU-GANNAN-2025-CALCULATED" for source in sources))
+
+    def test_repository_contains_hainan_direct_county_2018_2024_aggregates(self):
+        city_master = [
+            {
+                "city_id": "CN-469000",
+                "city_name_cn": "省直辖县级行政区划",
+                "province_name": "海南省",
+                "metric_year": year,
+            }
+            for year in ("2018", "2019", "2020", "2021", "2022", "2023", "2024")
+        ]
+        facts, sources = province_debt_sources.extract_official_debt_facts(city_master)
+        expected = {
+            "2018": ("552.3913938975", "345.1199495028", "207.2714443947"),
+            "2019": ("591.6046185463", "399.1438536516", "192.4607648947"),
+            "2020": ("652.0386866885", "434.8192260557", "217.2194606328"),
+            "2021": ("739.7194155285", "467.8832123357", "271.8362031928"),
+            "2022": ("805.8152", "477.7280", "328.0872"),
+            "2023": ("883.9475", "487.0825", "396.8650"),
+            "2024": ("1136.4175", "531.6015", "604.8160"),
+        }
+        for year, values in expected.items():
+            row = facts[("CN-469000", year)]
+            self.assertEqual(row["statutory_debt_balance_100m"], Decimal(values[0]))
+            self.assertEqual(row["general_debt_balance_100m"], Decimal(values[1]))
+            self.assertEqual(row["special_debt_balance_100m"], Decimal(values[2]))
+            self.assertEqual(row["source_doc_id"], f"SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-{year}")
+            self.assertEqual(row["source_grade"], "A2")
+            self.assertEqual(row["value_origin"], "official_rows_summed")
+            self.assertEqual(row["data_status"], "official_debt_calculated")
+        self.assertEqual(
+            len([source for source in sources if source["source_doc_id"].startswith("SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-")]),
+            7,
+        )
+
     def test_repository_contains_bayannur_2025_official_statutory_total(self):
         city_master = [
             {

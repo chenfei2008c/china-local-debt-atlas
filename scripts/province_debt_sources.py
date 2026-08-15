@@ -1233,6 +1233,50 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
 OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
     [
         {
+            "source_doc_id": "SRC-OFFICIAL-PLATFORM-DEBT-XINJIANG-BINGTUAN-2019",
+            "province_name": "新疆维吾尔自治区",
+            "year": 2019,
+            "path": RAW_DIR / "multi_year_official" / "xinjiang_bingtuan_debt_2019_2020_celma.txt",
+            "text_path": RAW_DIR / "multi_year_official" / "xinjiang_bingtuan_debt_2019_2020_celma.txt",
+            "source_url": "https://www.governbond.org.cn:4443/api/loadBondData.action?dataType=NDZB&isAdmin=2&adCode=66&zb=06",
+            "attachment_url": "https://www.celma.org.cn/ndsjmx/index.jhtml?ad_code=66",
+            "document_title": "中国地方政府债券信息公开平台年度数据：新疆生产建设兵团2019年债务余额指标",
+            "publication_date": "2021-02-09",
+            "publisher": "财政部政府债务研究和评估中心、中国地方政府债券信息公开平台",
+            "publisher_level": "中央财政债务信息平台",
+            "source_grade": "B2",
+            "unit": "亿元",
+            "layout": "direct3_general_special",
+            "start": "【2019年新疆生产建设兵团地方政府债务余额（平台原始指标）】",
+            "end": None,
+            "table_name": "新疆生产建设兵团2019年地方政府债务余额（平台原始指标）",
+            "aliases": {"兵团市": "自治区直辖县级行政区划"},
+            "data_status": "official_platform_debt",
+            "note": "平台NDZB接口0601原始值；2018年平台值与新疆财政厅2018年决算表123.18亿元不一致，故本条按平台补缺值保留并标为B2，待兵团财政决算表复核；2019年平台值333.04=一般95.74+专项237.30。",
+        },
+        {
+            "source_doc_id": "SRC-OFFICIAL-PLATFORM-DEBT-XINJIANG-BINGTUAN-2020",
+            "province_name": "新疆维吾尔自治区",
+            "year": 2020,
+            "path": RAW_DIR / "multi_year_official" / "xinjiang_bingtuan_debt_2019_2020_celma.txt",
+            "text_path": RAW_DIR / "multi_year_official" / "xinjiang_bingtuan_debt_2019_2020_celma.txt",
+            "source_url": "https://www.governbond.org.cn:4443/api/loadBondData.action?dataType=NDZB&isAdmin=2&adCode=66&zb=06",
+            "attachment_url": "https://www.celma.org.cn/ndsjmx/index.jhtml?ad_code=66",
+            "document_title": "中国地方政府债券信息公开平台年度数据：新疆生产建设兵团2020年债务余额指标",
+            "publication_date": "2021-02-09",
+            "publisher": "财政部政府债务研究和评估中心、中国地方政府债券信息公开平台",
+            "publisher_level": "中央财政债务信息平台",
+            "source_grade": "B2",
+            "unit": "亿元",
+            "layout": "direct3_general_special",
+            "start": "【2020年新疆生产建设兵团地方政府债务余额（平台原始指标）】",
+            "end": None,
+            "table_name": "新疆生产建设兵团2020年地方政府债务余额（平台原始指标）",
+            "aliases": {"兵团市": "自治区直辖县级行政区划"},
+            "data_status": "official_platform_debt",
+            "note": "平台NDZB接口0601原始值；2018年平台值与新疆财政厅2018年决算表123.18亿元不一致，故本条按平台补缺值保留并标为B2，待兵团财政决算表复核；2020年平台值508.00=一般180.00+专项328.00。",
+        },
+        {
             "source_doc_id": "SRC-OFFICIAL-DEBT-XINJIANG-BINGTUAN-2021",
             "province_name": "新疆维吾尔自治区",
             "year": 2021,
@@ -1909,6 +1953,27 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
 
 OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
     [
+        {
+            "source_doc_id": "SRC-OFFICIAL-DEBT-GANSU-GANNAN-2025-CALCULATED",
+            "province_name": "甘肃省",
+            "year": 2025,
+            "path": RAW_DIR / "2025" / "official" / "gansu_gannan_2025_calculated.txt",
+            "text_path": RAW_DIR / "2025" / "official" / "gansu_gannan_2025_calculated.txt",
+            "source_url": "http://czj.gnzrmzf.gov.cn/info/1296/18426.htm",
+            "document_title": "甘南藏族自治州2025年财政预算执行情况和2026年全州及州级财政预算草案的报告（书面）",
+            "publication_date": "2026-01-26",
+            "publisher": "甘南州财政局",
+            "publisher_level": "州级财政部门",
+            "source_grade": "B2",
+            "unit": "亿元",
+            "layout": "direct1",
+            "value_origin": "calculated",
+            "data_status": "official_debt_calculated",
+            "start": "【2025年甘南藏族自治州全州法定债务余额（计算值）】",
+            "end": None,
+            "table_name": "2025年甘南藏族自治州全州法定债务余额（计算值）",
+            "note": "按2020年末余额92.10（B2公开图表估读）+‘十四五’期间累计新增法定债务250.48-累计偿还到期法定债务33.60计算为308.98亿元；非正式决算直录，待甘南州2025年正式债务决算表复核。",
+        },
         {
             "source_doc_id": "SRC-OFFICIAL-DEBT-GANSU-GANNAN-2019",
             "province_name": "甘肃省",
@@ -14070,6 +14135,83 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
             "note": "楚雄州官方预算执行报告披露2025年末全州地方政府债务余额801.85亿元；报告只拆分州级与县市级，未披露全州一般债务与专项债务拆分，因此只录入法定债务总额。",
         },
     ]
+    )
+
+
+for _year, _publication_date, _source_url, _attachment_url, _end in [
+    (
+        2018,
+        "2019-08-05",
+        "https://mof.hainan.gov.cn/sczt/0701/201908/a945a61ca036439c874ed9df69aba1d7.shtml",
+        "https://mof.hainan.gov.cn/sczt/0701/201908/a945a61ca036439c874ed9df69aba1d7/files/81558d04ffc24106818a21fa8e2c6c69.xlsx",
+        "【2019年海南省直辖县级行政区划法定债务余额（官方15县行加总）】",
+    ),
+    (
+        2019,
+        "2020-08-06",
+        "https://mof.hainan.gov.cn/sczt/0701/202008/a71adfd696984167aeb42eb4fb61f3b5.shtml",
+        "https://mof.hainan.gov.cn/sczt/0701/202008/a71adfd696984167aeb42eb4fb61f3b5/files/2d8ccd71b2784127a2bf78c42a377f9d.xlsx",
+        "【2020年海南省直辖县级行政区划法定债务余额（官方15县行加总）】",
+    ),
+    (
+        2020,
+        "2021-08-16",
+        "https://mof.hainan.gov.cn/sczt/0701/202108/5cf05ab0a2d0407b854dc7ed3f312b23.shtml",
+        "https://mof.hainan.gov.cn/sczt/0701/202108/5cf05ab0a2d0407b854dc7ed3f312b23/files/40b890906bf448ce997d3e4019c7c7a8.xlsx",
+        "【2021年海南省直辖县级行政区划法定债务余额（官方15县行加总）】",
+    ),
+    (
+        2021,
+        "2022-08-17",
+        "https://mof.hainan.gov.cn/sczt/0701/202208/0abe2770129b4f949a134a414d18bdeb.shtml",
+        "https://mof.hainan.gov.cn/sczt/0701/202208/0abe2770129b4f949a134a414d18bdeb/files/1f07f900ed2e40d394aa68dd698e6bdd.xlsx",
+        "【2022年海南省直辖县级行政区划法定债务余额（官方15县行加总）】",
+    ),
+    (
+        2022,
+        "2023-08-18",
+        "https://mof.hainan.gov.cn/sczt/0701/202308/dbdeb5f5ce4e4745bfadb901f9bc2d3d.shtml",
+        "https://mof.hainan.gov.cn/sczt/0701/202308/dbdeb5f5ce4e4745bfadb901f9bc2d3d/files/cff8617f70d146cf815904ecb95ea663.zip",
+        "【2023年海南省直辖县级行政区划法定债务余额（官方15县行加总）】",
+    ),
+    (
+        2023,
+        "2024-08-19",
+        "https://mof.hainan.gov.cn/sczt/0701/202408/9096845b5c3a41d4a9fb413e8c28c92a.shtml",
+        "https://mof.hainan.gov.cn/sczt/0701/202408/9096845b5c3a41d4a9fb413e8c28c92a/files/e83ae39e80f34fa4a5d398e3b544eb1e.xlsx",
+        "【2024年海南省直辖县级行政区划法定债务余额（官方15县行加总）】",
+    ),
+    (
+        2024,
+        "2025-08-08",
+        "https://mof.hainan.gov.cn/sczt/0701/202508/a40ae43786644458a345731242978a25.shtml",
+        "https://mof.hainan.gov.cn/sczt/0701/202508/a40ae43786644458a345731242978a25/files/219eeaf256964bb9b9ede80d13960b1b.xlsx",
+        None,
+    ),
+]:
+    OFFICIAL_PROVINCE_DEBT_SOURCES.append(
+        {
+            "source_doc_id": f"SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-{_year}",
+            "province_name": "海南省",
+            "year": _year,
+            "path": RAW_DIR / "multi_year_official" / "hainan_2018_2024_direct_county_aggregate.txt",
+            "text_path": RAW_DIR / "multi_year_official" / "hainan_2018_2024_direct_county_aggregate.txt",
+            "source_url": _source_url,
+            "attachment_url": _attachment_url,
+            "document_title": f"海南省{_year}年地方政府债务限额及余额决算情况表（15个省直辖县级行政单位加总）",
+            "publication_date": _publication_date,
+            "publisher": "海南省财政厅",
+            "publisher_level": "省级财政部门",
+            "source_grade": "A2",
+            "unit": "亿元",
+            "layout": "direct3_general_special",
+            "value_origin": "official_rows_summed",
+            "data_status": "official_debt_calculated",
+            "start": f"【{_year}年海南省直辖县级行政区划法定债务余额（官方15县行加总）】",
+            "end": _end,
+            "table_name": f"海南省{_year}年省直辖县级行政单位法定债务余额（15县行加总）",
+            "note": "海南省财政厅官方债务决算附件逐行列示15个省直辖县级行政单位；本记录将15行余额合计、一般余额、专项余额加总为稳定面板的CN-469000口径，不含儋州市、洋浦开发区。2018—2021年原表单位为亿元，2022—2024年原表单位为万元并按10000换算为亿元；该值是官方行加总值，不是原表直接列示的单独汇总行。",
+        }
     )
 
 
