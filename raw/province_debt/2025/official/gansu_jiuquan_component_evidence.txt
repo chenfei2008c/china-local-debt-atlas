@@ -25,3 +25,27 @@
 ## 处理结论
 
 不能用“2024 年余额 + 2025 年债券争取到位额 - 2025 年本金偿还额”直接生成酒泉市 2025 年末余额：瓜州县的官方说明已经显示余额变动与该简单公式不完全一致，且还存在置换、其他方式化债、年终结算和债务系统调整。待肃州区、玉门市或酒泉市公开明确的 2025 年末全市债务余额后，再将 `CN-620900-2025` 写入主表。
+
+## 2026-08-15 补充核查：肃州、玉门公开接口
+
+为寻找 2025 年末区县余额，补查了下列官方公开目录及动态检索接口：
+
+- 肃州区预算决算总目录：
+  https://www.jqsz.gov.cn/jqsz/c108689/xxgk_jcsdlist.shtml
+- 肃州区决算信息公开目录：
+  https://www.jqsz.gov.cn/jqsz/c108693/xxgk_list.shtml
+  - 动态检索接口：
+    https://www.jqsz.gov.cn/common/search/8911da957f0f4dd4af1aa1de37bf2d0d?_isAgg=true&_isJson=true&_pageSize=20&_template=index&_rangeTimeGte=&_channelName=&page=1
+  - 最新公开结果主要为 2024 年度部门决算；未检出 2025 年度肃州区全区决算或 2025 年末地方政府债务余额表。
+- 肃州区预算信息公开目录：
+  https://www.jqsz.gov.cn/jqsz/c108690/xxgk_list.shtml
+  - 公开结果包含 2026 年部门预算和 2025 年预算材料，但未检出 2025 年末债务余额决算表。
+- 玉门市财政预算目录及官方动态接口：
+  https://www.yumen.gov.cn/yuMen/c110972/xxgk_list.shtml
+  https://www.yumen.gov.cn/common/search/11ff07864b354e2398a496683876a2bb?_isAgg=true&_isJson=true&_pageSize=100&_template=index&_rangeTimeGte=&_channelName=&page=1
+- 玉门市财政决算目录及官方动态接口：
+  https://www.yumen.gov.cn/yuMen/c110975/xxgk_list.shtml
+  https://www.yumen.gov.cn/common/search/2722622963e748eba98c29c0eb667304?_isAgg=true&_isJson=true&_pageSize=100&_template=index&_rangeTimeGte=&_channelName=&page=1
+  - 玉门市预算接口可见 2026 年政府预算和 2025 年财政预算执行报告，但报告只披露债务风险、化解金额、还本付息等信息，未披露 2025 年末法定债务余额；决算接口未检出相应余额表。
+
+上述接口核查只能证明“当前公开目录未找到可审计余额”，不能把 2025 年争取到位债券、偿还本金、限额或评级图表当作酒泉市 2025 年末法定债务余额。因此 `CN-620900-2025` 继续保留 `null`。
