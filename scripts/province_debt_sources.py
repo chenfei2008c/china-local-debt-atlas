@@ -5676,6 +5676,26 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
             "note": "官方决算附件19、附件32的全盟行直接披露：2024年末法定债务余额577.2721亿元，其中一般454.2142亿元、专项123.0579亿元；限额分别为623.0000、470.0000、153.0000亿元。",
         },
         {
+            "source_doc_id": "SRC-OFFICIAL-DEBT-INNER-MONGOLIA-XILINGOL-2025",
+            "province_name": "内蒙古自治区",
+            "year": 2025,
+            "path": RAW_DIR / "2025" / "official" / "inner_mongolia_xilingol_2025.txt",
+            "text_path": RAW_DIR / "2025" / "official" / "inner_mongolia_xilingol_2025.txt",
+            "source_url": "https://czt.nmg.gov.cn/yjs/business/page/content?contentId=2ec6fa3d39967604f195848f4d2a806f",
+            "attachment_url": "https://czt.nmg.gov.cn/yjs/business/file/download/bbeac570607a44fa997c3cb508199390;https://czt.nmg.gov.cn/yjs/business/file/download/cae17e1ab88541f589cc51392231e898",
+            "document_title": "锡林郭勒盟政府2026年度预算（2025年末地方政府债务余额预计执行数）",
+            "publication_date": "2026-02-11",
+            "publisher": "锡林郭勒盟财政局",
+            "publisher_level": "盟级",
+            "source_grade": "A1",
+            "unit": "亿元",
+            "layout": "total6",
+            "data_status": "preliminary",
+            "start": "表：锡林郭勒盟2025年地方政府债务限额及余额预算情况表",
+            "table_name": "锡林郭勒盟2025年地方政府债务限额及余额预算情况表",
+            "note": "锡林郭勒盟政府2026年度预算附件的一般债务表、专项债务表分别披露2025年末余额预计执行数：一般债务70.170479亿元、专项债务50.520000亿元，合计120.690479亿元。原表余额标注为预计执行数，保留 preliminary 状态，不冒充最终决算。",
+        },
+        {
             "source_doc_id": "SRC-OFFICIAL-DEBT-INNER-MONGOLIA-ORDOS-2018",
             "province_name": "内蒙古自治区",
             "year": 2018,
@@ -14213,6 +14233,32 @@ for _year, _publication_date, _source_url, _attachment_url, _end in [
             "note": "海南省财政厅官方债务决算附件逐行列示15个省直辖县级行政单位；本记录将15行余额合计、一般余额、专项余额加总为稳定面板的CN-469000口径，不含儋州市、洋浦开发区。2018—2021年原表单位为亿元，2022—2024年原表单位为万元并按10000换算为亿元；该值是官方行加总值，不是原表直接列示的单独汇总行。",
         }
     )
+
+
+OFFICIAL_PROVINCE_DEBT_SOURCES.append(
+    {
+        "source_doc_id": "SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-2025",
+        "province_name": "海南省",
+        "year": 2025,
+        "path": RAW_DIR / "multi_year_official" / "hainan_2018_2024_direct_county_aggregate.txt",
+        "text_path": RAW_DIR / "multi_year_official" / "hainan_2018_2024_direct_county_aggregate.txt",
+        "source_url": "https://mof.hainan.gov.cn/sczt/0701/202602/6ebe53293fb94419a6c123ba5fd243b2.shtml",
+        "attachment_url": "https://mof.hainan.gov.cn/sczt/0701/202602/6ebe53293fb94419a6c123ba5fd243b2/files/3a3780a02c954f2795b6629a13c6f20b.xlsx",
+        "document_title": "海南省2025年地方政府债务限额及余额情况表（15个省直辖县级行政单位加总）",
+        "publication_date": "2026-02-14",
+        "publisher": "海南省财政厅",
+        "publisher_level": "省级财政部门",
+        "source_grade": "A1",
+        "unit": "亿元",
+        "layout": "direct3_general_special",
+        "value_origin": "official_rows_summed",
+        "data_status": "preliminary",
+        "start": "【2025年海南省直辖县级行政区划法定债务余额（官方15县行加总，预计执行数）】",
+        "end": None,
+        "table_name": "海南省2025年省直辖县级行政单位法定债务余额（15县行加总，预计执行数）",
+        "note": "海南省财政厅2026年省级政府预算公开附件表22逐行披露2025年余额预计执行数；本记录将儋州市之后的15个省直辖县级行政单位行值加总为稳定面板CN-469000口径，不含儋州市、海口市/三亚市及其区县、洋浦开发区。该值是官方预计执行数，不是2025年度最终决算直录，保留 preliminary 状态，待正式决算表复核。",
+    }
+)
 
 
 for _year, _publication_date, _end in [

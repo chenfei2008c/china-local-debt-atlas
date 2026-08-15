@@ -265,7 +265,7 @@ class RatingChartSecondaryTests(unittest.TestCase):
                 "province_name": "海南省",
                 "metric_year": year,
             }
-            for year in ("2018", "2019", "2020", "2021", "2022", "2023", "2024")
+            for year in ("2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025")
         ]
         facts, sources = province_debt_sources.extract_official_debt_facts(city_master)
         expected = {
@@ -276,6 +276,7 @@ class RatingChartSecondaryTests(unittest.TestCase):
             "2022": ("805.8152", "477.7280", "328.0872"),
             "2023": ("883.9475", "487.0825", "396.8650"),
             "2024": ("1136.4175", "531.6015", "604.8160"),
+            "2025": ("1323.9804820071", "565.7510938143", "758.2293881928"),
         }
         for year, values in expected.items():
             row = facts[("CN-469000", year)]
@@ -283,12 +284,12 @@ class RatingChartSecondaryTests(unittest.TestCase):
             self.assertEqual(row["general_debt_balance_100m"], Decimal(values[1]))
             self.assertEqual(row["special_debt_balance_100m"], Decimal(values[2]))
             self.assertEqual(row["source_doc_id"], f"SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-{year}")
-            self.assertEqual(row["source_grade"], "A2")
+            self.assertEqual(row["source_grade"], "A1" if year == "2025" else "A2")
             self.assertEqual(row["value_origin"], "official_rows_summed")
-            self.assertEqual(row["data_status"], "official_debt_calculated")
+            self.assertEqual(row["data_status"], "preliminary" if year == "2025" else "official_debt_calculated")
         self.assertEqual(
             len([source for source in sources if source["source_doc_id"].startswith("SRC-OFFICIAL-DEBT-HAINAN-DIRECT-COUNTY-")]),
-            7,
+            8,
         )
 
     def test_repository_contains_bayannur_2025_official_statutory_total(self):
@@ -307,6 +308,25 @@ class RatingChartSecondaryTests(unittest.TestCase):
         self.assertEqual(row["source_grade"], "A2")
         source = next(source for source in sources if source["source_doc_id"] == "SRC-OFFICIAL-DEBT-INNER-MONGOLIA-BAYANNUR-2025")
         self.assertEqual(source["period_end"], "2025-12-31")
+
+    def test_repository_contains_xilingol_2025_preliminary_official_total(self):
+        city_master = [
+            {
+                "city_id": "CN-152500",
+                "city_name_cn": "锡林郭勒盟",
+                "province_name": "内蒙古自治区",
+                "metric_year": "2025",
+            }
+        ]
+        facts, sources = province_debt_sources.extract_official_debt_facts(city_master)
+        row = facts[("CN-152500", "2025")]
+        self.assertEqual(row["statutory_debt_balance_100m"], Decimal("120.690479"))
+        self.assertEqual(row["general_debt_balance_100m"], Decimal("70.170479"))
+        self.assertEqual(row["special_debt_balance_100m"], Decimal("50.520000"))
+        self.assertEqual(row["source_doc_id"], "SRC-OFFICIAL-DEBT-INNER-MONGOLIA-XILINGOL-2025")
+        self.assertEqual(row["source_grade"], "A1")
+        self.assertEqual(row["data_status"], "preliminary")
+        self.assertTrue(any(source["source_doc_id"] == "SRC-OFFICIAL-DEBT-INNER-MONGOLIA-XILINGOL-2025" for source in sources))
 
     def test_repository_maps_henan_2023_jiyuan_to_direct_county_row(self):
         city_master = [
