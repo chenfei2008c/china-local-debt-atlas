@@ -176,6 +176,58 @@ class RatingChartSecondaryTests(unittest.TestCase):
         self.assertEqual(row["source_grade"], "B2")
         self.assertTrue(any(source["source_doc_id"] == "SRC-SECONDARY-DEBT-HUBEI-2022-DIRECT-AGG" for source in sources))
 
+    def test_repository_contains_linxia_2019_official_total(self):
+        city_master = [
+            {
+                "city_id": "CN-622900",
+                "city_name_cn": "临夏回族自治州",
+                "province_name": "甘肃省",
+                "metric_year": "2019",
+            }
+        ]
+        facts, sources = province_debt_sources.extract_official_debt_facts(city_master)
+        row = facts[("CN-622900", "2019")]
+        self.assertEqual(row["statutory_debt_balance_100m"], Decimal("126.9"))
+        self.assertEqual(row["source_doc_id"], "SRC-OFFICIAL-DEBT-GANSU-LINXIA-2019")
+        self.assertEqual(row["source_grade"], "A2")
+        self.assertTrue(any(source["source_doc_id"] == "SRC-OFFICIAL-DEBT-GANSU-LINXIA-2019" for source in sources))
+
+    def test_repository_contains_gannan_2019_official_total(self):
+        city_master = [
+            {
+                "city_id": "CN-623000",
+                "city_name_cn": "甘南藏族自治州",
+                "province_name": "甘肃省",
+                "metric_year": "2019",
+            }
+        ]
+        facts, sources = province_debt_sources.extract_official_debt_facts(city_master)
+        row = facts[("CN-623000", "2019")]
+        self.assertEqual(row["statutory_debt_balance_100m"], Decimal("71.9536666278"))
+        self.assertEqual(row["general_debt_balance_100m"], Decimal("48.0529666278"))
+        self.assertEqual(row["special_debt_balance_100m"], Decimal("23.9007"))
+        self.assertEqual(row["source_doc_id"], "SRC-OFFICIAL-DEBT-GANSU-GANNAN-2019")
+        self.assertEqual(row["source_grade"], "A2")
+        source = next(source for source in sources if source["source_doc_id"] == "SRC-OFFICIAL-DEBT-GANSU-GANNAN-2019")
+        self.assertEqual(source["attachment_url"], "http://czj.gnzrmzf.gov.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1599680053&wbfileid=7754931")
+
+    def test_repository_contains_bayannur_2025_official_statutory_total(self):
+        city_master = [
+            {
+                "city_id": "CN-150800",
+                "city_name_cn": "巴彦淖尔市",
+                "province_name": "内蒙古自治区",
+                "metric_year": "2025",
+            }
+        ]
+        facts, sources = province_debt_sources.extract_official_debt_facts(city_master)
+        row = facts[("CN-150800", "2025")]
+        self.assertEqual(row["statutory_debt_balance_100m"], Decimal("736.92"))
+        self.assertEqual(row["source_doc_id"], "SRC-OFFICIAL-DEBT-INNER-MONGOLIA-BAYANNUR-2025")
+        self.assertEqual(row["source_grade"], "A2")
+        source = next(source for source in sources if source["source_doc_id"] == "SRC-OFFICIAL-DEBT-INNER-MONGOLIA-BAYANNUR-2025")
+        self.assertEqual(source["period_end"], "2025-12-31")
+
     def test_repository_maps_henan_2023_jiyuan_to_direct_county_row(self):
         city_master = [
             {
@@ -642,6 +694,20 @@ class RatingChartSecondaryTests(unittest.TestCase):
             self.assertEqual(rows[key]["source_doc_id"], source_doc_id)
             self.assertEqual(rows[key]["value_origin"], value_origin)
             self.assertEqual(rows[key]["source_grade"], source_grade)
+
+    def test_repository_contains_bingtuan_2025_near_year_end_published_balance(self):
+        path = Path(__file__).resolve().parents[1] / "raw" / "province_debt" / "secondary" / "rating_chart_city_debt_2018_2025.csv"
+        with path.open(encoding="utf-8", newline="") as handle:
+            rows = {
+                (row["city_id"], row["metric_year"]): row
+                for row in csv.DictReader(handle)
+                if (row["city_id"], row["metric_year"]) == ("CN-659000", "2025")
+            }
+        self.assertEqual(rows[('CN-659000', '2025')]["statutory_debt_balance_100m"], "1682.9845")
+        self.assertEqual(rows[('CN-659000', '2025')]["source_doc_id"], "SRC-SECONDARY-DEBT-XINJIANG-BINGTUAN-2025-12-11")
+        self.assertEqual(rows[('CN-659000', '2025')]["value_origin"], "published_text")
+        self.assertEqual(rows[('CN-659000', '2025')]["source_grade"], "B2")
+        self.assertEqual(rows[('CN-659000', '2025')]["period_end"], "2025-12-11")
 
     def test_repository_contains_three_ceic_statutory_debt_gap_rows(self):
         path = Path(__file__).resolve().parents[1] / "raw" / "province_debt" / "secondary" / "ceic_city_debt_2018_2025.csv"

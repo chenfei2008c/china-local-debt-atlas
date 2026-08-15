@@ -944,6 +944,31 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
 OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
     [
         {
+            "source_doc_id": "SRC-OFFICIAL-DEBT-INNER-MONGOLIA-BAYANNUR-2025",
+            "province_name": "内蒙古自治区",
+            "year": 2025,
+            "path": RAW_DIR / "2025" / "official" / "inner_mongolia_bayannur_2025_official.txt",
+            "text_path": RAW_DIR / "2025" / "official" / "inner_mongolia_bayannur_2025_official.txt",
+            "source_url": "https://czt.nmg.gov.cn/yjs/business/page/content?contentId=8535c55556c16f22151e47efa5ff2d01",
+            "document_title": "关于2025年地方政府性债务情况说明",
+            "publication_date": "2026-01-28",
+            "period_end": "2025-12-31",
+            "publisher": "巴彦淖尔市财政局（内蒙古自治区财政厅预决算公开平台）",
+            "publisher_level": "市级财政部门、自治区财政厅公开平台",
+            "source_grade": "A2",
+            "unit": "亿元",
+            "layout": "direct1",
+            "start": "单位：亿元；口径：巴彦淖尔市全市（含旗县区、开发区和口岸），不使用市本级行",
+            "end": None,
+            "table_name": "截至2025年末巴彦淖尔市全市法定债务余额",
+            "note": "官方预算公开附件《6.3关于巴彦淖尔市地方政府性债务情况说明.doc》明确披露：截至2025年末，全市法定债务余额736.92亿元；市本级156.02亿元，不能用市本级数替代全市数。",
+        },
+    ]
+)
+
+OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
+    [
+        {
             "source_doc_id": "SRC-OFFICIAL-DEBT-YUNNAN-YUXI-2018-FROM-2019-REPORT",
             "province_name": "云南省",
             "year": 2018,
@@ -1884,6 +1909,45 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
 
 OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
     [
+        {
+            "source_doc_id": "SRC-OFFICIAL-DEBT-GANSU-GANNAN-2019",
+            "province_name": "甘肃省",
+            "year": 2019,
+            "path": RAW_DIR / "2019" / "official" / "gansu_gannan_2019_official.txt",
+            "text_path": RAW_DIR / "2019" / "official" / "gansu_gannan_2019_official.txt",
+            "source_url": "http://czj.gnzrmzf.gov.cn/info/1296/15690.htm",
+            "attachment_url": "http://czj.gnzrmzf.gov.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1599680053&wbfileid=7754931",
+            "document_title": "2019年甘南州债务预决算公开（2019年债务限额及余额决算）",
+            "publication_date": "2020-03-11",
+            "publisher": "甘南州财政局",
+            "publisher_level": "州级财政部门",
+            "source_grade": "A2",
+            "unit": "亿元",
+            "layout": "total6",
+            "start": "单位：亿元；口径：甘南藏族自治州全州（不使用州本级行）",
+            "end": None,
+            "table_name": "2019年甘南藏族自治州地方政府债务限额及余额决算情况表",
+            "note": "甘南州财政局官方附件表4-1明确列示全州2019年债务余额决算数71.9536666278亿元，其中一般债务48.0529666278亿元、专项债务23.9007亿元；州本级行27.0104338713亿元不替代全州行。",
+        },
+        {
+            "source_doc_id": "SRC-OFFICIAL-DEBT-GANSU-LINXIA-2019",
+            "province_name": "甘肃省",
+            "year": 2019,
+            "path": RAW_DIR / "2019" / "official" / "gansu_linxia_2019_official.txt",
+            "text_path": RAW_DIR / "2019" / "official" / "gansu_linxia_2019_official.txt",
+            "source_url": "http://www.linxia.gov.cn/lxz/zwgk/zc/zcjd/bmjdzc/art/2022/art_9eaa38fde81941f790bc8b76fabb3cd3.html",
+            "document_title": "地方政府专项债券政策解读",
+            "publication_date": "2020-02-23",
+            "publisher": "临夏回族自治州人民政府",
+            "publisher_level": "州级政府",
+            "source_grade": "A2",
+            "unit": "亿元",
+            "layout": "direct1",
+            "start": "单位：亿元；口径：临夏州全州（不使用州本级行）",
+            "end": None,
+            "table_name": "2019年临夏州全州政府债务余额",
+            "note": "临夏州政府门户财政政策解读明确披露：2019年省财政厅核定临夏州政府债务限额139.36亿元、政府债务余额126.9亿元；接入全州口径，不使用州本级行。",
+        },
         {
             "source_doc_id": "SRC-OFFICIAL-DEBT-GANSU-LONGNAN-2024",
             "province_name": "甘肃省",
