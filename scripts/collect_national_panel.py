@@ -1253,6 +1253,66 @@ CITY_YEAR_FUND_SOURCES = (
         "page_count": "1",
         "note": "B2官方网页精确披露；报告明确以2025年12月月报数据作为执行数据，2025年全市政府性基金预算收入466850万元，折算为亿元。",
     },
+    {
+        "year": 2025,
+        "city_name": "大同市",
+        "city_id": "CN-140200",
+        "source_doc_id": "SRC-B2-DATONG-CITY-FUND-2025",
+        "url": "https://www.dt.gov.cn/dtszf/czjczyjs/202602/d228cbfb30e747a0b4d3062fd41aa5b7.shtml",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "datong_2025_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "datong_2025_budget_report_excerpt.txt",
+        "document_title": "关于大同市2025年全市和市本级预算执行情况与2026年全市和市本级预算（草案）的报告",
+        "publisher": "大同市人民政府",
+        "publisher_level": "市级政府门户",
+        "publication_date": "2026-02-05",
+        "source_grade": "B2",
+        "source_format": "html",
+        "pattern": r"2025年全市政府性基金预算收入完成([0-9．.]+)亿元",
+        "raw_unit": "亿元",
+        "document_type": "城市财政预算执行报告（官方网页）",
+        "page_count": "1",
+        "note": "B2官方网页精确披露；报告明确披露大同市2025年全市政府性基金预算收入44.74亿元，执行口径，不使用市本级数。",
+    },
+    {
+        "year": 2025,
+        "city_name": "吕梁市",
+        "city_id": "CN-141100",
+        "source_doc_id": "SRC-B2-LVLIANG-CITY-FUND-2025",
+        "url": "https://www.lvliang.gov.cn/llxxgk/zfxxgk/xxgkml/zjxx_21583/sjczyshsgjf/202602/t20260205_2014557.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "lvliang_2025_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "lvliang_2025_budget_report_excerpt.txt",
+        "document_title": "关于吕梁市2025年全市和市本级预算执行情况与2026年全市和市本级预算草案的报告",
+        "publisher": "吕梁市人民政府",
+        "publisher_level": "市级政府门户",
+        "publication_date": "2026-02-05",
+        "source_grade": "B2",
+        "source_format": "html",
+        "pattern": r"2025年全市政府性基金收入完成([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "document_type": "城市财政预算执行报告（官方网页）",
+        "page_count": "1",
+        "note": "B2官方网页精确披露；报告明确披露吕梁市2025年全市政府性基金收入21.62亿元，执行口径，不使用市本级数。",
+    },
+    {
+        "year": 2025,
+        "city_name": "平顶山市",
+        "city_id": "CN-410400",
+        "source_doc_id": "SRC-B2-PINGDINGSHAN-CITY-FUND-2025",
+        "url": "https://www.pds.gov.cn/contents/1378/463143.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "pingdingshan_2025_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "pingdingshan_2025_budget_report_excerpt.txt",
+        "document_title": "关于平顶山市2025年预算执行情况和2026年预算草案的报告",
+        "publisher": "平顶山市人民政府",
+        "publisher_level": "市级政府门户",
+        "publication_date": "2026-02-07",
+        "source_grade": "B2",
+        "source_format": "html",
+        "pattern": r"实际完成([0-9]+)万元，为调整预算的63\.9[％%]",
+        "raw_unit": "万元",
+        "document_type": "城市财政预算执行报告（官方网页）",
+        "page_count": "1",
+        "note": "B2官方网页精确披露；报告明确披露平顶山市2025年全市政府性基金预算收入实际完成702960万元，执行口径，折算为亿元。",
+    },
 )
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
@@ -1847,7 +1907,9 @@ def load_city_year_fund_sources() -> tuple[dict[tuple[str, str], dict[str, Any]]
             raise ValueError(
                 f"未能从{config['city_name']}{config['year']}年政府性基金来源提取全市收入"
             )
-        raw_value = Decimal(match.group(1).replace(",", ""))
+        raw_value = Decimal(
+            match.group(1).replace(",", "").replace("，", "").replace("．", ".")
+        )
         raw_unit = str(config["raw_unit"])
         normalized = raw_value if raw_unit == "亿元" else raw_value * D4
         year = str(config["year"])
