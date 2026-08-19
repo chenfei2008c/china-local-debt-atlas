@@ -1126,6 +1126,31 @@ NEXT8_2025_ECONOMIC_SOURCES = (
         },
         "note": "B2精确转载，页面标题为乌海市2025年统计公报，来源数据标注为乌海市统计局；经济和财政字段均为全市口径。",
     },
+    {
+        "city_name": "宝鸡市",
+        "city_id": "CN-610300",
+        "source_doc_id": "SRC-A2-BAOJI-CITY-ECONOMIC-2025",
+        "url": "https://www.baoji.gov.cn/sjgk/tjgb/tjgb/202606/t20260605_1275705.html",
+        "attachment_url": "https://www.baoji.gov.cn/sjgk/tjgb/tjgb/202606/t20260605_1275705.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "baoji_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "baoji_2025_statistical_bulletin_economic_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2025年宝鸡市国民经济和社会发展统计公报",
+        "publisher": "宝鸡市人民政府、宝鸡市统计局",
+        "publisher_level": "市级政府门户",
+        "publication_date": "2026-06-05",
+        "title_source": "html_statement_excerpt",
+        "document_type": "统计公报经济指标（官方网页）",
+        "mime_type": "text/html",
+        "source_grade": "A2",
+        "data_status": "preliminary",
+        "patterns": {
+            "gdp_current_100m": (r"地区生产总值([0-9.]+)亿元", "亿元"),
+            "gdp_real_growth_pct": (r"地区生产总值[0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
+        },
+        "note": "A2官方统计公报；公报注明财政数据来自宝鸡市财政局，经济部分为初步统计数；GDP为现价、增长速度为不变价，人口为年末全市常住人口。",
+    },
 )
 
 JIANGSU_CITY_FUND_SOURCES = (
@@ -1887,7 +1912,7 @@ def load_city_2025_fiscal_sources(
         city_values: dict[str, Any] = {
             "source_doc_id": config["source_doc_id"],
             "source_grade": str(config.get("source_grade") or "A2"),
-            "data_status": "execution",
+            "data_status": str(config.get("data_status") or "execution"),
             "source_locator": f"{text_path.relative_to(ROOT)}；城市={config['city_name']}；2025年全市预算执行正文/附表",
         }
         for field, (pattern, raw_unit) in config["patterns"].items():
@@ -1895,7 +1920,7 @@ def load_city_2025_fiscal_sources(
             if not match:
                 raise ValueError(f"未能从官方报告提取{config['city_name']}2025年{field}")
             raw_value = Decimal(match.group(1).replace(",", ""))
-            normalized = raw_value if raw_unit in {"亿元", "%"} else raw_value * D4
+            normalized = raw_value if raw_unit in {"亿元", "%", "万人"} else raw_value * D4
             negative_marker = str(config.get("negative_if", {}).get(field) or "")
             if negative_marker and negative_marker in match.group(0):
                 normalized = -normalized
@@ -2388,6 +2413,7 @@ def build_macro_rows(
             for field in (
                 "gdp_current_100m",
                 "gdp_real_growth_pct",
+                "resident_population_10k",
                 "general_public_revenue_100m",
                 "general_public_expenditure_100m",
                 "gov_fund_revenue_100m",
@@ -2397,7 +2423,7 @@ def build_macro_rows(
                     continue
                 row[field] = q2(value)
                 batch_lineage.append(_lineage_for_ningxia_city_fiscal(row, source, field, row[field]))
-            row["data_status"] = "execution"
+            row["data_status"] = str(source.get("data_status") or "execution")
             row["source_doc_id"] = str(source.get("source_doc_id", ""))
             source_grade = str(source.get("source_grade") or "A2")
             row["source_grade"] = source_grade
@@ -2508,7 +2534,7 @@ def build_macro_rows(
                 if row.get("data_status") in {None, "", "provisional", "not_collected"}:
                     row["data_status"] = "execution"
                 row["source_grade"] = fund_grade
-                row["collection_status"] = "needs_review"
+                row["collection_status"] = "extracted" if fund_grade in {"A1", "A2"} else "needs_review"
                 row["note"] = (
                     str(row.get("note") or "")
                     + ("；" if row.get("note") else "")
@@ -2737,6 +2763,7 @@ def _lineage_for_ningxia_city_fiscal(
     labels = {
         "gdp_current_100m": "地区生产总值",
         "gdp_real_growth_pct": "地区生产总值实际增速",
+        "resident_population_10k": "年末常住人口",
         "general_public_revenue_100m": "一般公共预算收入",
         "general_public_expenditure_100m": "一般公共预算支出",
         "gov_fund_revenue_100m": "政府性基金预算收入",
@@ -2745,7 +2772,7 @@ def _lineage_for_ningxia_city_fiscal(
     source_grade = str(source.get("source_grade") or "A2")
     is_high_grade_official = source_grade in {"A1", "A2"}
     raw_unit = str(source.get(f"{field}_raw_unit", "亿元"))
-    is_economic = field in {"gdp_current_100m", "gdp_real_growth_pct"}
+    is_economic = field in {"gdp_current_100m", "gdp_real_growth_pct", "resident_population_10k"}
     return _lineage_base(
         row,
         field,

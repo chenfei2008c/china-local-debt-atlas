@@ -702,14 +702,19 @@ class NationalPanelTests(unittest.TestCase):
     def test_next8_2025_city_economic_batch_extracts_wuhai_statistics(self):
         values, sources = load_next8_2025_city_economic()
 
-        self.assertEqual(len(values), 1)
+        self.assertEqual(len(values), 2)
         self.assertEqual(values["CN-150300"]["gdp_current_100m"], Decimal("540.75"))
         self.assertEqual(values["CN-150300"]["gdp_real_growth_pct"], Decimal("-1.40"))
         self.assertEqual(values["CN-150300"]["general_public_revenue_100m"], Decimal("86.06"))
         self.assertEqual(values["CN-150300"]["general_public_expenditure_100m"], Decimal("132.40"))
         self.assertEqual(values["CN-150300"]["source_grade"], "B2")
-        self.assertEqual(len(sources), 1)
-        self.assertEqual(sources[0]["source_grade"], "B2")
+        self.assertEqual(values["CN-610300"]["gdp_current_100m"], Decimal("2648.87"))
+        self.assertEqual(values["CN-610300"]["gdp_real_growth_pct"], Decimal("6.00"))
+        self.assertEqual(values["CN-610300"]["resident_population_10k"], Decimal("321.56"))
+        self.assertEqual(values["CN-610300"]["source_grade"], "A2")
+        self.assertEqual(values["CN-610300"]["data_status"], "preliminary")
+        self.assertEqual(len(sources), 2)
+        self.assertEqual({source["source_grade"] for source in sources}, {"A2", "B2"})
 
         city = {
             "city_id": "CN-150300",
@@ -731,6 +736,27 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(rows[0]["general_public_revenue_100m"], Decimal("86.06"))
         self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("132.40"))
         self.assertTrue(all(item["source_doc_id"] == "SRC-B2-INNER-MONGOLIA-CITY-STATISTICAL-WUHAI-2025" for item in lineage))
+
+        baoji_city = {
+            "city_id": "CN-610300",
+            "admin_code_6": "610300",
+            "city_name_cn": "宝鸡市",
+            "province_code": "61",
+            "province_name": "陕西省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        baoji_rows, baoji_lineage = build_macro_rows(
+            [baoji_city], [], {}, {}, next8_2025_economic=values,
+        )
+        self.assertEqual(baoji_rows[0]["source_grade"], "A2")
+        self.assertEqual(baoji_rows[0]["data_status"], "preliminary")
+        self.assertEqual(baoji_rows[0]["collection_status"], "extracted")
+        self.assertEqual(baoji_rows[0]["gdp_current_100m"], Decimal("2648.87"))
+        self.assertEqual(baoji_rows[0]["gdp_real_growth_pct"], Decimal("6.00"))
+        self.assertEqual(baoji_rows[0]["resident_population_10k"], Decimal("321.56"))
+        self.assertTrue(all(item["source_doc_id"] == "SRC-A2-BAOJI-CITY-ECONOMIC-2025" for item in baoji_lineage))
 
     def test_jiangsu_city_fund_batch_extracts_2023_and_2024_whole_city_tables(self):
         values, sources = load_jiangsu_city_fund_sources()
@@ -834,7 +860,7 @@ class NationalPanelTests(unittest.TestCase):
             ],
         )
         self.assertEqual({row["source_grade"] for row in rows}, {"A1", "A2", "B2"})
-        self.assertEqual({row["collection_status"] for row in rows}, {"needs_review"})
+        self.assertEqual({row["collection_status"] for row in rows}, {"extracted", "needs_review"})
         self.assertEqual({item["target_field"] for item in lineage}, {"gov_fund_revenue_100m"})
 
 
