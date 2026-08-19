@@ -198,6 +198,47 @@ class NationalPanelTests(unittest.TestCase):
         )
         self.assertTrue(all(item["source_doc_id"] == "SRC-GD-CITY-GDP-2025" for item in lineage))
 
+    def test_guangdong_2025_official_fiscal_batch_is_execution_and_lineaged(self):
+        city = {
+            "city_id": "CN-440100",
+            "admin_code_6": "440100",
+            "city_name_cn": "广州市",
+            "province_code": "44",
+            "province_name": "广东省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        gd_2025_gdp = {
+            "CN-440100": {
+                "gdp_current_100m": "32039.46",
+                "gdp_real_growth_pct": "4.0",
+            }
+        }
+        gd_2025_fiscal = {
+            "CN-440100": {
+                "general_public_revenue_100m": "2184.8219",
+                "general_public_expenditure_100m": "2801.5394",
+                "general_public_revenue_100m_raw_10k": "21848219",
+                "general_public_expenditure_100m_raw_10k": "28015394",
+            }
+        }
+
+        rows, lineage = build_macro_rows([city], [], {}, {}, gd_2025_gdp, gd_2025_fiscal)
+
+        self.assertEqual(rows[0]["general_public_revenue_100m"], Decimal("2184.82"))
+        self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("2801.54"))
+        self.assertEqual(rows[0]["data_status"], "execution")
+        self.assertIn("SRC-GD-CITY-FISCAL-2025", rows[0]["source_doc_id"])
+        fiscal_fields = {
+            "general_public_revenue_100m",
+            "general_public_expenditure_100m",
+        }
+        self.assertEqual(
+            {item["target_field"] for item in lineage if item["source_doc_id"] == "SRC-GD-CITY-FISCAL-2025"},
+            fiscal_fields,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

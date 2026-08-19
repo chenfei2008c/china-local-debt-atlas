@@ -8,6 +8,33 @@ import re
 from typing import Any
 
 
+GUANGDONG_CITY_NAMES = (
+    "广州市",
+    "深圳市",
+    "珠海市",
+    "汕头市",
+    "佛山市",
+    "韶关市",
+    "河源市",
+    "梅州市",
+    "惠州市",
+    "汕尾市",
+    "东莞市",
+    "中山市",
+    "江门市",
+    "阳江市",
+    "湛江市",
+    "茂名市",
+    "肇庆市",
+    "清远市",
+    "潮州市",
+    "揭阳市",
+    "云浮市",
+)
+
+_BUDGET_NUMBER_RE = re.compile(r"-?\d[\d,]*(?:\.\d+)?%?")
+
+
 class _TableParser(HTMLParser):
     """提取 HTML 中所有表格行，保留单元格文本顺序。"""
 
@@ -77,5 +104,38 @@ def parse_guangdong_city_gdp_html(html_text: str) -> dict[str, dict[str, Any]]:
         result[city_name] = {
             "gdp_current_100m": gdp,
             "gdp_real_growth_pct": growth,
+        }
+    return result
+
+
+def parse_guangdong_city_budget_page(page_text: str, field: str) -> dict[str, dict[str, Any]]:
+    """解析广东省财政厅地市一般公共预算执行表。
+
+    表中各市行的前三个数字依次为年初预算数、调整预算数、执行数，原始单位为
+    万元。只接受广东省 21 个地级市白名单，避免把区域合计、说明文字或横琴合作
+    区行误识别为地级市；返回值同时保留原始执行数，供字段血缘引用。
+    """
+
+    if field not in {"general_public_revenue_100m", "general_public_expenditure_100m"}:
+        raise ValueError(f"不支持的广东地市财政字段: {field}")
+
+    result: dict[str, dict[str, Any]] = {}
+    for raw_line in page_text.splitlines():
+        compact = re.sub(r"\s+", "", raw_line)
+        city_name = next((name for name in GUANGDONG_CITY_NAMES if compact.startswith(name)), None)
+        if city_name is None:
+            continue
+        suffix = raw_line
+        for character in city_name:
+            suffix = re.sub(r"^\s*" + re.escape(character), "", suffix, count=1)
+        tokens = _BUDGET_NUMBER_RE.findall(suffix)
+        if len(tokens) < 3:
+            continue
+        execution_raw = _as_decimal(tokens[2])
+        if execution_raw is None:
+            continue
+        result[city_name] = {
+            field: execution_raw / Decimal("10000"),
+            f"{field}_raw_10k": execution_raw,
         }
     return result

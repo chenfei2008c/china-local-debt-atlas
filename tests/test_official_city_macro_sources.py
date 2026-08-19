@@ -1,7 +1,10 @@
 import unittest
 from decimal import Decimal
 
-from scripts.official_city_macro_sources import parse_guangdong_city_gdp_html
+from scripts.official_city_macro_sources import (
+    parse_guangdong_city_budget_page,
+    parse_guangdong_city_gdp_html,
+)
 
 
 class OfficialCityMacroSourceTests(unittest.TestCase):
@@ -33,6 +36,30 @@ class OfficialCityMacroSourceTests(unittest.TestCase):
         self.assertNotIn("全省", result)
         self.assertEqual(result["珠海市"]["gdp_current_100m"], Decimal("4573.10"))
         self.assertEqual(result["珠海市"]["gdp_real_growth_pct"], Decimal("2.7"))
+
+    def test_parse_guangdong_city_budget_execution_page(self):
+        page = """
+        2025年全省各市一般公共预算收入执行情况表
+        广 州 市 19,944,566 21,816,833 21,848,219 100.1% 103.1%
+        深 圳 市 40,653,094 40,765,132 41,637,704 102.1% 106.4%
+        珠三角核心区 94,670,350 99,436,220 100,184,244 100.8% 104.0%
+        """
+
+        result = parse_guangdong_city_budget_page(page, "general_public_revenue_100m")
+
+        self.assertEqual(result["广州市"]["general_public_revenue_100m"], Decimal("2184.8219"))
+        self.assertEqual(result["深圳市"]["general_public_revenue_100m"], Decimal("4163.7704"))
+        self.assertNotIn("珠三角核心区", result)
+
+    def test_parse_guangdong_city_budget_execution_expenditure(self):
+        page = """
+        2025年全省各市一般公共预算支出执行情况表
+        广 州 市 27,882,116 28,789,239 28,015,394 97.3% 100.9%
+        """
+
+        result = parse_guangdong_city_budget_page(page, "general_public_expenditure_100m")
+
+        self.assertEqual(result["广州市"]["general_public_expenditure_100m"], Decimal("2801.5394"))
 
 
 if __name__ == "__main__":

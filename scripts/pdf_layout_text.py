@@ -16,7 +16,7 @@ OBJECT_RE = re.compile(rb"(\d+)\s+(\d+)\s+obj\b(.*?)(?:endobj)", re.S)
 TOKEN_RE = re.compile(
     r"/(\w+)\s+[\d.]+\s+Tf|"
     r"([\d.-]+)\s+0\s+0\s+([\d.-]+)\s+([\d.-]+)\s+([\d.-]+)\s+Tm|"
-    r"([\d.-]+)\s+([\d.-]+)\s+TD|"
+    r"([\d.-]+)\s+([\d.-]+)\s+T[dD]|"
     r"\[(.*?)\]\s*TJ|"
     r"<([0-9A-Fa-f]+)>\s*Tj|\((.*?)\)\s*Tj",
     re.S,
