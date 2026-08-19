@@ -72,17 +72,31 @@ def _cmap(objects: dict[int, bytes], object_number: int) -> dict[int, str]:
         return {}
     mapping: dict[int, str] = {}
     for block in re.findall(r"beginbfchar(.*?)endbfchar", text, re.S):
-        for source, target in re.findall(r"<([0-9A-Fa-f]+)>\s+<([0-9A-Fa-f]+)>", block):
+        for source, target in re.findall(r"<([0-9A-Fa-f]+)>\s*<([0-9A-Fa-f]+)>", block):
             try:
                 mapping[int(source, 16)] = bytes.fromhex(target).decode("utf-16-be")
             except UnicodeDecodeError:
                 continue
     for block in re.findall(r"beginbfrange(.*?)endbfrange", text, re.S):
         for start, end, target in re.findall(
-            r"<([0-9A-Fa-f]+)>\s+<([0-9A-Fa-f]+)>\s+<([0-9A-Fa-f]+)>", block
+            r"<([0-9A-Fa-f]+)>\s*<([0-9A-Fa-f]+)>\s*<([0-9A-Fa-f]+)>", block
         ):
             for code in range(int(start, 16), int(end, 16) + 1):
-                mapping[code] = chr(int(target, 16) + code - int(start, 16))
+                offset = code - int(start, 16)
+                if len(target) > 4:
+                    # PDF CMaps may encode one destination character as a
+                    # UTF-16BE surrogate pair, e.g. ``dbc0ddb0``.
+                    if offset != 0:
+                        continue
+                    try:
+                        mapping[code] = bytes.fromhex(target).decode("utf-16-be")
+                    except UnicodeDecodeError:
+                        continue
+                else:
+                    try:
+                        mapping[code] = chr(int(target, 16) + offset)
+                    except ValueError:
+                        continue
     return mapping
 
 
@@ -114,13 +128,17 @@ def extract_pdf_text(path: Path) -> str:
     objects = _objects(path.read_bytes())
     mappings: dict[int, dict[int, str]] = {}
     for object_number, body in objects.items():
-        match = re.search(rb"/Subtype/Type0.*?/ToUnicode\s+(\d+)\s+0\s+R", body, re.S)
+        match = re.search(
+            rb"/Subtype\s*/\s*Type0.*?/ToUnicode\s+(\d+)\s+0\s+R",
+            body,
+            re.S,
+        )
         if match:
             mappings[object_number] = _cmap(objects, int(match.group(1)))
 
     pages: list[tuple[int, int, dict[str, int]]] = []
     for object_number, body in sorted(objects.items()):
-        if b"/Type/Page" not in body or b"/Type/Pages" in body:
+        if not re.search(rb"/Type\s*/Page\b", body) or re.search(rb"/Type\s*/Pages\b", body):
             continue
         content_match = re.search(rb"/Contents\s+(\d+)\s+0\s+R", body)
         resource_match = re.search(rb"/Resources\s+(\d+)\s+0\s+R", body)

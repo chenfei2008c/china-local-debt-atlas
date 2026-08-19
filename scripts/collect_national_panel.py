@@ -5,7 +5,7 @@
 1. 下载并保存年度行政区划原始文件；
 2. 生成年度城市主表；
 3. 读取公开研究型城市面板作为暂存/临时宏观来源；
-4. 合并已经完成的广东省 2024 年官方试跑结果、2025 年官方地市 GDP/财政批次及宁夏四市 2025 年财政执行批次；
+4. 合并已经完成的广东省 2024 年官方试跑结果、2025 年官方地市 GDP/财政批次、宁夏四市及山东济南/青岛 2025 年财政执行批次；
 5. 以 Decimal 计算派生指标并写出来源、字段血缘、公式和采集状态。
 
 没有公开且可验证的数值保持为空，并进入 collection_status；不得用 0 代替缺失。
@@ -204,6 +204,46 @@ NINGXIA_2025_FISCAL_SOURCES = (
             "gov_fund_revenue_100m": (r"全市地方政府性基金预算收入完成([0-9.]+)亿元", "亿元"),
         },
         "note": "官方预算公开报告正文逐项披露全市口径 2025 年执行数；不使用市本级数或 2026 年预算草案数。",
+    },
+)
+
+SHANDONG_2025_FISCAL_SOURCES = (
+    {
+        "city_name": "济南市",
+        "city_id": "CN-370100",
+        "source_doc_id": "SRC-SHANDONG-CITY-FISCAL-JINAN-2025",
+        "url": "https://jncz.jinan.gov.cn/col/col48336/art/2026/art_95d35f3c8a1e47469fb8b5fa3cf63f50.html",
+        "attachment_url": "https://jnns.jinan.gov.cn/cms_files/filemanager/1668/attach/20262/cbbf22b3087f4fa89ef76c2891f3272f.pdf?fileName=%E5%85%B3%E4%BA%8E%E6%B5%8E%E5%8D%97%E5%B8%822025%E5%B9%B4%E9%A2%84%E7%AE%97%E6%89%A7%E8%A1%8C%E6%83%85%E5%86%B5%E4%B8%8E2026%E5%B9%B4%E9%A2%84%E7%AE%97%E8%8D%89%E6%A1%88%E7%9A%84%E6%8A%A5%E5%91%8A.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "jinan_2025_budget_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "jinan_2025_budget_report.txt",
+        "document_title": "关于济南市2025年预算执行情况与2026年预算草案的报告及附表",
+        "publisher": "济南市财政局",
+        "publication_date": "2026-02-10",
+        "patterns": {
+            "general_public_revenue_100m": (r"全市一般公共预算收入完成([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"全市一般公共预算支出([0-9.]+)亿元", "亿元"),
+            "gov_fund_revenue_100m": (r"全市政府性基金预算收入完成([0-9.]+)亿元", "亿元"),
+        },
+        "note": "济南市财政局官方预算执行报告披露全市口径 2025 年执行数；不使用市级或 2026 年预算草案数。",
+    },
+    {
+        "city_name": "青岛市",
+        "city_id": "CN-370200",
+        "source_doc_id": "SRC-SHANDONG-CITY-FISCAL-QINGDAO-2025",
+        "url": "https://www.qingdao.gov.cn/zwgk/zdgk/czxx/szfyjs/zxqk/202601/t20260130_10495657.shtml",
+        "attachment_url": "https://www.qingdao.gov.cn/zwgk/zdgk/czxx/szfyjs/zxqk/202601/P020260130338555114519.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "qingdao_2025_budget_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "qingdao_2025_budget_report_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "关于青岛市2025年预算执行情况和2026年预算草案的报告",
+        "publisher": "青岛市财政局",
+        "publication_date": "2026-01-30",
+        "patterns": {
+            "general_public_revenue_100m": (r"全市一般公共预算收入完成([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"全市一般公共预算支出完成([0-9.]+)亿元", "亿元"),
+            "gov_fund_revenue_100m": (r"全市政府性基金预算收入完成([0-9.]+)亿元", "亿元"),
+        },
+        "note": "青岛市财政局官方预算执行报告披露全市口径 2025 年执行数；不使用市级或 2026 年预算草案数。",
     },
 )
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
@@ -632,16 +672,23 @@ def load_guangdong_2025_city_fund() -> tuple[dict[str, dict[str, Any]], list[dic
     return values, sources
 
 
-def load_ningxia_2025_city_fiscal() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
-    """读取宁夏四市 2025 年官方预算执行报告的全市财政字段。"""
+def load_city_2025_fiscal_sources(
+    configs: Iterable[Mapping[str, Any]],
+) -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取一批城市 2025 年官方预算执行报告的全市财政字段。"""
 
     values: dict[str, dict[str, Any]] = {}
     sources: list[dict[str, Any]] = []
-    for config in NINGXIA_2025_FISCAL_SOURCES:
+    for config in configs:
         pdf_path = Path(config["path"])
         text_path = Path(config["text_path"])
-        content_hash = ensure_download(str(config["url"]), pdf_path)
-        if not text_path.exists() or text_path.stat().st_size == 0:
+        attachment_url = str(config.get("attachment_url") or config["url"])
+        content_hash = ensure_download(attachment_url, pdf_path)
+        # 兼容此前 PDF 解码器返回仅含分页符的短文本；低于该阈值时重新解析附件。
+        # 对已人工核对并保留官方原文摘录的来源，不能用 PDF 解码结果覆盖摘录。
+        if config.get("text_is_curated"):
+            report_text = text_path.read_text(encoding="utf-8")
+        elif not text_path.exists() or text_path.stat().st_size < 1000:
             report_text = extract_pdf_text(pdf_path)
             text_path.write_text(report_text, encoding="utf-8")
         else:
@@ -674,9 +721,9 @@ def load_ningxia_2025_city_fiscal() -> tuple[dict[str, dict[str, Any]], list[dic
                 "document_type": "官方城市财政预算执行报告",
                 "source_url": config["url"],
                 "landing_page_url": config["url"],
-                "attachment_url": config["url"],
+                "attachment_url": attachment_url,
                 "canonical_url": config["url"],
-                "final_resolved_url": config["url"],
+                "final_resolved_url": attachment_url,
                 "file_name": pdf_path.name,
                 "mime_type": "application/pdf",
                 "publication_date": config["publication_date"],
@@ -696,6 +743,18 @@ def load_ningxia_2025_city_fiscal() -> tuple[dict[str, dict[str, Any]], list[dic
             }
         )
     return values, sources
+
+
+def load_ningxia_2025_city_fiscal() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取宁夏四市 2025 年官方预算执行报告的全市财政字段。"""
+
+    return load_city_2025_fiscal_sources(NINGXIA_2025_FISCAL_SOURCES)
+
+
+def load_shandong_2025_city_fiscal() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取济南、青岛 2025 年官方预算执行报告的全市财政字段。"""
+
+    return load_city_2025_fiscal_sources(SHANDONG_2025_FISCAL_SOURCES)
 
 
 def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
@@ -792,6 +851,7 @@ def build_macro_rows(
     gd_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
     gd_2025_fund: Mapping[str, Mapping[str, Any]] | None = None,
     ningxia_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
+    shandong_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     panel_by_key = {(str(r.get("city_code", "")).zfill(6), int(r["year"])): r for r in panel_rows if r.get("year", "").isdigit()}
     lineage: list[dict[str, Any]] = []
@@ -802,6 +862,8 @@ def build_macro_rows(
     gd_2025_fiscal = gd_2025_fiscal or {}
     gd_2025_fund = gd_2025_fund or {}
     ningxia_2025_fiscal = ningxia_2025_fiscal or {}
+    shandong_2025_fiscal = shandong_2025_fiscal or {}
+    city_2025_fiscal = {**ningxia_2025_fiscal, **shandong_2025_fiscal}
     for city in city_master:
         year = int(city["metric_year"])
         row = _macro_base(city, year)
@@ -895,8 +957,8 @@ def build_macro_rows(
                 if fiscal_source or fund_source
                 else "已接入广东省统计局 2025 年各市 GDP 初步核算表；GDP 与实际增速为官方 A2 值，财政和政府性基金字段仍待补齐。"
             )
-        elif year == 2025 and city["city_id"] in ningxia_2025_fiscal:
-            source = ningxia_2025_fiscal[city["city_id"]]
+        elif year == 2025 and city["city_id"] in city_2025_fiscal:
+            source = city_2025_fiscal[city["city_id"]]
             for field in (
                 "general_public_revenue_100m",
                 "general_public_expenditure_100m",
@@ -1745,6 +1807,7 @@ def main() -> None:
     gd_2025_fiscal_by_name, gd_2025_fiscal_source = load_guangdong_2025_city_fiscal()
     gd_2025_fund_by_name, gd_2025_fund_sources = load_guangdong_2025_city_fund()
     ningxia_2025_fiscal, ningxia_2025_fiscal_sources = load_ningxia_2025_city_fiscal()
+    shandong_2025_fiscal, shandong_2025_fiscal_sources = load_shandong_2025_city_fiscal()
     gd_2025_gdp = {
         city["city_id"]: gd_2025_by_name[city["city_name_cn"]]
         for city in city_master
@@ -1770,6 +1833,7 @@ def main() -> None:
         gd_2025_fiscal,
         gd_2025_fund,
         ningxia_2025_fiscal,
+        shandong_2025_fiscal,
     )
     new_fiscal_lineage = [
         item
@@ -1892,6 +1956,7 @@ def main() -> None:
             gd_2025_fiscal_source,
             *gd_2025_fund_sources,
             *ningxia_2025_fiscal_sources,
+            *shandong_2025_fiscal_sources,
         ],
         EVIDENCE_SOURCE_DOCUMENTS,
     )
