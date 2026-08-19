@@ -16,6 +16,7 @@ from scripts.collect_national_panel import (
     load_next2_2025_city_fiscal,
     load_next3_2025_city_fiscal,
     load_next4_2025_city_fiscal,
+    load_next5_2025_city_fiscal,
     load_next_2025_city_fiscal,
     load_shandong_2025_city_fiscal,
     order_calculation_rows_for_lineage,
@@ -572,6 +573,49 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("2520.61"))
         self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("1453.81"))
         self.assertEqual(rows[0]["fund_revenue_dependence_pct"], Decimal("45.48"))
+        self.assertTrue(all("B2" not in item["selection_reason"] for item in lineage))
+
+    def test_next5_2025_city_fiscal_batch_extracts_five_city_sources(self):
+        values, sources = load_next5_2025_city_fiscal()
+
+        expected = {
+            "CN-610100": ("979.35", "1513.02", None, "A2"),
+            "CN-460100": ("253.80", "336.74", None, "B2"),
+            "CN-640100": ("209.70", "440.75", None, "A2"),
+            "CN-650100": ("409.23", "569.06", "145.24", "A2"),
+            "CN-530100": ("575.00", "843.47", None, "B2"),
+        }
+        self.assertEqual(len(values), 5)
+        for city_id, (revenue, expenditure, fund_revenue, grade) in expected.items():
+            self.assertEqual(values[city_id]["general_public_revenue_100m"], Decimal(revenue))
+            self.assertEqual(values[city_id]["general_public_expenditure_100m"], Decimal(expenditure))
+            self.assertEqual(values[city_id]["source_grade"], grade)
+            if fund_revenue is None:
+                self.assertNotIn("gov_fund_revenue_100m", values[city_id])
+            else:
+                self.assertEqual(values[city_id]["gov_fund_revenue_100m"], Decimal(fund_revenue))
+        self.assertEqual(len(sources), 5)
+        self.assertEqual({source["source_grade"] for source in sources}, {"A2", "B2"})
+
+        city = {
+            "city_id": "CN-650100",
+            "admin_code_6": "650100",
+            "city_name_cn": "乌鲁木齐市",
+            "province_code": "65",
+            "province_name": "新疆维吾尔自治区",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        rows, lineage = build_macro_rows(
+            [city], [], {}, {}, next5_2025_fiscal=values,
+        )
+        self.assertEqual(rows[0]["source_grade"], "A2")
+        self.assertEqual(rows[0]["collection_status"], "extracted")
+        self.assertEqual(rows[0]["general_public_revenue_100m"], Decimal("409.23"))
+        self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("569.06"))
+        self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("145.24"))
+        self.assertEqual(rows[0]["fund_revenue_dependence_pct"], Decimal("26.19"))
         self.assertTrue(all("B2" not in item["selection_reason"] for item in lineage))
 
 
