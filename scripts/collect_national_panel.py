@@ -765,6 +765,9 @@ NEXT5_2025_FISCAL_SOURCES = (
         "mime_type": "application/pdf",
         "source_grade": "A2",
         "patterns": {
+            "gdp_current_100m": (r"地区生产总值([0-9.]+)亿元，按不变价格计算，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"地区生产总值[0-9.]+亿元，按不变价格计算，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末常住人口([0-9.]+)万人", "万人"),
             "general_public_revenue_100m": (r"全年一般公共预算收入\s*([0-9.]+)\s*亿元", "亿元"),
             "general_public_expenditure_100m": (r"一般公共预算支出\s*([0-9.]+)\s*亿元", "亿元"),
         },
@@ -969,6 +972,9 @@ NEXT6_2025_FISCAL_SOURCES = (
         "mime_type": "application/pdf",
         "source_grade": "B2",
         "patterns": {
+            "gdp_current_100m": (r"全市实现地区生产总值([0-9.]+)亿元，按不变价计算，同比增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"地区生产总值[0-9.]+亿元，按不变价计算，同比增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"全市常住人口([0-9.]+)万人", "万人"),
             "general_public_revenue_100m": (r"地方一般公共预算收入完成([0-9.]+)亿元", "亿元"),
             "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
         },
@@ -992,6 +998,9 @@ NEXT6_2025_FISCAL_SOURCES = (
         "mime_type": "application/pdf",
         "source_grade": "B2",
         "patterns": {
+            "gdp_current_100m": (r"全年实现地区生产总值([0-9.]+)亿元，按不变价格计算，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"地区生产总值[0-9.]+亿元，按不变价格计算，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
             "general_public_revenue_100m": (r"完成一般公共预算收入([0-9.]+)亿元", "亿元"),
             "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
         },
@@ -1070,6 +1079,7 @@ NEXT7_2025_FISCAL_SOURCES = (
         "patterns": {
             "gdp_current_100m": (r"地区生产总值为([0-9.]+)亿元", "亿元"),
             "gdp_real_growth_pct": (r"地区生产总值为[0-9.]+亿元，按不变价格计算，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
             "general_public_revenue_100m": (r"地方一般公共预算收入([0-9.]+)亿元", "亿元"),
             "general_public_expenditure_100m": (r"全市一般公共预算支出([0-9.]+)亿元", "亿元"),
         },
