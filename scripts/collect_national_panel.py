@@ -5,7 +5,7 @@
 1. 下载并保存年度行政区划原始文件；
 2. 生成年度城市主表；
 3. 读取公开研究型城市面板作为暂存/临时宏观来源；
-4. 合并已经完成的广东省 2024 年官方试跑结果及 2025 年官方地市 GDP 批次；
+4. 合并已经完成的广东省 2024 年官方试跑结果、2025 年官方地市 GDP/财政批次及宁夏四市 2025 年财政执行批次；
 5. 以 Decimal 计算派生指标并写出来源、字段血缘、公式和采集状态。
 
 没有公开且可验证的数值保持为空，并进入 collection_status；不得用 0 代替缺失。
@@ -132,6 +132,80 @@ GD_CITY_FUND_SOURCES = (
     },
 )
 CITY_FUND_SOURCE_IDS = {item["source_doc_id"] for item in GD_CITY_FUND_SOURCES}
+
+# 宁夏四市 2025 年预算执行报告同时包含全市财政收支和政府性基金收入。
+# 这些报告此前已作为债务来源归档；本批以独立来源 ID 登记宏观字段，避免把
+# 债务字段和财政字段混成同一条字段血缘。
+NINGXIA_2025_FISCAL_SOURCES = (
+    {
+        "city_name": "银川市",
+        "city_id": "CN-640100",
+        "source_doc_id": "SRC-NINGXIA-CITY-FISCAL-YINCHUAN-2025",
+        "url": "https://www.yinchuan.gov.cn/xxgk/bmxxgkml/sczj/xxgkml_2101/czyjsjsgjf_2119/zfys/202602/t20260212_5171239.html",
+        "path": RAW_DIR / "province_debt" / "2025" / "official" / "yinchuan_2025.pdf",
+        "text_path": RAW_DIR / "province_debt" / "2025" / "official" / "yinchuan_2025.txt",
+        "document_title": "2025年银川市及市本级预算执行情况和2026年银川市及市本级预算草案的报告",
+        "publisher": "银川市财政局",
+        "publication_date": "2026-02-12",
+        "patterns": {
+            "general_public_revenue_100m": (r"全市一般公共预算收入(?:完成)?([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"全市一般公共预算支出完成([0-9.]+)亿元", "亿元"),
+            "gov_fund_revenue_100m": (r"全市政府性基金预算收入完成([0-9.]+)亿元", "亿元"),
+        },
+        "note": "官方预算执行报告正文逐项披露全市口径 2025 年一般公共预算收入、支出和政府性基金预算收入；执行数，不使用市本级数或 2026 年预算草案数。",
+    },
+    {
+        "city_name": "石嘴山市",
+        "city_id": "CN-640200",
+        "source_doc_id": "SRC-NINGXIA-CITY-FISCAL-SHIZUISHAN-2025",
+        "url": "https://www.shizuishan.gov.cn/zwgk/zfxxgkml/czyjsgk/zfys/2026df/202601/P020260206403630063012.pdf",
+        "path": RAW_DIR / "province_debt" / "2025" / "official" / "shizuishan_2025.pdf",
+        "text_path": RAW_DIR / "province_debt" / "2025" / "official" / "shizuishan_2025.txt",
+        "document_title": "关于2025年全市及市本级预算执行情况和2026年全市及市本级预算（草案）的报告",
+        "publisher": "石嘴山市财政局",
+        "publication_date": "2026-01-29",
+        "patterns": {
+            "general_public_revenue_100m": (r"全市一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"全市一般公共预算支出([0-9.]+)亿元", "亿元"),
+            "gov_fund_revenue_100m": (r"全市政府性基金预算收入([0-9.]+)亿元", "亿元"),
+        },
+        "note": "官方预算执行报告正文逐项披露全市口径 2025 年一般公共预算收入、支出和政府性基金预算收入；执行数，不使用市本级数或 2026 年预算草案数。",
+    },
+    {
+        "city_name": "吴忠市",
+        "city_id": "CN-640300",
+        "source_doc_id": "SRC-NINGXIA-CITY-FISCAL-WUZHONG-2025",
+        "url": "https://www.wuzhong.gov.cn/xxgk/zfxxgkml/yjsgkqk/zfys/2026n/202602/P020260204632187152760.pdf",
+        "path": RAW_DIR / "province_debt" / "2025" / "official" / "wuzhong_2025.pdf",
+        "text_path": RAW_DIR / "province_debt" / "2025" / "official" / "wuzhong_2025.txt",
+        "document_title": "吴忠市2026年政府预算公开（2025年预算执行情况）",
+        "publisher": "吴忠市财政局",
+        "publication_date": "2026-02-04",
+        "patterns": {
+            "general_public_revenue_100m": (r"2025年，全市一般公共预算收入完成([0-9,]+)万元", "万元"),
+            "general_public_expenditure_100m": (r"2025年[，,]?全市一般公共预算支出完成([0-9,]+)万元", "万元"),
+            "gov_fund_revenue_100m": (r"全市政府性基金收入完成([0-9,]+)万元", "万元"),
+        },
+        "note": "官方预算公开报告附表/说明逐项披露全市口径 2025 年精确执行数；原始单位为万元，统一换算为亿元，不使用正文四舍五入值或市本级数。",
+    },
+    {
+        "city_name": "中卫市",
+        "city_id": "CN-640500",
+        "source_doc_id": "SRC-NINGXIA-CITY-FISCAL-ZHONGWEI-2025",
+        "url": "https://www.nxzw.gov.cn/zwgk/bmxxgkml/sczj/fdzdgknr_49463/ysjsxx_49468/zfys/202602/P020260323561503366266.pdf",
+        "path": RAW_DIR / "province_debt" / "2025" / "official" / "zhongwei_2025.pdf",
+        "text_path": RAW_DIR / "province_debt" / "2025" / "official" / "zhongwei_2025.txt",
+        "document_title": "中卫市2026年政府预算信息公开（2025年预算执行情况）",
+        "publisher": "中卫市财政局",
+        "publication_date": "2026-02-12",
+        "patterns": {
+            "general_public_revenue_100m": (r"全市地方一般公共预算收入完成([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"全市一般公共预算支出完成([0-9.]+)亿元", "亿元"),
+            "gov_fund_revenue_100m": (r"全市地方政府性基金预算收入完成([0-9.]+)亿元", "亿元"),
+        },
+        "note": "官方预算公开报告正文逐项披露全市口径 2025 年执行数；不使用市本级数或 2026 年预算草案数。",
+    },
+)
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
 
 D0 = Decimal("0")
@@ -558,6 +632,72 @@ def load_guangdong_2025_city_fund() -> tuple[dict[str, dict[str, Any]], list[dic
     return values, sources
 
 
+def load_ningxia_2025_city_fiscal() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取宁夏四市 2025 年官方预算执行报告的全市财政字段。"""
+
+    values: dict[str, dict[str, Any]] = {}
+    sources: list[dict[str, Any]] = []
+    for config in NINGXIA_2025_FISCAL_SOURCES:
+        pdf_path = Path(config["path"])
+        text_path = Path(config["text_path"])
+        content_hash = ensure_download(str(config["url"]), pdf_path)
+        if not text_path.exists() or text_path.stat().st_size == 0:
+            report_text = extract_pdf_text(pdf_path)
+            text_path.write_text(report_text, encoding="utf-8")
+        else:
+            report_text = text_path.read_text(encoding="utf-8")
+        compact_text = re.sub(r"\s+", "", report_text)
+        city_values: dict[str, Any] = {
+            "source_doc_id": config["source_doc_id"],
+            "data_status": "execution",
+            "source_locator": f"{text_path.relative_to(ROOT)}；城市={config['city_name']}；2025年全市预算执行正文/附表",
+        }
+        for field, (pattern, raw_unit) in config["patterns"].items():
+            match = re.search(pattern, compact_text)
+            if not match:
+                raise ValueError(f"未能从官方报告提取{config['city_name']}2025年{field}")
+            raw_value = Decimal(match.group(1).replace(",", ""))
+            normalized = raw_value if raw_unit == "亿元" else raw_value * D4
+            city_values[field] = q2(normalized)
+            city_values[f"{field}_raw"] = raw_value
+            city_values[f"{field}_raw_unit"] = raw_unit
+            city_values[f"{field}_evidence_excerpt"] = match.group(0)
+        values[config["city_id"]] = city_values
+        sources.append(
+            {
+                "source_doc_id": config["source_doc_id"],
+                "publisher": config["publisher"],
+                "publisher_level": "市级",
+                "document_title": config["document_title"],
+                "title_source": "official_attachment",
+                "attachment_title": pdf_path.name,
+                "document_type": "官方城市财政预算执行报告",
+                "source_url": config["url"],
+                "landing_page_url": config["url"],
+                "attachment_url": config["url"],
+                "canonical_url": config["url"],
+                "final_resolved_url": config["url"],
+                "file_name": pdf_path.name,
+                "mime_type": "application/pdf",
+                "publication_date": config["publication_date"],
+                "publication_date_raw": config["publication_date"],
+                "period_end": "2025-12-31",
+                "downloaded_at": RETRIEVED_AT,
+                "content_hash_sha256": content_hash,
+                "archive_uri": f"archive://national-prefecture-panel/{pdf_path.relative_to(ROOT)}",
+                "archive_backend": "internal_object",
+                "archive_path": str(pdf_path.relative_to(ROOT)),
+                "page_count": str(len(report_text.split("\f"))),
+                "source_grade": "A2",
+                "http_status": "200",
+                "access_status": "官方附件已归档",
+                "supersedes_doc_id": "",
+                "note": config["note"],
+            }
+        )
+    return values, sources
+
+
 def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
     general_limit = as_decimal(row.get("general_debt_limit_100m"))
     special_limit = as_decimal(row.get("special_debt_limit_100m"))
@@ -651,6 +791,7 @@ def build_macro_rows(
     gd_2025_gdp: Mapping[str, Mapping[str, Any]] | None = None,
     gd_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
     gd_2025_fund: Mapping[str, Mapping[str, Any]] | None = None,
+    ningxia_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     panel_by_key = {(str(r.get("city_code", "")).zfill(6), int(r["year"])): r for r in panel_rows if r.get("year", "").isdigit()}
     lineage: list[dict[str, Any]] = []
@@ -660,6 +801,7 @@ def build_macro_rows(
     gd_2025_gdp = gd_2025_gdp or {}
     gd_2025_fiscal = gd_2025_fiscal or {}
     gd_2025_fund = gd_2025_fund or {}
+    ningxia_2025_fiscal = ningxia_2025_fiscal or {}
     for city in city_master:
         year = int(city["metric_year"])
         row = _macro_base(city, year)
@@ -752,6 +894,27 @@ def build_macro_rows(
                 + "GDP 与实际增速为 preliminary，人口和债务字段仍待补齐。"
                 if fiscal_source or fund_source
                 else "已接入广东省统计局 2025 年各市 GDP 初步核算表；GDP 与实际增速为官方 A2 值，财政和政府性基金字段仍待补齐。"
+            )
+        elif year == 2025 and city["city_id"] in ningxia_2025_fiscal:
+            source = ningxia_2025_fiscal[city["city_id"]]
+            for field in (
+                "general_public_revenue_100m",
+                "general_public_expenditure_100m",
+                "gov_fund_revenue_100m",
+            ):
+                value = as_decimal(source.get(field))
+                if value is None:
+                    continue
+                row[field] = q2(value)
+                batch_lineage.append(_lineage_for_ningxia_city_fiscal(row, source, field, row[field]))
+            row["data_status"] = "execution"
+            row["source_doc_id"] = str(source.get("source_doc_id", ""))
+            row["source_grade"] = "A2"
+            row["collection_status"] = "extracted"
+            row["gov_fund_source_status"] = "官方城市预算执行报告（全市口径）"
+            row["note"] = (
+                "已接入宁夏市级财政部门 2025 年官方预算执行报告的全市一般公共预算收入、"
+                "支出和政府性基金收入；三项均为 execution，GDP、人口和债务字段按各自来源单独记录。"
             )
         debt_fact = official_debt_facts.get((city["city_id"], str(year)))
         if debt_fact and debt_fact_has_balance_limit_conflict(dict(debt_fact)):
@@ -963,6 +1126,43 @@ def _lineage_for_city_fund(row: Mapping[str, Any], source: Mapping[str, Any], va
         extraction_method="pdf-layout-text+statement-parser",
         parse_confidence="0.96",
         selection_reason="城市财政部门官方预算报告明确披露全市政府性基金预算收入，年度和行政范围与目标一致。",
+    )
+
+
+def _lineage_for_ningxia_city_fiscal(
+    row: Mapping[str, Any], source: Mapping[str, Any], field: str, value: Any
+) -> dict[str, Any]:
+    labels = {
+        "general_public_revenue_100m": "一般公共预算收入",
+        "general_public_expenditure_100m": "一般公共预算支出",
+        "gov_fund_revenue_100m": "政府性基金预算收入",
+    }
+    field_label = labels[field]
+    raw_unit = str(source.get(f"{field}_raw_unit", "亿元"))
+    return _lineage_base(
+        row,
+        field,
+        str(source.get("source_doc_id", "")),
+        "disclosed",
+        value,
+        source_locator=(
+            f"{source.get('source_locator', '')}；字段={field_label}；"
+            "报告明确为全市口径 2025 年执行数"
+        ),
+        locator_type="pdf_text_statement",
+        table_name=f"2025年全市{field_label}执行情况",
+        raw_value=source.get(f"{field}_raw", value),
+        raw_unit=raw_unit,
+        machine_extracted_value=value,
+        evidence_excerpt=source.get(f"{field}_evidence_excerpt", ""),
+        normalization_rule=(
+            "官方报告原文以亿元直接读取；全市口径，不以市本级代替。"
+            if raw_unit == "亿元"
+            else "官方报告原文单位为万元；万元 ÷ 10000 = 亿元；全市口径，不以市本级代替。"
+        ),
+        extraction_method="pdf-layout-text+regex-statement-parser",
+        parse_confidence="0.98",
+        selection_reason="市级财政部门官方预算执行报告，年度、行政范围和字段口径与目标一致。",
     )
 
 
@@ -1544,6 +1744,7 @@ def main() -> None:
     gd_2025_by_name, gd_2025_source = load_guangdong_2025_gdp()
     gd_2025_fiscal_by_name, gd_2025_fiscal_source = load_guangdong_2025_city_fiscal()
     gd_2025_fund_by_name, gd_2025_fund_sources = load_guangdong_2025_city_fund()
+    ningxia_2025_fiscal, ningxia_2025_fiscal_sources = load_ningxia_2025_city_fiscal()
     gd_2025_gdp = {
         city["city_id"]: gd_2025_by_name[city["city_name_cn"]]
         for city in city_master
@@ -1568,6 +1769,7 @@ def main() -> None:
         gd_2025_gdp,
         gd_2025_fiscal,
         gd_2025_fund,
+        ningxia_2025_fiscal,
     )
     new_fiscal_lineage = [
         item
@@ -1685,7 +1887,12 @@ def main() -> None:
         panel_path,
         gd_sources,
         official_debt_sources,
-        [gd_2025_source, gd_2025_fiscal_source, *gd_2025_fund_sources],
+        [
+            gd_2025_source,
+            gd_2025_fiscal_source,
+            *gd_2025_fund_sources,
+            *ningxia_2025_fiscal_sources,
+        ],
         EVIDENCE_SOURCE_DOCUMENTS,
     )
 
