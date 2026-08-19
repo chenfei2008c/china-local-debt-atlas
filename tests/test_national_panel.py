@@ -13,6 +13,7 @@ from scripts.collect_national_panel import (
     compute_derived_values,
     load_followup_2025_city_fiscal,
     load_ningxia_2025_city_fiscal,
+    load_next2_2025_city_fiscal,
     load_next_2025_city_fiscal,
     load_shandong_2025_city_fiscal,
     order_calculation_rows_for_lineage,
@@ -441,6 +442,47 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("1274.85"))
         self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("650.93"))
         self.assertEqual(rows[0]["fund_revenue_dependence_pct"], Decimal("34.69"))
+
+    def test_next2_2025_city_fiscal_batch_preserves_b2_grade_and_extracts_four_cities(self):
+        values, sources = load_next2_2025_city_fiscal()
+
+        expected = {
+            "CN-320300": ("575.33", "1053.50", "357.19"),
+            "CN-321000": ("376.33", "717.88", "536.95"),
+            "CN-321100": ("339.03", "568.23", None),
+            "CN-321200": ("475.49", "686.40", "388.35"),
+        }
+        self.assertEqual(len(values), 4)
+        for city_id, (revenue, expenditure, fund_revenue) in expected.items():
+            self.assertEqual(values[city_id]["general_public_revenue_100m"], Decimal(revenue))
+            self.assertEqual(values[city_id]["general_public_expenditure_100m"], Decimal(expenditure))
+            if fund_revenue is None:
+                self.assertNotIn("gov_fund_revenue_100m", values[city_id])
+            else:
+                self.assertEqual(values[city_id]["gov_fund_revenue_100m"], Decimal(fund_revenue))
+            self.assertEqual(values[city_id]["source_grade"], "B2")
+        self.assertEqual(len(sources), 4)
+        self.assertEqual({source["source_grade"] for source in sources}, {"B2"})
+
+        city = {
+            "city_id": "CN-321000",
+            "admin_code_6": "321000",
+            "city_name_cn": "扬州市",
+            "province_code": "32",
+            "province_name": "江苏省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        rows, lineage = build_macro_rows(
+            [city], [], {}, {}, next2_2025_fiscal=values,
+        )
+        self.assertEqual(rows[0]["source_grade"], "B2")
+        self.assertEqual(rows[0]["collection_status"], "needs_review")
+        self.assertEqual(rows[0]["general_public_revenue_100m"], Decimal("376.33"))
+        self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("717.88"))
+        self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("536.95"))
+        self.assertTrue(all("B2" in item["selection_reason"] for item in lineage))
 
 
 if __name__ == "__main__":

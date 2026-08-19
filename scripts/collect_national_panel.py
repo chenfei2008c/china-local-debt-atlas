@@ -419,6 +419,104 @@ FOLLOWUP_2025_FISCAL_SOURCES = (
         "note": "苏州市统计局官方统计公报披露 2025 年全市一般公共预算收入和支出年度数据；政府性基金收入未在本批代填。",
     },
 )
+
+NEXT2_2025_FISCAL_SOURCES = (
+    {
+        "city_name": "徐州市",
+        "city_id": "CN-320300",
+        "source_doc_id": "SRC-B2-JIANGSU-XUZHOU-FISCAL-2025",
+        "url": "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2026-06-18/184140_20260618_LON3.pdf",
+        "attachment_url": "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2026-06-18/184140_20260618_LON3.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "xuzhou_2025_finance_rating.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "xuzhou_2025_finance_rating_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "徐州高新产业发展投资有限公司跟踪评级报告（主要财力指标）",
+        "publisher": "联合资信评估股份有限公司",
+        "publisher_level": "评级机构披露",
+        "publication_date": "2026-06-18",
+        "title_source": "pdf_table_excerpt",
+        "document_type": "评级报告财力指标表（精确表格）",
+        "mime_type": "application/pdf",
+        "source_grade": "B2",
+        "patterns": {
+            "general_public_revenue_100m": (r"一般公共预算收入\s*（亿元）\s*560\.29\s*(575\.33)", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出\s*（亿元）\s*1052\.38\s*(1053\.5)", "亿元"),
+            "gov_fund_revenue_100m": (r"政府性基金收入\s*（亿元）\s*388\.41\s*(357\.19)", "亿元"),
+        },
+        "note": "B2 精确表格，联合资信报告明确引用徐州市预算执行报告；2025 年值作为可审计二手补缺，不等同于官方决算原件。",
+    },
+    {
+        "city_name": "扬州市",
+        "city_id": "CN-321000",
+        "source_doc_id": "SRC-B2-JIANGSU-YANGZHOU-FISCAL-2025",
+        "url": "https://www.crei.cn/file/br.aspx?id=20260527164838",
+        "attachment_url": "https://www.crei.cn/file/br.aspx?id=20260527164838",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "yangzhou_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "yangzhou_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2025年扬州市国民经济和社会发展统计公报",
+        "publisher": "中国区域经济学会信息平台转载",
+        "publisher_level": "公开资料转载",
+        "publication_date": "2026-05-27",
+        "title_source": "html_table_excerpt",
+        "document_type": "统计公报财政表（精确表格转载）",
+        "mime_type": "text/html",
+        "source_grade": "B2",
+        "patterns": {
+            "general_public_revenue_100m": (r"全市一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"全市一般公共预算支出([0-9.]+)亿元", "亿元"),
+            "gov_fund_revenue_100m": (r"政府性基金预算收入([0-9.]+)亿元", "亿元"),
+        },
+        "note": "B2 精确表格转载，含扬州市 2025 年财政收入、支出和政府性基金收入；作为可审计二手补缺，不等同于官方决算原件。",
+    },
+    {
+        "city_name": "镇江市",
+        "city_id": "CN-321100",
+        "source_doc_id": "SRC-B2-JIANGSU-ZHENJIANG-FISCAL-2025",
+        "url": "https://www.crei.cn/file/br.aspx?id=20260527164608&op=zc&x=0",
+        "attachment_url": "https://www.crei.cn/file/br.aspx?id=20260527164608&op=zc&x=0",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "zhenjiang_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "zhenjiang_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2025年镇江市国民经济和社会发展统计公报",
+        "publisher": "中国区域经济学会信息平台转载",
+        "publisher_level": "公开资料转载",
+        "publication_date": "2026-05-27",
+        "title_source": "html_table_excerpt",
+        "document_type": "统计公报财政表（精确表格转载）",
+        "mime_type": "text/html",
+        "source_grade": "B2",
+        "patterns": {
+            "general_public_revenue_100m": (r"全年实现一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"全年实现一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "B2 精确表格转载，含镇江市 2025 年一般公共预算收入和支出；政府性基金收入本批未代填。",
+    },
+    {
+        "city_name": "泰州市",
+        "city_id": "CN-321200",
+        "source_doc_id": "SRC-B2-JIANGSU-TAIZHOU-FISCAL-2025",
+        "url": "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2026-06-22/152418_20260622_WNHE.pdf",
+        "attachment_url": "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2026-06-22/152418_20260622_WNHE.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "taizhou_2025_finance_rating.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "taizhou_2025_finance_rating_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "泰州市城投企业跟踪评级报告（主要财政数据）",
+        "publisher": "评级机构公开披露",
+        "publisher_level": "评级机构披露",
+        "publication_date": "2026-06-22",
+        "title_source": "pdf_table_excerpt",
+        "document_type": "评级报告财政数据表（精确表格）",
+        "mime_type": "application/pdf",
+        "source_grade": "B2",
+        "patterns": {
+            "general_public_revenue_100m": (r"一般公共预算收入\s*（亿元）\s*439\.70\s*453\.08\s*(475\.49)", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出\s*（亿元）\s*697\.42\s*695\.93\s*(686\.40)", "亿元"),
+            "gov_fund_revenue_100m": (r"政府性基金预算收入\s*（亿元）\s*493\.01\s*420\.56\s*(388\.35)", "亿元"),
+        },
+        "note": "B2 精确表格，评级报告注明数据根据泰州市财政局、政府决算报告及预算执行报告整理；2025 年值作为可审计二手补缺，不等同于官方决算原件。",
+    },
+)
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
 
 D0 = Decimal("0")
@@ -814,7 +912,7 @@ def load_guangdong_2025_city_fund() -> tuple[dict[str, dict[str, Any]], list[dic
             {
                 "source_doc_id": config["source_doc_id"],
                 "publisher": config["publisher"],
-                "publisher_level": "市级",
+                "publisher_level": str(config.get("publisher_level") or "市级"),
                 "document_title": config["document_title"],
                 "title_source": title_source,
                 "attachment_title": path.name,
@@ -835,7 +933,7 @@ def load_guangdong_2025_city_fund() -> tuple[dict[str, dict[str, Any]], list[dic
                 "archive_backend": "internal_object",
                 "archive_path": str(path.relative_to(ROOT)),
                 "page_count": page_count,
-                "source_grade": "A2",
+                "source_grade": str(config.get("source_grade") or "A2"),
                 "http_status": "200",
                 "access_status": "官方附件已归档",
                 "supersedes_doc_id": "",
@@ -869,6 +967,7 @@ def load_city_2025_fiscal_sources(
         compact_text = re.sub(r"\s+", "", report_text)
         city_values: dict[str, Any] = {
             "source_doc_id": config["source_doc_id"],
+            "source_grade": str(config.get("source_grade") or "A2"),
             "data_status": "execution",
             "source_locator": f"{text_path.relative_to(ROOT)}；城市={config['city_name']}；2025年全市预算执行正文/附表",
         }
@@ -887,7 +986,7 @@ def load_city_2025_fiscal_sources(
             {
                 "source_doc_id": config["source_doc_id"],
                 "publisher": config["publisher"],
-                "publisher_level": "市级",
+                "publisher_level": str(config.get("publisher_level") or "市级"),
                 "document_title": config["document_title"],
                 "title_source": str(config.get("title_source") or "official_attachment"),
                 "attachment_title": str(config.get("attachment_title") or source_path.name),
@@ -908,7 +1007,7 @@ def load_city_2025_fiscal_sources(
                 "archive_backend": "internal_object",
                 "archive_path": str(source_path.relative_to(ROOT)),
                 "page_count": str(len(report_text.split("\f"))),
-                "source_grade": "A2",
+                "source_grade": str(config.get("source_grade") or "A2"),
                 "http_status": "200",
                 "access_status": str(config.get("access_status") or "官方附件已归档"),
                 "supersedes_doc_id": "",
@@ -940,6 +1039,12 @@ def load_followup_2025_city_fiscal() -> tuple[dict[str, dict[str, Any]], list[di
     """读取无锡、常德、益阳、苏州 2025 年官方财政/统计数据。"""
 
     return load_city_2025_fiscal_sources(FOLLOWUP_2025_FISCAL_SOURCES)
+
+
+def load_next2_2025_city_fiscal() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取徐州、扬州、镇江、泰州 2025 年精确财政表。"""
+
+    return load_city_2025_fiscal_sources(NEXT2_2025_FISCAL_SOURCES)
 
 
 def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
@@ -1039,6 +1144,7 @@ def build_macro_rows(
     shandong_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
     next_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
     followup_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
+    next2_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     panel_by_key = {(str(r.get("city_code", "")).zfill(6), int(r["year"])): r for r in panel_rows if r.get("year", "").isdigit()}
     lineage: list[dict[str, Any]] = []
@@ -1052,11 +1158,13 @@ def build_macro_rows(
     shandong_2025_fiscal = shandong_2025_fiscal or {}
     next_2025_fiscal = next_2025_fiscal or {}
     followup_2025_fiscal = followup_2025_fiscal or {}
+    next2_2025_fiscal = next2_2025_fiscal or {}
     city_2025_fiscal = {
         **ningxia_2025_fiscal,
         **shandong_2025_fiscal,
         **next_2025_fiscal,
         **followup_2025_fiscal,
+        **next2_2025_fiscal,
     }
     for city in city_master:
         year = int(city["metric_year"])
@@ -1165,12 +1273,18 @@ def build_macro_rows(
                 batch_lineage.append(_lineage_for_ningxia_city_fiscal(row, source, field, row[field]))
             row["data_status"] = "execution"
             row["source_doc_id"] = str(source.get("source_doc_id", ""))
-            row["source_grade"] = "A2"
-            row["collection_status"] = "extracted"
+            source_grade = str(source.get("source_grade") or "A2")
+            row["source_grade"] = source_grade
+            row["collection_status"] = "extracted" if source_grade in {"A1", "A2"} else "needs_review"
             row["gov_fund_source_status"] = "官方城市预算执行报告（全市口径）"
             row["note"] = (
-                "已接入宁夏市级财政部门 2025 年官方预算执行报告的全市一般公共预算收入、"
-                "支出和政府性基金收入；三项均为 execution，GDP、人口和债务字段按各自来源单独记录。"
+                f"已接入{city['city_name_cn']} 2025 年全市一般公共预算收入、支出和政府性基金收入；"
+                + (
+                    "来源为官方预算执行报告，三项均为 execution。"
+                    if source_grade in {"A1", "A2"}
+                    else "来源为 B2 精确表格/公报转载，作为可审计二手补缺，不等同于官方决算原件。"
+                )
+                + "GDP、人口和债务字段按各自来源单独记录。"
             )
         debt_fact = official_debt_facts.get((city["city_id"], str(year)))
         if debt_fact and debt_fact_has_balance_limit_conflict(dict(debt_fact)):
@@ -1394,6 +1508,8 @@ def _lineage_for_ningxia_city_fiscal(
         "gov_fund_revenue_100m": "政府性基金预算收入",
     }
     field_label = labels[field]
+    source_grade = str(source.get("source_grade") or "A2")
+    is_high_grade_official = source_grade in {"A1", "A2"}
     raw_unit = str(source.get(f"{field}_raw_unit", "亿元"))
     return _lineage_base(
         row,
@@ -1412,13 +1528,25 @@ def _lineage_for_ningxia_city_fiscal(
         machine_extracted_value=value,
         evidence_excerpt=source.get(f"{field}_evidence_excerpt", ""),
         normalization_rule=(
-            "官方报告原文以亿元直接读取；全市口径，不以市本级代替。"
-            if raw_unit == "亿元"
-            else "官方报告原文单位为万元；万元 ÷ 10000 = 亿元；全市口径，不以市本级代替。"
+            (
+                "官方报告原文以亿元直接读取；全市口径，不以市本级代替。"
+                if raw_unit == "亿元"
+                else "官方报告原文单位为万元；万元 ÷ 10000 = 亿元；全市口径，不以市本级代替。"
+            )
+            if is_high_grade_official
+            else (
+                "精确转载表原文以亿元直接读取；全市口径，不以市本级代替；B2 仅作可审计补缺。"
+                if raw_unit == "亿元"
+                else "精确转载表原文单位为万元；万元 ÷ 10000 = 亿元；全市口径；B2 仅作可审计补缺。"
+            )
         ),
         extraction_method="pdf-layout-text+regex-statement-parser",
         parse_confidence="0.98",
-        selection_reason="市级财政部门官方预算执行报告，年度、行政范围和字段口径与目标一致。",
+        selection_reason=(
+            "市级财政部门官方预算执行报告，年度、行政范围和字段口径与目标一致。"
+            if is_high_grade_official
+            else "B2 精确表格/公报转载，年度、行政范围和字段口径可定位；保留二手补缺等级。"
+        ),
     )
 
 
@@ -2004,6 +2132,7 @@ def main() -> None:
     shandong_2025_fiscal, shandong_2025_fiscal_sources = load_shandong_2025_city_fiscal()
     next_2025_fiscal, next_2025_fiscal_sources = load_next_2025_city_fiscal()
     followup_2025_fiscal, followup_2025_fiscal_sources = load_followup_2025_city_fiscal()
+    next2_2025_fiscal, next2_2025_fiscal_sources = load_next2_2025_city_fiscal()
     gd_2025_gdp = {
         city["city_id"]: gd_2025_by_name[city["city_name_cn"]]
         for city in city_master
@@ -2032,6 +2161,7 @@ def main() -> None:
         shandong_2025_fiscal,
         next_2025_fiscal,
         followup_2025_fiscal,
+        next2_2025_fiscal,
     )
     new_fiscal_lineage = [
         item
@@ -2157,6 +2287,7 @@ def main() -> None:
             *shandong_2025_fiscal_sources,
             *next_2025_fiscal_sources,
             *followup_2025_fiscal_sources,
+            *next2_2025_fiscal_sources,
         ],
         EVIDENCE_SOURCE_DOCUMENTS,
     )
