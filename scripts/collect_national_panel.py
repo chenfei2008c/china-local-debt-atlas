@@ -329,6 +329,96 @@ NEXT_2025_FISCAL_SOURCES = (
         "note": "衡阳市财政局官方报告页面定位摘录披露全市口径 2025 年预计执行数；当前标记为 execution，不作为最终决算数解读。",
     },
 )
+
+FOLLOWUP_2025_FISCAL_SOURCES = (
+    {
+        "city_name": "无锡市",
+        "city_id": "CN-320200",
+        "source_doc_id": "SRC-JIANGSU-CITY-FISCAL-WUXI-2025",
+        "url": "https://rd.wuxi.gov.cn/doc/2026/01/30/4726147.shtml",
+        "attachment_url": "https://rd.wuxi.gov.cn/doc/2026/01/30/4726147.shtml",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "wuxi_2025_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "wuxi_2025_budget_report_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "关于无锡市2025年预算执行情况与2026年预算草案的报告",
+        "publisher": "无锡市财政局",
+        "publication_date": "2026-01-30",
+        "title_source": "official_page_excerpt",
+        "document_type": "官方城市财政预算执行报告（网页）",
+        "mime_type": "text/html",
+        "patterns": {
+            "general_public_revenue_100m": (r"全市一般公共预算收入完成([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"全市一般公共预算支出完成([0-9.]+)亿元", "亿元"),
+            "gov_fund_revenue_100m": (r"全市政府性基金预算收入完成([0-9.]+)亿元", "亿元"),
+        },
+        "note": "无锡市人大公开的财政局报告披露全市口径 2025 年预计执行数，当前标记为 execution，不作为最终决算数解读。",
+    },
+    {
+        "city_name": "常德市",
+        "city_id": "CN-430700",
+        "source_doc_id": "SRC-HUNAN-CITY-FISCAL-CHANGDE-2025",
+        "url": "https://www.cdsrd.gov.cn/rdhy/rmdbdh/iqajifnqaf/gzbg05/content_3158113",
+        "attachment_url": "https://www.cdsrd.gov.cn/rdhy/rmdbdh/iqajifnqaf/gzbg05/content_3158113",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "changde_2025_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "changde_2025_budget_report_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "关于常德市2025年预算执行情况与2026年全市及市级预算（草案）的报告",
+        "publisher": "常德市财政局",
+        "publication_date": "2025-12-29",
+        "title_source": "official_page_excerpt",
+        "document_type": "官方城市财政预算执行报告（网页）",
+        "mime_type": "text/html",
+        "patterns": {
+            "general_public_revenue_100m": (r"全市地方一般公共预算收入预计完成([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
+            "gov_fund_revenue_100m": (r"全市政府性基金预算收入完成([0-9.]+)亿元", "亿元"),
+        },
+        "note": "常德市人大公开的财政局报告披露全市口径 2025 年预计执行数，报告明确决算编制后会有变化，当前标记为 execution。",
+    },
+    {
+        "city_name": "益阳市",
+        "city_id": "CN-430900",
+        "source_doc_id": "SRC-HUNAN-CITY-FISCAL-YIYANG-2025",
+        "url": "https://www.yiyang.gov.cn/czj/5841/5844/5860/content_2143608.html",
+        "attachment_url": "https://www.yiyang.gov.cn/czj/5841/5844/5860/content_2143608.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "yiyang_2025_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "yiyang_2025_budget_report_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "关于益阳市2025年预算执行情况与2026年预算草案的报告",
+        "publisher": "益阳市财政局",
+        "publication_date": "2026-01-06",
+        "title_source": "official_page_excerpt",
+        "document_type": "官方城市财政预算执行报告（网页）",
+        "mime_type": "text/html",
+        "patterns": {
+            "general_public_revenue_100m": (r"全市地方一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"全市一般公共预算支出([0-9.]+)亿元", "亿元"),
+            "gov_fund_revenue_100m": (r"全市政府性基金预算收入([0-9.]+)亿元", "亿元"),
+        },
+        "note": "益阳市财政局官方预算报告网页披露全市口径 2025 年预计执行数，当前标记为 execution，不作为最终决算数解读。",
+    },
+    {
+        "city_name": "苏州市",
+        "city_id": "CN-320500",
+        "source_doc_id": "SRC-JIANGSU-CITY-STATISTICAL-SUZHOU-2025",
+        "url": "https://www.suzhou.gov.cn/szsrmzf/ndgmjjhshfztjsjfb/202605/0543af82405748cd9ffa4cfc81aecccd.shtml",
+        "attachment_url": "https://www.suzhou.gov.cn/szsrmzf/ndgmjjhshfztjsjfb/202605/0543af82405748cd9ffa4cfc81aecccd.shtml",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "suzhou_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "suzhou_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2025年苏州市国民经济和社会发展统计公报",
+        "publisher": "苏州市统计局",
+        "publication_date": "2026-05-22",
+        "title_source": "official_page_excerpt",
+        "document_type": "官方统计公报（网页）",
+        "mime_type": "text/html",
+        "patterns": {
+            "general_public_revenue_100m": (r"全年实现一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "苏州市统计局官方统计公报披露 2025 年全市一般公共预算收入和支出年度数据；政府性基金收入未在本批代填。",
+    },
+)
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
 
 D0 = Decimal("0")
@@ -846,6 +936,12 @@ def load_next_2025_city_fiscal() -> tuple[dict[str, dict[str, Any]], list[dict[s
     return load_city_2025_fiscal_sources(NEXT_2025_FISCAL_SOURCES)
 
 
+def load_followup_2025_city_fiscal() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取无锡、常德、益阳、苏州 2025 年官方财政/统计数据。"""
+
+    return load_city_2025_fiscal_sources(FOLLOWUP_2025_FISCAL_SOURCES)
+
+
 def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
     general_limit = as_decimal(row.get("general_debt_limit_100m"))
     special_limit = as_decimal(row.get("special_debt_limit_100m"))
@@ -942,6 +1038,7 @@ def build_macro_rows(
     ningxia_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
     shandong_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
     next_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
+    followup_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     panel_by_key = {(str(r.get("city_code", "")).zfill(6), int(r["year"])): r for r in panel_rows if r.get("year", "").isdigit()}
     lineage: list[dict[str, Any]] = []
@@ -954,7 +1051,13 @@ def build_macro_rows(
     ningxia_2025_fiscal = ningxia_2025_fiscal or {}
     shandong_2025_fiscal = shandong_2025_fiscal or {}
     next_2025_fiscal = next_2025_fiscal or {}
-    city_2025_fiscal = {**ningxia_2025_fiscal, **shandong_2025_fiscal, **next_2025_fiscal}
+    followup_2025_fiscal = followup_2025_fiscal or {}
+    city_2025_fiscal = {
+        **ningxia_2025_fiscal,
+        **shandong_2025_fiscal,
+        **next_2025_fiscal,
+        **followup_2025_fiscal,
+    }
     for city in city_master:
         year = int(city["metric_year"])
         row = _macro_base(city, year)
@@ -1900,6 +2003,7 @@ def main() -> None:
     ningxia_2025_fiscal, ningxia_2025_fiscal_sources = load_ningxia_2025_city_fiscal()
     shandong_2025_fiscal, shandong_2025_fiscal_sources = load_shandong_2025_city_fiscal()
     next_2025_fiscal, next_2025_fiscal_sources = load_next_2025_city_fiscal()
+    followup_2025_fiscal, followup_2025_fiscal_sources = load_followup_2025_city_fiscal()
     gd_2025_gdp = {
         city["city_id"]: gd_2025_by_name[city["city_name_cn"]]
         for city in city_master
@@ -1927,6 +2031,7 @@ def main() -> None:
         ningxia_2025_fiscal,
         shandong_2025_fiscal,
         next_2025_fiscal,
+        followup_2025_fiscal,
     )
     new_fiscal_lineage = [
         item
@@ -2051,6 +2156,7 @@ def main() -> None:
             *ningxia_2025_fiscal_sources,
             *shandong_2025_fiscal_sources,
             *next_2025_fiscal_sources,
+            *followup_2025_fiscal_sources,
         ],
         EVIDENCE_SOURCE_DOCUMENTS,
     )
