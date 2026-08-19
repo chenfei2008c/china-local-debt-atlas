@@ -82,6 +82,10 @@ class OfficialCityMacroSourceTests(unittest.TestCase):
             parse_city_fund_revenue_text("政府性基金收支情况。实现政府性基金收入80.4亿元。"),
             Decimal("80.4"),
         )
+        self.assertEqual(
+            parse_city_fund_revenue_text("2025年预算执行情况总体平稳。全市政府性基金预算收入100.7亿元。"),
+            Decimal("100.7"),
+        )
 
 
 if __name__ == "__main__":

@@ -5,9 +5,9 @@
   "city_master_unique_key": true,
   "macro_rows": 3074,
   "macro_unique_key": true,
-  "field_lineage_rows": 27639,
-  "calculation_lineage_rows": 12550,
-  "non_null_macro_field_lineage_rows": 27639,
+  "field_lineage_rows": 27645,
+  "calculation_lineage_rows": 12554,
+  "non_null_macro_field_lineage_rows": 27645,
   "debt_limit_balance_violations": [],
   "calculated_field_set": [
     "debt_limit_utilization_pct",

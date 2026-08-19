@@ -149,6 +149,7 @@ def parse_city_fund_revenue_text(text: str) -> Decimal | None:
         r"2025年[,，]?全市政府性基金(?:预算)?收入(-?\d[\d,]*(?:\.\d+)?)亿元",
         r"政府性基金预算执行情况。全市政府性基金(?:预算)?收入(-?\d[\d,]*(?:\.\d+)?)亿元",
         r"政府性基金收支情况。实现政府性基金(?:预算)?收入(-?\d[\d,]*(?:\.\d+)?)亿元",
+        r"2025年预算执行情况.*?全市政府性基金(?:预算)?收入(-?\d[\d,]*(?:\.\d+)?)亿元",
     )
     for pattern in patterns:
         match = re.search(pattern, compact)

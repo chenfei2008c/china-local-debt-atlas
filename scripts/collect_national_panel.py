@@ -104,6 +104,30 @@ GD_CITY_FUND_SOURCES = (
         "publication_date": "2026-02-05",
         "note": "官方预算公开PDF正文披露2025年全市政府性基金收入80.4亿元，按报告原文全市口径记录。",
     },
+    {
+        "city_name": "汕头市",
+        "city_id": "CN-440500",
+        "source_doc_id": "SRC-ST-CITY-FUND-2025",
+        "url": "https://rd.shantou.gov.cn/swjdbzhy/wjgg/202602/d8eb76c630924e459f556039f751330f.shtml",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "shantou_2025_budget_report.html",
+        "format": "html",
+        "document_title": "汕头市第十五届人民代表大会财政经济委员会关于汕头市2025年预算执行情况和2026年预算草案的审查结果报告",
+        "publisher": "汕头市人大",
+        "publication_date": "2026-02-05",
+        "note": "市人大官方审查结果报告明确披露2025年全市政府性基金预算收入100.7亿元，执行口径、全市口径。",
+    },
+    {
+        "city_name": "湛江市",
+        "city_id": "CN-440800",
+        "source_doc_id": "SRC-ZJ-CITY-FUND-2025",
+        "url": "https://www.zhanjiang.gov.cn/zdlyxxgk/czyjshsg/czyjs/czys/content/post_2159807.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "zhanjiang_2025_budget_report.html",
+        "format": "html",
+        "document_title": "湛江市2025年预算执行情况和2026年预算草案的报告",
+        "publisher": "湛江市人民政府",
+        "publication_date": "2026-02-05",
+        "note": "市政府官方报告明确披露2025年全市政府性基金预算收入64.7亿元，完成年度预算82.8%，执行口径、全市口径。",
+    },
 )
 CITY_FUND_SOURCE_IDS = {item["source_doc_id"] for item in GD_CITY_FUND_SOURCES}
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
