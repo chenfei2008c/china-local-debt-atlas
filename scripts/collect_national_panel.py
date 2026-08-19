@@ -864,6 +864,9 @@ NEXT5_2025_FISCAL_SOURCES = (
         "mime_type": "text/html",
         "source_grade": "B2",
         "patterns": {
+            "gdp_current_100m": (r"2025年昆明地区生产总值([0-9.]+)亿元，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"昆明地区生产总值[0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
             "general_public_revenue_100m": (r"全年全市地方一般公共预算收入完成([0-9.]+)亿元", "亿元"),
             "general_public_expenditure_100m": (r"全市地方一般公共预算支出完成([0-9.]+)亿元", "亿元"),
         },
@@ -916,6 +919,8 @@ NEXT6_2025_FISCAL_SOURCES = (
         "mime_type": "text/html",
         "source_grade": "B2",
         "patterns": {
+            "gdp_current_100m": (r"全市地区生产总值（GDP）([0-9.]+)亿元，增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"地区生产总值（GDP）[0-9.]+亿元，增长([0-9.]+)%", "%"),
             "general_public_revenue_100m": (r"一般公共预算收入([0-9.]+)亿元", "亿元"),
             "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
         },
@@ -939,6 +944,8 @@ NEXT6_2025_FISCAL_SOURCES = (
         "mime_type": "text/html",
         "source_grade": "B2",
         "patterns": {
+            "gdp_current_100m": (r"全市实现地区生产总值([0-9.]+)亿元，按不变价格计算，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"地区生产总值[0-9.]+亿元，按不变价格计算，比上年增长([0-9.]+)%", "%"),
             "general_public_revenue_100m": (r"全年实现一般公共预算收入([0-9.]+)亿元", "亿元"),
             "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
         },

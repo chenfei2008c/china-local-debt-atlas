@@ -709,6 +709,9 @@ class NationalPanelTests(unittest.TestCase):
             (load_next5_2025_city_fiscal, "CN-640100", "3033.52", "5.30", "294.26"),
             (load_next5_2025_city_fiscal, "CN-650100", "4658.19", "4.50", "415.39"),
             (load_next6_2025_city_fiscal, "CN-130100", "8651.70", "6.00", "1124.69"),
+            (load_next5_2025_city_fiscal, "CN-530100", "8637.45", "4.20", "874.40"),
+            (load_next6_2025_city_fiscal, "CN-140100", "5382.45", "1.30", None),
+            (load_next6_2025_city_fiscal, "CN-230800", "1052.30", "4.70", None),
         ]
         for loader, city_id, gdp, growth, population in cases:
             values, _ = loader()
