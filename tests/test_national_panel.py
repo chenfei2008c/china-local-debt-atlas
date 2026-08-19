@@ -19,6 +19,7 @@ from scripts.collect_national_panel import (
     load_next5_2025_city_fiscal,
     load_next6_2025_city_fiscal,
     load_next7_2025_city_fiscal,
+    load_next8_2025_city_economic,
     load_next_2025_city_fiscal,
     load_shandong_2025_city_fiscal,
     order_calculation_rows_for_lineage,
@@ -695,6 +696,39 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("253.60"))
         self.assertEqual(rows[0]["fiscal_self_sufficiency_pct"], Decimal("57.57"))
         self.assertTrue(all("B2" not in item["selection_reason"] for item in lineage))
+
+    def test_next8_2025_city_economic_batch_extracts_wuhai_statistics(self):
+        values, sources = load_next8_2025_city_economic()
+
+        self.assertEqual(len(values), 1)
+        self.assertEqual(values["CN-150300"]["gdp_current_100m"], Decimal("540.75"))
+        self.assertEqual(values["CN-150300"]["gdp_real_growth_pct"], Decimal("-1.40"))
+        self.assertEqual(values["CN-150300"]["general_public_revenue_100m"], Decimal("86.06"))
+        self.assertEqual(values["CN-150300"]["general_public_expenditure_100m"], Decimal("132.40"))
+        self.assertEqual(values["CN-150300"]["source_grade"], "B2")
+        self.assertEqual(len(sources), 1)
+        self.assertEqual(sources[0]["source_grade"], "B2")
+
+        city = {
+            "city_id": "CN-150300",
+            "admin_code_6": "150300",
+            "city_name_cn": "乌海市",
+            "province_code": "15",
+            "province_name": "内蒙古自治区",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        rows, lineage = build_macro_rows(
+            [city], [], {}, {}, next8_2025_economic=values,
+        )
+        self.assertEqual(rows[0]["source_grade"], "B2")
+        self.assertEqual(rows[0]["collection_status"], "needs_review")
+        self.assertEqual(rows[0]["gdp_current_100m"], Decimal("540.75"))
+        self.assertEqual(rows[0]["gdp_real_growth_pct"], Decimal("-1.40"))
+        self.assertEqual(rows[0]["general_public_revenue_100m"], Decimal("86.06"))
+        self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("132.40"))
+        self.assertTrue(all(item["source_doc_id"] == "SRC-B2-INNER-MONGOLIA-CITY-STATISTICAL-WUHAI-2025" for item in lineage))
 
 
 if __name__ == "__main__":

@@ -990,6 +990,8 @@ NEXT7_2025_FISCAL_SOURCES = (
         "mime_type": "application/pdf",
         "source_grade": "B2",
         "patterns": {
+            "gdp_current_100m": (r"地区生产总值（GDP）([0-9.]+)亿元", "亿元"),
+            "gdp_real_growth_pct": (r"同比增长([0-9.]+)%", "%"),
             "general_public_revenue_100m": (r"一般公共预算收入([0-9.]+)亿元", "亿元"),
             "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
         },
@@ -1013,6 +1015,8 @@ NEXT7_2025_FISCAL_SOURCES = (
         "mime_type": "text/html",
         "source_grade": "B2",
         "patterns": {
+            "gdp_current_100m": (r"地区生产总值([0-9.]+)亿元", "亿元"),
+            "gdp_real_growth_pct": (r"地区生产总值[0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
             "general_public_revenue_100m": (r"地方一般公共预算收入([0-9.]+)亿元", "亿元"),
             "general_public_expenditure_100m": (r"地方一般公共预算支出([0-9.]+)亿元", "亿元"),
         },
@@ -1036,6 +1040,8 @@ NEXT7_2025_FISCAL_SOURCES = (
         "mime_type": "application/pdf",
         "source_grade": "A2",
         "patterns": {
+            "gdp_current_100m": (r"地区生产总值为([0-9.]+)亿元", "亿元"),
+            "gdp_real_growth_pct": (r"地区生产总值为[0-9.]+亿元，按不变价格计算，比上年增长([0-9.]+)%", "%"),
             "general_public_revenue_100m": (r"地方一般公共预算收入([0-9.]+)亿元", "亿元"),
             "general_public_expenditure_100m": (r"全市一般公共预算支出([0-9.]+)亿元", "亿元"),
         },
@@ -1082,10 +1088,43 @@ NEXT7_2025_FISCAL_SOURCES = (
         "mime_type": "text/html",
         "source_grade": "A2",
         "patterns": {
+            "gdp_current_100m": (r"地区生产总值([0-9.]+)亿元", "亿元"),
+            "gdp_real_growth_pct": (r"地区生产总值[0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
             "general_public_revenue_100m": (r"一般公共预算收入([0-9.]+)亿元", "亿元"),
             "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
         },
         "note": "营口市人民政府官方门户发布的统计公报披露2025年全市一般公共预算收入和支出；财政数据来源注明为市财政局。",
+    },
+)
+
+NEXT8_2025_ECONOMIC_SOURCES = (
+    {
+        "city_name": "乌海市",
+        "city_id": "CN-150300",
+        "source_doc_id": "SRC-B2-INNER-MONGOLIA-CITY-STATISTICAL-WUHAI-2025",
+        "url": "https://www.sohu.com/a/1016888972_121106854",
+        "attachment_url": "https://www.sohu.com/a/1016888972_121106854",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "wuhai_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "wuhai_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "乌海市2025年国民经济和社会发展统计公报",
+        "publisher": "乌海市统计局（精确公开转载）",
+        "publisher_level": "公开资料转载",
+        "publication_date": "2026-04-30",
+        "title_source": "html_statement_excerpt",
+        "document_type": "统计公报经济财政段落（精确转载）",
+        "mime_type": "text/html",
+        "source_grade": "B2",
+        "negative_if": {
+            "gdp_real_growth_pct": "下降",
+        },
+        "patterns": {
+            "gdp_current_100m": (r"地区生产总值([0-9.]+)亿元", "亿元"),
+            "gdp_real_growth_pct": (r"地区生产总值[0-9.]+亿元，下降([0-9.]+)%", "%"),
+            "general_public_revenue_100m": (r"一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "B2精确转载，页面标题为乌海市2025年统计公报，来源数据标注为乌海市统计局；经济和财政字段均为全市口径。",
     },
 )
 
@@ -1548,7 +1587,10 @@ def load_city_2025_fiscal_sources(
             if not match:
                 raise ValueError(f"未能从官方报告提取{config['city_name']}2025年{field}")
             raw_value = Decimal(match.group(1).replace(",", ""))
-            normalized = raw_value if raw_unit == "亿元" else raw_value * D4
+            normalized = raw_value if raw_unit in {"亿元", "%"} else raw_value * D4
+            negative_marker = str(config.get("negative_if", {}).get(field) or "")
+            if negative_marker and negative_marker in match.group(0):
+                normalized = -normalized
             city_values[field] = q2(normalized)
             city_values[f"{field}_raw"] = raw_value
             city_values[f"{field}_raw_unit"] = raw_unit
@@ -1647,6 +1689,12 @@ def load_next7_2025_city_fiscal() -> tuple[dict[str, dict[str, Any]], list[dict[
     """读取合肥、宜昌、荆州、黄石、营口 2025 年财政统计数据。"""
 
     return load_city_2025_fiscal_sources(NEXT7_2025_FISCAL_SOURCES)
+
+
+def load_next8_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取乌海市 2025 年经济财政统计数据。"""
+
+    return load_city_2025_fiscal_sources(NEXT8_2025_ECONOMIC_SOURCES)
 
 
 def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
@@ -1752,6 +1800,7 @@ def build_macro_rows(
     next5_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
     next6_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
     next7_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
+    next8_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     panel_by_key = {(str(r.get("city_code", "")).zfill(6), int(r["year"])): r for r in panel_rows if r.get("year", "").isdigit()}
     lineage: list[dict[str, Any]] = []
@@ -1771,6 +1820,7 @@ def build_macro_rows(
     next5_2025_fiscal = next5_2025_fiscal or {}
     next6_2025_fiscal = next6_2025_fiscal or {}
     next7_2025_fiscal = next7_2025_fiscal or {}
+    next8_2025_economic = next8_2025_economic or {}
     city_2025_fiscal = {
         **ningxia_2025_fiscal,
         **shandong_2025_fiscal,
@@ -1782,6 +1832,7 @@ def build_macro_rows(
         **next5_2025_fiscal,
         **next6_2025_fiscal,
         **next7_2025_fiscal,
+        **next8_2025_economic,
     }
     for city in city_master:
         year = int(city["metric_year"])
@@ -1879,6 +1930,8 @@ def build_macro_rows(
         elif year == 2025 and city["city_id"] in city_2025_fiscal:
             source = city_2025_fiscal[city["city_id"]]
             for field in (
+                "gdp_current_100m",
+                "gdp_real_growth_pct",
                 "general_public_revenue_100m",
                 "general_public_expenditure_100m",
                 "gov_fund_revenue_100m",
@@ -2120,6 +2173,8 @@ def _lineage_for_ningxia_city_fiscal(
     row: Mapping[str, Any], source: Mapping[str, Any], field: str, value: Any
 ) -> dict[str, Any]:
     labels = {
+        "gdp_current_100m": "地区生产总值",
+        "gdp_real_growth_pct": "地区生产总值实际增速",
         "general_public_revenue_100m": "一般公共预算收入",
         "general_public_expenditure_100m": "一般公共预算支出",
         "gov_fund_revenue_100m": "政府性基金预算收入",
@@ -2128,6 +2183,7 @@ def _lineage_for_ningxia_city_fiscal(
     source_grade = str(source.get("source_grade") or "A2")
     is_high_grade_official = source_grade in {"A1", "A2"}
     raw_unit = str(source.get(f"{field}_raw_unit", "亿元"))
+    is_economic = field in {"gdp_current_100m", "gdp_real_growth_pct"}
     return _lineage_base(
         row,
         field,
@@ -2136,23 +2192,29 @@ def _lineage_for_ningxia_city_fiscal(
         value,
         source_locator=(
             f"{source.get('source_locator', '')}；字段={field_label}；"
-            "报告明确为全市口径 2025 年执行数"
+            + ("统计公报明确为全市口径 2025 年经济指标" if is_economic else "报告明确为全市口径 2025 年执行数")
         ),
         locator_type="pdf_text_statement",
-        table_name=f"2025年全市{field_label}执行情况",
+        table_name=(f"2025年全市{field_label}统计公报" if is_economic else f"2025年全市{field_label}执行情况"),
         raw_value=source.get(f"{field}_raw", value),
         raw_unit=raw_unit,
         machine_extracted_value=value,
         evidence_excerpt=source.get(f"{field}_evidence_excerpt", ""),
         normalization_rule=(
             (
+                "统计公报原文以亿元/百分比直接读取；GDP及实际增速保留统计公报初步数状态。"
+                if is_economic
+                else (
                 "官方报告原文以亿元直接读取；全市口径，不以市本级代替。"
                 if raw_unit == "亿元"
                 else "官方报告原文单位为万元；万元 ÷ 10000 = 亿元；全市口径，不以市本级代替。"
+                )
             )
             if is_high_grade_official
             else (
-                "精确转载表原文以亿元直接读取；全市口径，不以市本级代替；B2 仅作可审计补缺。"
+                "精确转载表原文以亿元/百分比直接读取；经济指标保留统计公报初步数状态；B2 仅作可审计补缺。"
+                if is_economic
+                else "精确转载表原文以亿元直接读取；全市口径，不以市本级代替；B2 仅作可审计补缺。"
                 if raw_unit == "亿元"
                 else "精确转载表原文单位为万元；万元 ÷ 10000 = 亿元；全市口径；B2 仅作可审计补缺。"
             )
@@ -2755,6 +2817,7 @@ def main() -> None:
     next5_2025_fiscal, next5_2025_fiscal_sources = load_next5_2025_city_fiscal()
     next6_2025_fiscal, next6_2025_fiscal_sources = load_next6_2025_city_fiscal()
     next7_2025_fiscal, next7_2025_fiscal_sources = load_next7_2025_city_fiscal()
+    next8_2025_economic, next8_2025_economic_sources = load_next8_2025_city_economic()
     gd_2025_gdp = {
         city["city_id"]: gd_2025_by_name[city["city_name_cn"]]
         for city in city_master
@@ -2789,6 +2852,7 @@ def main() -> None:
         next5_2025_fiscal,
         next6_2025_fiscal,
         next7_2025_fiscal,
+        next8_2025_economic,
     )
     new_fiscal_lineage = [
         item
@@ -2920,6 +2984,7 @@ def main() -> None:
             *next5_2025_fiscal_sources,
             *next6_2025_fiscal_sources,
             *next7_2025_fiscal_sources,
+            *next8_2025_economic_sources,
         ],
         EVIDENCE_SOURCE_DOCUMENTS,
     )
