@@ -785,11 +785,13 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(baoji_rows[0]["resident_population_10k"], Decimal("321.56"))
         self.assertTrue(all(item["source_doc_id"] == "SRC-A2-BAOJI-CITY-ECONOMIC-2025" for item in baoji_lineage))
 
-    def test_jiangsu_city_fund_batch_extracts_2023_and_2024_whole_city_tables(self):
+    def test_jiangsu_city_fund_batch_extracts_2022_to_2024_whole_city_tables(self):
         values, sources = load_jiangsu_city_fund_sources()
 
-        self.assertEqual(len(values), 26)
-        self.assertEqual(len(sources), 2)
+        self.assertEqual(len(values), 39)
+        self.assertEqual(len(sources), 3)
+        self.assertEqual(values[("CN-320100", "2022")]["gov_fund_revenue_100m"], Decimal("1560.29"))
+        self.assertEqual(values[("CN-321300", "2022")]["gov_fund_revenue_100m"], Decimal("355.39"))
         self.assertEqual(values[("CN-320100", "2023")]["gov_fund_revenue_100m"], Decimal("1254.30"))
         self.assertEqual(values[("CN-321300", "2023")]["gov_fund_revenue_100m"], Decimal("309.20"))
         self.assertEqual(values[("CN-320100", "2024")]["gov_fund_revenue_100m"], Decimal("937.59"))
@@ -807,17 +809,23 @@ class NationalPanelTests(unittest.TestCase):
                 "sample_tier": "core",
                 "metric_year": year,
             }
-            for year in ("2023", "2024")
+            for year in ("2022", "2023", "2024")
         ]
         rows, lineage = build_macro_rows(
             cities, [], {}, {}, jiangsu_city_fund=values,
         )
-        self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("1254.30"))
-        self.assertEqual(rows[1]["gov_fund_revenue_100m"], Decimal("937.59"))
+        self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("1560.29"))
+        self.assertEqual(rows[1]["gov_fund_revenue_100m"], Decimal("1254.30"))
+        self.assertEqual(rows[2]["gov_fund_revenue_100m"], Decimal("937.59"))
         self.assertEqual(rows[0]["source_grade"], "A1")
         self.assertEqual(rows[1]["source_grade"], "A1")
+        self.assertEqual(rows[2]["source_grade"], "A1")
+        self.assertEqual(rows[0]["data_status"], "official_fiscal")
+        self.assertEqual(rows[1]["data_status"], "official_fiscal")
+        self.assertEqual(rows[2]["data_status"], "official_fiscal")
         self.assertEqual(rows[0]["collection_status"], "extracted")
         self.assertEqual(rows[1]["collection_status"], "extracted")
+        self.assertEqual(rows[2]["collection_status"], "extracted")
         self.assertEqual(
             {item["target_field"] for item in lineage},
             {"gov_fund_revenue_100m"},
