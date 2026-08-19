@@ -1373,6 +1373,66 @@ CITY_YEAR_FUND_SOURCES = (
         "page_count": "1",
         "note": "B2官方网页精确披露；报告明确披露雅安市2025年全市政府性基金预算收入379174万元，折算为37.92亿元，执行口径，不使用市级数。",
     },
+    {
+        "year": 2025,
+        "city_name": "郑州市",
+        "city_id": "CN-410100",
+        "source_doc_id": "SRC-A2-ZHENGZHOU-CITY-FUND-2025",
+        "url": "https://public.zhengzhou.gov.cn/D08Y/9970746.jhtml",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "zhengzhou_2025_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "zhengzhou_2025_budget_report_excerpt.txt",
+        "document_title": "郑州市财政局2025年工作总结",
+        "publisher": "郑州市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2026-03-27",
+        "source_grade": "A2",
+        "source_format": "html",
+        "pattern": r"全市政府性基金收入([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "document_type": "市级财政年度工作总结（财政执行指标）",
+        "page_count": "1",
+        "note": "A2官方市级财政机构网页；年度工作总结明确披露郑州市2025年全市政府性基金收入277.5亿元，作为全市执行数，不使用市本级数。",
+    },
+    {
+        "year": 2025,
+        "city_name": "成都市",
+        "city_id": "CN-510100",
+        "source_doc_id": "SRC-A1-CHENGDU-CITY-FUND-2025",
+        "url": "https://cdcz.chengdu.gov.cn/cdsczj/c116719/2026-02/05/03efb2ef86c1479fa24afefb45ed5053/files/81f829fadec94ce589c1d664520f9420.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "chengdu_2025_fund_execution.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "chengdu_2025_fund_execution_excerpt.txt",
+        "document_title": "2025年成都市政府性基金预算收入执行情况表",
+        "publisher": "成都市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2026-02-05",
+        "source_grade": "A1",
+        "source_format": "pdf",
+        "pattern": r"政府性基金预算收入合计，快报执行数([0-9]+)万元",
+        "raw_unit": "万元",
+        "document_type": "市级财政政府性基金预算收入执行表",
+        "page_count": "1",
+        "note": "A1成都市财政局官方执行情况表；表中全市政府性基金预算收入合计快报执行数为12804474万元，标记为execution，折算为亿元。",
+    },
+    {
+        "year": 2025,
+        "city_name": "宝鸡市",
+        "city_id": "CN-610300",
+        "source_doc_id": "SRC-A2-BAOJI-CITY-FUND-2025",
+        "url": "https://www.baoji.gov.cn/sjgk/tjgb/tjgb/202606/t20260605_1275705.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "baoji_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "baoji_2025_statistical_bulletin_excerpt.txt",
+        "document_title": "2025年宝鸡市国民经济和社会发展统计公报",
+        "publisher": "宝鸡市人民政府、宝鸡市统计局",
+        "publisher_level": "市级政府门户",
+        "publication_date": "2026-06-05",
+        "source_grade": "A2",
+        "source_format": "html",
+        "pattern": r"政府性基金收入([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "document_type": "官方统计公报财政指标",
+        "page_count": "1",
+        "note": "A2官方统计公报；公报注明财政数据来自宝鸡市财政局，披露2025年全市政府性基金收入29.84亿元。",
+    },
 )
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
@@ -2438,7 +2498,8 @@ def build_macro_rows(
             fund_value = as_decimal(city_year_fund_source.get("gov_fund_revenue_100m"))
             if fund_value is not None:
                 row["gov_fund_revenue_100m"] = q2(fund_value)
-                row["gov_fund_source_status"] = "城市预算执行报告（全市口径，B2精确来源）"
+                fund_grade = str(city_year_fund_source.get("source_grade") or "B2")
+                row["gov_fund_source_status"] = f"城市预算执行报告（全市口径，{fund_grade}精确来源）"
                 prior_source = str(row.get("source_doc_id") or "")
                 fund_source_id = str(city_year_fund_source.get("source_doc_id") or "")
                 row["source_doc_id"] = ";".join(
@@ -2446,13 +2507,13 @@ def build_macro_rows(
                 )
                 if row.get("data_status") in {None, "", "provisional", "not_collected"}:
                     row["data_status"] = "execution"
-                row["source_grade"] = str(city_year_fund_source.get("source_grade") or "B2")
+                row["source_grade"] = fund_grade
                 row["collection_status"] = "needs_review"
                 row["note"] = (
                     str(row.get("note") or "")
                     + ("；" if row.get("note") else "")
                     + f"已接入{year}年{city['city_name_cn']}全市政府性基金预算收入精确披露；"
-                    "来源等级为B2，执行数，不等同于A1/A2官方原始决算表。"
+                    + f"来源等级为{fund_grade}，保留执行状态，不改写为最终决算。"
                 )
                 batch_lineage.append(_lineage_for_city_year_fund(row, city_year_fund_source, fund_value))
         derived = compute_derived_values(row)
@@ -2638,6 +2699,7 @@ def _lineage_for_city_year_fund(
     row: Mapping[str, Any], source: Mapping[str, Any], value: Any
 ) -> dict[str, Any]:
     year = row["metric_year"]
+    source_grade = str(source.get("source_grade") or "B2")
     return _lineage_base(
         row,
         "gov_fund_revenue_100m",
@@ -2664,7 +2726,7 @@ def _lineage_for_city_year_fund(
         parse_confidence="0.96",
         selection_reason=(
             "公开来源精确披露城市全市政府性基金预算收入，年度、执行状态和行政范围明确；"
-            "按B2登记，待A1/A2原始表复核。"
+            f"按{source_grade}登记，保留来源等级与执行状态。"
         ),
     )
 
