@@ -773,14 +773,17 @@ class NationalPanelTests(unittest.TestCase):
     def test_city_year_fund_batch_extracts_hohhot_and_chifeng(self):
         values, sources = load_city_year_fund_sources()
 
-        self.assertEqual(len(values), 6)
-        self.assertEqual(len(sources), 6)
+        self.assertEqual(len(values), 9)
+        self.assertEqual(len(sources), 9)
         self.assertEqual(values[("CN-150100", "2024")]["gov_fund_revenue_100m"], Decimal("112.52"))
         self.assertEqual(values[("CN-150100", "2025")]["gov_fund_revenue_100m"], Decimal("75.78"))
         self.assertEqual(values[("CN-150400", "2025")]["gov_fund_revenue_100m"], Decimal("46.69"))
         self.assertEqual(values[("CN-140200", "2025")]["gov_fund_revenue_100m"], Decimal("44.74"))
         self.assertEqual(values[("CN-141100", "2025")]["gov_fund_revenue_100m"], Decimal("21.62"))
         self.assertEqual(values[("CN-410400", "2025")]["gov_fund_revenue_100m"], Decimal("70.30"))
+        self.assertEqual(values[("CN-610900", "2025")]["gov_fund_revenue_100m"], Decimal("36.98"))
+        self.assertEqual(values[("CN-341800", "2025")]["gov_fund_revenue_100m"], Decimal("60.60"))
+        self.assertEqual(values[("CN-511800", "2025")]["gov_fund_revenue_100m"], Decimal("37.92"))
         self.assertEqual({source["source_grade"] for source in sources}, {"B2"})
 
         cities = [
@@ -801,6 +804,9 @@ class NationalPanelTests(unittest.TestCase):
                 ("CN-140200", "2025"),
                 ("CN-141100", "2025"),
                 ("CN-410400", "2025"),
+                ("CN-610900", "2025"),
+                ("CN-341800", "2025"),
+                ("CN-511800", "2025"),
             )
         ]
         rows, lineage = build_macro_rows(cities, [], {}, {}, city_year_fund=values)
@@ -813,6 +819,9 @@ class NationalPanelTests(unittest.TestCase):
                 Decimal("44.74"),
                 Decimal("21.62"),
                 Decimal("70.30"),
+                Decimal("36.98"),
+                Decimal("60.60"),
+                Decimal("37.92"),
             ],
         )
         self.assertEqual({row["source_grade"] for row in rows}, {"B2"})
