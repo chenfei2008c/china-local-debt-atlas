@@ -1139,6 +1139,7 @@ class ProvinceDebtParserTests(unittest.TestCase):
         self.assertEqual(fact["statutory_debt_balance_100m"], Decimal("337.2350574131"))
         self.assertEqual(fact["general_debt_balance_100m"], Decimal("323.6195574128"))
         self.assertEqual(fact["special_debt_balance_100m"], Decimal("13.6155000003"))
+        self.assertIn("专项债务余额13.6155000003亿元", fact["balance_limit_exception_note"])
 
     def test_guangxi_2018_secondary_city_debt_sources_are_registered_and_extracted(self):
         from scripts.province_debt_sources import OFFICIAL_PROVINCE_DEBT_SOURCES, extract_official_debt_facts
