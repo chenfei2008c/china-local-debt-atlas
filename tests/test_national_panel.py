@@ -14,6 +14,7 @@ from scripts.collect_national_panel import (
     load_followup_2025_city_fiscal,
     load_ningxia_2025_city_fiscal,
     load_next2_2025_city_fiscal,
+    load_next3_2025_city_fiscal,
     load_next_2025_city_fiscal,
     load_shandong_2025_city_fiscal,
     order_calculation_rows_for_lineage,
@@ -483,6 +484,51 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("717.88"))
         self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("536.95"))
         self.assertTrue(all("B2" in item["selection_reason"] for item in lineage))
+
+    def test_next3_2025_city_fiscal_batch_extracts_official_and_b2_sources(self):
+        values, sources = load_next3_2025_city_fiscal()
+
+        expected = {
+            "CN-350100": ("750.55", "1037.15", "502.60", "A2"),
+            "CN-350500": ("592.07", "880.29", "292.07", "A2"),
+            "CN-430100": ("1296.87", "1625.77", None, "A2"),
+            "CN-210100": ("794.20", "1031.90", None, "B2"),
+        }
+        self.assertEqual(len(values), 4)
+        for city_id, (revenue, expenditure, fund_revenue, grade) in expected.items():
+            self.assertEqual(values[city_id]["general_public_revenue_100m"], Decimal(revenue))
+            self.assertEqual(values[city_id]["general_public_expenditure_100m"], Decimal(expenditure))
+            self.assertEqual(values[city_id]["source_grade"], grade)
+            if fund_revenue is None:
+                self.assertNotIn("gov_fund_revenue_100m", values[city_id])
+            else:
+                self.assertEqual(values[city_id]["gov_fund_revenue_100m"], Decimal(fund_revenue))
+        self.assertEqual(len(sources), 4)
+        self.assertEqual(
+            {source["source_grade"] for source in sources},
+            {"A2", "B2"},
+        )
+
+        city = {
+            "city_id": "CN-350100",
+            "admin_code_6": "350100",
+            "city_name_cn": "福州市",
+            "province_code": "35",
+            "province_name": "福建省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        rows, lineage = build_macro_rows(
+            [city], [], {}, {}, next3_2025_fiscal=values,
+        )
+        self.assertEqual(rows[0]["source_grade"], "A2")
+        self.assertEqual(rows[0]["collection_status"], "extracted")
+        self.assertEqual(rows[0]["general_public_revenue_100m"], Decimal("750.55"))
+        self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("1037.15"))
+        self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("502.60"))
+        self.assertEqual(rows[0]["fund_revenue_dependence_pct"], Decimal("40.11"))
+        self.assertTrue(all("B2" not in item["selection_reason"] for item in lineage))
 
 
 if __name__ == "__main__":

@@ -166,7 +166,7 @@ NINGXIA_2025_FISCAL_SOURCES = (
         "publication_date": "2026-01-29",
         "patterns": {
             "general_public_revenue_100m": (r"全市一般公共预算收入([0-9.]+)亿元", "亿元"),
-            "general_public_expenditure_100m": (r"全市一般公共预算支出([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
             "gov_fund_revenue_100m": (r"全市政府性基金预算收入([0-9.]+)亿元", "亿元"),
         },
         "note": "官方预算执行报告正文逐项披露全市口径 2025 年一般公共预算收入、支出和政府性基金预算收入；执行数，不使用市本级数或 2026 年预算草案数。",
@@ -221,7 +221,7 @@ SHANDONG_2025_FISCAL_SOURCES = (
         "publication_date": "2026-02-10",
         "patterns": {
             "general_public_revenue_100m": (r"全市一般公共预算收入完成([0-9.]+)亿元", "亿元"),
-            "general_public_expenditure_100m": (r"全市一般公共预算支出([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
             "gov_fund_revenue_100m": (r"全市政府性基金预算收入完成([0-9.]+)亿元", "亿元"),
         },
         "note": "济南市财政局官方预算执行报告披露全市口径 2025 年执行数；不使用市级或 2026 年预算草案数。",
@@ -515,6 +515,103 @@ NEXT2_2025_FISCAL_SOURCES = (
             "gov_fund_revenue_100m": (r"政府性基金预算收入\s*（亿元）\s*493\.01\s*420\.56\s*(388\.35)", "亿元"),
         },
         "note": "B2 精确表格，评级报告注明数据根据泰州市财政局、政府决算报告及预算执行报告整理；2025 年值作为可审计二手补缺，不等同于官方决算原件。",
+    },
+)
+
+NEXT3_2025_FISCAL_SOURCES = (
+    {
+        "city_name": "福州市",
+        "city_id": "CN-350100",
+        "source_doc_id": "SRC-FUJIAN-CITY-STATISTICAL-FUZHOU-2025",
+        "url": "https://www.fuzhou.gov.cn/zgfzzt/czzj/bjndyjs/zfjsgk/202607/t20260713_5345722.htm",
+        "attachment_url": "https://www.fuzhou.gov.cn/zgfzzt/czzj/bjndyjs/zfjsgk/202607/t20260713_5345722.htm",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "fuzhou_2025_finance_final.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "fuzhou_2025_finance_final_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2025年度福州市财政决算收支情况",
+        "publisher": "福州市财政局",
+        "publisher_level": "市级",
+        "publication_date": "2026-07-13",
+        "title_source": "html_heading",
+        "document_type": "官方统计公报（网页）",
+        "mime_type": "text/html",
+        "source_grade": "A2",
+        "patterns": {
+            "general_public_revenue_100m": (r"全市一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
+            "gov_fund_revenue_100m": (r"全市政府性基金预算收入([0-9.]+)亿元", "亿元"),
+        },
+        "note": "福州市财政局官方财政决算页面披露 2025 年全市一般公共预算收入、支出和政府性基金预算收入；采用决算数，不使用市本级口径。",
+    },
+    {
+        "city_name": "泉州市",
+        "city_id": "CN-350500",
+        "source_doc_id": "SRC-FUJIAN-CITY-STATISTICAL-QUANZHOU-2025",
+        "url": "https://www.quanzhou.gov.cn/zfb/xxgk/zfxxgkzl/qzdt/qzyw/202603/t20260331_3279339.htm",
+        "attachment_url": "https://www.quanzhou.gov.cn/zfb/xxgk/zfxxgkzl/qzdt/qzyw/202603/t20260331_3279339.htm",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "quanzhou_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "quanzhou_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2025年泉州市国民经济和社会发展统计公报",
+        "publisher": "泉州市统计局、国家统计局泉州调查队",
+        "publisher_level": "市级",
+        "publication_date": "2026-03-31",
+        "title_source": "html_heading",
+        "document_type": "官方统计公报（网页）",
+        "mime_type": "text/html",
+        "source_grade": "A2",
+        "patterns": {
+            "general_public_revenue_100m": (r"地方一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
+            "gov_fund_revenue_100m": (r"政府性基金预算收入([0-9.]+)亿元", "亿元"),
+        },
+        "note": "泉州市统计局、国家统计局泉州调查队官方统计公报披露 2025 年全市地方一般公共预算收入、支出和政府性基金预算收入；初步统计值按 A2 归档。",
+    },
+    {
+        "city_name": "长沙市",
+        "city_id": "CN-430100",
+        "source_doc_id": "SRC-HUNAN-CITY-STATISTICAL-CHANGSHA-2025",
+        "url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/zss_1/202605/t20260512_33975356.html",
+        "attachment_url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/zss_1/202605/t20260512_33975356.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "changsha_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "changsha_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "长沙市2025年国民经济和社会发展统计公报",
+        "publisher": "湖南省统计局",
+        "publisher_level": "省级统计机构",
+        "publication_date": "2026-04-21",
+        "title_source": "html_heading",
+        "document_type": "官方统计公报（网页）",
+        "mime_type": "text/html",
+        "source_grade": "A2",
+        "patterns": {
+            "general_public_revenue_100m": (r"全年地方一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "湖南省统计局官方长沙市统计公报披露 2025 年地方一般公共预算收入和支出；政府性基金收入本批未代填。",
+    },
+    {
+        "city_name": "沈阳市",
+        "city_id": "CN-210100",
+        "source_doc_id": "SRC-B2-LIAONING-SHENYANG-FISCAL-2025",
+        "url": "https://www.crei.cn/file/br.aspx?id=20260522102711&op=sczz&x=0",
+        "attachment_url": "https://www.crei.cn/file/br.aspx?id=20260522102711&op=sczz&x=0",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "shenyang_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "shenyang_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2025年沈阳市国民经济和社会发展统计公报",
+        "publisher": "中国区域经济学会信息平台转载",
+        "publisher_level": "公开资料转载",
+        "publication_date": "2026-05-22",
+        "title_source": "html_table_excerpt",
+        "document_type": "统计公报财政表（精确表格转载）",
+        "mime_type": "text/html",
+        "source_grade": "B2",
+        "patterns": {
+            "general_public_revenue_100m": (r"全年一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "B2 精确公报转载，含沈阳市 2025 年一般公共预算收入和支出；政府性基金收入本批未代填。",
     },
 )
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
@@ -1047,6 +1144,12 @@ def load_next2_2025_city_fiscal() -> tuple[dict[str, dict[str, Any]], list[dict[
     return load_city_2025_fiscal_sources(NEXT2_2025_FISCAL_SOURCES)
 
 
+def load_next3_2025_city_fiscal() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取福州、泉州、长沙、沈阳 2025 年财政统计数据。"""
+
+    return load_city_2025_fiscal_sources(NEXT3_2025_FISCAL_SOURCES)
+
+
 def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
     general_limit = as_decimal(row.get("general_debt_limit_100m"))
     special_limit = as_decimal(row.get("special_debt_limit_100m"))
@@ -1145,6 +1248,7 @@ def build_macro_rows(
     next_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
     followup_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
     next2_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
+    next3_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     panel_by_key = {(str(r.get("city_code", "")).zfill(6), int(r["year"])): r for r in panel_rows if r.get("year", "").isdigit()}
     lineage: list[dict[str, Any]] = []
@@ -1159,12 +1263,14 @@ def build_macro_rows(
     next_2025_fiscal = next_2025_fiscal or {}
     followup_2025_fiscal = followup_2025_fiscal or {}
     next2_2025_fiscal = next2_2025_fiscal or {}
+    next3_2025_fiscal = next3_2025_fiscal or {}
     city_2025_fiscal = {
         **ningxia_2025_fiscal,
         **shandong_2025_fiscal,
         **next_2025_fiscal,
         **followup_2025_fiscal,
         **next2_2025_fiscal,
+        **next3_2025_fiscal,
     }
     for city in city_master:
         year = int(city["metric_year"])
@@ -2133,6 +2239,7 @@ def main() -> None:
     next_2025_fiscal, next_2025_fiscal_sources = load_next_2025_city_fiscal()
     followup_2025_fiscal, followup_2025_fiscal_sources = load_followup_2025_city_fiscal()
     next2_2025_fiscal, next2_2025_fiscal_sources = load_next2_2025_city_fiscal()
+    next3_2025_fiscal, next3_2025_fiscal_sources = load_next3_2025_city_fiscal()
     gd_2025_gdp = {
         city["city_id"]: gd_2025_by_name[city["city_name_cn"]]
         for city in city_master
@@ -2162,6 +2269,7 @@ def main() -> None:
         next_2025_fiscal,
         followup_2025_fiscal,
         next2_2025_fiscal,
+        next3_2025_fiscal,
     )
     new_fiscal_lineage = [
         item
@@ -2288,6 +2396,7 @@ def main() -> None:
             *next_2025_fiscal_sources,
             *followup_2025_fiscal_sources,
             *next2_2025_fiscal_sources,
+            *next3_2025_fiscal_sources,
         ],
         EVIDENCE_SOURCE_DOCUMENTS,
     )
