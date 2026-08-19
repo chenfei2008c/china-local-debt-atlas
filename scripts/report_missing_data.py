@@ -29,6 +29,11 @@ FIELD_LABELS = {
     "special_debt_balance_100m": "专项债务余额（亿元）",
     "statutory_debt_limit_100m": "法定债务限额（亿元）",
     "statutory_debt_balance_100m": "法定债务余额（亿元）",
+    "debt_limit_utilization_pct": "债务限额使用率（%）",
+    "statutory_debt_to_gdp_pct": "法定债务/GDP（%）",
+    "statutory_debt_to_revenue_pct": "法定债务/一般预算收入（%）",
+    "fiscal_self_sufficiency_pct": "财政自给率（%）",
+    "fund_revenue_dependence_pct": "政府性基金收入依赖度（%）",
 }
 
 

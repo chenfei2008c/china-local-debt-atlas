@@ -137,6 +137,37 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(rows[0]["collection_status"], "needs_review")
         self.assertEqual(build_debt_rows(rows)[0]["collection_status"], "needs_review")
 
+    def test_debt_fact_with_balance_above_limit_is_blocked(self):
+        city = {
+            "city_id": "CN-150800",
+            "admin_code_6": "150800",
+            "city_name_cn": "巴彦淖尔市",
+            "province_code": "15",
+            "province_name": "内蒙古自治区",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2018",
+        }
+        facts = {
+            ("CN-150800", "2018"): {
+                "source_doc_id": "SRC-OFFICIAL-DEBT-INNER-MONGOLIA-BAYANNUR-2018",
+                "source_grade": "A2",
+                "general_debt_limit_100m": "247.82",
+                "general_debt_balance_100m": "257.53",
+                "special_debt_limit_100m": "42.75",
+                "special_debt_balance_100m": "47.98",
+                "statutory_debt_limit_100m": "290.57",
+                "statutory_debt_balance_100m": "305.52",
+            }
+        }
+
+        rows, _ = build_macro_rows([city], [], {}, facts)
+
+        self.assertIsNone(rows[0]["statutory_debt_limit_100m"])
+        self.assertIsNone(rows[0]["statutory_debt_balance_100m"])
+        self.assertEqual(rows[0]["collection_status"], "needs_review")
+        self.assertIn("余额超过限额", rows[0]["note"])
+
 
 if __name__ == "__main__":
     unittest.main()

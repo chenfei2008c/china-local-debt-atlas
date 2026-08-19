@@ -28,8 +28,10 @@ from urllib.request import Request, urlopen
 
 try:
     from scripts.province_debt_sources import extract_official_debt_facts
+    from scripts.data_quality import debt_fact_has_balance_limit_conflict
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
     from province_debt_sources import extract_official_debt_facts
+    from data_quality import debt_fact_has_balance_limit_conflict
 
 getcontext().prec = 40
 
@@ -67,8 +69,10 @@ MACRO_FIELDS = [
     "statutory_debt_balance_100m",
     "debt_limit_utilization_pct",
     "statutory_debt_to_gdp_pct",
+    "statutory_debt_to_revenue_pct",
     "statutory_debt_to_general_revenue_pct",
     "fiscal_self_sufficiency_pct",
+    "fund_revenue_dependence_pct",
     "gov_fund_to_general_revenue_pct",
 ]
 RAW_NUMERIC_FIELDS = {
@@ -107,7 +111,7 @@ def q4(value: Any) -> Decimal | None:
 def pct(numerator: Any, denominator: Any) -> Decimal | None:
     num = as_decimal(numerator)
     den = as_decimal(denominator)
-    if num is None or den in (None, D0):
+    if num is None or den is None or den <= D0:
         return None
     return q2(num / den * D100)
 
@@ -327,8 +331,14 @@ def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
         "statutory_debt_balance_100m": statutory_balance,
         "debt_limit_utilization_pct": pct(statutory_balance, statutory_limit),
         "statutory_debt_to_gdp_pct": pct(statutory_balance, row.get("gdp_current_100m")),
+        "statutory_debt_to_revenue_pct": pct(statutory_balance, row.get("general_public_revenue_100m")),
         "statutory_debt_to_general_revenue_pct": pct(statutory_balance, row.get("general_public_revenue_100m")),
         "fiscal_self_sufficiency_pct": pct(row.get("general_public_revenue_100m"), row.get("general_public_expenditure_100m")),
+        "fund_revenue_dependence_pct": pct(
+            row.get("gov_fund_revenue_100m"),
+            (as_decimal(row.get("general_public_revenue_100m")) or D0)
+            + (as_decimal(row.get("gov_fund_revenue_100m")) or D0),
+        ) if as_decimal(row.get("general_public_revenue_100m")) is not None and as_decimal(row.get("gov_fund_revenue_100m")) is not None else None,
         "gov_fund_to_general_revenue_pct": pct(row.get("gov_fund_revenue_100m"), row.get("general_public_revenue_100m")),
     }
 
@@ -418,6 +428,15 @@ def build_macro_rows(
                 if value is not None:
                     lineage.append(_lineage_for_gd(row, field, value))
         debt_fact = official_debt_facts.get((city["city_id"], str(year)))
+        if debt_fact and debt_fact_has_balance_limit_conflict(dict(debt_fact)):
+            blocked_source_id = str(debt_fact.get("source_doc_id", ""))
+            prior_source = str(row.get("source_doc_id") or "")
+            row["source_doc_id"] = ";".join(item for item in [prior_source, blocked_source_id] if item)
+            row["source_grade"] = str(debt_fact.get("source_grade") or row.get("source_grade") or "")
+            row["data_status"] = "needs_review"
+            row["collection_status"] = "needs_review"
+            row["note"] = "债务来源已归档，但官方表中余额超过限额且未提供例外说明；按强校验阻塞入主表，待复核原表口径。"
+            debt_fact = None
         if debt_fact:
             debt_source_id = str(debt_fact.get("source_doc_id", ""))
             prior_source = str(row.get("source_doc_id") or "")
@@ -619,9 +638,11 @@ def build_calculations(macro_rows: list[dict[str, Any]]) -> tuple[list[dict[str,
         ("F-STATUTORY-BALANCE", "法定政府债务余额", "一般债务余额 + 专项债务余额", "general_debt_balance_100m;special_debt_balance_100m", "statutory_debt_balance_100m"),
         ("F-DEBT-LIMIT-UTIL", "债务限额利用率", "法定政府债务余额 / 法定政府债务限额 × 100", "statutory_debt_balance_100m;statutory_debt_limit_100m", "debt_limit_utilization_pct"),
         ("F-DEBT-GDP", "法定债务/GDP", "法定政府债务余额 / GDP × 100", "statutory_debt_balance_100m;gdp_current_100m", "statutory_debt_to_gdp_pct"),
-        ("F-DEBT-REV", "法定债务/一般预算收入", "法定政府债务余额 / 一般公共预算收入 × 100", "statutory_debt_balance_100m;general_public_revenue_100m", "statutory_debt_to_general_revenue_pct"),
+        ("F-DEBT-REV", "法定债务/一般预算收入", "法定政府债务余额 / 一般公共预算收入 × 100", "statutory_debt_balance_100m;general_public_revenue_100m", "statutory_debt_to_revenue_pct"),
+        ("F-DEBT-REV-LEGACY", "法定债务/一般预算收入（兼容字段）", "法定政府债务余额 / 一般公共预算收入 × 100", "statutory_debt_balance_100m;general_public_revenue_100m", "statutory_debt_to_general_revenue_pct"),
         ("F-FISCAL-SELF", "财政自给率", "一般公共预算收入 / 一般公共预算支出 × 100", "general_public_revenue_100m;general_public_expenditure_100m", "fiscal_self_sufficiency_pct"),
-        ("F-FUND-DEPEND", "政府性基金收入依赖度", "政府性基金预算收入 / 一般公共预算收入 × 100", "gov_fund_revenue_100m;general_public_revenue_100m", "gov_fund_to_general_revenue_pct"),
+        ("F-FUND-DEPEND", "政府性基金收入依赖度", "政府性基金预算收入 /（一般公共预算收入 + 政府性基金预算收入）× 100", "gov_fund_revenue_100m;general_public_revenue_100m", "fund_revenue_dependence_pct"),
+        ("F-FUND-REV-LEGACY", "政府性基金收入/一般预算收入（兼容字段）", "政府性基金预算收入 / 一般公共预算收入 × 100", "gov_fund_revenue_100m;general_public_revenue_100m", "gov_fund_to_general_revenue_pct"),
     ]
     formula_registry = []
     formula_dependency = []
@@ -685,11 +706,10 @@ def build_debt_rows(macro_rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
 def build_risk_rows(macro_rows: list[dict[str, Any]], calculations: list[dict[str, Any]]) -> list[dict[str, Any]]:
     metric_map = [
         ("statutory_debt_to_gdp_pct", "statutory_debt_to_gdp", "%", "法定债务/GDP"),
-        ("statutory_debt_to_general_revenue_pct", "statutory_debt_to_general_revenue", "%", "法定债务/一般预算收入"),
+        ("statutory_debt_to_revenue_pct", "statutory_debt_to_revenue", "%", "法定债务/一般预算收入"),
         ("debt_limit_utilization_pct", "debt_limit_utilization", "%", "债务限额利用率"),
         ("fiscal_self_sufficiency_pct", "fiscal_self_sufficiency", "%", "财政自给率"),
-        ("gov_fund_to_general_revenue_pct", "gov_fund_dependence", "%", "政府性基金收入依赖度"),
-        ("tax_share_pct", "tax_share", "%", "税收收入占比"),
+        ("fund_revenue_dependence_pct", "fund_revenue_dependence", "%", "政府性基金收入依赖度"),
     ]
     calc_by_key = {(c["target_record_id"], c["target_field"]): c for c in calculations}
     output = []

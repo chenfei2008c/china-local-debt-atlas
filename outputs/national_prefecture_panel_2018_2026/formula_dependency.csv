@@ -9,7 +9,11 @@ F-DEBT-GDP,statutory_debt_balance_100m,input,v1.0
 F-DEBT-GDP,gdp_current_100m,input,v1.0
 F-DEBT-REV,statutory_debt_balance_100m,input,v1.0
 F-DEBT-REV,general_public_revenue_100m,input,v1.0
+F-DEBT-REV-LEGACY,statutory_debt_balance_100m,input,v1.0
+F-DEBT-REV-LEGACY,general_public_revenue_100m,input,v1.0
 F-FISCAL-SELF,general_public_revenue_100m,input,v1.0
 F-FISCAL-SELF,general_public_expenditure_100m,input,v1.0
 F-FUND-DEPEND,gov_fund_revenue_100m,input,v1.0
 F-FUND-DEPEND,general_public_revenue_100m,input,v1.0
+F-FUND-REV-LEGACY,gov_fund_revenue_100m,input,v1.0
+F-FUND-REV-LEGACY,general_public_revenue_100m,input,v1.0

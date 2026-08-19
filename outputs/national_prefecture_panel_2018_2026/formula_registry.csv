@@ -3,6 +3,8 @@ F-STATUTORY-LIMIT,法定政府债务限额,一般债务限额 + 专项债务限�
 F-STATUTORY-BALANCE,法定政府债务余额,一般债务余额 + 专项债务余额,general_debt_balance_100m;special_debt_balance_100m,statutory_debt_balance_100m,v1.0,亿元,true
 F-DEBT-LIMIT-UTIL,债务限额利用率,法定政府债务余额 / 法定政府债务限额 × 100,statutory_debt_balance_100m;statutory_debt_limit_100m,debt_limit_utilization_pct,v1.0,%,true
 F-DEBT-GDP,法定债务/GDP,法定政府债务余额 / GDP × 100,statutory_debt_balance_100m;gdp_current_100m,statutory_debt_to_gdp_pct,v1.0,%,true
-F-DEBT-REV,法定债务/一般预算收入,法定政府债务余额 / 一般公共预算收入 × 100,statutory_debt_balance_100m;general_public_revenue_100m,statutory_debt_to_general_revenue_pct,v1.0,%,true
+F-DEBT-REV,法定债务/一般预算收入,法定政府债务余额 / 一般公共预算收入 × 100,statutory_debt_balance_100m;general_public_revenue_100m,statutory_debt_to_revenue_pct,v1.0,%,true
+F-DEBT-REV-LEGACY,法定债务/一般预算收入（兼容字段）,法定政府债务余额 / 一般公共预算收入 × 100,statutory_debt_balance_100m;general_public_revenue_100m,statutory_debt_to_general_revenue_pct,v1.0,%,true
 F-FISCAL-SELF,财政自给率,一般公共预算收入 / 一般公共预算支出 × 100,general_public_revenue_100m;general_public_expenditure_100m,fiscal_self_sufficiency_pct,v1.0,%,true
-F-FUND-DEPEND,政府性基金收入依赖度,政府性基金预算收入 / 一般公共预算收入 × 100,gov_fund_revenue_100m;general_public_revenue_100m,gov_fund_to_general_revenue_pct,v1.0,%,true
+F-FUND-DEPEND,政府性基金收入依赖度,政府性基金预算收入 /（一般公共预算收入 + 政府性基金预算收入）× 100,gov_fund_revenue_100m;general_public_revenue_100m,fund_revenue_dependence_pct,v1.0,%,true
+F-FUND-REV-LEGACY,政府性基金收入/一般预算收入（兼容字段）,政府性基金预算收入 / 一般公共预算收入 × 100,gov_fund_revenue_100m;general_public_revenue_100m,gov_fund_to_general_revenue_pct,v1.0,%,true

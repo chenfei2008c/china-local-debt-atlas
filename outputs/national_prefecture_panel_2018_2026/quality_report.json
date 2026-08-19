@@ -5,20 +5,20 @@
   "city_master_unique_key": true,
   "macro_rows": 3074,
   "macro_unique_key": true,
-  "field_lineage_rows": 25715,
-  "calculation_lineage_rows": 10682,
-  "non_null_macro_field_lineage_rows": 25715,
-  "debt_limit_balance_violations": [
-    "DEBT-CN-150800-2018-PREFECTURE"
-  ],
+  "field_lineage_rows": 27459,
+  "calculation_lineage_rows": 12458,
+  "non_null_macro_field_lineage_rows": 27459,
+  "debt_limit_balance_violations": [],
   "calculated_field_set": [
     "debt_limit_utilization_pct",
     "fiscal_self_sufficiency_pct",
+    "fund_revenue_dependence_pct",
     "gov_fund_to_general_revenue_pct",
     "statutory_debt_balance_100m",
     "statutory_debt_limit_100m",
     "statutory_debt_to_gdp_pct",
-    "statutory_debt_to_general_revenue_pct"
+    "statutory_debt_to_general_revenue_pct",
+    "statutory_debt_to_revenue_pct"
   ],
   "missing_to_zero_check": "passed",
   "source_grade_D_values_are_provisional": true,
@@ -39,10 +39,17 @@
       2025
     ],
     "target_key_count": 2732,
-    "covered_key_count": 2722,
-    "missing_key_count": 10,
+    "covered_key_count": 2714,
+    "missing_key_count": 18,
     "passed": false,
     "missing_keys_sample": [
+      "CN-150500-2018",
+      "CN-150800-2018",
+      "CN-150800-2019",
+      "CN-152200-2018",
+      "CN-152500-2018",
+      "CN-220500-2018",
+      "CN-420500-2024",
       "CN-460300-2018",
       "CN-460300-2019",
       "CN-460300-2020",
@@ -51,6 +58,7 @@
       "CN-460300-2023",
       "CN-460300-2024",
       "CN-460300-2025",
+      "CN-510600-2021",
       "CN-540600-2019",
       "CN-620900-2025"
     ]
