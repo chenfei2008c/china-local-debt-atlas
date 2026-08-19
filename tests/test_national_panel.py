@@ -168,6 +168,36 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(rows[0]["collection_status"], "needs_review")
         self.assertIn("余额超过限额", rows[0]["note"])
 
+    def test_guangdong_2025_official_gdp_batch_is_field_level_lineaged(self):
+        city = {
+            "city_id": "CN-440100",
+            "admin_code_6": "440100",
+            "city_name_cn": "广州市",
+            "province_code": "44",
+            "province_name": "广东省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        gd_2025_gdp = {
+            "CN-440100": {
+                "gdp_current_100m": "32039.46",
+                "gdp_real_growth_pct": "4.0",
+            }
+        }
+
+        rows, lineage = build_macro_rows([city], [], {}, {}, gd_2025_gdp)
+
+        self.assertEqual(rows[0]["gdp_current_100m"], Decimal("32039.46"))
+        self.assertEqual(rows[0]["gdp_real_growth_pct"], Decimal("4.00"))
+        self.assertEqual(rows[0]["data_status"], "preliminary")
+        self.assertEqual(rows[0]["source_grade"], "A2")
+        self.assertEqual(
+            {item["target_field"] for item in lineage},
+            {"gdp_current_100m", "gdp_real_growth_pct"},
+        )
+        self.assertTrue(all(item["source_doc_id"] == "SRC-GD-CITY-GDP-2025" for item in lineage))
+
 
 if __name__ == "__main__":
     unittest.main()

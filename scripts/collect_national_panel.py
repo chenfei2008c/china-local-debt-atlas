@@ -5,7 +5,7 @@
 1. 下载并保存年度行政区划原始文件；
 2. 生成年度城市主表；
 3. 读取公开研究型城市面板作为暂存/临时宏观来源；
-4. 合并已经完成的广东省 2024 年官方试跑结果；
+4. 合并已经完成的广东省 2024 年官方试跑结果及 2025 年官方地市 GDP 批次；
 5. 以 Decimal 计算派生指标并写出来源、字段血缘、公式和采集状态。
 
 没有公开且可验证的数值保持为空，并进入 collection_status；不得用 0 代替缺失。
@@ -29,9 +29,11 @@ from urllib.request import Request, urlopen
 try:
     from scripts.province_debt_sources import extract_official_debt_facts
     from scripts.data_quality import debt_fact_has_balance_limit_conflict
+    from scripts.official_city_macro_sources import parse_guangdong_city_gdp_html
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
     from province_debt_sources import extract_official_debt_facts
     from data_quality import debt_fact_has_balance_limit_conflict
+    from official_city_macro_sources import parse_guangdong_city_gdp_html
 
 getcontext().prec = 40
 
@@ -47,6 +49,8 @@ CITY_PANEL_URL = "https://raw.githubusercontent.com/JasmineHao/JasmineHao.github
 AREA_URL_TEMPLATE = "https://raw.githubusercontent.com/adyliu/china_area/master/area_code_{year}.csv.gz"
 NBS_RULE_URL = "https://www.stats.gov.cn/hd/cjwtjd/202302/t20230207_1902279.html"
 GD_ROOT = Path("/Users/kataru/Library/Mobile Documents/com~apple~CloudDocs/Documents/wkplz/268801 中国地方债研究/outputs/guangdong_2024")
+GD_2025_GDP_URL = "https://stats.gd.gov.cn/fsjdgnsczz/content/post_4854894.html"
+GD_2025_GDP_PATH = RAW_DIR / "macro_fiscal" / "guangdong_2025_city_gdp.html"
 
 D0 = Decimal("0")
 D1 = Decimal("1")
@@ -75,7 +79,7 @@ MACRO_FIELDS = [
     "fund_revenue_dependence_pct",
     "gov_fund_to_general_revenue_pct",
 ]
-RAW_NUMERIC_FIELDS = {
+RAW_NUMERIC_FIELDS = (
     "gdp_current_100m",
     "gdp_real_growth_pct",
     "resident_population_10k",
@@ -84,9 +88,9 @@ RAW_NUMERIC_FIELDS = {
     "gov_fund_revenue_100m",
     "general_debt_limit_100m",
     "general_debt_balance_100m",
-    "special_debt_limit_100m",
     "special_debt_balance_100m",
-}
+    "special_debt_limit_100m",
+)
 
 
 def as_decimal(value: Any) -> Decimal | None:
@@ -294,6 +298,45 @@ def load_guangdong_2024() -> tuple[dict[str, dict[str, str]], dict[str, dict[str
     return macro, debt, sources
 
 
+def load_guangdong_2025_gdp() -> tuple[dict[str, dict[str, Any]], dict[str, Any]]:
+    """读取广东省统计局 2025 年地市 GDP 官方表，并返回可审计来源记录。"""
+
+    content_hash = ensure_download(GD_2025_GDP_URL, GD_2025_GDP_PATH)
+    html_text = GD_2025_GDP_PATH.read_text(encoding="utf-8")
+    values = parse_guangdong_city_gdp_html(html_text)
+    source = {
+        "source_doc_id": "SRC-GD-CITY-GDP-2025",
+        "publisher": "广东省统计局",
+        "publisher_level": "省级",
+        "document_title": "2025年各市地区生产总值初步核算结果",
+        "title_source": "html_heading",
+        "attachment_title": GD_2025_GDP_PATH.name,
+        "document_type": "官方地市经济表",
+        "source_url": GD_2025_GDP_URL,
+        "landing_page_url": GD_2025_GDP_URL,
+        "attachment_url": GD_2025_GDP_URL,
+        "canonical_url": GD_2025_GDP_URL,
+        "final_resolved_url": GD_2025_GDP_URL,
+        "file_name": GD_2025_GDP_PATH.name,
+        "mime_type": "text/html",
+        "publication_date": "2026-02-08",
+        "publication_date_raw": "2026-02-08",
+        "period_end": "2025-12-31",
+        "downloaded_at": RETRIEVED_AT,
+        "content_hash_sha256": content_hash,
+        "archive_uri": "archive://national-prefecture-panel/raw/macro_fiscal/guangdong_2025_city_gdp.html",
+        "archive_backend": "internal_object",
+        "archive_path": str(GD_2025_GDP_PATH.relative_to(ROOT)),
+        "page_count": "",
+        "source_grade": "A2",
+        "http_status": "200",
+        "access_status": "官方网页已归档",
+        "supersedes_doc_id": "",
+        "note": "广东省统计局官方地市表；GDP为现价地区生产总值，增长率为初步核算实际增速；2025年数据状态标记为 preliminary。",
+    }
+    return values, source
+
+
 def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
     general_limit = as_decimal(row.get("general_debt_limit_100m"))
     special_limit = as_decimal(row.get("special_debt_limit_100m"))
@@ -384,11 +427,14 @@ def build_macro_rows(
     panel_rows: list[dict[str, str]],
     gd_macro: Mapping[str, Mapping[str, str]],
     official_debt_facts: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
+    gd_2025_gdp: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     panel_by_key = {(str(r.get("city_code", "")).zfill(6), int(r["year"])): r for r in panel_rows if r.get("year", "").isdigit()}
     lineage: list[dict[str, Any]] = []
+    batch_lineage: list[dict[str, Any]] = []
     output: list[dict[str, Any]] = []
     official_debt_facts = official_debt_facts or {}
+    gd_2025_gdp = gd_2025_gdp or {}
     for city in city_master:
         year = int(city["metric_year"])
         row = _macro_base(city, year)
@@ -427,6 +473,19 @@ def build_macro_rows(
                 value = row.get(field)
                 if value is not None:
                     lineage.append(_lineage_for_gd(row, field, value))
+        elif year == 2025 and city["city_id"] in gd_2025_gdp:
+            source = gd_2025_gdp[city["city_id"]]
+            for field in ("gdp_current_100m", "gdp_real_growth_pct"):
+                value = as_decimal(source.get(field))
+                if value is None:
+                    continue
+                row[field] = q2(value)
+                batch_lineage.append(_lineage_for_gd_2025(row, field, row[field]))
+            row["data_status"] = "preliminary"
+            row["source_doc_id"] = "SRC-GD-CITY-GDP-2025"
+            row["source_grade"] = "A2"
+            row["collection_status"] = "extracted"
+            row["note"] = "已接入广东省统计局 2025 年各市 GDP 初步核算表；GDP 与实际增速为官方 A2 值，财政和政府性基金字段仍待补齐。"
         debt_fact = official_debt_facts.get((city["city_id"], str(year)))
         if debt_fact and debt_fact_has_balance_limit_conflict(dict(debt_fact)):
             blocked_source_id = str(debt_fact.get("source_doc_id", ""))
@@ -485,7 +544,9 @@ def build_macro_rows(
                 row[field] = value
         row["lineage_complete_flag"] = bool(any(item["target_record_id"] == _macro_record_id(row) for item in lineage))
         output.append(row)
-    return output, lineage
+    # 将本批新增来源证据放在既有证据之后，保持既有 lineage_id 稳定，减少批次
+    # 重建时无关的全文件重排；字段血缘不依赖行顺序。
+    return output, lineage + batch_lineage
 
 
 def _macro_record_id(row: Mapping[str, Any]) -> str:
@@ -561,6 +622,28 @@ def _lineage_for_gd(row: Mapping[str, Any], field: str, value: Any) -> dict[str,
         extraction_method="csv",
         parse_confidence="0.95" if source_doc != "SRC-GD-FUND-SECONDARY-2025" else "0.70",
         selection_reason="沿用广东省试跑表；字段级来源由原试跑来源目录支持",
+    )
+
+
+def _lineage_for_gd_2025(row: Mapping[str, Any], field: str, value: Any) -> dict[str, Any]:
+    unit = "亿元" if field == "gdp_current_100m" else "%"
+    return _lineage_base(
+        row,
+        field,
+        "SRC-GD-CITY-GDP-2025",
+        "disclosed",
+        value,
+        source_locator=f"广东省统计局官方网页《2025年各市地区生产总值初步核算结果》表格；城市={row['city_name_cn']}；字段={field}",
+        locator_type="html_table",
+        table_name="2025年各市地区生产总值初步核算结果",
+        row_label=row["city_name_cn"],
+        column_label="地区生产总值" if field == "gdp_current_100m" else "比上年增长",
+        raw_value=value,
+        raw_unit=unit,
+        normalization_rule="官方表格 GDP 亿元、实际增速百分比直接读取；2025 年保留 preliminary 状态。",
+        extraction_method="html-table-parser",
+        parse_confidence="0.99",
+        selection_reason="省级统计部门官方地市表，年度和行政范围与目标一致。",
     )
 
 
@@ -787,6 +870,7 @@ def source_document_rows(
     city_panel_path: Path,
     gd_sources: list[dict[str, str]],
     official_sources: list[dict[str, Any]] | None = None,
+    macro_sources: list[dict[str, Any]] | None = None,
 ) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = [
         {
@@ -906,6 +990,8 @@ def source_document_rows(
         row.setdefault("http_status", "200")
         row.setdefault("supersedes_doc_id", "")
         rows.append(row)
+    for source in macro_sources or []:
+        rows.append(dict(source))
     seen_official: set[str] = set()
     for source in official_sources or []:
         source_id = str(source.get("source_doc_id", ""))
@@ -1061,7 +1147,7 @@ def quality_report(city_master: list[dict[str, Any]], macro_rows: list[dict[str,
         "notes": [
             "2018—2023 宏观财政公开研究型面板为 provisional，不能直接作为官方最终值。",
             "2024 年目前只有广东省纳入试跑的官方/二手混合值，其他城市进入采集队列。",
-            "2025—2026 未采集值保持 null；2026 不表示正式年度决算。",
+            "2025 年已开始接入省级官方地市批次；其余未采集值保持 null，2026 不表示正式年度决算。",
         ],
     }
 
@@ -1073,8 +1159,14 @@ def main() -> None:
     for index, row in enumerate(panel_rows, start=2):
         row["_row_number"] = str(index)
     gd_macro, _gd_debt, gd_sources = load_guangdong_2024()
+    gd_2025_by_name, gd_2025_source = load_guangdong_2025_gdp()
+    gd_2025_gdp = {
+        city["city_id"]: gd_2025_by_name[city["city_name_cn"]]
+        for city in city_master
+        if int(city["metric_year"]) == 2025 and city["city_name_cn"] in gd_2025_by_name
+    }
     official_debt_facts, official_debt_sources = extract_official_debt_facts(city_master)
-    macro_rows, lineage = build_macro_rows(city_master, panel_rows, gd_macro, official_debt_facts)
+    macro_rows, lineage = build_macro_rows(city_master, panel_rows, gd_macro, official_debt_facts, gd_2025_gdp)
     attach_lineage_ids(lineage)
     calc_rows, formula_registry, formula_dependency = build_calculations(macro_rows)
     # CEIC 组件页没有把一般/专项数写入主表，只在归档层按两页合计形成
@@ -1133,7 +1225,7 @@ def main() -> None:
     debt_rows = build_debt_rows(macro_rows)
     risk_rows = build_risk_rows(macro_rows, calc_rows)
     collection_rows = build_collection_status(city_master, macro_rows)
-    sources = source_document_rows(area_hashes, panel_hash, panel_path, gd_sources, official_debt_sources)
+    sources = source_document_rows(area_hashes, panel_hash, panel_path, gd_sources, official_debt_sources, [gd_2025_source])
 
     city_fields = ["city_id", "admin_code_6", "city_code_12", "city_name_cn", "province_code", "province_name", "prefecture_type", "sample_tier", "metric_year", "roster_year", "roster_source_year", "valid_from", "valid_to", "roster_version_status", "source_doc_id", "source_locator", "system_valid_from", "system_valid_to", "note"]
     macro_fields = ["city_id", "admin_code_6", "city_name_cn", "province_code", "province_name", "prefecture_type", "sample_tier", "metric_year", "period_end", "geo_scope", "data_status", *MACRO_FIELDS, "gov_fund_source_status", "source_doc_id", "source_grade", "collection_status", "lineage_complete_flag", "note"]

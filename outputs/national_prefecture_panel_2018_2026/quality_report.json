@@ -5,9 +5,9 @@
   "city_master_unique_key": true,
   "macro_rows": 3074,
   "macro_unique_key": true,
-  "field_lineage_rows": 27459,
-  "calculation_lineage_rows": 12458,
-  "non_null_macro_field_lineage_rows": 27459,
+  "field_lineage_rows": 27522,
+  "calculation_lineage_rows": 12479,
+  "non_null_macro_field_lineage_rows": 27522,
   "debt_limit_balance_violations": [],
   "calculated_field_set": [
     "debt_limit_utilization_pct",
@@ -66,6 +66,6 @@
   "notes": [
     "2018—2023 宏观财政公开研究型面板为 provisional，不能直接作为官方最终值。",
     "2024 年目前只有广东省纳入试跑的官方/二手混合值，其他城市进入采集队列。",
-    "2025—2026 未采集值保持 null；2026 不表示正式年度决算。"
+    "2025 年已开始接入省级官方地市批次；其余未采集值保持 null，2026 不表示正式年度决算。"
   ]
 }
