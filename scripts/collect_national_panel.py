@@ -5,7 +5,7 @@
 1. 下载并保存年度行政区划原始文件；
 2. 生成年度城市主表；
 3. 读取公开研究型城市面板作为暂存/临时宏观来源；
-4. 合并已经完成的广东省 2024 年官方试跑结果、2025 年官方地市 GDP/财政批次、宁夏四市及山东济南/青岛 2025 年财政执行批次；
+4. 合并已经完成的广东省 2024 年官方试跑结果、2025 年官方地市 GDP/财政批次、宁夏四市、山东济南/青岛及常州/洛阳/岳阳/衡阳 2025 年财政执行批次；
 5. 以 Decimal 计算派生指标并写出来源、字段血缘、公式和采集状态。
 
 没有公开且可验证的数值保持为空，并进入 collection_status；不得用 0 代替缺失。
@@ -244,6 +244,89 @@ SHANDONG_2025_FISCAL_SOURCES = (
             "gov_fund_revenue_100m": (r"全市政府性基金预算收入完成([0-9.]+)亿元", "亿元"),
         },
         "note": "青岛市财政局官方预算执行报告披露全市口径 2025 年执行数；不使用市级或 2026 年预算草案数。",
+    },
+)
+
+NEXT_2025_FISCAL_SOURCES = (
+    {
+        "city_name": "常州市",
+        "city_id": "CN-320400",
+        "source_doc_id": "SRC-JIANGSU-CITY-FISCAL-CHANGZHOU-2025",
+        "url": "https://rd.changzhou.gov.cn/html/rd/2026/EKPMKPDC_0122/35038.html",
+        "attachment_url": "https://rd.changzhou.gov.cn/html/rd/2026/EKPMKPDC_0122/35038.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "changzhou_2025_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "changzhou_2025_budget_report_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "关于常州市2025年预算执行情况和2026年预算草案的报告",
+        "publisher": "常州市财政局",
+        "publication_date": "2026-01-22",
+        "title_source": "official_page_excerpt",
+        "document_type": "官方城市财政预算执行报告（网页）",
+        "mime_type": "text/html",
+        "patterns": {
+            "general_public_revenue_100m": (r"全市一般公共预算收入完成([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"全市一般公共预算支出完成([0-9.]+)亿元", "亿元"),
+            "gov_fund_revenue_100m": (r"全市政府性基金预算收入完成([0-9.]+)亿元", "亿元"),
+        },
+        "note": "常州市人大公开的财政局报告披露全市口径 2025 年预计执行数；报告明确最终数字以 2025 年决算草案为准，当前标记为 execution，不作为最终决算数解读。",
+    },
+    {
+        "city_name": "洛阳市",
+        "city_id": "CN-410300",
+        "source_doc_id": "SRC-HENAN-CITY-FISCAL-LUOYANG-2025",
+        "url": "https://oss.ly.gov.cn/upload-file/files/20260305/4e03eb31347142f2902b518d7388a496.pdf",
+        "attachment_url": "https://oss.ly.gov.cn/upload-file/files/20260305/4e03eb31347142f2902b518d7388a496.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "luoyang_2025_budget_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "luoyang_2025_budget_report.txt",
+        "document_title": "关于洛阳市2025年预算执行情况和2026年预算（草案）的报告",
+        "publisher": "洛阳市财政局",
+        "publication_date": "2026-03-05",
+        "patterns": {
+            "general_public_revenue_100m": (r"2025年全市一般公共预算收入年初预算合计[0-9.]+亿元，执行中.*?收入完成([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"支出预算合计[0-9.]+亿元，执行中.*?支出完成([0-9.]+)亿元", "亿元"),
+            "gov_fund_revenue_100m": (r"2025年全市政府性基金预算收入年初预算合计[0-9.]+亿元，执行中.*?收入完成([0-9.]+)亿元", "亿元"),
+        },
+        "note": "洛阳市人大会议官方附件披露全市口径 2025 年预算执行完成数；不使用市级或 2026 年预算草案数。",
+    },
+    {
+        "city_name": "岳阳市",
+        "city_id": "CN-430600",
+        "source_doc_id": "SRC-HUNAN-CITY-FISCAL-YUEYANG-2025",
+        "url": "https://www.yueyang.gov.cn/web/uploadfiles/202601/2026012609340543556.pdf",
+        "attachment_url": "https://www.yueyang.gov.cn/uploadfiles/202601/2026012609340543556.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "yueyang_2025_budget_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "yueyang_2025_budget_report.txt",
+        "document_title": "关于岳阳市2025年预算执行情况和2026年预算草案的报告",
+        "publisher": "岳阳市财政局",
+        "publication_date": "2026-01-26",
+        "patterns": {
+            "general_public_revenue_100m": (r"2025年，全市一般公共预算.*?收入预计完成([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"全市一般公共预算支出预计完成([0-9.]+)亿元", "亿元"),
+            "gov_fund_revenue_100m": (r"2025年，预计全市政府性基金收入([0-9.]+)亿元", "亿元"),
+        },
+        "note": "岳阳市人大会议官方附件披露全市口径 2025 年预计执行数；当前标记为 execution，不作为最终决算数解读。",
+    },
+    {
+        "city_name": "衡阳市",
+        "city_id": "CN-430400",
+        "source_doc_id": "SRC-HUNAN-CITY-FISCAL-HENGYANG-2025",
+        "url": "https://www.hengyang.gov.cn/czj/ztxx/czysjsgk/cxzyhyjsgk/ysjsbg/20260115/i3850020.html",
+        "attachment_url": "https://www.hengyang.gov.cn/czj/ztxx/czysjsgk/cxzyhyjsgk/ysjsbg/20260115/i3850020.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "hengyang_2025_budget_report_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "hengyang_2025_budget_report_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "关于衡阳市2025年预算执行情况与2026年预算草案的报告",
+        "publisher": "衡阳市财政局",
+        "publication_date": "2026-01-15",
+        "title_source": "official_page_excerpt",
+        "document_type": "官方城市财政预算执行报告（网页摘录）",
+        "mime_type": "text/plain",
+        "patterns": {
+            "general_public_revenue_100m": (r"2025年全市地方一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"2025年全市一般公共预算支出([0-9.]+)亿元", "亿元"),
+            "gov_fund_revenue_100m": (r"2025年全市政府性基金预算收入([0-9.]+)亿元", "亿元"),
+        },
+        "note": "衡阳市财政局官方报告页面定位摘录披露全市口径 2025 年预计执行数；当前标记为 execution，不作为最终决算数解读。",
     },
 )
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
@@ -680,16 +763,16 @@ def load_city_2025_fiscal_sources(
     values: dict[str, dict[str, Any]] = {}
     sources: list[dict[str, Any]] = []
     for config in configs:
-        pdf_path = Path(config["path"])
+        source_path = Path(config["path"])
         text_path = Path(config["text_path"])
         attachment_url = str(config.get("attachment_url") or config["url"])
-        content_hash = ensure_download(attachment_url, pdf_path)
+        content_hash = ensure_download(attachment_url, source_path)
         # 兼容此前 PDF 解码器返回仅含分页符的短文本；低于该阈值时重新解析附件。
         # 对已人工核对并保留官方原文摘录的来源，不能用 PDF 解码结果覆盖摘录。
         if config.get("text_is_curated"):
             report_text = text_path.read_text(encoding="utf-8")
         elif not text_path.exists() or text_path.stat().st_size < 1000:
-            report_text = extract_pdf_text(pdf_path)
+            report_text = extract_pdf_text(source_path)
             text_path.write_text(report_text, encoding="utf-8")
         else:
             report_text = text_path.read_text(encoding="utf-8")
@@ -716,28 +799,28 @@ def load_city_2025_fiscal_sources(
                 "publisher": config["publisher"],
                 "publisher_level": "市级",
                 "document_title": config["document_title"],
-                "title_source": "official_attachment",
-                "attachment_title": pdf_path.name,
-                "document_type": "官方城市财政预算执行报告",
+                "title_source": str(config.get("title_source") or "official_attachment"),
+                "attachment_title": str(config.get("attachment_title") or source_path.name),
+                "document_type": str(config.get("document_type") or "官方城市财政预算执行报告"),
                 "source_url": config["url"],
                 "landing_page_url": config["url"],
                 "attachment_url": attachment_url,
                 "canonical_url": config["url"],
                 "final_resolved_url": attachment_url,
-                "file_name": pdf_path.name,
-                "mime_type": "application/pdf",
+                "file_name": source_path.name,
+                "mime_type": str(config.get("mime_type") or "application/pdf"),
                 "publication_date": config["publication_date"],
                 "publication_date_raw": config["publication_date"],
                 "period_end": "2025-12-31",
                 "downloaded_at": RETRIEVED_AT,
                 "content_hash_sha256": content_hash,
-                "archive_uri": f"archive://national-prefecture-panel/{pdf_path.relative_to(ROOT)}",
+                "archive_uri": f"archive://national-prefecture-panel/{source_path.relative_to(ROOT)}",
                 "archive_backend": "internal_object",
-                "archive_path": str(pdf_path.relative_to(ROOT)),
+                "archive_path": str(source_path.relative_to(ROOT)),
                 "page_count": str(len(report_text.split("\f"))),
                 "source_grade": "A2",
                 "http_status": "200",
-                "access_status": "官方附件已归档",
+                "access_status": str(config.get("access_status") or "官方附件已归档"),
                 "supersedes_doc_id": "",
                 "note": config["note"],
             }
@@ -755,6 +838,12 @@ def load_shandong_2025_city_fiscal() -> tuple[dict[str, dict[str, Any]], list[di
     """读取济南、青岛 2025 年官方预算执行报告的全市财政字段。"""
 
     return load_city_2025_fiscal_sources(SHANDONG_2025_FISCAL_SOURCES)
+
+
+def load_next_2025_city_fiscal() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取常州、洛阳、岳阳、衡阳 2025 年官方预算执行报告的全市财政字段。"""
+
+    return load_city_2025_fiscal_sources(NEXT_2025_FISCAL_SOURCES)
 
 
 def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
@@ -852,6 +941,7 @@ def build_macro_rows(
     gd_2025_fund: Mapping[str, Mapping[str, Any]] | None = None,
     ningxia_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
     shandong_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
+    next_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     panel_by_key = {(str(r.get("city_code", "")).zfill(6), int(r["year"])): r for r in panel_rows if r.get("year", "").isdigit()}
     lineage: list[dict[str, Any]] = []
@@ -863,7 +953,8 @@ def build_macro_rows(
     gd_2025_fund = gd_2025_fund or {}
     ningxia_2025_fiscal = ningxia_2025_fiscal or {}
     shandong_2025_fiscal = shandong_2025_fiscal or {}
-    city_2025_fiscal = {**ningxia_2025_fiscal, **shandong_2025_fiscal}
+    next_2025_fiscal = next_2025_fiscal or {}
+    city_2025_fiscal = {**ningxia_2025_fiscal, **shandong_2025_fiscal, **next_2025_fiscal}
     for city in city_master:
         year = int(city["metric_year"])
         row = _macro_base(city, year)
@@ -1808,6 +1899,7 @@ def main() -> None:
     gd_2025_fund_by_name, gd_2025_fund_sources = load_guangdong_2025_city_fund()
     ningxia_2025_fiscal, ningxia_2025_fiscal_sources = load_ningxia_2025_city_fiscal()
     shandong_2025_fiscal, shandong_2025_fiscal_sources = load_shandong_2025_city_fiscal()
+    next_2025_fiscal, next_2025_fiscal_sources = load_next_2025_city_fiscal()
     gd_2025_gdp = {
         city["city_id"]: gd_2025_by_name[city["city_name_cn"]]
         for city in city_master
@@ -1834,6 +1926,7 @@ def main() -> None:
         gd_2025_fund,
         ningxia_2025_fiscal,
         shandong_2025_fiscal,
+        next_2025_fiscal,
     )
     new_fiscal_lineage = [
         item
@@ -1957,6 +2050,7 @@ def main() -> None:
             *gd_2025_fund_sources,
             *ningxia_2025_fiscal_sources,
             *shandong_2025_fiscal_sources,
+            *next_2025_fiscal_sources,
         ],
         EVIDENCE_SOURCE_DOCUMENTS,
     )

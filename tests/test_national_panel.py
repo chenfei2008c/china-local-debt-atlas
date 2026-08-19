@@ -12,6 +12,7 @@ from scripts.collect_national_panel import (
     build_macro_rows,
     compute_derived_values,
     load_ningxia_2025_city_fiscal,
+    load_next_2025_city_fiscal,
     load_shandong_2025_city_fiscal,
     order_calculation_rows_for_lineage,
     validate_city_master,
@@ -365,6 +366,41 @@ class NationalPanelTests(unittest.TestCase):
             "general_public_expenditure_100m",
             "gov_fund_revenue_100m",
         })
+
+    def test_next_2025_city_fiscal_batch_extracts_four_official_city_sources(self):
+        values, sources = load_next_2025_city_fiscal()
+
+        expected = {
+            "CN-320400": ("715.50", "832.80", "413.70"),
+            "CN-410300": ("421.80", "723.30", "225.70"),
+            "CN-430600": ("207.00", "664.20", "224.10"),
+            "CN-430400": ("185.22", "701.16", "208.71"),
+        }
+        self.assertEqual(len(values), 4)
+        for city_id, (revenue, expenditure, fund_revenue) in expected.items():
+            self.assertEqual(values[city_id]["general_public_revenue_100m"], Decimal(revenue))
+            self.assertEqual(values[city_id]["general_public_expenditure_100m"], Decimal(expenditure))
+            self.assertEqual(values[city_id]["gov_fund_revenue_100m"], Decimal(fund_revenue))
+        self.assertEqual(len(sources), 4)
+        self.assertEqual({source["source_grade"] for source in sources}, {"A2"})
+
+        city = {
+            "city_id": "CN-410300",
+            "admin_code_6": "410300",
+            "city_name_cn": "洛阳市",
+            "province_code": "41",
+            "province_name": "河南省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        rows, _ = build_macro_rows(
+            [city], [], {}, {}, next_2025_fiscal=values,
+        )
+        self.assertEqual(rows[0]["data_status"], "execution")
+        self.assertEqual(rows[0]["general_public_revenue_100m"], Decimal("421.80"))
+        self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("723.30"))
+        self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("225.70"))
 
 
 if __name__ == "__main__":
