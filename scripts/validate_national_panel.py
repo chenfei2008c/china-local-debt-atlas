@@ -70,6 +70,7 @@ def validate(input_dir: Path, require_statutory_debt_gate: bool = False) -> dict
     calculations = read_csv(input_dir / "calculation_lineage.csv")
     sources = read_csv(input_dir / "source_document.csv")
     collection = read_csv(input_dir / "collection_status.csv")
+    evidence_missing = read_csv(input_dir / "evidence_based_missing.csv") if (input_dir / "evidence_based_missing.csv").exists() else []
     errors: list[str] = []
 
     dim_keys = [(row.get("city_id"), row.get("metric_year")) for row in dim]
@@ -125,6 +126,12 @@ def validate(input_dir: Path, require_statutory_debt_gate: bool = False) -> dict
             errors.append(grade_error)
 
     source_ids = {row.get("source_doc_id") for row in sources}
+    for item in evidence_missing:
+        if item.get("collection_status") != "evidence_based_missing":
+            errors.append(f"证据化缺失记录状态错误：{item.get('city_id')}-{item.get('metric_year')}")
+        for source_id in str(item.get("evidence_source_doc_ids") or "").split(";"):
+            if source_id and source_id not in source_ids:
+                errors.append(f"证据化缺失记录指向不存在的来源：{item.get('city_id')}-{item.get('metric_year')}-{source_id}")
     for row in lineage:
         if row.get("value_origin") != "calculated" and row.get("source_doc_id") not in source_ids:
             errors.append(f"字段血缘指向不存在的来源：{row.get('lineage_id')}")
@@ -154,7 +161,7 @@ def validate(input_dir: Path, require_statutory_debt_gate: bool = False) -> dict
         "lgfv_financial.csv", "bond_detail.csv", "bond_special_term.csv", "bond_proceeds_allocation.csv",
         "credit_event.csv", "source_document.csv", "field_lineage.csv", "manual_review_decision.csv",
         "calculation_lineage.csv", "formula_registry.csv", "formula_dependency.csv", "risk_metric.csv",
-        "collection_status.csv", "README_数据说明.md", "quality_report.json",
+        "collection_status.csv", "evidence_based_missing.csv", "README_数据说明.md", "quality_report.json",
     ]
     missing_files = [name for name in required_files if not (input_dir / name).exists()]
     errors.extend(f"缺少输出文件：{name}" for name in missing_files)
@@ -170,6 +177,7 @@ def validate(input_dir: Path, require_statutory_debt_gate: bool = False) -> dict
             "calculation_lineage": len(calculations),
             "source_document": len(sources),
             "collection_status": len(collection),
+            "evidence_based_missing": len(evidence_missing),
         },
         "coverage": {
             "gdp_current_100m": sum(bool(row.get("gdp_current_100m")) for row in macro) / len(macro) if macro else 0,

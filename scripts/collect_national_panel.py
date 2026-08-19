@@ -30,11 +30,13 @@ from urllib.request import Request, urlopen
 try:
     from scripts.province_debt_sources import extract_official_debt_facts
     from scripts.data_quality import OFFICIAL_DEBT_EXCEPTION_STATUS, debt_fact_has_balance_limit_conflict
+    from scripts.evidence_based_missing import EVIDENCE_BY_KEY, EVIDENCE_CHECKED_AT, EVIDENCE_SOURCE_DOCUMENTS
     from scripts.official_city_macro_sources import parse_city_fund_revenue_text, parse_guangdong_city_budget_page, parse_guangdong_city_gdp_html
     from scripts.pdf_layout_text import extract_pdf_text
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
     from province_debt_sources import extract_official_debt_facts
     from data_quality import OFFICIAL_DEBT_EXCEPTION_STATUS, debt_fact_has_balance_limit_conflict
+    from evidence_based_missing import EVIDENCE_BY_KEY, EVIDENCE_CHECKED_AT, EVIDENCE_SOURCE_DOCUMENTS
     from official_city_macro_sources import parse_city_fund_revenue_text, parse_guangdong_city_budget_page, parse_guangdong_city_gdp_html
     from pdf_layout_text import extract_pdf_text
 
@@ -1162,6 +1164,16 @@ def build_collection_status(city_master: list[dict[str, Any]], macro_rows: list[
                 missing_reason = "" if evidence_count else "未找到已归档且可审计的城市年度来源"
             elif module_code == "debt" and macro.get("general_debt_balance_100m") is not None:
                 status, evidence_count, next_action, missing_reason = "validated", 1, "保留版本并在全国来源覆盖扩展后复核", ""
+            elif module_code == "debt":
+                evidence = EVIDENCE_BY_KEY.get((city["city_id"], str(city["metric_year"]), "statutory_debt_balance_100m"))
+                if evidence:
+                    source_ids = [item for item in evidence["evidence_source_doc_ids"].split(";") if item]
+                    status = "evidence_based_missing"
+                    evidence_count = len(source_ids)
+                    next_action = evidence["next_action"]
+                    missing_reason = evidence["result"]
+                else:
+                    status, evidence_count, next_action, missing_reason = "missing", 0, "继续检索公开来源；不得填充伪零", "全国批量模块尚未完成逐城市采集"
             else:
                 status, evidence_count, next_action, missing_reason = "missing", 0, "继续检索公开来源；不得填充伪零", "全国批量模块尚未完成逐城市采集"
             output.append({
@@ -1175,12 +1187,22 @@ def build_collection_status(city_master: list[dict[str, Any]], macro_rows: list[
                 "agent_run_id": "RUN-20260801-NATIONAL-PANEL",
                 "last_checked_at": RETRIEVED_AT,
                 "missing_reason": missing_reason,
-                "error_code": "" if not missing_reason else "NOT_YET_COLLECTED",
+                "error_code": (
+                    "PUBLIC_SOURCE_EXHAUSTED"
+                    if status == "evidence_based_missing"
+                    else ("" if not missing_reason else "NOT_YET_COLLECTED")
+                ),
                 "evidence_count": evidence_count,
                 "lineage_complete_flag": evidence_count > 0,
                 "next_action": next_action,
             })
     return output
+
+
+def build_evidence_based_missing_rows() -> list[dict[str, str]]:
+    """输出硬缺口的来源穷尽记录，避免把公开缺失误报为未开始采集。"""
+
+    return [dict(row) for row in EVIDENCE_BY_KEY.values()]
 
 
 def source_document_rows(
@@ -1190,6 +1212,7 @@ def source_document_rows(
     gd_sources: list[dict[str, str]],
     official_sources: list[dict[str, Any]] | None = None,
     macro_sources: list[dict[str, Any]] | None = None,
+    evidence_sources: list[dict[str, Any]] | None = None,
 ) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = [
         {
@@ -1362,6 +1385,41 @@ def source_document_rows(
                 "note": source.get("note") or "按地级行政单元逐行读取官方 PDF、XLSX 或其归档文本中的全域政府债务限额与余额；省本级、市本级、区县和小计行不并入地级市。",
             }
         )
+    evidence_archive_path = ROOT / "raw" / "province_debt" / "evidence_based_missing_2018_2025.md"
+    evidence_hash = sha256(evidence_archive_path) if evidence_archive_path.exists() else ""
+    for source in evidence_sources or []:
+        rows.append(
+            {
+                "source_doc_id": source["source_doc_id"],
+                "publisher": source.get("publisher", ""),
+                "publisher_level": source.get("publisher_level", ""),
+                "document_title": source.get("document_title", ""),
+                "title_source": "official_page" if source.get("source_grade") == "A1" else "secondary_public_page",
+                "attachment_title": "",
+                "document_type": source.get("document_type", "公开检索证据"),
+                "source_url": source.get("source_url", ""),
+                "landing_page_url": source.get("source_url", ""),
+                "attachment_url": "",
+                "canonical_url": source.get("source_url", ""),
+                "final_resolved_url": source.get("source_url", ""),
+                "file_name": evidence_archive_path.name,
+                "mime_type": "text/markdown",
+                "publication_date": source.get("publication_date", ""),
+                "publication_date_raw": source.get("publication_date", ""),
+                "period_end": "",
+                "downloaded_at": EVIDENCE_CHECKED_AT,
+                "content_hash_sha256": evidence_hash,
+                "archive_uri": "archive://national-prefecture-panel/raw/province_debt/evidence_based_missing_2018_2025.md",
+                "archive_backend": "internal_object",
+                "archive_path": "raw/province_debt/evidence_based_missing_2018_2025.md",
+                "page_count": "",
+                "source_grade": source.get("source_grade", ""),
+                "http_status": "200",
+                "access_status": "已检索，未取得目标字段",
+                "supersedes_doc_id": "",
+                "note": source.get("note", ""),
+            }
+        )
     return rows
 
 
@@ -1401,7 +1459,7 @@ def build_readme(macro_rows: list[dict[str, Any]], city_master: list[dict[str, A
 
 ## 数据状态与来源
 
-2018—2023 的经济财政数值主要来自公开研究型城市面板，来源等级为 D，只能作为 provisional 暂存和覆盖基线；需继续用国家统计局年鉴、地方统计公报、预算/决算文件逐字段复核。已接入的省级财政厅官方债务明细表按 `prefecture_whole` 提取一般债务、专项债务及余额，排除了市本级、区县和小计行。其余城市年度未取得可审计的数值时保留 null，并在 `collection_status.csv` 中登记下一步动作。
+2018—2023 的经济财政数值主要来自公开研究型城市面板，来源等级为 D，只能作为 provisional 暂存和覆盖基线；需继续用国家统计局年鉴、地方统计公报、预算/决算文件逐字段复核。已接入的省级财政厅官方债务明细表按 `prefecture_whole` 提取一般债务、专项债务及余额，排除了市本级、区县和小计行。其余城市年度未取得可审计的数值时保留 null，并在 `collection_status.csv` 中登记下一步动作。对已经完成官方城市渠道、省级汇总渠道和 B1/B2 公开渠道检索但仍无可验收数值的字段，另在 `evidence_based_missing.csv` 和 `raw/province_debt/evidence_based_missing_2018_2025.md` 中登记检索证据；证据化缺失不等于零值，也不计入数值覆盖率。
 
 ## 交付门槛
 
@@ -1419,7 +1477,7 @@ def build_readme(macro_rows: list[dict[str, Any]], city_master: list[dict[str, A
 
 ## 表格目录
 
-主表包括 `dim_city.csv`、`city_macro_fiscal.csv`、`city_gov_debt.csv`、`risk_metric.csv`、`source_document.csv`、`field_lineage.csv`、`collection_status.csv` 以及公式和质量表。LGFV、逐券债券、特殊条款、募集资金用途和信用事件文件已经按设计文档建立字段结构；当前没有可靠批量来源的模块不虚构记录。
+主表包括 `dim_city.csv`、`city_macro_fiscal.csv`、`city_gov_debt.csv`、`risk_metric.csv`、`source_document.csv`、`field_lineage.csv`、`collection_status.csv`、`evidence_based_missing.csv` 以及公式和质量表。LGFV、逐券债券、特殊条款、募集资金用途和信用事件文件已经按设计文档建立字段结构；当前没有可靠批量来源的模块不虚构记录。
 """
 
 
@@ -1628,6 +1686,7 @@ def main() -> None:
         gd_sources,
         official_debt_sources,
         [gd_2025_source, gd_2025_fiscal_source, *gd_2025_fund_sources],
+        EVIDENCE_SOURCE_DOCUMENTS,
     )
 
     city_fields = ["city_id", "admin_code_6", "city_code_12", "city_name_cn", "province_code", "province_name", "prefecture_type", "sample_tier", "metric_year", "roster_year", "roster_source_year", "valid_from", "valid_to", "roster_version_status", "source_doc_id", "source_locator", "system_valid_from", "system_valid_to", "note"]
@@ -1640,6 +1699,10 @@ def main() -> None:
     calc_fields = list(calc_rows[0].keys()) if calc_rows else ["calculation_id", "target_table", "target_record_id", "target_field", "formula_id", "formula_version", "input_record_ids", "input_fields", "output_value", "output_unit", "calculation_status", "calculated_at", "note"]
     formula_fields = list(formula_registry[0].keys())
     dependency_fields = list(formula_dependency[0].keys())
+    evidence_fields = [
+        "city_id", "city_name_cn", "province_name", "metric_year", "field_name",
+        "collection_status", "evidence_source_doc_ids", "searched_channels", "result", "next_action",
+    ]
 
     write_csv("dim_city.csv", city_fields, city_master)
     write_csv("city_macro_fiscal.csv", macro_fields, macro_rows)
@@ -1651,6 +1714,7 @@ def main() -> None:
     write_csv("formula_registry.csv", formula_fields, formula_registry)
     write_csv("formula_dependency.csv", dependency_fields, formula_dependency)
     write_csv("collection_status.csv", collection_fields, collection_rows)
+    write_csv("evidence_based_missing.csv", evidence_fields, build_evidence_based_missing_rows())
     for filename, (fields, rows) in empty_schema_rows().items():
         write_csv(filename, fields, rows)
 

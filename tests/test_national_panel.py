@@ -7,6 +7,8 @@ import unittest
 from scripts.collect_national_panel import (
     build_city_master,
     build_debt_rows,
+    build_collection_status,
+    build_evidence_based_missing_rows,
     build_macro_rows,
     compute_derived_values,
     order_calculation_rows_for_lineage,
@@ -16,6 +18,27 @@ from scripts.collect_national_panel import (
 
 
 class NationalPanelTests(unittest.TestCase):
+
+    def test_evidence_based_missing_is_explicitly_registered_for_unpublished_debt(self):
+        city = {
+            "city_id": "CN-460300",
+            "city_name_cn": "三沙市",
+            "province_name": "海南省",
+            "metric_year": "2025",
+        }
+        macro = {
+            "city_id": "CN-460300",
+            "metric_year": "2025",
+            "data_status": "not_collected",
+            "source_grade": "",
+            "source_doc_id": "",
+            "general_debt_balance_100m": None,
+            "statutory_debt_balance_100m": None,
+        }
+        debt_status = next(item for item in build_collection_status([city], [macro]) if item["module"] == "法定债务")
+        self.assertEqual(debt_status["collection_status"], "evidence_based_missing")
+        self.assertEqual(debt_status["error_code"], "PUBLIC_SOURCE_EXHAUSTED")
+        self.assertEqual(len(build_evidence_based_missing_rows()), 10)
 
     def test_new_fund_calculations_are_appended_after_existing_lineages(self):
         rows = [
