@@ -14,6 +14,5 @@ CN-460300,三沙市,海南省,2021,core,provisional,SRC-CITY-PANEL-1990-2023,D,n
 CN-460300,三沙市,海南省,2022,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-460300,三沙市,海南省,2023,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-460300,三沙市,海南省,2024,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-420500,宜昌市,湖北省,2024,core,needs_review,SRC-CITY-DEBT-HUBEI-YICHANG-2024,A1,needs_review,债务来源已归档，但官方表中余额超过限额且未提供例外说明；按强校验阻塞入主表，待复核原表口径。
 CN-460300,三沙市,海南省,2025,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-620900,酒泉市,甘肃省,2025,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。

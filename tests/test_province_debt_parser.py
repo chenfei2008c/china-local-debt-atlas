@@ -4,7 +4,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 import zipfile
 
-from scripts.province_debt_parser import extract_city_rows, extract_xlsx_city_rows, parse_numeric_tokens
+from scripts.province_debt_parser import extract_city_rows, extract_xlsx_city_rows, merge_debt_rows, parse_numeric_tokens
 
 
 class ProvinceDebtParserTests(unittest.TestCase):
@@ -54,6 +54,56 @@ class ProvinceDebtParserTests(unittest.TestCase):
         self.assertEqual(rows[0]["general_debt_limit_100m"], Decimal("1636.1277"))
         self.assertEqual(rows[0]["general_debt_balance_100m"], Decimal("1614.0957"))
         self.assertIsNone(rows[0]["special_debt_balance_100m"])
+
+    def test_official_components_override_lower_grade_total_and_recompute_sum(self):
+        rows = [
+            {
+                "city_name_cn": "宜昌市",
+                "province_name": "湖北省",
+                "metric_year": "2024",
+                "source_doc_id": "SRC-OFFICIAL-YICHANG",
+                "source_grade": "A1",
+                "general_debt_limit_100m": Decimal("158.7938"),
+                "general_debt_balance_100m": Decimal("149.9815"),
+                "special_debt_limit_100m": None,
+                "special_debt_balance_100m": None,
+                "statutory_debt_limit_100m": None,
+                "statutory_debt_balance_100m": None,
+                "evidence_excerpt": "一般债务",
+            },
+            {
+                "city_name_cn": "宜昌市",
+                "province_name": "湖北省",
+                "metric_year": "2024",
+                "source_doc_id": "SRC-OFFICIAL-YICHANG",
+                "source_grade": "A1",
+                "general_debt_limit_100m": None,
+                "general_debt_balance_100m": None,
+                "special_debt_limit_100m": Decimal("810.7920"),
+                "special_debt_balance_100m": Decimal("748.5077"),
+                "statutory_debt_limit_100m": None,
+                "statutory_debt_balance_100m": None,
+                "evidence_excerpt": "专项债务",
+            },
+            {
+                "city_name_cn": "宜昌市",
+                "province_name": "湖北省",
+                "metric_year": "2024",
+                "source_doc_id": "SRC-SECONDARY-YICHANG",
+                "source_grade": "D",
+                "general_debt_limit_100m": None,
+                "general_debt_balance_100m": None,
+                "special_debt_limit_100m": None,
+                "special_debt_balance_100m": None,
+                "statutory_debt_limit_100m": None,
+                "statutory_debt_balance_100m": Decimal("1214.8177"),
+                "evidence_excerpt": "低等级总额线索",
+            },
+        ]
+        merged = merge_debt_rows(rows)
+        self.assertEqual(len(merged), 1)
+        self.assertEqual(merged[0]["statutory_debt_limit_100m"], Decimal("969.5858"))
+        self.assertEqual(merged[0]["statutory_debt_balance_100m"], Decimal("898.4892"))
 
     def test_extracts_mixed_general_special_balance_rows(self):
         text = "哈尔滨市 16409355 17948198 17918648 12585443 14697083 14614159"

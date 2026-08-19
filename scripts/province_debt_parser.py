@@ -331,6 +331,19 @@ def extract_xlsx_city_rows(
 
 def merge_debt_rows(rows: Iterable[dict[str, object]]) -> list[dict[str, object]]:
     """按城市、年度合并总表及一般/专项分项表，并在分项齐全时勾稽合计。"""
+    def source_priority(row: dict[str, object]) -> int:
+        # 官方 A1/A2 应优先于审计/债券披露 B1/B2，后者又优先于 C/D
+        # 线索。相同等级仍保持先出现者优先，避免无依据地覆盖同级冲突值。
+        grade = str(row.get("source_grade", "")).strip().upper()
+        return {
+            "A1": 3,
+            "A2": 3,
+            "B1": 2,
+            "B2": 2,
+            "C": 1,
+            "D": 0,
+        }.get(grade, 0)
+
     # 省直辖县级行政区划等占位名称会在多个省份重复出现，合并键必须带省份，
     # 否则河南、湖北、海南、新疆等同名行会被错误合并。
     merged: dict[tuple[str, str, str], dict[str, object]] = {}
@@ -341,6 +354,22 @@ def merge_debt_rows(rows: Iterable[dict[str, object]]) -> list[dict[str, object]
             str(incoming["metric_year"]),
         )
         target = merged.setdefault(key, dict(incoming))
+        if "_field_source_priority" not in target:
+            initial_priority = source_priority(target)
+            target["_field_source_priority"] = {
+                field: initial_priority
+                for field in (
+                    "general_debt_limit_100m",
+                    "general_debt_balance_100m",
+                    "special_debt_limit_100m",
+                    "special_debt_balance_100m",
+                    "statutory_debt_limit_100m",
+                    "statutory_debt_balance_100m",
+                )
+                if target.get(field) is not None
+            }
+        field_priorities = target["_field_source_priority"]
+        incoming_priority = source_priority(incoming)
         for field in (
             "general_debt_limit_100m",
             "general_debt_balance_100m",
@@ -349,13 +378,43 @@ def merge_debt_rows(rows: Iterable[dict[str, object]]) -> list[dict[str, object]
             "statutory_debt_limit_100m",
             "statutory_debt_balance_100m",
         ):
-            if target.get(field) is None and incoming.get(field) is not None:
+            if incoming.get(field) is None:
+                continue
+            current_priority = int(field_priorities.get(field, source_priority(target)))
+            if target.get(field) is None or incoming_priority > current_priority:
                 target[field] = incoming[field]
+                field_priorities[field] = incoming_priority
         if incoming.get("evidence_excerpt") and incoming.get("evidence_excerpt") != target.get("evidence_excerpt"):
             target["evidence_excerpt"] = f"{target.get('evidence_excerpt', '')} | {incoming['evidence_excerpt']}"
     for row in merged.values():
-        if row.get("statutory_debt_limit_100m") is None and row.get("general_debt_limit_100m") is not None and row.get("special_debt_limit_100m") is not None:
+        field_priorities = row.get("_field_source_priority", {})
+        component_limit_priority = max(
+            int(field_priorities.get("general_debt_limit_100m", -1)),
+            int(field_priorities.get("special_debt_limit_100m", -1)),
+        )
+        component_balance_priority = max(
+            int(field_priorities.get("general_debt_balance_100m", -1)),
+            int(field_priorities.get("special_debt_balance_100m", -1)),
+        )
+        aggregate_limit_priority = int(field_priorities.get("statutory_debt_limit_100m", -1))
+        aggregate_balance_priority = int(field_priorities.get("statutory_debt_balance_100m", -1))
+        if (
+            row.get("general_debt_limit_100m") is not None
+            and row.get("special_debt_limit_100m") is not None
+            and (
+                row.get("statutory_debt_limit_100m") is None
+                or component_limit_priority > aggregate_limit_priority
+            )
+        ):
             row["statutory_debt_limit_100m"] = row["general_debt_limit_100m"] + row["special_debt_limit_100m"]
-        if row.get("statutory_debt_balance_100m") is None and row.get("general_debt_balance_100m") is not None and row.get("special_debt_balance_100m") is not None:
+        if (
+            row.get("general_debt_balance_100m") is not None
+            and row.get("special_debt_balance_100m") is not None
+            and (
+                row.get("statutory_debt_balance_100m") is None
+                or component_balance_priority > aggregate_balance_priority
+            )
+        ):
             row["statutory_debt_balance_100m"] = row["general_debt_balance_100m"] + row["special_debt_balance_100m"]
+        row.pop("_field_source_priority", None)
     return sorted(merged.values(), key=lambda row: (str(row["metric_year"]), str(row["city_name_cn"])))
