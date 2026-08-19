@@ -139,3 +139,18 @@ def parse_guangdong_city_budget_page(page_text: str, field: str) -> dict[str, di
             f"{field}_raw_10k": execution_raw,
         }
     return result
+
+
+def parse_city_fund_revenue_text(text: str) -> Decimal | None:
+    """从城市官方预算报告正文提取 2025 年全市政府性基金预算收入。"""
+
+    compact = re.sub(r"\s+", "", text)
+    patterns = (
+        r"2025年[,，]?全市政府性基金预算收入(-?\d[\d,]*(?:\.\d+)?)亿元",
+        r"政府性基金预算执行情况。全市政府性基金预算收入(-?\d[\d,]*(?:\.\d+)?)亿元",
+    )
+    for pattern in patterns:
+        match = re.search(pattern, compact)
+        if match:
+            return _as_decimal(match.group(1))
+    return None

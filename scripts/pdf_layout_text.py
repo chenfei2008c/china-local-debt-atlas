@@ -48,6 +48,23 @@ def _objects(data: bytes) -> dict[int, bytes]:
     return objects
 
 
+def _content_numbers(objects: dict[int, bytes], content_number: int, visited: set[int] | None = None) -> list[int]:
+    """解析 /Contents 直接流或间接数组，返回可解压的内容流对象编号。"""
+
+    visited = visited or set()
+    if content_number in visited:
+        return []
+    visited.add(content_number)
+    body = objects.get(content_number, b"")
+    if b"stream" in body:
+        return [content_number]
+    references = re.findall(rb"(\d+)\s+0\s+R", body)
+    result: list[int] = []
+    for reference in references:
+        result.extend(_content_numbers(objects, int(reference), visited))
+    return result
+
+
 def _cmap(objects: dict[int, bytes], object_number: int) -> dict[int, str]:
     try:
         text = _stream(objects[object_number]).decode("latin1")
@@ -118,8 +135,12 @@ def extract_pdf_text(path: Path) -> str:
 
     page_text: list[str] = []
     for _, content_number, fonts in pages:
+        content_numbers = _content_numbers(objects, content_number)
+        if not content_numbers:
+            page_text.append("")
+            continue
         try:
-            content = _stream(objects[content_number]).decode("latin1")
+            content = b"\n".join(_stream(objects[number]) for number in content_numbers).decode("latin1")
         except (KeyError, UnicodeDecodeError, zlib.error):
             page_text.append("")
             continue

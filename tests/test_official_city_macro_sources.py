@@ -2,6 +2,7 @@ import unittest
 from decimal import Decimal
 
 from scripts.official_city_macro_sources import (
+    parse_city_fund_revenue_text,
     parse_guangdong_city_budget_page,
     parse_guangdong_city_gdp_html,
 )
@@ -60,6 +61,19 @@ class OfficialCityMacroSourceTests(unittest.TestCase):
         result = parse_guangdong_city_budget_page(page, "general_public_expenditure_100m")
 
         self.assertEqual(result["广州市"]["general_public_expenditure_100m"], Decimal("2801.5394"))
+
+    def test_parse_city_fund_revenue_from_official_report_text(self):
+        text = "2025 年全市政府性基金预算收入 138.49 亿元，完成预算的 107.26%。"
+
+        self.assertEqual(parse_city_fund_revenue_text(text), Decimal("138.49"))
+        self.assertEqual(
+            parse_city_fund_revenue_text("2025年，全市政府性基金预算收入667亿元。"),
+            Decimal("667"),
+        )
+        self.assertEqual(
+            parse_city_fund_revenue_text("2.政府性基金预算执行情况。全市政府性基金预算收入138.49亿元。"),
+            Decimal("138.49"),
+        )
 
 
 if __name__ == "__main__":

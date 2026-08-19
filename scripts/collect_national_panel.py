@@ -29,12 +29,12 @@ from urllib.request import Request, urlopen
 try:
     from scripts.province_debt_sources import extract_official_debt_facts
     from scripts.data_quality import debt_fact_has_balance_limit_conflict
-    from scripts.official_city_macro_sources import parse_guangdong_city_budget_page, parse_guangdong_city_gdp_html
+    from scripts.official_city_macro_sources import parse_city_fund_revenue_text, parse_guangdong_city_budget_page, parse_guangdong_city_gdp_html
     from scripts.pdf_layout_text import extract_pdf_text
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
     from province_debt_sources import extract_official_debt_facts
     from data_quality import debt_fact_has_balance_limit_conflict
-    from official_city_macro_sources import parse_guangdong_city_budget_page, parse_guangdong_city_gdp_html
+    from official_city_macro_sources import parse_city_fund_revenue_text, parse_guangdong_city_budget_page, parse_guangdong_city_gdp_html
     from pdf_layout_text import extract_pdf_text
 
 getcontext().prec = 40
@@ -57,6 +57,43 @@ GD_BUDGET_REPORT_URL = "https://czt.gd.gov.cn/czysjs/content/post_4857651.html"
 GD_BUDGET_ATTACHMENT_3_URL = "https://czt.gd.gov.cn/attachment/0/607/607013/4857651.pdf"
 GD_BUDGET_ATTACHMENT_3_PATH = RAW_DIR / "province_fiscal" / "2025" / "official" / "guangdong_2025_budget_attachment_3.pdf"
 GD_BUDGET_ATTACHMENT_3_TEXT_PATH = GD_BUDGET_ATTACHMENT_3_PATH.with_suffix(".txt")
+GD_CITY_FUND_SOURCES = (
+    {
+        "city_name": "广州市",
+        "city_id": "CN-440100",
+        "source_doc_id": "SRC-GZ-CITY-FUND-2025",
+        "url": "https://www.gz.gov.cn/attachment/7/7970/7970896/10682364.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "guangzhou_2025_budget_report.pdf",
+        "document_title": "广州市2025年预算执行情况和2026年预算草案",
+        "publisher": "广州市财政局",
+        "publication_date": "2026-01-19",
+        "note": "报告正文标记为2025年预计执行情况；全市政府性基金预算收入为1000亿元，表21同步列示执行数10000000万元。",
+    },
+    {
+        "city_name": "深圳市",
+        "city_id": "CN-440300",
+        "source_doc_id": "SRC-SZ-CITY-FUND-2025",
+        "url": "https://www.sz.gov.cn/attachment/1/1704/1704493/12737941.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "shenzhen_2025_budget_report.pdf",
+        "document_title": "关于深圳市2025年预算执行情况和2026年预算草案的报告",
+        "publisher": "深圳市财政局",
+        "publication_date": "2026-04-13",
+        "note": "官方公报正文披露2025年全市政府性基金预算收入667亿元，并明确为预计执行数，待年终决算依法报告。",
+    },
+    {
+        "city_name": "东莞市",
+        "city_id": "CN-441900",
+        "source_doc_id": "SRC-DG-CITY-FUND-2025",
+        "url": "https://czj.dg.gov.cn/attachment/0/403/403768/4501595.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "dongguan_2025_budget_report.pdf",
+        "document_title": "东莞市2025年预算执行情况和2026年预算草案的报告",
+        "publisher": "东莞市财政局",
+        "publication_date": "2026-02-04",
+        "note": "官方预算执行报告正文披露2025年全市政府性基金预算收入138.49亿元，执行状态明确。",
+    },
+)
+CITY_FUND_SOURCE_IDS = {item["source_doc_id"] for item in GD_CITY_FUND_SOURCES}
+FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
 
 D0 = Decimal("0")
 D1 = Decimal("1")
@@ -111,6 +148,24 @@ def as_decimal(value: Any) -> Decimal | None:
 def q2(value: Any) -> Decimal | None:
     number = as_decimal(value)
     return None if number is None else number.quantize(D2, rounding=ROUND_HALF_UP)
+
+
+def order_calculation_rows_for_lineage(
+    calc_rows: Iterable[Mapping[str, Any]],
+    appended_fund_target_ids: set[str],
+) -> list[Mapping[str, Any]]:
+    """保持既有计算血缘顺序，仅将本批新增基金派生值追加到末尾。"""
+
+    rows = list(calc_rows)
+    appended = [
+        row
+        for row in rows
+        if row.get("target_record_id") in appended_fund_target_ids
+        and row.get("target_field") in FUND_DERIVED_FIELDS
+    ]
+    return [
+        row for row in rows if row not in appended
+    ] + appended
 
 
 def q4(value: Any) -> Decimal | None:
@@ -396,6 +451,61 @@ def load_guangdong_2025_city_fiscal() -> tuple[dict[str, dict[str, Any]], dict[s
     return values, source
 
 
+def load_guangdong_2025_city_fund() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取广州、深圳、东莞官方预算报告披露的 2025 年全市基金收入。"""
+
+    values: dict[str, dict[str, Any]] = {}
+    sources: list[dict[str, Any]] = []
+    for config in GD_CITY_FUND_SOURCES:
+        path = config["path"]
+        content_hash = ensure_download(config["url"], path)
+        pdf_text = extract_pdf_text(path)
+        path.with_suffix(".txt").write_text(pdf_text, encoding="utf-8")
+        value = parse_city_fund_revenue_text(pdf_text)
+        if value is None:
+            raise ValueError(f"未能从官方报告提取{config['city_name']}2025年全市政府性基金预算收入")
+        values[config["city_name"]] = {
+            "gov_fund_revenue_100m": value,
+            "gov_fund_revenue_raw_100m": value,
+            "source_doc_id": config["source_doc_id"],
+            "source_locator": f"官方预算报告正文：2025年全市政府性基金预算收入；城市={config['city_name']}",
+        }
+        values[config["city_name"]]["data_status"] = "execution"
+        sources.append(
+            {
+                "source_doc_id": config["source_doc_id"],
+                "publisher": config["publisher"],
+                "publisher_level": "市级",
+                "document_title": config["document_title"],
+                "title_source": "pdf_heading",
+                "attachment_title": path.name,
+                "document_type": "官方城市政府性基金预算执行报告",
+                "source_url": config["url"],
+                "landing_page_url": config["url"],
+                "attachment_url": config["url"],
+                "canonical_url": config["url"],
+                "final_resolved_url": config["url"],
+                "file_name": path.name,
+                "mime_type": "application/pdf",
+                "publication_date": config["publication_date"],
+                "publication_date_raw": config["publication_date"],
+                "period_end": "2025-12-31",
+                "downloaded_at": RETRIEVED_AT,
+                "content_hash_sha256": content_hash,
+                "archive_uri": f"archive://national-prefecture-panel/{path.relative_to(ROOT)}",
+                "archive_backend": "internal_object",
+                "archive_path": str(path.relative_to(ROOT)),
+                "page_count": str(len(pdf_text.split("\f"))),
+                "source_grade": "A2",
+                "http_status": "200",
+                "access_status": "官方附件已归档",
+                "supersedes_doc_id": "",
+                "note": config["note"],
+            }
+        )
+    return values, sources
+
+
 def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
     general_limit = as_decimal(row.get("general_debt_limit_100m"))
     special_limit = as_decimal(row.get("special_debt_limit_100m"))
@@ -488,6 +598,7 @@ def build_macro_rows(
     official_debt_facts: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     gd_2025_gdp: Mapping[str, Mapping[str, Any]] | None = None,
     gd_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
+    gd_2025_fund: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     panel_by_key = {(str(r.get("city_code", "")).zfill(6), int(r["year"])): r for r in panel_rows if r.get("year", "").isdigit()}
     lineage: list[dict[str, Any]] = []
@@ -496,6 +607,7 @@ def build_macro_rows(
     official_debt_facts = official_debt_facts or {}
     gd_2025_gdp = gd_2025_gdp or {}
     gd_2025_fiscal = gd_2025_fiscal or {}
+    gd_2025_fund = gd_2025_fund or {}
     for city in city_master:
         year = int(city["metric_year"])
         row = _macro_base(city, year)
@@ -556,16 +668,37 @@ def build_macro_rows(
                         fiscal_source.get(f"{field}_raw_10k"),
                     )
                 )
+            fund_source = gd_2025_fund.get(city["city_id"], {})
+            fund_value = as_decimal(fund_source.get("gov_fund_revenue_100m"))
+            if fund_value is not None:
+                row["gov_fund_revenue_100m"] = q2(fund_value)
+                row["gov_fund_source_status"] = "官方城市预算报告（全市口径）"
+                batch_lineage.append(_lineage_for_city_fund(row, fund_source, row["gov_fund_revenue_100m"]))
             row["data_status"] = "preliminary"
+            source_ids = ["SRC-GD-CITY-GDP-2025"]
             if fiscal_source:
-                row["source_doc_id"] = "SRC-GD-CITY-GDP-2025;SRC-GD-CITY-FISCAL-2025"
+                source_ids.append("SRC-GD-CITY-FISCAL-2025")
+            if fund_source.get("source_doc_id"):
+                source_ids.append(str(fund_source["source_doc_id"]))
+            if fiscal_source or fund_source:
+                row["source_doc_id"] = ";".join(source_ids)
                 row["data_status"] = "execution"
             row["source_grade"] = "A2"
             row["collection_status"] = "extracted"
             row["note"] = (
                 "已接入广东省统计局 2025 年各市 GDP 初步核算表及广东省财政厅地市一般公共预算执行表；"
-                "财政收入、支出为官方 execution，GDP 与实际增速为 preliminary，政府性基金、人口和债务字段仍待补齐。"
-                if fiscal_source
+                + (
+                    "财政收入、支出为官方 execution，"
+                    if fiscal_source
+                    else ""
+                )
+                + (
+                    "广州、深圳、东莞政府性基金收入为城市官方报告披露值，"
+                    if fund_source
+                    else ""
+                )
+                + "GDP 与实际增速为 preliminary，人口和债务字段仍待补齐。"
+                if fiscal_source or fund_source
                 else "已接入广东省统计局 2025 年各市 GDP 初步核算表；GDP 与实际增速为官方 A2 值，财政和政府性基金字段仍待补齐。"
             )
         debt_fact = official_debt_facts.get((city["city_id"], str(year)))
@@ -751,6 +884,26 @@ def _lineage_for_gd_2025_city_fiscal(row: Mapping[str, Any], field: str, value: 
         extraction_method="pdf-layout-text+whitelist-row-parser",
         parse_confidence="0.98",
         selection_reason="广东省财政厅官方附件逐行披露地市执行数，行政范围为地市全域。",
+    )
+
+
+def _lineage_for_city_fund(row: Mapping[str, Any], source: Mapping[str, Any], value: Any) -> dict[str, Any]:
+    return _lineage_base(
+        row,
+        "gov_fund_revenue_100m",
+        str(source.get("source_doc_id", "")),
+        "disclosed",
+        value,
+        source_locator=str(source.get("source_locator", "")),
+        locator_type="pdf_text_statement",
+        table_name="2025年全市政府性基金预算收入执行情况（报告正文）",
+        raw_value=source.get("gov_fund_revenue_raw_100m", value),
+        raw_unit="亿元",
+        machine_extracted_value=value,
+        normalization_rule="官方报告正文以亿元直接披露，数值直接读取；全市口径，不以市本级代替。",
+        extraction_method="pdf-layout-text+statement-parser",
+        parse_confidence="0.96",
+        selection_reason="城市财政部门官方预算报告明确披露全市政府性基金预算收入，年度和行政范围与目标一致。",
     )
 
 
@@ -1268,6 +1421,7 @@ def main() -> None:
     gd_macro, _gd_debt, gd_sources = load_guangdong_2024()
     gd_2025_by_name, gd_2025_source = load_guangdong_2025_gdp()
     gd_2025_fiscal_by_name, gd_2025_fiscal_source = load_guangdong_2025_city_fiscal()
+    gd_2025_fund_by_name, gd_2025_fund_sources = load_guangdong_2025_city_fund()
     gd_2025_gdp = {
         city["city_id"]: gd_2025_by_name[city["city_name_cn"]]
         for city in city_master
@@ -1278,13 +1432,35 @@ def main() -> None:
         for city in city_master
         if int(city["metric_year"]) == 2025 and city["city_name_cn"] in gd_2025_fiscal_by_name
     }
+    gd_2025_fund = {
+        city["city_id"]: gd_2025_fund_by_name[city["city_name_cn"]]
+        for city in city_master
+        if int(city["metric_year"]) == 2025 and city["city_name_cn"] in gd_2025_fund_by_name
+    }
     official_debt_facts, official_debt_sources = extract_official_debt_facts(city_master)
-    macro_rows, lineage = build_macro_rows(city_master, panel_rows, gd_macro, official_debt_facts, gd_2025_gdp, gd_2025_fiscal)
-    fiscal_lineage = [
-        item for item in lineage if item.get("source_doc_id") == "SRC-GD-CITY-FISCAL-2025"
+    macro_rows, lineage = build_macro_rows(
+        city_master,
+        panel_rows,
+        gd_macro,
+        official_debt_facts,
+        gd_2025_gdp,
+        gd_2025_fiscal,
+        gd_2025_fund,
+    )
+    new_fiscal_lineage = [
+        item
+        for item in lineage
+        if item.get("source_doc_id") == "SRC-GD-CITY-FISCAL-2025"
+    ]
+    new_fund_lineage = [
+        item
+        for item in lineage
+        if item.get("source_doc_id") in CITY_FUND_SOURCE_IDS
     ]
     lineage = [
-        item for item in lineage if item.get("source_doc_id") != "SRC-GD-CITY-FISCAL-2025"
+        item
+        for item in lineage
+        if item.get("source_doc_id") not in (CITY_FUND_SOURCE_IDS | {"SRC-GD-CITY-FISCAL-2025"})
     ]
     attach_lineage_ids(lineage)
     calc_rows, formula_registry, formula_dependency = build_calculations(macro_rows)
@@ -1314,7 +1490,17 @@ def main() -> None:
         )
         calc_ids.add(calculation_id)
     # 为派生字段追加可反查的字段证据；计算值不覆盖原始披露证据。
-    for calc in calc_rows:
+    # 先写历史计算和本批财政原始证据，保持既有 lineage_id 稳定；基金派生值
+    # 及其原始证据作为本批新增记录追加到末尾。
+    new_fund_target_ids = {item["target_record_id"] for item in new_fund_lineage}
+    ordered_calc_rows = order_calculation_rows_for_lineage(calc_rows, new_fund_target_ids)
+    new_fund_calc_ids = {
+        item["calculation_id"]
+        for item in ordered_calc_rows
+        if item.get("target_record_id") in new_fund_target_ids
+        and item.get("target_field") in FUND_DERIVED_FIELDS
+    }
+    for calc in (item for item in ordered_calc_rows if item["calculation_id"] not in new_fund_calc_ids):
         row = next(item for item in macro_rows if _macro_record_id(item) == calc["target_record_id"])
         lineage.append(
             _lineage_base(
@@ -1335,8 +1521,31 @@ def main() -> None:
                 selection_reason="公式依赖 DAG 校验通过",
             )
         )
-    # 新批次的财政原始证据放在既有计算证据之后，避免重排历史 lineage_id。
-    for item in fiscal_lineage:
+    for item in new_fiscal_lineage:
+        item["lineage_id"] = f"LIN-{len(lineage)+1:06d}"
+        lineage.append(item)
+    for calc in (item for item in ordered_calc_rows if item["calculation_id"] in new_fund_calc_ids):
+        row = next(item for item in macro_rows if _macro_record_id(item) == calc["target_record_id"])
+        lineage.append(
+            _lineage_base(
+                row,
+                calc["target_field"],
+                "",
+                "calculated",
+                calc["output_value"],
+                lineage_id=f"LIN-CALC-{len(lineage)+1:06d}",
+                source_locator="公式注册表与计算底稿",
+                locator_type="calculation",
+                raw_value="",
+                raw_unit=calc["output_unit"],
+                normalization_rule="",
+                calculation_id=calc["calculation_id"],
+                extraction_method="calculated",
+                parse_confidence="1.00",
+                selection_reason="公式依赖 DAG 校验通过",
+            )
+        )
+    for item in new_fund_lineage:
         item["lineage_id"] = f"LIN-{len(lineage)+1:06d}"
         lineage.append(item)
     lineage_fields_by_record: dict[str, set[str]] = defaultdict(set)
@@ -1354,7 +1563,7 @@ def main() -> None:
         panel_path,
         gd_sources,
         official_debt_sources,
-        [gd_2025_source, gd_2025_fiscal_source],
+        [gd_2025_source, gd_2025_fiscal_source, *gd_2025_fund_sources],
     )
 
     city_fields = ["city_id", "admin_code_6", "city_code_12", "city_name_cn", "province_code", "province_name", "prefecture_type", "sample_tier", "metric_year", "roster_year", "roster_source_year", "valid_from", "valid_to", "roster_version_status", "source_doc_id", "source_locator", "system_valid_from", "system_valid_to", "note"]

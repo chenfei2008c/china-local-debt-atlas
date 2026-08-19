@@ -9,12 +9,29 @@ from scripts.collect_national_panel import (
     build_debt_rows,
     build_macro_rows,
     compute_derived_values,
+    order_calculation_rows_for_lineage,
     validate_city_master,
     validate_no_zero_for_missing,
 )
 
 
 class NationalPanelTests(unittest.TestCase):
+
+    def test_new_fund_calculations_are_appended_after_existing_lineages(self):
+        rows = [
+            {"target_record_id": "old", "target_field": "statutory_debt_to_gdp_pct", "calculation_id": "old-1"},
+            {"target_record_id": "old", "target_field": "fund_revenue_dependence_pct", "calculation_id": "old-fund"},
+            {"target_record_id": "new", "target_field": "fund_revenue_dependence_pct", "calculation_id": "new-1"},
+            {"target_record_id": "old", "target_field": "fiscal_self_sufficiency_pct", "calculation_id": "old-2"},
+            {"target_record_id": "new", "target_field": "gov_fund_to_general_revenue_pct", "calculation_id": "new-2"},
+        ]
+
+        ordered = order_calculation_rows_for_lineage(rows, {"new"})
+
+        self.assertEqual(
+            [row["calculation_id"] for row in ordered],
+            ["old-1", "old-fund", "old-2", "new-1", "new-2"],
+        )
 
     def test_city_master_has_stable_annual_keys_and_explicit_special_samples(self):
         rows = build_city_master(
@@ -223,13 +240,24 @@ class NationalPanelTests(unittest.TestCase):
                 "general_public_expenditure_100m_raw_10k": "28015394",
             }
         }
+        gd_2025_fund = {
+            "CN-440100": {
+                "gov_fund_revenue_100m": "1000.00",
+                "gov_fund_revenue_raw_100m": "1000.00",
+                "source_doc_id": "SRC-GZ-CITY-FUND-2025",
+                "source_locator": "官方预算报告正文：2025年全市政府性基金预算收入；城市=广州市",
+            }
+        }
 
-        rows, lineage = build_macro_rows([city], [], {}, {}, gd_2025_gdp, gd_2025_fiscal)
+        rows, lineage = build_macro_rows([city], [], {}, {}, gd_2025_gdp, gd_2025_fiscal, gd_2025_fund)
 
         self.assertEqual(rows[0]["general_public_revenue_100m"], Decimal("2184.82"))
         self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("2801.54"))
+        self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("1000.00"))
+        self.assertEqual(rows[0]["fund_revenue_dependence_pct"], Decimal("31.40"))
         self.assertEqual(rows[0]["data_status"], "execution")
         self.assertIn("SRC-GD-CITY-FISCAL-2025", rows[0]["source_doc_id"])
+        self.assertIn("SRC-GZ-CITY-FUND-2025", rows[0]["source_doc_id"])
         fiscal_fields = {
             "general_public_revenue_100m",
             "general_public_expenditure_100m",
