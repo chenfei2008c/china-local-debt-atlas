@@ -16,6 +16,7 @@ from __future__ import annotations
 import csv
 import gzip
 import hashlib
+from html import unescape
 import json
 import re
 import sys
@@ -90,6 +91,18 @@ GD_CITY_FUND_SOURCES = (
         "publisher": "东莞市财政局",
         "publication_date": "2026-02-04",
         "note": "官方预算执行报告正文披露2025年全市政府性基金预算收入138.49亿元，执行状态明确。",
+    },
+    {
+        "city_name": "中山市",
+        "city_id": "CN-442000",
+        "source_doc_id": "SRC-ZS-CITY-FUND-2025",
+        "url": "https://czj.zs.gov.cn/sy/gzdt/zwdt/content/post_2594033.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "zhongshan_2025_budget_report.html",
+        "format": "html",
+        "document_title": "2026年中山市本级政府预算公开",
+        "publisher": "中山市财政局",
+        "publication_date": "2026-02-05",
+        "note": "官方预算公开PDF正文披露2025年全市政府性基金收入80.4亿元，按报告原文全市口径记录。",
     },
 )
 CITY_FUND_SOURCE_IDS = {item["source_doc_id"] for item in GD_CITY_FUND_SOURCES}
@@ -459,9 +472,22 @@ def load_guangdong_2025_city_fund() -> tuple[dict[str, dict[str, Any]], list[dic
     for config in GD_CITY_FUND_SOURCES:
         path = config["path"]
         content_hash = ensure_download(config["url"], path)
-        pdf_text = extract_pdf_text(path)
-        path.with_suffix(".txt").write_text(pdf_text, encoding="utf-8")
-        value = parse_city_fund_revenue_text(pdf_text)
+        source_format = str(config.get("format", "pdf"))
+        if source_format == "html":
+            html_text = path.read_text(encoding="utf-8")
+            report_text = unescape(re.sub(r"<[^>]+>", " ", html_text))
+            source_mime = "text/html"
+            title_source = "html_heading"
+            document_type = "官方城市财政预算执行信息"
+            page_count = "1"
+        else:
+            report_text = extract_pdf_text(path)
+            source_mime = "application/pdf"
+            title_source = "pdf_heading"
+            document_type = "官方城市政府性基金预算执行报告"
+            page_count = str(len(report_text.split("\f")))
+        path.with_suffix(".txt").write_text(report_text, encoding="utf-8")
+        value = parse_city_fund_revenue_text(report_text)
         if value is None:
             raise ValueError(f"未能从官方报告提取{config['city_name']}2025年全市政府性基金预算收入")
         values[config["city_name"]] = {
@@ -477,16 +503,16 @@ def load_guangdong_2025_city_fund() -> tuple[dict[str, dict[str, Any]], list[dic
                 "publisher": config["publisher"],
                 "publisher_level": "市级",
                 "document_title": config["document_title"],
-                "title_source": "pdf_heading",
+                "title_source": title_source,
                 "attachment_title": path.name,
-                "document_type": "官方城市政府性基金预算执行报告",
+                "document_type": document_type,
                 "source_url": config["url"],
                 "landing_page_url": config["url"],
                 "attachment_url": config["url"],
                 "canonical_url": config["url"],
                 "final_resolved_url": config["url"],
                 "file_name": path.name,
-                "mime_type": "application/pdf",
+                "mime_type": source_mime,
                 "publication_date": config["publication_date"],
                 "publication_date_raw": config["publication_date"],
                 "period_end": "2025-12-31",
@@ -495,7 +521,7 @@ def load_guangdong_2025_city_fund() -> tuple[dict[str, dict[str, Any]], list[dic
                 "archive_uri": f"archive://national-prefecture-panel/{path.relative_to(ROOT)}",
                 "archive_backend": "internal_object",
                 "archive_path": str(path.relative_to(ROOT)),
-                "page_count": str(len(pdf_text.split("\f"))),
+                "page_count": page_count,
                 "source_grade": "A2",
                 "http_status": "200",
                 "access_status": "官方附件已归档",
