@@ -12,6 +12,7 @@ from scripts.collect_national_panel import (
     build_macro_rows,
     compute_derived_values,
     load_followup_2025_city_fiscal,
+    load_jiangsu_city_fund_sources,
     load_ningxia_2025_city_fiscal,
     load_next2_2025_city_fiscal,
     load_next3_2025_city_fiscal,
@@ -729,6 +730,44 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(rows[0]["general_public_revenue_100m"], Decimal("86.06"))
         self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("132.40"))
         self.assertTrue(all(item["source_doc_id"] == "SRC-B2-INNER-MONGOLIA-CITY-STATISTICAL-WUHAI-2025" for item in lineage))
+
+    def test_jiangsu_city_fund_batch_extracts_2023_and_2024_whole_city_tables(self):
+        values, sources = load_jiangsu_city_fund_sources()
+
+        self.assertEqual(len(values), 26)
+        self.assertEqual(len(sources), 2)
+        self.assertEqual(values[("CN-320100", "2023")]["gov_fund_revenue_100m"], Decimal("1254.30"))
+        self.assertEqual(values[("CN-321300", "2023")]["gov_fund_revenue_100m"], Decimal("309.20"))
+        self.assertEqual(values[("CN-320100", "2024")]["gov_fund_revenue_100m"], Decimal("937.59"))
+        self.assertEqual(values[("CN-321300", "2024")]["gov_fund_revenue_100m"], Decimal("217.18"))
+        self.assertEqual({source["source_grade"] for source in sources}, {"A1"})
+
+        cities = [
+            {
+                "city_id": "CN-320100",
+                "admin_code_6": "320100",
+                "city_name_cn": "南京市",
+                "province_code": "32",
+                "province_name": "江苏省",
+                "prefecture_type": "地级市",
+                "sample_tier": "core",
+                "metric_year": year,
+            }
+            for year in ("2023", "2024")
+        ]
+        rows, lineage = build_macro_rows(
+            cities, [], {}, {}, jiangsu_city_fund=values,
+        )
+        self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("1254.30"))
+        self.assertEqual(rows[1]["gov_fund_revenue_100m"], Decimal("937.59"))
+        self.assertEqual(rows[0]["source_grade"], "A1")
+        self.assertEqual(rows[1]["source_grade"], "A1")
+        self.assertEqual(rows[0]["collection_status"], "extracted")
+        self.assertEqual(rows[1]["collection_status"], "extracted")
+        self.assertEqual(
+            {item["target_field"] for item in lineage},
+            {"gov_fund_revenue_100m"},
+        )
 
 
 if __name__ == "__main__":
