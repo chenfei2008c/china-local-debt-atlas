@@ -1189,6 +1189,73 @@ JIANGSU_CITY_FUND_SOURCES = (
     },
 )
 
+# 内蒙古自治区城市财政报告中已核验的全市政府性基金收入。来源均能精确定位
+# 到报告正文，但不是省财政厅分地区原始表，因此按 B2 纳入，并保留 execution
+# 状态；不把市本级数替代为全市数。
+CITY_YEAR_FUND_SOURCES = (
+    {
+        "year": 2024,
+        "city_name": "呼和浩特市",
+        "city_id": "CN-150100",
+        "source_doc_id": "SRC-B2-HOHHOT-CITY-FUND-2024",
+        "url": "https://static.0471tv.org.cn/rb/pc/att/202501/23/8ab6d53d-1f5f-4c54-9655-32ba857e97bb.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "hohhot_2024_budget_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "hohhot_2024_budget_report_excerpt.txt",
+        "document_title": "关于呼和浩特市2024年预算执行情况和2025年预算（草案）的报告",
+        "publisher": "呼和浩特市财政局",
+        "publisher_level": "市级财政机构（精确转载）",
+        "publication_date": "2025-01-23",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": r"2024年，全市政府性基金预算收入([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "document_type": "城市财政预算执行报告（精确转载）",
+        "page_count": "1",
+        "note": "B2精确转载；报告正文明确披露呼和浩特市2024年全市政府性基金预算收入112.52亿元，执行口径，不使用市本级数。",
+    },
+    {
+        "year": 2025,
+        "city_name": "呼和浩特市",
+        "city_id": "CN-150100",
+        "source_doc_id": "SRC-B2-HOHHOT-CITY-FUND-2025",
+        "url": "https://static.0471tv.org.cn/rb/pc/att/202603/04/5edaa825-0884-472e-9693-6c0aca69c74a.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "hohhot_2025_budget_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "hohhot_2025_budget_report_excerpt.txt",
+        "document_title": "关于呼和浩特市2025年预算执行情况和2026年预算（草案）的报告",
+        "publisher": "呼和浩特市财政局",
+        "publisher_level": "市级财政机构（精确转载）",
+        "publication_date": "2026-02-10",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": r"2025年全市政府性基金预算收入([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "document_type": "城市财政预算执行报告（精确转载）",
+        "page_count": "1",
+        "note": "B2精确转载；报告正文明确披露呼和浩特市2025年全市政府性基金预算收入75.78亿元，执行口径，不使用市本级数。",
+    },
+    {
+        "year": 2025,
+        "city_name": "赤峰市",
+        "city_id": "CN-150400",
+        "source_doc_id": "SRC-B2-CHIFENG-CITY-FUND-2025",
+        "url": "https://www.chifeng.gov.cn/ztzl/rdzl/cfslhzt/cfszf2026lhzt/2026gzbg/202601/t20260130_2723148.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "chifeng_2025_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "chifeng_2025_budget_report_excerpt.txt",
+        "document_title": "赤峰市2025年政府工作报告",
+        "publisher": "赤峰市人民政府",
+        "publisher_level": "市级政府门户",
+        "publication_date": "2026-01-30",
+        "source_grade": "B2",
+        "source_format": "html",
+        "pattern": r"全市政府性基金预算收入([0-9]+)万元",
+        "raw_unit": "万元",
+        "document_type": "政府工作报告财政执行段落（官方网页）",
+        "page_count": "1",
+        "note": "B2官方网页精确披露；报告明确以2025年12月月报数据作为执行数据，2025年全市政府性基金预算收入466850万元，折算为亿元。",
+    },
+)
+CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
+
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
 
 D0 = Decimal("0")
@@ -1764,6 +1831,76 @@ def load_jiangsu_city_fund_sources() -> tuple[dict[tuple[str, str], dict[str, An
     return values, sources
 
 
+def load_city_year_fund_sources() -> tuple[dict[tuple[str, str], dict[str, Any]], list[dict[str, Any]]]:
+    """读取已核验的城市年度全市政府性基金收入精确披露。"""
+
+    values: dict[tuple[str, str], dict[str, Any]] = {}
+    sources: list[dict[str, Any]] = []
+    for config in CITY_YEAR_FUND_SOURCES:
+        source_path = Path(config["path"])
+        text_path = Path(config["text_path"])
+        content_hash = ensure_download(str(config["url"]), source_path)
+        report_text = text_path.read_text(encoding="utf-8")
+        compact_text = re.sub(r"\s+", "", report_text)
+        match = re.search(str(config["pattern"]), compact_text)
+        if not match:
+            raise ValueError(
+                f"未能从{config['city_name']}{config['year']}年政府性基金来源提取全市收入"
+            )
+        raw_value = Decimal(match.group(1).replace(",", ""))
+        raw_unit = str(config["raw_unit"])
+        normalized = raw_value if raw_unit == "亿元" else raw_value * D4
+        year = str(config["year"])
+        values[(str(config["city_id"]), year)] = {
+            "gov_fund_revenue_100m": q2(normalized),
+            "gov_fund_revenue_raw_100m": raw_value,
+            "gov_fund_revenue_raw_unit": raw_unit,
+            "gov_fund_revenue_evidence_excerpt": match.group(0),
+            "source_doc_id": config["source_doc_id"],
+            "source_grade": config["source_grade"],
+            "source_format": config["source_format"],
+            "data_status": "execution",
+            "source_locator": (
+                f"{text_path.relative_to(ROOT)}；报告正文；城市={config['city_name']}；"
+                f"{year}年全市政府性基金预算收入执行数"
+            ),
+            "table_name": f"{year}年全市政府性基金预算收入执行情况",
+        }
+        sources.append(
+            {
+                "source_doc_id": config["source_doc_id"],
+                "publisher": config["publisher"],
+                "publisher_level": config["publisher_level"],
+                "document_title": config["document_title"],
+                "title_source": "curated_statement_excerpt",
+                "attachment_title": source_path.name,
+                "document_type": config["document_type"],
+                "source_url": config["url"],
+                "landing_page_url": config["url"],
+                "attachment_url": config["url"],
+                "canonical_url": config["url"],
+                "final_resolved_url": config["url"],
+                "file_name": source_path.name,
+                "mime_type": "text/html" if source_path.suffix == ".html" else "application/pdf",
+                "publication_date": config["publication_date"],
+                "publication_date_raw": config["publication_date"],
+                "period_end": f"{year}-12-31",
+                "downloaded_at": RETRIEVED_AT,
+                "content_hash_sha256": content_hash,
+                "archive_uri": f"archive://national-prefecture-panel/{source_path.relative_to(ROOT)}",
+                "archive_backend": "internal_object",
+                "archive_path": str(source_path.relative_to(ROOT)),
+                "page_count": config.get("page_count", ""),
+                "source_grade": config["source_grade"],
+                "http_status": "200",
+                "access_status": "精确来源已归档",
+                "supersedes_doc_id": "",
+                "note": config["note"],
+            }
+        )
+    return values, sources
+
+
 def load_ningxia_2025_city_fiscal() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
     """读取宁夏四市 2025 年官方预算执行报告的全市财政字段。"""
 
@@ -1935,6 +2072,7 @@ def build_macro_rows(
     next7_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
     next8_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     jiangsu_city_fund: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
+    city_year_fund: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     panel_by_key = {(str(r.get("city_code", "")).zfill(6), int(r["year"])): r for r in panel_rows if r.get("year", "").isdigit()}
     lineage: list[dict[str, Any]] = []
@@ -1956,6 +2094,7 @@ def build_macro_rows(
     next7_2025_fiscal = next7_2025_fiscal or {}
     next8_2025_economic = next8_2025_economic or {}
     jiangsu_city_fund = jiangsu_city_fund or {}
+    city_year_fund = city_year_fund or {}
     city_2025_fiscal = {
         **ningxia_2025_fiscal,
         **shandong_2025_fiscal,
@@ -2172,6 +2311,28 @@ def build_macro_rows(
                     "经济财政其他字段仍按各自来源状态记录。"
                 )
                 batch_lineage.append(_lineage_for_jiangsu_city_fund(row, jiangsu_fund_source, fund_value))
+        city_year_fund_source = city_year_fund.get((city["city_id"], str(year)))
+        if city_year_fund_source:
+            fund_value = as_decimal(city_year_fund_source.get("gov_fund_revenue_100m"))
+            if fund_value is not None:
+                row["gov_fund_revenue_100m"] = q2(fund_value)
+                row["gov_fund_source_status"] = "城市预算执行报告（全市口径，B2精确来源）"
+                prior_source = str(row.get("source_doc_id") or "")
+                fund_source_id = str(city_year_fund_source.get("source_doc_id") or "")
+                row["source_doc_id"] = ";".join(
+                    item for item in [prior_source, fund_source_id] if item
+                )
+                if row.get("data_status") in {None, "", "provisional", "not_collected"}:
+                    row["data_status"] = "execution"
+                row["source_grade"] = str(city_year_fund_source.get("source_grade") or "B2")
+                row["collection_status"] = "needs_review"
+                row["note"] = (
+                    str(row.get("note") or "")
+                    + ("；" if row.get("note") else "")
+                    + f"已接入{year}年{city['city_name_cn']}全市政府性基金预算收入精确披露；"
+                    "来源等级为B2，执行数，不等同于A1/A2官方原始决算表。"
+                )
+                batch_lineage.append(_lineage_for_city_year_fund(row, city_year_fund_source, fund_value))
         derived = compute_derived_values(row)
         for field, value in derived.items():
             if value is not None:
@@ -2348,6 +2509,41 @@ def _lineage_for_jiangsu_city_fund(
         extraction_method="curated-official-pdf-row-parser",
         parse_confidence="0.99",
         selection_reason="江苏省财政厅官方分地区表逐行披露设区市全市执行数，年度、单位和行政范围明确。",
+    )
+
+
+def _lineage_for_city_year_fund(
+    row: Mapping[str, Any], source: Mapping[str, Any], value: Any
+) -> dict[str, Any]:
+    year = row["metric_year"]
+    return _lineage_base(
+        row,
+        "gov_fund_revenue_100m",
+        str(source.get("source_doc_id", "")),
+        "disclosed",
+        value,
+        source_locator=str(source.get("source_locator", "")),
+        locator_type=(
+            "html_text_statement"
+            if source.get("source_format") == "html"
+            else "pdf_text_statement"
+        ),
+        table_name=str(source.get("table_name", f"{year}年全市政府性基金预算收入执行情况")),
+        raw_value=source.get("gov_fund_revenue_raw_100m", value),
+        raw_unit=source.get("gov_fund_revenue_raw_unit", "亿元"),
+        machine_extracted_value=value,
+        evidence_excerpt=source.get("gov_fund_revenue_evidence_excerpt", ""),
+        normalization_rule=(
+            "来源正文以亿元直接披露，数值直接读取；全市口径，不以市本级代替。"
+            if source.get("gov_fund_revenue_raw_unit") == "亿元"
+            else "来源正文原始单位为万元；原值÷10000=亿元，保留两位小数；全市口径。"
+        ),
+        extraction_method="curated-official-statement-parser",
+        parse_confidence="0.96",
+        selection_reason=(
+            "公开来源精确披露城市全市政府性基金预算收入，年度、执行状态和行政范围明确；"
+            "按B2登记，待A1/A2原始表复核。"
+        ),
     )
 
 
@@ -3001,6 +3197,7 @@ def main() -> None:
     next7_2025_fiscal, next7_2025_fiscal_sources = load_next7_2025_city_fiscal()
     next8_2025_economic, next8_2025_economic_sources = load_next8_2025_city_economic()
     jiangsu_city_fund, jiangsu_city_fund_sources = load_jiangsu_city_fund_sources()
+    city_year_fund, city_year_fund_sources = load_city_year_fund_sources()
     gd_2025_gdp = {
         city["city_id"]: gd_2025_by_name[city["city_name_cn"]]
         for city in city_master
@@ -3037,6 +3234,7 @@ def main() -> None:
         next7_2025_fiscal,
         next8_2025_economic,
         jiangsu_city_fund,
+        city_year_fund,
     )
     new_fiscal_lineage = [
         item
@@ -3046,12 +3244,12 @@ def main() -> None:
     new_fund_lineage = [
         item
         for item in lineage
-        if item.get("source_doc_id") in CITY_FUND_SOURCE_IDS
+        if item.get("source_doc_id") in (CITY_FUND_SOURCE_IDS | CITY_YEAR_FUND_SOURCE_IDS)
     ]
     lineage = [
         item
         for item in lineage
-        if item.get("source_doc_id") not in (CITY_FUND_SOURCE_IDS | {"SRC-GD-CITY-FISCAL-2025"})
+        if item.get("source_doc_id") not in (CITY_FUND_SOURCE_IDS | CITY_YEAR_FUND_SOURCE_IDS | {"SRC-GD-CITY-FISCAL-2025"})
     ]
     attach_lineage_ids(lineage)
     calc_rows, formula_registry, formula_dependency = build_calculations(macro_rows)
@@ -3170,6 +3368,7 @@ def main() -> None:
             *next7_2025_fiscal_sources,
             *next8_2025_economic_sources,
             *jiangsu_city_fund_sources,
+            *city_year_fund_sources,
         ],
         EVIDENCE_SOURCE_DOCUMENTS,
     )

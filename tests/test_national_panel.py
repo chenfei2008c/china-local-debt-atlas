@@ -12,6 +12,7 @@ from scripts.collect_national_panel import (
     build_macro_rows,
     compute_derived_values,
     load_followup_2025_city_fiscal,
+    load_city_year_fund_sources,
     load_jiangsu_city_fund_sources,
     load_ningxia_2025_city_fiscal,
     load_next2_2025_city_fiscal,
@@ -768,6 +769,38 @@ class NationalPanelTests(unittest.TestCase):
             {item["target_field"] for item in lineage},
             {"gov_fund_revenue_100m"},
         )
+
+    def test_city_year_fund_batch_extracts_hohhot_and_chifeng(self):
+        values, sources = load_city_year_fund_sources()
+
+        self.assertEqual(len(values), 3)
+        self.assertEqual(len(sources), 3)
+        self.assertEqual(values[("CN-150100", "2024")]["gov_fund_revenue_100m"], Decimal("112.52"))
+        self.assertEqual(values[("CN-150100", "2025")]["gov_fund_revenue_100m"], Decimal("75.78"))
+        self.assertEqual(values[("CN-150400", "2025")]["gov_fund_revenue_100m"], Decimal("46.69"))
+        self.assertEqual({source["source_grade"] for source in sources}, {"B2"})
+
+        cities = [
+            {
+                "city_id": city_id,
+                "admin_code_6": city_id.removeprefix("CN-"),
+                "city_name_cn": "呼和浩特市" if city_id == "CN-150100" else "赤峰市",
+                "province_code": "15",
+                "province_name": "内蒙古自治区",
+                "prefecture_type": "地级市",
+                "sample_tier": "core",
+                "metric_year": year,
+            }
+            for city_id, year in (("CN-150100", "2024"), ("CN-150100", "2025"), ("CN-150400", "2025"))
+        ]
+        rows, lineage = build_macro_rows(cities, [], {}, {}, city_year_fund=values)
+        self.assertEqual(
+            [row["gov_fund_revenue_100m"] for row in rows],
+            [Decimal("112.52"), Decimal("75.78"), Decimal("46.69")],
+        )
+        self.assertEqual({row["source_grade"] for row in rows}, {"B2"})
+        self.assertEqual({row["collection_status"] for row in rows}, {"needs_review"})
+        self.assertEqual({item["target_field"] for item in lineage}, {"gov_fund_revenue_100m"})
 
 
 if __name__ == "__main__":
