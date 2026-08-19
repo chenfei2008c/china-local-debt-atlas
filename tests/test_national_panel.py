@@ -699,6 +699,26 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(rows[0]["fiscal_self_sufficiency_pct"], Decimal("57.57"))
         self.assertTrue(all("B2" not in item["selection_reason"] for item in lineage))
 
+    def test_existing_2025_bulletin_batches_extract_economic_fields(self):
+        cases = [
+            (load_followup_2025_city_fiscal, "CN-320500", "27695.10", "5.40", "1304.77"),
+            (load_next3_2025_city_fiscal, "CN-350500", "13778.34", "5.30", None),
+            (load_next3_2025_city_fiscal, "CN-430100", "15737.82", "4.00", None),
+            (load_next4_2025_city_fiscal, "CN-410100", "15244.60", "5.40", "1313.80"),
+            (load_next4_2025_city_fiscal, "CN-360100", "8141.69", "4.70", None),
+            (load_next5_2025_city_fiscal, "CN-640100", "3033.52", "5.30", "294.26"),
+            (load_next5_2025_city_fiscal, "CN-650100", "4658.19", "4.50", "415.39"),
+            (load_next6_2025_city_fiscal, "CN-130100", "8651.70", "6.00", "1124.69"),
+        ]
+        for loader, city_id, gdp, growth, population in cases:
+            values, _ = loader()
+            self.assertEqual(values[city_id]["gdp_current_100m"], Decimal(gdp))
+            self.assertEqual(values[city_id]["gdp_real_growth_pct"], Decimal(growth))
+            if population is None:
+                self.assertNotIn("resident_population_10k", values[city_id])
+            else:
+                self.assertEqual(values[city_id]["resident_population_10k"], Decimal(population))
+
     def test_next8_2025_city_economic_batch_extracts_wuhai_statistics(self):
         values, sources = load_next8_2025_city_economic()
 

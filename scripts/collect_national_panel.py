@@ -413,6 +413,9 @@ FOLLOWUP_2025_FISCAL_SOURCES = (
         "document_type": "官方统计公报（网页）",
         "mime_type": "text/html",
         "patterns": {
+            "gdp_current_100m": (r"全年实现地区生产总值([0-9.]+)亿元", "亿元"),
+            "gdp_real_growth_pct": (r"地区生产总值[0-9.]+亿元，按不变价格计算比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末常住人口([0-9.]+)万人", "万人"),
             "general_public_revenue_100m": (r"全年实现一般公共预算收入([0-9.]+)亿元", "亿元"),
             "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
         },
@@ -561,6 +564,8 @@ NEXT3_2025_FISCAL_SOURCES = (
         "mime_type": "text/html",
         "source_grade": "A2",
         "patterns": {
+            "gdp_current_100m": (r"地区生产总值([0-9.]+)亿元，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"地区生产总值[0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
             "general_public_revenue_100m": (r"地方一般公共预算收入([0-9.]+)亿元", "亿元"),
             "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
             "gov_fund_revenue_100m": (r"政府性基金预算收入([0-9.]+)亿元", "亿元"),
@@ -585,6 +590,8 @@ NEXT3_2025_FISCAL_SOURCES = (
         "mime_type": "text/html",
         "source_grade": "A2",
         "patterns": {
+            "gdp_current_100m": (r"地区生产总值([0-9.]+)亿元，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"地区生产总值[0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
             "general_public_revenue_100m": (r"全年地方一般公共预算收入([0-9.]+)亿元", "亿元"),
             "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
         },
@@ -658,6 +665,9 @@ NEXT4_2025_FISCAL_SOURCES = (
         "mime_type": "text/html",
         "source_grade": "A2",
         "patterns": {
+            "gdp_current_100m": (r"全年全市地区生产总值([0-9.]+)亿元，按不变价格计算，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"地区生产总值[0-9.]+亿元，按不变价格计算，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
             "general_public_revenue_100m": (r"全年全市地方财政一般公共预算收入([0-9.]+)亿元", "亿元"),
             "general_public_expenditure_100m": (r"全年全市地方财政一般公共预算支出([0-9.]+)亿元", "亿元"),
         },
@@ -704,6 +714,8 @@ NEXT4_2025_FISCAL_SOURCES = (
         "mime_type": "text/html",
         "source_grade": "A2",
         "patterns": {
+            "gdp_current_100m": (r"全市地区生产总值([0-9.]+)亿元，按不变价格计算，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"地区生产总值[0-9.]+亿元，按不变价格计算，比上年增长([0-9.]+)%", "%"),
             "general_public_revenue_100m": (r"全年全市地方一般公共预算收入完成([0-9.]+)亿元", "亿元"),
             "general_public_expenditure_100m": (r"全市一般公共预算支出完成([0-9.]+)亿元", "亿元"),
         },
@@ -799,6 +811,9 @@ NEXT5_2025_FISCAL_SOURCES = (
         "mime_type": "text/html",
         "source_grade": "A2",
         "patterns": {
+            "gdp_current_100m": (r"全年全市生产总值([0-9.]+)亿元，按不变价格计算，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"全市生产总值[0-9.]+亿元，按不变价格计算，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
             "general_public_revenue_100m": (r"一般公共预算收入([0-9.]+)亿元", "亿元"),
             "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
         },
@@ -822,6 +837,9 @@ NEXT5_2025_FISCAL_SOURCES = (
         "mime_type": "text/html",
         "source_grade": "A2",
         "patterns": {
+            "gdp_current_100m": (r"实现地区生产总值（GDP）([0-9.]+)亿元，按可比价计算，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"地区生产总值（GDP）[0-9.]+亿元，按可比价计算，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
             "general_public_revenue_100m": (r"一般公共预算收入([0-9.]+)亿元", "亿元"),
             "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
             "gov_fund_revenue_100m": (r"政府性基金预算收入([0-9.]+)亿元", "亿元"),
@@ -872,6 +890,9 @@ NEXT6_2025_FISCAL_SOURCES = (
         "mime_type": "text/html",
         "source_grade": "A2",
         "patterns": {
+            "gdp_current_100m": (r"全年地区生产总值([0-9.]+)亿元，按不变价格计算，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"地区生产总值[0-9.]+亿元，按不变价格计算，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
             "general_public_revenue_100m": (r"一般公共预算收入([0-9.]+)亿元", "亿元"),
             "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
         },
@@ -2684,7 +2705,11 @@ def _lineage_for_city_fund(row: Mapping[str, Any], source: Mapping[str, Any], va
         "disclosed",
         value,
         source_locator=str(source.get("source_locator", "")),
-        locator_type="pdf_text_statement",
+        locator_type=(
+            "html_text_statement"
+            if str(source.get("mime_type", "")).lower() == "text/html"
+            else "pdf_text_statement"
+        ),
         table_name="2025年全市政府性基金预算收入执行情况（报告正文）",
         raw_value=source.get("gov_fund_revenue_raw_100m", value),
         raw_unit="亿元",
@@ -2783,7 +2808,11 @@ def _lineage_for_ningxia_city_fiscal(
             f"{source.get('source_locator', '')}；字段={field_label}；"
             + ("统计公报明确为全市口径 2025 年经济指标" if is_economic else "报告明确为全市口径 2025 年执行数")
         ),
-        locator_type="pdf_text_statement",
+        locator_type=(
+            "html_text_statement"
+            if str(source.get("mime_type", "")).lower() == "text/html"
+            else "pdf_text_statement"
+        ),
         table_name=(f"2025年全市{field_label}统计公报" if is_economic else f"2025年全市{field_label}执行情况"),
         raw_value=source.get(f"{field}_raw", value),
         raw_unit=raw_unit,
