@@ -2,7 +2,13 @@ import unittest
 from decimal import Decimal
 
 from scripts.collect_national_panel import compute_derived_values
-from scripts.data_quality import ACCEPTED_SOURCE_GRADES, assess_field_value, is_accepted_source_grade
+from scripts.data_quality import (
+    ACCEPTED_SOURCE_GRADES,
+    OFFICIAL_DEBT_EXCEPTION_STATUS,
+    assess_field_value,
+    debt_fact_has_balance_limit_conflict,
+    is_accepted_source_grade,
+)
 from scripts.report_missing_data import FIELD_LABELS
 from scripts.validate_national_panel import provisional_source_grade_error
 
@@ -76,6 +82,15 @@ class DataQualityTests(unittest.TestCase):
         self.assertIsNone(result["statutory_debt_to_gdp_pct"])
         self.assertIsNone(result["statutory_debt_to_revenue_pct"])
         self.assertIsNone(result["fund_revenue_dependence_pct"])
+
+    def test_explicit_official_debt_exception_preserves_conflicting_value(self):
+        fact = {
+            "general_debt_limit_100m": Decimal("130"),
+            "general_debt_balance_100m": Decimal("135"),
+            "balance_limit_exception_note": "官方公开表原值存在余额高于限额的内部勾稽异常，保留原值待复核。",
+        }
+        self.assertFalse(debt_fact_has_balance_limit_conflict(fact))
+        self.assertEqual(OFFICIAL_DEBT_EXCEPTION_STATUS, "official_debt_exception")
 
     def test_revenue_alias_matches_canonical_metric(self):
         result = compute_derived_values(

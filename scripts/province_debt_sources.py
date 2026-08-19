@@ -444,7 +444,7 @@ OFFICIAL_PROVINCE_DEBT_SOURCES: list[dict[str, Any]] = [
             "source_doc_id": "SRC-PROVINCE-DEBT-SICHUAN-2021",
             "province_name": "四川省",
             "year": 2021,
-            "path": RAW_DIR / "2021" / "official" / "sichuan_2021.txt",
+            "path": RAW_DIR / "2021" / "official" / "sichuan_2021.pdf",
             "text_path": RAW_DIR / "2021" / "official" / "sichuan_2021.txt",
             "source_url": "https://czt.sc.gov.cn/scczt/c102371/2021/2/9/f0c5f5e7f83a4a4ea84149b93cf7dcd4/files/96b3bf335a4246bea532d157aa482651.pdf",
             "document_title": "四川省2021年地方政府债务限额及余额预算情况表",
@@ -458,6 +458,9 @@ OFFICIAL_PROVINCE_DEBT_SOURCES: list[dict[str, Any]] = [
             "end": None,
             "table_name": "四川省2021年地方政府债务限额及余额预算情况表",
             "note": "原始表为四川省财政厅公开附件；本地文本为官方附件网页索引中的逐行转录，待附件下载链路恢复后以原始 PDF 替换。",
+            "balance_limit_exception_by_city": {
+                "德阳市": "四川省2021年官方预算表原值保留：德阳市一般债务余额135亿元高于一般债务限额130亿元；该内部勾稽异常未按其他来源改写，待财政部门更正或解释。",
+            },
         },
         {
             "source_doc_id": "SRC-PROVINCE-DEBT-ZHEJIANG-GENERAL-2024",
@@ -623,6 +626,11 @@ for _year, (_url, _date) in _JILIN_HISTORICAL_PDFS.items():
             "start": f"{_year}年地方政府债务限额及余额决算情况表",
             "end": "注：1.本表反映上一年度",
             "table_name": f"吉林省{_year}年地方政府债务限额及余额决算情况表",
+            "balance_limit_exception_by_city": {
+                "通化市": "吉林省2018年官方决算表原值保留：通化市一般债务余额53.20亿元高于一般债务限额52.86亿元；该内部勾稽异常未按其他来源改写，待财政部门更正或解释。",
+            }
+            if _year == 2018
+            else {},
         }
     )
 
@@ -5799,7 +5807,7 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
             "source_doc_id": "SRC-OFFICIAL-DEBT-INNER-MONGOLIA-BAYANNUR-2018",
             "province_name": "内蒙古自治区",
             "year": 2018,
-            "path": RAW_DIR / "2025" / "official" / "inner_mongolia_bayannur_historical.txt",
+            "path": RAW_DIR / "2018" / "official" / "inner_mongolia_bayannur_2018.xlsx",
             "text_path": RAW_DIR / "2025" / "official" / "inner_mongolia_bayannur_historical.txt",
             "source_url": "https://czt.nmg.gov.cn/yjs/business/article/select/25d086a787acb4dd379a4176acdec756",
             "attachment_url": "https://czt.nmg.gov.cn/yjs/business/file/download/96577540d8de4dcc807b3e9ff4e4a9dd",
@@ -5814,12 +5822,13 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
             "end": "表：巴彦淖尔市2019年地方政府债务限额及余额决算情况表",
             "table_name": "2018年地方政府债务限额及余额决算情况表",
             "note": "官方全市行直接列示余额305.5167亿元，其中一般257.5332亿元、专项47.9835亿元。",
+            "balance_limit_exception_note": "内蒙古2018年官方决算表原值保留：巴彦淖尔市一般、专项债务余额分别高于对应限额9.7132亿元、5.2335亿元；该内部勾稽异常未按其他来源改写，待财政部门更正或解释。",
         },
         {
             "source_doc_id": "SRC-OFFICIAL-DEBT-INNER-MONGOLIA-BAYANNUR-2019",
             "province_name": "内蒙古自治区",
             "year": 2019,
-            "path": RAW_DIR / "2025" / "official" / "inner_mongolia_bayannur_historical.txt",
+            "path": RAW_DIR / "2019" / "official" / "inner_mongolia_bayannur_2019.xlsx",
             "text_path": RAW_DIR / "2025" / "official" / "inner_mongolia_bayannur_historical.txt",
             "source_url": "https://czt.nmg.gov.cn/yjs/business/article/select/2682f81b3573408d7b5b19c1b31d8370",
             "attachment_url": "https://czt.nmg.gov.cn/yjs/business/file/download/80c48d33f600424ea10965da062b1138",
@@ -5834,6 +5843,7 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
             "end": "表：巴彦淖尔市2020年地方政府债务限额及余额决算情况表",
             "table_name": "2019年地方政府债务限额及余额决算情况表",
             "note": "官方全市行直接列示余额332.8613611017亿元，其中一般270.7067292068亿元、专项62.1546318949亿元。",
+            "balance_limit_exception_note": "内蒙古2019年官方决算表原值保留：巴彦淖尔市专项债务余额62.1546318949亿元高于专项债务限额61.46亿元；该内部勾稽异常未按其他来源改写，待财政部门更正或解释。",
         },
         {
             "source_doc_id": "SRC-OFFICIAL-DEBT-INNER-MONGOLIA-BAYANNUR-2020",
@@ -6128,7 +6138,7 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
             "source_doc_id": "SRC-OFFICIAL-DEBT-INNER-MONGOLIA-XINGAN-2018",
             "province_name": "内蒙古自治区",
             "year": 2018,
-            "path": RAW_DIR / "2025" / "official" / "inner_mongolia_xingan_historical.txt",
+            "path": RAW_DIR / "2018" / "official" / "inner_mongolia_xingan_2018.xlsx",
             "text_path": RAW_DIR / "2025" / "official" / "inner_mongolia_xingan_historical.txt",
             "source_url": "https://czt.nmg.gov.cn/yjs/business/article/select/c3f2420cd2e0f124d7c951d104bad990",
             "attachment_url": "https://czt.nmg.gov.cn/yjs/business/file/download/4f54ade760f2492c92b32f032ece9cc0",
@@ -6143,6 +6153,7 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
             "end": "表：兴安盟2019年地方政府债务限额及余额决算情况表",
             "table_name": "2018年地方政府债务限额及余额决算情况表",
             "note": "官方全盟行直接列示余额220.316亿元，其中一般189.8921亿元、专项30.4239亿元。",
+            "balance_limit_exception_note": "内蒙古2018年官方决算表原值保留：兴安盟一般债务余额189.8921亿元高于一般债务限额188.57亿元；该内部勾稽异常未按其他来源改写，待财政部门更正或解释。",
         },
         {
             "source_doc_id": "SRC-OFFICIAL-DEBT-INNER-MONGOLIA-XINGAN-2019",
@@ -6293,7 +6304,7 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
             "source_doc_id": "SRC-OFFICIAL-DEBT-INNER-MONGOLIA-TONGLIAO-2018",
             "province_name": "内蒙古自治区",
             "year": 2018,
-            "path": RAW_DIR / "2018" / "official" / "inner_mongolia_tongliao_2018.txt",
+            "path": RAW_DIR / "2018" / "official" / "inner_mongolia_tongliao_2018.xlsx",
             "text_path": RAW_DIR / "2018" / "official" / "inner_mongolia_tongliao_2018.txt",
             "source_url": "https://czt.nmg.gov.cn/yjs/business/article/select/84e96317e115de1446333127021713ed",
             "attachment_url": "https://czt.nmg.gov.cn/yjs/business/file/download/1af3edc3417344ff890cea8b21d80ad8",
@@ -6307,6 +6318,7 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
             "start": "通辽市2018年地方政府债务限额及余额决算情况表",
             "table_name": "表4-1地方政府债务限额及余额决算情况表",
             "note": "官方全市决算表直接列示通辽市全域余额401.3651亿元，其中一般347.9992亿元、专项53.3659亿元。",
+            "balance_limit_exception_note": "内蒙古2018年官方决算表原值保留：通辽市一般债务余额347.9992亿元高于一般债务限额347亿元；该内部勾稽异常未按其他来源改写，待财政部门更正或解释。",
         },
         {
             "source_doc_id": "SRC-OFFICIAL-DEBT-INNER-MONGOLIA-TONGLIAO-2019",
@@ -14544,6 +14556,15 @@ def extract_official_debt_facts(city_master: list[Mapping[str, Any]]) -> tuple[d
                 row["data_status"] = str(config["data_status"])
             if config.get("value_origin"):
                 row["value_origin"] = str(config["value_origin"])
+            exception_note = str(config.get("balance_limit_exception_note") or "")
+            exception_note_by_city = {
+                str(name): str(note)
+                for name, note in (config.get("balance_limit_exception_by_city") or {}).items()
+            }
+            if canonical_city_name in exception_note_by_city:
+                exception_note = exception_note_by_city[canonical_city_name]
+            if exception_note:
+                row["balance_limit_exception_note"] = exception_note
             fact_rows.append(row)
         source_rows.append(config)
 

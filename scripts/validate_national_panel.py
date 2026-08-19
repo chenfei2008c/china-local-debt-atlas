@@ -10,6 +10,11 @@ import zipfile
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 
+try:
+    from scripts.data_quality import OFFICIAL_DEBT_EXCEPTION_STATUS
+except ModuleNotFoundError:
+    from data_quality import OFFICIAL_DEBT_EXCEPTION_STATUS
+
 START_YEAR = 2018
 END_YEAR = 2026
 NUMERIC_FIELDS = {
@@ -104,7 +109,12 @@ def validate(input_dir: Path, require_statutory_debt_gate: bool = False) -> dict
     for row in debt:
         limit = decimal_or_none(row.get("statutory_debt_limit_100m", ""))
         balance = decimal_or_none(row.get("statutory_debt_balance_100m", ""))
-        if limit is not None and balance is not None and balance > limit + Decimal("0.2"):
+        if (
+            limit is not None
+            and balance is not None
+            and balance > limit + Decimal("0.2")
+            and row.get("data_status") != OFFICIAL_DEBT_EXCEPTION_STATUS
+        ):
             errors.append(f"法定债务余额超过限额：{row['record_id']}")
 
     for row in macro:

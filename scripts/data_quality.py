@@ -8,6 +8,7 @@ from typing import Any
 
 
 ACCEPTED_SOURCE_GRADES = {"A1", "A2", "B1", "B2"}
+OFFICIAL_DEBT_EXCEPTION_STATUS = "official_debt_exception"
 _MONEY_QUANTUM = Decimal("0.01")
 
 

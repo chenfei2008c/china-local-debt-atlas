@@ -29,12 +29,12 @@ from urllib.request import Request, urlopen
 
 try:
     from scripts.province_debt_sources import extract_official_debt_facts
-    from scripts.data_quality import debt_fact_has_balance_limit_conflict
+    from scripts.data_quality import OFFICIAL_DEBT_EXCEPTION_STATUS, debt_fact_has_balance_limit_conflict
     from scripts.official_city_macro_sources import parse_city_fund_revenue_text, parse_guangdong_city_budget_page, parse_guangdong_city_gdp_html
     from scripts.pdf_layout_text import extract_pdf_text
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
     from province_debt_sources import extract_official_debt_facts
-    from data_quality import debt_fact_has_balance_limit_conflict
+    from data_quality import OFFICIAL_DEBT_EXCEPTION_STATUS, debt_fact_has_balance_limit_conflict
     from official_city_macro_sources import parse_city_fund_revenue_text, parse_guangdong_city_budget_page, parse_guangdong_city_gdp_html
     from pdf_layout_text import extract_pdf_text
 
@@ -783,6 +783,13 @@ def build_macro_rows(
             # 避免把阶段性数值误标为最终决算。
             if debt_fact.get("data_status"):
                 row["data_status"] = str(debt_fact["data_status"])
+            if debt_fact.get("balance_limit_exception_note"):
+                row["data_status"] = OFFICIAL_DEBT_EXCEPTION_STATUS
+                row["collection_status"] = "needs_review"
+                row["note"] = (
+                    "官方公开债务表原值已入表，但存在明确记录的限额/余额内部勾稽异常；"
+                    + str(debt_fact["balance_limit_exception_note"])
+                )
             for field in RAW_NUMERIC_FIELDS:
                 if field not in {"general_debt_limit_100m", "general_debt_balance_100m", "special_debt_limit_100m", "special_debt_balance_100m"}:
                     continue
@@ -1088,10 +1095,12 @@ def build_debt_rows(macro_rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "collection_status": (
                 "missing"
                 if row.get("statutory_debt_balance_100m") is None
-                else ("extracted" if row.get("source_grade") in {"A1", "A2"} else "needs_review")
+                else ("needs_review" if row.get("data_status") == OFFICIAL_DEBT_EXCEPTION_STATUS else (
+                    "extracted" if row.get("source_grade") in {"A1", "A2"} else "needs_review"
+                ))
             ),
             "lineage_complete_flag": row.get("statutory_debt_balance_100m") is not None,
-            "note": "法定债务四个分项保持独立；缺失值保留 null。",
+            "note": row.get("note") or "法定债务四个分项保持独立；缺失值保留 null。",
         })
     return output
 
@@ -1418,11 +1427,15 @@ def quality_report(city_master: list[dict[str, Any]], macro_rows: list[dict[str,
     key_list = [(row["city_id"], row["metric_year"]) for row in city_master]
     macro_keys = [(row["city_id"], row["metric_year"]) for row in macro_rows]
     debt_violations = []
+    debt_exceptions = []
     for row in debt_rows:
         limit = as_decimal(row.get("statutory_debt_limit_100m"))
         balance = as_decimal(row.get("statutory_debt_balance_100m"))
         if limit is not None and balance is not None and balance > limit + Decimal("0.2"):
-            debt_violations.append(row["record_id"])
+            if row.get("data_status") == OFFICIAL_DEBT_EXCEPTION_STATUS:
+                debt_exceptions.append(row["record_id"])
+            else:
+                debt_violations.append(row["record_id"])
     derived_fields = {item["target_field"] for item in calc_rows}
     gate_years = list(range(2018, 2026))
     target_keys = {(row["city_id"], str(row["metric_year"])) for row in city_master if int(row["metric_year"]) in gate_years}
@@ -1441,6 +1454,7 @@ def quality_report(city_master: list[dict[str, Any]], macro_rows: list[dict[str,
         "calculation_lineage_rows": len(calc_rows),
         "non_null_macro_field_lineage_rows": sum(1 for item in lineage if item.get("normalized_value") not in (None, "")),
         "debt_limit_balance_violations": debt_violations,
+        "debt_limit_balance_exceptions": debt_exceptions,
         "calculated_field_set": sorted(derived_fields),
         "missing_to_zero_check": "passed",
         "source_grade_D_values_are_provisional": True,

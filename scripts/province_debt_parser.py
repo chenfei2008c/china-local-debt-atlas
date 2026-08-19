@@ -386,6 +386,8 @@ def merge_debt_rows(rows: Iterable[dict[str, object]]) -> list[dict[str, object]
                 field_priorities[field] = incoming_priority
         if incoming.get("evidence_excerpt") and incoming.get("evidence_excerpt") != target.get("evidence_excerpt"):
             target["evidence_excerpt"] = f"{target.get('evidence_excerpt', '')} | {incoming['evidence_excerpt']}"
+        if incoming.get("balance_limit_exception_note") and not target.get("balance_limit_exception_note"):
+            target["balance_limit_exception_note"] = incoming["balance_limit_exception_note"]
     for row in merged.values():
         field_priorities = row.get("_field_source_priority", {})
         component_limit_priority = max(
