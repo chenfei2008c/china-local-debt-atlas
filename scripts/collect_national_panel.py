@@ -3273,6 +3273,28 @@ CITY_YEAR_FUND_SOURCES = (
         "page_count": "31",
         "note": "中国货币网公开的评级报告含2023—2025年开封市主要经济财政指标精确表格；表列示2025年政府性基金收入72.8亿元，明确为开封市全市口径。",
     },
+    {
+        "year": 2025,
+        "city_name": "唐山市",
+        "city_id": "CN-130200",
+        "source_doc_id": "SRC-B2-TANGSHAN-CITY-FUND-2025",
+        "url": "https://epaper.huanbohainews.com.cn/tsldrb/pad/content/202602/08/content_122246.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "tangshan_2025_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "tangshan_2025_budget_report_excerpt.txt",
+        "document_title": "唐山市2025年预算执行情况和2026年预算（草案）的报告",
+        "publisher": "唐山劳动日报（环渤海新闻网数字报）",
+        "publisher_level": "市级官方报纸网页",
+        "publication_date": "2026-02-08",
+        "source_grade": "B2",
+        "source_format": "html",
+        "pattern": r"原文摘录：2025年全市.*?政府性基金预算收入([0-9]+)万元",
+        "raw_unit": "万元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数（官方报告公开文本）",
+        "document_type": "城市财政预算执行报告（官方报纸网页）",
+        "page_count": "1",
+        "note": "官方地方报纸数字版公开市财政局预算报告原文，明确全市口径；采用2025年政府性基金预算收入2996305万元，折算299.6305亿元，不使用市级数。",
+    },
 )
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
