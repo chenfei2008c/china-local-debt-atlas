@@ -1589,6 +1589,116 @@ CITY_YEAR_FUND_SOURCES = (
         "page_count": "1",
         "note": "A2官方统计公报；公报注明财政数据来自宝鸡市财政局，披露2025年全市政府性基金收入29.84亿元。",
     },
+    {
+        "year": 2019,
+        "city_name": "平顶山市",
+        "city_id": "CN-410400",
+        "source_doc_id": "SRC-A1-PINGDINGSHAN-CITY-FUND-2019-FINAL",
+        "url": "https://czj.pds.gov.cn/upload/files/2021/5/139573316.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2019" / "official" / "pingdingshan_2019_final_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2019" / "official" / "pingdingshan_2019_fund_excerpt.txt",
+        "document_title": "平顶山市2019年全市及市级决算草案的说明",
+        "publisher": "平顶山市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2021-05-01",
+        "source_grade": "A1",
+        "source_format": "pdf",
+        "pattern": r"2019年全市政府性基金收入决算数([0-9]+)万元",
+        "raw_unit": "万元",
+        "data_status": "final",
+        "data_status_label": "2019年决算数",
+        "document_type": "城市财政决算报告（官方附件）",
+        "page_count": "1",
+        "note": "A1市级财政官方决算草案说明；明确披露2019年全市政府性基金收入决算数1199326万元，使用全市汇总口径，不使用市本级数。",
+    },
+    {
+        "year": 2019,
+        "city_name": "开封市",
+        "city_id": "CN-410200",
+        "source_doc_id": "SRC-A2-KAIFENG-CITY-FUND-2019",
+        "url": "https://www.kaifeng.gov.cn/kfsrmzfwz/kfsrmzf/1737386489263988736/Itk1u8Bh.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2019" / "official" / "kaifeng_2019_budget_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2019" / "official" / "kaifeng_2019_fund_excerpt.txt",
+        "document_title": "关于开封市2019年预算执行情况和2020年预算草案的报告",
+        "publisher": "开封市人民政府",
+        "publisher_level": "市级政府门户",
+        "publication_date": "2020-01-01",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "pattern": r"2019年全市政府性基金收入.*?实际完成([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "final",
+        "data_status_label": "2019年执行数",
+        "document_type": "城市财政预算执行报告（官方附件）",
+        "page_count": "1",
+        "note": "A2市级政府官方预算执行报告；明确披露2019年全市政府性基金收入实际完成189.3亿元，不使用市本级数。",
+    },
+    {
+        "year": 2019,
+        "city_name": "南阳市",
+        "city_id": "CN-411300",
+        "source_doc_id": "SRC-A2-NANYANG-CITY-FUND-2019",
+        "url": "https://caizj.nanyang.gov.cn/2020/06-09/98750.html",
+        "path": RAW_DIR / "province_fiscal" / "2019" / "official" / "nanyang_2019_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2019" / "official" / "nanyang_2019_fund_excerpt.txt",
+        "document_title": "关于南阳市2019年预算执行情况和2020年市级预算草案的报告",
+        "publisher": "南阳市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2020-06-09",
+        "source_grade": "A2",
+        "source_format": "html",
+        "pattern": r"2019年政府性基金预算收入年初预算合计185\.3亿元，实际完成([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "final",
+        "data_status_label": "2019年执行数",
+        "document_type": "城市财政预算执行报告（官方网页）",
+        "page_count": "1",
+        "note": "A2市级财政官方网页；汇总各级人代会批准的2019年全市政府性基金预算收入，实际完成217.7亿元，不使用市本级数。",
+    },
+    {
+        "year": 2019,
+        "city_name": "三门峡市",
+        "city_id": "CN-411200",
+        "source_doc_id": "SRC-A2-SANMENXIA-CITY-FUND-2019",
+        "url": "https://www.smx.gov.cn/28024/615965184/949651.html",
+        "path": RAW_DIR / "province_fiscal" / "2019" / "official" / "sanmenxia_2019_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2019" / "official" / "sanmenxia_2019_fund_excerpt.txt",
+        "document_title": "关于三门峡市2019年财政预算执行情况和2020年财政预算（草案）的报告",
+        "publisher": "三门峡市人民政府",
+        "publisher_level": "市级政府门户",
+        "publication_date": "2020-01-01",
+        "source_grade": "A2",
+        "source_format": "html",
+        "pattern": r"2019年全市政府性基金预算收入年初预算合计574608万元，完成([0-9]+)万元",
+        "raw_unit": "万元",
+        "data_status": "final",
+        "data_status_label": "2019年执行数",
+        "document_type": "城市财政预算执行报告（官方网页）",
+        "page_count": "1",
+        "note": "A2市级政府官方报告；汇总全市各级人代会批准的2019年政府性基金预算收入，完成387622万元，不使用市本级数。",
+    },
+    {
+        "year": 2019,
+        "city_name": "周口市",
+        "city_id": "CN-411600",
+        "source_doc_id": "SRC-A2-ZHOUKOU-CITY-FUND-2019",
+        "url": "https://www.zhoukou.gov.cn/page_pc/zwgk/jcxxgk/czzj/zfczys/article838607100E1B479FAC8DB07A6617C7EF.html",
+        "path": RAW_DIR / "province_fiscal" / "2019" / "official" / "zhoukou_2019_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2019" / "official" / "zhoukou_2019_fund_excerpt.txt",
+        "document_title": "全市和市级2019年预算执行情况及2020年预算编制说明",
+        "publisher": "周口市人民政府",
+        "publisher_level": "市级政府门户",
+        "publication_date": "2020-01-01",
+        "source_grade": "A2",
+        "source_format": "html",
+        "pattern": r"2019年各级人代会批准的全市政府性基金收入预算为175\.6亿元，实际完成([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "final",
+        "data_status_label": "2019年执行数",
+        "document_type": "城市财政预算执行报告（官方网页）",
+        "page_count": "1",
+        "note": "A2市级政府官方报告；明确披露2019年各级人代会批准的全市政府性基金收入实际完成213.8亿元，不使用市级数。",
+    },
 )
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
@@ -2192,6 +2302,8 @@ def load_city_year_fund_sources() -> tuple[dict[tuple[str, str], dict[str, Any]]
         raw_unit = str(config["raw_unit"])
         normalized = raw_value if raw_unit == "亿元" else raw_value * D4
         year = str(config["year"])
+        data_status = str(config.get("data_status") or "execution")
+        data_status_label = str(config.get("data_status_label") or f"{year}年执行数")
         values[(str(config["city_id"]), year)] = {
             "gov_fund_revenue_100m": q2(normalized),
             "gov_fund_revenue_raw_100m": raw_value,
@@ -2200,10 +2312,11 @@ def load_city_year_fund_sources() -> tuple[dict[tuple[str, str], dict[str, Any]]
             "source_doc_id": config["source_doc_id"],
             "source_grade": config["source_grade"],
             "source_format": config["source_format"],
-            "data_status": "execution",
+            "data_status": data_status,
+            "data_status_label": data_status_label,
             "source_locator": (
                 f"{text_path.relative_to(ROOT)}；报告正文；城市={config['city_name']}；"
-                f"{year}年全市政府性基金预算收入执行数"
+                f"{data_status_label}"
             ),
             "table_name": f"{year}年全市政府性基金预算收入执行情况",
         }
@@ -2868,6 +2981,7 @@ def _lineage_for_city_year_fund(
 ) -> dict[str, Any]:
     year = row["metric_year"]
     source_grade = str(source.get("source_grade") or "B2")
+    data_status_label = str(source.get("data_status_label") or f"{year}年执行数")
     return _lineage_base(
         row,
         "gov_fund_revenue_100m",
@@ -2893,8 +3007,8 @@ def _lineage_for_city_year_fund(
         extraction_method="curated-official-statement-parser",
         parse_confidence="0.96",
         selection_reason=(
-            "公开来源精确披露城市全市政府性基金预算收入，年度、执行状态和行政范围明确；"
-            f"按{source_grade}登记，保留来源等级与执行状态。"
+            "公开来源精确披露城市全市政府性基金预算收入，年度、数据状态和行政范围明确；"
+            f"按{source_grade}登记，保留来源等级与{data_status_label}状态。"
         ),
     )
 

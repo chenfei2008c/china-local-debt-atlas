@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <meta name="renderer" content="webkit">
+    <meta name="author" content="Design:fengJiajia; WebLayout:ZhangNannan;webData:ZhangNannan;" />
+    <!--栏目-->
+    <link rel="shortcut icon" href="/websites/commonComponents/images/guohui.ico">
+    <script type="text/javascript" src="/websites/commonComponents/js/jquery-3.6.4.min.js"></script>
+    <script type="text/javascript" src="/websites/rmzf/js/jquery.SuperSlide.2.1.3.source.js"></script>
+    <script type="text/javascript" src="/websites/rmzf/js/jquery.dotdotdot.min.js"></script>
+    <link rel="stylesheet" href="/websites/rmzf/css/common.css">
+    <link rel="stylesheet" href="/websites/rmzf/css/article.css">
+    <link rel="stylesheet" href="/websites/commonComponents/css/leaderDetails.css">
+    <!--索引号样式-->
+    <link rel="stylesheet" href="/websites/commonComponents/css/indexNumberDisplay.css">
+    <title>关于三门峡市2019年财政预算执行情况和2020年财政预算（草案）的报告（书面）</title>
+    <script>
+        let title = "\u5173\u4E8E\u4E09\u95E8\u5CE1\u5E022019\u5E74\u8D22\u653F\u9884\u7B97\u6267\u884C\u60C5\u51B5\u548C2020\u5E74\u8D22\u653F\u9884\u7B97\uFF08\u8349\u6848\uFF09\u7684\u62A5\u544A\uFF08\u4E66\u9762\uFF09"
+        // $("title").text(title)
+        let mc = "\u7B2C5\u53F7\uFF08\u603B\u7B2C172\u53F7\uFF09"
+        if (title == null) {
+            $("title").text(mc)
+        }
+    </script>
+</head>
+
+<body>
+    <!-- header开始 -->
+    <div class="header">
+    <link rel="stylesheet" href="/websites/commonComponents/layui/css/layui.css">
+    <script src="/websites/commonComponents/laydate/laydate.js"></script>
+    <iframe id="loginInfo" width="100%" height="21px" scrolling="no" src="/pageView/loginInfo.html" frameborder="0"></iframe>
+    <div class="headerBox w clearfix">
+      <a href="/index.html" class="header-logo fl" title="三门峡市人民政府链接"></a>
+      <div class="search fr">
+        <div class="searchup clearfix">
+          <div class="fontup fl">
+            <a href="/pageView/znwd.html" class="" target="_blank">
+              <img style="width: 20px;" src="/websites/rmzf/images/ai.png" alt="智能问答">
+            </a>
+            <a href="#" class="wechat">
+              <img src="/websites/rmzf/images/weixin.png" alt="三门峡政务公众号" class="weixin">
+              <img src="/websites/rmzf/images/erweima.png" class="erweima" alt="三门峡政务公众号二维码">
+            </a>
+            <!--<a href="#">无障碍</a>|-->
+            <a href="javascript:zh_tran('s')" id="zh_click_s" title="简">简</a>|
+            <a href="javascript:zh_tran('t')" id="zh_click_t" title="繁">繁</a>
+            <!-- |
+            <a href="http://en.smx.gov.cn/" title="英文站">EN</a> -->
+          </div>
+          <div class="oldinfo">
+            <div class="right_wza" ><a id="navSwitch" href="javascript:void(0);" title="无障碍浏览" class="cmsHBG CMSAssetsTextCon" tabindex="0">无障碍浏览</a ></div>
+            <div class="right_slh">
+              <a onclick="headTool.switchOld()" id="toolbarOldman" class="oldman" href="javascript:void(0);"
+                title="进入适老模式">进入适老模式</a>
+            </div>
+          </div>
+        </div>
+        <form class="searchForm" id="searchForm" action="/pageView/informationSearch.html">
+          <div class="searchInput">
+            <div class="searchtext">本站</div>
+            <input type="text" name="searchText" value placeholder="热词：天鹅 摄影节">
+            <div class="searchBtn" onclick="document.getElementById('searchForm').submit();return false">
+              <img src="/websites/rmzf/images/search.png" alt="搜索">
+            </div>
+            <input type="hidden" name="protocol" value="null:">
+            <input id="s_fbsj_s" name="s_fbsj_s" type="hidden" value="">
+            <input id="s_fbsj_e" name="s_fbsj_e" type="hidden" value="">
+            <input id="s_lmnrlx" name="s_lmnrlx" type="hidden" value="-1">
+          </div>
+          <button type="button" class="high-search-btn" onclick="toggleHighSearch()">高级搜索</button>
+          <div class="high-search layui-form">
+            <div class="search-scope clearfix">
+                <span>高级搜索</span>
+            </div>
+            <div class="station">
+                <div class="search-items cl home-station">
+                    <div class="search-title search-result">搜索结果：</div>
+                    <div class="search-block">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">包含以下任意关键字词</label>
+                            <div class="layui-input-block">
+                                <input type="text" value="" name="anyKeyword" placeholder="请输入包含以下任意关键字词" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">不包含以下关键词</label>
+                            <div class="layui-input-block">
+                                <input type="text" value="" name="noKeyword" placeholder="请输入不包含以下关键词" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-items cl home-station">
+                    <div class="search-title">查询范围：</div>
+                    <div class="search-block">
+                        <input type="radio" name="searchRange" value="1" title="全部" lay-filter="searchRange" checked="checked"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>全部</div></div>
+                        <input type="radio" name="searchRange" value="2" title="标题" lay-filter="searchRange"><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><div>标题</div></div>
+                        <input type="radio" name="searchRange" value="3" title="正文" lay-filter="searchRange"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>正文</div></div>
+                    </div>
+                </div>
+                <div class="search-items cl">
+                    <div class="search-title">时间范围：</div>
+                    <div class="search-block">
+                        <div class="layui-inline" id="test7" lay-key="2">
+                            <div class="layui-input-inline">
+                                <input type="text" value="" autocomplete="off" id="test-startDate-2" class="layui-input" placeholder="开始日期" >
+                            </div>
+                            <span>-</span>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" autocomplete="off" id="test-endDate-2" class="layui-input" placeholder="结束日期" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="search-city">
+                <button class="search-btn" onclick="document.getElementById('searchForm').submit();return false;">搜索</button>
+            </div>
+          </div>
+        </form>
+        <script>
+          $('#protocol').val(window.location.protocol)
+        </script>
+      </div>
+    </div>
+    <div class="navback fixed-box">
+      <!-- ie8 -->
+      <img src="/websites/rmzf/images/nav.png" id="img-ie8" alt="导航背景图片">
+      <div class="navBox w clearfix">
+        <div class="navItem fl" style="margin-left:0px;">
+          <a class="navPage" id="4021" href="/index.html" title="首页">首&emsp;页</a>
+        </div>
+        <div class="navItem fl">
+          <a class="navPage" href="/4018/0000/ywdt-1.html">要闻动态</a>
+        </div>
+        <div class="navItem fl">
+
+          <a class="navPage" href="/4051/0000/zhengfuxinxi-1.html" target="_blank">政府信息公开</a>
+        </div>
+        <div class="navItem fl">
+          <a class="navPage" id="hnzwfw2021" target="_blank" href="https://www.hnzwfw.gov.cn/411200000000/?region=411200000000">政务服务</a>
+        </div>
+        <div class="navItem fl">
+          <a class="navPage" href="/pageView/hdjl.html?rlmid=4105&amp;lmid=4105">互动交流</a>
+        </div>
+        <div class="navItem fl">
+          <a class="navPage" href="/10480/0000/sjfbsyList-1.html" target="_blank">数据发布</a>
+        </div>
+        <div class="navItem fl">
+          <a class="navPage" href="http://smxrcgz.com/index.html" target="_blank">人才政策</a>
+        </div>
+        <div class="navItem fl">
+          <a class="navPage" href="/4024/0000/gosmx-1.html">走进三门峡</a>
+        </div>
+      </div>
+    </div>
+    <script src="/websites/commonComponents/layui/layui.js"></script>
+    <script>
+      var fbsjStart = '' ? '' : '0900-00-00';
+      var fbsjEnd = '' ? '' : '9999-99-99';
+
+      var highSearchStartTime =  laydate.render({
+          elem: '#test-startDate-2',
+          value: '',
+          max: fbsjEnd,
+          trigger: 'click',
+          btns: ['clear', 'confirm'],
+          done: function (value, date, endDate) {
+              $('#s_fbsj_s').val(value);
+              if (value != "") {
+                  date.month = date.month - 1;
+                  highSearchEndTime.config.min = date;
+              } else {
+                  highSearchEndTime.config.min = highSearchStartTime.config.min;
+              }
+          }
+      });
+      var highSearchEndTime =  laydate.render({
+          elem: '#test-endDate-2',
+          value: '',
+          min: fbsjStart,
+          trigger: 'click',
+          btns: ['clear', 'confirm'],
+          done: function (value, date, endDate) {
+              $('#s_fbsj_e').val(value);
+              if (value != "") {
+                  date.month = date.month - 1;
+                  highSearchStartTime.config.max = date;
+              } else {
+                  highSearchStartTime.config.max = highSearchEndTime.config.max;
+              }
+          }
+      });
+    </script>
+    <script type="text/javascript">
+      var searchText = '';
+      var lx = ('') ? '' : '-1';
+      var fbsj_s = '';
+      var fbsj_e = '';
+      var anyKeyword = '';
+      var noKeyword = '';
+      var searchRange = '';
+      var protocol = window.location.protocol;
+      function selectChange() {
+          var selectValue = document.getElementById('select_id1');
+          var checkValue = selectValue.options[selectValue.selectedIndex].value;
+          window.location.href = './informationSearch.html?pageNum=1' + checkValue + '&searchText=' + searchText + '&s_lmnrlx=' + lx + '&s_fbsj_s=' + fbsj_s + '&s_fbsj_e=' + fbsj_e + '&protocol=' + protocol + '&searchRange=' + searchRange + '&anyKeyword=' + anyKeyword + '&noKeyword=' + noKeyword;
+      }
+          layui.use(['form'], function () {
+        var form = layui.form;
+        // 更新radio的选中状态
+        form.render('radio');
+        document.addEventListener('keydown', function (e) {
+            if (e.key === "Enter") {
+                if ($(".cmsUnderLine").html() == "标题") {
+                    $('input[name="searchRange"][value="2"]').prop('checked', 'checked');
+                    form.render('radio');
+                } else if ($(".cmsUnderLine").html() == "正文") {
+                    $('input[name="searchRange"][value="3"]').prop('checked', 'checked');
+                    form.render('radio');
+                } else if ($(".cmsUnderLine").html() == "全部") {
+                    $('input[name="searchRange"][value="1"]').prop('checked', 'checked');
+                    form.render('radio');
+                }
+            }
+        });
+    });
+        function toggleHighSearch() {
+            $('.high-search').slideToggle();
+        }
+
+        // 点击高级搜索框外部自动关闭
+        $(document).on('click', function(e) {
+            var $searchBox = $('.high-search');
+            var $btn = $('.high-search-btn');
+            if ($searchBox.is(':visible') && !$searchBox.is(e.target) && $searchBox.has(e.target).length === 0 && !$btn.is(e.target) && $btn.has(e.target).length === 0) {
+                $searchBox.slideUp();
+            }
+        });
+    </script>
+  </div>
+    <script type="text/javascript">
+    var browser = navigator.appName
+    var b_version = navigator.appVersion
+    var version = b_version.split(";");
+    var trim_Version = version[1].replace(/[ ]/g, "");
+    if (browser == "Microsoft Internet Explorer" && trim_Version == "MSIE6.0") {
+      console.log("IE 6.0");
+    }
+    else if (browser == "Microsoft Internet Explorer" && trim_Version == "MSIE7.0") {
+      console.log("IE 7.0");
+    }
+    else if (browser == "Microsoft Internet Explorer" && trim_Version == "MSIE8.0") {
+      console.log("IE 8.0");
+      $('.header').addClass('.ie8-header');
+      $('.navback').addClass('ie8-width');
+      $('.content1').addClass('ie8-width');
+      $('.content2').addClass('ie8-width');
+      $('.content3').addClass('ie8-width');
+      $('.content4').addClass('ie8-width');
+      $('.content5').addClass('ie8-width');
+      $('.content6').addClass('ie8-width');
+      $('.content6bt').addClass('ie8-width');
+      $('.footer').addClass('ie8-margin');
+      $('#skip-ie8>a').css('width', '148px');
+      $('.gruop-box').css('width', '1210px')
+      $('.bdd').css('top', '-1072px', 'width', '926px');
+      $(".img1-ie8 +a").css({ "top": "-308px", "left": "15px" });
+      $(".contentskip").css({ "width": " 1920px" });
+    }
+    else if (browser == "Microsoft Internet Explorer" && trim_Version == "MSIE9.0") {
+      $('#img-ie8').remove();
+      $('.img1-ie8').remove();
+      console.log("IE 9.0");
+    } else {
+      $('#img-ie8').remove();
+      $('.img1-ie8').remove();
+    }
+  </script>
+
+    <!-- 导航条 -->
+    <div class="location">
+        <div class="locationbox w">
+            <span class="curtLocation">当前位置：<a href="/index.html">首页 ></a>
+              <span>政府信息公开 > </span><span>法定主动公开内容 > </span><span>政府公报 > </span><span>2020年 > </span><span>第5号（总第172号） > </span>
+              <span>正文</span>
+            </span>
+            
+        </div>
+    </div>
+    <!-- 单篇文章 -->
+    
+    <!-- 正文 -->
+    <div class="articleDetail">
+        <!--索引号展示-->
+        <div>
+    
+
+
+    
+  </div>
+        <div class="titleBox">
+            <p class="articleTitle enrichTitle">关于三门峡市2019年财政预算执行情况和2020年财政预算（草案）的报告（书面）</p>
+        </div>
+        <div class="time">
+            <span class="timeLeft">发布时间：<span>2020-06-17 10:16</span></span>&nbsp;&nbsp;&nbsp;
+            <!-- <span class="timeLeft">查阅次数：<span id="_wz_lll"></span></span>&nbsp;&nbsp;&nbsp;-->
+            <span class="timeLeft"
+                style="display:inline-block;">文章来源：<span>三门峡市政府办公室</span></span>
+        </div>
+        <script>
+            let lmbm = 'gb2020'
+            if (lmbm == 'fgwj') {
+                $(".titleBox").hide()
+                $(".time").hide()
+            }
+            console.log(lmbm);
+        </script>
+        <div class="articleContent" id="test"><p style="text-indent:59px;text-autospace:ideograph-numeric;text-align:center"><span style=";font-family:宋体;font-size:29px"><span style="font-family:宋体"><br/></span></span></p><p style="text-indent: 59px; text-align: center;"><span style=";font-family:宋体;font-size:29px"><span style="font-family:宋体">关于三门峡市</span>2019年财政预算执行情况</span></p><p style="text-indent:59px;text-autospace:ideograph-numeric;text-align:center"><span style=";font-family:宋体;font-size:29px"><span style="font-family:宋体">和</span>2020年财政预算（草案）的报告（书面）</span></p><p style="text-indent:43px;text-autospace:ideograph-numeric;text-align:center;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">——2020年5月14日在三门峡市第七届人民代表大会第五次会议上三门峡市财政局局长 &nbsp;宋 &nbsp;东</span></span></p><p style="text-indent:43px;text-autospace:ideograph-numeric;text-align:center;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">&nbsp;</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">各位代表：</span></span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　受市政府委托，现将</span>2019年预算执行情况和2020年预算草案提请市七届人大五次会议审议，并请各位政协委员和其他列席人士提出意见。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　</span><span style=";font-family:黑体;font-size:21px"><span style="font-family:黑体">一、</span>2019年预算执行情况</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　2019年，面对国内外风险挑战明显上升的复杂局面，在市委的正确领导和市人大、市政协的监督指导下，市政府团结带领全市人民，以习近平新时代中国特色社会主义思想为指导，全面贯彻党的十九大和十九届二中、三中、四中全会精神，认真落实习近平总书记关于河南工作的重要讲话和指示批示精神，坚持稳中求进工作总基调，全面贯彻新发展理念，落实高质量发展要求，以供给侧结构性改革为主线，全力做好“六稳”，统筹推进稳增长、促改革、调结构、惠民生、防风险、保稳定，经济运行保持稳中有进的良好态势，财政预算执行情况总体较好。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　（一）</span>2019年预算收支情况</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　1.一般公共预算</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　（</span>1）全市收支情况。汇总全市各级人代会批准的2019年一般公共预算收入年初预算合计1283130万元，执行中部分县（市、区）按程序调整了收入预算，实际完成1313726万元，为调整预算的102.4%，增长9.3%。年初支出预算合计1945474万元，执行中因上级补助增加、发行地方政府债券、动用预算稳定调节基金、收入预算调整等，支出预算调整为2671828万元，完成2671828万元，为调整预算的100%,增长9.2%。 </span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　（</span>2）市本级收支情况。市七届人大四次会议批准的2019年市本级一般公共预算收入年初预算为160000万元，实际完成160060万元，为预算的100%，增长10.3%。支出预算为354925万元，执行中因上级补助增加、发行地方政府债券、补助县（市、区）等，支出预算调整为492712万元，完成492712万元，为调整预算的100%,增长4.8%。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　根据预算法规定和市人大实施全口径预算监督的要求，市级报市人大审批的收支口径除上述市本级收支外，还包括上级补助、县区上解、补助县区和上解省级等项目，即市级收入总计和支出总计。</span></span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　2.政府性基金预算</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　（</span>1）全市收支情况。汇总全市各级人代会批准的2019年全市政府性基金预算收入年初预算合计574608万元，完成387622万元，为预算的67.5%，下降9%。支出预算合计506571万元，执行中因上级补助增加、发行地方政府债券等，支出预算调整为469467万元，完成444385万元，为调整预算的94.7%，增长4.2%。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　（</span>2）市本级收支情况。市七届人大四次会议批准的2019年市本级政府性基金预算收入年初预算为177157万元，完成67635万元，为预算的38.2%，下降50.6%，主要原因是国有土地使用权出让收入下降较多。支出预算为90444万元，执行中因上级补助增加、发行地方政府债券、补助县（市、区）等，支出预算调整为45815万元，完成45815万元，为调整预算的100%，增长1.1%。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　3.国有资本经营预算</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　市七届人大四次会议批准的</span>2019年市级国有资本经营收入预算为4154万元，完成38251万元，为预算的920.8%，主要是市投资集团上缴国有资本经营收入。根据年初预算安排，统筹上年结余148万元调入到一般公共预算统筹使用。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　4.社会保险基金预算</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　（</span>1）全市收支情况。汇总全市各级人代会批准的2019年全市社会保险基金预算收入年初预算728001万元，完成864662万元，为预算的118.7%。支出年初预算699088万元，完成812433万元，为调整预算的116.2%。当年收支结余52229万元，年末滚存结余426798万元。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　（</span>2）市本级收支情况。人大会议批准的2019年市级社会保险基金预算收入年初预算539426万元，完成684932万元，为预算的126.9%。支出预算556067万元，完成650591万元，为预算的116.9%。当年收支结余34341万元，年末滚存结余233301万元。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　（二）</span>2019年政府债务情况</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　省财政厅核定我市</span>2019年政府债务限额1865009万元，其中：一般债务限额1177829万元，专项债务限额687180万元。经市人大常委会批准，2019年全市政府债务限额中，市级政府债务限额793052万元，其中：一般债务限额643120万元，专项债务限额149932万元；市县政府债务限额1071957万元，其中：一般债务限额534709万元，专项债务限额537248万元。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　截至</span>2019年底，市县两级政府债务余额合计1618121万元，均在财政厅规定的限额内。其中：一般债务962694万元，债务期限为3—30年期；专项债务655427万元，债务期限为3—15年期。市级政府债务余额696605万元，其中：一般债务558147万元，专项债务138458万元；县（市、区）政府债务余额921516万元，其中：一般债务404547万元，专项债务516969万元。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　2019年，省财政厅转贷我市政府债券375630万元，其中：一般债券125130万元（其中新增债券55900万元，再融资债券69230万元），专项债券250500万元（全部为新增债券）。转贷市级政府债券共计82650万元,其中：再融资债券30450万元，新增债券52200万元（新增一般债券25100万元，新增专项债券27100万元）。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　2019年，我市政府债券还本付息131138万元（还本83951万元，付息47187万元）；市级政府债券还本付息58119万元（还本34722万元，付息23397万元）。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　上述财政收支和政府债务数据在完成决算审查汇总及办理上下级财政年终结算后还会有所变动，决算结果届时报市人大常委会审批。</span></span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　（三）落实市人大决议和主要财政工作情况</span></span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　1.扎实落实加力提效的积极财政政策。加强逆周期调节力度，不断提高财政政策的精准度和有效性，促进全市经济保持平稳运行。一是不折不扣落实更大规模减税降费政策。全面落实“六税两费”减征、降低社会保险费率等优惠政策，均按顶格标准减免，最大限度释放政策红利。继续巩固涉企行政事业性收费零收费成果，进一步降低企业缴费负担，全市新增减税降费193000万元。二是用足用好地方政府债券政策。2019年，全市争取到政府债券375630万元，其中新增政府债券306400万元，比上年增加53177万元，切实发挥了债券资金对稳投资、扩内需、调结构、补短板等政策效应。三是坚持政府过“紧日子”。2019年全市各级政府和部门一般性支出均压减10%以上，节约资金统筹用于支持打赢三大攻坚战、保障基本民生等重点领域，全年收回盘活财政存量资金51035万元，充分发挥了财政资金使用效益。四是规范高效推行PPP模式。2019年，我市纳入财政部PPP项目库项目40个、总投资6097700万元，其中：入选示范项目2个，落地项目1个、总投资32000万元。城乡环卫一体化、绿能环保垃圾焚烧发电PPP项目顺利实施，职业技术学院新校区建设项目、连霍呼北高速联接线建设项目已通过财政部管理库审核即将实施。五是加快政府投资基金运作。市财政注入资本金13500万元，支持设立河南高创崤函科技创新产业投资基金、河南崤函朴弘高成长服务业股权投资基金、三门峡裕戎制造业产业投资基金等5支基金，集中支持了40多家创新创业、医疗、养老、军民融合、现代农业类企业发展，为我市高质量发展提供了有力支持。六是充分发挥功能类公益类金融类企业作用。注入资本金，支持市国有资产运营、市文化旅游交通发展等公司做大做强。根据分担的城市基建任务，向市投资集团公司拨付贴息资金，积极鼓励企业加快协调发展。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　2.持续支持打好三大攻坚战。保持战略定力，巩固已有成果，集中财力、精准投向，助力补齐全面小康短板。一是全力推进脱贫攻坚。2019年全市财政扶贫资金投入133283万元，全年实现2.6万人脱贫、203个贫困村退出，卢氏县实现脱贫摘帽，贫困发生率降至0.63%。二是加大污染防治力度。全市节能环保支出85989万元，增长45.6%，全市空气优良天数、PM</span><sub><span style=";font-family:仿宋_GB2312;font-size:21px;vertical-align:sub"><span style="font-family:仿宋_GB2312">2.5</span></span></sub><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">、集中式饮用水水源地水质指标控制成效位居全省前列，获得省级生态补偿金奖励</span>740万元。我市成功争取入选中央财政支持北方地区冬季清洁取暖试点，争取到中央补助资金30000万元。三是稳妥有序防范化解政府债务风险。采取“八个一批”方式积极有序化解隐性债务，有效化解政府债务存量593660万元。全市各级筹措资金25078万元，较好地解决了民营企业中小企业账款拖欠问题。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　3.着力助推经济高质量发展。一是推动产业转型升级。综合运用减税降费、财政贴息、风险补偿、奖励补助等方式，围绕打造“五大平台”，积极推进实施工业企业绿色、智能、技术“三大改造”，推动转型发展实现新突破。二是强化创新驱动发展。全市科技支出51508万元，增长29.4%，新增高科技技术企业29家，国家级科技型中小企业30家，实现历史性增长。拨付专项资金6900万元，助力我市成功入围2019年全国智慧城市典型实践市。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　4.加快推动城乡融合发展。一是大力实施乡村振兴战略。全市农林水支出352816万元，增长10.8%。加大猪肉储备保供稳价力度，争取亚行畜牧养殖项目资金700万美元，支持卢氏县、灵宝市成功创建省级现代农业示范区。全市落实养殖业、种植业保险财政补助2754万元，在全省率先开展了四个优势品种特色保险。完成10万户厕改任务，130个行政村达到“四美乡村”标准，农村面貌持续改善。二是加快推进新型城镇化建设。全市城乡社区支出256773万元，实施了百城提质建设、省级文明城市创建、城区供热、市政道路、国道南移和改线等一批重大项目，扩大了投资，增强了发展后劲。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　5.稳步增进民生福祉。2019年全市投入民生领域的支出达191.2亿元，占一般公共预算支出的70.9%，办成了一大批惠民利民的好事实事。一是加强就业和社会保障。发放创业担保贷款5.2亿元，扶持创业3689人，全市新增就业2.5万人。退休人员、低保、特困等各类群体养老和救助标准持续提高，让人民群众享受到更多改革发展成果。二是支持教育优先发展。全力落实乡村教师“三项”补贴政策，各个教育学段经费保障充裕，办学条件不断改善，我市教育投入获得省政府教育督导组肯定。三是坚持加强住房保障。争取到老旧小区改造资金14985万元，支持我市129个老旧小区基础设施和辅助设施提升；争取到保障性安居工程资金19766万元，其中奖补资金3000万元。四是加快社会事业发展。全市医疗卫生支出完成238566万元，城乡居民医保、困难群众大病补充医保及区域医疗水平不断提升，城镇社区养老、公共文化服务体系建设不断完善。五是促进社会和谐稳定。坚持财力下沉，兜牢县级“三保”支出底线，持续做好全市扫黑除恶专项斗争工作财物保障，推进平安三门峡建设。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　6.深化财政领域重点改革。一是加快事权和支出责任划分改革。结合省改革进展，出台了市以下财权和事权划分指导性意见，为进一步出台各领域市以下财权事权划分奠定了基础。二是扎实推进预算绩效管理改革。全面实施预算绩效管理，为构建全方位、全过程、全覆盖的预算绩效管理体系奠定基础。三是推进国有资产报告制度改革。圆满完成2018年度行政事业性国有资产管理情况专项报告和国有资产管理情况综合报告，国有资产底数更加清晰。四是加强财政基础管理。全市共完成评审项目976个，审定80.89亿元，审减6.42亿元，审减率7.35%；扎实推进收入、支出、债务“三个在线”监控平台建设；深入开展惠民“一卡通”专项治理等，确保重大财政政策和财税法规落实到位；贯彻落实人大预算审查监督重点向支出预算和政策拓展的要求，市级预算联网监督系统上线运行，全面支持推进人大预算监督重点改革。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　与此同时，我们清醒地看到，当前财政运行和预算管理工作还面临一些问题和挑战，主要是：预算编制不够精细，预算执行不够严格，预算法治意识仍需持续强化；预算绩效管理刚刚起步，部分绩效目标设定不够科学，绩效评价不够规范，绩效评价结果运用需要强化，一些财政资金使用绩效还有不小提升空间；一些县（市、区）财政收支矛盾突出，对标全面建成小康社会主要指标，还有一些突出短板需要加力补齐，个别县（市、区）</span>“三保”支出困难；个别县（市、区）政府隐性债务负担较重，风险不容忽视。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　</span><span style=";font-family:黑体;font-size:21px"><span style="font-family:黑体">　二、</span>2020年预算草案情况</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　2020年是全面建成小康社会和“十三五”规划收官之年。编制好2020年预算，对于做好各项财政工作、保持经济健康平稳运行、维护社会和谐稳定具有重要意义。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　2020年市级预算编制的指导思想是：以习近平新时代中国特色社会主义思想为指导，全面贯彻习近平总书记视察河南重要讲话精神，深入落实中央、省经济财政工作会议和市委七届九次全会部署，积极践行中部地区崛起、黄河流域生态保护和高质量发展重大国家战略要求，紧扣全面建成小康社会目标任务，坚持稳中求进工作总基调，坚持新发展理念，坚持深化现代财政制度改革，落实积极的财政政策并大力提质增效，坚决落实过紧日子要求，开源节流、增收节支，大力压减一般性支出，不断优化财政支出结构。聚焦全面建成小康社会和省际区域中心城市建设目标，坚决打赢三大攻坚战，突出补齐创新驱动、生态治理、城市精细化管理和民生保障短板，全面做好“六稳六保”工作，确保我市与全国全省同步全面建成小康社会和“十三五”规划圆满收官贡献财政力量。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　2020年全市财政收入既有增长点，也面临较大减收压力。财政收入方面，有利的因素包括：我市经济运行总体向好，经济结构持续优化，市场主体活力日益彰显以及中央继续实施积极的财政政策和稳健的货币政策等。不利的因素包括：经济运行总体向好但存在不确定性以及新冠肺炎疫情、减税降费政策带来较大减收影响等，通盘考虑，2020年全市一般公共预算收入预期增长目标与GDP增速同步，这一目标也是指导性的，各县（市、区）根据本地经济社会发展实际，实事求是安排收入目标。财政支出方面，机关事业单位正常调资及职级并行、脱贫攻坚、生态环境保护、老旧小区改造、养老设施改造补助、教育社保医疗等基本民生政策提标等硬性增支政策较多。综合判断，2020年预算收支安排依然是紧平衡。做好2020年财政工作，需要着重把握好四个原则：一是艰苦奋斗、勤俭节约；二是以收定支、量力而行；三是加强管理、严肃纪律；四是上下联动、齐心协力。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　（一）</span>2020年主要支出政策</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　紧紧围绕我市发展短板，落实好市委市政府决策部署，坚持积极的财政政策并大力提质增效，着力推动经济高质量发展和民生改善。</span></span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　1.助力打赢新冠疫情防治和三大攻坚战。一是支持全面打赢疫情防控阻击战。市级共安排资金6000万元，统筹用于医疗救治、医务人员和防疫工作者补助、传染病医院建设、中小微企业困难救助等。二是支持全面完成脱贫攻坚任务。保持财政支持脱贫攻坚政策稳定、力度不减，市级安排资金18875万元，确保如期实现脱贫目标。三是持续支持污染防治。市级安排生态环保资金25438万元，认真落实财政支持生态环保的政策措施，重点实施冬季清洁取暖城市试点及各个环保项目的建设和发展，继续支持打好蓝天、碧水、净土三大保卫战。四是扎实防范化解政府债务风险。安排偿还2020年到期的债务还本付息46988万元，全面推进地方政府隐性债务存量化解工作，确保完成2020年度化解计划。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　2.助力经济高质量发展迈出新步伐。坚定践行新发展理念，深化供给侧结构性改革，落实“巩固、增强、提升、畅通”八字方针，全面提高经济整体竞争力。一是服务黄河流域生态保护和高质量发展。市级安排资金12810万元，重点支持黄河流域生态保护和高质量发展规划编制、沿黄生态保护示范区、黄河流域河道治理、森林河南生态建设贴息、小秦岭矿山生态治理等重点领域。二是支持制造业高质量发展。市级安排资金10300万元，重点支持全市301个项目“三大改造”、制造业创新中心建设和新能源汽车产业集群发展。三是夯实创新驱动发展基础。市级安排资金9600万元，统筹使用人才专项资金、重大科技创新资金、科技信贷风险补偿金，重点支持重大科创项目。运用好各项财政奖补政策，营造创新环境。四是支持不断改善营商环境。市级安排资金13500万元，重点支持营商环境改善、企业上市奖励、市场环境整治、数字城市创建及政务提升，进一步提升营商环境。五是助力实施转型发展战略。市级安排资金10814万元，重点支持国有僵尸企业三供一业改造、功能类公益类企业转型发展、产业集聚平台建设、省级经济发达镇试点建设补助以及新设立现代农业、黄金产业投资基金。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　3.深入推进乡村振兴战略。市级安排资金15309万元，统筹推进“五个振兴”，着力打造特色农业强市。一是强力支持发展现代农业。加大特色农业保险投入，大力开展苹果、核桃、大枣、食用菌四个优势品种特色保险。落实扶持生猪生产的政策措施，降低生产成本、保证市场供应。二是支持推进绿色乡村发展。加快构建多元投入机制，支持推进厕所革命、美丽乡村建设，进一步改善农村公共基础设施。大力推进“四好农村公路”建设，抓好大石涧水库调水、冯佐黄河提水建设，加强水源地保护和安全饮水工程建设。三是支持抓好基层村组织建设。足额村级、社区经费及各类组织、场所建设资金和奖补资金，引导县（市、区）进一步加大投入力度，切实加强基层党组织建设。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　4.支持加快省际区域中心城市建设。统筹利用专项债券、城市配套费、PPP、贴息等融资方式，市级安排资金173800万元，一是支持开展八城联创，补齐城市发展短板。科学安排规划编制费，对照全国文明城市、卫生城市建设标准，加快推进旧城提质改造、242个老旧小区改造。支持推进数字城市试点建设，打造中西部环境最优效率最高地区。支持创建国家产教融合型试点城市，加快职业技术学院新校区建设。统筹安排环保攻坚资金，支持创建无废城市试点。统筹安排林业生态提升、国土绿化、人工影响天气、养老设施建设补助资金，支持推进氧吧城市创建。二是加大城区基础设施建设投入。支持开展城市水系、中国摄影文化城、铁路综合枢纽园、中级法院审判庭、廉政教育中心二期、公益性公墓等重点项目建设。三是支持推进推动交通设施建设。支持快速推进黄河公铁两用大桥南引桥、省道245、国道209王官大桥、崤函生态廊道和310国道建设。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　5.着力保障和改善民生。坚持以人民为中心的思想，市级安排资金102711万元，围绕民生大事急事难事，精准发力、补上短板。一是守住社会保障底线。坚持就业优先战略和积极就业政策，支持高校毕业生、农民工、就业困难人员、退役士兵等重点群体多渠道就业创业。提高城乡低保补助标准。落实困难残疾人生活补贴和重度残疾人护理补贴。足额安排城乡居民养老保险市级补助、80岁以上老人高龄补贴，落实义务兵优待金、困难退役士兵养老和医疗保险补助、企业军转干部解困资金，切实保障和维护军人及家庭权益。二是发展公平而有质量的教育。落实义务教育经费保障机制，推动城乡义务教育一体化发展。强化教师培训及教育质量提升。支持职教攻坚，落实职业教育免学费补助，加快发展现代职业教育。继续落实班主任津贴和教龄津贴。加大投入，推进义务教育阶段校舍维修改造，改善办学环境。进一步改善农村中小学教师工作生活待遇，营造尊师重教良好氛围。三是支持社会事业加快发展。聚焦短板领域和薄弱环节，对接需求、突出重点、精准发力，不断提高人民群众生活质量和水平。推进健康三门峡建设。提高城乡居民基本医疗保险财政补助标准、基本公共卫生服务均等化补助标准。支持免费开展出生缺陷产前筛查和新生儿疾病筛查，以及农村适龄妇女和纳入城市低保的适龄妇女“两癌”筛查。支持市中心医院医疗设备购置及信息化建设，建设三门峡市传染病医院。推进公立医院改革，支持实施家庭医生签约服务和医联体建设，提升医疗卫生服务人民群众能力。厚植老有所养基础。落实支持城镇社区养老服务体系建设财政政策，支持养老服务设施建设，满足老年人就近养老服务需求，加快推进残疾人康复中心建设。推动文化繁荣兴盛。支持传承发展黄河文化等优秀传统文化、红色文化，支持推进“产学研游展”为一体的中国摄影文化城建设，支持开展仰韶文化发展一百周年、中国考古学诞生一百周年纪念活动筹备工作。统筹建设三门峡大坝、红二十五军长征路线等红色文化基地，推进媒体融合发展。支持平安三门峡建设。安排资金，支持消防装备、安全应急工作开展。支持推进以综合信息化为支撑、网格化管理为基础、公共安全视频监控联网应用为重点的群众性治安防控工程。健全矛盾纠纷排查化解机制，构建“一村一警”长效机制，为加强和创新社会治理提供支撑。四是兜牢县级“三保”底线。加大财力下沉力度，合理调度国库库款，全力支持县级缓解财政困难。坚持“三保”支出在财政支出中的优先顺序，坚持国家标准的“三保”支出在“三保”支出中的优先顺序，合理安排使用上级转移支付资金。清理规范过高承诺、过度保障的支出政策，切实做到尽力而为、量力而行，确保财政可持续。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　（二）</span>2020年收支预算情况</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　1.一般公共预算</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　收入安排。</span>2020年市级一般公共预算收入总计376917万元，其中：市本级一般公共预算收入165000万元；上级补助收入131519万元,体制结算收入24298万元，一般债务收入26100万元，统筹调入基金等资金安排30000万元。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　2020年市级一般公共预算收入165000万元，增长3.1%。其中，地方级税收收入110000万元，非税收入55000万元。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　具体安排情况是：</span></span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　（</span>1）税收收入110000万元。其中：增值税50000万元，企业所得税7000万元，个人所得税6000万元，城市维护建设税、契税等32000万元，环境保护税2000万元，资源税13000万元。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　（</span>2）非税收入55000万元。其中：专项收入10000万元，行政事业性收费25000万元，罚没收入10000万元，国有资产（资源）有偿使用收入10000万元。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　支出预算。市级一般公共预算支出总计</span>376917万元，主要是：市本级支出318000万元，补助县（市、区）支出53665万元，上解上级支出5230万元。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　2.政府性基金预算</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　政府性基金预算按照</span>“以收定支、集中财力、确保重点”的原则编制，与一般公共预算统筹安排。2020年市级政府性基金预算收入总计171000万元，主要是，国有土地出让收入102000万元，提前下达专项债券52000万元，城市配套费收入10000万元。市级基金预算支出171000万元，主要是，国有土地使用权出让收入及对应专项债务收入统筹安排的支出32000万元，专项债券收入安排的支出52000万元；专项债券还本支出20648万元；补助陕州、湖滨两区29766万元；调出30000万元，与一般预算统筹使用。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　3.国有资本经营预算</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　根据国有资本经营收益申报及</span>2020年市级国有资本经营预算规划，2020年市级国有资本经营预算收入4000万元。市级国有资本经营预算支出4000万元，与一般公共预算统筹安排国有企业资本金、解决改制遗留问题等支出。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　4.市级社会保险基金预算</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　2020年，市级社保基金收入788709万元，其中财政补贴收入152341万元；市级社保基金支出764828万元，当年收支结余23881万元，累计结余282005万元。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　以上预算安排具体情况详见《三门峡市</span>2019年全市和市级预算执行情况及2020年预算草案》。需要说明的是，代编的全市收支预算是预期性的，待各县（市、区）预算经同级人大批准后，及时汇总报市人大常委会备案。同时，根据预算法第五十四条规定，预算年度开始后，预算草案在人代会批准前，可以预安排部分支出。截至目前，市本级已足额保障了机关事业单位人员经费和机构运转所需经费，并根据部门申请，预拨了新冠肺炎防治、脱贫攻坚等重点项目支出。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　为切实加快政府债券发行使用进度，近期财政厅提前下达了部分新增债券额度并要求编入预算，我市债券额度共</span>235600万元，其中：一般26100万元，专项209500万元。结合预算安排和省厅要求，市级留用一般债券额度4300万元，分配县（市、区）21800万元，市级留用专项债券额度52000万元，分配县（市、区）157500万元。按照 “资金跟着项目走”的分配原则，新增额度已全部安排到位。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">　　</span><span style=";font-family:黑体;font-size:21px"><span style="font-family:黑体">三、改进和加强预算管理的主要措施</span></span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　（一）坚持大力提质增效实施积极的财政政策。突出发展第一要务，进一步减轻企业负担，激发市场活力；积极争取新增政府债券资金额度，加快地方政府债券发行使用，优先保障在建工程和补短板项目建设；深化涉企资金基金化改革，规范高效推广应用</span>PPP模式，更好发挥财政资金撬动作用，促进经济运行保持在合理区间。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　（二）坚决贯彻</span>“过紧日子”的财政方针。大力压一般性支出和公用经费，新增项目支出从严控制；加大资金盘活力度，对结余资金和连续两年未使用的结转资金一律收回统筹使用，对不符合支出进度要求的资金，统筹调整用于其他亟需支持的领域。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　（三）深化财政体制和税制改革。按照市委深化改革部署，完成主要领域市以下财政事权和支出责任划分改革，进一步理顺各级政府权责边界；根据国家、省改革进展，结合我市实际，积极研究完善消费税下划地方后市与县（市、区）收入划分工作，促进我市各级财政更加均衡协调发展；完善农村土地征收制度，建立集体经营性建设用地入市制度。</span></span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　（四）推进部门预算改革。探索运用零基预算理念，根据实际需要科学合理安排预算；进一步强化预算评审、政府采购工作，发挥财政监督职能；加强项目库建设，提高入库项目质量；完善预算支出标准体系，加强基本支出定额定员管理；统筹推进综合预算管理，加大财政拨款与部门自有收入的统筹力度。</span></span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　（五）全面实施预算绩效管理。建立事前绩效评估机制，加强绩效目标管理，扎实开展绩效目标运行监控；全面开展绩效评价，继续扩大重点绩效评价范围；加强绩效评价结果同政策调整、预算安排的有机结合，对低效无效项目进行压缩、调整或取消。</span></span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　（六）加强预算执行管理和监督。硬化预算约束，严格执行人大审查批准的预算，从严控制预算调剂事项；按规定及时下达和批复预算，促进财政资金尽快发挥作用；严格执行预决算公开相关规定，主动接受社会监督；强化会计监督，推动会计信息质量和中介机构执业质量双提高；强化对地方政府债务、落实</span>“三保”支出等情况的监督，推动相关政策落实到位；完善国有资产管理报告制度。</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　（七）全面准确向人大报告支出预算和政策情况。完善预决算报告及草案编制，细化重点支出和重大项目预算，逐步将部门预算的重点项目报送人大审查；对于转移支付，进一步细化预决算编制，翔实反映有关支出的政策依据、支出方向、分配办法、绩效目标、实施效果等情况。</span></span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px"><span style="font-family:仿宋_GB2312">　　各位代表，</span>2020年财政改革发展任务艰巨、责任重大。我们将在市委坚强领导和市人大、市政协监督指导下，深入贯彻习近平新时代中国特色社会主义思想，认真落实本次会议决议，更好发挥财政职能作用，为推动我市高质量发展、谱写新时代中原更加出彩绚丽篇章中贡献强劲三门峡力量做出新贡献！</span></p><p style="text-autospace:ideograph-numeric;text-align:justify;text-justify:inter-ideograph;line-height:40px"><span style=";font-family:仿宋_GB2312;font-size:21px">&nbsp;</span></p><p><br/></p></div>
+    </div>
+    <!--领导展示 -->
+    
+
+    <!--政策意见提交-->
+    
+
+    <!-- 下拉框 -->
+    <div class="content7">
+    <div class="extenta">
+      <div class="contentbox7 w">
+        <!-- <select class="net1" onchange="javascript:window.open(this.options[this.selectedIndex].value);this.selectedIndex=0">
+      <option value="">中央政府及部门</option>
+      <option value="http://www.gov.cn/guowuyuan/">国务院</option>
+      <option value="http://www.fmprc.gov.cn/web/">外交部</option>
+      <option value="http://www.mod.gov.cn/">国防部</option>
+      <option value="http://www.ndrc.gov.cn/">国家发展和改革委员会</option>
+      <option value="http://www.moe.gov.cn/">教育部</option>
+      <option value="http://www.most.gov.cn/">科学技术部</option>
+      <option value="http://www.miit.gov.cn/">工业和信息化部</option>
+      <option value="http://www.neac.gov.cn">国家民族事务委员会</option>
+      <option value="http://www.mps.gov.cn/">公安部</option>
+      <option value="">国家安全部</option>
+      <option value="http://www.mca.gov.cn/">民政部</option>
+      <option value="http://www.moj.gov.cn/">司法部</option>
+      <option value="http://www.mof.gov.cn/index.htm">财政部</option>
+      <option value="http://www.mohrss.gov.cn/">人力资源和社会保障部</option>
+      <option value="http://www.mnr.gov.cn/">自然资源部</option>
+      <option value="http://www.mee.gov.cn/">生态环境部</option>>
+      <option value="http://www.mohurd.gov.cn/">住房和城乡建设部</option>
+      <option value="http://www.mot.gov.cn/">交通运输部</option>
+      <option value="http://www.mwr.gov.cn/">水利部</option>
+      <option value="http://www.moa.gov.cn/">农业农村部</option>
+      <option value="http://www.mofcom.gov.cn/">商务部</option>
+      <option value="http://www.mct.gov.cn/">文化和旅游部</option>
+      <option value="http://www.nhc.gov.cn/">国家卫生健康委员会</option>
+      <option value="http://www.mva.gov.cn/" target="_blank">退役军人事务部</option>
+      <option value="http://www.mem.gov.cn">应急管理部</option>
+      <option value="http://www.pbc.gov.cn/">人民银行</option>
+      <option value="http://www.audit.gov.cn/">审计署</option>
+      <option value="http://www.moe.gov.cn/jyb_sy/China_Language/">国家语言文字工作委员会</option>
+      <option value="">国家外国专家局</option>
+      <option value="http://www.cnsa.gov.cn/">国家航天局</option>
+      <option value="http://www.caea.gov.cn/">国家原子能机构</option>
+      <option value="" style="text-decoration:none; cursor:default;">国家海洋局</option>
+      <option value="http://nnsa.mee.gov.cn/">国家核安全局</option>
+      <option value="http://www.sasac.gov.cn/">国务院国有资产监督管理委员会</option>
+      <option value="http://www.customs.gov.cn/">海关总署</option>
+      <option value="http://www.chinatax.gov.cn/">国家税务总局</option>
+      <option value="http://www.samr.gov.cn/">国家市场监督管理总局</option>
+      <option value="http://www.nrta.gov.cn/">国家广播电视总局</option>
+      <option value="http://www.sport.gov.cn/">国家体育总局</option>
+      <option value="http://www.stats.gov.cn/">国家统计局</option>
+      <option value="http://www.cidca.gov.cn/">国家国际发展合作署</option>
+      <option value="http://www.nhsa.gov.cn/">国家医疗保障局</option>
+      <option value="http://www.counsellor.gov.cn/">国务院参事室</option>
+      <option value="http://www.ggj.gov.cn/">国家机关事务管理局</option>
+      <option value="http://www.cnca.gov.cn/">国家认证认可监督管理委员会</option>
+      <option value="http://www.sac.gov.cn/">国家标准化管理委员会</option>
+      <option value="http://www.ncac.gov.cn/">国家新闻出版署（国家版权局）</option>
+      <option value="http://www.sara.gov.cn/gjzjswjhtml/index.html">国家宗教事务局</option>
+      <option value="http://www.hmo.gov.cn/">国务院港澳事务办公室</option>
+      <option value="http://www.gov.cn/guoqing/2018-06/22/content_5300522.htm">国务院研究室</option>
+      <option value="http://www.gqb.gov.cn/">国务院侨务办公室</option>
+      <option value="http://www.gwytb.gov.cn/">国务院台湾事务办公室</option>
+      <option value="http://www.cac.gov.cn/">国家互联网信息办公室</option>
+      <option value="http://www.scio.gov.cn/index.htm">国务院新闻办公室</option>
+      <option value="http://203.192.6.89/xhs/">新华通讯社</option>
+      <option value="http://www.cas.ac.cn/">中国科学院</option>
+      <option value="http://cass.cssn.cn/">中国社会科学院</option>
+      <option value="http://www.cae.cn/">中国工程院</option>
+      <option value="http://www.drc.gov.cn/">国务院发展研究中心</option>
+      <option value="">中央广播电视总台</option>
+      <option value="http://www.cma.gov.cn/">中国气象局</option>
+      <option value="http://www.cbirc.gov.cn/cn/view/pages/index/index.html">中国银行保险监督管理委员会</option>
+      <option value="http://www.csrc.gov.cn/pub/newsite/">中国证券监督管理委员会</option>
+      <option value="http://www.ccps.gov.cn/">国家行政学院</option>
+      <option value="http://www.gjxfj.gov.cn/">国家信访局</option>
+      <option value="http://www.chinagrain.gov.cn/index.html">国家粮食和物资储备局</option>
+      <option value="http://www.nea.gov.cn/">国家能源局</option>
+      <option value="http://www.sastind.gov.cn/">国家国防科技工业局</option>
+      <option value="http://www.tobacco.gov.cn/html/">国家烟草专卖局</option>
+      <option value="https://www.nia.gov.cn">国家移民管理局</option>
+      <option value="http://www.forestry.gov.cn/">国家林业和草原局</option>
+      <option value="http://www.nra.gov.cn/">国家铁路局</option>
+      <option value="http://www.caac.gov.cn/index.html">中国民用航空局</option>
+      <option value="http://www.spb.gov.cn/">国家邮政局</option>
+      <option value="http://www.ncha.gov.cn/">国家文物局</option>
+      <option value="http://www.satcm.gov.cn/">国家中医药管理局</option>
+      <option value="http://www.chinacoal-safety.gov.cn/">国家煤矿安全监察局</option>
+      <option value="http://www.safe.gov.cn/">国家外汇管理局</option>
+      <option value="https://www.nmpa.gov.cn/"  target="_blank">国家药品监督管理局</option>
+      <option value="http://www.cnipa.gov.cn">国家知识产权局</option>
+      <option value="">出入境管理局</option>
+      <option value="http://www.forestry.gov.cn/">国家公园管理局</option>
+      <option value="http://www.scs.gov.cn/">国家公务员局</option>
+      <option value="http://www.saac.gov.cn/">国家档案局</option>
+      <option value="http://www.gjbmj.gov.cn">国家保密局</option>
+      <option value="http://www.oscca.gov.cn/">国家密码管理局</option>
+    </select> -->
+        <select class="net1" aria-label="省政府网站，按回车键展开列表，按Tab键在选项间移动，按回车键跳转" title="省政府网站"
+          onchange="javascript:window.open(this.options[this.selectedIndex].value);this.selectedIndex=0">
+          <option value="">省政府网站</option>
+          <option value="https://www.henan.gov.cn/">河南省政府网</option>
+        </select>
+        <select class="net1" aria-label="市政府部门，按回车键展开列表，按Tab键在选项间移动，按回车键跳转" title="市政府部门"
+          onchange="javascript:window.open(this.options[this.selectedIndex].value);this.selectedIndex=0">
+          <option value="">市政府部门</option>
+          <option value="http://fgw.smx.gov.cn">市发展和改革委员会</option>
+          <option value="http://kjj.smx.gov.cn">市科学技术局</option>
+          <option value="http://scjg.smx.gov.cn/">市市场监督管理局</option>
+          <option value="http://gaj.smx.gov.cn/">市公安局</option>
+          <option value="http://sfj.smx.gov.cn">市司法局</option>
+          <option value="http://gxj.smx.gov.cn/">市工业和信息化局</option>
+          <option value="http://nyncj.smx.gov.cn/">市农业农村局</option>
+          <option value="http://slj.smx.gov.cn">市水利局</option>
+          <option value="http://zjj.smx.gov.cn/">市住房和城乡建设局</option>
+          <option value="http://xfj.smx.gov.cn">市信访局</option>
+          <option value="http://tjj.smx.gov.cn">市统计局</option>
+          <option value="http://sjj.smx.gov.cn">市审计局</option>
+          <option value="http://rfb.smx.gov.cn/">三门峡市国防动员办公室</option>
+          <option value="http://mzj.smx.gov.cn">市民政局</option>
+          <option value="http://wjw.smx.gov.cn/">市卫生健康委员会</option>
+          <option value="http://lyj.smx.gov.cn/">市林业局</option>
+          <option value="http://zrzy.smx.gov.cn/">市自然资源和规划局</option>
+          <option value="http://rsj.smx.gov.cn">市人力资源和社会保障局</option>
+          <option value="http://swj.smx.gov.cn">市商务局</option>
+          <option value="http://jtysj.smx.gov.cn/">市交通运输局</option>
+          <option value="http://jyj.smx.gov.cn/">市教育局</option>
+          <option value="http://yjglj.smx.gov.cn">市应急管理局</option>
+          <option value="http://tyj.smx.gov.cn/">市体育局</option>
+          <option value="http://sthj.smx.gov.cn/">市生态环境局</option>
+          <option value="http://wglj.smx.gov.cn/">市文化广电和旅游局</option>
+          <option value="http://czj.smx.gov.cn">市财政局</option>
+          <option value="http://tyjrswj.smx.gov.cn/">市退役军人事务局</option>
+          <option value="http://cgj.smx.gov.cn/">市城市管理局</option>
+          <option value="http://mzzj.smx.gov.cn/">市民族宗教事务局</option>
+          <option value="http://ylbzj.smx.gov.cn">市医疗保障局</option>
+          <option value="http://zsj.smx.gov.cn">市行政审批和政务信息管理局</option>
+        </select>
+        <select class="net1" aria-label="各县市区，按回车键展开列表，按Tab键在选项间移动，按回车键跳转" title="各县市区"
+          onchange="javascript:window.open(this.options[this.selectedIndex].value);this.selectedIndex=0">
+          <option value="">各县（市、区）</option>
+          <option value="http://www.hubin.gov.cn/">湖滨区</option>
+          <option value="http://www.lingbao.gov.cn/">灵宝市</option>
+          <option value="http://www.yima.gov.cn/">义马市</option>
+          <option value="http://www.mianchi.gov.cn/">渑池县</option>
+          <option value="http://www.shanzhou.gov.cn/">陕州区</option>
+          <option value="http://www.lushixian.gov.cn/">卢氏县</option>
+          <option value="http://www.smxjjkfq.gov.cn/">经济开发区</option>
+          <option value="http://www.smxsfq.gov.cn/">城乡一体化示范区</option>
+        </select>
+        <select class="net1" aria-label="本市重要机构，按回车键展开列表，按Tab键在选项间移动，按回车键跳转" title="本市重要机构"
+          onchange="javascript:window.open(this.options[this.selectedIndex].value);this.selectedIndex=0">
+          <option value="">本市重要机构</option>
+          <option value="http://gjj.smx.gov.cn">市住房公积金管理中心</option>
+          <option value="http://gzjy.smx.gov.cn">三门峡市公共资源交易中心</option>
+          <option value="https://xy.smx.gov.cn/wcm/site/home_site.html">信用三门峡</option>
+          <option value="https://sanmenxia.zfcg.henan.gov.cn">三门峡政府采购网</option>
+        </select>
+        <!-- <select class="net1" onchange="javascript:window.open(this.options[this.selectedIndex].value);this.selectedIndex=0">
+      <option value="">友情链接</option>
+      <option value="http://szb.ismx.cn/smxrb">三门峡日报</option>
+      <option value="http://szb.ismx.cn/hhsb">黄河时报</option>
+      <option value="http://www.smxzcw.org.cn">三门峡仲裁委员会</option>
+    </select> -->
+      </div>
+    </div>
+  </div>
+    <!--footer-->
+    <div class="footer">
+    <div class="extentb">
+      <div class="footerbox w">
+        <a href="http://bszs.conac.cn/sitename?method=show&id=08D3F05E04ED3476E053022819AC8418"
+          target="_blank" class="dang" style="float:left;">
+          <img src="/websites/rmzf/images/dang.png" alt="党政机关" >
+        </a>
+        <div class="msg" style="float:left">
+          <p>
+            <span class="host commonFont">主办单位：三门峡市人民政府办公室&nbsp;&nbsp;</span>
+            <span class="host1 commonFont">协办：三门峡日报社&nbsp;&nbsp;</span>
+            <span>技术支持：三门峡崤云安全服务有限公司&nbsp;&nbsp;</span>
+
+          </p>
+          <p>
+            <span class="netnum commonFont">网站标识码：4112000001&nbsp;</span>
+            <a class="commonFont" href="https://beian.miit.gov.cn/" target="_blank"><span>备案序号：豫ICP备11010968号</span></a>
+            <a class="commonFont"
+              href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41120202000029"
+              style="text-decoration:none;" target="_blank"><img style="vertical-align: text-bottom;margin-right:6px;"
+                src="/websites/rmzf/images/beian.png">豫公网安备41120202000029号</a>
+          </p>
+          <p>
+            
+            <span class="address commonFont">地址：三门峡市崤山路47号&nbsp;&nbsp;</span>
+            
+          </p>
+          <p>
+            <a href="https://smx.henanjubao.com/" class="commonFont" target="_blank">本站举报办法：三门峡市互联网举报和辟谣平台</a>
+          </p>
+        </div>
+        <div style="width: 120px;float: left;">
+          <script id="_jiucuo_" sitecode="4112000001" src="/websites/commonComponents/js/jiucuo.js"></script>
+          <a href="https://smx.henanjubao.com/" target="_blank" class="zheng" style="float:left;">
+            <img src="/websites/commonComponents/images/jbptimg.jpg" alt="三门峡市互联网举报和辟谣平台">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  function getOs() {
+    if (navigator.userAgent.indexOf("MSIE") > 0) {
+      return "MSIE";
+    }
+    if (isFirefox = navigator.userAgent.indexOf("Firefox") > 0) {
+      $('#img-ie8').remove();
+      $('.img1-ie8').remove();
+      return "Firefox";
+    }
+    if (isSafari = navigator.userAgent.indexOf("Safari") > 0) {
+      return "Safari";
+    }
+    if (isCamino = navigator.userAgent.indexOf("Camino") > 0) {
+      return "Camino";
+    }
+    if (isMozilla = navigator.userAgent.indexOf("Gecko/") > 0) {
+      return "Gecko";
+    }
+    if (navigator.userAgent.indexOf("Qaxbrowser") > 0) {
+      console.log('奇安信');
+    }
+  }
+  getOs()
+</script>
+<!-- 引入适老化项目 -->
+
+<script src="/websites/rmzf/js/commonold.js"></script>
+<script type="text/javascript" src="/websites/rmzf/static/cmsToolsInit.js"></script>
+    <script type="text/javascript">
+
+    $(function () {
+        var loginSigns = null;
+        var loginHref = null
+        // 我要留言
+         $('#loginLink').attr('href',`https://login.hnzwfw.gov.cn/tacs-uc/login/index?backUrl=https://www.smx.gov.cn/receiveTicket?targetUrl=${window.location.href}`)
+     })
+</script>
+<script>
+  window.onload = function () {
+    console.log("-----输出数据------")
+      const iframe = document.getElementById('loginInfo');
+      iframe.contentWindow.postMessage(window.location.href, '*'); // '*' 表示接受任何源，实际使用时应指定确切的源以增加安全性
+  }
+   // 监听来自 iframe 的消息
+ window.addEventListener('message', function(event) {
+    var data = event.data;
+      if(data && data.hasOwnProperty('loginSigns')){
+        console.log('从 iframe 收到数据:', data);
+
+        // 根据登录状态控制意见建议表单显示/隐藏
+        var opinionForm = document.getElementById('opinionForm');
+        if (opinionForm) {
+            if (data.loginSigns == '2') {
+                // 未登录：隐藏表单
+                opinionForm.style.display = 'none';
+            } else {
+                // 已登录：显示表单
+                opinionForm.style.display = 'block';
+            }
+        }
+
+        var userName = data.userName;
+        var userMobile = data.userMobile;
+        var certNo = data.certNo;
+
+        if (data.userType === 'CP') {
+        // 法人
+        // 意见建议表单填充
+        $('#opinionName').val(data.enterpriseName).prop('readonly', true);
+        $('#opinionPhone').val(userMobile).prop('readonly', true);
+        $('#personIdCardRow').hide();
+        $('#companyNameRow').show();
+        $('#companyCodeRow').show();
+        $('#companyName').val(userName);
+        $('#companyCode').val(data.enterpriseSno);
+
+      } else if (data.userType === 'NA') {
+        // 自然人
+        // 意见建议表单填充
+        $('#opinionName').val(userName).prop('readonly', true);
+        $('#opinionPhone').val(userMobile).prop('readonly', true);
+        $('#personIdCardRow').show();
+        $('#companyNameRow').hide();
+        $('#companyCodeRow').hide();
+        $('#personIdCard').val(certNo);
+
+      }
+      }
+
+  }, false);
+
+</script>
+</html>

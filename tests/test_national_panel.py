@@ -846,8 +846,8 @@ class NationalPanelTests(unittest.TestCase):
     def test_city_year_fund_batch_extracts_hohhot_and_chifeng(self):
         values, sources = load_city_year_fund_sources()
 
-        self.assertEqual(len(values), 12)
-        self.assertEqual(len(sources), 12)
+        self.assertEqual(len(values), 17)
+        self.assertEqual(len(sources), 17)
         self.assertEqual(values[("CN-150100", "2024")]["gov_fund_revenue_100m"], Decimal("112.52"))
         self.assertEqual(values[("CN-150100", "2025")]["gov_fund_revenue_100m"], Decimal("75.78"))
         self.assertEqual(values[("CN-150400", "2025")]["gov_fund_revenue_100m"], Decimal("46.69"))
@@ -860,6 +860,12 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(values[("CN-410100", "2025")]["gov_fund_revenue_100m"], Decimal("277.50"))
         self.assertEqual(values[("CN-510100", "2025")]["gov_fund_revenue_100m"], Decimal("1280.45"))
         self.assertEqual(values[("CN-610300", "2025")]["gov_fund_revenue_100m"], Decimal("29.84"))
+        self.assertEqual(values[("CN-410400", "2019")]["gov_fund_revenue_100m"], Decimal("119.93"))
+        self.assertEqual(values[("CN-410200", "2019")]["gov_fund_revenue_100m"], Decimal("189.30"))
+        self.assertEqual(values[("CN-411300", "2019")]["gov_fund_revenue_100m"], Decimal("217.70"))
+        self.assertEqual(values[("CN-411200", "2019")]["gov_fund_revenue_100m"], Decimal("38.76"))
+        self.assertEqual(values[("CN-411600", "2019")]["gov_fund_revenue_100m"], Decimal("213.80"))
+        self.assertEqual(values[("CN-410400", "2019")]["data_status"], "final")
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2", "B2"})
 
         cities = [
@@ -909,6 +915,24 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual({row["source_grade"] for row in rows}, {"A1", "A2", "B2"})
         self.assertEqual({row["collection_status"] for row in rows}, {"extracted", "needs_review"})
         self.assertEqual({item["target_field"] for item in lineage}, {"gov_fund_revenue_100m"})
+
+        pingdingshan = {
+            "city_id": "CN-410400",
+            "admin_code_6": "410400",
+            "city_name_cn": "平顶山市",
+            "province_code": "41",
+            "province_name": "河南省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2019",
+        }
+        final_rows, final_lineage = build_macro_rows(
+            [pingdingshan], [], {}, {}, city_year_fund=values,
+        )
+        self.assertEqual(final_rows[0]["gov_fund_revenue_100m"], Decimal("119.93"))
+        self.assertEqual(final_rows[0]["source_grade"], "A1")
+        self.assertEqual(final_rows[0]["collection_status"], "extracted")
+        self.assertEqual({item["target_field"] for item in final_lineage}, {"gov_fund_revenue_100m"})
 
 
 if __name__ == "__main__":
