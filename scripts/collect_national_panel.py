@@ -1191,6 +1191,87 @@ NEXT8_2025_ECONOMIC_SOURCES = (
     },
 )
 
+NEXT9_2025_ECONOMIC_SOURCES = (
+    {
+        "city_name": "开封市",
+        "city_id": "CN-410200",
+        "source_doc_id": "SRC-B2-HENAN-CITY-STATISTICAL-KAIFENG-2025",
+        "url": "https://tjgb.hongheiku.com/djs/70907.html",
+        "attachment_url": "https://tjgb.hongheiku.com/djs/70907.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "kaifeng_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "kaifeng_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2025年开封市国民经济和社会发展统计公报",
+        "publisher": "开封市统计局、国家统计局开封调查队",
+        "publisher_level": "公开资料转载",
+        "publication_date": "2026-05-17",
+        "title_source": "html_statement_excerpt",
+        "document_type": "统计公报经济财政段落（精确转载）",
+        "mime_type": "text/html",
+        "source_grade": "B2",
+        "patterns": {
+            "gdp_current_100m": (r"全年全市生产总值（GDP）([0-9.]+)亿元，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"全年全市生产总值（GDP）[0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
+            "general_public_revenue_100m": (r"全年全市一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "B2精确转载，页面来源标注为开封市统计局、国家统计局开封调查队；采用2025年全市GDP、增速、年末常住人口和一般公共预算收支，政府性基金收入未在本来源中披露。",
+    },
+    {
+        "city_name": "新乡市",
+        "city_id": "CN-410700",
+        "source_doc_id": "SRC-B2-HENAN-CITY-STATISTICAL-XINXIANG-2025",
+        "url": "https://tjgb.hongheiku.com/xjtjgb/xj2020/72753.html",
+        "attachment_url": "https://tjgb.hongheiku.com/xjtjgb/xj2020/72753.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "xinxiang_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "xinxiang_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2025年新乡市国民经济和社会发展统计公报",
+        "publisher": "新乡市统计局、国家统计局新乡调查队",
+        "publisher_level": "公开资料转载",
+        "publication_date": "2026-05-27",
+        "title_source": "html_statement_excerpt",
+        "document_type": "统计公报经济财政段落（精确转载）",
+        "mime_type": "text/html",
+        "source_grade": "B2",
+        "patterns": {
+            "gdp_current_100m": (r"全年全市地区生产总值([0-9.]+)亿元，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"全年全市地区生产总值[0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
+            "general_public_revenue_100m": (r"一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "B2精确转载，页面来源标注为新乡市统计局、国家统计局新乡调查队；采用2025年全市GDP、增速、年末常住人口和一般公共预算收支，政府性基金收入未在本来源中披露。",
+    },
+    {
+        "city_name": "安阳市",
+        "city_id": "CN-410500",
+        "source_doc_id": "SRC-B2-HENAN-CITY-STATISTICAL-ANYANG-2025",
+        "url": "https://tjgb.hongheiku.com/xjtjgb/xj2020/72689.html",
+        "attachment_url": "https://tjgb.hongheiku.com/xjtjgb/xj2020/72689.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "anyang_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "anyang_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2025年安阳市国民经济和社会发展统计公报",
+        "publisher": "安阳市统计局",
+        "publisher_level": "公开资料转载",
+        "publication_date": "2026-05-27",
+        "title_source": "html_statement_excerpt",
+        "document_type": "统计公报经济财政段落（精确转载）",
+        "mime_type": "text/html",
+        "source_grade": "B2",
+        "patterns": {
+            "gdp_current_100m": (r"全年全市实现地区生产总值([0-9.]+)亿元，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"全年全市实现地区生产总值[0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
+            "general_public_revenue_100m": (r"一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "B2精确转载，页面来源标注为安阳市统计局；采用2025年全市GDP、增速、年末常住人口和一般公共预算收支，政府性基金收入未在本来源中披露。",
+    },
+)
+
 JIANGSU_CITY_FUND_SOURCES = (
     {
         "year": 2018,
@@ -3299,6 +3380,12 @@ def load_next8_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[dic
     return load_city_2025_fiscal_sources(NEXT8_2025_ECONOMIC_SOURCES)
 
 
+def load_next9_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取开封、新乡、安阳 2025 年经济财政统计数据。"""
+
+    return load_city_2025_fiscal_sources(NEXT9_2025_ECONOMIC_SOURCES)
+
+
 def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
     general_limit = as_decimal(row.get("general_debt_limit_100m"))
     special_limit = as_decimal(row.get("special_debt_limit_100m"))
@@ -3403,6 +3490,7 @@ def build_macro_rows(
     next6_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
     next7_2025_fiscal: Mapping[str, Mapping[str, Any]] | None = None,
     next8_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
+    next9_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     jiangsu_city_fund: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     jiangsu_city_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     city_year_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
@@ -3427,6 +3515,7 @@ def build_macro_rows(
     next6_2025_fiscal = next6_2025_fiscal or {}
     next7_2025_fiscal = next7_2025_fiscal or {}
     next8_2025_economic = next8_2025_economic or {}
+    next9_2025_economic = next9_2025_economic or {}
     jiangsu_city_fund = jiangsu_city_fund or {}
     jiangsu_city_fiscal = jiangsu_city_fiscal or {}
     city_year_fiscal = city_year_fiscal or {}
@@ -3443,6 +3532,7 @@ def build_macro_rows(
         **next6_2025_fiscal,
         **next7_2025_fiscal,
         **next8_2025_economic,
+        **next9_2025_economic,
     }
     for city in city_master:
         year = int(city["metric_year"])
@@ -4681,6 +4771,7 @@ def main() -> None:
     next6_2025_fiscal, next6_2025_fiscal_sources = load_next6_2025_city_fiscal()
     next7_2025_fiscal, next7_2025_fiscal_sources = load_next7_2025_city_fiscal()
     next8_2025_economic, next8_2025_economic_sources = load_next8_2025_city_economic()
+    next9_2025_economic, next9_2025_economic_sources = load_next9_2025_city_economic()
     jiangsu_city_fund, jiangsu_city_fund_sources = load_jiangsu_city_fund_sources()
     jiangsu_city_fiscal, jiangsu_city_fiscal_sources = load_jiangsu_city_fiscal_sources()
     city_year_fiscal, city_year_fiscal_sources = load_city_year_fiscal_sources()
@@ -4720,6 +4811,7 @@ def main() -> None:
         next6_2025_fiscal,
         next7_2025_fiscal,
         next8_2025_economic,
+        next9_2025_economic,
         jiangsu_city_fund,
         jiangsu_city_fiscal,
         city_year_fiscal,
@@ -4866,6 +4958,7 @@ def main() -> None:
             *next6_2025_fiscal_sources,
             *next7_2025_fiscal_sources,
             *next8_2025_economic_sources,
+            *next9_2025_economic_sources,
             *jiangsu_city_fund_sources,
             *jiangsu_city_fiscal_sources,
             *city_year_fiscal_sources,

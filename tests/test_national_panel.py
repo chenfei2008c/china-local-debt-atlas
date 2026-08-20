@@ -24,6 +24,7 @@ from scripts.collect_national_panel import (
     load_next6_2025_city_fiscal,
     load_next7_2025_city_fiscal,
     load_next8_2025_city_economic,
+    load_next9_2025_city_economic,
     load_next_2025_city_fiscal,
     load_shandong_2025_city_fiscal,
     order_calculation_rows_for_lineage,
@@ -1443,6 +1444,49 @@ class NationalPanelTests(unittest.TestCase):
                 "general_public_revenue_100m",
                 "general_public_expenditure_100m",
                 "gov_fund_revenue_100m",
+            },
+        )
+
+    def test_next9_2025_henan_economic_batch_extracts_three_cities(self):
+        values, sources = load_next9_2025_city_economic()
+
+        self.assertEqual(len(values), 3)
+        self.assertEqual(len(sources), 3)
+        self.assertEqual(values["CN-410200"]["gdp_current_100m"], Decimal("2860.06"))
+        self.assertEqual(values["CN-410200"]["gdp_real_growth_pct"], Decimal("5.10"))
+        self.assertEqual(values["CN-410200"]["resident_population_10k"], Decimal("468.70"))
+        self.assertEqual(values["CN-410200"]["general_public_revenue_100m"], Decimal("139.70"))
+        self.assertEqual(values["CN-410200"]["general_public_expenditure_100m"], Decimal("419.25"))
+        self.assertEqual(values["CN-410700"]["gdp_current_100m"], Decimal("3687.07"))
+        self.assertEqual(values["CN-410700"]["resident_population_10k"], Decimal("609.10"))
+        self.assertEqual(values["CN-410500"]["gdp_current_100m"], Decimal("2765.80"))
+        self.assertEqual(values["CN-410500"]["gdp_real_growth_pct"], Decimal("5.50"))
+        self.assertEqual(values["CN-410500"]["general_public_expenditure_100m"], Decimal("458.90"))
+        self.assertEqual({source["source_grade"] for source in sources}, {"B2"})
+
+        kaifeng = {
+            "city_id": "CN-410200",
+            "admin_code_6": "410200",
+            "city_name_cn": "开封市",
+            "province_code": "41",
+            "province_name": "河南省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        rows, lineage = build_macro_rows([kaifeng], [], {}, {}, next9_2025_economic=values)
+        self.assertEqual(rows[0]["gdp_current_100m"], Decimal("2860.06"))
+        self.assertEqual(rows[0]["general_public_revenue_100m"], Decimal("139.70"))
+        self.assertEqual(rows[0]["source_grade"], "B2")
+        self.assertEqual(rows[0]["data_status"], "execution")
+        self.assertEqual(
+            {item["target_field"] for item in lineage},
+            {
+                "gdp_current_100m",
+                "gdp_real_growth_pct",
+                "resident_population_10k",
+                "general_public_revenue_100m",
+                "general_public_expenditure_100m",
             },
         )
 
