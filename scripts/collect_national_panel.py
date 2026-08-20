@@ -2395,6 +2395,60 @@ NEXT27_2025_ECONOMIC_SOURCES = (
     },
 )
 
+NEXT28_2025_ECONOMIC_SOURCES = (
+    {
+        "city_name": "海口市",
+        "city_id": "CN-460100",
+        "source_doc_id": "SRC-B2-HAINAN-CITY-STATISTICAL-HAIKOU-2025-ECONOMIC",
+        "url": "https://www.crei.cn/file/br.aspx?id=20260429152052&op=zc&x=0",
+        "attachment_url": "https://www.crei.cn/file/br.aspx?id=20260429152052&op=zc&x=0",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "haikou_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "haikou_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "source_format": "html",
+        "document_title": "2025年海口市国民经济和社会发展统计公报",
+        "publisher": "中国区域经济学会信息平台转载（出处为海口市统计局）",
+        "publisher_level": "市级统计机构公报转载",
+        "publication_date": "2026-04-29",
+        "title_source": "official_reprint_html",
+        "document_type": "统计公报经济指标（精确转载网页）",
+        "mime_type": "text/html",
+        "source_grade": "B2",
+        "data_status": "preliminary",
+        "source_locator": "haikou_2025_statistical_bulletin_excerpt.txt；GDP及增速=统计公报综合段；原始网页已归档",
+        "patterns": {
+            "gdp_current_100m": (r"2025年全市实现地区生产总值([0-9.]+)亿元，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"2025年全市实现地区生产总值[0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
+        },
+        "note": "B2海口市统计公报精确转载；补录2025年GDP和实际增速，财政字段由独立财政批次记录。",
+    },
+    {
+        "city_name": "宜昌市",
+        "city_id": "CN-420500",
+        "source_doc_id": "SRC-B2-HUBEI-CITY-STATISTICAL-YICHANG-2025-POPULATION",
+        "url": "https://www.crei.cn/file/br.aspx?id=20260420163741&op=zc&x=0",
+        "attachment_url": "https://www.crei.cn/file/br.aspx?id=20260420163741&op=zc&x=0",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "yichang_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "yichang_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "source_format": "html",
+        "document_title": "宜昌市2025年国民经济和社会发展统计公报",
+        "publisher": "宜昌市统计局（精确公报转载）",
+        "publisher_level": "市级统计机构公报转载",
+        "publication_date": "2026-04-20",
+        "title_source": "official_reprint_html",
+        "document_type": "统计公报人口指标（精确转载网页）",
+        "mime_type": "text/html",
+        "source_grade": "B2",
+        "data_status": "preliminary",
+        "source_locator": "yichang_2025_statistical_bulletin_excerpt.txt；年末常住人口=统计公报人口段；原始网页已归档",
+        "patterns": {
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
+        },
+        "note": "B2宜昌市统计公报精确转载；补录2025年年末常住人口，经济财政其他字段由独立批次记录。",
+    },
+)
+
 JIANGSU_CITY_FUND_SOURCES = (
     {
         "year": 2018,
@@ -4648,6 +4702,12 @@ def load_next27_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[di
     return load_city_2025_fiscal_sources(NEXT27_2025_ECONOMIC_SOURCES)
 
 
+def load_next28_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取海口、宜昌 2025 年统计公报经济及人口指标。"""
+
+    return load_city_2025_fiscal_sources(NEXT28_2025_ECONOMIC_SOURCES)
+
+
 def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
     general_limit = as_decimal(row.get("general_debt_limit_100m"))
     special_limit = as_decimal(row.get("special_debt_limit_100m"))
@@ -4771,6 +4831,7 @@ def build_macro_rows(
     next25_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next26_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next27_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
+    next28_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     jiangsu_city_fund: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     jiangsu_city_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     city_year_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
@@ -4814,6 +4875,7 @@ def build_macro_rows(
     next25_2025_economic = next25_2025_economic or {}
     next26_2025_economic = next26_2025_economic or {}
     next27_2025_economic = next27_2025_economic or {}
+    next28_2025_economic = next28_2025_economic or {}
     jiangsu_city_fund = jiangsu_city_fund or {}
     jiangsu_city_fiscal = jiangsu_city_fiscal or {}
     city_year_fiscal = city_year_fiscal or {}
@@ -4853,6 +4915,7 @@ def build_macro_rows(
         **next25_2025_economic,
         **next26_2025_economic,
         **next27_2025_economic,
+        **next28_2025_economic,
     }
     for city in city_master:
         year = int(city["metric_year"])
@@ -6156,6 +6219,7 @@ def main() -> None:
     next25_2025_economic, next25_2025_economic_sources = load_next25_2025_city_economic()
     next26_2025_economic, next26_2025_economic_sources = load_next26_2025_city_economic()
     next27_2025_economic, next27_2025_economic_sources = load_next27_2025_city_economic()
+    next28_2025_economic, next28_2025_economic_sources = load_next28_2025_city_economic()
     jiangsu_city_fund, jiangsu_city_fund_sources = load_jiangsu_city_fund_sources()
     jiangsu_city_fiscal, jiangsu_city_fiscal_sources = load_jiangsu_city_fiscal_sources()
     city_year_fiscal, city_year_fiscal_sources = load_city_year_fiscal_sources()
@@ -6214,6 +6278,7 @@ def main() -> None:
         next25_2025_economic,
         next26_2025_economic,
         next27_2025_economic,
+        next28_2025_economic,
         jiangsu_city_fund,
         jiangsu_city_fiscal,
         city_year_fiscal,
@@ -6379,6 +6444,7 @@ def main() -> None:
             *next25_2025_economic_sources,
             *next26_2025_economic_sources,
             *next27_2025_economic_sources,
+            *next28_2025_economic_sources,
             *jiangsu_city_fund_sources,
             *jiangsu_city_fiscal_sources,
             *city_year_fiscal_sources,
