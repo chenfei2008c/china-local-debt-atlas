@@ -3339,6 +3339,28 @@ CITY_YEAR_FUND_SOURCES = (
         "page_count": "1",
         "note": "阜新市财政局官方财政决算报告，明确全市与市本级口径；采用2025年全市政府性基金预算收入4.22亿元，不使用市本级1.51亿元。",
     },
+    {
+        "year": 2025,
+        "city_name": "盘锦市",
+        "city_id": "CN-211100",
+        "source_doc_id": "SRC-A2-PANJIN-CITY-FUND-2025",
+        "url": "https://www.pjrd.gov.cn/2026_01/09_14/content-549808.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "panjin_2025_budget_execution_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "panjin_2025_budget_execution_report_excerpt.txt",
+        "document_title": "关于盘锦市2025年预算执行情况和2026年预算草案的报告",
+        "publisher": "盘锦市人大信息网（盘锦市财政局报告）",
+        "publisher_level": "市级人大官方门户",
+        "publication_date": "2026-01-09",
+        "source_grade": "A2",
+        "source_format": "html",
+        "pattern": r"原文摘录：2025年全市政府性基金预算收入([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数",
+        "document_type": "城市财政预算执行报告（官方网页）",
+        "page_count": "1",
+        "note": "盘锦市人大信息网公开盘锦市财政局提交的人代会预算执行报告，明确全市口径；采用2025年全市政府性基金预算收入16.1亿元，不使用市本级2.7亿元。",
+    },
 )
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
