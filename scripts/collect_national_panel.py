@@ -2131,6 +2131,32 @@ CITY_YEAR_FISCAL_SOURCES = (
         },
         "note": "南昌市财政局2026年市级政府预算公开目录链接的2025年全市执行表，三项字段均为全市口径执行数；原始单位万元，按1万元=0.0001亿元换算并保留两位小数。入口页与附件分别记录，避免把市级表误作全市表。",
     },
+    {
+        "year": 2025,
+        "city_name": "海口市",
+        "city_id": "CN-460100",
+        "source_doc_id": "SRC-A2-HAIKOU-CITY-FISCAL-2025",
+        "url": "http://www.haikou.gov.cn/xxgk/szfbjxxgk/cztz/czyjs/2026yjs/bmys/202602/t1509668.shtml",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "haikou_2025_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "haikou_2025_budget_report_excerpt.txt",
+        "document_title": "关于海口市2025年预算执行情况和2026年预算草案的报告",
+        "publisher": "海口市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2026-02-25",
+        "source_grade": "A2",
+        "source_format": "html",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数（官方预算报告）",
+        "document_type": "城市财政预算执行报告（官方网页）",
+        "page_number": "正文",
+        "patterns": {
+            "general_public_revenue_100m": r"全市地方一般公共预算收入(253\.8)亿元",
+            "general_public_expenditure_100m": r"全市地方一般公共预算支出(336\.7)亿元",
+            "gov_fund_revenue_100m": r"全市地方政府性基金预算收入(68\.4)亿元",
+        },
+        "note": "海口市财政局官方预算报告明确区分全市与市本级口径；本批采用全市地方一般公共预算收入253.8亿元、支出336.7亿元及政府性基金预算收入68.4亿元，不使用市本级68.1亿元基金收入。",
+    },
 )
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
