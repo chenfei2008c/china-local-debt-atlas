@@ -36,6 +36,7 @@ from scripts.collect_national_panel import (
     load_next18_2025_city_economic,
     load_next19_2025_city_economic,
     load_next20_2025_city_economic,
+    load_next21_2025_city_economic,
     load_next_2025_city_fiscal,
     load_shandong_2025_city_fiscal,
     order_calculation_rows_for_lineage,
@@ -1711,6 +1712,20 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(len(sources), 1)
         self.assertEqual(values["CN-430100"]["resident_population_10k"], Decimal("1072.14"))
         self.assertEqual({source["source_grade"] for source in sources}, {"A2"})
+
+    def test_next21_2025_xinjiang_economic_batch_extracts_three_cities(self):
+        values, sources = load_next21_2025_city_economic()
+
+        self.assertEqual(len(values), 3)
+        self.assertEqual(len(sources), 3)
+        self.assertEqual(values["CN-650200"]["gdp_current_100m"], Decimal("1303.96"))
+        self.assertEqual(values["CN-650200"]["general_public_revenue_100m"], Decimal("106.92"))
+        self.assertEqual(values["CN-650200"]["general_public_expenditure_100m"], Decimal("174.77"))
+        self.assertEqual(values["CN-650400"]["resident_population_10k"], Decimal("70.15"))
+        self.assertEqual(values["CN-650400"]["general_public_revenue_100m"], Decimal("79.34"))
+        self.assertEqual(values["CN-650500"]["gdp_real_growth_pct"], Decimal("9.30"))
+        self.assertEqual(values["CN-650500"]["general_public_expenditure_100m"], Decimal("233.43"))
+        self.assertEqual({source["source_grade"] for source in sources}, {"A2", "B2"})
 
     def test_city_year_fund_batch_extracts_hohhot_and_chifeng(self):
         values, sources = load_city_year_fund_sources()
