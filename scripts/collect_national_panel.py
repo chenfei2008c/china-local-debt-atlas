@@ -1543,6 +1543,36 @@ NEXT13_2025_ECONOMIC_SOURCES = (
     },
 )
 
+NEXT14_2025_ECONOMIC_SOURCES = (
+    {
+        "city_name": "焦作市",
+        "city_id": "CN-410800",
+        "source_doc_id": "SRC-A2-HENAN-CITY-STATISTICAL-JIAOZUO-2025",
+        "url": "https://oss.jiaozuo.gov.cn/4108000001/upload-file/files/20260617/b10d4ba7a3a746b1bb7df94c4df344a0.pdf",
+        "attachment_url": "https://oss.jiaozuo.gov.cn/4108000001/upload-file/files/20260617/b10d4ba7a3a746b1bb7df94c4df344a0.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "jiaozuo_2025_statistical_bulletin.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "jiaozuo_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2025年焦作市国民经济和社会发展统计公报",
+        "publisher": "焦作市统计局",
+        "publisher_level": "市级统计机构",
+        "publication_date": "2026-06-17",
+        "title_source": "official_pdf_excerpt",
+        "document_type": "官方统计公报经济财政指标（PDF）",
+        "mime_type": "application/pdf",
+        "source_grade": "A2",
+        "data_status": "preliminary",
+        "patterns": {
+            "gdp_current_100m": (r"全年全市地区生产总值([0-9.]+)亿元，同比增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"全年全市地区生产总值[0-9.]+亿元，同比增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
+            "general_public_revenue_100m": (r"一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "A2焦作市统计局官方统计公报PDF；采用2025年全市GDP、增速、年末常住人口和一般公共预算收支，公报注明为初步统计数，政府性基金收入未在本来源中披露。",
+    },
+)
+
 JIANGSU_CITY_FUND_SOURCES = (
     {
         "year": 2018,
@@ -3709,6 +3739,12 @@ def load_next13_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[di
     return load_city_2025_fiscal_sources(NEXT13_2025_ECONOMIC_SOURCES)
 
 
+def load_next14_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取焦作市 2025 年官方统计公报经济财政数据。"""
+
+    return load_city_2025_fiscal_sources(NEXT14_2025_ECONOMIC_SOURCES)
+
+
 def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
     general_limit = as_decimal(row.get("general_debt_limit_100m"))
     special_limit = as_decimal(row.get("special_debt_limit_100m"))
@@ -3818,6 +3854,7 @@ def build_macro_rows(
     next11_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next12_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next13_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
+    next14_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     jiangsu_city_fund: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     jiangsu_city_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     city_year_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
@@ -3847,6 +3884,7 @@ def build_macro_rows(
     next11_2025_economic = next11_2025_economic or {}
     next12_2025_economic = next12_2025_economic or {}
     next13_2025_economic = next13_2025_economic or {}
+    next14_2025_economic = next14_2025_economic or {}
     jiangsu_city_fund = jiangsu_city_fund or {}
     jiangsu_city_fiscal = jiangsu_city_fiscal or {}
     city_year_fiscal = city_year_fiscal or {}
@@ -3868,6 +3906,7 @@ def build_macro_rows(
         **next11_2025_economic,
         **next12_2025_economic,
         **next13_2025_economic,
+        **next14_2025_economic,
     }
     for city in city_master:
         year = int(city["metric_year"])
@@ -5111,6 +5150,7 @@ def main() -> None:
     next11_2025_economic, next11_2025_economic_sources = load_next11_2025_city_economic()
     next12_2025_economic, next12_2025_economic_sources = load_next12_2025_city_economic()
     next13_2025_economic, next13_2025_economic_sources = load_next13_2025_city_economic()
+    next14_2025_economic, next14_2025_economic_sources = load_next14_2025_city_economic()
     jiangsu_city_fund, jiangsu_city_fund_sources = load_jiangsu_city_fund_sources()
     jiangsu_city_fiscal, jiangsu_city_fiscal_sources = load_jiangsu_city_fiscal_sources()
     city_year_fiscal, city_year_fiscal_sources = load_city_year_fiscal_sources()
@@ -5155,6 +5195,7 @@ def main() -> None:
         next11_2025_economic,
         next12_2025_economic,
         next13_2025_economic,
+        next14_2025_economic,
         jiangsu_city_fund,
         jiangsu_city_fiscal,
         city_year_fiscal,
@@ -5306,6 +5347,7 @@ def main() -> None:
             *next11_2025_economic_sources,
             *next12_2025_economic_sources,
             *next13_2025_economic_sources,
+            *next14_2025_economic_sources,
             *jiangsu_city_fund_sources,
             *jiangsu_city_fiscal_sources,
             *city_year_fiscal_sources,
