@@ -1928,6 +1928,32 @@ CITY_YEAR_FISCAL_SOURCES = (
         },
         "note": "朝阳市财政局官方预算执行报告，明确披露全市口径；采用2024年快报数，原始单位万元，保留execution状态，不改写为最终决算。",
     },
+    {
+        "year": 2025,
+        "city_name": "张掖市",
+        "city_id": "CN-620700",
+        "source_doc_id": "SRC-A2-ZHANGYE-CITY-FISCAL-2025",
+        "url": "https://www.zhangye.gov.cn/zyszfxxgk/fdzdgknr_5657/sgjfjysxx/sjczyjsjsgjf/202602/t20260225_1511277_ghb.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "zhangye_2025_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "zhangye_2025_budget_report_excerpt.txt",
+        "document_title": "关于2025年全市财政预算执行情况和2026年全市及市级财政预算草案的报告",
+        "publisher": "张掖市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2026-02-24",
+        "source_grade": "A2",
+        "source_format": "html",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数（正文披露）",
+        "document_type": "城市财政预算执行报告（官方网页）",
+        "page_number": "正文",
+        "patterns": {
+            "general_public_revenue_100m": r"全市一般公共预算收入完成\s*([0-9,.]+)\s*亿元",
+            "general_public_expenditure_100m": r"全市一般公共预算支出完成\s*([0-9,.]+)\s*亿元",
+            "gov_fund_revenue_100m": r"全市政府性基金预算收入完成\s*([0-9,.]+)\s*亿元",
+        },
+        "note": "张掖市财政局官方预算执行报告，明确披露全市口径；采用正文按0.1亿元披露的2025年执行数，保留execution状态，不改写为最终决算。",
+    },
 )
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
@@ -2485,7 +2511,7 @@ def load_jiangsu_city_fund_sources() -> tuple[dict[tuple[str, str], dict[str, An
                 "canonical_url": config["url"],
                 "final_resolved_url": config["url"],
                 "file_name": source_path.name,
-                "mime_type": "application/pdf",
+                "mime_type": "text/html" if config.get("source_format") == "html" else "application/pdf",
                 "publication_date": config["publication_date"],
                 "publication_date_raw": config["publication_date"],
                 "period_end": f"{year}-12-31",
@@ -2570,7 +2596,7 @@ def load_jiangsu_city_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, 
                 "canonical_url": config["url"],
                 "final_resolved_url": config["url"],
                 "file_name": source_path.name,
-                "mime_type": "application/pdf",
+                "mime_type": "text/html" if config.get("source_format") == "html" else "application/pdf",
                 "publication_date": config["publication_date"],
                 "publication_date_raw": config["publication_date"],
                 "period_end": f"{year}-12-31",
@@ -2701,10 +2727,11 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
             if not match:
                 raise ValueError(f"未能从{config['city_name']}{year}年财政来源提取{field}")
             raw_value = Decimal(match.group(1).replace(",", "").replace("，", ""))
-            normalized = q2(raw_value * D4)
+            raw_unit = str(config.get("raw_unit") or "万元")
+            normalized = q2(raw_value if raw_unit == "亿元" else raw_value * D4)
             record[field] = normalized
             record[f"{field}_raw_100m"] = raw_value
-            record[f"{field}_raw_unit"] = "万元"
+            record[f"{field}_raw_unit"] = raw_unit
             record[f"{field}_evidence_excerpt"] = match.group(0)
         values[(str(config["city_id"]), year)] = record
         sources.append(
@@ -2722,7 +2749,7 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
                 "canonical_url": config["url"],
                 "final_resolved_url": config["url"],
                 "file_name": source_path.name,
-                "mime_type": "application/pdf",
+                "mime_type": "text/html" if config.get("source_format") == "html" else "application/pdf",
                 "publication_date": config["publication_date"],
                 "publication_date_raw": config["publication_date"],
                 "period_end": f"{year}-12-31",
@@ -2734,7 +2761,7 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
                 "page_count": config.get("page_count", "179"),
                 "source_grade": config["source_grade"],
                 "http_status": "200",
-                "access_status": "官方PDF已归档",
+                "access_status": "官方网页已归档" if config.get("source_format") == "html" else "官方PDF已归档",
                 "supersedes_doc_id": "",
                 "note": config["note"],
             }
@@ -3467,6 +3494,12 @@ def _lineage_for_city_year_fiscal(
     field_label = labels[field]
     year = row["metric_year"]
     data_status_label = str(source.get("data_status_label") or f"{year}年执行数")
+    raw_unit = str(source.get(f"{field}_raw_unit") or "万元")
+    normalization_rule = (
+        "官方预算执行报告原始单位为亿元；数值直接读取，保留两位小数；全市口径。"
+        if raw_unit == "亿元"
+        else "官方预算执行报告原始单位为万元；原值÷10000=亿元，保留两位小数；全市口径。"
+    )
     return _lineage_base(
         row,
         field,
@@ -3483,7 +3516,7 @@ def _lineage_for_city_year_fiscal(
         raw_unit=source.get(f"{field}_raw_unit", "万元"),
         machine_extracted_value=value,
         evidence_excerpt=source.get(f"{field}_evidence_excerpt", ""),
-        normalization_rule="官方预算执行报告原始单位为万元；原值÷10000=亿元，保留两位小数；全市口径。",
+        normalization_rule=normalization_rule,
         extraction_method="curated-official-pdf-statement-parser",
         parse_confidence="0.99",
         selection_reason=(

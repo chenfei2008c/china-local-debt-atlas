@@ -878,8 +878,8 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 1)
-        self.assertEqual(sources[0]["source_grade"], "A2")
+        self.assertEqual(len(sources), 2)
+        self.assertEqual({source["source_grade"] for source in sources}, {"A2"})
 
         chaoyang = {
             "city_id": "CN-211300",
@@ -901,6 +901,40 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(rows[0]["fund_revenue_dependence_pct"], Decimal("12.53"))
         self.assertEqual(
             {item["target_field"] for item in lineage},
+            {
+                "general_public_revenue_100m",
+                "general_public_expenditure_100m",
+                "gov_fund_revenue_100m",
+            },
+        )
+
+        zhangye = values[("CN-620700", "2025")]
+        self.assertEqual(zhangye["general_public_revenue_100m"], Decimal("38.90"))
+        self.assertEqual(zhangye["general_public_expenditure_100m"], Decimal("194.40"))
+        self.assertEqual(zhangye["gov_fund_revenue_100m"], Decimal("8.70"))
+        self.assertEqual(zhangye["data_status_label"], "2025年执行数（正文披露）")
+
+        zhangye_city = {
+            "city_id": "CN-620700",
+            "admin_code_6": "620700",
+            "city_name_cn": "张掖市",
+            "province_code": "62",
+            "province_name": "甘肃省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        zhangye_rows, zhangye_lineage = build_macro_rows(
+            [zhangye_city], [], {}, {}, city_year_fiscal=values,
+        )
+        self.assertEqual(zhangye_rows[0]["general_public_revenue_100m"], Decimal("38.90"))
+        self.assertEqual(zhangye_rows[0]["general_public_expenditure_100m"], Decimal("194.40"))
+        self.assertEqual(zhangye_rows[0]["gov_fund_revenue_100m"], Decimal("8.70"))
+        self.assertEqual(zhangye_rows[0]["fund_revenue_dependence_pct"], Decimal("18.28"))
+        self.assertEqual(zhangye_rows[0]["source_grade"], "A2")
+        self.assertEqual(zhangye_rows[0]["data_status"], "execution")
+        self.assertEqual(
+            {item["target_field"] for item in zhangye_lineage},
             {
                 "general_public_revenue_100m",
                 "general_public_expenditure_100m",
