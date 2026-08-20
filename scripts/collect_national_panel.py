@@ -1980,6 +1980,30 @@ CITY_YEAR_FISCAL_SOURCES = (
         },
         "note": "平凉市财政局官方预算执行报告，明确披露全市口径；采用报告正文披露的2025年执行数，保留execution状态，不改写为最终决算。",
     },
+    {
+        "year": 2025,
+        "city_name": "长沙市",
+        "city_id": "CN-430100",
+        "source_doc_id": "SRC-A2-CHANGSHA-CITY-FUND-2025",
+        "url": "https://www.changsha.gov.cn/szf/ztzl/ysgk/ysjsbg/202601/t20260130_12263761.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "changsha_2025_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "changsha_2025_budget_report_excerpt.txt",
+        "document_title": "关于2025年全市和市本级预算执行情况与2026年全市和市本级预算草案的报告",
+        "publisher": "长沙市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2026-01-28",
+        "source_grade": "A2",
+        "source_format": "html",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数（市人大会议报告）",
+        "document_type": "城市财政预算执行报告（官方网页）",
+        "page_number": "正文",
+        "patterns": {
+            "gov_fund_revenue_100m": r"全市政府性基金预算收入\s*([0-9,.]+)\s*亿元",
+        },
+        "note": "长沙市人民政府门户公开的长沙市财政局预算执行报告，明确披露全市政府性基金预算收入528.7亿元；独立接入基金字段，不覆盖已有统计公报中的GDP和一般预算字段。",
+    },
 )
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
