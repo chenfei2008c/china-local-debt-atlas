@@ -3295,6 +3295,28 @@ CITY_YEAR_FUND_SOURCES = (
         "page_count": "1",
         "note": "官方地方报纸数字版公开市财政局预算报告原文，明确全市口径；采用2025年政府性基金预算收入2996305万元，折算299.6305亿元，不使用市级数。",
     },
+    {
+        "year": 2025,
+        "city_name": "抚顺市",
+        "city_id": "CN-210400",
+        "source_doc_id": "SRC-A2-FUSHUN-CITY-FUND-2025",
+        "url": "https://www.fushun.gov.cn/zwgk/002008/002008003/002008003001/20260710/ad0056e5-6526-4452-8ea6-92cbfacafa87.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "fushun_2025_final_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "fushun_2025_final_budget_report_excerpt.txt",
+        "document_title": "关于抚顺市2025年财政决算的报告",
+        "publisher": "抚顺市人民政府",
+        "publisher_level": "市级政府门户",
+        "publication_date": "2026-07-10",
+        "source_grade": "A2",
+        "source_format": "html",
+        "pattern": r"原文摘录：2025年全市政府性基金收入([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "final",
+        "data_status_label": "2025年决算数",
+        "document_type": "城市财政决算报告（官方网页）",
+        "page_count": "1",
+        "note": "抚顺市政府官方财政决算报告，明确区分全市与市本级；采用2025年全市政府性基金收入5.6亿元，不使用市本级4.9亿元。",
+    },
 )
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
