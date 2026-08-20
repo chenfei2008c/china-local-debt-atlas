@@ -13,6 +13,7 @@ from scripts.collect_national_panel import (
     compute_derived_values,
     load_followup_2025_city_fiscal,
     load_city_year_fund_sources,
+    load_jiangsu_city_fiscal_sources,
     load_jiangsu_city_fund_sources,
     load_ningxia_2025_city_fiscal,
     load_next2_2025_city_fiscal,
@@ -833,6 +834,38 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(
             {item["target_field"] for item in lineage},
             {"gov_fund_revenue_100m"},
+        )
+
+    def test_jiangsu_city_fiscal_batch_extracts_2024_whole_city_tables(self):
+        values, sources = load_jiangsu_city_fiscal_sources()
+
+        self.assertEqual(len(values), 13)
+        self.assertEqual(len(sources), 1)
+        self.assertEqual(values[("CN-320100", "2024")]["general_public_revenue_100m"], Decimal("1596.02"))
+        self.assertEqual(values[("CN-320100", "2024")]["general_public_expenditure_100m"], Decimal("1705.26"))
+        self.assertEqual(values[("CN-321300", "2024")]["general_public_revenue_100m"], Decimal("310.00"))
+        self.assertEqual(values[("CN-321300", "2024")]["general_public_expenditure_100m"], Decimal("662.82"))
+
+        nanjing = {
+            "city_id": "CN-320100",
+            "admin_code_6": "320100",
+            "city_name_cn": "南京市",
+            "province_code": "32",
+            "province_name": "江苏省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2024",
+        }
+        rows, lineage = build_macro_rows(
+            [nanjing], [], {}, {}, jiangsu_city_fiscal=values,
+        )
+        self.assertEqual(rows[0]["general_public_revenue_100m"], Decimal("1596.02"))
+        self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("1705.26"))
+        self.assertEqual(rows[0]["source_grade"], "A1")
+        self.assertEqual(rows[0]["collection_status"], "extracted")
+        self.assertEqual(
+            {item["target_field"] for item in lineage},
+            {"general_public_revenue_100m", "general_public_expenditure_100m"},
         )
 
     def test_city_year_fund_batch_extracts_hohhot_and_chifeng(self):
