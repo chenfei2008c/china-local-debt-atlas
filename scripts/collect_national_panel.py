@@ -2030,6 +2030,30 @@ CITY_YEAR_FISCAL_SOURCES = (
         },
         "note": "楚雄市人民政府门户公开的楚雄市财政局预算执行报告，明确披露全市口径三项财政字段；采用2025年执行数，原始单位万元并换算为亿元。",
     },
+    {
+        "year": 2025,
+        "city_name": "苏州市",
+        "city_id": "CN-320500",
+        "source_doc_id": "SRC-A2-SUZHOU-CITY-FUND-2025",
+        "url": "https://www.suzhou.gov.cn/szsrmzf/czyjsbg/202603/57f2227cdfff4bef8a8c37ee8580add5.shtml",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "suzhou_2025_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "suzhou_2025_budget_report_excerpt.txt",
+        "document_title": "关于苏州市2025年预算执行情况和2026年预算草案的报告",
+        "publisher": "苏州市人民政府",
+        "publisher_level": "市级政府",
+        "publication_date": "2026-03-11",
+        "source_grade": "A2",
+        "source_format": "html",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数（市人大会议报告）",
+        "document_type": "城市财政预算执行报告（官方网页）",
+        "page_number": "正文第91—94行",
+        "patterns": {
+            "gov_fund_revenue_100m": r"2025年全市政府性基金收入\s*([0-9,.]+)\s*亿元",
+        },
+        "note": "苏州市人民政府公开的市人大会议财政报告明确披露2025年全市政府性基金收入788亿元；采用全市执行数，独立接入基金字段，不覆盖已有一般预算字段。",
+    },
 )
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 

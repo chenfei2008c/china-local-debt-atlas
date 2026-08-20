@@ -878,7 +878,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 5)
+        self.assertEqual(len(sources), 6)
         self.assertEqual({source["source_grade"] for source in sources}, {"A2"})
 
         chaoyang = {
@@ -1008,6 +1008,28 @@ class NationalPanelTests(unittest.TestCase):
                 "general_public_expenditure_100m",
                 "gov_fund_revenue_100m",
             },
+        )
+        suzhou = values[("CN-320500", "2025")]
+        self.assertEqual(suzhou["gov_fund_revenue_100m"], Decimal("788.00"))
+        suzhou_city = {
+            "city_id": "CN-320500",
+            "admin_code_6": "320500",
+            "city_name_cn": "苏州市",
+            "province_code": "32",
+            "province_name": "江苏省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        suzhou_rows, suzhou_lineage = build_macro_rows(
+            [suzhou_city], [], {}, {}, city_year_fiscal=values,
+        )
+        self.assertEqual(suzhou_rows[0]["gov_fund_revenue_100m"], Decimal("788.00"))
+        self.assertEqual(suzhou_rows[0]["source_grade"], "A2")
+        self.assertEqual(suzhou_rows[0]["data_status"], "execution")
+        self.assertEqual(
+            {item["target_field"] for item in suzhou_lineage},
+            {"gov_fund_revenue_100m"},
         )
         self.assertEqual(
             {item["target_field"] for item in pingliang_lineage},
