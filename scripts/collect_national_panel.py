@@ -3405,6 +3405,28 @@ CITY_YEAR_FUND_SOURCES = (
         "page_count": "1",
         "note": "六安市财政局官方预算执行分析，明确为全市口径；采用2025年全市政府性基金预算收入41亿元，不使用市本级数。",
     },
+    {
+        "year": 2025,
+        "city_name": "汕尾市",
+        "city_id": "CN-441500",
+        "source_doc_id": "SRC-A2-SHANWEI-CITY-FUND-2025",
+        "url": "https://www.shanwei.gov.cn/swczj/zhuanti/czyjshsgjf/czyjs/szfys/2026/content/post_1226558.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "shanwei_2025_budget_execution_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "shanwei_2025_budget_execution_report_excerpt.txt",
+        "document_title": "汕尾市2025年预算执行情况和2026年预算草案的报告",
+        "publisher": "汕尾市财政局",
+        "publisher_level": "市级财政机构官方网页",
+        "publication_date": "2026",
+        "source_grade": "A2",
+        "source_format": "html",
+        "pattern": r"原文摘录：.*?2025年全市政府性基金预算收入([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数",
+        "document_type": "城市财政预算执行报告（官方网页）",
+        "page_count": "1",
+        "note": "汕尾市财政局官方预算执行报告，明确区分全市与市级口径；采用2025年全市政府性基金预算收入31.4亿元，不使用市级18.5亿元。",
+    },
 )
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
