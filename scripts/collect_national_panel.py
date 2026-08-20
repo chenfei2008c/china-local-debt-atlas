@@ -2102,6 +2102,35 @@ CITY_YEAR_FISCAL_SOURCES = (
         },
         "note": "西安市财政局官网公开的2025年预算执行报告明确区分全市与市级政府性基金预算收入，采用全市口径681.83亿元，不使用市级604.26亿元。",
     },
+    {
+        "year": 2025,
+        "city_name": "南昌市",
+        "city_id": "CN-360100",
+        "source_doc_id": "SRC-A1-NANCHANG-CITY-FISCAL-2025",
+        "url": "https://czj.nc.gov.cn/ncczj/2026sjysgk/202602/0fa3b64fca014c0ca082cef616012ec9.shtml",
+        "landing_page_url": "https://czj.nc.gov.cn/ncczj/2026sjysgk/202602/0fa3b64fca014c0ca082cef616012ec9.shtml",
+        "attachment_url": "https://czj.nc.gov.cn/ncczj/2026sjysgk/202602/0fa3b64fca014c0ca082cef616012ec9/files/14.2025%E5%B9%B4%E5%85%A8%E5%B8%82%E6%94%BF%E5%BA%9C%E6%80%A7%E5%9F%BA%E9%87%91%E9%A2%84%E7%AE%97%E6%94%B6%E5%85%A5%E6%89%A7%E8%A1%8C%E6%83%85%E5%86%B5%E8%A1%A8.pdf",
+        "download_url": "https://czj.nc.gov.cn/ncczj/2026sjysgk/202602/0fa3b64fca014c0ca082cef616012ec9/files/14.2025%E5%B9%B4%E5%85%A8%E5%B8%82%E6%94%BF%E5%BA%9C%E6%80%A7%E5%9F%BA%E9%87%91%E9%A2%84%E7%AE%97%E6%94%B6%E5%85%A5%E6%89%A7%E8%A1%8C%E6%83%85%E5%86%B5%E8%A1%A8.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "nanchang_2025_fund_execution.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "nanchang_2025_budget_execution_excerpt.txt",
+        "document_title": "2025年南昌市全市预算执行表（政府性基金、一般公共预算）",
+        "publisher": "南昌市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2026-01-30",
+        "source_grade": "A1",
+        "source_format": "pdf",
+        "raw_unit": "万元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数（官方执行表）",
+        "document_type": "城市财政预算执行表（官方PDF）",
+        "page_number": "政府性基金表1页；一般公共预算收入表1—2页；一般公共预算支出表1—27页",
+        "patterns": {
+            "general_public_revenue_100m": r"一般公共预算收入合计，?2025年执行数(5377716)",
+            "general_public_expenditure_100m": r"一般公共预算支出合计，?2025年执行数(9144427)",
+            "gov_fund_revenue_100m": r"政府性基金预算收入合计，?2025年执行数(1601968)",
+        },
+        "note": "南昌市财政局2026年市级政府预算公开目录链接的2025年全市执行表，三项字段均为全市口径执行数；原始单位万元，按1万元=0.0001亿元换算并保留两位小数。入口页与附件分别记录，避免把市级表误作全市表。",
+    },
 )
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
@@ -2851,7 +2880,7 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
     for config in CITY_YEAR_FISCAL_SOURCES:
         source_path = Path(config["path"])
         text_path = Path(config["text_path"])
-        content_hash = ensure_download(str(config["url"]), source_path)
+        content_hash = ensure_download(str(config.get("download_url") or config["url"]), source_path)
         report_text = text_path.read_text(encoding="utf-8")
         compact_text = re.sub(r"\s+", "", report_text)
         year = str(config["year"])
@@ -2892,10 +2921,10 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
                 "attachment_title": source_path.name,
                 "document_type": config["document_type"],
                 "source_url": config["url"],
-                "landing_page_url": config["url"],
-                "attachment_url": config["url"],
-                "canonical_url": config["url"],
-                "final_resolved_url": config["url"],
+                "landing_page_url": config.get("landing_page_url") or config["url"],
+                "attachment_url": config.get("attachment_url") or config["url"],
+                "canonical_url": config.get("landing_page_url") or config["url"],
+                "final_resolved_url": config.get("attachment_url") or config["url"],
                 "file_name": source_path.name,
                 "mime_type": "text/html" if config.get("source_format") == "html" else "application/pdf",
                 "publication_date": config["publication_date"],
