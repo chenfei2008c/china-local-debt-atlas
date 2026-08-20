@@ -3361,6 +3361,28 @@ CITY_YEAR_FUND_SOURCES = (
         "page_count": "1",
         "note": "盘锦市人大信息网公开盘锦市财政局提交的人代会预算执行报告，明确全市口径；采用2025年全市政府性基金预算收入16.1亿元，不使用市本级2.7亿元。",
     },
+    {
+        "year": 2025,
+        "city_name": "泸州市",
+        "city_id": "CN-510500",
+        "source_doc_id": "SRC-B2-LUZHOU-CITY-FUND-2025",
+        "url": "https://static.sse.com.cn/disclosure/bond/announcement/company/c/new/2026-06-24/185565_20260624_YHTL.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "luzhou_2025_rating_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "luzhou_2025_rating_report_excerpt.txt",
+        "document_title": "泸州市兴泸投资集团有限公司2026年度跟踪评级报告",
+        "publisher": "上海证券交易所公开披露的联合资信评级报告",
+        "publisher_level": "交易所披露的B2精确表格来源",
+        "publication_date": "2026-06-24",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": r"原文摘录：.*?政府性基金收入（亿元）.*?2025年([0-9.]+)",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数（评级报告精确表格）",
+        "document_type": "评级报告财政指标表",
+        "page_count": "28",
+        "note": "上海证券交易所公开披露的联合资信跟踪评级报告，图表3列示泸州市主要财政指标；2025年政府性基金收入143.7亿元，表下注明根据《市本级决算和全市总决算情况的报告》和《2025年预算执行情况》整理，明确为泸州市全市口径。",
+    },
 )
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
