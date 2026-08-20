@@ -1353,6 +1353,87 @@ NEXT10_2025_ECONOMIC_SOURCES = (
     },
 )
 
+NEXT11_2025_ECONOMIC_SOURCES = (
+    {
+        "city_name": "商丘市",
+        "city_id": "CN-411400",
+        "source_doc_id": "SRC-B2-HENAN-CITY-STATISTICAL-SHANGQIU-2025",
+        "url": "https://tjgb.hongheiku.com/xjtjgb/xj2020/71808.html",
+        "attachment_url": "https://tjgb.hongheiku.com/xjtjgb/xj2020/71808.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "shangqiu_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "shangqiu_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2025年商丘市国民经济和社会发展统计公报",
+        "publisher": "商丘市统计局",
+        "publisher_level": "公开资料转载",
+        "publication_date": "2026-05-20",
+        "title_source": "html_statement_excerpt",
+        "document_type": "统计公报经济财政段落（精确转载）",
+        "mime_type": "text/html",
+        "source_grade": "B2",
+        "patterns": {
+            "gdp_current_100m": (r"全年全市生产总值([0-9.]+)亿元，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"全年全市生产总值[0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
+            "general_public_revenue_100m": (r"全年全市一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "B2精确转载，页面来源标注为商丘市统计局；采用2025年全市GDP、增速、年末常住人口和一般公共预算收支，政府性基金收入未在本来源中披露。",
+    },
+    {
+        "city_name": "信阳市",
+        "city_id": "CN-411500",
+        "source_doc_id": "SRC-A2-HENAN-CITY-STATISTICAL-XINYANG-2025",
+        "url": "https://tjj.xinyang.gov.cn/2026/05-21/786229.html",
+        "attachment_url": "https://tjj.xinyang.gov.cn/2026/05-21/786229.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "xinyang_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "xinyang_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2025年信阳市国民经济和社会发展统计公报",
+        "publisher": "信阳市统计局",
+        "publisher_level": "市级统计机构",
+        "publication_date": "2026-05-21",
+        "title_source": "official_page_excerpt",
+        "document_type": "官方统计公报（网页）",
+        "mime_type": "text/html",
+        "source_grade": "A2",
+        "patterns": {
+            "gdp_current_100m": (r"全年全市地区生产总值([0-9.]+)亿元，按可比价格计算，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"全年全市地区生产总值[0-9.]+亿元，按可比价格计算，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
+            "general_public_revenue_100m": (r"一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "A2信阳市统计局官方统计公报；采用2025年全市GDP、增速、年末常住人口和一般公共预算收支，政府性基金收入未在本来源中披露。",
+    },
+    {
+        "city_name": "周口市",
+        "city_id": "CN-411600",
+        "source_doc_id": "SRC-B2-HENAN-CITY-STATISTICAL-ZHOUKOU-2025",
+        "url": "https://tjgb.hongheiku.com/djs/70352.html",
+        "attachment_url": "https://tjgb.hongheiku.com/djs/70352.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "zhoukou_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "zhoukou_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2025年周口市国民经济和社会发展统计公报",
+        "publisher": "周口市统计局",
+        "publisher_level": "公开资料转载",
+        "publication_date": "2026-05-13",
+        "title_source": "html_statement_excerpt",
+        "document_type": "统计公报经济财政段落（精确转载）",
+        "mime_type": "text/html",
+        "source_grade": "B2",
+        "patterns": {
+            "gdp_current_100m": (r"全年全市地区生产总值([0-9.]+)亿元，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"全年全市地区生产总值[0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
+            "general_public_revenue_100m": (r"一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "B2精确转载，页面来源标注为周口市统计局；采用2025年全市GDP、增速、年末常住人口和一般公共预算收支，政府性基金收入未在本来源中披露。",
+    },
+)
+
 JIANGSU_CITY_FUND_SOURCES = (
     {
         "year": 2018,
@@ -3473,6 +3554,12 @@ def load_next10_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[di
     return load_city_2025_fiscal_sources(NEXT10_2025_ECONOMIC_SOURCES)
 
 
+def load_next11_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取商丘、信阳、周口 2025 年经济财政统计数据。"""
+
+    return load_city_2025_fiscal_sources(NEXT11_2025_ECONOMIC_SOURCES)
+
+
 def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
     general_limit = as_decimal(row.get("general_debt_limit_100m"))
     special_limit = as_decimal(row.get("special_debt_limit_100m"))
@@ -3579,6 +3666,7 @@ def build_macro_rows(
     next8_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next9_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next10_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
+    next11_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     jiangsu_city_fund: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     jiangsu_city_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     city_year_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
@@ -3605,6 +3693,7 @@ def build_macro_rows(
     next8_2025_economic = next8_2025_economic or {}
     next9_2025_economic = next9_2025_economic or {}
     next10_2025_economic = next10_2025_economic or {}
+    next11_2025_economic = next11_2025_economic or {}
     jiangsu_city_fund = jiangsu_city_fund or {}
     jiangsu_city_fiscal = jiangsu_city_fiscal or {}
     city_year_fiscal = city_year_fiscal or {}
@@ -3623,6 +3712,7 @@ def build_macro_rows(
         **next8_2025_economic,
         **next9_2025_economic,
         **next10_2025_economic,
+        **next11_2025_economic,
     }
     for city in city_master:
         year = int(city["metric_year"])
@@ -4863,6 +4953,7 @@ def main() -> None:
     next8_2025_economic, next8_2025_economic_sources = load_next8_2025_city_economic()
     next9_2025_economic, next9_2025_economic_sources = load_next9_2025_city_economic()
     next10_2025_economic, next10_2025_economic_sources = load_next10_2025_city_economic()
+    next11_2025_economic, next11_2025_economic_sources = load_next11_2025_city_economic()
     jiangsu_city_fund, jiangsu_city_fund_sources = load_jiangsu_city_fund_sources()
     jiangsu_city_fiscal, jiangsu_city_fiscal_sources = load_jiangsu_city_fiscal_sources()
     city_year_fiscal, city_year_fiscal_sources = load_city_year_fiscal_sources()
@@ -4904,6 +4995,7 @@ def main() -> None:
         next8_2025_economic,
         next9_2025_economic,
         next10_2025_economic,
+        next11_2025_economic,
         jiangsu_city_fund,
         jiangsu_city_fiscal,
         city_year_fiscal,
@@ -5052,6 +5144,7 @@ def main() -> None:
             *next8_2025_economic_sources,
             *next9_2025_economic_sources,
             *next10_2025_economic_sources,
+            *next11_2025_economic_sources,
             *jiangsu_city_fund_sources,
             *jiangsu_city_fiscal_sources,
             *city_year_fiscal_sources,

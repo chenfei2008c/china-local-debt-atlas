@@ -26,6 +26,7 @@ from scripts.collect_national_panel import (
     load_next8_2025_city_economic,
     load_next9_2025_city_economic,
     load_next10_2025_city_economic,
+    load_next11_2025_city_economic,
     load_next_2025_city_fiscal,
     load_shandong_2025_city_fiscal,
     order_calculation_rows_for_lineage,
@@ -1507,6 +1508,24 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(values["CN-410600"]["gdp_current_100m"], Decimal("1144.12"))
         self.assertEqual(values["CN-410600"]["gdp_real_growth_pct"], Decimal("6.60"))
         self.assertEqual(values["CN-410600"]["general_public_expenditure_100m"], Decimal("180.46"))
+        self.assertEqual({source["source_grade"] for source in sources}, {"A2", "B2"})
+
+    def test_next11_2025_henan_economic_batch_extracts_three_cities(self):
+        values, sources = load_next11_2025_city_economic()
+
+        self.assertEqual(len(values), 3)
+        self.assertEqual(len(sources), 3)
+        self.assertEqual(values["CN-411400"]["gdp_current_100m"], Decimal("3475.38"))
+        self.assertEqual(values["CN-411400"]["gdp_real_growth_pct"], Decimal("6.20"))
+        self.assertEqual(values["CN-411400"]["resident_population_10k"], Decimal("756.40"))
+        self.assertEqual(values["CN-411400"]["general_public_revenue_100m"], Decimal("193.35"))
+        self.assertEqual(values["CN-411400"]["general_public_expenditure_100m"], Decimal("575.56"))
+        self.assertEqual(values["CN-411500"]["gdp_current_100m"], Decimal("3196.70"))
+        self.assertEqual(values["CN-411500"]["resident_population_10k"], Decimal("595.70"))
+        self.assertEqual(values["CN-411500"]["general_public_revenue_100m"], Decimal("137.16"))
+        self.assertEqual(values["CN-411600"]["gdp_current_100m"], Decimal("3810.83"))
+        self.assertEqual(values["CN-411600"]["gdp_real_growth_pct"], Decimal("6.10"))
+        self.assertEqual(values["CN-411600"]["general_public_expenditure_100m"], Decimal("686.48"))
         self.assertEqual({source["source_grade"] for source in sources}, {"A2", "B2"})
 
     def test_city_year_fund_batch_extracts_hohhot_and_chifeng(self):
