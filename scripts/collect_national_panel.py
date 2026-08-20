@@ -2004,6 +2004,32 @@ CITY_YEAR_FISCAL_SOURCES = (
         },
         "note": "长沙市人民政府门户公开的长沙市财政局预算执行报告，明确披露全市政府性基金预算收入528.7亿元；独立接入基金字段，不覆盖已有统计公报中的GDP和一般预算字段。",
     },
+    {
+        "year": 2025,
+        "city_name": "楚雄州",
+        "city_id": "CN-532300",
+        "source_doc_id": "SRC-A2-CHUXIONG-CITY-FISCAL-2025",
+        "url": "https://www.cxs.gov.cn/info/5905/874929.htm",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "chuxiong_2025_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "chuxiong_2025_budget_report_excerpt.txt",
+        "document_title": "关于楚雄市2025年地方财政预算执行情况和2026年地方财政预算草案的报告（书面）",
+        "publisher": "楚雄市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2026-03-02",
+        "source_grade": "A2",
+        "source_format": "html",
+        "raw_unit": "万元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数（预算执行报告）",
+        "document_type": "城市财政预算执行报告（官方网页）",
+        "page_number": "正文",
+        "patterns": {
+            "general_public_revenue_100m": r"地方一般公共预算收入\s*([0-9,]+)\s*万元",
+            "general_public_expenditure_100m": r"完成地方一般公共预算支出\s*([0-9,]+)\s*万元",
+            "gov_fund_revenue_100m": r"政府性基金预算收入\s*([0-9,]+)\s*万元",
+        },
+        "note": "楚雄市人民政府门户公开的楚雄市财政局预算执行报告，明确披露全市口径三项财政字段；采用2025年执行数，原始单位万元并换算为亿元。",
+    },
 )
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 

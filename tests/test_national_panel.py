@@ -878,7 +878,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 4)
+        self.assertEqual(len(sources), 5)
         self.assertEqual({source["source_grade"] for source in sources}, {"A2"})
 
         chaoyang = {
@@ -978,6 +978,36 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(
             {item["target_field"] for item in changsha_lineage},
             {"gov_fund_revenue_100m"},
+        )
+        chuxiong = values[("CN-532300", "2025")]
+        self.assertEqual(chuxiong["general_public_revenue_100m"], Decimal("35.17"))
+        self.assertEqual(chuxiong["general_public_expenditure_100m"], Decimal("55.57"))
+        self.assertEqual(chuxiong["gov_fund_revenue_100m"], Decimal("27.24"))
+        chuxiong_city = {
+            "city_id": "CN-532300",
+            "admin_code_6": "532300",
+            "city_name_cn": "楚雄州",
+            "province_code": "53",
+            "province_name": "云南省",
+            "prefecture_type": "自治州",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        chuxiong_rows, chuxiong_lineage = build_macro_rows(
+            [chuxiong_city], [], {}, {}, city_year_fiscal=values,
+        )
+        self.assertEqual(chuxiong_rows[0]["general_public_revenue_100m"], Decimal("35.17"))
+        self.assertEqual(chuxiong_rows[0]["general_public_expenditure_100m"], Decimal("55.57"))
+        self.assertEqual(chuxiong_rows[0]["gov_fund_revenue_100m"], Decimal("27.24"))
+        self.assertEqual(chuxiong_rows[0]["source_grade"], "A2")
+        self.assertEqual(chuxiong_rows[0]["data_status"], "execution")
+        self.assertEqual(
+            {item["target_field"] for item in chuxiong_lineage},
+            {
+                "general_public_revenue_100m",
+                "general_public_expenditure_100m",
+                "gov_fund_revenue_100m",
+            },
         )
         self.assertEqual(
             {item["target_field"] for item in pingliang_lineage},
