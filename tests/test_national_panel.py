@@ -341,7 +341,6 @@ class NationalPanelTests(unittest.TestCase):
             {item["target_field"] for item in lineage},
             {"general_public_revenue_100m", "general_public_expenditure_100m", "gov_fund_revenue_100m"},
         )
-
     def test_shandong_2025_city_fiscal_batch_uses_official_whole_city_values(self):
         values, sources = load_shandong_2025_city_fiscal()
 
@@ -878,7 +877,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 10)
+        self.assertEqual(len(sources), 11)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2"})
         nanchang = values[("CN-360100", "2025")]
         self.assertEqual(nanchang["general_public_revenue_100m"], Decimal("537.77"))
@@ -893,6 +892,11 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(haikou["general_public_expenditure_100m"], Decimal("336.70"))
         self.assertEqual(haikou["gov_fund_revenue_100m"], Decimal("68.40"))
         self.assertEqual(haikou["data_status"], "execution")
+        yinchuan = values[("CN-640100", "2025")]
+        self.assertEqual(yinchuan["general_public_revenue_100m"], Decimal("171.59"))
+        self.assertEqual(yinchuan["general_public_expenditure_100m"], Decimal("406.04"))
+        self.assertEqual(yinchuan["gov_fund_revenue_100m"], Decimal("45.26"))
+        self.assertEqual(yinchuan["data_status"], "execution")
 
         chaoyang = {
             "city_id": "CN-211300",
@@ -1136,6 +1140,33 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(haikou_rows[0]["data_status"], "execution")
         self.assertEqual(
             {item["target_field"] for item in haikou_lineage},
+            {
+                "general_public_revenue_100m",
+                "general_public_expenditure_100m",
+                "gov_fund_revenue_100m",
+            },
+        )
+        yinchuan_city = {
+            "city_id": "CN-640100",
+            "admin_code_6": "640100",
+            "city_name_cn": "银川市",
+            "province_code": "64",
+            "province_name": "宁夏回族自治区",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        yinchuan_rows, yinchuan_lineage = build_macro_rows(
+            [yinchuan_city], [], {}, {}, city_year_fiscal=values,
+        )
+        self.assertEqual(yinchuan_rows[0]["general_public_revenue_100m"], Decimal("171.59"))
+        self.assertEqual(yinchuan_rows[0]["general_public_expenditure_100m"], Decimal("406.04"))
+        self.assertEqual(yinchuan_rows[0]["gov_fund_revenue_100m"], Decimal("45.26"))
+        self.assertEqual(yinchuan_rows[0]["fund_revenue_dependence_pct"], Decimal("20.87"))
+        self.assertEqual(yinchuan_rows[0]["source_grade"], "A2")
+        self.assertEqual(yinchuan_rows[0]["data_status"], "execution")
+        self.assertEqual(
+            {item["target_field"] for item in yinchuan_lineage},
             {
                 "general_public_revenue_100m",
                 "general_public_expenditure_100m",

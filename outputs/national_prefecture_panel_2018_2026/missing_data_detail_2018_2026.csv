@@ -18182,8 +18182,6 @@ CN-120000,天津市,天津市,2025,special_debt_limit_100m,专项债务限额（
 CN-120000,天津市,天津市,2025,statutory_debt_limit_100m,法定债务限额（亿元）,separate,official_debt,SRC-CITY-DEBT-TIANJIN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-120000,天津市,天津市,2025,statutory_debt_to_gdp_pct,法定债务/GDP（%）,separate,official_debt,SRC-CITY-DEBT-TIANJIN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-120000,天津市,天津市,2025,statutory_debt_to_revenue_pct,法定债务/一般预算收入（%）,separate,official_debt,SRC-CITY-DEBT-TIANJIN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-640100,银川市,宁夏回族自治区,2025,fund_revenue_dependence_pct,政府性基金收入依赖度（%）,core,official_debt,SRC-NINGXIA-CITY-STATISTICAL-YINCHUAN-2025;SRC-CITY-DEBT-NINGXIA-YINCHUAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-640100,银川市,宁夏回族自治区,2025,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-NINGXIA-CITY-STATISTICAL-YINCHUAN-2025;SRC-CITY-DEBT-NINGXIA-YINCHUAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-640200,石嘴山市,宁夏回族自治区,2025,gdp_current_100m,地区生产总值（现价，亿元）,core,official_debt,SRC-NINGXIA-CITY-FISCAL-SHIZUISHAN-2025;SRC-CITY-DEBT-NINGXIA-SHIZUISHAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-640200,石嘴山市,宁夏回族自治区,2025,gdp_real_growth_pct,地区生产总值实际增速（%）,core,official_debt,SRC-NINGXIA-CITY-FISCAL-SHIZUISHAN-2025;SRC-CITY-DEBT-NINGXIA-SHIZUISHAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-640200,石嘴山市,宁夏回族自治区,2025,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-NINGXIA-CITY-FISCAL-SHIZUISHAN-2025;SRC-CITY-DEBT-NINGXIA-SHIZUISHAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
