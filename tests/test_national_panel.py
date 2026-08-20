@@ -27,6 +27,7 @@ from scripts.collect_national_panel import (
     load_next9_2025_city_economic,
     load_next10_2025_city_economic,
     load_next11_2025_city_economic,
+    load_next12_2025_city_economic,
     load_next_2025_city_fiscal,
     load_shandong_2025_city_fiscal,
     order_calculation_rows_for_lineage,
@@ -1527,6 +1528,24 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(values["CN-411600"]["gdp_real_growth_pct"], Decimal("6.10"))
         self.assertEqual(values["CN-411600"]["general_public_expenditure_100m"], Decimal("686.48"))
         self.assertEqual({source["source_grade"] for source in sources}, {"A2", "B2"})
+
+    def test_next12_2025_henan_economic_batch_extracts_three_cities(self):
+        values, sources = load_next12_2025_city_economic()
+
+        self.assertEqual(len(values), 3)
+        self.assertEqual(len(sources), 3)
+        self.assertEqual(values["CN-410900"]["gdp_current_100m"], Decimal("2106.17"))
+        self.assertEqual(values["CN-410900"]["gdp_real_growth_pct"], Decimal("5.60"))
+        self.assertEqual(values["CN-410900"]["resident_population_10k"], Decimal("366.10"))
+        self.assertEqual(values["CN-410900"]["general_public_revenue_100m"], Decimal("123.50"))
+        self.assertEqual(values["CN-410900"]["general_public_expenditure_100m"], Decimal("346.18"))
+        self.assertEqual(values["CN-411700"]["gdp_current_100m"], Decimal("3501.64"))
+        self.assertEqual(values["CN-411700"]["resident_population_10k"], Decimal("665.90"))
+        self.assertEqual(values["CN-411700"]["general_public_revenue_100m"], Decimal("214.04"))
+        self.assertEqual(values["CN-411100"]["gdp_current_100m"], Decimal("1954.00"))
+        self.assertEqual(values["CN-411100"]["gdp_real_growth_pct"], Decimal("6.10"))
+        self.assertEqual(values["CN-411100"]["general_public_expenditure_100m"], Decimal("281.20"))
+        self.assertEqual({source["source_grade"] for source in sources}, {"B2"})
 
     def test_city_year_fund_batch_extracts_hohhot_and_chifeng(self):
         values, sources = load_city_year_fund_sources()
