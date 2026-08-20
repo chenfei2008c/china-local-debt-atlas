@@ -878,7 +878,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 7)
+        self.assertEqual(len(sources), 8)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2"})
 
         chaoyang = {
@@ -1051,6 +1051,28 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(shijiazhuang_rows[0]["data_status"], "execution")
         self.assertEqual(
             {item["target_field"] for item in shijiazhuang_lineage},
+            {"gov_fund_revenue_100m"},
+        )
+        xian = values[("CN-610100", "2025")]
+        self.assertEqual(xian["gov_fund_revenue_100m"], Decimal("681.83"))
+        xian_city = {
+            "city_id": "CN-610100",
+            "admin_code_6": "610100",
+            "city_name_cn": "西安市",
+            "province_code": "61",
+            "province_name": "陕西省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        xian_rows, xian_lineage = build_macro_rows(
+            [xian_city], [], {}, {}, city_year_fiscal=values,
+        )
+        self.assertEqual(xian_rows[0]["gov_fund_revenue_100m"], Decimal("681.83"))
+        self.assertEqual(xian_rows[0]["source_grade"], "A2")
+        self.assertEqual(xian_rows[0]["data_status"], "execution")
+        self.assertEqual(
+            {item["target_field"] for item in xian_lineage},
             {"gov_fund_revenue_100m"},
         )
         self.assertEqual(

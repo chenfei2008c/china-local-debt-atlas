@@ -2078,6 +2078,30 @@ CITY_YEAR_FISCAL_SOURCES = (
         },
         "note": "石家庄市人民政府公开的2025年全市政府性基金收入预算完成情况表（表3）明确列示合计实际完成3726518万元；采用全市口径并按万元换算为亿元。",
     },
+    {
+        "year": 2025,
+        "city_name": "西安市",
+        "city_id": "CN-610100",
+        "source_doc_id": "SRC-A2-XIAN-CITY-FUND-2025",
+        "url": "https://xaczj.xa.gov.cn/zwgk/czyjs/2030898768368398337.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "xian_2025_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "xian_2025_budget_report_excerpt.txt",
+        "document_title": "西安市2025年预算执行情况和2026年预算草案的报告",
+        "publisher": "西安市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2026-03-09",
+        "source_grade": "A2",
+        "source_format": "html",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数（预算执行报告）",
+        "document_type": "城市财政预算执行报告（官方网页）",
+        "page_number": "正文",
+        "patterns": {
+            "gov_fund_revenue_100m": r"2025年，全市政府性基金预算收入\s*([0-9,.]+)\s*亿元",
+        },
+        "note": "西安市财政局官网公开的2025年预算执行报告明确区分全市与市级政府性基金预算收入，采用全市口径681.83亿元，不使用市级604.26亿元。",
+    },
 )
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
