@@ -2449,6 +2449,34 @@ NEXT28_2025_ECONOMIC_SOURCES = (
     },
 )
 
+NEXT29_2025_ECONOMIC_SOURCES = (
+    {
+        "city_name": "合肥市",
+        "city_id": "CN-340100",
+        "source_doc_id": "SRC-B2-ANHUI-CITY-STATISTICAL-HEFEI-2025-POPULATION",
+        "url": "https://tjgb.hongheiku.com/djs/68352.html",
+        "attachment_url": "https://tjgb.hongheiku.com/wp-content/uploads/2026/04/1775052106-wKgEIWnLK5OAEX2EAApVrfAOX4M661.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "hefei_2025_statistical_bulletin.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "hefei_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "source_format": "pdf",
+        "document_title": "合肥市2025年国民经济和社会发展统计公报",
+        "publisher": "合肥市统计局、国家统计局合肥调查队（精确公报转载）",
+        "publisher_level": "市级统计机构公报转载",
+        "publication_date": "2026-04-01",
+        "title_source": "official_reprint_pdf",
+        "document_type": "统计公报人口指标（精确PDF转载）",
+        "mime_type": "application/pdf",
+        "source_grade": "B2",
+        "data_status": "preliminary",
+        "source_locator": "hefei_2025_statistical_bulletin_excerpt.txt；年末常住人口=统计公报人口段；原始PDF已归档",
+        "patterns": {
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
+        },
+        "note": "B2合肥市统计公报精确PDF转载；补录2025年年末常住人口1000.5万人，财政和GDP字段由既有批次记录。",
+    },
+)
+
 JIANGSU_CITY_FUND_SOURCES = (
     {
         "year": 2018,
@@ -4708,6 +4736,12 @@ def load_next28_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[di
     return load_city_2025_fiscal_sources(NEXT28_2025_ECONOMIC_SOURCES)
 
 
+def load_next29_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取合肥市 2025 年统计公报年末常住人口。"""
+
+    return load_city_2025_fiscal_sources(NEXT29_2025_ECONOMIC_SOURCES)
+
+
 def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
     general_limit = as_decimal(row.get("general_debt_limit_100m"))
     special_limit = as_decimal(row.get("special_debt_limit_100m"))
@@ -4832,6 +4866,7 @@ def build_macro_rows(
     next26_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next27_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next28_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
+    next29_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     jiangsu_city_fund: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     jiangsu_city_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     city_year_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
@@ -4876,6 +4911,7 @@ def build_macro_rows(
     next26_2025_economic = next26_2025_economic or {}
     next27_2025_economic = next27_2025_economic or {}
     next28_2025_economic = next28_2025_economic or {}
+    next29_2025_economic = next29_2025_economic or {}
     jiangsu_city_fund = jiangsu_city_fund or {}
     jiangsu_city_fiscal = jiangsu_city_fiscal or {}
     city_year_fiscal = city_year_fiscal or {}
@@ -4916,6 +4952,7 @@ def build_macro_rows(
         **next26_2025_economic,
         **next27_2025_economic,
         **next28_2025_economic,
+        **next29_2025_economic,
     }
     for city in city_master:
         year = int(city["metric_year"])
@@ -6220,6 +6257,7 @@ def main() -> None:
     next26_2025_economic, next26_2025_economic_sources = load_next26_2025_city_economic()
     next27_2025_economic, next27_2025_economic_sources = load_next27_2025_city_economic()
     next28_2025_economic, next28_2025_economic_sources = load_next28_2025_city_economic()
+    next29_2025_economic, next29_2025_economic_sources = load_next29_2025_city_economic()
     jiangsu_city_fund, jiangsu_city_fund_sources = load_jiangsu_city_fund_sources()
     jiangsu_city_fiscal, jiangsu_city_fiscal_sources = load_jiangsu_city_fiscal_sources()
     city_year_fiscal, city_year_fiscal_sources = load_city_year_fiscal_sources()
@@ -6279,6 +6317,7 @@ def main() -> None:
         next26_2025_economic,
         next27_2025_economic,
         next28_2025_economic,
+        next29_2025_economic,
         jiangsu_city_fund,
         jiangsu_city_fiscal,
         city_year_fiscal,
@@ -6445,6 +6484,7 @@ def main() -> None:
             *next26_2025_economic_sources,
             *next27_2025_economic_sources,
             *next28_2025_economic_sources,
+            *next29_2025_economic_sources,
             *jiangsu_city_fund_sources,
             *jiangsu_city_fiscal_sources,
             *city_year_fiscal_sources,
