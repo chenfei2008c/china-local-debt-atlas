@@ -28,6 +28,7 @@ from scripts.collect_national_panel import (
     load_next10_2025_city_economic,
     load_next11_2025_city_economic,
     load_next12_2025_city_economic,
+    load_next13_2025_city_economic,
     load_next_2025_city_fiscal,
     load_shandong_2025_city_fiscal,
     order_calculation_rows_for_lineage,
@@ -881,7 +882,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 19)
+        self.assertEqual(len(sources), 20)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2"})
         nanchang = values[("CN-360100", "2025")]
         self.assertEqual(nanchang["general_public_revenue_100m"], Decimal("537.77"))
@@ -941,6 +942,10 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(jincheng["general_public_expenditure_100m"], Decimal("392.05"))
         self.assertEqual(jincheng["gov_fund_revenue_100m"], Decimal("40.64"))
         self.assertEqual(jincheng["data_status"], "execution")
+        pingdingshan = values[("CN-410400", "2025")]
+        self.assertEqual(pingdingshan["general_public_revenue_100m"], Decimal("226.62"))
+        self.assertEqual(pingdingshan["general_public_expenditure_100m"], Decimal("451.26"))
+        self.assertEqual(pingdingshan["data_status"], "execution")
 
         chaoyang = {
             "city_id": "CN-211300",
@@ -1546,6 +1551,16 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(values["CN-411100"]["gdp_real_growth_pct"], Decimal("6.10"))
         self.assertEqual(values["CN-411100"]["general_public_expenditure_100m"], Decimal("281.20"))
         self.assertEqual({source["source_grade"] for source in sources}, {"B2"})
+
+    def test_next13_2025_pingdingshan_economic_batch_extracts_official_bulletin(self):
+        values, sources = load_next13_2025_city_economic()
+
+        self.assertEqual(len(values), 1)
+        self.assertEqual(len(sources), 1)
+        self.assertEqual(values["CN-410400"]["gdp_current_100m"], Decimal("2929.40"))
+        self.assertEqual(values["CN-410400"]["gdp_real_growth_pct"], Decimal("5.40"))
+        self.assertEqual(values["CN-410400"]["resident_population_10k"], Decimal("484.40"))
+        self.assertEqual({source["source_grade"] for source in sources}, {"A2"})
 
     def test_city_year_fund_batch_extracts_hohhot_and_chifeng(self):
         values, sources = load_city_year_fund_sources()

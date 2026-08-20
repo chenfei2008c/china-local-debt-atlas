@@ -1515,6 +1515,34 @@ NEXT12_2025_ECONOMIC_SOURCES = (
     },
 )
 
+NEXT13_2025_ECONOMIC_SOURCES = (
+    {
+        "city_name": "平顶山市",
+        "city_id": "CN-410400",
+        "source_doc_id": "SRC-A2-HENAN-CITY-STATISTICAL-PINGDINGSHAN-2025",
+        "url": "https://pds.gov.cn/contents/22179/468637.html",
+        "attachment_url": "https://pds.gov.cn/contents/22179/468637.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "pingdingshan_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "pingdingshan_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2025年平顶山市国民经济和社会发展统计公报",
+        "publisher": "平顶山市统计局",
+        "publisher_level": "市级统计机构",
+        "publication_date": "2026-06-30",
+        "title_source": "official_page_excerpt",
+        "document_type": "官方统计公报经济指标（网页）",
+        "mime_type": "text/html",
+        "source_grade": "A2",
+        "data_status": "preliminary",
+        "patterns": {
+            "gdp_current_100m": (r"全年全市地区生产总值([0-9.]+)亿元，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"全年全市地区生产总值[0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
+        },
+        "note": "A2平顶山市统计局官方统计公报；采用2025年全市GDP、增速和年末常住人口，经济数据为公报初步统计结果；一般预算收支和政府性基金收入分别按财政执行报告来源入表。",
+    },
+)
+
 JIANGSU_CITY_FUND_SOURCES = (
     {
         "year": 2018,
@@ -2742,6 +2770,34 @@ CITY_YEAR_FISCAL_SOURCES = (
         },
         "note": "晋城市财政局官方预算执行报告明确区分全市与市本级口径；本批采用全市一般公共预算收入230.58亿元、支出392.05亿元及政府性基金预算收入40.64亿元，不使用市本级收入48.86亿元、支出87.9亿元和基金收入16.37亿元。",
     },
+    {
+        "year": 2025,
+        "city_name": "平顶山市",
+        "city_id": "CN-410400",
+        "source_doc_id": "SRC-A2-PINGDINGSHAN-CITY-FISCAL-2025",
+        "url": "https://www.pds.gov.cn/contents/1378/463143.html",
+        "landing_page_url": "https://www.pds.gov.cn/contents/1378/463143.html",
+        "attachment_url": "https://www.pds.gov.cn/contents/1378/463143.html",
+        "download_url": "https://www.pds.gov.cn/contents/1378/463143.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "pingdingshan_2025_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "pingdingshan_2025_budget_execution_excerpt.txt",
+        "document_title": "关于平顶山市2025年预算执行情况和2026年预算草案的报告",
+        "publisher": "平顶山市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2026-02-05",
+        "source_grade": "A2",
+        "source_format": "html",
+        "raw_unit": "万元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数（官方预算执行报告）",
+        "document_type": "城市财政预算执行报告（官方网页）",
+        "page_number": "正文",
+        "patterns": {
+            "general_public_revenue_100m": r"全市一般公共预算收入实际完成(2266166)万元",
+            "general_public_expenditure_100m": r"全市一般公共预算支出实际完成(4512625)万元",
+        },
+        "note": "平顶山市财政局官方预算执行报告明确披露全市口径；采用2025年全市一般公共预算收入2266166万元、支出4512625万元，均为执行数，统一换算为亿元；政府性基金收入沿用同一报告的独立基金来源记录。",
+    },
 )
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
@@ -3647,6 +3703,12 @@ def load_next12_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[di
     return load_city_2025_fiscal_sources(NEXT12_2025_ECONOMIC_SOURCES)
 
 
+def load_next13_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取平顶山市 2025 年官方统计公报经济数据。"""
+
+    return load_city_2025_fiscal_sources(NEXT13_2025_ECONOMIC_SOURCES)
+
+
 def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
     general_limit = as_decimal(row.get("general_debt_limit_100m"))
     special_limit = as_decimal(row.get("special_debt_limit_100m"))
@@ -3755,6 +3817,7 @@ def build_macro_rows(
     next10_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next11_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next12_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
+    next13_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     jiangsu_city_fund: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     jiangsu_city_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     city_year_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
@@ -3783,6 +3846,7 @@ def build_macro_rows(
     next10_2025_economic = next10_2025_economic or {}
     next11_2025_economic = next11_2025_economic or {}
     next12_2025_economic = next12_2025_economic or {}
+    next13_2025_economic = next13_2025_economic or {}
     jiangsu_city_fund = jiangsu_city_fund or {}
     jiangsu_city_fiscal = jiangsu_city_fiscal or {}
     city_year_fiscal = city_year_fiscal or {}
@@ -3803,6 +3867,7 @@ def build_macro_rows(
         **next10_2025_economic,
         **next11_2025_economic,
         **next12_2025_economic,
+        **next13_2025_economic,
     }
     for city in city_master:
         year = int(city["metric_year"])
@@ -5045,6 +5110,7 @@ def main() -> None:
     next10_2025_economic, next10_2025_economic_sources = load_next10_2025_city_economic()
     next11_2025_economic, next11_2025_economic_sources = load_next11_2025_city_economic()
     next12_2025_economic, next12_2025_economic_sources = load_next12_2025_city_economic()
+    next13_2025_economic, next13_2025_economic_sources = load_next13_2025_city_economic()
     jiangsu_city_fund, jiangsu_city_fund_sources = load_jiangsu_city_fund_sources()
     jiangsu_city_fiscal, jiangsu_city_fiscal_sources = load_jiangsu_city_fiscal_sources()
     city_year_fiscal, city_year_fiscal_sources = load_city_year_fiscal_sources()
@@ -5088,6 +5154,7 @@ def main() -> None:
         next10_2025_economic,
         next11_2025_economic,
         next12_2025_economic,
+        next13_2025_economic,
         jiangsu_city_fund,
         jiangsu_city_fiscal,
         city_year_fiscal,
@@ -5238,6 +5305,7 @@ def main() -> None:
             *next10_2025_economic_sources,
             *next11_2025_economic_sources,
             *next12_2025_economic_sources,
+            *next13_2025_economic_sources,
             *jiangsu_city_fund_sources,
             *jiangsu_city_fiscal_sources,
             *city_year_fiscal_sources,
