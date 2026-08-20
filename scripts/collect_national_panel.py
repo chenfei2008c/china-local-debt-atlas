@@ -2131,6 +2131,65 @@ NEXT22_2025_ECONOMIC_SOURCES = (
     },
 )
 
+NEXT23_2025_ECONOMIC_SOURCES = (
+    {
+        "city_name": "博尔塔拉蒙古自治州",
+        "city_id": "CN-652700",
+        "source_doc_id": "SRC-A2-XINJIANG-PREFECTURE-STATISTICAL-BOZHOU-2025",
+        "url": "https://www.xjboz.gov.cn/xjboz/c125800/202604/119d224f1920458fb81d8de4ae48fb54.shtml",
+        "attachment_url": "https://www.xjboz.gov.cn/xjboz/c125800/202604/119d224f1920458fb81d8de4ae48fb54.shtml",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "bozhou_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "bozhou_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "source_format": "html",
+        "document_title": "博尔塔拉蒙古自治州2025年国民经济和社会发展统计公报",
+        "publisher": "博尔塔拉蒙古自治州统计局",
+        "publisher_level": "州级统计机构",
+        "publication_date": "2026-04-20",
+        "title_source": "official_html",
+        "document_type": "官方统计公报经济财政指标（网页）",
+        "mime_type": "text/html",
+        "source_grade": "A2",
+        "data_status": "preliminary",
+        "patterns": {
+            "gdp_current_100m": (r"自治州地区生产总值([0-9.]+)亿元，按不变价格计算，同比增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"自治州地区生产总值[0-9.]+亿元，按不变价格计算，同比增长([0-9.]+)%", "%"),
+            "general_public_revenue_100m": (r"自治州一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"自治州一般公共预算支出([0-9.]+)亿元", "亿元"),
+            "gov_fund_revenue_100m": (r"政府性基金预算收入([0-9.]+)亿元", "亿元"),
+        },
+        "note": "A2博尔塔拉蒙古自治州统计局官方统计公报；补录2025年GDP、增速、一般公共预算收支和政府性基金收入，公报未明确披露全州年末常住人口。公报注明GDP、金融、保险、邮电、交通、外贸包含五师，财政字段采用自治州财政口径。",
+    },
+    {
+        "city_name": "巴音郭楞蒙古自治州",
+        "city_id": "CN-652800",
+        "source_doc_id": "SRC-B2-XINJIANG-PREFECTURE-STATISTICAL-BAZHOU-2025",
+        "url": "https://www.crei.cn/file/br.aspx?id=20260528085331&op=sczz&x=0",
+        "attachment_url": "https://www.crei.cn/file/br.aspx?id=20260528085331&op=sczz&x=0",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "bazhou_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "bazhou_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "source_format": "html",
+        "document_title": "巴音郭楞蒙古自治州2025年国民经济和社会发展统计公报",
+        "publisher": "巴音郭楞蒙古自治州统计局、国家统计局巴音郭楞调查队",
+        "publisher_level": "州级统计机构官方公报转载",
+        "publication_date": "2026-05-28",
+        "title_source": "official_reprint_html",
+        "document_type": "官方统计公报经济财政指标（精确转载网页）",
+        "mime_type": "text/html",
+        "source_grade": "B2",
+        "data_status": "preliminary",
+        "patterns": {
+            "gdp_current_100m": (r"全年巴州地区实现生产总值（GDP）([0-9.]+)亿元，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"全年巴州地区实现生产总值（GDP）[0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全州常住人口（不含铁门关市）([0-9.]+)万人", "万人"),
+            "general_public_revenue_100m": (r"全年地方一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"地方一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "B2巴音郭楞蒙古自治州统计局官方公报精确转载；补录2025年GDP、增速、年末常住人口和一般公共预算收支。公报明确人口口径不含铁门关市，政府性基金收入未在本来源中披露。",
+    },
+)
+
 JIANGSU_CITY_FUND_SOURCES = (
     {
         "year": 2018,
@@ -4351,6 +4410,12 @@ def load_next22_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[di
     return load_city_2025_fiscal_sources(NEXT22_2025_ECONOMIC_SOURCES)
 
 
+def load_next23_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取博州、巴州 2025 年统计公报经济财政数据。"""
+
+    return load_city_2025_fiscal_sources(NEXT23_2025_ECONOMIC_SOURCES)
+
+
 def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
     general_limit = as_decimal(row.get("general_debt_limit_100m"))
     special_limit = as_decimal(row.get("special_debt_limit_100m"))
@@ -4469,6 +4534,7 @@ def build_macro_rows(
     next20_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next21_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next22_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
+    next23_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     jiangsu_city_fund: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     jiangsu_city_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     city_year_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
@@ -4507,6 +4573,7 @@ def build_macro_rows(
     next20_2025_economic = next20_2025_economic or {}
     next21_2025_economic = next21_2025_economic or {}
     next22_2025_economic = next22_2025_economic or {}
+    next23_2025_economic = next23_2025_economic or {}
     jiangsu_city_fund = jiangsu_city_fund or {}
     jiangsu_city_fiscal = jiangsu_city_fiscal or {}
     city_year_fiscal = city_year_fiscal or {}
@@ -4541,6 +4608,7 @@ def build_macro_rows(
         **next20_2025_economic,
         **next21_2025_economic,
         **next22_2025_economic,
+        **next23_2025_economic,
     }
     for city in city_master:
         year = int(city["metric_year"])
@@ -5839,6 +5907,7 @@ def main() -> None:
     next20_2025_economic, next20_2025_economic_sources = load_next20_2025_city_economic()
     next21_2025_economic, next21_2025_economic_sources = load_next21_2025_city_economic()
     next22_2025_economic, next22_2025_economic_sources = load_next22_2025_city_economic()
+    next23_2025_economic, next23_2025_economic_sources = load_next23_2025_city_economic()
     jiangsu_city_fund, jiangsu_city_fund_sources = load_jiangsu_city_fund_sources()
     jiangsu_city_fiscal, jiangsu_city_fiscal_sources = load_jiangsu_city_fiscal_sources()
     city_year_fiscal, city_year_fiscal_sources = load_city_year_fiscal_sources()
@@ -5892,6 +5961,7 @@ def main() -> None:
         next20_2025_economic,
         next21_2025_economic,
         next22_2025_economic,
+        next23_2025_economic,
         jiangsu_city_fund,
         jiangsu_city_fiscal,
         city_year_fiscal,
@@ -6052,6 +6122,7 @@ def main() -> None:
             *next20_2025_economic_sources,
             *next21_2025_economic_sources,
             *next22_2025_economic_sources,
+            *next23_2025_economic_sources,
             *jiangsu_city_fund_sources,
             *jiangsu_city_fiscal_sources,
             *city_year_fiscal_sources,
