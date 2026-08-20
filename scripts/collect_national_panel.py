@@ -1954,6 +1954,32 @@ CITY_YEAR_FISCAL_SOURCES = (
         },
         "note": "张掖市财政局官方预算执行报告，明确披露全市口径；采用正文按0.1亿元披露的2025年执行数，保留execution状态，不改写为最终决算。",
     },
+    {
+        "year": 2025,
+        "city_name": "平凉市",
+        "city_id": "CN-620800",
+        "source_doc_id": "SRC-A2-PINGLIANG-CITY-FISCAL-2025",
+        "url": "https://pingliang.gov.cn/api-gateway/jpaas-web-server/front/document/download?fileUrl=YW5UzzlvCwcM%2FNHHX%2FtT6DemntNJtRmQLusf6WNo%2BXommnhQmPHD3tcFx6EncOs3t%2F493OOsHCsTKbMqccfVgVbu77co7IDInTmE%2FMEq3PaMYWNkOSvNjAHvVmpG0bQMN96Rsi5LmFWOGBZ95ZegCJ4gtrd1hvk7%2B0w3sgnrFGA%3D&fileName=1.%E5%85%B3%E4%BA%8E%E5%85%A8%E5%B8%822025%E5%B9%B4%E8%B4%A2%E6%94%BF%E9%A2%84%E7%AE%97%E6%89%A7%E8%A1%8C%E6%83%85%E5%86%B5%E5%92%8C2026%E5%B9%B4%E5%85%A8%E5%B8%82%E5%8F%8A%E5%B8%82%E7%BA%A7%E8%B4%A2%E6%94%BF%E9%A2%84%E7%AE%97%E7%9A%84%E6%8A%A5%E5%91%8A.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "pingliang_2025_budget_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "pingliang_2025_budget_report_excerpt.txt",
+        "document_title": "关于平凉市2025年财政预算执行情况和2026年全市及市级财政预算（草案）的报告",
+        "publisher": "平凉市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2026-02-03",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数",
+        "document_type": "城市财政预算执行报告（官方PDF）",
+        "page_number": "2",
+        "patterns": {
+            "general_public_revenue_100m": r"一般公共预算[。．]\s*收入\s*([0-9,.]+)\s*亿元",
+            "general_public_expenditure_100m": r"一般公共预算[。．].*?支出完成\s*([0-9,.]+)\s*亿元",
+            "gov_fund_revenue_100m": r"政府性基金预算[。．]\s*收入\s*([0-9,.]+)\s*亿元",
+        },
+        "note": "平凉市财政局官方预算执行报告，明确披露全市口径；采用报告正文披露的2025年执行数，保留execution状态，不改写为最终决算。",
+    },
 )
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 

@@ -878,7 +878,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 2)
+        self.assertEqual(len(sources), 3)
         self.assertEqual({source["source_grade"] for source in sources}, {"A2"})
 
         chaoyang = {
@@ -933,6 +933,38 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(zhangye_rows[0]["fund_revenue_dependence_pct"], Decimal("18.28"))
         self.assertEqual(zhangye_rows[0]["source_grade"], "A2")
         self.assertEqual(zhangye_rows[0]["data_status"], "execution")
+
+        pingliang = values[("CN-620800", "2025")]
+        self.assertEqual(pingliang["general_public_revenue_100m"], Decimal("34.60"))
+        self.assertEqual(pingliang["general_public_expenditure_100m"], Decimal("260.70"))
+        self.assertEqual(pingliang["gov_fund_revenue_100m"], Decimal("13.70"))
+        pingliang_city = {
+            "city_id": "CN-620800",
+            "admin_code_6": "620800",
+            "city_name_cn": "平凉市",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "province_name": "甘肃省",
+            "province_code": "62",
+            "metric_year": "2025",
+        }
+        pingliang_rows, pingliang_lineage = build_macro_rows(
+            [pingliang_city], [], {}, {}, city_year_fiscal=values,
+        )
+        self.assertEqual(pingliang_rows[0]["general_public_revenue_100m"], Decimal("34.60"))
+        self.assertEqual(pingliang_rows[0]["general_public_expenditure_100m"], Decimal("260.70"))
+        self.assertEqual(pingliang_rows[0]["gov_fund_revenue_100m"], Decimal("13.70"))
+        self.assertEqual(pingliang_rows[0]["fund_revenue_dependence_pct"], Decimal("28.36"))
+        self.assertEqual(pingliang_rows[0]["source_grade"], "A2")
+        self.assertEqual(pingliang_rows[0]["data_status"], "execution")
+        self.assertEqual(
+            {item["target_field"] for item in pingliang_lineage},
+            {
+                "general_public_revenue_100m",
+                "general_public_expenditure_100m",
+                "gov_fund_revenue_100m",
+            },
+        )
         self.assertEqual(
             {item["target_field"] for item in zhangye_lineage},
             {
