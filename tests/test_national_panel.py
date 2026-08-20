@@ -877,7 +877,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 11)
+        self.assertEqual(len(sources), 12)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2"})
         nanchang = values[("CN-360100", "2025")]
         self.assertEqual(nanchang["general_public_revenue_100m"], Decimal("537.77"))
@@ -897,6 +897,11 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(yinchuan["general_public_expenditure_100m"], Decimal("406.04"))
         self.assertEqual(yinchuan["gov_fund_revenue_100m"], Decimal("45.26"))
         self.assertEqual(yinchuan["data_status"], "execution")
+        beijing = values[("CN-110000", "2025")]
+        self.assertEqual(beijing["general_public_revenue_100m"], Decimal("6680.60"))
+        self.assertEqual(beijing["general_public_expenditure_100m"], Decimal("8401.90"))
+        self.assertEqual(beijing["gov_fund_revenue_100m"], Decimal("2193.90"))
+        self.assertEqual(beijing["data_status"], "execution")
 
         chaoyang = {
             "city_id": "CN-211300",
@@ -1167,6 +1172,33 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(yinchuan_rows[0]["data_status"], "execution")
         self.assertEqual(
             {item["target_field"] for item in yinchuan_lineage},
+            {
+                "general_public_revenue_100m",
+                "general_public_expenditure_100m",
+                "gov_fund_revenue_100m",
+            },
+        )
+        beijing_city = {
+            "city_id": "CN-110000",
+            "admin_code_6": "110000",
+            "city_name_cn": "北京市",
+            "province_code": "11",
+            "province_name": "北京市",
+            "prefecture_type": "直辖市",
+            "sample_tier": "separate",
+            "metric_year": "2025",
+        }
+        beijing_rows, beijing_lineage = build_macro_rows(
+            [beijing_city], [], {}, {}, city_year_fiscal=values,
+        )
+        self.assertEqual(beijing_rows[0]["general_public_revenue_100m"], Decimal("6680.60"))
+        self.assertEqual(beijing_rows[0]["general_public_expenditure_100m"], Decimal("8401.90"))
+        self.assertEqual(beijing_rows[0]["gov_fund_revenue_100m"], Decimal("2193.90"))
+        self.assertEqual(beijing_rows[0]["fund_revenue_dependence_pct"], Decimal("24.72"))
+        self.assertEqual(beijing_rows[0]["source_grade"], "A2")
+        self.assertEqual(beijing_rows[0]["data_status"], "execution")
+        self.assertEqual(
+            {item["target_field"] for item in beijing_lineage},
             {
                 "general_public_revenue_100m",
                 "general_public_expenditure_100m",
