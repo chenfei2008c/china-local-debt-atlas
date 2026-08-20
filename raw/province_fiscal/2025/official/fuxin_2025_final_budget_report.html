@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <title>关于阜新市2025年财政决算的报告</title>
+                <meta http-equiv="x-ua-compatible" content="IE-edge;chorme=1">
+                <meta name="keyword" content="阜新市财政局">
+                <meta name="description" content="阜新市财政局">
+                <script src="https://czj.fuxin.gov.cn/czj/template//js/ie.js" type="javascript"></script>
+                <script src="https://czj.fuxin.gov.cn/czj/template//js/html5shiv.js?v=1.1" type="javascript"></script>
+                <script src="https://czj.fuxin.gov.cn/czj/template//js/respond.js?v=1.1" type="javascript"></script>
+                <link rel="stylesheet" href="https://czj.fuxin.gov.cn/czj/template//css/TmCity.css?v=1.2" type="text/css">
+                <script src="https://czj.fuxin.gov.cn/czj/template//js/jquery-1.8.3.min.js"></script>
+                <link rel="stylesheet" href="https://czj.fuxin.gov.cn/czj/template//css/bootstrap.min.css">
+              
+              <meta name="SiteName" content="阜新市财政局">
+              <meta name="SiteDomain" content="czj.fuxin.gov.cn">
+              <meta name="SiteIDCode" content="2109000041">
+              <meta name="ColumnName" content="财政决算">
+              <meta name="ColumnDescription" content="财政决算">
+              <meta name="ColumnKeywords" content="财政决算">
+              <meta name="ColumnType" content="财政决算">
+              <meta name="ArticleTitle" content="">
+              <meta name="PubDate" content="">
+              <meta name="ContentSource" content="">
+            </head>
+            <body>
+<div class="head_top">
+    <div class="cen">
+    <div class="head_left">
+        <a href="https://czj.fuxin.gov.cn/">
+<img  src="https://czj.fuxin.gov.cn/czj/template//img/LogoWord_27.png" alt="" style="margin:25px 0 0 40px;">
+            <img class="head_logo" src="https://czj.fuxin.gov.cn/czj/template//img/Logo.jpg" alt="" style="display:none" >
+            <span class="logo_word" style="display:none" ><span class="text-z">阜新市财政局</span><div class="text-es">czj.fuxin.gov.cn</div></span>
+        </a>
+    </div>
+<script type="text/javascript">
+    var siteid = 17;
+  var f = 2017;
+  var bf = 2019;
+</script>
+        <div class="head_right">
+            <div class="head_r_top">
+                    <a href="https://www.fuxin.gov.cn/channel/13739/index.html" class="emailTitle">政务新媒体矩阵</a>|
+                <span id="regDiv">
+                    <a class="login_link" href="https://czj.fuxin.gov.cn/member/sso.do ">登录</a>
+                </span>
+                <span id="memberDiv">
+                    <a class="login_link" href="#" id="memName" style="display:none"></a>|<a class="login_link" href="https://czj.fuxin.gov.cn/member/sso.do?logout=true">注销</a>
+                </span>
+            </div>
+            <div class="head_r_bottom">
+                <form action="#">
+                    <input type="text" class="input1" placeholder="请输入关键词" id="keyword"   autocomplete="off"  />
+                    <a class="button1" href="javascript:searchkey()">
+                        <img class="searchIcons" src="https://czj.fuxin.gov.cn/czj/template//img/searchIcons.png" alt="" />
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://czj.fuxin.gov.cn/czj/template//js/jquery-1.8.3.min.js?v=1.1"></script>
+<script src="https://czj.fuxin.gov.cn/czj/template//js/time.js?v=1.1"></script>
+<script type="text/javascript">
+  function gTab2(_this) {
+        $(_this).addClass('active').siblings().removeClass('active');
+        var index = $(_this).index();
+        $("#slideContent").find('.slide_right_panel').eq(index).removeClass('hide').siblings().addClass('hide')
+    }
+    //会员状态
+    var url = 'https://czj.fuxin.gov.cn/member/memberStatus.do';
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: '',
+        //dataType: "json",
+        success: function (mem) {
+            if (mem != '') {
+                $('#regDiv').hide();
+                $('#memberDiv').show();
+                $('#memName').show();
+                $('#memName').html(mem.memberName);
+            }
+        }
+    });
+    function loginOut(token) {
+        var url = 'https://czj.fuxin.gov.cn/member/memberLogin.do?action=LoginOut&' + token;
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: '',
+            //dataType: 'json',
+            success: function (msg) {
+                if (msg == '1') {
+                    alert("退出登录");
+                    window.location.reload();
+                }
+                else {
+                    alert("退出失败");
+                }
+            }
+        });
+    }
+    function searchkey() {
+        var keyword = $("#keyword").val();
+        if (keyword != "") {
+            keyword = encodeData(keyword);
+            keyword = encodeURI(encodeURIComponent(keyword));
+            location.href = 'https://czj.fuxin.gov.cn/search.thtml?keyword=' + keyword;
+        } else {
+            alert("请输入关键词");
+            return;
+        }
+    }
+</script>
+<!--导航-->
+<div class="head_nav">
+    <div class="cen">
+        <div id="headNav" class="head_nav_left">
+            <ul id="mainmenu">
+                <li class="head_item on">
+                    <div class="nav_items">
+                        <a class="nav_a" href="/">
+                            网站首页 
+                        </a>
+                    </div>
+                </li>
+                <li class="head_item">
+
+                        <div class="nav_items">
+
+                            <a class="nav_a" id="zjfx" href="https://czj.fuxin.gov.cn/channel/11912/index.html">走进财政<i class="arrowDown"></i></a>
+
+                        </div>
+                        <div class="slidedown_page">
+                            <div class="slidedown_page_left">
+                                <img class="downImg" alt="" src="/czj/upload/2020-06-01/1590979779161ff8080817234a23436601726dc8da597ab1.jpg" />
+                            </div>
+                            <div class="slidedown_page_right">
+                                    <div id="tab-nav" class="tab-nav">
+                                        <a class="on" href="https://czj.fuxin.gov.cn/content/2025/327667.html">走进财政</a>
+                                    </div>
+                                    <div id="tab-panel" class="tab-panel">
+                                        <div class="tab-panel-item"><p>阜新市财政局贯彻落实党中央关于财政工作的方针政策和决策部署,在履行职责过程中坚持和加强党对财政工作的集中统一领导。<a class="lookMore" href="https://czj.fuxin.gov.cn/content/2025/327667.html">查看更多</a></p></div>
+                                    </div>
+                            </div>
+                        </div>
+
+                </li>
+                <li class="head_item">
+                    <div class="nav_items">
+                            <a class="nav_a" href="https://czj.fuxin.gov.cn/channel/11708/index.html" id="zfxx">政务公开</a>
+                    </div>
+                    <div class="slidedown_page">
+                        <div class="slidedown_left">
+                            <div class="slide_title1">
+                                政务公开
+                            </div>
+                            <div class="slide_content1 infotype">
+                                    <a class="slide_icon" href="https://czj.fuxin.gov.cn/channel/11805/index.html">
+                                        <img class="info-icon" src="https://czj.fuxin.gov.cn/czj/template//img/info_icon7.png?v=1.2" alt="" />
+                                        <p>政府信息公开指南</p>
+                                    </a>
+                                    <a class="slide_icon" href="https://czj.fuxin.gov.cn/channel/11830/index.html">
+                                        <img class="info-icon" src="https://czj.fuxin.gov.cn/czj/template//img/info_icon8.png?v=1.2" alt="" />
+                                        <p>政府信息公开制度</p>
+                                    </a>
+                                    <a class="slide_icon" href="/zwgkndbg.thtml?id=11725">
+                                        <img class="info-icon" src="https://czj.fuxin.gov.cn/czj/template//img/info_icon9.png?v=1.2" alt="" />
+                                        <p>法定主动公开内容</p>
+                                    </a>
+                                    <a class="slide_icon" href="https://czj.fuxin.gov.cn/channel/11836/index.html">
+                                        <img class="info-icon" src="https://czj.fuxin.gov.cn/czj/template//img/info_icon10.png?v=1.2" alt="" />
+                                        <p>政府信息公开年报</p>
+                                    </a>
+                                    <a class="slide_icon big" href="https://czj.fuxin.gov.cn/channel/11783/index.html">
+                                        <img class="info-icon" src="https://czj.fuxin.gov.cn/czj/template//img/info_icon11.png?v=1.2" alt="" />
+                                        <p>公开机构及联系方式</p>
+                                    </a>
+                            </div>
+                        </div>
+                        <div class="slidedown_center">
+                            <div class="slide_title1" id="zfldtitle">
+                                部门领导
+                            </div>
+                                <a class="slide_link" href="https://czj.fuxin.gov.cn/channel/11710/index.html">
+                                    <i class="slideIcon1 pic1"></i>
+                                    <span class="slide_name" id="zfldititle">部门领导</span>
+                                    <i class="boult"></i>
+                                </a>
+                                <div class="slide_title1 mt12">
+                                    部门机构
+                                </div>
+                                <a id="zfjg" class="slide_link" href="https://czj.fuxin.gov.cn/channel/11713/index.html">
+                                    <i class="slideIcon1 pic2"></i>
+                                    <span class="slide_name">部门机构</span>
+                                    <i class="boult"></i>
+                                </a>
+                            <div class="slide_title1 mt12">
+                                政府信息公开
+                            </div>
+
+                                <a class="slide_link" id="fdzdgknr" href="/zwgkndbg.thtml?id=11725">
+                                    <i class="slideIcon1 pic3"></i>
+                                    <span class="slide_name">法定主动公开内容</span>
+                                    <i class="boult"></i>
+                                </a>
+                        </div>
+                        <div class="slidedown_right">
+                            <div class="slide_title1">
+                                信息公开
+                            </div>
+
+                            <div class="slide_content2">
+                                <div class="slide_right_tab" id="top">
+                                        <a class="slide_tab_item active" onmouseenter="gTab2(this)" href="https://czj.fuxin.gov.cn/">
+                                        <span class="rel">会计管理 <i class="tabline"></i></span>
+                                        <font>|</font>
+                                        </a>
+                                        <a class="slide_tab_item" onmouseenter="gTab2(this)" href="https://czj.fuxin.gov.cn/newslist.thtml?id=11725">
+                                        <span class="rel">政策文件 <i class="tabline"></i></span>
+                                        <font>|</font>
+                                        </a>
+                                        <a class="slide_tab_item" onmouseenter="gTab2(this)" href="https://czj.fuxin.gov.cn/channel/11731/index.html">
+                                        <span class="rel">政策解读 <i class="tabline"></i></span>
+                                        <font>|</font>
+                                        </a>
+                                        <a class="slide_tab_item" onmouseenter="gTab2(this)" href="https://czj.fuxin.gov.cn/channel/13439/index.html">
+                                        <span class="rel">部门工作 <i class="tabline"></i></span>
+                                        <font>|</font>
+                                        </a>
+                                        <a class="slide_tab_item" onmouseenter="gTab2(this)" href="https://czj.fuxin.gov.cn/channel/15635/index.html">
+                                        <span class="rel">部门会议 <i class="tabline"></i></span>
+                                        <font>|</font>
+                                        </a>
+                                </div>
+                                <div id="slideContent">
+                                        <div class="slide_right_panel">
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1096451.html">省注协2026年第三期线上直播培训班阜新专场圆满举办</a>
+                                        <span class="slr-time">07-27</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1066381.html">2026年度全国会计专业技术初、高级资格考试（辽宁考区）准考证打印通知</a>
+                                        <span class="slr-time">04-28</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1066380.html">2026年度全国会计专业技术初、高级资格考试出行建议</a>
+                                        <span class="slr-time">04-28</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1044204.html">阜新市财政局扎实部署2026年度会计人员继续教育工作</a>
+                                        <span class="slr-time">03-05</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1042293.html">关于开展2026年度辽宁省会计专业技术人员继续教育工作的通知</a>
+                                        <span class="slr-time">02-14</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1040022.html">财政部会计司有关负责人就开展2025年度行政事业单位内部控制评价和内部控制报告编报工作答记者问</a>
+                                        <span class="slr-time">02-06</span>
+                                        </div>
+                                        </div>
+                                        <div class="slide_right_panel hide">
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1096237.html">关于实施民间投资专项担保计划的通知</a>
+                                        <span class="slr-time">07-24</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1096236.html">关于优化实施服务业经营主体贷款贴息政策的通知</a>
+                                        <span class="slr-time">07-24</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1096234.html">关于实施中小微企业贷款贴息政策的通知</a>
+                                        <span class="slr-time">07-24</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1096233.html">关于优化实施设备更新贷款财政贴息政策的通知</a>
+                                        <span class="slr-time">07-24</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1096231.html">关于优化实施个人消费贷款财政贴息政策有关事项的通知</a>
+                                        <span class="slr-time">07-24</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1089808.html">关于调整节能汽车、新能源汽车车船税优惠政策的公告</a>
+                                        <span class="slr-time">07-03</span>
+                                        </div>
+                                        </div>
+                                        <div class="slide_right_panel hide">
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1096221.html">财政部部长蓝佛安：以更大力度落实财政金融协同促内需一揽子政策</a>
+                                        <span class="slr-time">07-24</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1089809.html">财政部 税务总局 工业和信息化部有关司负责人就调整节能汽车、新能源汽车车船税优惠政策答记者问</a>
+                                        <span class="slr-time">07-03</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1069482.html">财政部、商务部、税务总局有关负责人就《关于开展有奖发票试点工作的通知》答记者问</a>
+                                        <span class="slr-time">01-04</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2025/1028664.html">财政部有关负责人就《关于进一步发挥政府性融资担保体系作用加力支持就业创业的指导意见》答记者问</a>
+                                        <span class="slr-time">12-29</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2025/1001341.html">财政部有关负责人就《服务业经营主体贷款贴息政策实施方案》答记者问</a>
+                                        <span class="slr-time">08-13</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2025/980051.html">《关于做好2025年国家助学贷款免息及本金延期偿还工作的通知》问答</a>
+                                        <span class="slr-time">04-03</span>
+                                        </div>
+                                        </div>
+                                        <div class="slide_right_panel hide">
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1099310.html">市财政局聚力落实义务兵优待政策精准保障现役军人权益</a>
+                                        <span class="slr-time">08-12</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1098821.html">市财政局陪同省地方金融管理局开展地方金融组织现场检查及安全生产督导工作</a>
+                                        <span class="slr-time">08-07</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1096550.html">市财政局党组举办树立和践行正确政绩观学习教育读书班第三期</a>
+                                        <span class="slr-time">07-28</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1096450.html">省注协2026年第三期线上直播培训班阜新专场圆满举办</a>
+                                        <span class="slr-time">07-27</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1090662.html">市财政局积极向上争取 我市成功获批2026年中央财政支持普惠金融发展示范区</a>
+                                        <span class="slr-time">07-17</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1089811.html">市财政局抢抓政策机遇聚力攻坚破局我市首次成功争取中央彩票公益金</a>
+                                        <span class="slr-time">07-10</span>
+                                        </div>
+                                        </div>
+                                        <div class="slide_right_panel hide">
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1096551.html">市财政局党组举办树立和践行正确政绩观学习教育读书班第三期</a>
+                                        <span class="slr-time">07-28</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1096452.html">省注协2026年第三期线上直播培训班阜新专场圆满举办</a>
+                                        <span class="slr-time">07-27</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1087255.html">市财政局召开“树立和践行正确政绩观 实干笃行谱新篇”专题党课暨警示教育大会</a>
+                                        <span class="slr-time">06-26</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1086184.html">市财政局党组举办树立和践行正确政绩观学习教育读书班（第二期）</a>
+                                        <span class="slr-time">06-16</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1073758.html">阜新市财政局圆满完成注评行业党总支换届工作</a>
+                                        <span class="slr-time">06-01</span>
+                                        </div>
+                                        <div class="slide_right_item">
+                                        <a href="https://czj.fuxin.gov.cn/content/2026/1067339.html">市财政局组织参加全省2026年财经纪律整治工作动员部署会议暨省财会监督协调工作联席会议第三次会议</a>
+                                        <span class="slr-time">05-07</span>
+                                        </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="head_item">
+                    <div class="nav_items">
+                        <a class="nav_a" id="zwfwtitle" href="http://zwfw.fuxin.gov.cn/epoint-web-zwdt/epointzwmhwz/pages/default/index?vname=210901&isnormal=1">政务服务<i class="arrowDown"></i></a>
+                        <div class="slidedown_page">
+                            <div class="w622">
+
+                                <div class="search_box">
+                                    <input type="text" class="fxtext2" placeholder="请输入关键词" id="lnkeyword" />
+                                    <a class="button_search" href="javascript:searchln()">
+                                        <i class="searchImg"></i> <span class="button_text">便民查询</span>
+                                    </a>
+                                </div>
+                                <div class="w100" id="zwfwHtml2">
+                                    <a href="http://zwfw.fuxin.gov.cn/epoint-web-zwdt/fxzwdt/pages/indextab/index_gr.html" class="search_icon mr30">
+                                        <i class="nav_icon1 nav_icon"></i>
+                                        <p class="nav_text">个人办事</p>
+                                    </a>
+                                    <a href="http://zwfw.fuxin.gov.cn/epoint-web-zwdt/fxzwdt/pages/indextab/index_fr.html" class="search_icon mr30">
+                                        <i class="nav_icon2 nav_icon"></i>
+                                        <p class="nav_text">企业办事</p>
+                                    </a>
+                                    <a href="http://zwfw.fuxin.gov.cn/epoint-web-zwdt/epointzwmhwz/pages/default/index?com.trs.app.originUrl=http://zwfw.fuxin.gov.cn/epoint-web-zwdt/epointzwmhwz/pages/default/index&agMode=1&com.trs.idm.gSessionId=8BAB8E8A16B1AC26A90763205AC775C4-192.168.1.65" class="search_web">
+                                        <img src="https://czj.fuxin.gov.cn/czj/template//img/fxWeb.jpg" alt="" />
+                                    </a>
+                                    <a href="http://zwfw.fuxin.gov.cn/epoint-web-zwdt/fxzwdt/pages/information/secondpage.html?uri=/xxgk/001001/msgPublic.html" class="search_icon mr30">
+                                        <i class="nav_icon3 nav_icon"></i>
+                                        <p class="nav_text">信息公开</p>
+                                    </a>
+                                    <a href="https://www.lnzwfw.gov.cn/hz_tzxm_root/tzxmindex" class="search_icon mr30">
+                                        <i class="nav_icon4 nav_icon"></i>
+                                        <p class="nav_text">投资项目</p>
+                                    </a>
+                                    <a href="http://zwfw.fuxin.gov.cn/epoint-web-zwdt/epointzwmhwz/pages/eventdetail/publicity" class="search_icon mr30">
+                                        <i class="nav_icon5 nav_icon"></i>
+                                        <p class="nav_text">办件公示</p>
+                                    </a>
+                                    <a href="http://ggzy.fuxin.gov.cn/" class="search_icon mr30">
+                                        <i class="nav_icon6 nav_icon"></i>
+                                        <p class="nav_text">公共资源交易</p>
+                                    </a>
+                                    <a href="http://zwfw.fuxin.gov.cn/epoint-web-zwdt/fxzwdt/pages/information/secondpagegfwqd.html?uri=/fwqd/002001/serlistqzqd.html" class="search_icon">
+                                        <i class="nav_icon7 nav_icon"></i>
+                                        <p class="nav_text">服务清单</p>
+                                    </a>
+                                </div>
+                            </div>
+                                <div class="w477 pl36">
+                                    <div class="public_title" id="bmtz">
+                                        <span class="p_title">通知公告</span>
+                                        <div class="p_line"></div>
+                                        <a href="https://czj.fuxin.gov.cn/channel/11846/index.html"><img class="moreBtn" src="https://czj.fuxin.gov.cn/czj/template//img/moreBtn.png" alt="" /></a>
+                                    </div>
+
+                                    <div class="new_lists">
+                                        <ul class="new_content_ul type3">
+                                                <li>
+                                                    <a href="https://czj.fuxin.gov.cn/content/2026/1100239.html"><i class="new_dots"></i>阜新市2026年度市级以上惠民惠农财政补贴项目清单</a><span class="new_time">08-19</span>
+                                                </li>
+                                                <li>
+                                                    <a href="https://czj.fuxin.gov.cn/content/2026/1066316.html"><i class="new_dots"></i>2026年度全国会计专业技术初、高级资格考试（辽宁考区）准考证打印通知</a><span class="new_time">04-28</span>
+                                                </li>
+                                                <li>
+                                                    <a href="https://czj.fuxin.gov.cn/content/2026/1066315.html"><i class="new_dots"></i>2026年度全国会计专业技术初、高级资格考试出行建议</a><span class="new_time">04-28</span>
+                                                </li>
+                                                <li>
+                                                    <a href="https://czj.fuxin.gov.cn/content/2026/1060105.html"><i class="new_dots"></i>阜新市财政局政策性农业保险承保机构绩效评价项目购买服务结果公告</a><span class="new_time">03-25</span>
+                                                </li>
+                                                <li>
+                                                    <a href="https://czj.fuxin.gov.cn/content/2026/1044942.html"><i class="new_dots"></i>阜新市财政局政策性农业保险承保机构绩效评价项目购买服务公告</a><span class="new_time">03-12</span>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="head_item">
+                    <div class="nav_items">
+
+                            <a class="nav_a" href="https://czj.fuxin.gov.cn/channel/11761/index.html">互动交流<i class="arrowDown"></i></a>
+                    </div>
+                    <div class="slidedown_page">
+                        <div class="w50 pr36" style="width:460px;margin-right:70px;padding:0;">
+                            <div class="borderBottom3">
+                                <div class="common_title2">领导信箱</div>
+                                <div class="a_link_box ">
+                                        <a class="a_link type" href="https://czj.fuxin.gov.cn/channel/list/11762.html">
+                                            <img class="messageIcon" src="https://czj.fuxin.gov.cn/czj/template//img/messageIcon.png" alt="" /><span class="messageName">领导信箱</span>
+                                            <img class="rightArrows" src="https://czj.fuxin.gov.cn/czj/template//img/rightArrows.png" alt="" />
+                                        </a>
+
+                                        <a class="a_link type" href="https://czj.fuxin.gov.cn/channel/list/15147.html" style="margin:0">
+                                            <img class="messageIcon" src="https://czj.fuxin.gov.cn/czj/template//img/msgs.png" alt="" /><span class="messageName">意见箱</span>
+                                            <img class="rightArrows" src="https://czj.fuxin.gov.cn/czj/template//img/rightArrows.png" alt="" />
+                                        </a>
+                                </div>
+                            </div>
+
+                            <div class="common_title2">12345政务服务便民热线</div>
+                            <div class="look">
+                                <a href="https://www.lnzwfw.gov.cn/8890/index">
+                                    <img class="ptImg pl" src="https://czj.fuxin.gov.cn/czj/template//img/12345.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                            <div class="w50 pl10" style="width:575px;">
+           
+                              <div class="common_title2 borderBottom2"><a href="https://czj.fuxin.gov.cn/channel/list/14823.html">意见征集</a></div>
+                                <div class="new_content_list">
+                                    <ul class="new_content_ul type1" id="myzj">
+                                            <li><a href="https://czj.fuxin.gov.cn/content/2023/776099.html"><i class="new_dots"></i>关于对《阜新市财政局行政处罚自由裁量权基准（征求意见稿）》《阜新市财政局财政领域轻微违法行为包容免罚清单（征求意见稿）》征求意见的公示情况的说明</a><span class="new_time">06-07</span></li>
+                                            <li><a href="https://czj.fuxin.gov.cn/content/2023/769567.html"><i class="new_dots"></i>关于征求《阜新市财政局行政处罚自由裁量权基准（征求意见稿）》《阜新市财政局财政领域轻微违法行为包容免罚清单（征求意见稿）》意见的函</a><span class="new_time">05-05</span></li>
+                                            <li><a href="https://czj.fuxin.gov.cn/content/2021/638988.html"><i class="new_dots"></i>关于面向社会公开征集2022年民生实事项目情况的反馈</a><span class="new_time">11-05</span></li>
+                                            <li><a href="https://czj.fuxin.gov.cn/content/2021/638986.html"><i class="new_dots"></i>关于面向社会公开征集2022年民生实事项目的公告</a><span class="new_time">10-08</span></li>
+                                            <li><a href="https://czj.fuxin.gov.cn/content/2020/421666.html"><i class="new_dots"></i>辽宁省预算绩效管理第三方机构工作管理暂行办法（征求意见稿）采纳情况</a><span class="new_time">11-06</span></li>
+                                            <li><a href="https://czj.fuxin.gov.cn/content/2020/421664.html"><i class="new_dots"></i>辽宁省预算绩效管理第三方机构工作管理暂行办法（征求意见稿）</a><span class="new_time">11-02</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                    </div>
+                </li>
+
+                <li class="head_item">
+                    <div class="nav_items">
+
+                            <a class="nav_a" href="https://czj.fuxin.gov.cn/channel/13055/index.html">新闻中心<i class="arrowDown"></i></a>
+                        <div class="slidedown_page">
+                            <div class="w50 ">
+                                <div class="navNew_box">
+                                            <a class="navNew_jump borderBottom" href="https://www.fuxin.gov.cn/content/2026/1100164.html">
+                                                <strong class="navNew_title">朱镕基同志遗体在京火化 习近平等到八宝山革命公墓送别</strong>
+                                                <p class="navNew_dec">
+                                                    
+                                                    <span class="navNew_detail">【查看详情】</span>
+                                                </p>
+                                            </a>
+                                        <div class="new_content_list">
+                                            <strong class="navNew_title">
+                                                <span class="navNew_title_inner">财政动态</span> <i class="navNew_line"></i>
+                                                <a class="navNew_more" href="https://czj.fuxin.gov.cn/channel/13059/index.html">更多</a>
+                                            </strong>
+                                            <ul class="new_content_ul type2" id="fxxw_content">
+                                                    <li><a href="https://czj.fuxin.gov.cn/content/2026/1099309.html"> <i class="new_dots"></i>市财政局聚力落实义务兵优待政策精准保障现役军人权益</a><span class="new_time">08-12</span></li>
+                                                    <li><a href="https://czj.fuxin.gov.cn/content/2026/1098820.html"> <i class="new_dots"></i>市财政局陪同省地方金融管理局开展地方金融组织现场检查及安全生产督导工作</a><span class="new_time">08-07</span></li>
+                                                    <li><a href="https://czj.fuxin.gov.cn/content/2026/1097336.html"> <i class="new_dots"></i>市财政局开展“八一”国防教育主题研学活动</a><span class="new_time">07-31</span></li>
+                                                    <li><a href="https://czj.fuxin.gov.cn/content/2026/1096549.html"> <i class="new_dots"></i>市财政局党组举办树立和践行正确政绩观学习教育读书班第三期</a><span class="new_time">07-28</span></li>
+                                            </ul>
+                                        </div>
+                                </div>
+                            </div>
+
+
+                            <div class="w50 pl36">
+                                <div class="new_content_list ">
+                                    <strong class="navNew_title">
+
+                                        <span class="navNew_title_inner">央网信息</span> <i class="navNew_line"></i>
+                                        <a class="navNew_more" target="_blank" href="https://www.fuxin.gov.cn/channel/13788/index.html">更多</a>
+                                    </strong>
+                                    <div class="navNew_times">
+                                                <h2><a href="https://www.fuxin.gov.cn/content/2026/1100236.html">李强签署国务院令 公布《国务院关于修改〈住房公积金管理条例〉的决定》</a></h2>
+                                                <p>发布时间：2026-08-19</p>
+                                    </div>
+
+                                    <strong class="navNew_title">
+                                        <span class="navNew_title_inner">辽宁信息</span> <i class="navNew_line"></i>
+                                        <a class="navNew_more" target="_blank" href="https://www.fuxin.gov.cn/channel/13789/index.html">更多</a>
+                                    </strong>
+                                    <div class="navNew_times">
+                                                <h2><a href="https://www.fuxin.gov.cn/content/2026/1100126.html">省委统战部举办“统战理论大讲堂”</a></h2>
+                                                <p>发布时间：2026-08-18</p>
+                                    </div>
+
+                                        <strong class="navNew_title">
+
+                                            <span class="navNew_title_inner">信息公开</span> <i class="navNew_line"></i>
+                                            <a class="navNew_more" href="https://czj.fuxin.gov.cn/newslist.thtml?id=11725">更多</a>
+                                        </strong>
+                                            <div class="navNew_times">
+                                                <h2><a href="https://czj.fuxin.gov.cn/content/2026/1096237.html">关于实施民间投资专项担保计划的通知</a></h2>
+                                                <p>发布时间：2026-07-24</p>
+                                            </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="hidgovs" style="display:none"></div>
+<script src="https://czj.fuxin.gov.cn/czj/template//js/commonUtil_src.js"></script>
+
+<script type="text/javascript">
+      $(function(){
+document.onkeydown = function(e){
+    var ev = document.all ? window.event : e;
+    if(ev.keyCode==13) {
+
+		  var keyword = $("#keyword").val();
+        if (keyword != "") {
+            keyword = encodeData(keyword);
+            keyword = encodeURI(encodeURIComponent(keyword));
+            location.href = 'https://czj.fuxin.gov.cn/search.thtml?keyword=' + keyword;
+			window.event.returnValue=false;
+        } else {
+            alert("请输入关键词");
+            return;
+        }
+     }
+}
+});
+
+</script>
+
+<style>
+    .slidedown_page .w100 a:nth-child(5n-2) {
+        margin-right: 0;
+    }
+</style>
+                <!--内容-->
+                <div class="containter">
+                    <!--    面包削-->
+                    <div class="breadcrumbs">
+                        <div class="cen">
+                            <span>当前位置：</span>
+                            <a class="breadcrumbItem " href="https://czj.fuxin.gov.cn/">首页 </a>
+
+                                    <i>＞</i>
+                                    <a class="breadcrumbItem" href="https://czj.fuxin.gov.cn/channel/11708/index.html">政务公开</a>
+                                    <i>＞</i>
+                                    <a class="breadcrumbItem" href="/zwgkndbg.thtml?id=11725">政府信息公开</a>
+                                    <i>＞</i>
+                                    <a class="breadcrumbItem" href="/zwgkndbg.thtml?id=11725">法定主动公开内容</a>
+                                    <i>＞</i>
+                                    <a class="breadcrumbItem" href="https://czj.fuxin.gov.cn/channel/15547/index.html">财政信息</a>
+                                    <i>＞</i>
+                                    <a class="breadcrumbItem" href="https://czj.fuxin.gov.cn/channel/18176/index.html">财政决算</a>
+                        </div>
+                    </div>
+                    <div class="content_inner ovfl">
+                        <div class="cen">
+                            <div class="pt34"></div>
+                            <div class="contents2">
+                                <div class="news_inner">
+                                    <!--startprint-->
+                                    <div class="DetailcontentTile">
+                                        关于阜新市2025年财政决算的报告
+                                    </div>
+                                    <h2 class="DetailcontentTile2"></h2>
+                                    <p class="DetailcontentTime">
+                                        <span class="DetailcontentTime_item">日期： 2026-07-15</span>
+                                      <span class="DetailcontentTime_item"    id="contentClickCount">浏览量：418</span>
+                                            <span class="DetailcontentTime_item">来源：阜新市财政局</span>
+                                            <span class="DetailcontentTime_item">责任编辑：李玉龙</span>
+<script>
+                                      var url = 'https://czj.fuxin.gov.cn/japi/content-status?id=1090313';
+
+                                      $.ajax({
+                                          type: "POST",
+                                          url: url,
+                                          data:'',
+
+                                          success: function(msg)
+                                          {     
+                                             var status = msg;
+
+                                             $('#contentClickCount').text('浏览量：'+status.clickCount);
+
+                                          }
+                                      });	
+                                    </script>
+                                        <span class="DetailcontentTime_item" id="tab">
+                                            文字大小：
+                                            <a class="timeBtn" href="javascript:;">大</a>
+                                            <a class="timeBtn" href="javascript:;">中</a>
+                                            <a class="timeBtn" href="javascript:;">小</a>
+                                        </span>
+                                    </p>
+                                    <style>
+                                        .Detailcontent_inner table tbody tr td {
+                                            border: 1px solid #999999;
+                                        }
+
+                                        .embed {
+                                            height: 600px;
+                                        }
+                                    </style>
+
+                                        <div id="Detailcontent" class="Detailcontent_inner f16" style="text-align: justify;">
+                                            <p class="MsoNormal" style="margin: 0pt -25.5pt 0pt 0pt; text-align: center; font-family: Calibri; font-size: 10.5pt; padding: 0pt; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">阜新市人民政府</span><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 0pt; padding: 0pt; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">&nbsp;</span><span style="color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 9pt;"></span></p><p class="MsoNormal" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 10.5pt; text-indent: 0.05pt; padding: 0pt; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">主任、各位副主任、秘书长、各位委员：</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="MsoNormal" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 10.5pt; text-indent: 24pt; padding: 0pt; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">我受市人民政府委托，向市人大常委会提出</font><font face="宋体">2025年全市财政决算报告和市本级财政决算草案，请予审议。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2025年是“十四五”规划收官之年，是“十五五”规划谋篇布局之年。全市各级财政部门在市委正确领导下，在市人大的监督指导下，坚持以习近平新时代中国特色社会主义思想为指导，全面贯彻党的二十大和二十届历次全会精神，深入学习贯彻习近平总书记关于东北、辽宁全面振兴发展的重要讲话和指示批示精神，深入贯彻落实党中央决策部署和省、市工作要求，严格落实《中华人民共和国预算法》、《中华人民共和国预算法实施条例》和《辽宁省预算审查监督条例》，严格执行市人大决议决定和批准的预算，财政整体运行良好。在预算执行过程中，全市各级财政部门始终坚持稳中求进，加力落实更加积极的财政政策，坚持过紧日子不动摇，大力优化支出结构，聚焦兜牢“三保”底线，防范化解地方政府债务风险，持续改善民生水平，实现财政收入平稳增长,支出保障精准有力，推动经济实现质的有效提升和量的合理增长，圆满地完成了财政各项工作目标。</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">一、</font><font face="宋体">2025年财政决算情况</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">（一）全市财政决算情况</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">1.全市一般公共预算收支情况</span></b><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市十七届人民代表大会第四次会议批准的全市</font><font face="宋体">2025年一般公共预算收入为53.03亿元，实际完成53.68亿元，为年初预算的101.2%，比上年同期增加3.64亿元，增长7.3%。其中：税收收入完成29.52亿元，占一般公共预算收入的比重为55%；非税收入完成24.16亿元，占比45%。支出预算为155.32亿元，实际完成174.24亿元，为年初预算的112.2%，比上年同期增加1.79亿元，增长1%。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">全市一般公共预算收支平衡情况：全市一般公共预算收入</font><font face="宋体">53.68亿元，上级补助收入128亿元，债务转贷收入20.75亿元，上年结转收入95.89亿元，调入资金2.06亿元，动用预算稳定调节基金8.6亿元，总收入308.98亿元；一般公共预算支出174.24亿元，上解上级支出13.28亿元，调出资金1.55亿元，债务还本支出21.98亿元，安排预算稳定调节基金9.97亿元，待偿债再融资一般债券结余0.79亿元，结转下年支出87.17亿元，总支出308.98亿元。一般公共预算当年收支平衡。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2.全市政府性基金预算收支情况</span></b><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市十七届人民代表大会第四次会议批准的全市</font><font face="宋体">2025年政府性基金预算收入为22.79亿元，实际完成4.23亿元，为年初预算的18.6%，比上年减少2.25亿元，下降34.7%。支出预算为15.66亿元，实际完成41.12亿元，为年初预算的262.6%，比上年增加27.24亿元，增长196.3%。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">全市政府性基金预算收支平衡情况：全市政府性基金预算收入</font><font face="宋体">4.23亿元，上级补助收入25.22亿元，债务转贷收入23.99亿元，上年结转收入21.49亿元，调入资金2.79亿元，总收入77.72亿元；政府性基金支出41.12亿元，上解上级支出0.03亿元，调出资金1.19亿元，债务还本支出4.77亿元，结转下年支出30.61亿元，总支出77.72亿元。政府性基金预算当年收支平衡。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">3.全市国有资本经营预算收支情况</span></b><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市十七届人民代表大会第四次会议批准的全市</font><font face="宋体">2025年国有资本经营预算收入为2.05亿元，实际完成0.1亿元，为年初预算的4.9%，比上年增加0.06亿元，增长129%。支出预算为1.44亿元，实际完成0.4亿元，为年初预算的27.8%，比上年增加0.3亿元，增长253%。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">全市国有资本经营预算收支平衡情况：国有资本经营预算收入</font><font face="宋体">0.1亿元，上级补助收入0.15亿元，上年结转1.93亿元，总收入2.18亿元；国有资本经营预算支出0.4亿元，调出资金0.26亿元，结转下年支出1.52亿元，总支出2.18亿元。国有资本经营预算收支平衡。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">4.全市社会保险基金预算收支情况</span></b><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市十七届人民代表大会第四次会议批准的全市</font><font face="宋体">2025年社会保险基金收入预算为53.62亿元，实际完成54.86亿元，为年初预算的102.3%，增长4.3%。支出预算为52.78亿元，实际完成52.06亿元，为年初预算的98.6%，增长3.1%。当年收支结余2.8亿元，年末滚存结余25.94亿元。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">（二）市本级（含高新开发区）财政决算情况</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">1.市本级（含高新开发区）一般公共预算收支情况</span></b><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市十七届人民代表大会第四次会议批准的市本级（含高新开发区）</font><font face="宋体">2025年一般公共预算收入为18.63亿元，实际完成10.93亿元，为年初预算的58.7%，同比减少7.75亿元，下降41.5%，其中：税收收入完成3.61亿元，比上年减少1亿元，下降21.7%；非税收入完成7.32亿元，比上年减少6.75亿元，下降48%。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市十七届人民代表大会第四次会议批准的市本级（含高新开发区）</font><font face="宋体">2025年一般公共预算支出预算为75.28亿元，执行中根据新增政府债券和省各项补助等情况进行了调整，调整后的支出预算为78.62亿元，比年初预算增加3.34亿元。一般公共预算支出实际完成54.45亿元，为调整预算的69.3%，比上年减少0.37亿元，下降0.7%。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市本级（含高新开发区）一般公共预算收支平衡情况：市本级（含高新开发区）一般公共预算收入</font><font face="宋体">10.93亿元，上级补助收入28.45亿元，债务转贷收入12.16亿元，上年结转收入31.1亿元，调入资金0.94亿元，动用预算稳定调节基金4.19亿元，总收入87.77亿元；一般公共预算支出54.45亿元，上解上级支出-7.33亿元，调出资金0.59亿元，债务还本支出13.29亿元，安排预算稳定调节基金2.23亿元，待偿债再融资一般债券结余0.37亿元，结转下年支出24.17亿元，总支出87.77亿元。一般公共预算当年收支平衡。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2.市本级（含高新开发区）政府性基金预算收支情况</span></b><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市十七届人民代表大会第四次会议批准的市本级（含高新开发区）</font><font face="宋体">2025年政府性基金预算收入为17.95亿元，实际完成1.99亿元，为年初预算的11.1%，比上年减少2.28亿元，下降53.4%。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市十七届人民代表大会第四次会议批准的市本级（含高新开发区）</font><font face="宋体">2025年政府性基金支出预算为10.61亿元，执行中根据新增政府债券和省各项补助等情况进行了调整，调整后的支出预算为18.65亿元，比年初预算增加8.04亿元。实际完成11.15亿元，为调整预算的59.8%，比上年增加4.98亿元，增长80.7%。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市本级（含高新开发区）政府性基金预算收支平衡情况：市本级（含高新开发区）政府性基金收入</font><font face="宋体">1.99亿元，上级补助收入6.08亿元，上年结转收入3.46亿元，债务转贷收入7.38亿元，调入资金1.78亿元，总收入20.69亿元；政府性基金支出11.15亿元，债务还本支出1.89亿元，调出资金0.46亿元，上解支出-0.31亿元，结转下年支出7.5亿元，总支出20.69亿元。政府性基金预算当年收支平衡。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">3.市本级（含高新开发区）国有资本经营预算收支情况</span></b><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">因高新开发区无国有资本经营预决算，市本级（含高新开发区）国有资本经营预算执行情况与市本级国有资本经营预算执行情况相同。</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市十七届人民代表大会第四次会议批准的市本级（含高新开发区）</font><font face="宋体">2025年国有资本经营预算收入为2亿元，实际完成0.04亿元，为年初预算的2.2%。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市十七届人民代表大会第四次会议批准的市本级（含高新开发区）</font><font face="宋体">2025年国有资本经营支出预算为0.18亿元，执行中根据省各项补助等情况进行了调整，调整后的支出预算为0.08亿元，比年初预算减少0.1亿元。国有资本经营预算支出实际完成49万元，较上年减少4万元，下降7.5%。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市本级（含高新开发区）国有资本经营预算收支平衡情况：市本级国有资本经营收入</font><font face="宋体">433万元，上年结转收入333万元，总收入766万元；国有资本经营预算支出49万元，结转下年支出717万元，总支出766万元。国有资本经营预算当年收支平衡。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">4.市本级（含高新开发区）社会保险基金预算收支情况</span></b><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市十七届人民代表大会第四次会议批准的市本级（含高新开发区）</font><font face="宋体">2025年社会保险基金收入预算31.94亿元，实际完成33亿元，为年初预算的103.3%，增加1.29亿元，增长4.1%。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市十七届人民代表大会第四次会议批准的市本级（含高新开发区）</font><font face="宋体">2025年支出预算为31.55亿元，实际完成30.48亿元，为年初预算的96.6%，增加0.41亿元，增长1.4%。当年收支结余2.52亿元，年末滚存结余23.67亿元。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">（三）市本级财政决算情况</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2025年，根据《中华人民共和国预算法》、《中华人民共和国预算法实施条例》和《辽宁省预算审查监督条例》关于预算调整的有关规定，综合新增政府债券资金等情况，编制了市本级一般公共预算调整方案，并已按程序报请市人大常委会审查批准，“四本预算”整体执行较好。</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">1.市本级一般公共预算收支情况</span></b><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市十七届人民代表大会第四次会议批准的市本级</font><font face="宋体">2025年一般公共预算收入为14.63亿元，实际完成6.94亿元，为年初预算的47.4%，比上年减少7.82亿元，下降53%，其中：税收收入完成0.07亿元，比上年减少0.82亿元，下降92.2%；非税收入完成6.87亿元，比上年减少7亿元，下降50.5%。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市十七届人民代表大会第四次会议批准的市本级</font><font face="宋体">2025年支出预算为73.24亿元，执行中根据新增政府债券和省各项补助等情况进行了调整，调整后的支出预算为75.91亿元，比年初预算增加2.67亿元。实际完成51.95亿元，为调整预算的68.4%，较上年减少0.73亿元，下降1.4%。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市本级一般公共预算收支平衡情况：市本级一般公共预算收入</font><font face="宋体">6.94亿元，上级补助收入28.05亿元，债务转贷收入11.75亿元，上年结转收入30.93亿元，调入资金0.88亿元，动用预算稳定调节基金3.2亿元，总收入81.75亿元；一般公共预算支出51.95亿元，上解上级支出-9.78亿元，调出资金0.42亿元，债务还本支出12.85亿元，安排预算稳定调节基金2亿元，待偿债再融资一般债券结余0.35亿元，结转下年支出23.96亿元，总支出81.75亿元。一般公共预算当年收支平衡。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市本级预备费情况：</font><font face="宋体">2025年市本级预备费总额0.4亿元，未安排支出。2025年预备费余额0.4亿元补充2025年预算稳定调节基金。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市本级预算周转金情况：</font><font face="宋体">2025年市本级未新安排预算周转金，预算周转金累计结余0.03亿元，尚未使用。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市本级预算稳定调节基金情况：</font><font face="宋体">2025年市本级安排预算稳定调节基金2亿元，主要包括预备费余额0.4亿元、一般公共预算结余资金调入0.72亿元、调入资金0.88亿元。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2.市本级政府性基金预算收支情况</span></b><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市十七届人民代表大会第四次会议批准的市本级</font><font face="宋体">2025年政府性基金预算收入为16.95亿元，实际完成1.51亿元，为年初预算的8.9%，比上年减少1.51亿元，下降50%。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市十七届人民代表大会第四次会议批准的市本级</font><font face="宋体">2025年支出预算为9.61亿元，执行中根据新增政府债券和省各项补助等情况进行了调整，调整后的支出预算为16.07亿元，比年初预算增加6.46亿元。政府性基金预算支出实际完成8.71亿元，为调整预算的54.2%，比上年增加3.7亿元，增长73.8%。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市本级政府性基金预算收支平衡情况：市本级政府性基金收入</font><font face="宋体">1.51亿元，上级补助收入6.05亿元，上年结转收入3.07亿元，债务转贷收入5.69亿元，调入资金1.61亿元，总收入17.93亿元；政府性基金支出8.71亿元，债务还本支出1.77亿元，调出资金0.4亿元，上解上级支出-0.32亿元，结转下年支出7.37亿元，总支出17.93亿元。政府性基金预算当年收支平衡。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">3.市本级国有资本经营预算收支情况</span></b><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市十七届人民代表大会第四次会议批准的市本级</font><font face="宋体">2025年国有资本经营预算收入为2亿元，实际完成0.04亿元，为年初预算的2.2%，较上年增加389万元，增长884.1%。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市十七届人民代表大会第四次会议批准的市本级</font><font face="宋体">2025年国有资本经营支出预算为0.18亿元，执行中根据省各项补助等情况进行了调整，调整后的支出预算为0.08亿元，比年初预算减少0.1亿元。国有资本经营预算支出实际完成49万元，较上年减少4万元，下降7.5%。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市本级国有资本经营预算收支平衡情况：市本级国有资本经营收入</font><font face="宋体">433万元，上年结转收入333万元，总收入766万元；国有资本经营预算支出49万元，结转下年支出717万元，总支出766万元。国有资本经营预算当年收支平衡。</font></span><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">&nbsp;&nbsp;&nbsp;</span></b><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">4.市本级社会保险基金预算收支情况</span></b><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市十七届人民代表大会第四次会议批准的市本级社会保险基金收入预算</font><font face="宋体">31.78亿元，实际完成32.86亿元，为年初预算的103.4%，比上年增加1.32亿元，增长4.2%。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">市十七届人民代表大会第四次会议批准的市本级</font><font face="宋体">2025年支出预算为31.39亿元，实际完成30.34亿元，为年初预算的96.7%，比上年增加0.54亿元，增长1.8%。当年收支结余2.52亿元，年末滚存结余23.62亿元。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">（四）政府债务情况</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">1.全市政府债务情况</span></b><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2025年末阜新市法定债务限额296.18亿元，阜新市法定债务余额293.02亿元，法定债务余额未超限额。</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2025年阜新市偿还本息35.18亿元，其中：本金26.75亿元，利息8.43亿元。</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2.市本级（含高新开发区）政府债务情况</span></b><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2025年末市本级（含高新开发区）法定债务限额183.54亿元，市本级（含高新开发区）法定债务余额182.87亿元，法定债务余额未超限额。</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2025年市本级（含高新开发区）偿还本息20.59亿元，其中：本金15.18亿元，利息5.41亿元。</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">3.市本级政府债务情况</span></b><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2025年末市本级法定债务限额169.99亿元，市本级法定债务余额169.48亿元，法定债务余额未超限额。</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2025年市本级偿还本息19.66亿元，其中：本金14.62亿元，利息5.04亿元。</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">二、</font><font face="宋体">2025年财政政策落实情况</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2025年，全市各级财政部门紧紧围绕市委、市政府重点工作任务，严格执行市人大批准的年度预算，强化预算刚性约束，精准调度财政资金，统筹推进收入征管和支出保障，有效防范化解财政风险，预算执行呈现“收入稳增、支出提质、风险可控、效能提升”的良好态势。</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">（一）聚焦增收提效，财政保障基础持续夯实</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">1.精准施策抓征管，收入质效双提升。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">建立健全</font><font face="宋体">“财税联动、部门协同”收入征管机制，凝聚全市财政收入协同共治合力，助力收入增长跑赢全省平均水平。深挖税源费基，对重点税源企业、重大项目税收加强税源监控，开展专项征管行动，严防税源流失，确保税收应收尽收。历时多年谋划的我市“路矿一体”项目今年实现历史性的突破，贡献企业所得税5.85亿元，形成地方级税收2.32亿元。进一步规范非税收入管理，优化国有资产有偿使用、行政事业性收费等征管流程，推动非税收入平稳增长。全年实现国有资源有偿使用收入16.16亿元，较上年增长55.6%，其中：阜新查马屯铁矿探矿权出让收入3.06亿元，刷新全省探矿权挂牌出让历史记录。2025年，全市一般公共预算收入先后圆满达成“首月、首季开门红”及“时间任务双过半”的关键节点目标。全年一般公共预算收入完成53.68亿元，同比增长7.3%，收入增幅位居全省第二位，高于全省平均增幅6.9个百分点。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2.主动对接谋支持，向上争取显成效。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">抢抓习近平总书记来辽宁考察并发表重要讲话机遇，紧扣国家、省政策导向和投资重点，把握省编制</font><font face="宋体">“十五五”规划重要窗口期，精准对接上级资金支持方向，聚焦民生和重点项目建设，精心谋划申报一批带动作用强、契合阜新实际的优质项目，全力争取上级转移支付、专项债券和各类补助资金。2025年全市共争取资金153.37亿元，其中：北方清洁取暖国家竞争性立项项目资金1.8亿元；“两重”“两新”到位资金23.56亿元。全市共争取政府债券资金44.74亿元，向上争取规模实现新突破。&nbsp;&nbsp;</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">3.盘活存量挖潜力，资源配置提效能。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">开展国有</font><font face="宋体">“三资”一账一表编制工作，首次精准摸清底数，建立行政事业单位闲置房产、棚改剩余房源及各类资源等政府拥有、管控的全部国有资产资源台账。将棚改剩余房源、方舱医院等近20个亿的闲置资产整合注入市级“资产池”，丰富资产储备结构。通过盘活利用闲置资产，以资抵债化解拖欠企业账款1.69亿元。盘活供热管网资产0.65亿元，注资国有企业，增加企业资本，撬动国开行贷款2.26亿元，有效提升资源利用效能。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">（二）聚焦民生福祉，民生保障水平不断提升</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 0pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.精准落实社保政策，兜牢民生保障底线。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">筹集</font><font face="宋体">16.34亿元，确保机关事业单位养老金按时足额发放，保障养老保险基金平稳运行。筹集6.44亿元，落实城乡居民基本医疗保险待遇。筹集4.71亿元，确保城乡居民基本养老保险金按时足额发放。筹集1.19亿元，用于特困人员、孤儿、低保人员医疗救助支出，切实兜住困难群体基本生活与医疗保障网。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2.抓实就业创业服务，护航发展大局稳定。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">筹集</font><font face="宋体">6.37亿元，加强就业创业扶持，加大对重点群体就业支持力度，落实创业担保贷款、就业培训补贴等政策，促进农民工、退役军人等群体就业创业。筹集0.03亿元，落实“三支一扶”政策，引导高校毕业生扎根基层，拓宽高校毕业生留阜就业创业渠道。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">3.推进健康阜新建设，守护群众生命健康。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">筹集</font><font face="宋体">2.55亿元，落实响应国家计划生育号召家庭的补偿政策。首次发放育儿补贴，应对低生育率挑战，营造生育友好型社会氛围。筹集1.58亿元，提升公共卫生应急处置能力，推动促进公共卫生服务均等化，支持基层医疗卫生机构和村卫生室实施基本药物制度建设。筹集0.45亿元，支持医疗机构能力提升建设，推动公立医院高质量发展。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">4.强化特殊群体关爱，保障基本生活权益。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">筹集</font><font face="宋体">5.53亿元，保障全市城乡低保对象、特困供养、孤儿以及事实无人抚养儿童等救助对象8.1万人基本生活。筹集1.51亿元，足额兑现优抚对象生活补助、医疗补助，保障各类退役人员政治、生活待遇落到实处。筹集0.23亿元，用于残疾人康复训练、重度残疾人等级评定、55-59周岁重度残疾人生活补贴等支出。筹集0.03亿元，为5万名80-89周岁老年人按照每人每月30元标准发放高龄津贴，改善老年群体生活质量。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">5.坚持教育优先发展，夯实教育民生基础。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">筹集</font><font face="宋体">1.09亿元，保障义务教育学校生均公用经费。筹集0.78亿元，改善义务教育薄弱环节与办学条件，筑牢校舍安全防线。筹集0.36亿元，支持推进农村义务教育学校营养膳食改善计划。筹集0.44亿元，完善教育资助体系，减轻家庭经济困难学生负担。筹集0.13亿元，按照幼儿园收费标准免除学前一年在园幼儿保育教育费，落实免费学前教育政策。筹集0.11亿元，改善普通高中办学条件，提升职业教育学校办学能力，推进职普融通特色发展。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">6.保障“两重”项目实施，改善城乡人居环境。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">筹集</font><font face="宋体">20.76亿元，聚焦“两重”等关键领域与民生工程，支持老旧小区改造、燃气安全整治、排水防涝、高标准农田和医院建设等，提升城市宜居品质；市中医医院新建项目完成主体施工，推动优质医疗资源扩容共享。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">（三）助推转型升级，促进增长优化产业结构</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="MsoNormal" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 10.5pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">1.落实“两新”政策，激发市场内生动力。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">筹集</font><font face="宋体">2.8亿元，落实消费品以旧换新等消费政策，扩围加力促消费，充分释放消费潜能，促进经济发展。抢抓国庆节超级黄金周，筹集0.08亿元，开展地方促消费活动，惠及群众9.6万人次，拉动消费9.56亿元，有效激活我市消费市场。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="MsoNormal" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 10.5pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2.扶持工业升级，推动产业质效提升。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">筹集</font><font face="宋体">0.21亿元，落实涉企奖补政策，引导企业数字化转型与创新，助力中小企业高质量发展，推动我市规上企业工业增加值稳步提升。“十四五”期间规上工业增加值年均增速1.9%，经济指标稳中有进。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="MsoNormal" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 10.5pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">3.强化科技赋能，加速创新成果转化。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">筹集</font><font face="宋体">0.14亿元，支持各类科技计划项目实施，以科技创新驱动产业创新升级。筹集0.04亿元，落实科技成果转化后补助与科技型企业奖励后补助，激发企业创新活力。筹集0.02亿元，保障科学技术普及工作有效开展。推动落实阜新市人民政府与相关科研单位签订的合作共建协议。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">4.落实税费支持，减轻企业主体负担。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">强化政策协同与效应分析，深化部门协作，不折不扣落实国家和省出台的各项减税支持政策。全市新增减税降费及退税</font><font face="宋体">1.47亿元，惠及1.06万户，有效降低企业经营成本，助力企业减负纾困，激发市场主体活力。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">（四）聚焦农业发展，乡村发展态势持续向好</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="MsoNormal" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 10.5pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">1.夯实粮食安全根基，保障农业稳产增效。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">筹集</font><font face="宋体">17.35亿元，支持高标准农田建设。新建高标准农田54.93万亩，改造提升15万亩，资金投入和建设面积全省排名第二。筹集4.75亿元，用于玉米、大豆和稻谷生产者补贴发放，有效调动农民种粮积极性。筹集4.22亿元，用于耕地地力保护补贴资金发放，促进农业绿色可持续发展。筹集1.41亿元、0.19亿元，分别用于发放中央财政产粮油大县奖励和生猪调出大县奖励，保障重要农产品供给。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="MsoNormal" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 10.5pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2.巩固脱贫攻坚成果，推动乡村全面振兴。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">筹集</font><font face="宋体">1.59亿元，支持巩固拓展脱贫攻坚成果同乡村振兴有效衔接。筹集0.54亿元，建设438公里一事一议村内道路。筹集0.17亿元，支持创建“五好两宜”和美乡村，改善农村人居环境。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="MsoNormal" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 10.5pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">3.保障水利重点项目，筑牢水基利国惠民。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">筹集</font><font face="宋体">1.24亿元，用于各县区移民直补发放，支持水库库区和移民安置区基础设施建设。筹集0.44亿元，用于农村水价综合改革、水土流失治理、农村饮水工程维修养护、白玉都河重点山洪沟治理等水利项目建设。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="MsoNormal" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 10.5pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">4.完善农村交通网络，支持乡村振兴建设。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">筹集</font><font face="宋体">2.36亿元，主要用于农村公路管理养护和新改建工程、城市交通发展行业补贴等。筹集0.7亿元，用于阜彰两县新建穿沙公路项目建设，为完成巩固乡村振兴富民路160公里的民生实事提供资金保障。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">（五）支持低碳发展，美丽阜新建设持续推进</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="MsoNormal" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 10.5pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">1.攻坚污染防治行动，守护生态环境底色。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">筹集</font><font face="宋体">3.29亿元，用于北方清洁取暖项目，支持农村散户安装清洁取暖设施和企业超低排放改造，污染防治支出考核全省排名第二。筹集0.84亿元，用于彰武县污水处理厂提标改造、氟产业开发区地下水污染管控、四官营子河人工湿地改善水质、绕阳河水质自动站建设等支出。筹集0.07亿元，用于淘汰燃煤锅炉补贴、历史遗留固体废弃物及周边污染状况调查等支出。筹集0.05亿元，开展农村环境整治、建设项目环评评估与环境现场检测。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="MsoNormal" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 10.5pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2.推进矿山生态修复，焕发绿色发展生机。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">筹集</font><font face="宋体">1.65亿元，实施海州露天矿北帮综合治理。海州露天矿国家矿山公园提升改造项目于6月30日全面竣工，成为我市2025年首个完成的民生实事项目。筹集1.16亿元，支持百里矿区试点示范项目，聚焦生态问题突出的废弃矿山，消除地质灾害隐患。筹集0.47亿元，支持海州矿南帮中部历史遗留废弃工矿土地整治等。筹集0.21亿元，用于海州露天矿国家矿山公园维护、绿色矿山企业奖励、耕地和永久基本农田监测监管等项目支出。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">3.加强林草资源管护，筑牢生态安全屏障。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">筹集</font><font face="宋体">1.57亿元，支持“三北”工程林草湿荒一体化保护修复项目，建设稳定健康的森林草原生态系统。筹集1.37亿元，实施国土绿化试点示范项目。筹集0.32亿元，用于林草培育、资源管护、防灾减灾、野生动物保护，构建稳定健康生态系统。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">（六）坚持底线思维，财政运行风险有效化解</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">1.兜牢兜实“三保”底线，保障财政平稳运行。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">严格压实</font><font face="宋体">“三保”主体责任，成立“三保”工作领导小组，落实“县级为主、市级帮扶（兜底）、省级兜底”的分级保障机制，确保责任层层传导、落地见效。根据省“三保”清单，足额编制“三保”支出预算，明确“三保”支出在预算中优先顺序。通过严控一般性支出、压减非刚性与低效支出，保障“三保”资金稳定充足。强化风险防控与动态监管，及时跟踪“三保”支付进度。2025年全市“三保”支出100.13亿元，其中：基本民生47.36亿元，工资50.47亿元，运转2.3亿元，“三保”足额保障到位。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2.严控政府债务风险，维护财政安全稳定。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">抢抓政策机遇，主动发力，积极争取政府债券资金</font><font face="宋体">19.21亿元，有效缓解大额到期政府债券本金的兑付压力。按时足额偿还到期债务本息35.18亿元，未发生债务违约事件，维护政府信誉。加快推进存量隐形债务化解、融资平台压降工作，超额完成2025年省下达的融资平台压降任务。用好用足财政金融政策，超额完成拖欠企业账款2025年清欠任务。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">（七）深化改革创新，财政治理效能持续提升</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">1.推进零基预算改革，打破支出固化格局。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">以省委、省政府出台的《关于深化零基预算改革的意见》为开展零基预算改革的基础性、指导性文件，结合我市实际，制定出台《阜新市深化零基预算改革的实施方案》，从编制</font><font face="宋体">2026年预算起，全面打破预算安排和资金分配“基数”，按照“先定事后定钱”的原则，结合年度大事要事保障清单和财力可能，以零为起点编制预算。构建“以零为基、以事定钱、以效促用”的预算管理新机制。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2.优化财政管理体制，理顺市县财权关系。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">深入贯彻落实国务院及省委、省政府关于深化财政体制改革的决策部署，根据《阜新市人民政府关于推进市以下财政体制改革的实施意见》相关精神，印发《市与县区税收收入划分办法》、《关于明确</font><font face="宋体">“路矿一体”项目分成及调整新邱区税收资金上划比例的通知》，进一步理顺市县（区）收入划分，推动构建规范、均衡、高效的市以下财政体系。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">3.明确财政事权责任，深化重点领域改革。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">出台《阜新市国防领域市与县财政事权和支出责任划分改革方案》，建立科学合理、权责明确的国防领域市与县（区）财政事权和支出责任划分制度，为我市履行维护国家国防安全政治使命、推进国防和军队现代化建设提供重要保障。出台《阜新市知识产权领域市与县区财政事权和支出责任划分改革方案》，形成权责匹配、运转高效的知识产权领域市与县（区）财政事权和支出责任划分制度，进一步提升知识产权创造、运用、保护、管理和服务水平。</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">4.搭建智能管理平台，创新“三保”管控模式。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">依托财政预算一体化系统，全省独家首创开发阜新基层</font><font face="宋体">“三保”支付顺序自动控制平台，1月8日正式上线运行后，极大提升各城区“三保”资金支出优先到位率，首次从源头上实现了对县区支付顺序的自动规范和精准控制，探索出库款支付智能化管理的“阜新模式”，全市财政库款精细化管理水平跃上一个新台阶。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">5.开展止损增收行动，激发财政管理活力。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">开展事业单位</font><font face="宋体">“止损增收”行动，制定《阜新市止损增收突破行动工作方案》，拓宽事业单位职工工作思路。出台《关于建立事业单位提效能促发展激励机制（试行）的通知》，激发事业单位人员干事创业内生动力。全年止损增收实现0.47亿元，完成全年目标的118.7%。持续开展服务类项目评审工作，服务类项目预结算评审机制实施以来，2025年评审金额1.06亿元，审减0.16亿元，审减率达15.1%，切实提高财政资金使用效益。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">三、存在问题及下一步工作措施</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2025年，我市财政决算情况总体较好，但是也存在一些方面的问题需要持续改进和优化。2026年，受国内宏观经济需求收缩等因素影响，经济稳定发展面临多重压力，我市财政平稳有序运行仍面临不小的挑战。</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">（一）财政运行中存在的问题</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">1.财源建设力度还需加强，财政保障根基还需不断夯实。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">受宏观经济下行影响，重点税源企业营收持续减少，主体税收支撑力不足，税收收入仍面临较大下行压力，拖累财政收入回稳。非税收入增长可持续性不强，缺乏稳定增长的长效支撑，随着</font><font face="宋体">“三资”盘活空间的不断收窄，财政增收压力仍十分突出。同时，受市以下财政体制调整影响，车船税、环境保护税、契税等税种按属地化原则下划至各区，市本级税收收入下降明显，2025年市本级税收收入较2024年减少0.82亿元，下降92.2%。因非税收入受一次性因素影响较大，2025年市本级非税收入较2024年减少7亿元，下降50.5%。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2.财政运行抗风险能力还需提升，保“三保”和促发展需要进一步互促共进。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">因房地产市场调控等原因导致政府性基金收入大幅萎缩，偿债资金来源短缺，个别县区需由市本级财政替其垫付偿还到期债务本息，占用大量市本级库款，在一定程度上削弱市级财政统筹保障能力。另外，受人口老龄化与养老金等部分民生补助标准提高相互叠加影响，</font><font face="宋体">“三保”等刚性支出需求逐年增长。2025年我市“三保”支出已超过100亿元，2026年“三保”支出达到105.38亿元。持续增长的刚性支出需求使收支矛盾更加突出，各级财政运行进一步承压。同时由于财力有限，在编制预算过程中，保“三保”和促发展无法实现互促共进，部分项目保障乏力，导致财政资金对经济的促进作用发挥不到位。</font></span><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">&nbsp;3.预算编制科学性还需提高，零基预算改革还需不断深化。</span></b><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">根据全省统一工作部署，在编制</font><font face="宋体">2026年预算时首次使用零基预算编制方式，2025年度预算编制还采取旧的模式，所以在预算编制的科学性上相对较弱。主要表现在收入预测精准度不足，对于很多临时性一次性因素考虑不全面；缺少政策性变量考量，导致执行过程中产生较大偏差；上下级信息不对称，上级出台新增政策时点滞后于本级预算编制节点，导致年初预算约束力弱化等。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">（二）下一步工作措施</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">下一步，我们将认真按照市人大及常委会意见和建议，结合审计提出问题，采取有力有效措施加以改进，扎实推进各项财政工作。</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">1.</span></b><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">稳运行强支撑，夯实财政发展基础。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">牢固树立大局意识，切实履行好组织收入的主体责任，按照收入预期目标，分解落实责任，加强分析调度，强化收入征管，继续加强重点项目、重点行业、重点企业的税收管理，做到依法征收，应收尽收，持续壮大财政实力。深化国有</font><font face="宋体">“三资”盘活利用，进一步梳理闲置国有资产情况，夯实资产管理数据基础。紧盯上级政策导向，加大“跑省进厅”对接力度，积极争取上级转移支付、专项债券和各类补助资金支持，增强财政保障能力。科学高效调度资金，最大限度的发挥财政资金的使用质效。</font></span><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2.防风险重发展，稳中求进统筹兼顾。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">严格执行《中华人民共和国预算法》、《中华人民共和国预算法实施条例》和《辽宁省预算审查监督条例》等法律法规制度，自觉接受人大监督，落实人大审议意见。坚决兜牢</font><font face="宋体">“三保”底线，稳步化解地方债务风险，进一步健全全口径债务监测监管体系，坚决遏制新增隐形债务，守住不发生系统性、区域性债务风险的底线。同时，按照“促统筹”预算安排思路，在保障“三保”的前提下，进一步强化经济发展、风险防范等方面的支出安排。2026年预算编制中，重点项目发展支出安排14.7亿元，包括：市本级基本建设投资专项比上年增加0.12亿元、新增支持新型工业化若干政策举措奖补资金0.04亿元、新增加油站智慧管理云平台建设项目资金0.04亿元、消费券发放金额增加0.04亿元等，为我市重点项目落地提供预算保障。</font></span><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24.1pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><b><span class="15" style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">3.抓改革提效能，完善现代财政制度。</span></b><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">不断深化零基预算改革，健全</font><font face="宋体">“破基数、强统筹、保重点、重绩效”的预算分配机制，从严压减一般性支出和非刚性支出。持续推进财政事权改革，科学界定市、县（区）两级财政事权边界与支出责任分担边界，推动形成“事权清晰、责任明确、财力协调、运转高效”的财政管理新格局。推动实施经开区体制改革，理顺市、县（区）及经开区间财政分配关系，强化财政资源统筹配置。健全预算绩效全过程管理体系，以提升财政资金配置效率和使用效益。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">按照本次常委会的要求，市审计局将作《关于阜新市本级</font><font face="宋体">2025年财政预算执行和其他财政收支的审计工作报告》，对审计局提出的问题和建议，我们将一并认真整改落实。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">2026年是“十五五”规划开局起步之年，是阜新资源型城市转型提质增效攻坚之年。全市财政系统将坚持以习近平新时代中国特色社会主义思想为指导，全面贯彻党的二十大和二十届历次全会精神，全面落实市委决策部署，自觉接受人大监督指导。锚定高质量发展首要任务，深入推进零基预算改革，进一步落实“过紧日子”要求，以“求实效”的担当赋能发展，全力保障重大战略落地、重点项目推进、重要民生改善，攻坚克难、真抓实干，以优异的财政工作成效书写中国式现代化阜新实践新篇章。&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">&nbsp;</span></p><p class="p" style="margin: 0pt; text-align: center; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">名词解释</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">一般公共预算：对以税收为主体的财政收入，安排用于保障和改善民生、推动经济社会发展、维护国家安全、维持国家机构正常运转等方面的收支预算。</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">政府性基金预算：对依照法律、行政法规的规定在一定期限内向特定对象征收、收取或者以其他方式筹集的资金，专项用于特定公共事业发展的收支预算。</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">国有资本经营预算：对国有资本收益作出支出安排的收支预算。国有资本经营预算应当按照收支平衡的原则编制，不列赤字，并安排资金调入一般公共预算。</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">社会保险基金预算：根据国家预算管理和社会保险相关法律法规编制，经法定程序审批、具有法律效力的年度基金财务收支计划，由基金收入预算和基金支出预算组成。社会保险基金预算应当按照统筹地区和险种分别编制，做到收支平衡，适当留有结余。</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">预算稳定调节基金：财政通过超收收入和支出预算结余安排的具有储备性质的基金，视预算平衡情况，在安排下年度预算时调入并安排使用，或用于弥补短收年份预算执行的收支缺口。预算稳定调节基金的安排使用接受本级人大及其常委会监督。</span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;"><font face="宋体">预备费：在编制预算中按照一般公共预算支出额的</font><font face="宋体">1%-3%设置预备费，用于当年预算执行中的自然灾害等突发事件处理增加的支出及其他难以预见的开支。</font></span><span style="font-family: &quot;Times New Roman&quot;; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 10.5pt;"></span></p><p class="p" style="margin: 0pt; text-align: justify; font-family: Calibri; font-size: 12pt; text-indent: 24pt; border-bottom: 1pt solid rgb(255, 255, 255); padding: 0pt 0pt 30pt; vertical-align: baseline; line-height: 28pt; background: rgb(255, 255, 255);"><span style="font-family: 宋体; color: rgb(51, 51, 51); letter-spacing: 0pt; font-size: 12pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">“三保”：即“保基本民生”“保工资”“保运转”。按照财政部关于“三保”清单要求，其中：“保基本民生”，主要包括对教育、文化、社会保障、医疗卫生等领域中，与民众基本生存和生活状态、基本的发展机会和发展能力、基本权益保护相关的政策；“保工资”，主要包括保障在职人员的基本工资、奖金和绩效工资、津补贴、养老保险等项目，离休人员离休费等；“保运转”，主要是机关事业单位办公经费保障，使机关事业单位能够正常运转。</span><span style="font-size: 12pt;"></span></p>
+                                        </div>
+                                    <div class="Detail_btn_box">
+                                        <div class="Detail_btn" onclick="doPrint()">打印<i class="printIcon"></i></div>
+                                        <div class="Detail_btn shareB" href="javascript:;">
+                                            分享<i class="shareIcon"></i>
+                                            <div class="shareBox">
+                                                <div class="bshare-custom">
+                                                    <a title="分享到微信" class="bshare-weixin" href="javascript:void(0);"></a>
+                                                    <a title="分享到QQ空间" class="bshare-qzone"></a>
+                                                    <a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+                                                    <a title="分享到腾讯微博" class="bshare-qqmb"></a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <a upLevel="1" href="https://czj.fuxin.gov.cn/channel/list/18176.html" class="Detail_btn fr">返回列表</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--底部-->
+﻿﻿﻿﻿﻿﻿﻿
+<div class="floorpart">
+    <div class="cen">
+        <div class="foorselect">
+            <div class="foorselect_inner">
+                <select class="select1" onchange="chooseSite(this)">
+                    <option value="">中央部门网站</option>
+                            <option value="http://www.gov.cn/">中央政府门户网</option>
+                            <option value="https://www.neac.gov.cn/">国家民族事务委员会</option>
+                            <option value="https://www.ndrc.gov.cn/">国家发展和改革委员会</option>
+                            <option value="http://www.mohrss.gov.cn/">人力资源和社会保障部</option>
+                            <option value="http://www.nhc.gov.cn/">国家卫生健康委员会</option>
+                            <option value="http://www.mohurd.gov.cn/">住房和城乡建设部</option>
+                            <option value="https://www.mct.gov.cn/">文化和旅游部</option>
+                            <option value="http://www.miit.gov.cn/">工业和信息化部</option>
+                            <option value="https://www.mem.gov.cn/">应急管理部</option>
+                            <option value="http://www.mot.gov.cn/">交通运输部</option>
+                            <option value="http://www.moa.gov.cn/">农业农村部</option>
+                            <option value="http://www.mee.gov.cn/">生态环境部</option>
+                            <option value="http://www.mnr.gov.cn/">自然资源部</option>
+                            <option value="http://www.most.gov.cn/index.htm">科学技术部</option>
+                            <option value="http://www.audit.gov.cn/">审计署</option>
+                            <option value="http://www.mwr.gov.cn/">水利部</option>
+                            <option value="http://www.mof.gov.cn/index.htm">财政部</option>
+                            <option value="http://www.moj.gov.cn/">司法部</option>
+                            <option value="http://www.mca.gov.cn/">民政部</option>
+                            <option value="http://www.mofcom.gov.cn/">商务部</option>
+                            <option value="https://www.mps.gov.cn/">公安部</option>
+                            <option value="http://www.moe.gov.cn/">教育部</option>
+                            <option value="http://www.mod.gov.cn/">国防部</option>
+                            <option value="https://www.fmprc.gov.cn/web/">外交部</option>
+                </select>
+                <select class="select1" onchange="chooseSite(this)">
+                    <option value="">省市政府网站</option>
+                            <option value="http://www.ln.gov.cn/">辽宁省人民政府网站</option>
+                            <option value="http://www.shenyang.gov.cn/">沈阳市人民政府网站</option>
+                            <option value="http://www.dl.gov.cn/">大连市人民政府网站</option>
+                            <option value="http://www.anshan.gov.cn/">鞍山市人民政府网站</option>
+                            <option value="http://www.fushun.gov.cn/">抚顺市人民政府网站</option>
+                            <option value="http://www.benxi.gov.cn/">本溪市人民政府网站</option>
+                            <option value="https://www.dandong.gov.cn/">丹东市人民政府网站</option>
+                            <option value="http://www.jz.gov.cn/">锦州市人民政府网站</option>
+                            <option value="http://www.yingkou.gov.cn/">营口市人民政府网站</option>
+                            <option value="http://www.fuxin.gov.cn/">阜新市人民政府网站</option>
+                            <option value="http://www.liaoyang.gov.cn/">辽阳市人民政府网站</option>
+                            <option value="http://www.panjin.gov.cn/">盘锦市人民政府网站</option>
+                            <option value="http://www.tieling.gov.cn/">铁岭市人民政府网站</option>
+                            <option value="http://www.chaoyang.gov.cn">朝阳市人民政府网站</option>
+                            <option value="http://www.hld.gov.cn/">葫芦岛市人民政府网站</option>
+                </select>
+                <select class="select1" onchange="chooseSite(this)">
+                    <option value="">县区网站</option>
+                            <option value="http://www.fxhz.gov.cn/">海州区人民政府网站</option>
+                            <option value="http://www.fxxq.gov.cn/">新邱区人民政府网站</option>
+                            <option value="http://www.fxtp.gov.cn/">太平区人民政府网站</option>
+                            <option value="http://www.fxqhm.gov.cn/">清河门区人民政府网站</option>
+                            <option value="http://www.fxxh.gov.cn/">细河区人民政府网站</option>
+                            <option value="http://www.fmx.gov.cn/">阜新蒙古族自治县人民政府网站</option>
+                            <option value="http://www.zhangwu.gov.cn/">彰武县人民政府网站</option>
+                </select>
+                <select class="select1" onchange="chooseSite(this)">
+                    <option value="">市直部门网站</option>
+                            <option value="http://gxq.fuxin.gov.cn/">高新开发区管委会</option>
+                            <option value="http://fgw.fuxin.gov.cn/">市发展和改革委员会</option>
+                            <option value="http://jyj.fuxin.gov.cn/">市教育局</option>
+                            <option value="http://gxj.fuxin.gov.cn/">市工业和信息化局</option>
+                            <option value="http://gaj.fuxin.gov.cn/">市公安局</option>
+                            <option value="http://mzj.fuxin.gov.cn/">市民政局</option>
+                            <option value="http://sfj.fuxin.gov.cn/">市司法局</option>
+                            <option value="http://czj.fuxin.gov.cn/">市财政局</option>
+                            <option value="http://rsj.fuxin.gov.cn/">市人力资源和社会保障局</option>
+                            <option value="http://zrzy.fuxin.gov.cn/">市自然资源局</option>
+                            <option value="http://sthj.fuxin.gov.cn/">市生态环境局</option>
+                            <option value="http://zjj.fuxin.gov.cn/">市住房和城乡建设局</option>
+                            <option value="http://jtj.fuxin.gov.cn/">市交通运输局</option>
+                            <option value="http://slj.fuxin.gov.cn/">市水利局</option>
+                            <option value="http://nync.fuxin.gov.cn/">市农业农村局</option>
+                            <option value="http://swj.fuxin.gov.cn/">市商务局</option>
+                            <option value="http://whly.fuxin.gov.cn/">市文化旅游和广播电视局</option>
+                            <option value="http://wsjk.fuxin.gov.cn/">市卫生健康委员会</option>
+                            <option value="http://yjgl.fuxin.gov.cn/">市应急管理局</option>
+                            <option value="http://scjg.fuxin.gov.cn/">市市场监督管理局</option>
+                            <option value="https://xfj.fuxin.gov.cn/">市信访局</option>
+                            <option value="http://ysj.fuxin.gov.cn/">阜新市数据和政务服务局</option>
+                            <option value="http://ybj.fuxin.gov.cn/">市医疗保障局</option>
+                </select>
+                <select class="select1" onchange="chooseSite(this)">
+                    <option value="">中省直单位网站</option>
+                            <option value="http://www.lntu.edu.cn/">辽宁工程技术大学</option>
+                            <option value="http://ln.spb.gov.cn/lnsyzglj/c101786/indexshi.shtml">阜新市邮政管理局</option>
+                            <option value="http://liaoning.chinatax.gov.cn/col/col603/index.html">国家税务总局辽宁省税务局阜新市</option>
+                </select>
+            </div>
+        </div>
+        <div class="organ_box">
+<script type="text/javascript">document.write(unescape("%3Cspan id='_ideConac' %3E%3C/span%3E%3Cscript  src='https://dcs.conac.cn/js/08/145/0000/41242322/CA081450000412423220001.js' type='text/javascript'%3E%3C/script%3E"));</script>          
+          <script id="_jiucuo_" sitecode='2109000041' src='https://zfwzgl.www.gov.cn/exposure/jiucuo.js'></script>
+          <style>
+          #_span_jiucuo img{width: 110px;
+    height: 55px;
+    float: left;
+    margin-right: 34px!important;
+    margin-top: 15px!important;}
+          </style>
+          
+            <a id="wzzc_del" href="#" style="display:none">
+                <img class="organIcon2" src="https://czj.fuxin.gov.cn/czj/template//img/organIcon.png" alt="">
+            </a>
+            <div class="about">
+                <a class="fxMaplink" href="https://czj.fuxin.gov.cn/sitemap.thtml">
+                    网站地图
+                </a>
+                <a class="fxMaplink" id="zzsm">
+                </a>
+                <a class="fxMaplink" id="gywm">
+                </a>
+            </div>
+            <div class="copyright" id="siteinfo">
+                <p>主办单位：阜新市财政局　　版权所有：阜新市人民政府办公室</p>
+                <p>地址：阜新市细河区中华路51-2号　　邮编：123000　　Email：fxsczjbgs@126.com</p>
+                <p>
+                    <a style="height: 20px; line-height: 20px; text-decoration-line: none; display: inline-block;" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=21091102000087" target="_blank">
+                        <img style="float: left;" src="https://czj.fuxin.gov.cn/czj/template//img/batb.png" />
+                        辽公网安备 21091102000087号
+                    </a>
+                    <a href="https://beian.miit.gov.cn/">辽ICP备2021000737</a>  　网站标识码：2109000041
+                </p>
+                <p>建议使用1440*768分辨率 IE9.0及以上版本浏览器</p>
+              
+              <p>网站监督举报热线：0418- 2825069      网站举报邮箱：fxsczjbgs@126.com</p>
+              
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var siteid = 17;
+    $(function () {
+        var url = encodeURIComponent('czj.fuxin.gov.cn');
+        var allurl = 'http://121.43.68.40/exposure/jiucuo.html?site_code=2109000041&url=' + url;
+        $("#wzzc").attr("href", allurl);
+        $("#imgConac").addClass("organIcon1").css({ 'height': 'auto', 'width': '80px', "margin-top": "3px" });
+ //$("#jt_wxcode").attr("src", "https://czj.fuxin.gov.cn/czj/upload"+"".replace("null", ""));
+$("#jt_wxcode").attr("src", "https://czj.fuxin.gov.cn/"+"".replace("null", ""));
+    })
+    function chooseSite(obj) {
+        var url = $(obj).val();
+        if (url != "") {
+            window.open(url);
+        }
+    }
+</script>
+            </body>
+        </html>
+        <script src="https://czj.fuxin.gov.cn/czj/template//js/hover.js?v=1.2" type="text/javascript"></script>
+        <script>
+            $(function () {          
+                            
+              
+              if(isNaN(Number('1090313')))
+              {
+				alert("请勿输入非法字符");
+				window.location.href = 'https://www.fuxin.gov.cn/';  
+              }
+              
+              
+              
+                if(navigator.userAgent.match(/mobile/i)) {
+                    //top.location='/mob/newsdetail.thtml?id='+1090313;
+                  top.location='/mob/newsdetail.thtml?id=1090313';
+                }
+              
+              
+            
+              
+           
+
+                var title = "";
+                if (title != "") {
+                    $(".DetailcontentTile").html("");
+                    var titleL = title.split(',');
+                    $.each(titleL, function (index, j) {
+                        $(".DetailcontentTile").append(j + '<br>');
+                    })
+                }
+                console.log(title);
+                $("#Detailcontent").html($("#Detailcontent").html().replace(RegExp(('<table width="100">', 'g'), '<table width="100%" id="table">')).replace(RegExp('<table width="605">', 'g'), '<table width="100%" id="table">'));
+                $("#Detailcontent").html($("#Detailcontent").html().replace(RegExp('<table ', 'g'), '<table id="table" '));
+                $("#table tr td").css({"border":"0px"})
+
+                $("#Detailcontent").find("table").each(function() {
+                    $(this).attr("width", "100%");
+                })
+            });
+            //字体大小切换
+            $("#tab").find('.timeBtn').click(function () {
+                var index = $(this).index();
+                switch (index) {
+                    case 0:
+                        $("#Detailcontent").find("div").css({ "font-size": "24px" });;
+                        $("#Detailcontent").find("p").css({ "font-size": "24px" });;
+                        $("#Detailcontent").find("span").css({ "font-size": "24px" });;
+                        break;
+                    case 1:
+                        $("#Detailcontent").find("div").css({ "font-size": "16px" });;
+                        $("#Detailcontent").find("p").css({ "font-size": "16px" });;
+                        $("#Detailcontent").find("span").css({ "font-size": "16px" });;
+                        break;
+                    case 2:
+                        $("#Detailcontent").find("div").css({ "font-size": "14px" });;
+                        $("#Detailcontent").find("p").css({ "font-size": "14px" });;
+                        $("#Detailcontent").find("span").css({ "font-size": "14px" });;
+                        break;
+                }
+            })
+            function doPrint() {
+                bdhtml=window.document.body.innerHTML;
+                sprnstr="<!--startprint-->"; //开始打印标识字符串有17个字符
+                eprnstr="<!--endprint-->"; //结束打印标识字符串
+                prnhtml=bdhtml.substr(bdhtml.indexOf(sprnstr)+17); //从开始打印标识之后的内容
+                prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr)); //截取开始标识和结束标识之间的内容
+                window.document.body.innerHTML=prnhtml; //把需要打印的指定内容赋给body.innerHTML
+                window.print(); //调用浏览器的打印功能打印指定区域
+                window.document.body.innerHTML=bdhtml; // 最后还原页面
+            }
+          
+          //获取地址栏参数的方法
+			function  GetQueryString(name)
+			{
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) {
+                return decodeURI(r[2]);
+            }
+            return null;
+			}
+        </script>
+<script type="text/javascript" src="https://czj.fuxin.gov.cn/core/javascript/stat.js?siteId=27&siteUrl=https://czj.fuxin.gov.cn/&notHost=false&contentId=1090313&classId=-1" ></script>

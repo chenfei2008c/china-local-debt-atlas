@@ -3317,6 +3317,28 @@ CITY_YEAR_FUND_SOURCES = (
         "page_count": "1",
         "note": "抚顺市政府官方财政决算报告，明确区分全市与市本级；采用2025年全市政府性基金收入5.6亿元，不使用市本级4.9亿元。",
     },
+    {
+        "year": 2025,
+        "city_name": "阜新市",
+        "city_id": "CN-210900",
+        "source_doc_id": "SRC-A2-FUXIN-CITY-FUND-2025",
+        "url": "https://czj.fuxin.gov.cn/content/2026/1090313.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "fuxin_2025_final_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "fuxin_2025_final_budget_report_excerpt.txt",
+        "document_title": "关于阜新市2025年财政决算的报告",
+        "publisher": "阜新市财政局",
+        "publisher_level": "市级财政机构官方网页",
+        "publication_date": "2026-07-10",
+        "source_grade": "A2",
+        "source_format": "html",
+        "pattern": r"原文摘录：2025年全市政府性基金预算收入完成([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "final",
+        "data_status_label": "2025年决算数",
+        "document_type": "城市财政决算报告（官方网页）",
+        "page_count": "1",
+        "note": "阜新市财政局官方财政决算报告，明确全市与市本级口径；采用2025年全市政府性基金预算收入4.22亿元，不使用市本级1.51亿元。",
+    },
 )
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
