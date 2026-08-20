@@ -1708,6 +1708,171 @@ NEXT16_2025_ECONOMIC_SOURCES = (
     },
 )
 
+NEXT17_2025_ECONOMIC_SOURCES = (
+    {
+        "city_name": "衡阳市",
+        "city_id": "CN-430400",
+        "source_doc_id": "SRC-A2-HUNAN-CITY-STATISTICAL-HENGYANG-2025",
+        "url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/hys_1/202605/t20260512_33975342.html",
+        "attachment_url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/hys_1/202605/t20260512_33975342.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "hengyang_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "hengyang_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "衡阳市2025年国民经济和社会发展统计公报",
+        "publisher": "湖南省统计局、衡阳市统计局",
+        "publisher_level": "省级统计机构转载",
+        "publication_date": "2026-05-12",
+        "title_source": "official_page_excerpt",
+        "document_type": "官方统计公报经济财政指标（网页）",
+        "mime_type": "text/html",
+        "source_grade": "A2",
+        "data_status": "preliminary",
+        "patterns": {
+            "gdp_current_100m": (r"实现地区生产总值（GDP）([0-9.]+)亿元，增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"实现地区生产总值（GDP）[0-9.]+亿元，增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"2025年末全市常住人口([0-9.]+)万人", "万人"),
+            "general_public_revenue_100m": (r"全市地方一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"全年一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "A2湖南省统计局公开的衡阳市统计公报；补录2025年全市GDP、增速、年末常住人口和一般公共预算收支，政府性基金收入未在本来源中披露。",
+    },
+    {
+        "city_name": "邵阳市",
+        "city_id": "CN-430500",
+        "source_doc_id": "SRC-A2-HUNAN-CITY-STATISTICAL-SHAOYANG-2025",
+        "url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/sys_1/202605/t20260518_33979386.html",
+        "attachment_url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/sys_1/202605/t20260518_33979386.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "shaoyang_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "shaoyang_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "邵阳市2025年国民经济和社会发展统计公报",
+        "publisher": "湖南省统计局、邵阳市统计局",
+        "publisher_level": "省级统计机构转载",
+        "publication_date": "2026-05-18",
+        "title_source": "official_page_excerpt",
+        "document_type": "官方统计公报经济财政指标（网页）",
+        "mime_type": "text/html",
+        "source_grade": "A2",
+        "data_status": "preliminary",
+        "patterns": {
+            "gdp_current_100m": (r"完成地区生产总值([0-9.]+)亿元、增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"完成地区生产总值[0-9.]+亿元、增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末常住人口([0-9.]+)万人", "万人"),
+            "general_public_revenue_100m": (r"地方一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "A2湖南省统计局公开的邵阳市统计公报；补录2025年全市GDP、增速、年末常住人口和一般公共预算收支，政府性基金收入未在本来源中披露。",
+    },
+    {
+        "city_name": "郴州市",
+        "city_id": "CN-431000",
+        "source_doc_id": "SRC-A2-HUNAN-CITY-STATISTICAL-CHENZHOU-2025",
+        "url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/czs_1/202605/t20260512_33975324.html",
+        "attachment_url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/czs_1/202605/t20260512_33975324.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "chenzhou_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "chenzhou_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "郴州市2025年国民经济和社会发展统计公报",
+        "publisher": "湖南省统计局、郴州市统计局",
+        "publisher_level": "省级统计机构转载",
+        "publication_date": "2026-04-17",
+        "title_source": "official_page_excerpt",
+        "document_type": "官方统计公报经济财政指标（网页）",
+        "mime_type": "text/html",
+        "source_grade": "A2",
+        "data_status": "preliminary",
+        "patterns": {
+            "gdp_current_100m": (r"地区生产总值([0-9.]+)亿元，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"地区生产总值[0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
+            "general_public_revenue_100m": (r"地方一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "A2湖南省统计局公开的郴州市统计公报；补录2025年全市GDP、增速、年末常住人口和一般公共预算收支，政府性基金收入未在本来源中披露。",
+    },
+    {
+        "city_name": "永州市",
+        "city_id": "CN-431100",
+        "source_doc_id": "SRC-A2-HUNAN-CITY-STATISTICAL-YONGZHOU-2025",
+        "url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/yzs_1/202605/t20260521_33982654.html",
+        "attachment_url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/yzs_1/202605/t20260521_33982654.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "yongzhou_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "yongzhou_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "永州市2025年国民经济和社会发展统计公报",
+        "publisher": "湖南省统计局、永州市统计局",
+        "publisher_level": "省级统计机构转载",
+        "publication_date": "2026-05-21",
+        "title_source": "official_page_excerpt",
+        "document_type": "官方统计公报经济财政指标（网页）",
+        "mime_type": "text/html",
+        "source_grade": "A2",
+        "data_status": "preliminary",
+        "patterns": {
+            "gdp_current_100m": (r"地区生产总值\[2\]([0-9.]+)亿元，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"地区生产总值\[2\][0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
+            "general_public_revenue_100m": (r"地方一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "A2湖南省统计局公开的永州市统计公报；补录2025年全市GDP、增速、年末常住人口和一般公共预算收支，政府性基金收入未在本来源中披露。",
+    },
+    {
+        "city_name": "怀化市",
+        "city_id": "CN-431200",
+        "source_doc_id": "SRC-A2-HUNAN-CITY-STATISTICAL-HUAIHUA-2025",
+        "url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/hhs_1/202605/t20260512_33975309.html",
+        "attachment_url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/hhs_1/202605/t20260512_33975309.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "huaihua_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "huaihua_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "怀化市2025年国民经济与社会发展统计公报",
+        "publisher": "湖南省统计局、怀化市统计局",
+        "publisher_level": "省级统计机构转载",
+        "publication_date": "2026-05-12",
+        "title_source": "official_page_excerpt",
+        "document_type": "官方统计公报经济财政指标（网页）",
+        "mime_type": "text/html",
+        "source_grade": "A2",
+        "data_status": "preliminary",
+        "patterns": {
+            "gdp_current_100m": (r"完成地区生产总值（GDP）([0-9.]+)亿元，较上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"完成地区生产总值（GDP）[0-9.]+亿元，较上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"全市年末常住人口([0-9.]+)万人", "万人"),
+            "general_public_revenue_100m": (r"地方一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"全市一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "A2湖南省统计局公开的怀化市统计公报；补录2025年全市GDP、增速、年末常住人口和一般公共预算收支，公报注明财政数据来自市财政局快报，政府性基金收入未在本来源中披露。",
+    },
+    {
+        "city_name": "娄底市",
+        "city_id": "CN-431300",
+        "source_doc_id": "SRC-A2-HUNAN-CITY-STATISTICAL-LOUDI-2025",
+        "url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/lds_1/202605/t20260512_33975300.html",
+        "attachment_url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/lds_1/202605/t20260512_33975300.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "loudi_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "loudi_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "娄底市2025年国民经济和社会发展统计公报",
+        "publisher": "湖南省统计局、娄底市统计局",
+        "publisher_level": "省级统计机构转载",
+        "publication_date": "2026-04-29",
+        "title_source": "official_page_excerpt",
+        "document_type": "官方统计公报经济财政指标（网页）",
+        "mime_type": "text/html",
+        "source_grade": "A2",
+        "data_status": "preliminary",
+        "patterns": {
+            "gdp_current_100m": (r"实现地区生产总值([0-9.]+)亿元，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"实现地区生产总值[0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"常住人口([0-9.]+)万人，其中城镇人口", "万人"),
+            "general_public_revenue_100m": (r"地方一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"公共财政预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "A2湖南省统计局公开的娄底市统计公报；补录2025年全市GDP、增速、年末常住人口和一般公共预算收支，政府性基金收入未在本来源中披露。",
+    },
+)
+
 JIANGSU_CITY_FUND_SOURCES = (
     {
         "year": 2018,
@@ -3892,6 +4057,12 @@ def load_next16_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[di
     return load_city_2025_fiscal_sources(NEXT16_2025_ECONOMIC_SOURCES)
 
 
+def load_next17_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取衡阳、邵阳、郴州、永州、怀化、娄底 2025 年统计公报经济财政数据。"""
+
+    return load_city_2025_fiscal_sources(NEXT17_2025_ECONOMIC_SOURCES)
+
+
 def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
     general_limit = as_decimal(row.get("general_debt_limit_100m"))
     special_limit = as_decimal(row.get("special_debt_limit_100m"))
@@ -4004,6 +4175,7 @@ def build_macro_rows(
     next14_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next15_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next16_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
+    next17_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     jiangsu_city_fund: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     jiangsu_city_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     city_year_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
@@ -4036,6 +4208,7 @@ def build_macro_rows(
     next14_2025_economic = next14_2025_economic or {}
     next15_2025_economic = next15_2025_economic or {}
     next16_2025_economic = next16_2025_economic or {}
+    next17_2025_economic = next17_2025_economic or {}
     jiangsu_city_fund = jiangsu_city_fund or {}
     jiangsu_city_fiscal = jiangsu_city_fiscal or {}
     city_year_fiscal = city_year_fiscal or {}
@@ -4064,6 +4237,7 @@ def build_macro_rows(
         **next14_2025_economic,
         **next15_2025_economic,
         **next16_2025_economic,
+        **next17_2025_economic,
     }
     for city in city_master:
         year = int(city["metric_year"])
@@ -5356,6 +5530,7 @@ def main() -> None:
     next14_2025_economic, next14_2025_economic_sources = load_next14_2025_city_economic()
     next15_2025_economic, next15_2025_economic_sources = load_next15_2025_city_economic()
     next16_2025_economic, next16_2025_economic_sources = load_next16_2025_city_economic()
+    next17_2025_economic, next17_2025_economic_sources = load_next17_2025_city_economic()
     jiangsu_city_fund, jiangsu_city_fund_sources = load_jiangsu_city_fund_sources()
     jiangsu_city_fiscal, jiangsu_city_fiscal_sources = load_jiangsu_city_fiscal_sources()
     city_year_fiscal, city_year_fiscal_sources = load_city_year_fiscal_sources()
@@ -5403,6 +5578,7 @@ def main() -> None:
         next14_2025_economic,
         next15_2025_economic,
         next16_2025_economic,
+        next17_2025_economic,
         jiangsu_city_fund,
         jiangsu_city_fiscal,
         city_year_fiscal,
@@ -5557,6 +5733,7 @@ def main() -> None:
             *next14_2025_economic_sources,
             *next15_2025_economic_sources,
             *next16_2025_economic_sources,
+            *next17_2025_economic_sources,
             *jiangsu_city_fund_sources,
             *jiangsu_city_fiscal_sources,
             *city_year_fiscal_sources,
