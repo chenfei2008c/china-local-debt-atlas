@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <meta name="renderer" content="webkit">
+    <meta name="author" content="Design:fengJiajia; WebLayout:ZhangNannan;webData:ZhangNannan;" />
+    <!--栏目-->
+    <link rel="shortcut icon" href="/websites/commonComponents/images/guohui.ico">
+    <script type="text/javascript" src="/websites/commonComponents/js/jquery-3.6.4.min.js"></script>
+    <script type="text/javascript" src="/websites/rmzf/js/jquery.SuperSlide.2.1.3.source.js"></script>
+    <script type="text/javascript" src="/websites/rmzf/js/jquery.dotdotdot.min.js"></script>
+    <link rel="stylesheet" href="/websites/rmzf/css/common.css">
+    <link rel="stylesheet" href="/websites/rmzf/css/article.css">
+    <link rel="stylesheet" href="/websites/commonComponents/css/leaderDetails.css">
+    <!--索引号样式-->
+    <link rel="stylesheet" href="/websites/commonComponents/css/indexNumberDisplay.css">
+    <title>2025年三门峡市国民经济和社会发展统计公报</title>
+    <script>
+        let title = "2025\u5E74\u4E09\u95E8\u5CE1\u5E02\u56FD\u6C11\u7ECF\u6D4E\u548C\u793E\u4F1A\u53D1\u5C55\u7EDF\u8BA1\u516C\u62A5"
+        // $("title").text(title)
+        let mc = "\u7EDF\u8BA1\u9886\u57DF"
+        if (title == null) {
+            $("title").text(mc)
+        }
+    </script>
+</head>
+
+<body>
+    <!-- header开始 -->
+    <div class="header">
+    <link rel="stylesheet" href="/websites/commonComponents/layui/css/layui.css">
+    <script src="/websites/commonComponents/laydate/laydate.js"></script>
+    <iframe id="loginInfo" width="100%" height="21px" scrolling="no" src="/pageView/loginInfo.html" frameborder="0"></iframe>
+    <div class="headerBox w clearfix">
+      <a href="/index.html" class="header-logo fl" title="三门峡市人民政府链接"></a>
+      <div class="search fr">
+        <div class="searchup clearfix">
+          <div class="fontup fl">
+            <a href="/pageView/znwd.html" class="" target="_blank">
+              <img style="width: 20px;" src="/websites/rmzf/images/ai.png" alt="智能问答">
+            </a>
+            <a href="#" class="wechat">
+              <img src="/websites/rmzf/images/weixin.png" alt="三门峡政务公众号" class="weixin">
+              <img src="/websites/rmzf/images/erweima.png" class="erweima" alt="三门峡政务公众号二维码">
+            </a>
+            <!--<a href="#">无障碍</a>|-->
+            <a href="javascript:zh_tran('s')" id="zh_click_s" title="简">简</a>|
+            <a href="javascript:zh_tran('t')" id="zh_click_t" title="繁">繁</a>
+            <!-- |
+            <a href="http://en.smx.gov.cn/" title="英文站">EN</a> -->
+          </div>
+          <div class="oldinfo">
+            <div class="right_wza" ><a id="navSwitch" href="javascript:void(0);" title="无障碍浏览" class="cmsHBG CMSAssetsTextCon" tabindex="0">无障碍浏览</a ></div>
+            <div class="right_slh">
+              <a onclick="headTool.switchOld()" id="toolbarOldman" class="oldman" href="javascript:void(0);"
+                title="进入适老模式">进入适老模式</a>
+            </div>
+          </div>
+        </div>
+        <form class="searchForm" id="searchForm" action="/pageView/informationSearch.html">
+          <div class="searchInput">
+            <div class="searchtext">本站</div>
+            <input type="text" name="searchText" value placeholder="热词：天鹅 摄影节">
+            <div class="searchBtn" onclick="document.getElementById('searchForm').submit();return false">
+              <img src="/websites/rmzf/images/search.png" alt="搜索">
+            </div>
+            <input type="hidden" name="protocol" value="null:">
+            <input id="s_fbsj_s" name="s_fbsj_s" type="hidden" value="">
+            <input id="s_fbsj_e" name="s_fbsj_e" type="hidden" value="">
+            <input id="s_lmnrlx" name="s_lmnrlx" type="hidden" value="-1">
+          </div>
+          <button type="button" class="high-search-btn" onclick="toggleHighSearch()">高级搜索</button>
+          <div class="high-search layui-form">
+            <div class="search-scope clearfix">
+                <span>高级搜索</span>
+            </div>
+            <div class="station">
+                <div class="search-items cl home-station">
+                    <div class="search-title search-result">搜索结果：</div>
+                    <div class="search-block">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">包含以下任意关键字词</label>
+                            <div class="layui-input-block">
+                                <input type="text" value="" name="anyKeyword" placeholder="请输入包含以下任意关键字词" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">不包含以下关键词</label>
+                            <div class="layui-input-block">
+                                <input type="text" value="" name="noKeyword" placeholder="请输入不包含以下关键词" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-items cl home-station">
+                    <div class="search-title">查询范围：</div>
+                    <div class="search-block">
+                        <input type="radio" name="searchRange" value="1" title="全部" lay-filter="searchRange" checked="checked"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>全部</div></div>
+                        <input type="radio" name="searchRange" value="2" title="标题" lay-filter="searchRange"><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><div>标题</div></div>
+                        <input type="radio" name="searchRange" value="3" title="正文" lay-filter="searchRange"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>正文</div></div>
+                    </div>
+                </div>
+                <div class="search-items cl">
+                    <div class="search-title">时间范围：</div>
+                    <div class="search-block">
+                        <div class="layui-inline" id="test7" lay-key="2">
+                            <div class="layui-input-inline">
+                                <input type="text" value="" autocomplete="off" id="test-startDate-2" class="layui-input" placeholder="开始日期" >
+                            </div>
+                            <span>-</span>
+                            <div class="layui-input-inline">
+                                <input type="text" value="" autocomplete="off" id="test-endDate-2" class="layui-input" placeholder="结束日期" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="search-city">
+                <button class="search-btn" onclick="document.getElementById('searchForm').submit();return false;">搜索</button>
+            </div>
+          </div>
+        </form>
+        <script>
+          $('#protocol').val(window.location.protocol)
+        </script>
+      </div>
+    </div>
+    <div class="navback fixed-box">
+      <!-- ie8 -->
+      <img src="/websites/rmzf/images/nav.png" id="img-ie8" alt="导航背景图片">
+      <div class="navBox w clearfix">
+        <div class="navItem fl" style="margin-left:0px;">
+          <a class="navPage" id="4021" href="/index.html" title="首页">首&emsp;页</a>
+        </div>
+        <div class="navItem fl">
+          <a class="navPage" href="/4018/0000/ywdt-1.html">要闻动态</a>
+        </div>
+        <div class="navItem fl">
+
+          <a class="navPage" href="/4051/0000/zhengfuxinxi-1.html" target="_blank">政府信息公开</a>
+        </div>
+        <div class="navItem fl">
+          <a class="navPage" id="hnzwfw2021" target="_blank" href="https://www.hnzwfw.gov.cn/411200000000/?region=411200000000">政务服务</a>
+        </div>
+        <div class="navItem fl">
+          <a class="navPage" href="/pageView/hdjl.html?rlmid=4105&amp;lmid=4105">互动交流</a>
+        </div>
+        <div class="navItem fl">
+          <a class="navPage" href="/10480/0000/sjfbsyList-1.html" target="_blank">数据发布</a>
+        </div>
+        <div class="navItem fl">
+          <a class="navPage" href="http://smxrcgz.com/index.html" target="_blank">人才政策</a>
+        </div>
+        <div class="navItem fl">
+          <a class="navPage" href="/4024/0000/gosmx-1.html">走进三门峡</a>
+        </div>
+      </div>
+    </div>
+    <script src="/websites/commonComponents/layui/layui.js"></script>
+    <script>
+      var fbsjStart = '' ? '' : '0900-00-00';
+      var fbsjEnd = '' ? '' : '9999-99-99';
+
+      var highSearchStartTime =  laydate.render({
+          elem: '#test-startDate-2',
+          value: '',
+          max: fbsjEnd,
+          trigger: 'click',
+          btns: ['clear', 'confirm'],
+          done: function (value, date, endDate) {
+              $('#s_fbsj_s').val(value);
+              if (value != "") {
+                  date.month = date.month - 1;
+                  highSearchEndTime.config.min = date;
+              } else {
+                  highSearchEndTime.config.min = highSearchStartTime.config.min;
+              }
+          }
+      });
+      var highSearchEndTime =  laydate.render({
+          elem: '#test-endDate-2',
+          value: '',
+          min: fbsjStart,
+          trigger: 'click',
+          btns: ['clear', 'confirm'],
+          done: function (value, date, endDate) {
+              $('#s_fbsj_e').val(value);
+              if (value != "") {
+                  date.month = date.month - 1;
+                  highSearchStartTime.config.max = date;
+              } else {
+                  highSearchStartTime.config.max = highSearchEndTime.config.max;
+              }
+          }
+      });
+    </script>
+    <script type="text/javascript">
+      var searchText = '';
+      var lx = ('') ? '' : '-1';
+      var fbsj_s = '';
+      var fbsj_e = '';
+      var anyKeyword = '';
+      var noKeyword = '';
+      var searchRange = '';
+      var protocol = window.location.protocol;
+      function selectChange() {
+          var selectValue = document.getElementById('select_id1');
+          var checkValue = selectValue.options[selectValue.selectedIndex].value;
+          window.location.href = './informationSearch.html?pageNum=1' + checkValue + '&searchText=' + searchText + '&s_lmnrlx=' + lx + '&s_fbsj_s=' + fbsj_s + '&s_fbsj_e=' + fbsj_e + '&protocol=' + protocol + '&searchRange=' + searchRange + '&anyKeyword=' + anyKeyword + '&noKeyword=' + noKeyword;
+      }
+          layui.use(['form'], function () {
+        var form = layui.form;
+        // 更新radio的选中状态
+        form.render('radio');
+        document.addEventListener('keydown', function (e) {
+            if (e.key === "Enter") {
+                if ($(".cmsUnderLine").html() == "标题") {
+                    $('input[name="searchRange"][value="2"]').prop('checked', 'checked');
+                    form.render('radio');
+                } else if ($(".cmsUnderLine").html() == "正文") {
+                    $('input[name="searchRange"][value="3"]').prop('checked', 'checked');
+                    form.render('radio');
+                } else if ($(".cmsUnderLine").html() == "全部") {
+                    $('input[name="searchRange"][value="1"]').prop('checked', 'checked');
+                    form.render('radio');
+                }
+            }
+        });
+    });
+        function toggleHighSearch() {
+            $('.high-search').slideToggle();
+        }
+
+        // 点击高级搜索框外部自动关闭
+        $(document).on('click', function(e) {
+            var $searchBox = $('.high-search');
+            var $btn = $('.high-search-btn');
+            if ($searchBox.is(':visible') && !$searchBox.is(e.target) && $searchBox.has(e.target).length === 0 && !$btn.is(e.target) && $btn.has(e.target).length === 0) {
+                $searchBox.slideUp();
+            }
+        });
+    </script>
+  </div>
+    <script type="text/javascript">
+    var browser = navigator.appName
+    var b_version = navigator.appVersion
+    var version = b_version.split(";");
+    var trim_Version = version[1].replace(/[ ]/g, "");
+    if (browser == "Microsoft Internet Explorer" && trim_Version == "MSIE6.0") {
+      console.log("IE 6.0");
+    }
+    else if (browser == "Microsoft Internet Explorer" && trim_Version == "MSIE7.0") {
+      console.log("IE 7.0");
+    }
+    else if (browser == "Microsoft Internet Explorer" && trim_Version == "MSIE8.0") {
+      console.log("IE 8.0");
+      $('.header').addClass('.ie8-header');
+      $('.navback').addClass('ie8-width');
+      $('.content1').addClass('ie8-width');
+      $('.content2').addClass('ie8-width');
+      $('.content3').addClass('ie8-width');
+      $('.content4').addClass('ie8-width');
+      $('.content5').addClass('ie8-width');
+      $('.content6').addClass('ie8-width');
+      $('.content6bt').addClass('ie8-width');
+      $('.footer').addClass('ie8-margin');
+      $('#skip-ie8>a').css('width', '148px');
+      $('.gruop-box').css('width', '1210px')
+      $('.bdd').css('top', '-1072px', 'width', '926px');
+      $(".img1-ie8 +a").css({ "top": "-308px", "left": "15px" });
+      $(".contentskip").css({ "width": " 1920px" });
+    }
+    else if (browser == "Microsoft Internet Explorer" && trim_Version == "MSIE9.0") {
+      $('#img-ie8').remove();
+      $('.img1-ie8').remove();
+      console.log("IE 9.0");
+    } else {
+      $('#img-ie8').remove();
+      $('.img1-ie8').remove();
+    }
+  </script>
+
+    <!-- 导航条 -->
+    <div class="location">
+        <div class="locationbox w">
+            <span class="curtLocation">当前位置：<a href="/index.html">首页 ></a>
+              <span>政府信息公开 > </span><span>数据发布 > </span><span>统计领域 > </span>
+              <span>正文</span>
+            </span>
+            
+        </div>
+    </div>
+    <!-- 单篇文章 -->
+    
+    <!-- 正文 -->
+    <div class="articleDetail">
+        <!--索引号展示-->
+        <div>
+    
+  </div>
+        <div class="titleBox">
+            <p class="articleTitle enrichTitle">2025年三门峡市国民经济和社会发展统计公报</p>
+        </div>
+        <div class="time">
+            <span class="timeLeft">发布时间：<span>2026-06-22 16:28</span></span>&nbsp;&nbsp;&nbsp;
+            <!-- <span class="timeLeft">查阅次数：<span id="_wz_lll"></span></span>&nbsp;&nbsp;&nbsp;-->
+            <span class="timeLeft"
+                style="display:inline-block;">文章来源：<span>统计局</span></span>
+        </div>
+        <script>
+            let lmbm = 'sjfb1'
+            if (lmbm == 'fgwj') {
+                $(".titleBox").hide()
+                $(".time").hide()
+            }
+            console.log(lmbm);
+        </script>
+        <div class="articleContent" id="test"><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><br/></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 43px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px">2025年，全市上下坚持以习近平新时代中国特色社会主义思想为指导，深入学习贯彻党的二十大和二十届历次全会、中央和省委经济工作会议精神，迎难而上、主动作为，全市经济社会各项工作取得明显成效，实现“十四五”顺利收官，现代化省际区域中心城市建设迈出坚实步伐。</span></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><span style="font-family: 黑体;font-size: 21px">一、综合</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 43px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">初步核算，全年全市地区生产总值</span><span style="font-family:仿宋_GB2312">1702.61亿元，比上年增长6.1%。其中，第一产业增加值增长4.3%；第二产业增加值增长5.9%；第三产业增加值增长6.6%。全年人均地区生产总值85088元，增长5.3%。</span></span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">年末全市常住人口</span><span style="font-family:仿宋_GB2312">199.5万人，其中城镇常住人口122.5万人，乡村常住人口7</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px">7</span><span style="font-family: 仿宋_GB2312;font-size: 21px">.</span><span style="font-family: 仿宋_GB2312;font-size: 21px">0</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">万人；常住人口城镇化率为</span><span style="font-family:仿宋_GB2312">61.42%。全年出生人口1.05万人，出生率为5.25‰；死亡人口1.66万人，死亡率为8.30‰；自然增长率为-3.05‰。</span></span></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">&nbsp;</span></strong></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">表</span><span style="font-family:仿宋_GB2312">1</span></span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">&nbsp;</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">202</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">5</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">年年末三门峡市常住人口数及其构成</span></strong></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">&nbsp;</span></strong></p><table border="0" cellspacing="0" width="550" align="center" style="margin:auto;"><tbody><tr style="height: 27px" class="firstRow"><td width="260" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: center;font-family: Calibri;font-size: 14px;vertical-align: middle"><strong><span style="font-family: 宋体;font-size: 16px">指标</span></strong></p></td><td width="136" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: center;font-family: Calibri;font-size: 14px;vertical-align: middle"><strong><span style="font-family: 宋体;font-size: 16px">年末数（万人）</span></strong></p></td><td width="154" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: center;font-family: Calibri;font-size: 14px;vertical-align: middle"><strong><span style="font-family: 宋体;font-size: 16px"><span style="font-family:宋体">比重（</span><span style="font-family:宋体">%）</span></span></strong></p></td></tr><tr style="height: 27px"><td width="260" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">全市常住人口</span></p></td><td width="136" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 16px">199.5</span></p></td><td width="154" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 16px">100.0</span></p></td></tr><tr style="height: 27px"><td width="260" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">其中：城镇</span></span></p></td><td width="136" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 16px">122.5</span></p></td><td width="154" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 16px">61.4</span></p></td></tr><tr style="height: 27px"><td width="260" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">乡村</span></span></p></td><td width="136" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 16px">77.0</span></p></td><td width="154" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 16px">38.6</span></p></td></tr><tr style="height: 27px"><td width="260" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">其中：男性</span></span></p></td><td width="136" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 16px">100.4</span></p></td><td width="154" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 16px">50.3</span></p></td></tr><tr style="height: 27px"><td width="260" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">女性</span></span></p></td><td width="136" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 16px">99.1</span></p></td><td width="154" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 16px">49.7</span></p></td></tr><tr style="height: 27px"><td width="260" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">其中：</span><span style="font-family:宋体">0-15岁（含不满16周岁）</span></span></p></td><td width="136" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 16px">31.7</span></p></td><td width="154" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 16px">15.9</span></p></td></tr><tr style="height: 27px"><td width="260" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">16-59岁（含不满60岁）</span></span></p></td><td width="136" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 16px">118.0</span></p></td><td width="154" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 16px">59.1</span></p></td></tr><tr style="height: 27px"><td width="260" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">60周岁及以上</span></span></p></td><td width="136" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 16px">49.8</span></p></td><td width="154" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 16px">25.0</span></p></td></tr><tr style="height: 27px"><td width="260" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">其中：</span><span style="font-family:宋体">65周岁及以上</span></span></p></td><td width="136" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 16px">34.1</span></p></td><td width="154" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 16px">17.1</span></p></td></tr></tbody></table><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:宋体">&nbsp;</span></span></strong></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">图</span><span style="font-family:仿宋_GB2312">1</span></span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">&nbsp;</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">2021-2025年三门峡市常住人口城镇化率</span></strong></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px">&nbsp;</span></p><p style="text-align: center"><img src="/group1/M00/06/D0/CqDI22o49JGAfzMPAACCcPwEjdg496.png" style="max-width:100%;" title="图片1.png" alt="图片1.png"/></p><p style="text-align: center; font-family: Calibri; font-size: 16px; white-space: normal; text-indent: 37px; padding: 0px;"><span style="font-family: 仿宋_GB2312;font-size: 21px">&nbsp;</span><br/></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px">&nbsp;</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年全市城镇新增就业人员</span><span style="font-family:仿宋_GB2312">3.76万人，城镇失业人员再就业1.56万人。新增农村劳动力转移就业1.24万人，新增返乡入乡创业</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px">0.46万</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">人。农村劳动力转移就业总量</span><span style="font-family:仿宋_GB2312">40.7</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px">4</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">万人，其中省内转移</span><span style="font-family:仿宋_GB2312">27.4</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px">3</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">万人，省外输出</span><span style="font-family:仿宋_GB2312">13.3</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px">1</span><span style="font-family: 仿宋_GB2312;font-size: 21px">万人。</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 14px;white-space: normal;text-indent: 43px;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年全市居民消费价格比上年下降</span><span style="font-family:仿宋_GB2312">0.5%</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">。八大类商品及服务价格同比呈现</span><span style="font-family:仿宋_GB2312">“四涨一平三降”格局。其中，其他用品及服务类价格上涨11.3%，生活用品及服务类价格上涨1.5%，医疗保健类价格上涨1.4%，衣着类价格上涨0.5%，教育文化娱乐类价格持平，交通通信类价格下降3.0%，食品烟酒类价格下降2.4%，居住类价格下降0.1%。</span></span></p><p style=";text-align: center;font-family: Calibri;font-size: 14px;white-space: normal;line-height: 40px"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">表</span><span style="font-family:仿宋_GB2312">2</span></span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">&nbsp;</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">2025</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">年三门峡市居民消费价格指数</span></strong></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">&nbsp;</span></strong></p><table border="0" cellspacing="0" width="548" align="center" style="margin:auto;"><tbody><tr style="height: 27px" class="firstRow"><td width="548" valign="center" nowrap="" colspan="2" style="padding: 0px 7px; border-width: initial; border-style: none; border-color: initial;"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px"><span style="font-family:宋体">以上年同期为</span><span style="font-family:宋体">100</span></span></p></td></tr><tr style="height: 27px"><td valign="center" nowrap="" style="padding: 0 7px;border-left: none;border-right: none;border-top: 1px solid rgb(0, 0, 0);border-bottom: none"><p style=";text-align: center;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">类别</span></p></td><td width="211" valign="center" nowrap="" style="padding: 0px 7px; border-left: 1px solid rgb(0, 0, 0); border-right: none; border-top: 1px solid rgb(0, 0, 0); border-bottom: none;"><p style=";text-align: center;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">指数</span></p></td></tr><tr style="height: 27px"><td width="337" valign="center" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">居民消费价格总指数</span></p></td><td width="211" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">99.5</span></p></td></tr><tr style="height: 27px"><td valign="center" nowrap="" style="padding: 0 7px;border-left: none;border-right: 1px solid rgb(0, 0, 0);border-top: none;border-bottom: 1px solid rgb(0, 0, 0)"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">其中：食品烟酒</span></span></p></td><td width="211" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">97.6</span></p></td></tr><tr style="height: 27px"><td valign="center" nowrap="" style="padding: 0 7px;border-left: none;border-right: 1px solid rgb(0, 0, 0);border-top: none;border-bottom: 1px solid rgb(0, 0, 0)"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">其中：食品</span></span></p></td><td width="211" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">96.6</span></p></td></tr><tr style="height: 27px"><td valign="center" nowrap="" style="padding: 0 7px;border-left: none;border-right: 1px solid rgb(0, 0, 0);border-top: none;border-bottom: 1px solid rgb(0, 0, 0)"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">粮食</span></span></p></td><td width="211" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">97.3</span></p></td></tr><tr style="height: 27px"><td valign="center" nowrap="" style="padding: 0 7px;border-left: none;border-right: 1px solid rgb(0, 0, 0);border-top: none;border-bottom: 1px solid rgb(0, 0, 0)"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">菜及食用菌</span></span></p></td><td width="211" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">95.7</span></p></td></tr><tr style="height: 27px"><td valign="center" nowrap="" style="padding: 0 7px;border-left: none;border-right: 1px solid rgb(0, 0, 0);border-top: none;border-bottom: 1px solid rgb(0, 0, 0)"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">畜肉类</span></span></p></td><td width="211" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">89.6</span></p></td></tr><tr style="height: 27px"><td valign="center" nowrap="" style="padding: 0 7px;border-left: none;border-right: 1px solid rgb(0, 0, 0);border-top: none;border-bottom: 1px solid rgb(0, 0, 0)"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">禽肉类</span></span></p></td><td width="211" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">95.4</span></p></td></tr><tr style="height: 27px"><td valign="center" nowrap="" style="padding: 0 7px;border-left: none;border-right: 1px solid rgb(0, 0, 0);border-top: none;border-bottom: 1px solid rgb(0, 0, 0)"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">水产品</span></span></p></td><td width="211" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">99.0</span></p></td></tr><tr style="height: 27px"><td valign="center" nowrap="" style="padding: 0 7px;border-left: none;border-right: 1px solid rgb(0, 0, 0);border-top: none;border-bottom: 1px solid rgb(0, 0, 0)"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">蛋类</span></span></p></td><td width="211" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">90.5</span></p></td></tr><tr style="height: 27px"><td valign="center" nowrap="" style="padding: 0 7px;border-left: none;border-right: 1px solid rgb(0, 0, 0);border-top: none;border-bottom: 1px solid rgb(0, 0, 0)"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">衣着</span></span></p></td><td width="211" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">100.5</span></p></td></tr><tr style="height: 27px"><td valign="center" nowrap="" style="padding: 0 7px;border-left: none;border-right: 1px solid rgb(0, 0, 0);border-top: none;border-bottom: 1px solid rgb(0, 0, 0)"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">居住</span></span></p></td><td width="211" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">99.9</span></p></td></tr><tr style="height: 27px"><td valign="center" nowrap="" style="padding: 0 7px;border-left: none;border-right: 1px solid rgb(0, 0, 0);border-top: none;border-bottom: 1px solid rgb(0, 0, 0)"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">生活用品及服务</span></span></p></td><td width="211" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">101.5</span></p></td></tr><tr style="height: 27px"><td valign="center" nowrap="" style="padding: 0 7px;border-left: none;border-right: 1px solid rgb(0, 0, 0);border-top: none;border-bottom: 1px solid rgb(0, 0, 0)"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">交通和通信</span></span></p></td><td width="211" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">97.0</span></p></td></tr><tr style="height: 27px"><td valign="center" nowrap="" style="padding: 0 7px;border-left: none;border-right: 1px solid rgb(0, 0, 0);border-top: none;border-bottom: 1px solid rgb(0, 0, 0)"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">教育文化和娱乐</span></span></p></td><td width="211" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">100.0</span></p></td></tr><tr style="height: 27px"><td valign="center" nowrap="" style="padding: 0 7px;border-left: none;border-right: 1px solid rgb(0, 0, 0);border-top: none;border-bottom: 1px solid rgb(0, 0, 0)"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">医疗保健</span></span></p></td><td width="211" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">101.4</span></p></td></tr><tr style="height: 27px"><td valign="center" nowrap="" style="padding: 0 7px;border-left: none;border-right: 1px solid rgb(0, 0, 0);border-top: none;border-bottom: 1px solid rgb(0, 0, 0)"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:宋体">其他用品和服务</span></span></p></td><td width="211" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">111.3</span></p></td></tr></tbody></table><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0"><span style="font-family: 仿宋_GB2312;font-size: 21px">&nbsp;</span></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><span style="font-family: 黑体;font-size: 21px">二、</span><span style="font-family: 黑体;font-size: 21px">农业</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 43px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年全市粮食播种面积</span><span style="font-family:仿宋_GB2312">164.49千公顷，比上年增加0.31千公顷，其中小麦播种面积74.96千公顷，增加0.37千公顷；玉米播种面积59.61千公顷，减少0.49千公顷。油料播种面积13.11千公顷，增加0.10千公顷，其中花生播种面积4.40千公顷，减少0.02千公顷。蔬菜播种面积33.75千公顷，增加0.18千公顷。　　</span></span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 43px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年全市粮食产量</span><span style="font-family:仿宋_GB2312">74.40万吨，比上年减少1.05万吨，减产1.4%。其中，夏粮产量34.97万吨，减产2.7%；秋粮产量39.43万吨，减产0.2%。小麦产量34.97万吨，减产2.7%；玉米产量30.16万吨，减产0.5%。</span></span></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">图</span><span style="font-family:仿宋_GB2312">2</span></span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">&nbsp;</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">202</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">1</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">-202</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">5</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">年三门峡市粮食产量</span></strong></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">&nbsp;</span></strong></p><p style="text-align: center"><img src="/group1/M00/06/AD/CqDIKWo49J-Ad13LABTJsqsRU0U026.png" style="max-width:100%;" title="图片2.png" alt="图片2.png"/></p><p style="text-align: center; font-family: Calibri; font-size: 16px; white-space: normal; text-indent: 43px; padding: 0px;"><span style="font-family: 仿宋_GB2312;font-size: 21px">&nbsp;</span><br/></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 43px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年全市油料产量</span><span style="font-family:仿宋_GB2312">3.85万吨，比上年增产1.0%，其中花生产量1.68万吨，减产0.2%。蔬菜产量124.61万吨，增产2.1%。食用菌产量12.68万吨，增产3.8%。瓜果产量9.95万吨，减产1.4%。　　</span></span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 43px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年全市猪牛羊禽肉产量</span><span style="font-family:仿宋_GB2312">11.37万吨，比上年增长10.6%。其中，猪肉产量8.34万吨，增长12.2%；牛肉产量1.22万吨，增长5.8%；羊肉产量0.37万吨，下降13.9%；禽肉产量1.44万吨，增长13.5%。禽蛋产量6.14万吨，下降2.5%。牛奶产量3.07万吨，下降3.6%。年末生猪存栏62.61万头，比上年末下降3.7%；全年生猪出栏103.48万头，比上年增长8.1%。　　</span></span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 43px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年全市水产品总产量</span><span style="font-family:仿宋_GB2312">1.17万吨，比上年增长0.9%。其中，养殖产量0.81万吨，增长1.0%。</span></span></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><span style="font-family: 黑体;font-size: 21px">三、工业和建筑业</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 43px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px">全年全市规模以上工业增加值</span><span style="font-family: 仿宋_GB2312;font-size: 21px">比上年</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">增长</span><span style="font-family:仿宋_GB2312">8.4%。分经济类型看，国有控股企业增加值增长6.7%；股份制企业增长8.6%，外商及港澳台商投资企业下降5.2%；私营企业增长19.3%。分门类看，采矿业增加值增长14.5%，制造业增长9.0%，电力、热力、燃气及水生产和供应业下降3.9%。分行业看，煤炭开采和洗选业增加值增长17.1%，</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">有色金属矿采选业增长</span><span style="font-family:仿宋_GB2312">16.2%，食品制造业增长10.4%，酒、饮料和精制茶制造业增长10.5%，化学原料和化学制品制造业增长8.6%，医药制造业增长13.8%，非金属矿物制品业增长9.3%，有色金属冶炼和压延加工业增长6.5%，金属制品业增长197.8%，专用设备制造业增长10.4%，汽车制造业增长21.8%，电气机械和</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">器材制造业增长</span><span style="font-family:仿宋_GB2312">48.5%</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px">。</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 43px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年全市规模以上工业中，高新技术产业、工业战略性新兴产业增加值分别比上年增长</span><span style="font-family:仿宋_GB2312">8.0%、9.7%，新一代信息技术产业、新材料产业增加值分别增长21.5%、8.8%。</span></span></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">表</span><span style="font-family:仿宋_GB2312">3 2025年三门峡市规模以上工业主要产品产量及其增长速度</span></span></strong></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:Calibri">&nbsp;</span></span></strong></p><table border="0" cellspacing="0" width="554" align="center" style="margin:auto;"><tbody><tr style="height: 27px" class="firstRow"><td width="134" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: center;font-family: Calibri;font-size: 14px;vertical-align: middle"><strong><span style="font-family: 宋体;font-size: 15px">产品名称</span></strong></p></td><td width="147" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: center;font-family: Calibri;font-size: 14px;vertical-align: middle"><strong><span style="font-family: 宋体;font-size: 15px">单位</span></strong></p></td><td width="143" valign="center" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: center;font-family: Calibri;font-size: 14px;vertical-align: middle"><strong><span style="font-family: 宋体;font-size: 15px">产量</span></strong></p></td><td width="130" valign="center" style="padding: 0px 7px; border-left: none; border-right: none; border-top: 1px solid rgb(0, 0, 0); border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: center;font-family: Calibri;font-size: 14px;vertical-align: middle"><strong><span style="font-family: 宋体;font-size: 15px"><span style="font-family:宋体">比上年增长（</span><span style="font-family:宋体">%）</span></span></strong></p></td></tr><tr style="height: 27px"><td width="134" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">原煤</span></p></td><td width="147" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: center;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">万吨</span></p></td><td width="143" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">774</span></p></td><td width="130" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">20.1</span></p></td></tr><tr style="height: 27px"><td width="134" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">发电量</span></p></td><td width="147" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: center;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">亿千瓦时</span></p></td><td width="143" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">195</span></p></td><td width="130" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">-5.4</span></p></td></tr><tr style="height: 27px"><td width="134" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">白酒</span></p></td><td width="147" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: center;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">千升</span></p></td><td width="143" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">29345</span></p></td><td width="130" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">38.1</span></p></td></tr><tr style="height: 27px"><td width="134" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">精甲醇</span></p></td><td width="147" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: center;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">吨</span></p></td><td width="143" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">199540</span></p></td><td width="130" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">3.5</span></p></td></tr><tr style="height: 27px"><td width="134" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">水泥</span></p></td><td width="147" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: center;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">吨</span></p></td><td width="143" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">3917129</span></p></td><td width="130" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">-13.5</span></p></td></tr><tr style="height: 27px"><td width="134" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">精炼铜</span></p></td><td width="147" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: center;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">吨</span></p></td><td width="143" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">504741</span></p></td><td width="130" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">3.1</span></p></td></tr><tr style="height: 27px"><td width="134" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">氧化铝</span></p></td><td width="147" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: center;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">吨</span></p></td><td width="143" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">4416807</span></p></td><td width="130" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">9.7</span></p></td></tr><tr style="height: 27px"><td width="134" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">黄金</span></p></td><td width="147" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: center;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">千克</span></p></td><td width="143" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">90859</span></p></td><td width="130" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">-4.2</span></p></td></tr><tr style="height: 27px"><td width="134" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">铝材</span></p></td><td width="147" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: center;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">吨</span></p></td><td width="143" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">233910</span></p></td><td width="130" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">56.1</span></p></td></tr><tr style="height: 27px"><td width="134" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">铜材</span></p></td><td width="147" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: center;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">吨</span></p></td><td width="143" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">184706</span></p></td><td width="130" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">2.7</span></p></td></tr><tr style="height: 27px"><td width="134" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">改装汽车</span></p></td><td width="147" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: center;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">辆</span></p></td><td width="143" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: 1px solid rgb(0, 0, 0); border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">25592</span></p></td><td width="130" valign="center" nowrap="" style="padding: 0px 7px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid rgb(0, 0, 0);"><p style=";text-align: right;font-family: Calibri;font-size: 14px;vertical-align: middle"><span style="font-family: 宋体;font-size: 15px">23.5</span></p></td></tr></tbody></table><p style=";text-align: justify;font-family: Calibri;font-size: 14px;white-space: normal"><span style="font-family: 仿宋_GB2312;font-size: 21px">&nbsp;</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 14px;white-space: normal;text-indent: 43px;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年全市规模以上工业企业营业收入</span><span style="font-family:仿宋_GB2312">2224.97亿元，比上年增长12.4%；利润总额95.37亿元，下降5.8%。规模以上工业企业每百元营业收入中的成本为92.97元，比上年增加1.78元；每百元资产实现的营业收入为106.5元，增加10.7元。</span></span></p><p style=";text-align: justify;font-family: Calibri;font-size: 14px;white-space: normal;text-indent: 43px;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">年末全市发电装机容量</span><span style="font-family:仿宋_GB2312">(不含储能)812.8万千瓦，比上年末</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px">增长</span><span style="font-family: 仿宋_GB2312;font-size: 21px">4.5%。其中，火电装机容量430.55万千瓦，</span><span style="font-family: 仿宋_GB2312;font-size: 21px">下降</span><span style="font-family: 仿宋_GB2312;font-size: 21px">1.2%;水电装机容量49.78万千瓦，与上年持平;风电装机容量226.18万千瓦，</span><span style="font-family: 仿宋_GB2312;font-size: 21px">增长</span><span style="font-family: 仿宋_GB2312;font-size: 21px">12.1%;太阳能发电装机容量106.29万千瓦，增长24.2%。其中，可再生能源装机容量382.25万千瓦，增长11.7%，占发电装机容量</span><span style="font-family: 仿宋_GB2312;font-size: 21px">(不含储能)</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">的比重为</span><span style="font-family:仿宋_GB2312">47%。全年规模以上工业发电量195.18亿千瓦时，比上年下降5.4%。其中，</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px">清洁</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">可再生能源发电量</span><span style="font-family:仿宋_GB2312">55.9</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px">0</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿千瓦时，</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">增长</span><span style="font-family:仿宋_GB2312">0.5%，占规模以上工业发电量的比重为28.6%。</span></span></p><p style=";text-align: justify;font-family: Calibri;font-size: 14px;white-space: normal;text-indent: 43px;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年全市建筑业增加值比上年增长</span><span style="font-family:仿宋_GB2312">0.4%。具有资质等级总承包和专业承包建筑业企业完成建筑业总产值增长3.0%；本年新签合同额下降2.8%。</span></span></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><span style="font-family: 黑体;font-size: 21px">四、</span><span style="font-family: 黑体;font-size: 21px">服务业</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 14px;white-space: normal;text-indent: 43px;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px">全年全</span><span style="font-family: 仿宋_GB2312;font-size: 21px">市</span><span style="font-family: 仿宋_GB2312;font-size: 21px">批发和零售业增加值</span><span style="font-family: 仿宋_GB2312;font-size: 21px">143.68</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿元，比上年增长</span><span style="font-family: 仿宋_GB2312;font-size: 21px">4.9</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%</span><span style="font-family: 仿宋_GB2312;font-size: 21px">；</span><span style="font-family: 仿宋_GB2312;font-size: 21px">交通运输、仓储和邮政业增加值</span><span style="font-family: 仿宋_GB2312;font-size: 21px">74.84</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿元，增长</span><span style="font-family: 仿宋_GB2312;font-size: 21px">3.5</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%</span><span style="font-family: 仿宋_GB2312;font-size: 21px">；</span><span style="font-family: 仿宋_GB2312;font-size: 21px">住宿和餐饮业增加值</span><span style="font-family: 仿宋_GB2312;font-size: 21px">35.13</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">亿元，增长</span>5.</span><span style="font-family: 仿宋_GB2312;font-size: 21px">5</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%</span><span style="font-family: 仿宋_GB2312;font-size: 21px">；</span><span style="font-family: 仿宋_GB2312;font-size: 21px">金融业增加值</span><span style="font-family: 仿宋_GB2312;font-size: 21px">57.12</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿元，增长</span><span style="font-family: 仿宋_GB2312;font-size: 21px">5.9</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%</span><span style="font-family: 仿宋_GB2312;font-size: 21px">；</span><span style="font-family: 仿宋_GB2312;font-size: 21px">房地产业增加值</span><span style="font-family: 仿宋_GB2312;font-size: 21px">62.41</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">亿元，增长</span>2.</span><span style="font-family: 仿宋_GB2312;font-size: 21px">1</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%</span><span style="font-family: 仿宋_GB2312;font-size: 21px">；</span><span style="font-family: 仿宋_GB2312;font-size: 21px">信息传输、软件和信息技术服务业增加值</span><span style="font-family: 仿宋_GB2312;font-size: 21px">35.74</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿元、增长</span><span style="font-family: 仿宋_GB2312;font-size: 21px">0.9</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%</span><span style="font-family: 仿宋_GB2312;font-size: 21px">；</span><span style="font-family: 仿宋_GB2312;font-size: 21px">租赁和商务服务业增加值</span><span style="font-family: 仿宋_GB2312;font-size: 21px">88.47</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">亿元，增长</span>1</span><span style="font-family: 仿宋_GB2312;font-size: 21px">4.5</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%。</span><span style="font-family: 仿宋_GB2312;font-size: 21px">全年规模以上服务业企业营业收入</span><span style="font-family: 仿宋_GB2312;font-size: 21px">82.50</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿元，增长</span><span style="font-family: 仿宋_GB2312;font-size: 21px">2.4</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%；利润总额</span><span style="font-family: 仿宋_GB2312;font-size: 21px">1.13</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿元，</span><span style="font-family: 仿宋_GB2312;font-size: 21px">下降</span><span style="font-family: 仿宋_GB2312;font-size: 21px">54.7</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%。</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 14px;white-space: normal;text-indent: 43px;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px">全年</span><span style="font-family: 仿宋_GB2312;font-size: 21px">全市公路</span><span style="font-family: 仿宋_GB2312;font-size: 21px">货物运输量</span><span style="font-family: 仿宋_GB2312;font-size: 21px">0.51</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿</span><span style="font-family: 仿宋_GB2312;font-size: 21px">吨，比上年增长</span><span style="font-family: 仿宋_GB2312;font-size: 21px">1.9</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%。</span><span style="font-family: 仿宋_GB2312;font-size: 21px">公路</span><span style="font-family: 仿宋_GB2312;font-size: 21px">货物运输周转量</span><span style="font-family: 仿宋_GB2312;font-size: 21px">151.95</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿吨公里，增长</span><span style="font-family: 仿宋_GB2312;font-size: 21px">4.5</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%。</span><span style="font-family: 仿宋_GB2312;font-size: 21px">公路</span><span style="font-family: 仿宋_GB2312;font-size: 21px">旅客运输量</span><span style="font-family: 仿宋_GB2312;font-size: 21px">0.24</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿人次，</span><span style="font-family: 仿宋_GB2312;font-size: 21px">下降</span><span style="font-family: 仿宋_GB2312;font-size: 21px">5.1</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%。</span><span style="font-family: 仿宋_GB2312;font-size: 21px">公路</span><span style="font-family: 仿宋_GB2312;font-size: 21px">旅客运输周转量</span><span style="font-family: 仿宋_GB2312;font-size: 21px">23.50</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿人公里，增长</span><span style="font-family: 仿宋_GB2312;font-size: 21px">4.3</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%。</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 43px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px">全年</span><span style="font-family: 仿宋_GB2312;font-size: 21px">全市</span><span style="font-family: 仿宋_GB2312;font-size: 21px">邮政行业业务总量</span><span style="font-family: 仿宋_GB2312;font-size: 21px">10.29</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿标准量</span><span style="font-family: 仿宋_GB2312;font-size: 21px">，</span><span style="font-family: 仿宋_GB2312;font-size: 21px">比上年</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">增长</span><span style="font-family:仿宋_GB2312">2</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px">0.2</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%</span><span style="font-family: 仿宋_GB2312;font-size: 21px">；</span><span style="font-family: 仿宋_GB2312;font-size: 21px">电信业务总量</span><span style="font-family: 仿宋_GB2312;font-size: 21px">21.</span><span style="font-family: 仿宋_GB2312;font-size: 21px">86亿元，增长</span><span style="font-family: 仿宋_GB2312;font-size: 21px">7.4</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%。快递业务量</span><span style="font-family: 仿宋_GB2312;font-size: 21px">0.67</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿件，增长</span><span style="font-family: 仿宋_GB2312;font-size: 21px">32.3</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%；快递业务收入</span><span style="font-family: 仿宋_GB2312;font-size: 21px">5.94</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿元，增长</span><span style="font-family: 仿宋_GB2312;font-size: 21px">16.9</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%。</span></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><span style="font-family: 黑体;font-size: 21px">五、贸易</span><span style="font-family: 黑体;font-size: 21px">和外经</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 43px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年全市社会消费品零售总额</span><span style="font-family:仿宋_GB2312">556.47亿元，比上年增长6.1%。分城乡看，城镇消费品零售额456.38亿元，增长6.0%；乡村消费品零售额100.09亿元，增长6.5%。</span></span></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">图</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">3</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">&nbsp;</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">202</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">1</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">-202</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">5</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">年三门峡市社会消费品零售总额及其增长速度</span></strong></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><span style="font-family: 宋体;font-size: 21px">&nbsp;</span></p><p style="text-align: center"><img src="/group1/M00/06/D0/CqDI22o49K6AStz6ABQ1D2xczWQ284.png" style="max-width:100%;" title="图片3.png" alt="图片3.png"/></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0"><span style="font-family: 宋体;font-size: 21px">&nbsp;</span><br/></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 43px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px">全年</span><span style="font-family: 仿宋_GB2312;font-size: 21px">全市</span><span style="font-family: 仿宋_GB2312;font-size: 21px">限额以上</span><span style="font-family: 仿宋_GB2312;font-size: 21px">单位</span><span style="font-family: 仿宋_GB2312;font-size: 21px">商品零售额中，粮油、食品类</span><span style="font-family: 仿宋_GB2312;font-size: 21px">零售额</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">比上年增长</span><span style="font-family:仿宋_GB2312">7.9%，饮料类增长17.8%，烟酒类增长12.1%，服装、鞋帽、针纺织品类下降0.3%，金银珠宝类增长15.3%，日用品类增长44.3%，家用电器和音像器材类增长25.0%，中西药品类增长4.3%，文化办公用品类增长12.0%，家具类下降12.5%，通讯器材类增长20.8%，建筑及装潢材料类增长38.6%，石油及制品类增长10.5%，汽车类增长3.3%。</span></span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 43px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年全市货物进出口总值</span>189.1亿元，比上年下降18.5%。其中，出口30.4亿元，下降4.2%；进口158.7亿元，下降20.8%。全年新注册外资企业6家。合同利用外资金额338.8万美元，实际利用外资700.0万美元。</span></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><span style="font-family: 黑体;font-size: 21px">六、固定资产投资</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px">全年</span><span style="font-family: 仿宋_GB2312;font-size: 21px">全市</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">固定资产投资比上年增长</span><span style="font-family:仿宋_GB2312">5.4%。其中，第一产业投资下降2.0%，第二产业投资增长17.4%，第三产业投资下降2.2%。基础设施投资下降11.2%，民间投资增长10.8%，工业投资增长17.3%。</span></span></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">图</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">4 </span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">2025年</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">三门峡市</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">三次产业投资占固定资产投资比重</span></strong></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px">&nbsp;</span></p><p style="text-align: center"><img src="/group1/M00/06/AD/CqDIKWo49LmAN1QMAAB8jxBzH2o030.png" style="max-width:100%;" title="图片4.png" alt="图片4.png"/></p><p style="text-align: center; font-family: Calibri; font-size: 16px; white-space: normal; text-indent: 37px; padding: 0px;"><span style="font-family: 仿宋_GB2312;font-size: 21px">&nbsp;</span><br/></p><p style=";text-align: justify;font-family: Calibri;font-size: 14px;white-space: normal;text-indent: 43px;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年全市房地产开发投资比上年下降</span><span style="font-family:仿宋_GB2312">24.4%。其中，住宅投资下降24.1%。全年房屋施工面积下降15.6%；新建商品房销售面积下降3.4%；年末新建商品房待售面积比上年末下降11.1%。</span></span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px">二手房成交面积</span><span style="font-family: 仿宋_GB2312;font-size: 21px">64.14万平方米</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"><span style="font-family:仿宋_GB2312">，增长</span><span style="font-family:仿宋_GB2312">32.7%。</span></span></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><span style="font-family: 黑体;font-size: 21px">七、</span><span style="font-family: 黑体;font-size: 21px">财政金融</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 43px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px">全年全市财政总收入</span><span style="font-family: 仿宋_GB2312;font-size: 21px">208.65</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿元，比上年</span><span style="font-family: 仿宋_GB2312;font-size: 21px">增长</span><span style="font-family: 仿宋_GB2312;font-size: 21px">1.7</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%。一般公共预算收入</span><span style="font-family: 仿宋_GB2312;font-size: 21px">149.51</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿元，增长</span><span style="font-family: 仿宋_GB2312;font-size: 21px">4.2</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%，其中税收收入</span><span style="font-family: 仿宋_GB2312;font-size: 21px">89.44</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿元</span><span style="font-family: 仿宋_GB2312;font-size: 21px">、增长</span><span style="font-family: 仿宋_GB2312;font-size: 21px">1.3</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%，占一般公共预算收入的比重为</span><span style="font-family: 仿宋_GB2312;font-size: 21px">59.8</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%。一般公共预算支出286.</span><span style="font-family: 仿宋_GB2312;font-size: 21px">7</span><span style="font-family: 仿宋_GB2312;font-size: 21px">2亿元，增长</span><span style="font-family: 仿宋_GB2312;font-size: 21px">0</span><span style="font-family: 仿宋_GB2312;font-size: 21px">.2%。</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px">年末全市金融机构人民币存款余额</span><span style="font-family: 仿宋_GB2312;font-size: 21px">2354.66</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿元，比年初增加</span><span style="font-family: 仿宋_GB2312;font-size: 21px">187.82</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿元，其中住户存款余额</span><span style="font-family: 仿宋_GB2312;font-size: 21px">1866.81</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿元。金融机构人民币各项贷款余额</span><span style="font-family: 仿宋_GB2312;font-size: 21px">1334.10</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿元，增加</span><span style="font-family: 仿宋_GB2312;font-size: 21px">29.08</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿元。其中，短期贷款余额</span><span style="font-family: 仿宋_GB2312;font-size: 21px">522.42</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿元，增加</span><span style="font-family: 仿宋_GB2312;font-size: 21px">26.05</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿元；中长期贷款余额</span><span style="font-family: 仿宋_GB2312;font-size: 21px">696.30</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿元，增加</span><span style="font-family: 仿宋_GB2312;font-size: 21px">0.49</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿元。</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年全市保险公司原保险保费收入</span><span style="font-family:仿宋_GB2312">53.77亿元。其中，财产险12.45亿元，人身险41.33亿元。赔款支出与给付21.22亿元。其中，财产险8.76亿元，人身险12.46亿元。</span></span></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><span style="font-family: 黑体;font-size: 21px">八</span><span style="font-family: 黑体;font-size: 21px">、居民收入消费和社会保障</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年全市居民人均可支配收入</span><span style="font-family:仿宋_GB2312">32469元，比上年增长5.1%。按常住地分，城镇居民人均可支配收入40487元，增长4.9%；农村居民人均可支配收入23534元，增长5.5%。城乡居民人均可支配收入比值为1.72，比上年缩小0.01。</span></span></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><strong><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">图</span><span style="font-family:仿宋_GB2312">5 202</span></span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">1</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">-202</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">5</span></strong><strong><span style="font-family: 仿宋_GB2312;font-size: 21px">年三门峡市居民人均可支配收入及其增长速度</span></strong></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px">&nbsp;</span></p><p style="text-align: center"><img src="/group1/M00/06/AD/CqDIKWo49MSAPGBbABrDHnuI9Is420.png" style="max-width:100%;" title="图片5.png" alt="图片5.png"/></p><p style="text-align: center; font-family: Calibri; font-size: 16px; white-space: normal; text-indent: 37px; padding: 0px;"><span style="font-family: 仿宋_GB2312;font-size: 21px">&nbsp;</span><br/></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0"><span style="font-family: 仿宋_GB2312;font-size: 21px">&nbsp;</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 43px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年全市居民人均消费支出</span><span style="font-family:仿宋_GB2312">22890元，比上年增长3.8%。按常住地分，城镇居民人均消费支出27286元，增长3.4%；农村居民人均消费支出17992元，增长4.4%。</span></span></p><p style=";text-align: justify;font-family: Calibri;font-size: 14px;white-space: normal;text-indent: 43px;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px">年末全</span><span style="font-family: 仿宋_GB2312;font-size: 21px">市</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">参加城镇职工基本养老保险人数</span><span style="font-family:仿宋_GB2312">53.31万人。其中，参保在职职工37.73万人，参保离退休人员15.58万人。参加城乡居民基本养老保险人数107.7</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px">0</span><span style="font-family: 仿宋_GB2312;font-size: 21px">万人。</span><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"><span style="font-family:仿宋_GB2312">参加职工基本医疗保险人数</span><span style="font-family:仿宋_GB2312">39.34万人。其中，参保在职职工23.89万人，参保退休人员15.45万人。参加城乡居民基本医疗保险人数152.45万人。</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">参加失业保险人数</span><span style="font-family:仿宋_GB2312">22.35万人。参加工伤保险人数20.85万人。</span></span></p><p style=";text-align: justify;font-family: Calibri;font-size: 14px;white-space: normal;text-indent: 43px;line-height: 40px"><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"><span style="font-family:仿宋_GB2312">全年全市发放城市居民最低生活保障金</span><span style="font-family:仿宋_GB2312">3484.9万元，年末共保障城市低保对象7485人；发放农村居民最低生活保障金13966.6万元，年末共保障农村低保对象44806人。全年共保障城市特困人员383人，农村特困人员7304人。</span></span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 43px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;letter-spacing: 0;font-size: 21px"><span style="font-family:仿宋_GB2312">全年开工建设和筹集保障性住房</span><span style="font-family:仿宋_GB2312">2303套，启动城市危旧房改造144套，新开工改造城镇老旧小区19318套。</span></span></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><span style="font-family: 黑体;font-size: 21px">九</span><span style="font-family: 黑体;font-size: 21px">、科学技术和教育</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 14px;white-space: normal;text-indent: 43px;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px">年末全</span><span style="font-family: 仿宋_GB2312;font-size: 21px">市共有</span><span style="font-family: 仿宋_GB2312;font-size: 21px">省级企业技术中心</span><span style="font-family: 仿宋_GB2312;font-size: 21px">18</span><span style="font-family: 仿宋_GB2312;font-size: 21px">个</span><span style="font-family: 仿宋_GB2312;font-size: 21px">，</span><span style="font-family: 仿宋_GB2312;font-size: 21px">省</span><span style="font-family: 仿宋_GB2312;font-size: 21px">级工程研究中心</span><span style="font-family: 仿宋_GB2312;font-size: 21px">11</span><span style="font-family: 仿宋_GB2312;font-size: 21px">个</span><span style="font-family: 仿宋_GB2312;font-size: 21px">，</span><span style="font-family: 仿宋_GB2312;font-size: 21px">省工程技术研究中心</span><span style="font-family: 仿宋_GB2312;font-size: 21px">64</span><span style="font-family: 仿宋_GB2312;font-size: 21px">个</span><span style="font-family: 仿宋_GB2312;font-size: 21px">。</span><span style="font-family: 仿宋_GB2312;font-size: 21px">省级重点实验室</span><span style="font-family: 仿宋_GB2312;font-size: 21px">1</span><span style="font-family: 仿宋_GB2312;font-size: 21px">个</span><span style="font-family: 仿宋_GB2312;font-size: 21px">，</span><span style="font-family: 仿宋_GB2312;font-size: 21px">省新型研发机构</span><span style="font-family: 仿宋_GB2312;font-size: 21px">4</span><span style="font-family: 仿宋_GB2312;font-size: 21px">家。高新技术企业</span><span style="font-family: 仿宋_GB2312;font-size: 21px">185</span><span style="font-family: 仿宋_GB2312;font-size: 21px">家</span><span style="font-family: 仿宋_GB2312;font-size: 21px">，</span><span style="font-family: 仿宋_GB2312;font-size: 21px">科技型中小企业</span><span style="font-family: 仿宋_GB2312;font-size: 21px">377</span><span style="font-family: 仿宋_GB2312;font-size: 21px">家。省实验室</span><span style="font-family: 仿宋_GB2312;font-size: 21px">1</span><span style="font-family: 仿宋_GB2312;font-size: 21px">家，省中试基地</span><span style="font-family: 仿宋_GB2312;font-size: 21px">4</span><span style="font-family: 仿宋_GB2312;font-size: 21px">个。</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年专利授权量达到</span><span style="font-family:仿宋_GB2312">850件。截至年末，有效发明专利698件。</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px">全年签订技术合同</span><span style="font-family: 仿宋_GB2312;font-size: 21px">208</span><span style="font-family: 仿宋_GB2312;font-size: 21px">项，比上年增长</span><span style="font-family: 仿宋_GB2312;font-size: 21px">112</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%；技术合同成交额</span><span style="font-family: 仿宋_GB2312;font-size: 21px">18.33</span><span style="font-family: 仿宋_GB2312;font-size: 21px">亿元，增长</span><span style="font-family: 仿宋_GB2312;font-size: 21px">76.6</span><span style="font-family: 仿宋_GB2312;font-size: 21px">%</span><span style="font-family: 仿宋_GB2312;font-size: 21px">。</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 14px;white-space: normal;text-indent: 43px;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">年末全市共有国家地理标志保护产品</span>22件，计量技术机构12家，通过资质认定的检验检测机构81家</span><span style="font-family: 仿宋_GB2312;font-size: 21px">。</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年新建计量标准</span>12项，强制检定计量器具4.7</span><span style="font-family: 仿宋_GB2312;font-size: 21px">8</span><span style="font-family: 仿宋_GB2312;font-size: 21px">万台件。</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">年末共有新一代天气雷达</span><span style="font-family:仿宋_GB2312">1部，X波段相控振雷达2部，P波段风廓线雷达1部，国家基本气象站4个，各类区域站131个。地震观测站8个，地震观测测项11个。</span></span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年全市普通、职业本专科毕业生</span><span style="font-family:仿宋_GB2312">1.13万人，招生0.98万人，在校生3.32万人，普通高等学校校均规模（指普通本专科在校生）1.66万人。成人本专科毕业生0.91万人，招生0.15万人，在校生0.50万人。中等职业学校17所（含技工学校），毕业生0.74万人，招生1.58万人，在校生3.19万人。普通高中毕业生1.34万人，招生1.57万人，在校生4.39万人。初中毕业生2.60万人，招生2.47万人，在校生7.55万人。小学毕业生2.67万人，招生2.15万人，在校生14.76万人（其中，小学教学点在校生0.16万人）。全市共招收各种形式特殊教育学生243人，在校生1481人，毕业生70人。</span></span></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><span style="font-family: 黑体;font-size: 21px">十</span><span style="font-family: 黑体;font-size: 21px">、</span><span style="font-family: 黑体;font-size: 21px">文化旅游、卫生健康和体育</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 14px;white-space: normal;text-indent: 43px;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">年末全市共有文艺院团</span><span style="font-family:仿宋_GB2312">38家（国有文艺院团5家，民营院团33家），文化馆7个，公共图书馆7个。国有博物馆7个。全国重点文物保护单位12处，省级文物保护单位64处。国家级非物质文化遗产代表性项目名录5个。有线电视实际用户8.61万户。年末广播节目综合人口覆盖率99.86%，电视节目综合人口覆盖率99.87%。</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px">年末共有综</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">合档案馆</span><span style="font-family:仿宋_GB2312">7个，已开放各类档案35万卷（件）。</span></span></p><p style=";text-align: justify;font-family: Calibri;font-size: 14px;white-space: normal;text-indent: 43px;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px">年末</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全市共有出境旅行社、国内旅行社</span><span style="font-family:仿宋_GB2312">30家，旅游星级饭店11家(四星级4家，三星级6家，二星级1家)。A级景区共32家，其中4A级19家，3A级9家，2A级4家。全年共接待游客5216.68万人次，全年旅游总收入401.56亿元。</span></span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 43px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">年末全市共有医疗卫生机构</span><span style="font-family:仿宋_GB2312">2125个，其中医院58个，在医院中有公立医院25个，民营医院33个；基层医疗卫生机构2046个，其中社区卫生服务中心（站）63个，卫生院74个，村卫生室1330个，诊所536个；专业公共卫生机构17个，其中疾病预防控制中心7个，妇幼保健院（所、站）6个。医疗卫生机构床位17302张，其中医院13620张，卫生院2696张。年末卫生技术人员21330人，其中执业（助理）医师8329人，注册护士9755人。按机构分，医院卫生技术人员13415人，卫生院卫生技术人员2643人，社区卫生服务中心（站）卫生技术人员997人，疾病预防控制中心卫生技术人员339人，妇幼保健院（所、站）卫生技术人员816人。全年总诊疗1521.56万人次，总出院40.65万人。其中医院诊疗634.14万人次，出院35.64万人；基层医疗卫生机构诊疗841.81万人次，出院3.63万人。</span></span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px">全年</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全市各单项体育协会</span><span style="font-family:仿宋_GB2312">20个，体育类民办非企业俱乐部7个，各级各类社会体育指导员达6632人。全年全市运动员共取得35枚金牌、27枚银牌、31枚铜牌。全年共注册运动员294人，授予二级运动员称号2人。</span></span></p><p style=";text-align: center;font-family: Calibri;font-size: 16px;white-space: normal;padding: 0;line-height: 40px"><span style="font-family: 黑体;font-size: 21px">十一、资源、环境和应急管理</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年全市规模以上工业综合能源消费量比上年下降</span><span style="font-family:仿宋_GB2312">3.0%，规模以上工业单位增加值能耗下降10.5%。</span></span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年全市</span><span style="font-family:仿宋_GB2312">12个国控、省控断面水质优良（Ⅰ-Ⅲ类水体）比例100%，无劣Ⅴ类水质断面。</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px">全市</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">城市空气质量优良天数比例</span><span style="font-family:仿宋_GB2312">78.8%，PM10年累计平均浓度60.63微克/立方米，PM2.5</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px">年累计平均浓度</span><span style="font-family: 仿宋_GB2312;font-size: 21px">37.20微克/立方米。</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 43px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全市年平均气温</span> <span style="font-family:仿宋_GB2312">14.8℃。平均年降水量 744.2毫米。</span></span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 43px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年全市完成造林面积</span><span style="font-family:仿宋_GB2312">6.93千公顷。年末共有自然保护区3个，其中国家级自然保护区2个。森林公园10个，其中国家级森林公园4个。</span></span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全年全市共发生两次自然灾害，受灾人口</span><span style="font-family:仿宋_GB2312">823人。直接经济损失21.85万元，其中农林牧渔业损失20.73万元，居民家庭财产损失1.12万元。</span></span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 仿宋_GB2312;font-size: 21px">全年</span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">全市共发生各类生产经营性伤亡事故</span><span style="font-family:仿宋_GB2312">20起，死亡21人，</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">同比减少</span><span style="font-family:仿宋_GB2312">7起、7人</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px"><span style="font-family:仿宋_GB2312">，比上年分别下降</span><span style="font-family:仿宋_GB2312">25.9%</span></span><span style="font-family: 仿宋_GB2312;font-size: 21px">和</span><span style="font-family: 仿宋_GB2312;font-size: 21px">25</span><span style="font-family: 仿宋_GB2312;font-size: 21px">.0</span><span style="font-family: 仿宋_GB2312;font-size: 21px">％。</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 楷体;font-size: 21px">&nbsp;</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 楷体;font-size: 21px">注：</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 楷体;font-size: 21px">1.本公报202</span><span style="font-family: 楷体;font-size: 21px">5</span><span style="font-family: 楷体;font-size: 21px">年数据为初步统计结果。部分数据因四舍五入的原因，存在总计与分项合计不等的情况。</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 楷体;font-size: 21px">2.生产总值、各产业增加值增长速度按不变价格计算。</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 楷体;font-size: 21px">3.三次产业分类依据国家统计局2018年修订的《三次产业划分规定》，第一产业是指农、林、牧、渔业（不含农、林、牧、渔专业及辅助性活动）；第二产业是指采矿业（不含开采专业及辅助性活动），制造业（不含金属制品、机械和设备修理业），电力、热力、燃气及水生产和供应业，建筑业；第三产业即服务业，是指除第一产业、第二产业以外的其他行业（剔除国际组织）。</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 楷体;font-size: 21px">4.工业战略性新兴产业根据国务院第五次全国经济普查领导小组办公室印发的《工业战略性新兴产业分类目录（2023）》确定。</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 楷体;font-size: 21px">5.</span><span style="font-family: 楷体;font-size: 21px"><span style="font-family:楷体">社会消费品零售总额</span>2021-2024年数据已根据第五次全国经济普查结果及有关制度规定进行了修订。</span></p><p style=";text-align: justify;font-family: Calibri;font-size: 16px;white-space: normal;text-indent: 37px;padding: 0;line-height: 40px"><span style="font-family: 楷体;font-size: 21px">6</span><span style="font-family: 楷体;font-size: 21px">.</span><span style="font-family: 楷体;font-size: 21px">资料来源：本公报中就业和社会保障、发电装机容量（不含储能）、对外经济、交通邮电、财政、金融、保险、教育、科技、质量技术监督、气象、文化旅游、卫生、体育、资源、环境保护、安全生产等方面的资料由市直相关部门提供；居民消费价格、粮食种植面积及产量、畜产品产量、生猪存出栏、城乡居民收支数据来自国家统计局三门峡调查队；其他数据来自市统计局。</span></p><p><br/></p></div>
+    </div>
+    <!--领导展示 -->
+    
+
+    <!--政策意见提交-->
+    
+
+    <!-- 下拉框 -->
+    <div class="content7">
+    <div class="extenta">
+      <div class="contentbox7 w">
+        <!-- <select class="net1" onchange="javascript:window.open(this.options[this.selectedIndex].value);this.selectedIndex=0">
+      <option value="">中央政府及部门</option>
+      <option value="http://www.gov.cn/guowuyuan/">国务院</option>
+      <option value="http://www.fmprc.gov.cn/web/">外交部</option>
+      <option value="http://www.mod.gov.cn/">国防部</option>
+      <option value="http://www.ndrc.gov.cn/">国家发展和改革委员会</option>
+      <option value="http://www.moe.gov.cn/">教育部</option>
+      <option value="http://www.most.gov.cn/">科学技术部</option>
+      <option value="http://www.miit.gov.cn/">工业和信息化部</option>
+      <option value="http://www.neac.gov.cn">国家民族事务委员会</option>
+      <option value="http://www.mps.gov.cn/">公安部</option>
+      <option value="">国家安全部</option>
+      <option value="http://www.mca.gov.cn/">民政部</option>
+      <option value="http://www.moj.gov.cn/">司法部</option>
+      <option value="http://www.mof.gov.cn/index.htm">财政部</option>
+      <option value="http://www.mohrss.gov.cn/">人力资源和社会保障部</option>
+      <option value="http://www.mnr.gov.cn/">自然资源部</option>
+      <option value="http://www.mee.gov.cn/">生态环境部</option>>
+      <option value="http://www.mohurd.gov.cn/">住房和城乡建设部</option>
+      <option value="http://www.mot.gov.cn/">交通运输部</option>
+      <option value="http://www.mwr.gov.cn/">水利部</option>
+      <option value="http://www.moa.gov.cn/">农业农村部</option>
+      <option value="http://www.mofcom.gov.cn/">商务部</option>
+      <option value="http://www.mct.gov.cn/">文化和旅游部</option>
+      <option value="http://www.nhc.gov.cn/">国家卫生健康委员会</option>
+      <option value="http://www.mva.gov.cn/" target="_blank">退役军人事务部</option>
+      <option value="http://www.mem.gov.cn">应急管理部</option>
+      <option value="http://www.pbc.gov.cn/">人民银行</option>
+      <option value="http://www.audit.gov.cn/">审计署</option>
+      <option value="http://www.moe.gov.cn/jyb_sy/China_Language/">国家语言文字工作委员会</option>
+      <option value="">国家外国专家局</option>
+      <option value="http://www.cnsa.gov.cn/">国家航天局</option>
+      <option value="http://www.caea.gov.cn/">国家原子能机构</option>
+      <option value="" style="text-decoration:none; cursor:default;">国家海洋局</option>
+      <option value="http://nnsa.mee.gov.cn/">国家核安全局</option>
+      <option value="http://www.sasac.gov.cn/">国务院国有资产监督管理委员会</option>
+      <option value="http://www.customs.gov.cn/">海关总署</option>
+      <option value="http://www.chinatax.gov.cn/">国家税务总局</option>
+      <option value="http://www.samr.gov.cn/">国家市场监督管理总局</option>
+      <option value="http://www.nrta.gov.cn/">国家广播电视总局</option>
+      <option value="http://www.sport.gov.cn/">国家体育总局</option>
+      <option value="http://www.stats.gov.cn/">国家统计局</option>
+      <option value="http://www.cidca.gov.cn/">国家国际发展合作署</option>
+      <option value="http://www.nhsa.gov.cn/">国家医疗保障局</option>
+      <option value="http://www.counsellor.gov.cn/">国务院参事室</option>
+      <option value="http://www.ggj.gov.cn/">国家机关事务管理局</option>
+      <option value="http://www.cnca.gov.cn/">国家认证认可监督管理委员会</option>
+      <option value="http://www.sac.gov.cn/">国家标准化管理委员会</option>
+      <option value="http://www.ncac.gov.cn/">国家新闻出版署（国家版权局）</option>
+      <option value="http://www.sara.gov.cn/gjzjswjhtml/index.html">国家宗教事务局</option>
+      <option value="http://www.hmo.gov.cn/">国务院港澳事务办公室</option>
+      <option value="http://www.gov.cn/guoqing/2018-06/22/content_5300522.htm">国务院研究室</option>
+      <option value="http://www.gqb.gov.cn/">国务院侨务办公室</option>
+      <option value="http://www.gwytb.gov.cn/">国务院台湾事务办公室</option>
+      <option value="http://www.cac.gov.cn/">国家互联网信息办公室</option>
+      <option value="http://www.scio.gov.cn/index.htm">国务院新闻办公室</option>
+      <option value="http://203.192.6.89/xhs/">新华通讯社</option>
+      <option value="http://www.cas.ac.cn/">中国科学院</option>
+      <option value="http://cass.cssn.cn/">中国社会科学院</option>
+      <option value="http://www.cae.cn/">中国工程院</option>
+      <option value="http://www.drc.gov.cn/">国务院发展研究中心</option>
+      <option value="">中央广播电视总台</option>
+      <option value="http://www.cma.gov.cn/">中国气象局</option>
+      <option value="http://www.cbirc.gov.cn/cn/view/pages/index/index.html">中国银行保险监督管理委员会</option>
+      <option value="http://www.csrc.gov.cn/pub/newsite/">中国证券监督管理委员会</option>
+      <option value="http://www.ccps.gov.cn/">国家行政学院</option>
+      <option value="http://www.gjxfj.gov.cn/">国家信访局</option>
+      <option value="http://www.chinagrain.gov.cn/index.html">国家粮食和物资储备局</option>
+      <option value="http://www.nea.gov.cn/">国家能源局</option>
+      <option value="http://www.sastind.gov.cn/">国家国防科技工业局</option>
+      <option value="http://www.tobacco.gov.cn/html/">国家烟草专卖局</option>
+      <option value="https://www.nia.gov.cn">国家移民管理局</option>
+      <option value="http://www.forestry.gov.cn/">国家林业和草原局</option>
+      <option value="http://www.nra.gov.cn/">国家铁路局</option>
+      <option value="http://www.caac.gov.cn/index.html">中国民用航空局</option>
+      <option value="http://www.spb.gov.cn/">国家邮政局</option>
+      <option value="http://www.ncha.gov.cn/">国家文物局</option>
+      <option value="http://www.satcm.gov.cn/">国家中医药管理局</option>
+      <option value="http://www.chinacoal-safety.gov.cn/">国家煤矿安全监察局</option>
+      <option value="http://www.safe.gov.cn/">国家外汇管理局</option>
+      <option value="https://www.nmpa.gov.cn/"  target="_blank">国家药品监督管理局</option>
+      <option value="http://www.cnipa.gov.cn">国家知识产权局</option>
+      <option value="">出入境管理局</option>
+      <option value="http://www.forestry.gov.cn/">国家公园管理局</option>
+      <option value="http://www.scs.gov.cn/">国家公务员局</option>
+      <option value="http://www.saac.gov.cn/">国家档案局</option>
+      <option value="http://www.gjbmj.gov.cn">国家保密局</option>
+      <option value="http://www.oscca.gov.cn/">国家密码管理局</option>
+    </select> -->
+        <select class="net1" aria-label="省政府网站，按回车键展开列表，按Tab键在选项间移动，按回车键跳转" title="省政府网站"
+          onchange="javascript:window.open(this.options[this.selectedIndex].value);this.selectedIndex=0">
+          <option value="">省政府网站</option>
+          <option value="https://www.henan.gov.cn/">河南省政府网</option>
+        </select>
+        <select class="net1" aria-label="市政府部门，按回车键展开列表，按Tab键在选项间移动，按回车键跳转" title="市政府部门"
+          onchange="javascript:window.open(this.options[this.selectedIndex].value);this.selectedIndex=0">
+          <option value="">市政府部门</option>
+          <option value="http://fgw.smx.gov.cn">市发展和改革委员会</option>
+          <option value="http://kjj.smx.gov.cn">市科学技术局</option>
+          <option value="http://scjg.smx.gov.cn/">市市场监督管理局</option>
+          <option value="http://gaj.smx.gov.cn/">市公安局</option>
+          <option value="http://sfj.smx.gov.cn">市司法局</option>
+          <option value="http://gxj.smx.gov.cn/">市工业和信息化局</option>
+          <option value="http://nyncj.smx.gov.cn/">市农业农村局</option>
+          <option value="http://slj.smx.gov.cn">市水利局</option>
+          <option value="http://zjj.smx.gov.cn/">市住房和城乡建设局</option>
+          <option value="http://xfj.smx.gov.cn">市信访局</option>
+          <option value="http://tjj.smx.gov.cn">市统计局</option>
+          <option value="http://sjj.smx.gov.cn">市审计局</option>
+          <option value="http://rfb.smx.gov.cn/">三门峡市国防动员办公室</option>
+          <option value="http://mzj.smx.gov.cn">市民政局</option>
+          <option value="http://wjw.smx.gov.cn/">市卫生健康委员会</option>
+          <option value="http://lyj.smx.gov.cn/">市林业局</option>
+          <option value="http://zrzy.smx.gov.cn/">市自然资源和规划局</option>
+          <option value="http://rsj.smx.gov.cn">市人力资源和社会保障局</option>
+          <option value="http://swj.smx.gov.cn">市商务局</option>
+          <option value="http://jtysj.smx.gov.cn/">市交通运输局</option>
+          <option value="http://jyj.smx.gov.cn/">市教育局</option>
+          <option value="http://yjglj.smx.gov.cn">市应急管理局</option>
+          <option value="http://tyj.smx.gov.cn/">市体育局</option>
+          <option value="http://sthj.smx.gov.cn/">市生态环境局</option>
+          <option value="http://wglj.smx.gov.cn/">市文化广电和旅游局</option>
+          <option value="http://czj.smx.gov.cn">市财政局</option>
+          <option value="http://tyjrswj.smx.gov.cn/">市退役军人事务局</option>
+          <option value="http://cgj.smx.gov.cn/">市城市管理局</option>
+          <option value="http://mzzj.smx.gov.cn/">市民族宗教事务局</option>
+          <option value="http://ylbzj.smx.gov.cn">市医疗保障局</option>
+          <option value="http://zsj.smx.gov.cn">市行政审批和政务信息管理局</option>
+        </select>
+        <select class="net1" aria-label="各县市区，按回车键展开列表，按Tab键在选项间移动，按回车键跳转" title="各县市区"
+          onchange="javascript:window.open(this.options[this.selectedIndex].value);this.selectedIndex=0">
+          <option value="">各县（市、区）</option>
+          <option value="http://www.hubin.gov.cn/">湖滨区</option>
+          <option value="http://www.lingbao.gov.cn/">灵宝市</option>
+          <option value="http://www.yima.gov.cn/">义马市</option>
+          <option value="http://www.mianchi.gov.cn/">渑池县</option>
+          <option value="http://www.shanzhou.gov.cn/">陕州区</option>
+          <option value="http://www.lushixian.gov.cn/">卢氏县</option>
+          <option value="http://www.smxjjkfq.gov.cn/">经济开发区</option>
+          <option value="http://www.smxsfq.gov.cn/">城乡一体化示范区</option>
+        </select>
+        <select class="net1" aria-label="本市重要机构，按回车键展开列表，按Tab键在选项间移动，按回车键跳转" title="本市重要机构"
+          onchange="javascript:window.open(this.options[this.selectedIndex].value);this.selectedIndex=0">
+          <option value="">本市重要机构</option>
+          <option value="http://gjj.smx.gov.cn">市住房公积金管理中心</option>
+          <option value="http://gzjy.smx.gov.cn">三门峡市公共资源交易中心</option>
+          <option value="https://xy.smx.gov.cn/wcm/site/home_site.html">信用三门峡</option>
+          <option value="https://sanmenxia.zfcg.henan.gov.cn">三门峡政府采购网</option>
+        </select>
+        <!-- <select class="net1" onchange="javascript:window.open(this.options[this.selectedIndex].value);this.selectedIndex=0">
+      <option value="">友情链接</option>
+      <option value="http://szb.ismx.cn/smxrb">三门峡日报</option>
+      <option value="http://szb.ismx.cn/hhsb">黄河时报</option>
+      <option value="http://www.smxzcw.org.cn">三门峡仲裁委员会</option>
+    </select> -->
+      </div>
+    </div>
+  </div>
+    <!--footer-->
+    <div class="footer">
+    <div class="extentb">
+      <div class="footerbox w">
+        <a href="http://bszs.conac.cn/sitename?method=show&id=08D3F05E04ED3476E053022819AC8418"
+          target="_blank" class="dang" style="float:left;">
+          <img src="/websites/rmzf/images/dang.png" alt="党政机关" >
+        </a>
+        <div class="msg" style="float:left">
+          <p>
+            <span class="host commonFont">主办单位：三门峡市人民政府办公室&nbsp;&nbsp;</span>
+            <span class="host1 commonFont">协办：三门峡日报社&nbsp;&nbsp;</span>
+            <span>技术支持：三门峡崤云安全服务有限公司&nbsp;&nbsp;</span>
+
+          </p>
+          <p>
+            <span class="netnum commonFont">网站标识码：4112000001&nbsp;</span>
+            <a class="commonFont" href="https://beian.miit.gov.cn/" target="_blank"><span>备案序号：豫ICP备11010968号</span></a>
+            <a class="commonFont"
+              href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41120202000029"
+              style="text-decoration:none;" target="_blank"><img style="vertical-align: text-bottom;margin-right:6px;"
+                src="/websites/rmzf/images/beian.png">豫公网安备41120202000029号</a>
+          </p>
+          <p>
+            
+            <span class="address commonFont">地址：三门峡市崤山路47号&nbsp;&nbsp;</span>
+
+          </p>
+          <p>
+            <a href="https://smx.henanjubao.com/" class="commonFont" target="_blank">本站举报办法：三门峡市互联网举报和辟谣平台</a>
+          </p>
+        </div>
+        <div style="width: 120px;float: left;">
+          <script id="_jiucuo_" sitecode="4112000001" src="/websites/commonComponents/js/jiucuo.js"></script>
+          <a href="https://smx.henanjubao.com/" target="_blank" class="zheng" style="float:left;">
+            <img src="/websites/commonComponents/images/jbptimg.jpg" alt="三门峡市互联网举报和辟谣平台">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  function getOs() {
+    if (navigator.userAgent.indexOf("MSIE") > 0) {
+      return "MSIE";
+    }
+    if (isFirefox = navigator.userAgent.indexOf("Firefox") > 0) {
+      $('#img-ie8').remove();
+      $('.img1-ie8').remove();
+      return "Firefox";
+    }
+    if (isSafari = navigator.userAgent.indexOf("Safari") > 0) {
+      return "Safari";
+    }
+    if (isCamino = navigator.userAgent.indexOf("Camino") > 0) {
+      return "Camino";
+    }
+    if (isMozilla = navigator.userAgent.indexOf("Gecko/") > 0) {
+      return "Gecko";
+    }
+    if (navigator.userAgent.indexOf("Qaxbrowser") > 0) {
+      console.log('奇安信');
+    }
+  }
+  getOs()
+</script>
+<!-- 引入适老化项目 -->
+
+<script src="/websites/rmzf/js/commonold.js"></script>
+<script type="text/javascript" src="/websites/rmzf/static/cmsToolsInit.js"></script>
+    <script type="text/javascript">
+
+    $(function () {
+        var loginSigns = null;
+        var loginHref = null
+        // 我要留言
+         $('#loginLink').attr('href',`https://login.hnzwfw.gov.cn/tacs-uc/login/index?backUrl=https://www.smx.gov.cn/receiveTicket?targetUrl=${window.location.href}`)
+     })
+</script>
+<script>
+  window.onload = function () {
+    console.log("-----输出数据------")
+      const iframe = document.getElementById('loginInfo');
+      iframe.contentWindow.postMessage(window.location.href, '*'); // '*' 表示接受任何源，实际使用时应指定确切的源以增加安全性
+  }
+   // 监听来自 iframe 的消息
+ window.addEventListener('message', function(event) {
+    var data = event.data;
+      if(data && data.hasOwnProperty('loginSigns')){
+        console.log('从 iframe 收到数据:', data);
+
+        // 根据登录状态控制意见建议表单显示/隐藏
+        var opinionForm = document.getElementById('opinionForm');
+        if (opinionForm) {
+            if (data.loginSigns == '2') {
+                // 未登录：隐藏表单
+                opinionForm.style.display = 'none';
+            } else {
+                // 已登录：显示表单
+                opinionForm.style.display = 'block';
+            }
+        }
+
+        var userName = data.userName;
+        var userMobile = data.userMobile;
+        var certNo = data.certNo;
+
+        if (data.userType === 'CP') {
+        // 法人
+        // 意见建议表单填充
+        $('#opinionName').val(data.enterpriseName).prop('readonly', true);
+        $('#opinionPhone').val(userMobile).prop('readonly', true);
+        $('#personIdCardRow').hide();
+        $('#companyNameRow').show();
+        $('#companyCodeRow').show();
+        $('#companyName').val(userName);
+        $('#companyCode').val(data.enterpriseSno);
+
+      } else if (data.userType === 'NA') {
+        // 自然人
+        // 意见建议表单填充
+        $('#opinionName').val(userName).prop('readonly', true);
+        $('#opinionPhone').val(userMobile).prop('readonly', true);
+        $('#personIdCardRow').show();
+        $('#companyNameRow').hide();
+        $('#companyCodeRow').hide();
+        $('#personIdCard').val(certNo);
+
+      }
+      }
+
+  }, false);
+
+</script>
+</html>

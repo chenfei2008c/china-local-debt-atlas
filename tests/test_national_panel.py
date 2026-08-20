@@ -30,6 +30,7 @@ from scripts.collect_national_panel import (
     load_next12_2025_city_economic,
     load_next13_2025_city_economic,
     load_next14_2025_city_economic,
+    load_next15_2025_city_economic,
     load_next_2025_city_fiscal,
     load_shandong_2025_city_fiscal,
     order_calculation_rows_for_lineage,
@@ -1574,6 +1575,23 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(values["CN-410800"]["general_public_revenue_100m"], Decimal("135.10"))
         self.assertEqual(values["CN-410800"]["general_public_expenditure_100m"], Decimal("325.50"))
         self.assertEqual({source["source_grade"] for source in sources}, {"A2"})
+
+    def test_next15_2025_sanmenxia_luoyang_economic_batch_extracts_two_cities(self):
+        values, sources = load_next15_2025_city_economic()
+
+        self.assertEqual(len(values), 2)
+        self.assertEqual(len(sources), 2)
+        self.assertEqual(values["CN-411200"]["gdp_current_100m"], Decimal("1702.61"))
+        self.assertEqual(values["CN-411200"]["gdp_real_growth_pct"], Decimal("6.10"))
+        self.assertEqual(values["CN-411200"]["resident_population_10k"], Decimal("199.50"))
+        self.assertEqual(values["CN-411200"]["general_public_revenue_100m"], Decimal("149.51"))
+        self.assertEqual(values["CN-411200"]["general_public_expenditure_100m"], Decimal("286.72"))
+        self.assertEqual(values["CN-410300"]["gdp_current_100m"], Decimal("6164.52"))
+        self.assertEqual(values["CN-410300"]["gdp_real_growth_pct"], Decimal("6.00"))
+        self.assertEqual(values["CN-410300"]["resident_population_10k"], Decimal("708.30"))
+        self.assertEqual(values["CN-410300"]["general_public_revenue_100m"], Decimal("421.80"))
+        self.assertEqual(values["CN-410300"]["general_public_expenditure_100m"], Decimal("725.20"))
+        self.assertEqual({source["source_grade"] for source in sources}, {"A2", "B2"})
 
     def test_city_year_fund_batch_extracts_hohhot_and_chifeng(self):
         values, sources = load_city_year_fund_sources()
