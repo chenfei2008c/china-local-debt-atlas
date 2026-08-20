@@ -2250,6 +2250,65 @@ NEXT24_2025_ECONOMIC_SOURCES = (
     },
 )
 
+NEXT25_2025_ECONOMIC_SOURCES = (
+    {
+        "city_name": "阿克苏地区",
+        "city_id": "CN-652900",
+        "source_doc_id": "SRC-B2-XINJIANG-PREFECTURE-AKSU-2025-STATISTICS-FISCAL",
+        "url": "https://www.crei.cn/file/br.aspx?id=20260528085809&op=sczz&x=0",
+        "attachment_url": "https://www.crei.cn/file/br.aspx?id=20260528085809&op=sczz&x=0",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "aksu_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "aksu_2025_economic_fiscal_excerpt.txt",
+        "text_is_curated": True,
+        "source_format": "html",
+        "document_title": "阿克苏地区2025年国民经济和社会发展统计公报",
+        "publisher": "阿克苏地区统计局（官方公报精确转载）",
+        "publisher_level": "地区统计机构官方公报转载",
+        "publication_date": "2026-04-30",
+        "title_source": "official_reprint_html",
+        "document_type": "官方统计公报经济财政指标（精确转载网页）",
+        "mime_type": "text/html",
+        "source_grade": "B2",
+        "data_status": "preliminary",
+        "source_locator": "aksu_2025_economic_fiscal_excerpt.txt；GDP及增速=统计公报正文；一般公共预算收入、支出=统计公报财政段落；公报未披露常住人口和政府性基金收入",
+        "patterns": {
+            "gdp_current_100m": (r"全年阿克苏地区生产总值（GDP）([0-9.]+)亿元", "亿元"),
+            "gdp_real_growth_pct": (r"全年阿克苏地区生产总值（GDP）[0-9.]+亿元，按不变价格计算，比上年增长([0-9.]+)%", "%"),
+            "general_public_revenue_100m": (r"全年一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "B2阿克苏地区统计局公报精确转载；正文精确披露2025年GDP、实际增速和一般公共预算收支。因当前可核验页面未披露年末常住人口与政府性基金收入，二者不以其他口径推算。",
+    },
+    {
+        "city_name": "喀什地区",
+        "city_id": "CN-653100",
+        "source_doc_id": "SRC-A2-XINJIANG-PREFECTURE-KASHGAR-2025-STATISTICS-FISCAL",
+        "url": "https://www.kashi.gov.cn/ksdqxzgs/c112198/202604/4eb6af2f3cda49a8baa7df45973b6f21.shtml",
+        "attachment_url": "https://www.kashi.gov.cn/ksdqxzgs/c112198/202604/4eb6af2f3cda49a8baa7df45973b6f21.shtml",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "kashgar_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "kashgar_2025_economic_fiscal_excerpt.txt",
+        "text_is_curated": True,
+        "source_format": "html",
+        "document_title": "喀什地区2025年国民经济和社会发展统计公报",
+        "publisher": "喀什地区统计局、国家统计局喀什调查队",
+        "publisher_level": "地区统计机构",
+        "publication_date": "2026-04-08",
+        "title_source": "official_image_page",
+        "document_type": "官方统计公报经济财政指标（图文网页）",
+        "mime_type": "text/html",
+        "source_grade": "A2",
+        "data_status": "preliminary",
+        "source_locator": "kashgar_2025_economic_fiscal_excerpt.txt；GDP=官方公报图文第1页；一般预算收入、支出=官方公报图文第16页；对应图像已归档；公报未披露常住人口和政府性基金收入",
+        "patterns": {
+            "gdp_current_100m": (r"2025年，喀什地区生产总值（GDP）([0-9.]+)亿元", "亿元"),
+            "gdp_real_growth_pct": (r"2025年，喀什地区生产总值（GDP）[0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
+            "general_public_revenue_100m": (r"全年一般公共预算收入完成([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "A2喀什地区统计局和国家统计局喀什调查队官方图文公报；补录2025年GDP、实际增速和一般公共预算收支。公报未披露年末常住人口与政府性基金收入，二者不以其他口径推算。",
+    },
+)
+
 JIANGSU_CITY_FUND_SOURCES = (
     {
         "year": 2018,
@@ -4485,6 +4544,12 @@ def load_next24_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[di
     return load_city_2025_fiscal_sources(NEXT24_2025_ECONOMIC_SOURCES)
 
 
+def load_next25_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取阿克苏、喀什地区 2025 年统计公报经济财政数据。"""
+
+    return load_city_2025_fiscal_sources(NEXT25_2025_ECONOMIC_SOURCES)
+
+
 def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
     general_limit = as_decimal(row.get("general_debt_limit_100m"))
     special_limit = as_decimal(row.get("special_debt_limit_100m"))
@@ -4605,6 +4670,7 @@ def build_macro_rows(
     next22_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next23_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next24_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
+    next25_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     jiangsu_city_fund: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     jiangsu_city_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     city_year_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
@@ -4645,6 +4711,7 @@ def build_macro_rows(
     next22_2025_economic = next22_2025_economic or {}
     next23_2025_economic = next23_2025_economic or {}
     next24_2025_economic = next24_2025_economic or {}
+    next25_2025_economic = next25_2025_economic or {}
     jiangsu_city_fund = jiangsu_city_fund or {}
     jiangsu_city_fiscal = jiangsu_city_fiscal or {}
     city_year_fiscal = city_year_fiscal or {}
@@ -4681,6 +4748,7 @@ def build_macro_rows(
         **next22_2025_economic,
         **next23_2025_economic,
         **next24_2025_economic,
+        **next25_2025_economic,
     }
     for city in city_master:
         year = int(city["metric_year"])
@@ -5981,6 +6049,7 @@ def main() -> None:
     next22_2025_economic, next22_2025_economic_sources = load_next22_2025_city_economic()
     next23_2025_economic, next23_2025_economic_sources = load_next23_2025_city_economic()
     next24_2025_economic, next24_2025_economic_sources = load_next24_2025_city_economic()
+    next25_2025_economic, next25_2025_economic_sources = load_next25_2025_city_economic()
     jiangsu_city_fund, jiangsu_city_fund_sources = load_jiangsu_city_fund_sources()
     jiangsu_city_fiscal, jiangsu_city_fiscal_sources = load_jiangsu_city_fiscal_sources()
     city_year_fiscal, city_year_fiscal_sources = load_city_year_fiscal_sources()
@@ -6036,6 +6105,7 @@ def main() -> None:
         next22_2025_economic,
         next23_2025_economic,
         next24_2025_economic,
+        next25_2025_economic,
         jiangsu_city_fund,
         jiangsu_city_fiscal,
         city_year_fiscal,
@@ -6198,6 +6268,7 @@ def main() -> None:
             *next22_2025_economic_sources,
             *next23_2025_economic_sources,
             *next24_2025_economic_sources,
+            *next25_2025_economic_sources,
             *jiangsu_city_fund_sources,
             *jiangsu_city_fiscal_sources,
             *city_year_fiscal_sources,
