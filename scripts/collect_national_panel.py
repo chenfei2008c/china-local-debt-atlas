@@ -3383,6 +3383,28 @@ CITY_YEAR_FUND_SOURCES = (
         "page_count": "28",
         "note": "上海证券交易所公开披露的联合资信跟踪评级报告，图表3列示泸州市主要财政指标；2025年政府性基金收入143.7亿元，表下注明根据《市本级决算和全市总决算情况的报告》和《2025年预算执行情况》整理，明确为泸州市全市口径。",
     },
+    {
+        "year": 2025,
+        "city_name": "六安市",
+        "city_id": "CN-341500",
+        "source_doc_id": "SRC-A2-LUAN-CITY-FUND-2025",
+        "url": "https://czj.luan.gov.cn/public/6608251/10758829.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "luan_2025_budget_execution_analysis.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "luan_2025_budget_execution_analysis_excerpt.txt",
+        "document_title": "〖预算执行情况〗2025年全市预算执行情况分析",
+        "publisher": "六安市财政局",
+        "publisher_level": "市级财政机构官方网页",
+        "publication_date": "2026-01-23",
+        "source_grade": "A2",
+        "source_format": "html",
+        "pattern": r"原文摘录：.*?2025年，全市政府性基金预算收入([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数",
+        "document_type": "城市财政预算执行分析（官方网页）",
+        "page_count": "1",
+        "note": "六安市财政局官方预算执行分析，明确为全市口径；采用2025年全市政府性基金预算收入41亿元，不使用市本级数。",
+    },
 )
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
