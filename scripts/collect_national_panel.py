@@ -1630,6 +1630,84 @@ NEXT15_2025_ECONOMIC_SOURCES = (
     },
 )
 
+NEXT16_2025_ECONOMIC_SOURCES = (
+    {
+        "city_name": "岳阳市",
+        "city_id": "CN-430600",
+        "source_doc_id": "SRC-A2-HUNAN-CITY-STATISTICAL-YUEYANG-2025",
+        "url": "https://www.yueyang.gov.cn/tjgb/content_2380060.html",
+        "attachment_url": "https://www.yueyang.gov.cn/tjgb/content_2380060.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "yueyang_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "yueyang_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "岳阳市2025年国民经济和社会发展统计公报",
+        "publisher": "岳阳市统计局",
+        "publisher_level": "市级统计机构",
+        "publication_date": "2026-04-30",
+        "title_source": "official_page_excerpt",
+        "document_type": "官方统计公报经济指标（网页）",
+        "mime_type": "text/html",
+        "source_grade": "A2",
+        "data_status": "preliminary",
+        "patterns": {
+            "gdp_current_100m": (r"全年地区生产总值([0-9.]+)亿元，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"全年地区生产总值[0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
+        },
+        "note": "A2岳阳市统计局官方统计公报；补录2025年全市GDP、增速和年末常住人口，财政收入、支出沿用已归档的市级财政来源。",
+    },
+    {
+        "city_name": "益阳市",
+        "city_id": "CN-430900",
+        "source_doc_id": "SRC-A2-HUNAN-CITY-STATISTICAL-YIYANG-2025",
+        "url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/yiys_1/202605/t20260512_33975330.html",
+        "attachment_url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/yiys_1/202605/t20260512_33975330.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "yiyang_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "yiyang_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "益阳市2025年国民经济和社会发展统计公报",
+        "publisher": "湖南省统计局、益阳市统计局",
+        "publisher_level": "省级统计机构转载",
+        "publication_date": "2026-04-30",
+        "title_source": "official_page_excerpt",
+        "document_type": "官方统计公报经济指标（网页）",
+        "mime_type": "text/html",
+        "source_grade": "A2",
+        "data_status": "preliminary",
+        "patterns": {
+            "gdp_current_100m": (r"全年地区生产总值([0-9.]+)亿元，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"全年地区生产总值[0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
+        },
+        "note": "A2湖南省统计局公开的益阳市统计公报；补录2025年全市GDP、增速和年末常住人口，财政收入、支出沿用已归档的市级财政来源。",
+    },
+    {
+        "city_name": "常德市",
+        "city_id": "CN-430700",
+        "source_doc_id": "SRC-A2-HUNAN-CITY-STATISTICAL-CHANGDE-2025",
+        "url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/cds_1/202605/t20260518_33979393.html",
+        "attachment_url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/cds_1/202605/t20260518_33979393.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "changde_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "changde_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "常德市2025年国民经济和社会发展统计公报",
+        "publisher": "湖南省统计局、常德市统计局",
+        "publisher_level": "省级统计机构转载",
+        "publication_date": "2026-05-15",
+        "title_source": "official_page_excerpt",
+        "document_type": "官方统计公报经济指标（网页）",
+        "mime_type": "text/html",
+        "source_grade": "A2",
+        "data_status": "preliminary",
+        "patterns": {
+            "gdp_current_100m": (r"2025年全市实现地区生产总值([0-9.]+)亿元，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"2025年全市实现地区生产总值[0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"全市年末常住人口([0-9.]+)万人", "万人"),
+        },
+        "note": "A2湖南省统计局公开的常德市统计公报；补录2025年全市GDP、增速和年末常住人口，财政收入、支出沿用已归档的市级财政来源。",
+    },
+)
+
 JIANGSU_CITY_FUND_SOURCES = (
     {
         "year": 2018,
@@ -3808,6 +3886,12 @@ def load_next15_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[di
     return load_city_2025_fiscal_sources(NEXT15_2025_ECONOMIC_SOURCES)
 
 
+def load_next16_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取岳阳、益阳、常德 2025 年统计公报经济数据。"""
+
+    return load_city_2025_fiscal_sources(NEXT16_2025_ECONOMIC_SOURCES)
+
+
 def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
     general_limit = as_decimal(row.get("general_debt_limit_100m"))
     special_limit = as_decimal(row.get("special_debt_limit_100m"))
@@ -3919,6 +4003,7 @@ def build_macro_rows(
     next13_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next14_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next15_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
+    next16_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     jiangsu_city_fund: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     jiangsu_city_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     city_year_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
@@ -3950,6 +4035,7 @@ def build_macro_rows(
     next13_2025_economic = next13_2025_economic or {}
     next14_2025_economic = next14_2025_economic or {}
     next15_2025_economic = next15_2025_economic or {}
+    next16_2025_economic = next16_2025_economic or {}
     jiangsu_city_fund = jiangsu_city_fund or {}
     jiangsu_city_fiscal = jiangsu_city_fiscal or {}
     city_year_fiscal = city_year_fiscal or {}
@@ -3965,6 +4051,10 @@ def build_macro_rows(
         **next5_2025_fiscal,
         **next6_2025_fiscal,
         **next7_2025_fiscal,
+    }
+    # 经济批次可能与已归档的财政批次覆盖同一城市。不能把整条记录浅层覆盖，
+    # 否则会丢失原财政收入、支出和基金收入；下面按字段叠加并保留已有来源。
+    economic_2025 = {
         **next8_2025_economic,
         **next9_2025_economic,
         **next10_2025_economic,
@@ -3973,6 +4063,7 @@ def build_macro_rows(
         **next13_2025_economic,
         **next14_2025_economic,
         **next15_2025_economic,
+        **next16_2025_economic,
     }
     for city in city_master:
         year = int(city["metric_year"])
@@ -4097,6 +4188,52 @@ def build_macro_rows(
                 )
                 + "GDP、人口和债务字段按各自来源单独记录。"
             )
+        economic_source = economic_2025.get(city["city_id"]) if year == 2025 else None
+        if economic_source:
+            applied_fields: list[str] = []
+            for field in (
+                "gdp_current_100m",
+                "gdp_real_growth_pct",
+                "resident_population_10k",
+                "general_public_revenue_100m",
+                "general_public_expenditure_100m",
+                "gov_fund_revenue_100m",
+            ):
+                value = as_decimal(economic_source.get(field))
+                # 同一城市已有更高优先级字段时不覆盖，只补空值。
+                if value is None or row.get(field) is not None:
+                    continue
+                row[field] = q2(value)
+                batch_lineage.append(
+                    _lineage_for_ningxia_city_fiscal(row, economic_source, field, row[field])
+                )
+                applied_fields.append(field)
+            if applied_fields:
+                economic_source_id = str(economic_source.get("source_doc_id") or "")
+                prior_source_ids = [
+                    item.strip()
+                    for item in str(row.get("source_doc_id") or "").split(";")
+                    if item.strip()
+                ]
+                row["source_doc_id"] = ";".join(
+                    dict.fromkeys(prior_source_ids + ([economic_source_id] if economic_source_id else []))
+                ) or None
+                economic_grade = str(economic_source.get("source_grade") or "A2")
+                if not row.get("source_grade"):
+                    row["source_grade"] = economic_grade
+                if row.get("data_status") in {None, "", "not_collected"}:
+                    row["data_status"] = str(economic_source.get("data_status") or "preliminary")
+                if row.get("collection_status") in {None, "", "needs_collection"}:
+                    row["collection_status"] = (
+                        "extracted" if economic_grade in {"A1", "A2"} else "needs_review"
+                    )
+                if "gov_fund_revenue_100m" in applied_fields:
+                    row["gov_fund_source_status"] = "官方城市预算执行报告（全市口径）"
+                economic_note = str(economic_source.get("note") or "")
+                if row.get("note", "").startswith("未取得可审计"):
+                    row["note"] = economic_note
+                elif economic_note and economic_note not in str(row.get("note") or ""):
+                    row["note"] = f"{row.get('note') or ''}；{economic_note}"
         debt_fact = official_debt_facts.get((city["city_id"], str(year)))
         if debt_fact and debt_fact_has_balance_limit_conflict(dict(debt_fact)):
             blocked_source_id = str(debt_fact.get("source_doc_id", ""))
@@ -5218,6 +5355,7 @@ def main() -> None:
     next13_2025_economic, next13_2025_economic_sources = load_next13_2025_city_economic()
     next14_2025_economic, next14_2025_economic_sources = load_next14_2025_city_economic()
     next15_2025_economic, next15_2025_economic_sources = load_next15_2025_city_economic()
+    next16_2025_economic, next16_2025_economic_sources = load_next16_2025_city_economic()
     jiangsu_city_fund, jiangsu_city_fund_sources = load_jiangsu_city_fund_sources()
     jiangsu_city_fiscal, jiangsu_city_fiscal_sources = load_jiangsu_city_fiscal_sources()
     city_year_fiscal, city_year_fiscal_sources = load_city_year_fiscal_sources()
@@ -5264,6 +5402,7 @@ def main() -> None:
         next13_2025_economic,
         next14_2025_economic,
         next15_2025_economic,
+        next16_2025_economic,
         jiangsu_city_fund,
         jiangsu_city_fiscal,
         city_year_fiscal,
@@ -5417,6 +5556,7 @@ def main() -> None:
             *next13_2025_economic_sources,
             *next14_2025_economic_sources,
             *next15_2025_economic_sources,
+            *next16_2025_economic_sources,
             *jiangsu_city_fund_sources,
             *jiangsu_city_fiscal_sources,
             *city_year_fiscal_sources,

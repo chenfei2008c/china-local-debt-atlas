@@ -31,6 +31,7 @@ from scripts.collect_national_panel import (
     load_next13_2025_city_economic,
     load_next14_2025_city_economic,
     load_next15_2025_city_economic,
+    load_next16_2025_city_economic,
     load_next_2025_city_fiscal,
     load_shandong_2025_city_fiscal,
     order_calculation_rows_for_lineage,
@@ -1592,6 +1593,69 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(values["CN-410300"]["general_public_revenue_100m"], Decimal("421.80"))
         self.assertEqual(values["CN-410300"]["general_public_expenditure_100m"], Decimal("725.20"))
         self.assertEqual({source["source_grade"] for source in sources}, {"A2", "B2"})
+
+    def test_next16_2025_hunan_economic_batch_extracts_three_cities(self):
+        values, sources = load_next16_2025_city_economic()
+
+        self.assertEqual(len(values), 3)
+        self.assertEqual(len(sources), 3)
+        self.assertEqual(values["CN-430600"]["gdp_current_100m"], Decimal("5386.88"))
+        self.assertEqual(values["CN-430600"]["gdp_real_growth_pct"], Decimal("5.50"))
+        self.assertEqual(values["CN-430600"]["resident_population_10k"], Decimal("493.27"))
+        self.assertEqual(values["CN-430900"]["gdp_current_100m"], Decimal("2381.46"))
+        self.assertEqual(values["CN-430900"]["gdp_real_growth_pct"], Decimal("5.50"))
+        self.assertEqual(values["CN-430900"]["resident_population_10k"], Decimal("369.19"))
+        self.assertEqual(values["CN-430700"]["gdp_current_100m"], Decimal("4770.90"))
+        self.assertEqual(values["CN-430700"]["gdp_real_growth_pct"], Decimal("5.60"))
+        self.assertEqual(values["CN-430700"]["resident_population_10k"], Decimal("510.70"))
+        self.assertEqual({source["source_grade"] for source in sources}, {"A2"})
+
+    def test_economic_batch_preserves_existing_fiscal_fields(self):
+        values, _ = load_next16_2025_city_economic()
+        city = {
+            "city_id": "CN-430600",
+            "admin_code_6": "430600",
+            "city_name_cn": "岳阳市",
+            "province_code": "43",
+            "province_name": "湖南省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        fiscal = {
+            "CN-430600": {
+                "source_doc_id": "SRC-FISCAL-HUNAN-YUEYANG-2025",
+                "source_grade": "A2",
+                "data_status": "execution",
+                "general_public_revenue_100m": Decimal("207.00"),
+                "general_public_expenditure_100m": Decimal("664.20"),
+                "gov_fund_revenue_100m": Decimal("224.10"),
+            }
+        }
+        rows, lineage = build_macro_rows(
+            [city], [], {}, {}, next_2025_fiscal=fiscal, next16_2025_economic=values
+        )
+        row = rows[0]
+        self.assertEqual(row["gdp_current_100m"], Decimal("5386.88"))
+        self.assertEqual(row["resident_population_10k"], Decimal("493.27"))
+        self.assertEqual(row["general_public_revenue_100m"], Decimal("207.00"))
+        self.assertEqual(row["general_public_expenditure_100m"], Decimal("664.20"))
+        self.assertEqual(row["gov_fund_revenue_100m"], Decimal("224.10"))
+        self.assertEqual(
+            row["source_doc_id"],
+            "SRC-FISCAL-HUNAN-YUEYANG-2025;SRC-A2-HUNAN-CITY-STATISTICAL-YUEYANG-2025",
+        )
+        self.assertEqual(
+            {item["target_field"] for item in lineage},
+            {
+                "gdp_current_100m",
+                "gdp_real_growth_pct",
+                "resident_population_10k",
+                "general_public_revenue_100m",
+                "general_public_expenditure_100m",
+                "gov_fund_revenue_100m",
+            },
+        )
 
     def test_city_year_fund_batch_extracts_hohhot_and_chifeng(self):
         values, sources = load_city_year_fund_sources()
