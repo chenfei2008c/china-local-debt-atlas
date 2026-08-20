@@ -1873,6 +1873,90 @@ NEXT17_2025_ECONOMIC_SOURCES = (
     },
 )
 
+NEXT18_2025_ECONOMIC_SOURCES = (
+    {
+        "city_name": "张家界市",
+        "city_id": "CN-430800",
+        "source_doc_id": "SRC-A2-HUNAN-CITY-STATISTICAL-ZHANGJIAJIE-2025",
+        "url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/zjj_1/202605/33975335/files/d3f82e78caf645eeab356512dcef1e3a.pdf",
+        "attachment_url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/zjj_1/202605/33975335/files/d3f82e78caf645eeab356512dcef1e3a.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "zhangjiajie_2025_statistical_bulletin.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "zhangjiajie_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "张家界市2025年国民经济和社会发展统计公报",
+        "publisher": "湖南省统计局、张家界市统计局",
+        "publisher_level": "省级统计机构转载",
+        "publication_date": "2026-05-06",
+        "title_source": "official_pdf_excerpt",
+        "document_type": "官方统计公报经济财政指标（扫描 PDF）",
+        "mime_type": "application/pdf",
+        "source_grade": "A2",
+        "data_status": "preliminary",
+        "patterns": {
+            "gdp_current_100m": (r"全市实现地区生产总值([0-9.]+)亿元，同比增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"全市实现地区生产总值[0-9.]+亿元，同比增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
+            "general_public_revenue_100m": (r"一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "A2湖南省统计局公开的张家界市统计公报扫描 PDF；按人工核对页 1、11、17 摘录2025年全市GDP、增速、年末常住人口和一般公共预算收支，政府性基金收入未在本来源中披露。",
+    },
+    {
+        "city_name": "湘潭市",
+        "city_id": "CN-430300",
+        "source_doc_id": "SRC-A2-HUNAN-CITY-STATISTICAL-XIANGTAN-2025",
+        "url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/xts_1/202605/33975345/files/f4a40747dddb439698b17b49eaecedba.pdf",
+        "attachment_url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/xts_1/202605/33975345/files/f4a40747dddb439698b17b49eaecedba.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "xiangtan_2025_statistical_bulletin.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "xiangtan_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "湘潭市2025年国民经济和社会发展统计公报",
+        "publisher": "湘潭市统计局、国家统计局湘潭调查队",
+        "publisher_level": "市级统计机构",
+        "publication_date": "2026-04-28",
+        "title_source": "official_pdf_excerpt",
+        "document_type": "官方统计公报经济财政指标（PDF）",
+        "mime_type": "application/pdf",
+        "source_grade": "A2",
+        "data_status": "preliminary",
+        "patterns": {
+            "gdp_current_100m": (r"地区生产总值\[2\]([0-9.]+)亿元，比上年增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"地区生产总值\[2\][0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全市常住人口([0-9.]+)万人", "万人"),
+            "general_public_revenue_100m": (r"地方一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"全市一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "A2湘潭市统计局官方统计公报 PDF；补录2025年全市GDP、增速、年末常住人口和一般公共预算收支，政府性基金收入未在本来源中披露。",
+    },
+    {
+        "city_name": "湘西土家族苗族自治州",
+        "city_id": "CN-433100",
+        "source_doc_id": "SRC-A2-HUNAN-PREFECTURE-STATISTICAL-XIANGXI-2025",
+        "url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/xxz_1/202605/33975294/files/602a896243b34c51ad25f22ef2aa7cc2.pdf",
+        "attachment_url": "https://tjj.hunan.gov.cn/hntj/tjfx/tjgb/szgb/xxz_1/202605/33975294/files/602a896243b34c51ad25f22ef2aa7cc2.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "xiangxi_2025_statistical_bulletin.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "xiangxi_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "湘西自治州2025年国民经济和社会发展统计公报",
+        "publisher": "湘西州统计局、国家统计局湘西调查队",
+        "publisher_level": "州级统计机构",
+        "publication_date": "2026-04-22",
+        "title_source": "official_pdf_excerpt",
+        "document_type": "官方统计公报经济财政指标（PDF）",
+        "mime_type": "application/pdf",
+        "source_grade": "A2",
+        "data_status": "preliminary",
+        "patterns": {
+            "gdp_current_100m": (r"全州实现生产总值（GDP）([0-9.]+)亿元，增长[0-9.]+%", "亿元"),
+            "gdp_real_growth_pct": (r"全州实现生产总值（GDP）[0-9.]+亿元，增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"常住人口([0-9.]+)万人。其中", "万人"),
+            "general_public_revenue_100m": (r"全州一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"全州一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "A2湘西州统计局官方统计公报 PDF；补录2025年全州GDP、增速、年末常住人口和一般公共预算收支，政府性基金收入未在本来源中披露。",
+    },
+)
+
 JIANGSU_CITY_FUND_SOURCES = (
     {
         "year": 2018,
@@ -4063,6 +4147,12 @@ def load_next17_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[di
     return load_city_2025_fiscal_sources(NEXT17_2025_ECONOMIC_SOURCES)
 
 
+def load_next18_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取张家界、湘潭、湘西州 2025 年统计公报经济财政数据。"""
+
+    return load_city_2025_fiscal_sources(NEXT18_2025_ECONOMIC_SOURCES)
+
+
 def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
     general_limit = as_decimal(row.get("general_debt_limit_100m"))
     special_limit = as_decimal(row.get("special_debt_limit_100m"))
@@ -4176,6 +4266,7 @@ def build_macro_rows(
     next15_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next16_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next17_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
+    next18_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     jiangsu_city_fund: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     jiangsu_city_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     city_year_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
@@ -4209,6 +4300,7 @@ def build_macro_rows(
     next15_2025_economic = next15_2025_economic or {}
     next16_2025_economic = next16_2025_economic or {}
     next17_2025_economic = next17_2025_economic or {}
+    next18_2025_economic = next18_2025_economic or {}
     jiangsu_city_fund = jiangsu_city_fund or {}
     jiangsu_city_fiscal = jiangsu_city_fiscal or {}
     city_year_fiscal = city_year_fiscal or {}
@@ -4238,6 +4330,7 @@ def build_macro_rows(
         **next15_2025_economic,
         **next16_2025_economic,
         **next17_2025_economic,
+        **next18_2025_economic,
     }
     for city in city_master:
         year = int(city["metric_year"])
@@ -5531,6 +5624,7 @@ def main() -> None:
     next15_2025_economic, next15_2025_economic_sources = load_next15_2025_city_economic()
     next16_2025_economic, next16_2025_economic_sources = load_next16_2025_city_economic()
     next17_2025_economic, next17_2025_economic_sources = load_next17_2025_city_economic()
+    next18_2025_economic, next18_2025_economic_sources = load_next18_2025_city_economic()
     jiangsu_city_fund, jiangsu_city_fund_sources = load_jiangsu_city_fund_sources()
     jiangsu_city_fiscal, jiangsu_city_fiscal_sources = load_jiangsu_city_fiscal_sources()
     city_year_fiscal, city_year_fiscal_sources = load_city_year_fiscal_sources()
@@ -5579,6 +5673,7 @@ def main() -> None:
         next15_2025_economic,
         next16_2025_economic,
         next17_2025_economic,
+        next18_2025_economic,
         jiangsu_city_fund,
         jiangsu_city_fiscal,
         city_year_fiscal,
@@ -5734,6 +5829,7 @@ def main() -> None:
             *next15_2025_economic_sources,
             *next16_2025_economic_sources,
             *next17_2025_economic_sources,
+            *next18_2025_economic_sources,
             *jiangsu_city_fund_sources,
             *jiangsu_city_fiscal_sources,
             *city_year_fiscal_sources,
