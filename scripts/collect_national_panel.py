@@ -2054,6 +2054,30 @@ CITY_YEAR_FISCAL_SOURCES = (
         },
         "note": "苏州市人民政府公开的市人大会议财政报告明确披露2025年全市政府性基金收入788亿元；采用全市执行数，独立接入基金字段，不覆盖已有一般预算字段。",
     },
+    {
+        "year": 2025,
+        "city_name": "石家庄市",
+        "city_id": "CN-130100",
+        "source_doc_id": "SRC-A1-SHIJIAZHUANG-CITY-FUND-2025",
+        "url": "https://www.sjz.gov.cn/yjsgk/attachments/1/202602/07/%E5%85%B3%E4%BA%8E%E7%9F%B3%E5%AE%B6%E5%BA%84%E5%B8%822025%E5%B9%B4%E9%A2%84%E7%AE%97%E6%89%A7%E8%A1%8C%E6%83%85%E5%86%B5%E5%92%8C2026%E5%B9%B4%E9%A2%84%E7%AE%97%E8%8D%89%E6%A1%88%E7%9A%84%E6%8A%A5%E5%91%8A20260207153821129.pdf?sid=",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "shijiazhuang_2025_budget_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "shijiazhuang_2025_budget_report_excerpt.txt",
+        "document_title": "关于石家庄市2025年预算执行情况和2026年预算草案的报告",
+        "publisher": "石家庄市人民政府",
+        "publisher_level": "市级政府",
+        "publication_date": "2026-02-07",
+        "source_grade": "A1",
+        "source_format": "pdf",
+        "raw_unit": "万元",
+        "data_status": "execution",
+        "data_status_label": "2025年实际完成数（官方执行表）",
+        "document_type": "城市财政预算执行报告（官方PDF）",
+        "page_number": "表3",
+        "patterns": {
+            "gov_fund_revenue_100m": r"实际完成\s*[:：]?\s*(3726518)",
+        },
+        "note": "石家庄市人民政府公开的2025年全市政府性基金收入预算完成情况表（表3）明确列示合计实际完成3726518万元；采用全市口径并按万元换算为亿元。",
+    },
 )
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 

@@ -878,8 +878,8 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 6)
-        self.assertEqual({source["source_grade"] for source in sources}, {"A2"})
+        self.assertEqual(len(sources), 7)
+        self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2"})
 
         chaoyang = {
             "city_id": "CN-211300",
@@ -1029,6 +1029,28 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(suzhou_rows[0]["data_status"], "execution")
         self.assertEqual(
             {item["target_field"] for item in suzhou_lineage},
+            {"gov_fund_revenue_100m"},
+        )
+        shijiazhuang = values[("CN-130100", "2025")]
+        self.assertEqual(shijiazhuang["gov_fund_revenue_100m"], Decimal("372.65"))
+        shijiazhuang_city = {
+            "city_id": "CN-130100",
+            "admin_code_6": "130100",
+            "city_name_cn": "石家庄市",
+            "province_code": "13",
+            "province_name": "河北省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        shijiazhuang_rows, shijiazhuang_lineage = build_macro_rows(
+            [shijiazhuang_city], [], {}, {}, city_year_fiscal=values,
+        )
+        self.assertEqual(shijiazhuang_rows[0]["gov_fund_revenue_100m"], Decimal("372.65"))
+        self.assertEqual(shijiazhuang_rows[0]["source_grade"], "A1")
+        self.assertEqual(shijiazhuang_rows[0]["data_status"], "execution")
+        self.assertEqual(
+            {item["target_field"] for item in shijiazhuang_lineage},
             {"gov_fund_revenue_100m"},
         )
         self.assertEqual(
