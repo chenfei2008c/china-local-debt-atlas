@@ -17394,20 +17394,14 @@ CN-530400,玉溪市,云南省,2025,special_debt_limit_100m,专项债务限额（
 CN-530400,玉溪市,云南省,2025,statutory_debt_limit_100m,法定债务限额（亿元）,core,secondary_debt,SRC-SECONDARY-DEBT-YUNNAN-YUXI-2025,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-530400,玉溪市,云南省,2025,statutory_debt_to_gdp_pct,法定债务/GDP（%）,core,secondary_debt,SRC-SECONDARY-DEBT-YUNNAN-YUXI-2025,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-530400,玉溪市,云南省,2025,statutory_debt_to_revenue_pct,法定债务/一般预算收入（%）,core,secondary_debt,SRC-SECONDARY-DEBT-YUNNAN-YUXI-2025,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-530500,保山市,云南省,2025,debt_limit_utilization_pct,债务限额使用率（%）,core,official_debt,SRC-CITY-DEBT-YUNNAN-BAOSHAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-530500,保山市,云南省,2025,fiscal_self_sufficiency_pct,财政自给率（%）,core,official_debt,SRC-CITY-DEBT-YUNNAN-BAOSHAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-530500,保山市,云南省,2025,fund_revenue_dependence_pct,政府性基金收入依赖度（%）,core,official_debt,SRC-CITY-DEBT-YUNNAN-BAOSHAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-530500,保山市,云南省,2025,gdp_current_100m,地区生产总值（现价，亿元）,core,official_debt,SRC-CITY-DEBT-YUNNAN-BAOSHAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-530500,保山市,云南省,2025,gdp_real_growth_pct,地区生产总值实际增速（%）,core,official_debt,SRC-CITY-DEBT-YUNNAN-BAOSHAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-530500,保山市,云南省,2025,general_debt_limit_100m,一般债务限额（亿元）,core,official_debt,SRC-CITY-DEBT-YUNNAN-BAOSHAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-530500,保山市,云南省,2025,general_public_expenditure_100m,一般公共预算支出（亿元）,core,official_debt,SRC-CITY-DEBT-YUNNAN-BAOSHAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-530500,保山市,云南省,2025,general_public_revenue_100m,一般公共预算收入（亿元）,core,official_debt,SRC-CITY-DEBT-YUNNAN-BAOSHAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-530500,保山市,云南省,2025,gov_fund_revenue_100m,政府性基金预算收入（亿元）,core,official_debt,SRC-CITY-DEBT-YUNNAN-BAOSHAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-530500,保山市,云南省,2025,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-CITY-DEBT-YUNNAN-BAOSHAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-530500,保山市,云南省,2025,special_debt_limit_100m,专项债务限额（亿元）,core,official_debt,SRC-CITY-DEBT-YUNNAN-BAOSHAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-530500,保山市,云南省,2025,statutory_debt_limit_100m,法定债务限额（亿元）,core,official_debt,SRC-CITY-DEBT-YUNNAN-BAOSHAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-530500,保山市,云南省,2025,statutory_debt_to_gdp_pct,法定债务/GDP（%）,core,official_debt,SRC-CITY-DEBT-YUNNAN-BAOSHAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-530500,保山市,云南省,2025,statutory_debt_to_revenue_pct,法定债务/一般预算收入（%）,core,official_debt,SRC-CITY-DEBT-YUNNAN-BAOSHAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
+CN-530500,保山市,云南省,2025,debt_limit_utilization_pct,债务限额使用率（%）,core,execution,SRC-CITY-DEBT-YUNNAN-BAOSHAN-2025;SRC-A2-BAOSHAN-CITY-FISCAL-2025,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。；已接入2025年保山市官方预算执行报告；财政三项字段为全市快报数，保留execution状态，不改写为最终决算。
+CN-530500,保山市,云南省,2025,gdp_current_100m,地区生产总值（现价，亿元）,core,execution,SRC-CITY-DEBT-YUNNAN-BAOSHAN-2025;SRC-A2-BAOSHAN-CITY-FISCAL-2025,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。；已接入2025年保山市官方预算执行报告；财政三项字段为全市快报数，保留execution状态，不改写为最终决算。
+CN-530500,保山市,云南省,2025,gdp_real_growth_pct,地区生产总值实际增速（%）,core,execution,SRC-CITY-DEBT-YUNNAN-BAOSHAN-2025;SRC-A2-BAOSHAN-CITY-FISCAL-2025,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。；已接入2025年保山市官方预算执行报告；财政三项字段为全市快报数，保留execution状态，不改写为最终决算。
+CN-530500,保山市,云南省,2025,general_debt_limit_100m,一般债务限额（亿元）,core,execution,SRC-CITY-DEBT-YUNNAN-BAOSHAN-2025;SRC-A2-BAOSHAN-CITY-FISCAL-2025,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。；已接入2025年保山市官方预算执行报告；财政三项字段为全市快报数，保留execution状态，不改写为最终决算。
+CN-530500,保山市,云南省,2025,resident_population_10k,年末常住人口（万人）,core,execution,SRC-CITY-DEBT-YUNNAN-BAOSHAN-2025;SRC-A2-BAOSHAN-CITY-FISCAL-2025,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。；已接入2025年保山市官方预算执行报告；财政三项字段为全市快报数，保留execution状态，不改写为最终决算。
+CN-530500,保山市,云南省,2025,special_debt_limit_100m,专项债务限额（亿元）,core,execution,SRC-CITY-DEBT-YUNNAN-BAOSHAN-2025;SRC-A2-BAOSHAN-CITY-FISCAL-2025,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。；已接入2025年保山市官方预算执行报告；财政三项字段为全市快报数，保留execution状态，不改写为最终决算。
+CN-530500,保山市,云南省,2025,statutory_debt_limit_100m,法定债务限额（亿元）,core,execution,SRC-CITY-DEBT-YUNNAN-BAOSHAN-2025;SRC-A2-BAOSHAN-CITY-FISCAL-2025,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。；已接入2025年保山市官方预算执行报告；财政三项字段为全市快报数，保留execution状态，不改写为最终决算。
+CN-530500,保山市,云南省,2025,statutory_debt_to_gdp_pct,法定债务/GDP（%）,core,execution,SRC-CITY-DEBT-YUNNAN-BAOSHAN-2025;SRC-A2-BAOSHAN-CITY-FISCAL-2025,A2,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。；已接入2025年保山市官方预算执行报告；财政三项字段为全市快报数，保留execution状态，不改写为最终决算。
 CN-530600,昭通市,云南省,2025,debt_limit_utilization_pct,债务限额使用率（%）,core,secondary_debt,SRC-SECONDARY-CEIC-CN-530600,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
 CN-530600,昭通市,云南省,2025,fiscal_self_sufficiency_pct,财政自给率（%）,core,secondary_debt,SRC-SECONDARY-CEIC-CN-530600,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
 CN-530600,昭通市,云南省,2025,fund_revenue_dependence_pct,政府性基金收入依赖度（%）,core,secondary_debt,SRC-SECONDARY-CEIC-CN-530600,D,needs_review,已接入商业数据库公开城市债务页的 provisional 补缺值；经济财政字段与债务字段来源状态分开记录，必须回到官方预算/决算或统计公报复核。
