@@ -2190,6 +2190,66 @@ NEXT23_2025_ECONOMIC_SOURCES = (
     },
 )
 
+NEXT24_2025_ECONOMIC_SOURCES = (
+    {
+        "city_name": "和田地区",
+        "city_id": "CN-653200",
+        "source_doc_id": "SRC-A2-XINJIANG-PREFECTURE-HOTAN-2025-STATISTICS-FINAL-FISCAL",
+        "url": "https://www.xjht.gov.cn/xjht/c128291/202603/ff9ab42d41b44c749fa720ed94692fd6.shtml",
+        "attachment_url": "https://www.xjht.gov.cn/xjht/c128291/202603/ff9ab42d41b44c749fa720ed94692fd6.shtml",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "hotan_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "hotan_2025_economic_fiscal_excerpt.txt",
+        "text_is_curated": True,
+        "source_format": "html",
+        "document_title": "2025年和田地区统计公报及2025年度和田地区政府决算公开",
+        "publisher": "和田地区统计局、和田地区财政局",
+        "publisher_level": "地级行政机构官方发布",
+        "publication_date": "2026-07-03",
+        "title_source": "official_page_and_attachment_excerpt",
+        "document_type": "官方统计公报及政府决算附件经济财政指标（网页、DOC）",
+        "mime_type": "text/html",
+        "source_grade": "A2",
+        "data_status": "preliminary",
+        "source_locator": "hotan_2025_economic_fiscal_excerpt.txt；GDP增速=统计公报正文；一般预算收入=正式决算表本年收入合计；一般预算支出=正式决算表本年支出合计；政府性基金收入=正式决算表政府性基金收入；正式决算附件另归档为hotan_2025_final_budget_decision.doc",
+        "patterns": {
+            "gdp_real_growth_pct": (r"全年地区生产总值（GDP）比上年增长([0-9.]+)%", "%"),
+            "general_public_revenue_100m": (r"一般公共预算收入决算表：本年收入合计([0-9]+)万元", "万元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出决算表：本年支出合计([0-9]+)万元", "万元"),
+            "gov_fund_revenue_100m": (r"政府性基金预算收入决算表：政府性基金收入([0-9]+)万元", "万元"),
+        },
+        "note": "A2官方来源组合：和田地区统计局2025年统计公报补录GDP实际增速，和田地区财政局2025年度政府决算公开正式决算表补录全地区一般公共预算收入517283万元、支出4542199万元和政府性基金收入103427万元，统一换算为亿元。正式决算表优先于阶段性执行口径；不使用地区本级表数，也不把2025年统计公报中未披露的GDP绝对额、人口推断填入。",
+    },
+    {
+        "city_name": "克孜勒苏柯尔克孜自治州",
+        "city_id": "CN-653000",
+        "source_doc_id": "SRC-A2-XINJIANG-PREFECTURE-KIZILSU-2025-STATISTICS-FISCAL",
+        "url": "https://www.xjkz.gov.cn/xjkz/c101979/202606/d76bebc5d6524f16ad96a53ea24f4c57.shtml",
+        "attachment_url": "https://www.xjkz.gov.cn/xjkz/c101979/202606/d76bebc5d6524f16ad96a53ea24f4c57.shtml",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "kizilsu_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "kizilsu_2025_economic_fiscal_excerpt.txt",
+        "text_is_curated": True,
+        "source_format": "html",
+        "document_title": "克孜勒苏柯尔克孜自治州2025年统计公报及2025年经济运行情况",
+        "publisher": "克孜勒苏柯尔克孜自治州统计局、克孜勒苏柯尔克孜自治州人民政府",
+        "publisher_level": "自治州官方发布",
+        "publication_date": "2026-06-02",
+        "title_source": "official_page_and_image_excerpt",
+        "document_type": "官方统计公报及经济运行财政指标（网页、图文附件）",
+        "mime_type": "text/html",
+        "source_grade": "A2",
+        "data_status": "preliminary",
+        "source_locator": "kizilsu_2025_economic_fiscal_excerpt.txt；GDP及增速=统计公报图文第1页；人口=统计公报图文第12页；一般预算收入、支出=克州2025年经济运行情况财政段落；公报第1、2、12页图像已归档",
+        "patterns": {
+            "gdp_current_100m": (r"全年实现地区生产总值（GDP）([0-9.]+)亿元", "亿元"),
+            "gdp_real_growth_pct": (r"全年实现地区生产总值（GDP）[0-9.]+亿元，按可比价格计算，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末全州常住人口([0-9.]+)万人", "万人"),
+            "general_public_revenue_100m": (r"2025年，全州一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"全州一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "A2克州官方图文统计公报和官方经济运行情况组合：补录2025年GDP、实际增速、年末常住人口及一般公共预算收支；财政数来自官方年度经济运行财政段落，政府性基金收入本批未取得全州全年决算数，不用预算数或阶段性执行数代填。",
+    },
+)
+
 JIANGSU_CITY_FUND_SOURCES = (
     {
         "year": 2018,
@@ -3900,7 +3960,10 @@ def load_city_2025_fiscal_sources(
             "source_doc_id": config["source_doc_id"],
             "source_grade": str(config.get("source_grade") or "A2"),
             "data_status": str(config.get("data_status") or "execution"),
-            "source_locator": f"{text_path.relative_to(ROOT)}；城市={config['city_name']}；2025年全市预算执行正文/附表",
+            "source_locator": str(
+                config.get("source_locator")
+                or f"{text_path.relative_to(ROOT)}；城市={config['city_name']}；2025年全市预算执行正文/附表"
+            ),
         }
         for field, (pattern, raw_unit) in config["patterns"].items():
             match = re.search(pattern, compact_text)
@@ -4416,6 +4479,12 @@ def load_next23_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[di
     return load_city_2025_fiscal_sources(NEXT23_2025_ECONOMIC_SOURCES)
 
 
+def load_next24_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取和田地区、克州 2025 年统计公报及正式财政数据。"""
+
+    return load_city_2025_fiscal_sources(NEXT24_2025_ECONOMIC_SOURCES)
+
+
 def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
     general_limit = as_decimal(row.get("general_debt_limit_100m"))
     special_limit = as_decimal(row.get("special_debt_limit_100m"))
@@ -4535,6 +4604,7 @@ def build_macro_rows(
     next21_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next22_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next23_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
+    next24_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     jiangsu_city_fund: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     jiangsu_city_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     city_year_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
@@ -4574,6 +4644,7 @@ def build_macro_rows(
     next21_2025_economic = next21_2025_economic or {}
     next22_2025_economic = next22_2025_economic or {}
     next23_2025_economic = next23_2025_economic or {}
+    next24_2025_economic = next24_2025_economic or {}
     jiangsu_city_fund = jiangsu_city_fund or {}
     jiangsu_city_fiscal = jiangsu_city_fiscal or {}
     city_year_fiscal = city_year_fiscal or {}
@@ -4609,6 +4680,7 @@ def build_macro_rows(
         **next21_2025_economic,
         **next22_2025_economic,
         **next23_2025_economic,
+        **next24_2025_economic,
     }
     for city in city_master:
         year = int(city["metric_year"])
@@ -5908,6 +5980,7 @@ def main() -> None:
     next21_2025_economic, next21_2025_economic_sources = load_next21_2025_city_economic()
     next22_2025_economic, next22_2025_economic_sources = load_next22_2025_city_economic()
     next23_2025_economic, next23_2025_economic_sources = load_next23_2025_city_economic()
+    next24_2025_economic, next24_2025_economic_sources = load_next24_2025_city_economic()
     jiangsu_city_fund, jiangsu_city_fund_sources = load_jiangsu_city_fund_sources()
     jiangsu_city_fiscal, jiangsu_city_fiscal_sources = load_jiangsu_city_fiscal_sources()
     city_year_fiscal, city_year_fiscal_sources = load_city_year_fiscal_sources()
@@ -5962,6 +6035,7 @@ def main() -> None:
         next21_2025_economic,
         next22_2025_economic,
         next23_2025_economic,
+        next24_2025_economic,
         jiangsu_city_fund,
         jiangsu_city_fiscal,
         city_year_fiscal,
@@ -6123,6 +6197,7 @@ def main() -> None:
             *next21_2025_economic_sources,
             *next22_2025_economic_sources,
             *next23_2025_economic_sources,
+            *next24_2025_economic_sources,
             *jiangsu_city_fund_sources,
             *jiangsu_city_fiscal_sources,
             *city_year_fiscal_sources,
