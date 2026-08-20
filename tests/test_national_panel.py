@@ -846,8 +846,8 @@ class NationalPanelTests(unittest.TestCase):
     def test_city_year_fund_batch_extracts_hohhot_and_chifeng(self):
         values, sources = load_city_year_fund_sources()
 
-        self.assertEqual(len(values), 21)
-        self.assertEqual(len(sources), 21)
+        self.assertEqual(len(values), 23)
+        self.assertEqual(len(sources), 23)
         self.assertEqual(values[("CN-150100", "2024")]["gov_fund_revenue_100m"], Decimal("112.52"))
         self.assertEqual(values[("CN-150100", "2025")]["gov_fund_revenue_100m"], Decimal("75.78"))
         self.assertEqual(values[("CN-150400", "2025")]["gov_fund_revenue_100m"], Decimal("46.69"))
@@ -870,6 +870,8 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(values[("CN-141100", "2018")]["gov_fund_revenue_100m"], Decimal("22.21"))
         self.assertEqual(values[("CN-411700", "2018")]["gov_fund_revenue_100m"], Decimal("184.70"))
         self.assertEqual(values[("CN-130100", "2018")]["gov_fund_revenue_100m"], Decimal("560.87"))
+        self.assertEqual(values[("CN-350400", "2018")]["gov_fund_revenue_100m"], Decimal("81.42"))
+        self.assertEqual(values[("CN-350400", "2019")]["gov_fund_revenue_100m"], Decimal("90.06"))
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2", "B2"})
 
         cities = [
@@ -937,6 +939,24 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(final_rows[0]["source_grade"], "A1")
         self.assertEqual(final_rows[0]["collection_status"], "extracted")
         self.assertEqual({item["target_field"] for item in final_lineage}, {"gov_fund_revenue_100m"})
+
+        sanming = {
+            "city_id": "CN-350400",
+            "admin_code_6": "350400",
+            "city_name_cn": "三明市",
+            "province_code": "35",
+            "province_name": "福建省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2018",
+        }
+        sanming_rows, sanming_lineage = build_macro_rows(
+            [sanming], [], {}, {}, city_year_fund=values,
+        )
+        self.assertEqual(sanming_rows[0]["gov_fund_revenue_100m"], Decimal("81.42"))
+        self.assertEqual(sanming_rows[0]["source_grade"], "A2")
+        self.assertEqual(sanming_rows[0]["collection_status"], "extracted")
+        self.assertEqual({item["target_field"] for item in sanming_lineage}, {"gov_fund_revenue_100m"})
 
 
 if __name__ == "__main__":
