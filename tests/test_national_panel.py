@@ -11,6 +11,7 @@ from scripts.collect_national_panel import (
     build_evidence_based_missing_rows,
     build_macro_rows,
     compute_derived_values,
+    load_city_year_fiscal_sources,
     load_followup_2025_city_fiscal,
     load_city_year_fund_sources,
     load_jiangsu_city_fiscal_sources,
@@ -866,6 +867,45 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(
             {item["target_field"] for item in lineage},
             {"general_public_revenue_100m", "general_public_expenditure_100m"},
+        )
+
+    def test_city_year_fiscal_batch_extracts_chaoyang_2024_fast_report(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        record = values[("CN-211300", "2024")]
+        self.assertEqual(record["general_public_revenue_100m"], Decimal("87.68"))
+        self.assertEqual(record["general_public_expenditure_100m"], Decimal("314.77"))
+        self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
+        self.assertEqual(record["data_status"], "execution")
+        self.assertEqual(record["data_status_label"], "2024年快报数")
+        self.assertEqual(len(sources), 1)
+        self.assertEqual(sources[0]["source_grade"], "A2")
+
+        chaoyang = {
+            "city_id": "CN-211300",
+            "admin_code_6": "211300",
+            "city_name_cn": "朝阳市",
+            "province_code": "21",
+            "province_name": "辽宁省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2024",
+        }
+        rows, lineage = build_macro_rows(
+            [chaoyang], [], {}, {}, city_year_fiscal=values,
+        )
+        self.assertEqual(rows[0]["data_status"], "execution")
+        self.assertEqual(rows[0]["general_public_revenue_100m"], Decimal("87.68"))
+        self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("314.77"))
+        self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("12.56"))
+        self.assertEqual(rows[0]["fund_revenue_dependence_pct"], Decimal("12.53"))
+        self.assertEqual(
+            {item["target_field"] for item in lineage},
+            {
+                "general_public_revenue_100m",
+                "general_public_expenditure_100m",
+                "gov_fund_revenue_100m",
+            },
         )
 
     def test_city_year_fund_batch_extracts_hohhot_and_chifeng(self):
