@@ -6723,6 +6723,54 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     }
     for city_name, city_id, slug, has_fund in _ANHUI_2024_REGIONAL_FISCAL_SPECS
 )
+
+# 上交所公开披露的中证鹏元评级报告第 8 页表 2，集中列示陕西省 2024 年
+# 6 个地级市的全市 GDP、实际增速、一般公共预算收入和政府性基金收入。
+# 榆林市财政收入和政府性基金收入在原表中为“—”，保持缺失，不写入零值。
+_SHAANXI_2024_REGIONAL_FISCAL_SPECS = (
+    ("西安市", "CN-610100", "XIAN", True),
+    ("榆林市", "CN-610800", "YULIN", False),
+    ("咸阳市", "CN-610400", "XIANYANG", True),
+    ("延安市", "CN-610600", "YANAN", True),
+    ("渭南市", "CN-610500", "WEINAN", True),
+    ("铜川市", "CN-610200", "TONGCHUAN", True),
+)
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    {
+        "year": 2024,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-SHAANXI-REGIONAL-FISCAL-2024-{slug}",
+        "url": "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2025-06-16/184718_20250616_S6RT.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "shaanxi_2024_city_fiscal_rating_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "shaanxi_2024_city_fiscal_rating_report_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "渭南市城市投资集团有限责任公司绿色债券2025年跟踪评级报告",
+        "publisher": "中证鹏元资信评估股份有限公司（上海证券交易所公开披露）",
+        "publisher_level": "交易所公开披露的B2精确表格来源",
+        "publication_date": "2025-06-16",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "data_status": "execution",
+        "data_status_label": "2024年执行数（评级报告精确表格）",
+        "document_type": "评级报告地级市经济财政指标表",
+        "page_number": "PDF第8页，表2；2024年陕西省部分地市经济财政指标情况",
+        "page_count": "22",
+        "raw_unit": "亿元",
+        "raw_units": {"gdp_real_growth_pct": "%"},
+        "patterns": {
+            "gdp_current_100m": rf"{city_name}｜([0-9.,]+)｜",
+            "gdp_real_growth_pct": rf"{city_name}｜[0-9.,]+｜([0-9.-]+)｜",
+            **({
+                "general_public_revenue_100m": rf"{city_name}｜[0-9.,]+｜[0-9.-]+｜([0-9.,]+)｜",
+                "gov_fund_revenue_100m": rf"{city_name}｜[0-9.,]+｜[0-9.-]+｜[0-9.,]+｜([0-9.,]+)",
+            } if has_fund else {}),
+        },
+        "source_locator": f"PDF第8页表2；城市={city_name}；2024年全市执行数",
+        "note": f"B2精确表格；报告表2列示{city_name}2024年全市GDP和实际增速；财政字段仅在原表明确数值时接入，不使用市本级数、区县数或图表目测值。",
+    }
+    for city_name, city_id, slug, has_fund in _SHAANXI_2024_REGIONAL_FISCAL_SPECS
+)
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
