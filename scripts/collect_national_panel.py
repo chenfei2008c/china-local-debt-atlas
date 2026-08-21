@@ -4783,6 +4783,37 @@ CITY_YEAR_FISCAL_SOURCES = (
         },
         "note": "保定市人民政府公开的市财政局预算执行报告及附表明确区分全市与市本级、功能区口径；本批采用附表二、附表四列示的全市2025年执行数：一般公共预算收入3270591万元、支出9957732万元、政府性基金预算收入1069764万元，统一换算为亿元并保留execution状态，不使用市本级或功能区数据。",
     },
+    {
+        "year": 2025,
+        "city_name": "承德市",
+        "city_id": "CN-130800",
+        "source_doc_id": "SRC-A2-CHENGDE-CITY-FISCAL-2025",
+        "url": "https://www.chengde.gov.cn/art/2026/2/24/art_9957_1105029.html",
+        "landing_page_url": "https://www.chengde.gov.cn/art/2026/2/24/art_9957_1105029.html",
+        "attachment_url": "https://www.chengde.gov.cn/module/download/downfile.jsp?classid=0&filename=f937d2f41f9f42a3b640fc1563fa648b.docx",
+        "download_url": "https://www.chengde.gov.cn/module/download/downfile.jsp?classid=0&filename=f937d2f41f9f42a3b640fc1563fa648b.docx",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "chengde_2025_budget_report.docx",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "chengde_2025_budget_execution_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2026年承德市本级预算和市总预算草案的报告（含2025年预算执行情况）",
+        "publisher": "承德市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2026-02-24",
+        "source_grade": "A2",
+        "source_format": "docx",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数（官方预算执行报告）",
+        "document_type": "城市财政预算执行报告（官方网页及DOCX附件）",
+        "page_number": "报告正文；2025年预算执行情况，全市口径",
+        "page_count": "",
+        "patterns": {
+            "general_public_revenue_100m": r"全市一般公共预算收入完成([0-9.]+)亿元",
+            "general_public_expenditure_100m": r"一般公共预算支出完成([0-9.]+)亿元",
+            "gov_fund_revenue_100m": r"全市政府性基金预算收入完成([0-9.]+)亿元",
+        },
+        "note": "承德市财政局在市政府财政预决算专栏公开的2026年预算报告，正文明确披露2025年全市执行数：一般公共预算收入144.8亿元、支出515.6亿元、政府性基金预算收入27.2亿元；本批采用全市口径，标记为execution，不使用市本级、高新区或御道口牧场管理区数据。",
+    },
 )
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
@@ -5694,6 +5725,8 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
                 "mime_type": (
                     "text/html"
                     if config.get("source_format") == "html"
+                    else "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    if config.get("source_format") == "docx"
                     else "application/x-7z-compressed"
                     if config.get("source_format") == "7z"
                     else "application/pdf"
@@ -5712,6 +5745,8 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
                 "access_status": (
                     "官方网页已归档"
                     if config.get("source_format") == "html"
+                    else "官方DOCX附件已归档"
+                    if config.get("source_format") == "docx"
                     else "官方Excel附件已归档"
                     if config.get("source_format") == "xlsx"
                     else "官方7z附件已归档"
@@ -6716,6 +6751,13 @@ def _lineage_for_city_year_fiscal(
         if raw_unit == "亿元"
         else "官方预算执行报告原始单位为万元；原值÷10000=亿元，保留两位小数；全市口径。"
     )
+    source_format = str(source.get("source_format") or "pdf")
+    locator_type = "docx_text_statement" if source_format == "docx" else "pdf_text_statement"
+    extraction_method = (
+        "curated-official-docx-statement-parser"
+        if source_format == "docx"
+        else "curated-official-pdf-statement-parser"
+    )
     return _lineage_base(
         row,
         field,
@@ -6725,7 +6767,7 @@ def _lineage_for_city_year_fiscal(
         source_locator=(
             f"{source.get('source_locator', '')}；字段={field_label}"
         ),
-        locator_type="pdf_text_statement",
+        locator_type=locator_type,
         page_number=source.get("page_number", "2—3"),
         table_name=str(source.get("table_name", f"{year}年全市财政预算执行情况")),
         raw_value=source.get(f"{field}_raw_100m", value),
@@ -6733,7 +6775,7 @@ def _lineage_for_city_year_fiscal(
         machine_extracted_value=value,
         evidence_excerpt=source.get(f"{field}_evidence_excerpt", ""),
         normalization_rule=normalization_rule,
-        extraction_method="curated-official-pdf-statement-parser",
+        extraction_method=extraction_method,
         parse_confidence="0.99",
         selection_reason=(
             "市级财政机构官方预算执行报告明确披露全市财政字段，"
