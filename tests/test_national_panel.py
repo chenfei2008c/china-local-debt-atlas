@@ -148,6 +148,19 @@ class NationalPanelTests(unittest.TestCase):
         self.assertTrue(all(source["content_hash_sha256"] for source in supplemental))
         self.assertTrue(any("chinamoney.com.cn" in source["source_url"] for source in supplemental))
 
+    def test_yunnan_2024_regional_fiscal_adapter_reads_exact_table(self):
+        values, sources = load_city_year_fiscal_sources()
+        regional = [
+            source for source in sources
+            if str(source.get("source_doc_id", "")).startswith("SRC-B2-YUNNAN-REGIONAL-FISCAL-2024-")
+        ]
+        self.assertEqual(len(regional), 10)
+        sample = values[("CN-530900", "2024")]
+        self.assertEqual(sample["gdp_current_100m"], Decimal("1150.19"))
+        self.assertEqual(sample["gdp_real_growth_pct"], Decimal("3.70"))
+        self.assertEqual(sample["general_public_revenue_100m"], Decimal("50.56"))
+        self.assertEqual(sample["gov_fund_revenue_100m"], Decimal("20.23"))
+
     def test_evidence_based_missing_is_explicitly_registered_for_unpublished_debt(self):
         city = {
             "city_id": "CN-460300",
@@ -1025,7 +1038,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 228)
+        self.assertEqual(len(sources), 238)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2", "B2"})
 
     def test_city_year_fiscal_batch_adds_curated_2025_statistical_and_budget_sources(self):
@@ -1070,7 +1083,7 @@ class NationalPanelTests(unittest.TestCase):
                     self.assertNotIn(field, record)
                 else:
                     self.assertEqual(record[field], Decimal(expected_value))
-        self.assertEqual(len(sources), 228)
+        self.assertEqual(len(sources), 238)
         curated_ids = {
             source["source_doc_id"]
             for source in sources
@@ -2101,7 +2114,7 @@ class NationalPanelTests(unittest.TestCase):
             record = values[(city_id, "2025")]
             self.assertEqual(record["general_public_revenue_100m"], Decimal(revenue))
             self.assertEqual(record["general_public_expenditure_100m"], Decimal(expenditure))
-        self.assertEqual(len(sources), 228)
+        self.assertEqual(len(sources), 238)
         weifang_source = next(
             source for source in sources if source["source_doc_id"] == "SRC-A2-WEIFANG-CITY-FISCAL-2025"
         )
@@ -2127,7 +2140,7 @@ class NationalPanelTests(unittest.TestCase):
         )
         self.assertIn("hongheiku.com", zaozhuang_source["landing_page_url"])
         self.assertEqual(zaozhuang_source["source_grade"], "B2")
-        self.assertEqual(len(sources), 228)
+        self.assertEqual(len(sources), 238)
 
     def test_sichuan_regional_report_adds_2025_revenue_for_18_city_years(self):
         values, sources = load_city_year_fiscal_sources()

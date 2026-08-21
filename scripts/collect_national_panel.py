@@ -59,9 +59,11 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
 try:
     from scripts.curated_city_fiscal_2025 import CURATED_2025_CITY_FISCAL_SOURCES
     from scripts.supplemental_city_fiscal_2025 import SUPPLEMENTAL_CITY_FISCAL_SOURCES
+    from scripts.regional_fiscal_2024 import REGIONAL_FISCAL_2024_SOURCES
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
     from curated_city_fiscal_2025 import CURATED_2025_CITY_FISCAL_SOURCES
     from supplemental_city_fiscal_2025 import SUPPLEMENTAL_CITY_FISCAL_SOURCES
+    from regional_fiscal_2024 import REGIONAL_FISCAL_2024_SOURCES
 
 getcontext().prec = 40
 
@@ -6783,6 +6785,7 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
 )
 CITY_YEAR_FISCAL_SOURCES += CURATED_2025_CITY_FISCAL_SOURCES
 CITY_YEAR_FISCAL_SOURCES += tuple(SUPPLEMENTAL_CITY_FISCAL_SOURCES)
+CITY_YEAR_FISCAL_SOURCES += tuple(REGIONAL_FISCAL_2024_SOURCES)
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
