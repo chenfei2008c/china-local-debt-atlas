@@ -3647,6 +3647,28 @@ CITY_YEAR_FUND_SOURCES = (
         "page_count": "23",
         "note": "交易所公开披露的中证鹏元跟踪评级报告，表1列示2025年山东省部分地级行政区经济财政指标；枣庄市政府性基金收入287.24亿元，明确为全市口径。",
     },
+    {
+        "year": 2025,
+        "city_name": "三亚市",
+        "city_id": "CN-460200",
+        "source_doc_id": "SRC-A2-SANYA-CITY-FUND-2025",
+        "url": "https://rd.sanya.gov.cn/rdsite/c100028d/202602/9f39ba4d9a0e4eb9b30023b5da21915f.shtml",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "sanya_2025_budget_execution_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "sanya_2025_budget_execution_report_excerpt.txt",
+        "document_title": "关于三亚市2025年预算执行情况和2026年预算草案的报告",
+        "publisher": "三亚市财政局（市人大公开页面）",
+        "publisher_level": "市级财政机构官方网页",
+        "publication_date": "2026-01-26",
+        "source_grade": "A2",
+        "source_format": "html",
+        "pattern": r"原文摘录：.*?全市地方政府性基金预算收入([0-9]+\.[0-9]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数",
+        "document_type": "城市财政预算执行报告（官方网页）",
+        "page_count": "1",
+        "note": "三亚市人大公开的市财政局预算执行报告，明确全市与市本级口径；采用2025年全市地方政府性基金预算收入138.7亿元。",
+    },
 )
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
