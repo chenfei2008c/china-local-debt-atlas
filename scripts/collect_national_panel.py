@@ -6429,6 +6429,53 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
 # 11 个地级市的全市 GDP、实际增速、一般公共预算收入和政府性基金收入。
 # 表格值为精确文本表格，不把人均 GDP 或“—”转换为主表字段，也不使用区县
 # 和市本级口径。
+# 上交所公开披露的中证鹏元评级报告第 6 页表 1，集中列示山西省 2024 年
+# 8 个地级市的全市 GDP、实际增速、一般公共预算收入和政府性基金收入。
+_SHANXI_2024_REGIONAL_FISCAL_SPECS = (
+    ("太原市", "CN-140100", "TAIYUAN"),
+    ("长治市", "CN-140400", "CHANGZHI"),
+    ("晋中市", "CN-140700", "JINZHONG"),
+    ("晋城市", "CN-140500", "JINCHENG"),
+    ("运城市", "CN-140800", "YUNCHENG"),
+    ("大同市", "CN-140200", "DATONG"),
+    ("忻州市", "CN-140900", "XINZHOU"),
+    ("朔州市", "CN-140600", "SHUOZHOU"),
+)
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    {
+        "year": 2024,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-SHANXI-REGIONAL-FISCAL-2024-{slug}",
+        "url": "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2025-07-30/184519_20250730_IWL7.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "shanxi_2024_city_fiscal_rating_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "shanxi_2024_city_fiscal_rating_report_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "朔州市投资建设开发有限公司相关债券2025年跟踪评级报告",
+        "publisher": "中证鹏元资信评估股份有限公司（上海证券交易所公开披露）",
+        "publisher_level": "交易所公开披露的B2精确表格来源",
+        "publication_date": "2025-07-30",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "data_status": "execution",
+        "data_status_label": "2024年执行数（评级报告精确表格）",
+        "document_type": "评级报告地级市经济财政指标表",
+        "page_number": "PDF第6页，表1；2024年山西省部分地级市经济财政指标情况",
+        "page_count": "19",
+        "raw_unit": "亿元",
+        "raw_units": {"gdp_real_growth_pct": "%"},
+        "patterns": {
+            "gdp_current_100m": rf"{city_name}｜([0-9.,]+)｜",
+            "gdp_real_growth_pct": rf"{city_name}｜[0-9.,]+｜([0-9.-]+)｜",
+            "general_public_revenue_100m": rf"{city_name}｜[0-9.,]+｜[0-9.-]+｜([0-9.,]+)｜",
+            "gov_fund_revenue_100m": rf"{city_name}｜[0-9.,]+｜[0-9.-]+｜[0-9.,]+｜([0-9.,]+)",
+        },
+        "source_locator": f"PDF第6页表1；城市={city_name}；2024年全市执行数",
+        "note": f"B2精确表格；报告表1列示{city_name}2024年全市GDP、实际增速、一般公共预算收入和政府性基金收入，资料来源为各市统计公报和财政预决算报告；不使用市本级数或图表目测值。",
+    }
+    for city_name, city_id, slug in _SHANXI_2024_REGIONAL_FISCAL_SPECS
+)
+
 # 上交所公开披露的中证鹏元评级报告第 5 页表 1，集中列示湖北省 2024 年
 # 8 个地级行政单元的全市 GDP、实际增速、一般公共预算收入和政府性基金收入。
 # 宜昌市基金收入为原表“—”，该配置只提取其余三个明确字段。
