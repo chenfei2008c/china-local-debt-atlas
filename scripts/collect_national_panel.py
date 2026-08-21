@@ -3864,6 +3864,28 @@ CITY_YEAR_FUND_SOURCES = (
         "page_count": "35",
         "note": "交易所公开披露的联合资信跟踪评级报告，表5列示佛山市全市财政数据；表下注明根据佛山市财政局数据整理，2025年政府性基金预算收入376.06亿元。该值为B2精确表格来源，不替代市财政局最终决算。",
     },
+    {
+        "year": 2025,
+        "city_name": "云浮市",
+        "city_id": "CN-445300",
+        "source_doc_id": "SRC-A2-YUNFU-CITY-FUND-2025",
+        "url": "https://www.yunfu.gov.cn/attachment/0/124/124714/1987579.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "yunfu_2025_budget_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "yunfu_2025_budget_report_excerpt.txt",
+        "document_title": "2026年云浮市本级政府预算公开（含2025年预算执行情况）",
+        "publisher": "云浮市财政局",
+        "publisher_level": "市级财政机构官方PDF",
+        "publication_date": "2026-02-06",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "pattern": r"2025年全市政府性基金预算收入([0-9,]+)万元",
+        "raw_unit": "万元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数",
+        "document_type": "城市财政预算执行报告（官方PDF）",
+        "page_count": "83",
+        "note": "云浮市人民政府/财政局官方预算公开PDF明确披露2025年全市政府性基金预算收入102194万元，原始单位万元，统一换算为10.22亿元；执行数，不使用市本级口径。",
+    },
 )
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
