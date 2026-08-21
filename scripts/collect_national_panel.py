@@ -4662,6 +4662,37 @@ CITY_YEAR_FISCAL_SOURCES = (
         },
         "note": "丽江市人民政府财政预决算专栏官方报告附件1为结构化Excel；本批采用表一、表二、表六的全市执行数：一般公共预算收入567755万元、支出1763231万元、政府性基金预算收入170713万元，不使用预算数或市本级数。",
     },
+    {
+        "year": 2025,
+        "city_name": "临沧市",
+        "city_id": "CN-530900",
+        "source_doc_id": "SRC-A2-LINCANG-CITY-FISCAL-2025",
+        "url": "https://lincang.gov.cn/zfxxgk_lcs/artview/347/344645.html",
+        "landing_page_url": "https://lincang.gov.cn/zfxxgk_lcs/artview/347/344645.html",
+        "attachment_url": "https://lincang.gov.cn/file/lincang/A01A01A01A09/file/20260225/1772010220552008553.pdf",
+        "download_url": "https://lincang.gov.cn/file/lincang/A01A01A01A09/file/20260225/1772010220552008553.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "lincang_2025_budget_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "lincang_2025_budget_execution_excerpt.txt",
+        "document_title": "关于临沧市2025年地方财政预算执行情况和2026年地方财政预算草案的报告",
+        "publisher": "临沧市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2026-02-24",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "raw_unit": "万元",
+        "data_status": "execution",
+        "data_status_label": "2025年快报执行数（官方预算执行报告）",
+        "document_type": "城市财政预算执行报告（官方网页及PDF附件）",
+        "page_number": "正文；全市口径财政与债务段落",
+        "patterns": {
+            "general_public_revenue_100m": r"全市地方一般公共预算收入完成([0-9,]+)万元",
+            "general_public_expenditure_100m": r"全市地方一般公共预算支出完成([0-9,]+)万元",
+            "gov_fund_revenue_100m": r"全市政府性基金预算收入完成([0-9,]+)万元",
+            "statutory_debt_limit_100m": r"临沧市2025年末政府债务限额([0-9,]+)万元",
+            "statutory_debt_balance_100m": r"全市政府债务余额为([0-9,]+)万元",
+        },
+        "note": "临沧市财政局官方预算执行报告同时披露全市三项财政字段、年末法定债务限额和余额；本批采用全市2025年快报执行数，原始单位万元并换算为亿元，不使用市级口径或2026年预算数。",
+    },
 )
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
@@ -6271,6 +6302,8 @@ def build_macro_rows(
                 "general_public_revenue_100m",
                 "general_public_expenditure_100m",
                 "gov_fund_revenue_100m",
+                "statutory_debt_limit_100m",
+                "statutory_debt_balance_100m",
             ):
                 value = as_decimal(city_year_fiscal_source.get(field))
                 if value is None:
@@ -6573,6 +6606,8 @@ def _lineage_for_city_year_fiscal(
         "general_public_revenue_100m": "一般公共预算收入",
         "general_public_expenditure_100m": "一般公共预算支出",
         "gov_fund_revenue_100m": "政府性基金预算收入",
+        "statutory_debt_limit_100m": "法定债务限额",
+        "statutory_debt_balance_100m": "法定债务余额",
     }
     field_label = labels[field]
     year = row["metric_year"]
