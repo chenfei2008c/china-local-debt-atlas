@@ -5754,6 +5754,128 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     }
     for city_name, city_id, slug in _SICHUAN_2025_REGIONAL_REVENUE_SPECS
 )
+
+# 江苏省预决算公开统一平台的 2026 年预算报告中，六个此前缺少 2025 年
+# 全市财政字段的设区市报告明确披露执行数。报告正文口径为全市，不使用市本级
+# 数；原始单位亿元，保留执行状态。附件链接为平台签发的长期有效归档地址，
+# 入口页统一保留江苏省预决算公开统一平台。
+_JIANGSU_2025_CITY_REPORT_SPECS = (
+    {
+        "city_name": "南京市",
+        "city_id": "CN-320100",
+        "slug": "nanjing",
+        "source_doc_id": "SRC-A2-JIANGSU-NANJING-CITY-FISCAL-2025",
+        "attachment_url": "https://yjsgk.jsczt.cn/cztyjs/2026/1/28/fa21f542-0e06-4b14-ae69-ff087da55cd2.pdf?Expires=3086272384&OSSAccessKeyId=tBQyCErjLn689ynH&Signature=p8kEhxVwlJXCjY3C5Qg5Hvigc9A%3D",
+        "publication_date": "2026-02-28",
+        "page_number": "3—4",
+        "patterns": {
+            "general_public_revenue_100m": r"全市一般公共预算收入([0-9.]+)亿元",
+            "general_public_expenditure_100m": r"全市一般公共预算支出([0-9.]+)亿元",
+            "gov_fund_revenue_100m": r"全市政府性基金预算收入([0-9.]+)亿元",
+        },
+        "note": "A2江苏省预决算公开统一平台官方城市预算报告；PDF第3—4页明确披露南京市2025年全市一般公共预算收入1620.9亿元、支出1704.9亿元和政府性基金预算收入886.4亿元，执行口径，不使用市本级数。",
+    },
+    {
+        "city_name": "南通市",
+        "city_id": "CN-320600",
+        "slug": "nantong",
+        "source_doc_id": "SRC-A2-JIANGSU-NANTONG-CITY-FISCAL-2025",
+        "attachment_url": "https://yjsgk.jsczt.cn/cztyjs/2026/1/11/49f2b72d-06e7-42a8-9861-34428183932a.pdf?Expires=3084781387&OSSAccessKeyId=tBQyCErjLn689ynH&Signature=VfREBG%2BIBs5KcU9Az6GvYtfEUHY%3D",
+        "publication_date": "2026-02-11",
+        "page_number": "2、7—8",
+        "patterns": {
+            "general_public_revenue_100m": r"全市一般公共预算收入([0-9.]+)亿元",
+            "general_public_expenditure_100m": r"全市一般公共预算支出([0-9.]+)亿元",
+            "gov_fund_revenue_100m": r"全市政府性基金预算收入([0-9.]+)亿元",
+        },
+        "note": "A2江苏省预决算公开统一平台官方城市预算报告；PDF第2页明确披露南通市2025年全市一般公共预算收入730亿元、支出1188.7亿元和政府性基金预算收入768.9亿元，执行口径，不使用市本级数。",
+    },
+    {
+        "city_name": "连云港市",
+        "city_id": "CN-320700",
+        "slug": "lianyungang",
+        "source_doc_id": "SRC-A2-JIANGSU-LIANYUNGANG-CITY-FISCAL-2025",
+        "attachment_url": "https://yjsgk.jsczt.cn/cztyjs/2026/1/11/42b591aa-8b28-47b4-a3b9-432897b5ed84.pdf?Expires=3084809880&OSSAccessKeyId=tBQyCErjLn689ynH&Signature=ywGeD3TPjiHLcU83a%2B2qcdp0n2Y%3D",
+        "publication_date": "2026-02-11",
+        "page_number": "2—3",
+        "patterns": {
+            "general_public_revenue_100m": r"全市一般公共预算收入([0-9.]+)亿元",
+            "general_public_expenditure_100m": r"全市一般公共预算支出([0-9.]+)亿元",
+            "gov_fund_revenue_100m": r"全市政府性基金预算收入([0-9.]+)亿元",
+        },
+        "note": "A2江苏省预决算公开统一平台官方城市预算报告；PDF第2—3页明确披露连云港市2025年全市一般公共预算收入305.7亿元、支出607.8亿元和政府性基金预算收入206.5亿元，执行口径，不使用市本级数。",
+    },
+    {
+        "city_name": "淮安市",
+        "city_id": "CN-320800",
+        "slug": "huaian",
+        "source_doc_id": "SRC-A2-JIANGSU-HUAIAN-CITY-FISCAL-2025",
+        "attachment_url": "https://yjsgk.jsczt.cn/cztyjs/2026/1/28/0247dc8a-9659-4f2f-a7ca-5542cb6d840c.pdf?Expires=3086272681&OSSAccessKeyId=tBQyCErjLn689ynH&Signature=DyAkTytgRa1i4ztPqFseOmQthYA%3D",
+        "publication_date": "2026-02-28",
+        "page_number": "1—2",
+        "patterns": {
+            "general_public_revenue_100m": r"全市实现一般公共预算收入([0-9.]+)亿元",
+            "general_public_expenditure_100m": r"完成一般公共预算支出([0-9.]+)亿元",
+            "gov_fund_revenue_100m": r"全市实现政府性基金收入.*?([0-9.]+)亿元",
+        },
+        "note": "A2江苏省预决算公开统一平台官方城市预算报告；PDF第1—2页明确披露淮安市2025年全市一般公共预算收入335.3亿元、支出718.3亿元和政府性基金收入311.6亿元，执行口径，不使用市本级数。",
+    },
+    {
+        "city_name": "盐城市",
+        "city_id": "CN-320900",
+        "slug": "yancheng",
+        "source_doc_id": "SRC-A2-JIANGSU-YANCHENG-CITY-FISCAL-2025",
+        "attachment_url": "https://yjsgk.jsczt.cn/cztyjs/2026/1/24/c4570ccd-0a61-4893-abb9-218e70df8285.pdf?Expires=3085925282&OSSAccessKeyId=tBQyCErjLn689ynH&Signature=Vf9g52%2BDg3MScm7SPQtBBSs%2F8F0%3D",
+        "publication_date": "2026-02-24",
+        "page_number": "1—2",
+        "patterns": {
+            "general_public_revenue_100m": r"全市实现一般公共预算收入([0-9.]+)亿元",
+            "general_public_expenditure_100m": r"(?:全市)?实现一般公共预算支出([0-9.]+)亿元",
+            "gov_fund_revenue_100m": r"全市实现政府性基金预算收入([0-9.]+)亿元",
+        },
+        "note": "A2江苏省预决算公开统一平台官方城市预算报告；PDF第1—2页明确披露盐城市2025年全市一般公共预算收入515.74亿元、支出1099.03亿元和政府性基金预算收入425.83亿元，执行口径，不使用市级数。",
+    },
+    {
+        "city_name": "宿迁市",
+        "city_id": "CN-321300",
+        "slug": "suqian",
+        "source_doc_id": "SRC-A2-JIANGSU-SUQIAN-CITY-FISCAL-2025",
+        "attachment_url": "https://yjsgk.jsczt.cn/cztyjs/2026/1/6/6105606b-eca1-4e09-9d69-4911d01deac0.pdf?Expires=3084373385&OSSAccessKeyId=tBQyCErjLn689ynH&Signature=gjpdoLgHkGq3m%2FZUKzGVv3nLluA%3D",
+        "publication_date": "2026-02-06",
+        "page_number": "2—4",
+        "patterns": {
+            "general_public_revenue_100m": r"全市一般公共预算收入([0-9.]+)亿元",
+            "general_public_expenditure_100m": r"一般公共预算支出([0-9.]+)亿元",
+            "gov_fund_revenue_100m": r"全市政府性基金收入([0-9.]+)亿元",
+        },
+        "note": "A2江苏省预决算公开统一平台官方城市预算报告；PDF第2—4页明确披露宿迁市2025年全市一般公共预算收入316.6亿元、支出688.6亿元和政府性基金收入215.1亿元，执行口径，不使用市本级数。",
+    },
+)
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    {
+        **spec,
+        "year": 2025,
+        "url": "https://yjsgk.jsczt.cn/",
+        "attachment_url": spec["attachment_url"],
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / f"jiangsu_{spec['slug']}_2026_budget_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / f"jiangsu_{spec['slug']}_2026_budget_report_excerpt.txt",
+        "document_title": f"关于{spec['city_name']}2025年预算执行情况和2026年预算草案的报告",
+        "publisher": f"{spec['city_name']}财政局",
+        "publisher_level": "市级财政机构（省级预决算公开统一平台）",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "text_is_curated": True,
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数",
+        "document_type": "城市财政预算执行报告（官方PDF）",
+        "mime_type": "application/pdf",
+        "landing_page_url": "https://yjsgk.jsczt.cn/",
+        "source_locator": f"官方报告PDF第{spec['page_number']}页；城市={spec['city_name']}；2025年全市执行数",
+        "note": spec["note"],
+    }
+    for spec in _JIANGSU_2025_CITY_REPORT_SPECS
+)
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
