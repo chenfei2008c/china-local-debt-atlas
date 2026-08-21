@@ -1,5 +1,5 @@
 ﻿period,field_name,field_label_cn,total_city_year_rows,missing_rows,covered_rows,coverage_pct
-2018—2025,gdp_current_100m,地区生产总值（现价，亿元）,2732,783,1949,71.34
+2018—2025,gdp_current_100m,地区生产总值（现价，亿元）,2732,765,1967,72.00
 2018—2025,gdp_real_growth_pct,地区生产总值实际增速（%）,2732,782,1950,71.38
 2018—2025,resident_population_10k,年末常住人口（万人）,2732,2077,655,23.98
 2018—2025,general_public_revenue_100m,一般公共预算收入（亿元）,2732,687,2045,74.85
@@ -12,7 +12,7 @@
 2018—2025,statutory_debt_limit_100m,法定债务限额（亿元）,2732,1454,1278,46.78
 2018—2025,statutory_debt_balance_100m,法定债务余额（亿元）,2732,10,2722,99.63
 2018—2025,debt_limit_utilization_pct,债务限额使用率（%）,2732,1454,1278,46.78
-2018—2025,statutory_debt_to_gdp_pct,法定债务/GDP（%）,2732,784,1948,71.30
+2018—2025,statutory_debt_to_gdp_pct,法定债务/GDP（%）,2732,766,1966,71.96
 2018—2025,statutory_debt_to_revenue_pct,法定债务/一般预算收入（%）,2732,688,2044,74.82
 2018—2025,fiscal_self_sufficiency_pct,财政自给率（%）,2732,772,1960,71.74
 2018—2025,fund_revenue_dependence_pct,政府性基金收入依赖度（%）,2732,2451,281,10.29

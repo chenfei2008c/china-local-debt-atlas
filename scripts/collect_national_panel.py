@@ -6245,6 +6245,7 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
         "page_number": "9",
         "page_count": "31",
         "patterns": {
+            "gdp_current_100m": rf"{city_name}｜([0-9.]+)｜",
             "general_public_revenue_100m": rf"{city_name}｜[^｜]+｜([0-9.]+)｜",
         },
         "note": f"报告第9页表1精确列示{city_name}2025年一般公共预算收入；按B2精确表格纳入，保持execution状态，不使用表中其他指标推导财政收支。",

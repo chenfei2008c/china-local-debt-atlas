@@ -2001,6 +2001,32 @@ class NationalPanelTests(unittest.TestCase):
                 Decimal(revenue),
             )
 
+        expected_gdp = {
+            "CN-510300": "2003.66",
+            "CN-510600": "3387.12",
+            "CN-510700": "4600.66",
+            "CN-510800": "1348.78",
+            "CN-510900": "2002.14",
+            "CN-511000": "2050.66",
+            "CN-511100": "2501.54",
+            "CN-511300": "2901.76",
+            "CN-511400": "2008.72",
+            "CN-511500": "4134.73",
+            "CN-511600": "1700.87",
+            "CN-511700": "2990.86",
+            "CN-511900": "916.64",
+            "CN-512000": "1150.81",
+            "CN-513200": "601.19",
+            "CN-513300": "613.11",
+            "CN-513400": "2605.75",
+            "CN-510400": "1409.57",
+        }
+        for city_id, gdp in expected_gdp.items():
+            self.assertEqual(
+                values[(city_id, "2025")]["gdp_current_100m"],
+                Decimal(gdp),
+            )
+
         report_sources = [
             source for source in sources
             if source["source_doc_id"].startswith("SRC-B2-SICHUAN-REGIONAL-FISCAL-2025-REVENUE-")
