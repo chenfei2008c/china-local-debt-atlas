@@ -933,7 +933,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 45)
+        self.assertEqual(len(sources), 46)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2", "B2"})
         taian = values[("CN-370900", "2025")]
         self.assertEqual(taian["general_public_revenue_100m"], Decimal("261.96"))
@@ -2032,6 +2032,51 @@ class NationalPanelTests(unittest.TestCase):
                 "general_public_revenue_100m",
                 "general_public_expenditure_100m",
                 "gov_fund_revenue_100m",
+            },
+        )
+
+    def test_huainan_2025_official_report_extracts_whole_city_fiscal_and_debt_values(self):
+        values, sources = load_city_year_fiscal_sources()
+        huainan = values[("CN-340400", "2025")]
+        self.assertEqual(huainan["general_public_revenue_100m"], Decimal("139.00"))
+        self.assertEqual(huainan["general_public_expenditure_100m"], Decimal("345.40"))
+        self.assertEqual(huainan["statutory_debt_limit_100m"], Decimal("793.10"))
+        self.assertEqual(huainan["statutory_debt_balance_100m"], Decimal("782.70"))
+        self.assertNotIn("gov_fund_revenue_100m", huainan)
+        self.assertEqual(huainan["source_grade"], "A2")
+        self.assertEqual(huainan["data_status"], "execution")
+        huainan_source = next(
+            source for source in sources if source["source_doc_id"] == "SRC-A2-HUAINAN-CITY-FISCAL-DEBT-2025"
+        )
+        self.assertEqual(huainan_source["mime_type"], "application/pdf")
+        self.assertIn("huainan.gov.cn", huainan_source["landing_page_url"])
+        self.assertEqual(huainan_source["page_count"], "20")
+
+        city = {
+            "city_id": "CN-340400",
+            "admin_code_6": "340400",
+            "city_name_cn": "淮南市",
+            "province_code": "34",
+            "province_name": "安徽省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        rows, lineage = build_macro_rows([city], [], {}, {}, city_year_fiscal=values)
+        self.assertEqual(rows[0]["general_public_revenue_100m"], Decimal("139.00"))
+        self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("345.40"))
+        self.assertEqual(rows[0]["statutory_debt_limit_100m"], Decimal("793.10"))
+        self.assertEqual(rows[0]["statutory_debt_balance_100m"], Decimal("782.70"))
+        self.assertEqual(rows[0]["debt_limit_utilization_pct"], Decimal("98.69"))
+        self.assertEqual(rows[0]["source_grade"], "A2")
+        self.assertEqual(rows[0]["data_status"], "execution")
+        self.assertEqual(
+            {item["target_field"] for item in lineage},
+            {
+                "general_public_revenue_100m",
+                "general_public_expenditure_100m",
+                "statutory_debt_limit_100m",
+                "statutory_debt_balance_100m",
             },
         )
 
