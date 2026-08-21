@@ -33,12 +33,24 @@ try:
     from scripts.evidence_based_missing import EVIDENCE_BY_KEY, EVIDENCE_CHECKED_AT, EVIDENCE_SOURCE_DOCUMENTS
     from scripts.official_city_macro_sources import parse_city_fund_revenue_text, parse_guangdong_city_budget_page, parse_guangdong_city_gdp_html
     from scripts.pdf_layout_text import extract_pdf_text
+    from scripts.batch_source_registry import (
+        BATCH_REGISTRY_FIELDS,
+        CORE_COVERAGE_FIELDS,
+        build_batch_source_registry,
+        build_core_coverage_report,
+    )
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
     from province_debt_sources import extract_official_debt_facts
     from data_quality import OFFICIAL_DEBT_EXCEPTION_STATUS, debt_fact_has_balance_limit_conflict
     from evidence_based_missing import EVIDENCE_BY_KEY, EVIDENCE_CHECKED_AT, EVIDENCE_SOURCE_DOCUMENTS
     from official_city_macro_sources import parse_city_fund_revenue_text, parse_guangdong_city_budget_page, parse_guangdong_city_gdp_html
     from pdf_layout_text import extract_pdf_text
+    from batch_source_registry import (
+        BATCH_REGISTRY_FIELDS,
+        CORE_COVERAGE_FIELDS,
+        build_batch_source_registry,
+        build_core_coverage_report,
+    )
 
 getcontext().prec = 40
 
@@ -6689,7 +6701,7 @@ def build_readme(macro_rows: list[dict[str, Any]], city_master: list[dict[str, A
 
 ## 表格目录
 
-主表包括 `dim_city.csv`、`city_macro_fiscal.csv`、`city_gov_debt.csv`、`risk_metric.csv`、`source_document.csv`、`field_lineage.csv`、`collection_status.csv`、`evidence_based_missing.csv` 以及公式和质量表。LGFV、逐券债券、特殊条款、募集资金用途和信用事件文件已经按设计文档建立字段结构；当前没有可靠批量来源的模块不虚构记录。
+主表包括 `dim_city.csv`、`city_macro_fiscal.csv`、`city_gov_debt.csv`、`risk_metric.csv`、`source_document.csv`、`field_lineage.csv`、`collection_status.csv`、`evidence_based_missing.csv`、`batch_source_registry.csv`、`core_coverage_report_2018_2025.csv` 以及公式和质量表。LGFV、逐券债券、特殊条款、募集资金用途和信用事件文件已经按设计文档建立字段结构；当前没有可靠批量来源的模块不虚构记录。
 """
 
 
@@ -7049,6 +7061,16 @@ def main() -> None:
     write_csv("formula_dependency.csv", dependency_fields, formula_dependency)
     write_csv("collection_status.csv", collection_fields, collection_rows)
     write_csv("evidence_based_missing.csv", evidence_fields, build_evidence_based_missing_rows())
+    write_csv(
+        "batch_source_registry.csv",
+        list(BATCH_REGISTRY_FIELDS),
+        build_batch_source_registry(sources, lineage),
+    )
+    write_csv(
+        "core_coverage_report_2018_2025.csv",
+        list(CORE_COVERAGE_FIELDS),
+        build_core_coverage_report(macro_rows, lineage, sources),
+    )
     for filename, (fields, rows) in empty_schema_rows().items():
         write_csv(filename, fields, rows)
 
