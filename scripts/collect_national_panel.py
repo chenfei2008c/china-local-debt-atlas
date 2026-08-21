@@ -2743,6 +2743,45 @@ JIANGSU_CITY_FISCAL_SOURCES = (
 )
 JIANGSU_CITY_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in JIANGSU_CITY_FISCAL_SOURCES}
 
+# 新疆财政厅 2024 年预算附件中的“各地”表一次覆盖 14 个地州；表中简称
+# 通过别名映射到全国主表的规范行政名称。基金表与债务表共用同一官方 PDF，
+# 分别保留字段级来源和定位，避免把自治区本级数或转移支付数误当作地州收入。
+XINJIANG_2024_CITY_FUND_SOURCES = (
+    {
+        "year": 2024,
+        "source_doc_id": "SRC-PROVINCE-FUND-XINJIANG-2024",
+        "url": "https://czt.xinjiang.gov.cn/xjczt/c115511/202501/4a78ff1bea3045eeba621d2d1d7db349/files/02-2024%E5%B9%B4%E8%87%AA%E6%B2%BB%E5%8C%BA%E9%A2%84%E7%AE%97%E6%89%A7%E8%A1%8C%E6%83%85%E5%86%B5%E5%92%8C2025%E5%B9%B4%E8%87%AA%E6%B2%BB%E5%8C%BA%E9%A2%84%E7%AE%97%EF%BC%88%E5%9B%9B%E6%9C%AC%E9%A2%84%E7%AE%97%EF%BC%89.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "official" / "xinjiang_2024_budget_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "official" / "xinjiang_2024_city_fund_excerpt.txt",
+        "document_title": "2024年自治区政府性基金预算执行情况与2025年自治区预算（四本预算）",
+        "publisher": "新疆维吾尔自治区财政厅",
+        "publisher_level": "省级财政机构",
+        "publication_date": "2025-01-01",
+        "table_name": "表五：2024年自治区各地政府性基金预算收入完成情况表",
+        "page_number": "PDF第76页（印刷页74）",
+        "source_grade": "A1",
+        "data_status": "execution",
+        "data_status_label": "2024年完成数",
+        "cities": {
+            "乌鲁木齐市": "CN-650100",
+            "伊犁州": "CN-654000",
+            "塔城地区": "CN-654200",
+            "阿勒泰地区": "CN-654300",
+            "克拉玛依市": "CN-650200",
+            "博尔塔拉州": "CN-652700",
+            "昌吉州": "CN-652300",
+            "哈密市": "CN-650500",
+            "吐鲁番市": "CN-650400",
+            "巴音郭楞州": "CN-652800",
+            "阿克苏地区": "CN-652900",
+            "克孜勒苏州": "CN-653000",
+            "喀什地区": "CN-653100",
+            "和田地区": "CN-653200",
+        },
+    },
+)
+XINJIANG_CITY_FUND_SOURCE_IDS = {item["source_doc_id"] for item in XINJIANG_2024_CITY_FUND_SOURCES}
+
 # 内蒙古自治区城市财政报告中已核验的全市政府性基金收入。来源均能精确定位
 # 到报告正文，但不是省财政厅分地区原始表，因此按 B2 纳入，并保留 execution
 # 状态；不把市本级数替代为全市数。
@@ -4909,6 +4948,91 @@ def load_jiangsu_city_fund_sources() -> tuple[dict[tuple[str, str], dict[str, An
     return values, sources
 
 
+def load_xinjiang_2024_city_fund_sources() -> tuple[dict[tuple[str, str], dict[str, Any]], list[dict[str, Any]]]:
+    """读取新疆财政厅 2024 年各地政府性基金预算收入完成表。"""
+
+    values: dict[tuple[str, str], dict[str, Any]] = {}
+    sources: list[dict[str, Any]] = []
+    for config in XINJIANG_2024_CITY_FUND_SOURCES:
+        source_path = Path(config["path"])
+        text_path = Path(config["text_path"])
+        content_hash = ensure_download(str(config["url"]), source_path)
+        report_text = text_path.read_text(encoding="utf-8")
+        rows = [line.split() for line in report_text.splitlines() if line.strip()]
+        facts, _rejects = parse_city_value_rows(
+            rows,
+            city_aliases=config["cities"],
+            field_name="gov_fund_revenue_100m",
+            value_index=2,
+            raw_unit="万元",
+            metric_year=int(config["year"]),
+            source_doc_id=str(config["source_doc_id"]),
+            source_grade=str(config["source_grade"]),
+            geo_scope="prefecture_whole",
+        )
+        facts_by_city = {fact["city_id"]: fact for fact in facts}
+        expected_city_ids = set(config["cities"].values())
+        if set(facts_by_city) != expected_city_ids:
+            missing = sorted(expected_city_ids - set(facts_by_city))
+            extra = sorted(set(facts_by_city) - expected_city_ids)
+            raise ValueError(f"未能从新疆{config['year']}年政府性基金分地区表提取城市：缺失={missing}，多出={extra}")
+        for city_name, city_id in config["cities"].items():
+            fact = facts_by_city[city_id]
+            values[(city_id, str(config["year"]))] = {
+                "gov_fund_revenue_100m": q2(fact["normalized_value"]),
+                "gov_fund_revenue_raw_100m": Decimal(fact["raw_value"].replace(",", "")),
+                "gov_fund_revenue_raw_unit": fact["raw_unit"],
+                "gov_fund_revenue_evidence_excerpt": fact["evidence_excerpt"],
+                "source_doc_id": config["source_doc_id"],
+                "source_grade": config["source_grade"],
+                "data_status": config["data_status"],
+                "data_status_label": config["data_status_label"],
+                "source_locator": (
+                    f"{text_path.relative_to(ROOT)}；{config['table_name']}；"
+                    f"{config['page_number']}；城市={city_name}；{config['data_status_label']}"
+                ),
+                "table_name": config["table_name"],
+                "page_number": config["page_number"],
+            }
+        sources.append(
+            {
+                "source_doc_id": config["source_doc_id"],
+                "publisher": config["publisher"],
+                "publisher_level": config["publisher_level"],
+                "document_title": config["document_title"],
+                "title_source": "official_budget_table",
+                "attachment_title": source_path.name,
+                "document_type": "官方省级财政分地区政府性基金预算执行表",
+                "source_url": config["url"],
+                "landing_page_url": config["url"],
+                "attachment_url": config["url"],
+                "canonical_url": config["url"],
+                "final_resolved_url": config["url"],
+                "file_name": source_path.name,
+                "mime_type": "application/pdf",
+                "publication_date": config["publication_date"],
+                "publication_date_raw": config["publication_date"],
+                "period_end": f"{config['year']}-12-31",
+                "downloaded_at": RETRIEVED_AT,
+                "content_hash_sha256": content_hash,
+                "archive_uri": f"archive://national-prefecture-panel/{source_path.relative_to(ROOT)}",
+                "archive_backend": "internal_object",
+                "archive_path": str(source_path.relative_to(ROOT)),
+                "page_count": config["page_number"],
+                "source_grade": config["source_grade"],
+                "http_status": "200",
+                "access_status": "官方附件已归档",
+                "supersedes_doc_id": "",
+                "note": (
+                    "新疆维吾尔自治区财政厅官方分地区政府性基金预算收入完成表；"
+                    "采用各地州全域完成数，原始单位万元，统一换算为亿元；"
+                    "自治区本级和全区合计行未写入地级行政单元。"
+                ),
+            }
+        )
+    return values, sources
+
+
 def load_jiangsu_city_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any]], list[dict[str, Any]]]:
     """读取江苏省财政厅 2024 年分地区一般预算收入、支出表。"""
 
@@ -6862,9 +6986,12 @@ def main() -> None:
     next29_2025_economic, next29_2025_economic_sources = load_next29_2025_city_economic()
     next30_2025_economic, next30_2025_economic_sources = load_next30_2025_city_economic()
     jiangsu_city_fund, jiangsu_city_fund_sources = load_jiangsu_city_fund_sources()
+    xinjiang_city_fund, xinjiang_city_fund_sources = load_xinjiang_2024_city_fund_sources()
     jiangsu_city_fiscal, jiangsu_city_fiscal_sources = load_jiangsu_city_fiscal_sources()
     city_year_fiscal, city_year_fiscal_sources = load_city_year_fiscal_sources()
     city_year_fund, city_year_fund_sources = load_city_year_fund_sources()
+    city_year_fund.update(xinjiang_city_fund)
+    city_year_fund_sources.extend(xinjiang_city_fund_sources)
     gd_2025_gdp = {
         city["city_id"]: gd_2025_by_name[city["city_name_cn"]]
         for city in city_master
@@ -6939,7 +7066,7 @@ def main() -> None:
     new_fund_lineage = [
         item
         for item in lineage
-        if item.get("source_doc_id") in (CITY_FUND_SOURCE_IDS | CITY_YEAR_FUND_SOURCE_IDS)
+        if item.get("source_doc_id") in (CITY_FUND_SOURCE_IDS | CITY_YEAR_FUND_SOURCE_IDS | XINJIANG_CITY_FUND_SOURCE_IDS)
     ]
     lineage = [
         item
@@ -6947,6 +7074,7 @@ def main() -> None:
         if item.get("source_doc_id") not in (
             CITY_FUND_SOURCE_IDS
             | CITY_YEAR_FUND_SOURCE_IDS
+            | XINJIANG_CITY_FUND_SOURCE_IDS
             | {"SRC-GD-CITY-FISCAL-2025"}
             | JIANGSU_CITY_FISCAL_SOURCE_IDS
             | CITY_YEAR_FISCAL_SOURCE_IDS

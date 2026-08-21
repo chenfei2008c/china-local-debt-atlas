@@ -599,6 +599,37 @@ OFFICIAL_PROVINCE_DEBT_SOURCES: list[dict[str, Any]] = [
         "end": "2023年全区地方政府债务发行及还本付息情况表",
         "table_name": "表二十九 2023年全区地方政府债务限额及余额决算情况表",
     },
+    {
+        "source_doc_id": "SRC-PROVINCE-DEBT-XINJIANG-2024",
+        "province_name": "新疆维吾尔自治区",
+        "year": 2024,
+        "path": ROOT / "raw" / "province_fiscal" / "2024" / "official" / "xinjiang_2024_budget_report.pdf",
+        "text_path": ROOT / "raw" / "province_fiscal" / "2024" / "official" / "xinjiang_2024_city_debt_excerpt.txt",
+        "source_url": "https://czt.xinjiang.gov.cn/xjczt/c115511/202501/4a78ff1bea3045eeba621d2d1d7db349/files/02-2024%E5%B9%B4%E8%87%AA%E6%B2%BB%E5%8C%BA%E9%A2%84%E7%AE%97%E6%89%A7%E8%A1%8C%E6%83%85%E5%86%B5%E5%92%8C2025%E5%B9%B4%E8%87%AA%E6%B2%BB%E5%8C%BA%E9%A2%84%E7%AE%97%EF%BC%88%E5%9B%9B%E6%9C%AC%E9%A2%84%E7%AE%97%EF%BC%89.pdf",
+        "document_title": "2024年自治区各地政府专项债务限额、余额情况表",
+        "publication_date": "2025-01-01",
+        "publisher": "新疆维吾尔自治区财政厅",
+        "publisher_level": "省级财政机构",
+        "source_grade": "A1",
+        "unit": "万元",
+        "unit_factor": Decimal("0.0001"),
+        "layout": "direct3_component_limit_new_balance",
+        "component": "special",
+        "start": "表七：2024年自治区各地政府专项债务限额、余额情况表",
+        "end": None,
+        "aliases": {
+            "伊犁州": "伊犁哈萨克自治州",
+            "博尔塔拉州": "博尔塔拉蒙古自治州",
+            "昌吉州": "昌吉回族自治州",
+            "巴音郭楞州": "巴音郭楞蒙古自治州",
+            "克孜勒苏州": "克孜勒苏柯尔克孜自治州",
+        },
+        "table_name": "表七：2024年自治区各地政府专项债务限额、余额情况表",
+        "note": "新疆维吾尔自治区财政厅官方分地州专项债务限额、余额表；原始单位万元，按0.0001换算为亿元；仅接入地级行政单元，不接入自治区本级和合计行。吐鲁番市原表余额2130800万元高于限额1963500万元，保留原值并标记勾稽异常。",
+        "balance_limit_exception_by_city": {
+            "吐鲁番市": "新疆财政厅2024年表七原值保留：吐鲁番市专项债务余额2130800万元高于专项债务限额1963500万元；按设计文档记录为官方表内勾稽异常，不用其他来源改写。",
+        },
+    },
 ]
 
 

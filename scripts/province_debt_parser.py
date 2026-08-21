@@ -101,7 +101,7 @@ def extract_city_rows(
             continue
         numbers = parse_numeric_tokens(line)
         evidence_line = line
-        required_count = 9 if layout == "total9" else (6 if layout in {"total6", "balance6", "total6_balance_first"} else (3 if layout in {"component3", "component3_previous_balance", "balance3", "direct3_general_special", "direct3_general_special_after_year"} else (1 if layout == "direct1" else 2)))
+        required_count = 9 if layout == "total9" else (6 if layout in {"total6", "balance6", "total6_balance_first"} else (3 if layout in {"component3", "component3_previous_balance", "balance3", "direct3_general_special", "direct3_general_special_after_year", "direct3_component_limit_new_balance"} else (1 if layout == "direct1" else 2)))
         # 部分 PDF 会把较长的自治州名称拆成两行，但数字仍在下一行；
         # 仅在已匹配白名单且当前数字列不足时合并下一行，避免跨行误配。
         if len(numbers) < required_count and index + 1 < len(lines):
@@ -121,6 +121,8 @@ def extract_city_rows(
         if layout == "direct3_general_special" and len(numbers) < 3:
             continue
         if layout == "direct3_general_special_after_year" and len(numbers) < 4:
+            continue
+        if layout == "direct3_component_limit_new_balance" and len(numbers) < 3:
             continue
         if layout == "direct1" and len(numbers) < 1:
             continue
@@ -237,6 +239,16 @@ def extract_city_rows(
                     "general_debt_balance_100m": general_balance,
                     "special_debt_balance_100m": special_balance,
                     "statutory_debt_balance_100m": total_balance,
+                }
+            )
+        elif layout == "direct3_component_limit_new_balance" and component in {"general", "special"}:
+            # 新疆等表格按“分项限额、当年新增限额、分项余额”列示；
+            # 新增限额不是主表字段，不能把专项债务分项误命名为法定总额。
+            component_limit, _new_limit, component_balance = values[:3]
+            row.update(
+                {
+                    f"{component}_debt_limit_100m": component_limit,
+                    f"{component}_debt_balance_100m": component_balance,
                 }
             )
         else:

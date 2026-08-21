@@ -221,6 +221,23 @@ class ProvinceDebtParserTests(unittest.TestCase):
         self.assertEqual(row["general_debt_balance_100m"], Decimal("441.17"))
         self.assertEqual(row["special_debt_balance_100m"], Decimal("1091.01"))
 
+    def test_extracts_direct_limit_new_limit_and_balance_rows(self):
+        text = "乌鲁木齐市 16316900 3783000 15888995"
+        rows = extract_city_rows(
+            text,
+            expected_city_names={"乌鲁木齐市"},
+            year=2024,
+            province_name="新疆维吾尔自治区",
+            source_doc_id="SRC-TEST-XJ-DIRECT3",
+            layout="direct3_component_limit_new_balance",
+            component="special",
+            unit_factor=Decimal("0.0001"),
+        )
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["special_debt_limit_100m"], Decimal("1631.6900"))
+        self.assertEqual(rows[0]["special_debt_balance_100m"], Decimal("1588.8995"))
+        self.assertIsNone(rows[0]["statutory_debt_limit_100m"])
+
     def test_tibet_2024_city_sources_are_registered_and_extracted(self):
         from scripts.province_debt_sources import OFFICIAL_PROVINCE_DEBT_SOURCES, extract_official_debt_facts
 
@@ -251,6 +268,27 @@ class ProvinceDebtParserTests(unittest.TestCase):
         ]
         xiongan_facts, _ = extract_official_debt_facts(xiongan_city_master)
         self.assertEqual(xiongan_facts[("CN-133100", "2024")]["statutory_debt_balance_100m"], Decimal("2625.21"))
+
+    def test_xinjiang_2024_batch_source_covers_fund_and_debt(self):
+        from scripts.collect_national_panel import load_xinjiang_2024_city_fund_sources
+        from scripts.province_debt_sources import extract_official_debt_facts
+
+        fund_values, fund_sources = load_xinjiang_2024_city_fund_sources()
+        self.assertEqual(len(fund_values), 14)
+        self.assertEqual(len(fund_sources), 1)
+        self.assertEqual(fund_values[("CN-650100", "2024")]["gov_fund_revenue_100m"], Decimal("92.28"))
+        self.assertEqual(fund_values[("CN-653200", "2024")]["gov_fund_revenue_100m"], Decimal("13.96"))
+        self.assertEqual({item["source_grade"] for item in fund_sources}, {"A1"})
+
+        city_master = [
+            {"city_id": "CN-650100", "province_name": "新疆维吾尔自治区", "city_name_cn": "乌鲁木齐市", "metric_year": 2024},
+            {"city_id": "CN-653200", "province_name": "新疆维吾尔自治区", "city_name_cn": "和田地区", "metric_year": 2024},
+        ]
+        debt_values, debt_sources = extract_official_debt_facts(city_master)
+        self.assertEqual(debt_values[("CN-650100", "2024")]["special_debt_limit_100m"], Decimal("1631.6900"))
+        self.assertEqual(debt_values[("CN-650100", "2024")]["special_debt_balance_100m"], Decimal("1588.8995"))
+        self.assertEqual(debt_values[("CN-653200", "2024")]["special_debt_balance_100m"], Decimal("376.2400"))
+        self.assertTrue(any(item["source_doc_id"] == "SRC-PROVINCE-DEBT-XINJIANG-2024" for item in debt_sources))
 
         jinchang_city_master = [
             {"city_id": "CN-620300", "province_name": "甘肃省", "city_name_cn": "金昌市", "metric_year": 2024},
