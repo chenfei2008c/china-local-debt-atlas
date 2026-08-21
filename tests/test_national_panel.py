@@ -2658,8 +2658,8 @@ class NationalPanelTests(unittest.TestCase):
     def test_city_year_fund_batch_extracts_hohhot_and_chifeng(self):
         values, sources = load_city_year_fund_sources()
 
-        self.assertEqual(len(values), 71)
-        self.assertEqual(len(sources), 71)
+        self.assertEqual(len(values), 82)
+        self.assertEqual(len(sources), 82)
         self.assertEqual(values[("CN-445300", "2025")]["gov_fund_revenue_100m"], Decimal("10.22"))
         yunfu_source = next(source for source in sources if source["source_doc_id"] == "SRC-A2-YUNFU-CITY-FUND-2025")
         self.assertIn("yunfu.gov.cn", yunfu_source["landing_page_url"])
@@ -2784,6 +2784,35 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(values[("CN-350400", "2018")]["gov_fund_revenue_100m"], Decimal("81.42"))
         self.assertEqual(values[("CN-350400", "2019")]["gov_fund_revenue_100m"], Decimal("90.06"))
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2", "B2"})
+
+    def test_2025_zhejiang_fund_batch_extracts_all_eleven_whole_city_values(self):
+        values, sources = load_city_year_fund_sources()
+
+        expected = {
+            "CN-330100": "1717.13",
+            "CN-330200": "535.34",
+            "CN-330300": "884.27",
+            "CN-330400": "414.43",
+            "CN-330500": "345.94",
+            "CN-330600": "407.19",
+            "CN-330700": "541.78",
+            "CN-330800": "170.15",
+            "CN-330900": "89.39",
+            "CN-331000": "463.06",
+            "CN-331100": "234.13",
+        }
+
+        for city_id, fund_revenue in expected.items():
+            record = values[(city_id, "2025")]
+            self.assertEqual(record["gov_fund_revenue_100m"], Decimal(fund_revenue))
+            self.assertEqual(record["source_grade"], "B2")
+            self.assertEqual(record["data_status"], "execution")
+        batch_source_ids = {
+            source["source_doc_id"]
+            for source in sources
+            if source["source_doc_id"].startswith("SRC-B2-ZHEJIANG-2025-FUND-")
+        }
+        self.assertEqual(len(batch_source_ids), 11)
 
         cities = [
             {
