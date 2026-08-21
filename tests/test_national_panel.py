@@ -933,7 +933,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 27)
+        self.assertEqual(len(sources), 28)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2"})
         taian = values[("CN-370900", "2025")]
         self.assertEqual(taian["general_public_revenue_100m"], Decimal("261.96"))
@@ -1037,6 +1037,15 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(qujing["data_status"], "execution")
         qujing_source = next(source for source in sources if source["source_doc_id"] == "SRC-A2-QUJING-CITY-FISCAL-2025")
         self.assertIn("qj.gov.cn", qujing_source["landing_page_url"])
+        lijiang = values[("CN-530700", "2025")]
+        self.assertEqual(lijiang["general_public_revenue_100m"], Decimal("56.78"))
+        self.assertEqual(lijiang["general_public_expenditure_100m"], Decimal("176.32"))
+        self.assertEqual(lijiang["gov_fund_revenue_100m"], Decimal("17.07"))
+        self.assertEqual(lijiang["source_grade"], "A2")
+        self.assertEqual(lijiang["data_status"], "execution")
+        lijiang_source = next(source for source in sources if source["source_doc_id"] == "SRC-A2-LIJIANG-CITY-FISCAL-2025")
+        self.assertIn("lijiang.gov.cn", lijiang_source["landing_page_url"])
+        self.assertIn(".xlsx", lijiang_source["attachment_url"])
         lvliang = values[("CN-141100", "2025")]
         self.assertEqual(lvliang["general_public_revenue_100m"], Decimal("278.26"))
         self.assertEqual(lvliang["general_public_expenditure_100m"], Decimal("585.48"))
