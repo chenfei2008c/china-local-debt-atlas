@@ -933,7 +933,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 35)
+        self.assertEqual(len(sources), 36)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2", "B2"})
         taian = values[("CN-370900", "2025")]
         self.assertEqual(taian["general_public_revenue_100m"], Decimal("261.96"))
@@ -1883,6 +1883,50 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("493.97"))
         self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("41.53"))
         self.assertEqual(rows[0]["fund_revenue_dependence_pct"], Decimal("16.15"))
+        self.assertEqual(rows[0]["source_grade"], "A2")
+        self.assertEqual(rows[0]["data_status"], "execution")
+        self.assertEqual(
+            {item["target_field"] for item in lineage},
+            {
+                "general_public_revenue_100m",
+                "general_public_expenditure_100m",
+                "gov_fund_revenue_100m",
+            },
+        )
+
+    def test_xuancheng_2025_official_budget_report_extracts_whole_city_fiscal_values(self):
+        values, sources = load_city_year_fiscal_sources()
+        xuancheng = values[("CN-341800", "2025")]
+        self.assertEqual(xuancheng["general_public_revenue_100m"], Decimal("200.10"))
+        self.assertEqual(xuancheng["general_public_expenditure_100m"], Decimal("377.00"))
+        self.assertEqual(xuancheng["gov_fund_revenue_100m"], Decimal("60.60"))
+        self.assertEqual(xuancheng["source_grade"], "A2")
+        self.assertEqual(xuancheng["data_status"], "execution")
+        xuancheng_source = next(
+            source for source in sources if source["source_doc_id"] == "SRC-A2-XUANCHENG-CITY-FISCAL-2025"
+        )
+        self.assertIn("xuancheng.gov.cn", xuancheng_source["landing_page_url"])
+        self.assertIn("20260206a37c3db21a3a448a91fb29d6117c45f5.pdf", xuancheng_source["attachment_url"])
+        self.assertEqual(xuancheng_source["mime_type"], "application/pdf")
+        self.assertEqual(xuancheng_source["page_count"], "15")
+
+        city = {
+            "city_id": "CN-341800",
+            "admin_code_6": "341800",
+            "city_name_cn": "宣城市",
+            "province_code": "34",
+            "province_name": "安徽省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        rows, lineage = build_macro_rows(
+            [city], [], {}, {}, city_year_fiscal=values,
+        )
+        self.assertEqual(rows[0]["general_public_revenue_100m"], Decimal("200.10"))
+        self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("377.00"))
+        self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("60.60"))
+        self.assertEqual(rows[0]["fund_revenue_dependence_pct"], Decimal("23.25"))
         self.assertEqual(rows[0]["source_grade"], "A2")
         self.assertEqual(rows[0]["data_status"], "execution")
         self.assertEqual(
