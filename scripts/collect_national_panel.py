@@ -5454,6 +5454,33 @@ CITY_YEAR_FISCAL_SOURCES = (
         },
         "note": "滨州市统计局、国家统计局滨州调查队统计公报转载精确披露2025年全市一般公共预算收入318.26亿元和支出516.72亿元；政府性基金收入保留已有B2精确来源156.32亿元。",
     },
+    {
+        "year": 2025,
+        "city_name": "枣庄市",
+        "city_id": "CN-370400",
+        "source_doc_id": "SRC-B2-ZAOZHUANG-CITY-FISCAL-2025",
+        "url": "https://tjgb.hongheiku.com/djs/68625.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "zaozhuang_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "zaozhuang_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2025年枣庄市国民经济和社会发展统计公报",
+        "publisher": "枣庄市统计局、国家统计局枣庄调查队（公开转载）",
+        "publisher_level": "官方统计公报转载",
+        "publication_date": "2026-03-24",
+        "source_grade": "B2",
+        "source_format": "html",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年统计公报财政数",
+        "document_type": "统计公报财政段落（精确转载）",
+        "page_number": "正文八、财政金融",
+        "page_count": "1",
+        "patterns": {
+            "general_public_revenue_100m": r"全年全市一般公共预算收入([0-9.]+)亿元",
+            "general_public_expenditure_100m": r"一般公共预算支出([0-9.]+)亿元",
+        },
+        "note": "枣庄市统计局、国家统计局枣庄调查队统计公报转载精确披露2025年全市一般公共预算收入200.20亿元和支出369.16亿元；政府性基金收入保留已有B2精确来源287.24亿元。",
+    },
 )
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 

@@ -933,7 +933,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 54)
+        self.assertEqual(len(sources), 55)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2", "B2"})
         taian = values[("CN-370900", "2025")]
         self.assertEqual(taian["general_public_revenue_100m"], Decimal("261.96"))
@@ -1655,7 +1655,7 @@ class NationalPanelTests(unittest.TestCase):
             record = values[(city_id, "2025")]
             self.assertEqual(record["general_public_revenue_100m"], Decimal(revenue))
             self.assertEqual(record["general_public_expenditure_100m"], Decimal(expenditure))
-        self.assertEqual(len(sources), 54)
+        self.assertEqual(len(sources), 55)
         weifang_source = next(
             source for source in sources if source["source_doc_id"] == "SRC-A2-WEIFANG-CITY-FISCAL-2025"
         )
@@ -1669,6 +1669,19 @@ class NationalPanelTests(unittest.TestCase):
             source for source in sources if source["source_doc_id"] == "SRC-B2-BINZHOU-CITY-FISCAL-2025"
         )
         self.assertEqual(binzhou_source["source_grade"], "B2")
+
+    def test_city_year_fiscal_batch_adds_zaozhuang_2025_statistical_bulletin(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        zaozhuang = values[("CN-370400", "2025")]
+        self.assertEqual(zaozhuang["general_public_revenue_100m"], Decimal("200.20"))
+        self.assertEqual(zaozhuang["general_public_expenditure_100m"], Decimal("369.16"))
+        zaozhuang_source = next(
+            source for source in sources if source["source_doc_id"] == "SRC-B2-ZAOZHUANG-CITY-FISCAL-2025"
+        )
+        self.assertIn("hongheiku.com", zaozhuang_source["landing_page_url"])
+        self.assertEqual(zaozhuang_source["source_grade"], "B2")
+        self.assertEqual(len(sources), 55)
 
     def test_langfang_2025_official_budget_report_extracts_whole_city_fiscal_values(self):
         values, sources = load_city_year_fiscal_sources()
