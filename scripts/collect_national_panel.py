@@ -6672,6 +6672,57 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     }
     for city_name, city_id, slug in _GUANGXI_2024_REGIONAL_FISCAL_SPECS
 )
+
+# 上交所公开披露的中证鹏元评级报告第 8 页表 2，集中列示安徽省 2024 年
+# 9 个地级市的全市 GDP、实际增速、一般公共预算收入和政府性基金收入。
+# 亳州市、铜陵市的政府性基金收入在原表中为“—”，保持缺失，不写入零值。
+_ANHUI_2024_REGIONAL_FISCAL_SPECS = (
+    ("合肥市", "CN-340100", "HEFEI", True),
+    ("芜湖市", "CN-340200", "WUHU", True),
+    ("安庆市", "CN-340800", "ANQING", True),
+    ("马鞍山市", "CN-340500", "MAANSHAN", True),
+    ("亳州市", "CN-341600", "BOZHOU", False),
+    ("宿州市", "CN-341300", "SUZHOU", True),
+    ("宣城市", "CN-341800", "XUANCHENG", True),
+    ("铜陵市", "CN-340700", "TONGLING", False),
+    ("池州市", "CN-341700", "CHIZHOU", True),
+)
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    {
+        "year": 2024,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-ANHUI-REGIONAL-FISCAL-2024-{slug}",
+        "url": "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2025-07-03/152026_20250703_2S57.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "anhui_2024_city_fiscal_rating_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "anhui_2024_city_fiscal_rating_report_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "马鞍山市宁博投资发展有限责任公司相关债券2025年跟踪评级报告",
+        "publisher": "中证鹏元资信评估股份有限公司（上海证券交易所公开披露）",
+        "publisher_level": "交易所公开披露的B2精确表格来源",
+        "publication_date": "2025-07-03",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "data_status": "execution",
+        "data_status_label": "2024年执行数（评级报告精确表格）",
+        "document_type": "评级报告地级市经济财政指标表",
+        "page_number": "PDF第8页，表2；2024年安徽省部分地级市经济财政指标情况",
+        "page_count": "19",
+        "raw_unit": "亿元",
+        "raw_units": {"gdp_real_growth_pct": "%"},
+        "patterns": {
+            "gdp_current_100m": rf"{city_name}｜([0-9.,]+)｜",
+            "gdp_real_growth_pct": rf"{city_name}｜[0-9.,]+｜([0-9.-]+)｜",
+            "general_public_revenue_100m": rf"{city_name}｜[0-9.,]+｜[0-9.-]+｜([0-9.,]+)｜",
+            **({
+                "gov_fund_revenue_100m": rf"{city_name}｜[0-9.,]+｜[0-9.-]+｜[0-9.,]+｜([0-9.,]+)",
+            } if has_fund else {}),
+        },
+        "source_locator": f"PDF第8页表2；城市={city_name}；2024年全市执行数",
+        "note": f"B2精确表格；报告表2列示{city_name}2024年全市GDP、实际增速和一般公共预算收入；政府性基金收入仅在原表明确数值时接入，不使用市本级数、区县数或图表目测值。",
+    }
+    for city_name, city_id, slug, has_fund in _ANHUI_2024_REGIONAL_FISCAL_SPECS
+)
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
