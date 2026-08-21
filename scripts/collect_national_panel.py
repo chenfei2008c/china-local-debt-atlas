@@ -3493,6 +3493,28 @@ CITY_YEAR_FUND_SOURCES = (
         "page_count": "47",
         "note": "交易所公开披露的东方金诚跟踪评级报告，图表15列示2023—2025年安庆市主要经济及财政指标；2025年政府性基金收入40.40亿元，报告注明依据《关于安庆市2025年预算执行情况和2026年预算草案的报告》等资料整理，明确为安庆市全市口径。",
     },
+    {
+        "year": 2025,
+        "city_name": "鄂州市",
+        "city_id": "CN-420700",
+        "source_doc_id": "SRC-A2-EZHOU-CITY-FUND-2025",
+        "url": "https://www.ezhou.gov.cn/gk/xxgkml/czgk/zfyjs/202602/P020260331611182224746.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "ezhou_2025_budget_execution_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "ezhou_2025_budget_execution_report_excerpt.txt",
+        "document_title": "关于鄂州市2025年预算执行情况和2026年预算草案的报告",
+        "publisher": "鄂州市财政局",
+        "publisher_level": "市级财政机构官方 PDF",
+        "publication_date": "2026-01-14",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "pattern": r"原文摘录：.*?全市政府性基金预算收入完成\s*([0-9]+\.[0-9]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数",
+        "document_type": "城市财政预算执行报告（官方 PDF）",
+        "page_count": "24",
+        "note": "鄂州市财政局官方预算执行报告，明确区分全市与市本级口径；采用2025年全市政府性基金预算收入134.68亿元，不使用市本级74.02亿元。",
+    },
 )
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
