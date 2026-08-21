@@ -933,7 +933,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 49)
+        self.assertEqual(len(sources), 51)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2", "B2"})
         taian = values[("CN-370900", "2025")]
         self.assertEqual(taian["general_public_revenue_100m"], Decimal("261.96"))
@@ -2117,6 +2117,52 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("485.56"))
         self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("225.52"))
         self.assertEqual(rows[0]["source_grade"], "A2")
+        self.assertEqual(rows[0]["data_status"], "execution")
+        self.assertEqual(
+            {item["target_field"] for item in lineage},
+            {
+                "general_public_revenue_100m",
+                "general_public_expenditure_100m",
+                "gov_fund_revenue_100m",
+            },
+        )
+
+    def test_luzhou_handan_2025_rating_tables_extract_whole_city_fiscal_values(self):
+        values, sources = load_city_year_fiscal_sources()
+        expected = {
+            "CN-510500": ("233.50", "523.80", "143.70"),
+            "CN-130400": ("386.37", "935.15", "163.44"),
+        }
+        for city_id, (revenue, expenditure, fund_revenue) in expected.items():
+            record = values[(city_id, "2025")]
+            self.assertEqual(record["general_public_revenue_100m"], Decimal(revenue))
+            self.assertEqual(record["general_public_expenditure_100m"], Decimal(expenditure))
+            self.assertEqual(record["gov_fund_revenue_100m"], Decimal(fund_revenue))
+            self.assertEqual(record["source_grade"], "B2")
+            self.assertEqual(record["data_status"], "execution")
+
+        luzhou_source = next(
+            source for source in sources if source["source_doc_id"] == "SRC-B2-LUZHOU-CITY-FISCAL-2025"
+        )
+        self.assertEqual(luzhou_source["mime_type"], "application/pdf")
+        self.assertIn("sse.com.cn", luzhou_source["landing_page_url"])
+        self.assertEqual(luzhou_source["page_count"], "28")
+
+        city = {
+            "city_id": "CN-510500",
+            "admin_code_6": "510500",
+            "city_name_cn": "泸州市",
+            "province_code": "51",
+            "province_name": "四川省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        rows, lineage = build_macro_rows([city], [], {}, {}, city_year_fiscal=values)
+        self.assertEqual(rows[0]["general_public_revenue_100m"], Decimal("233.50"))
+        self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("523.80"))
+        self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("143.70"))
+        self.assertEqual(rows[0]["source_grade"], "B2")
         self.assertEqual(rows[0]["data_status"], "execution")
         self.assertEqual(
             {item["target_field"] for item in lineage},
