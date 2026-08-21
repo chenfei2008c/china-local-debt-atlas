@@ -4722,6 +4722,36 @@ CITY_YEAR_FISCAL_SOURCES = (
         },
         "note": "普洱日报完整转载普洱市财政局预算执行报告并明确署名及全市口径；本批按B2精确转载证据采用全市一般公共预算收入62.57亿元、支出306.28亿元及政府性基金预算收入19.53亿元，不使用市级、县区级或2026年预算数。",
     },
+    {
+        "year": 2025,
+        "city_name": "廊坊市",
+        "city_id": "CN-131000",
+        "source_doc_id": "SRC-A2-LANGFANG-CITY-FISCAL-2025",
+        "url": "https://zhuanti.lf.gov.cn/Item/2846.aspx",
+        "landing_page_url": "https://zhuanti.lf.gov.cn/Item/2846.aspx",
+        "attachment_url": "https://zhuanti.lf.gov.cn/UploadFiles/sjczyjsgkzl/2026/5/202605061438290149.7z",
+        "download_url": "https://zhuanti.lf.gov.cn/UploadFiles/sjczyjsgkzl/2026/5/202605061438290149.7z",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "langfang_2025_budget_report.7z",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "langfang_2025_budget_execution_excerpt.txt",
+        "document_title": "廊坊市2025年市本级预算及全市总预算执行情况和2026年市本级预算及全市总预算草案的报告",
+        "publisher": "廊坊市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2026-02-09",
+        "source_grade": "A2",
+        "source_format": "7z",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年快报统计数（官方预算执行报告）",
+        "document_type": "城市财政预算执行报告（官方网页及7z附件）",
+        "page_number": "PDF第2—3页",
+        "page_count": "18",
+        "patterns": {
+            "general_public_revenue_100m": r"一般公共预算完成情况。全市收入([0-9.]+)亿元",
+            "general_public_expenditure_100m": r"一般公共预算完成情况。.*?支出([0-9.]+)亿元",
+            "gov_fund_revenue_100m": r"政府性基金预算完成情况。全市收入([0-9.]+)亿元",
+        },
+        "note": "廊坊市人民政府网站专题平台公开的廊坊市财政局预算报告明确区分全市与市本级口径；本批采用全市一般公共预算收入311.8亿元、支出618.7亿元及政府性基金预算收入86.8亿元，均为2025年快报统计数，标记为execution，不使用市本级或开发区、临空经济区数据。附件为官方7z压缩包，内含报告PDF。",
+    },
 )
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
@@ -5630,7 +5660,13 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
                 "canonical_url": config.get("landing_page_url") or config["url"],
                 "final_resolved_url": config.get("attachment_url") or config["url"],
                 "file_name": source_path.name,
-                "mime_type": "text/html" if config.get("source_format") == "html" else "application/pdf",
+                "mime_type": (
+                    "text/html"
+                    if config.get("source_format") == "html"
+                    else "application/x-7z-compressed"
+                    if config.get("source_format") == "7z"
+                    else "application/pdf"
+                ),
                 "publication_date": config["publication_date"],
                 "publication_date_raw": config["publication_date"],
                 "period_end": f"{year}-12-31",
@@ -5647,6 +5683,8 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
                     if config.get("source_format") == "html"
                     else "官方Excel附件已归档"
                     if config.get("source_format") == "xlsx"
+                    else "官方7z附件已归档"
+                    if config.get("source_format") == "7z"
                     else "官方PDF已归档"
                 ),
                 "supersedes_doc_id": "",

@@ -933,7 +933,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 30)
+        self.assertEqual(len(sources), 31)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2", "B2"})
         taian = values[("CN-370900", "2025")]
         self.assertEqual(taian["general_public_revenue_100m"], Decimal("261.96"))
@@ -1636,6 +1636,51 @@ class NationalPanelTests(unittest.TestCase):
         )
         self.assertEqual(
             {item["target_field"] for item in zhangye_lineage},
+            {
+                "general_public_revenue_100m",
+                "general_public_expenditure_100m",
+                "gov_fund_revenue_100m",
+            },
+        )
+
+    def test_langfang_2025_official_budget_report_extracts_whole_city_fiscal_values(self):
+        values, sources = load_city_year_fiscal_sources()
+        langfang = values[("CN-131000", "2025")]
+        self.assertEqual(langfang["general_public_revenue_100m"], Decimal("311.80"))
+        self.assertEqual(langfang["general_public_expenditure_100m"], Decimal("618.70"))
+        self.assertEqual(langfang["gov_fund_revenue_100m"], Decimal("86.80"))
+        self.assertEqual(langfang["source_grade"], "A2")
+        self.assertEqual(langfang["data_status"], "execution")
+        langfang_source = next(
+            source for source in sources if source["source_doc_id"] == "SRC-A2-LANGFANG-CITY-FISCAL-2025"
+        )
+        self.assertIn("zhuanti.lf.gov.cn", langfang_source["landing_page_url"])
+        self.assertIn("202605061438290149.7z", langfang_source["attachment_url"])
+        self.assertEqual(langfang_source["mime_type"], "application/x-7z-compressed")
+        self.assertEqual(langfang_source["access_status"], "官方7z附件已归档")
+        self.assertEqual(langfang_source["page_count"], "18")
+
+        city = {
+            "city_id": "CN-131000",
+            "admin_code_6": "131000",
+            "city_name_cn": "廊坊市",
+            "province_code": "13",
+            "province_name": "河北省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        rows, lineage = build_macro_rows(
+            [city], [], {}, {}, city_year_fiscal=values,
+        )
+        self.assertEqual(rows[0]["general_public_revenue_100m"], Decimal("311.80"))
+        self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("618.70"))
+        self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("86.80"))
+        self.assertEqual(rows[0]["fund_revenue_dependence_pct"], Decimal("21.78"))
+        self.assertEqual(rows[0]["source_grade"], "A2")
+        self.assertEqual(rows[0]["data_status"], "execution")
+        self.assertEqual(
+            {item["target_field"] for item in lineage},
             {
                 "general_public_revenue_100m",
                 "general_public_expenditure_100m",
