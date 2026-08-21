@@ -20211,10 +20211,6 @@ CN-623000,甘南藏族自治州,甘肃省,2025,special_debt_limit_100m,专项债
 CN-623000,甘南藏族自治州,甘肃省,2025,statutory_debt_limit_100m,法定债务限额（亿元）,extended,official_debt_calculated,SRC-OFFICIAL-DEBT-GANSU-GANNAN-2025-CALCULATED,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-623000,甘南藏族自治州,甘肃省,2025,statutory_debt_to_gdp_pct,法定债务/GDP（%）,extended,official_debt_calculated,SRC-OFFICIAL-DEBT-GANSU-GANNAN-2025-CALCULATED,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
 CN-623000,甘南藏族自治州,甘肃省,2025,statutory_debt_to_revenue_pct,法定债务/一般预算收入（%）,extended,official_debt_calculated,SRC-OFFICIAL-DEBT-GANSU-GANNAN-2025-CALCULATED,B2,needs_review,已接入评级报告或其他二手公开来源的债务补缺值；不等同于官方决算数据，必须回到财政/人大预算决算或官方债务表复核。
-CN-350100,福州市,福建省,2025,gdp_current_100m,地区生产总值（现价，亿元）,core,official_debt,SRC-FUJIAN-CITY-STATISTICAL-FUZHOU-2025;SRC-PROVINCE-DEBT-FUJIAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-350100,福州市,福建省,2025,gdp_real_growth_pct,地区生产总值实际增速（%）,core,official_debt,SRC-FUJIAN-CITY-STATISTICAL-FUZHOU-2025;SRC-PROVINCE-DEBT-FUJIAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-350100,福州市,福建省,2025,resident_population_10k,年末常住人口（万人）,core,official_debt,SRC-FUJIAN-CITY-STATISTICAL-FUZHOU-2025;SRC-PROVINCE-DEBT-FUJIAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
-CN-350100,福州市,福建省,2025,statutory_debt_to_gdp_pct,法定债务/GDP（%）,core,official_debt,SRC-FUJIAN-CITY-STATISTICAL-FUZHOU-2025;SRC-PROVINCE-DEBT-FUJIAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-350200,厦门市,福建省,2025,fiscal_self_sufficiency_pct,财政自给率（%）,core,official_debt,SRC-PROVINCE-DEBT-FUJIAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-350200,厦门市,福建省,2025,fund_revenue_dependence_pct,政府性基金收入依赖度（%）,core,official_debt,SRC-PROVINCE-DEBT-FUJIAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。
 CN-350200,厦门市,福建省,2025,gdp_current_100m,地区生产总值（现价，亿元）,core,official_debt,SRC-PROVINCE-DEBT-FUJIAN-2025,A1,extracted,已从省级财政厅官方地级行政单元债务明细表提取；经济财政字段与债务字段的来源状态分开记录。

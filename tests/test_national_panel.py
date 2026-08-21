@@ -45,6 +45,7 @@ from scripts.collect_national_panel import (
     load_next27_2025_city_economic,
     load_next28_2025_city_economic,
     load_next29_2025_city_economic,
+    load_next30_2025_city_economic,
     load_next_2025_city_fiscal,
     load_shandong_2025_city_fiscal,
     order_calculation_rows_for_lineage,
@@ -856,6 +857,40 @@ class NationalPanelTests(unittest.TestCase):
             {item["target_field"] for item in lineage},
             {"gov_fund_revenue_100m"},
         )
+
+    def test_next30_2025_fuzhou_official_bulletin_extracts_four_core_fields(self):
+        values, sources = load_next30_2025_city_economic()
+
+        self.assertEqual(len(values), 1)
+        self.assertEqual(values["CN-350100"]["gdp_current_100m"], Decimal("15112.32"))
+        self.assertEqual(values["CN-350100"]["gdp_real_growth_pct"], Decimal("5.60"))
+        self.assertEqual(values["CN-350100"]["resident_population_10k"], Decimal("852.10"))
+        self.assertEqual(values["CN-350100"]["general_public_revenue_100m"], Decimal("750.55"))
+        self.assertEqual(values["CN-350100"]["general_public_expenditure_100m"], Decimal("1037.15"))
+        self.assertEqual(sources[0]["source_grade"], "A2")
+        city = {
+            "city_id": "CN-350100",
+            "admin_code_6": "350100",
+            "city_name_cn": "福州市",
+            "province_code": "35",
+            "province_name": "福建省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        rows, lineage = build_macro_rows(
+            [city], [], {}, {}, next30_2025_economic=values,
+        )
+        self.assertEqual(rows[0]["gdp_current_100m"], Decimal("15112.32"))
+        self.assertEqual(rows[0]["general_public_revenue_100m"], Decimal("750.55"))
+        self.assertEqual(rows[0]["source_grade"], "A2")
+        self.assertEqual({item["target_field"] for item in lineage}, {
+            "gdp_current_100m",
+            "gdp_real_growth_pct",
+            "resident_population_10k",
+            "general_public_revenue_100m",
+            "general_public_expenditure_100m",
+        })
 
     def test_jiangsu_city_fiscal_batch_extracts_2024_whole_city_tables(self):
         values, sources = load_jiangsu_city_fiscal_sources()

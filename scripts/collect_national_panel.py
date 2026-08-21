@@ -39,6 +39,7 @@ try:
         build_batch_source_registry,
         build_core_coverage_report,
     )
+    from scripts.batch_table_parser import parse_city_value_rows
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
     from province_debt_sources import extract_official_debt_facts
     from data_quality import OFFICIAL_DEBT_EXCEPTION_STATUS, debt_fact_has_balance_limit_conflict
@@ -51,6 +52,7 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
         build_batch_source_registry,
         build_core_coverage_report,
     )
+    from batch_table_parser import parse_city_value_rows
 
 getcontext().prec = 40
 
@@ -2489,6 +2491,38 @@ NEXT29_2025_ECONOMIC_SOURCES = (
     },
 )
 
+NEXT30_2025_ECONOMIC_SOURCES = (
+    {
+        "city_name": "福州市",
+        "city_id": "CN-350100",
+        "source_doc_id": "SRC-A2-FUJIAN-CITY-STATISTICAL-FUZHOU-2025",
+        "url": "https://www.fuzhou.gov.cn/zwgk/tjxx/ndbg/202604/t20260414_5308173.htm",
+        "attachment_url": "https://www.fuzhou.gov.cn/zwgk/tjxx/ndbg/202604/t20260414_5308173.htm",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "fuzhou_2025_statistical_bulletin_official.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "fuzhou_2025_statistical_bulletin_official_excerpt.txt",
+        "text_is_curated": True,
+        "source_format": "html",
+        "document_title": "2025年福州市国民经济和社会发展统计公报",
+        "publisher": "福州市统计局、福州市人民政府",
+        "publisher_level": "地级市统计机构官方发布",
+        "publication_date": "2026-04-14",
+        "title_source": "official_html",
+        "document_type": "官方统计公报经济财政指标",
+        "mime_type": "text/html",
+        "source_grade": "A2",
+        "data_status": "preliminary",
+        "source_locator": "官方统计公报正文：GDP、增速、年末常住人口、地方一般公共预算收入和支出；原始网页已归档",
+        "patterns": {
+            "gdp_current_100m": (r"全年实现地区生产总值([0-9.]+)亿元", "亿元"),
+            "gdp_real_growth_pct": (r"全年实现地区生产总值[0-9.]+亿元，比上年增长([0-9.]+)%", "%"),
+            "resident_population_10k": (r"年末常住人口([0-9.]+)万人", "万人"),
+            "general_public_revenue_100m": (r"全年地方一般公共预算收入([0-9.]+)亿元", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出([0-9.]+)亿元", "亿元"),
+        },
+        "note": "A2福州市人民政府官方统计公报；补录2025年GDP、实际增速、年末常住人口及地方一般公共预算收支。公报未披露全市政府性基金收入，不作推算。",
+    },
+)
+
 JIANGSU_CITY_FUND_SOURCES = (
     {
         "year": 2018,
@@ -4784,7 +4818,11 @@ def load_city_2025_fiscal_sources(
 
 
 def load_jiangsu_city_fund_sources() -> tuple[dict[tuple[str, str], dict[str, Any]], list[dict[str, Any]]]:
-    """读取江苏省财政厅 2022—2024 年分地区政府性基金收入表。"""
+    """读取江苏省财政厅分地区政府性基金收入表。
+
+    表格行统一交给批量行解析器，保留省级合计、说明行和无法匹配行的
+    拒绝逻辑，避免每个省份重复实现单位换算和全市口径判断。
+    """
 
     values: dict[tuple[str, str], dict[str, Any]] = {}
     sources: list[dict[str, Any]] = []
@@ -4794,17 +4832,30 @@ def load_jiangsu_city_fund_sources() -> tuple[dict[tuple[str, str], dict[str, An
         content_hash = ensure_download(str(config["url"]), source_path)
         report_text = text_path.read_text(encoding="utf-8")
         year = int(config["year"])
+        rows = [line.split() for line in report_text.splitlines() if line.strip()]
+        facts, _rejects = parse_city_value_rows(
+            rows,
+            city_aliases={city_name: city_id for city_id, city_name in config["cities"].items()},
+            field_name="gov_fund_revenue_100m",
+            value_index=1,
+            raw_unit="万元",
+            metric_year=year,
+            source_doc_id=config["source_doc_id"],
+            source_grade=config["source_grade"],
+            geo_scope="prefecture_whole",
+        )
+        facts_by_city = {fact["city_id"]: fact for fact in facts}
+        if set(facts_by_city) != set(config["cities"]):
+            missing = sorted(set(config["cities"]) - set(facts_by_city))
+            raise ValueError(f"未能从江苏省{year}年政府性基金分地区表提取城市：{missing}")
         found_city_ids: set[str] = set()
         for city_id, city_name in config["cities"].items():
-            match = re.search(rf"^{re.escape(city_name)}\s+([0-9,]+)\s*$", report_text, re.MULTILINE)
-            if not match:
-                raise ValueError(f"未能从江苏省{year}年政府性基金分地区表提取{city_name}")
-            raw_value = Decimal(match.group(1).replace(",", ""))
+            fact = facts_by_city[city_id]
             values[(city_id, str(year))] = {
-                "gov_fund_revenue_100m": q2(raw_value * D4),
-                "gov_fund_revenue_raw_100m": raw_value,
+                "gov_fund_revenue_100m": q2(fact["normalized_value"]),
+                "gov_fund_revenue_raw_100m": Decimal(fact["raw_value"].replace(",", "")),
                 "gov_fund_revenue_raw_unit": "万元",
-                "gov_fund_revenue_evidence_excerpt": match.group(0),
+                "gov_fund_revenue_evidence_excerpt": fact["evidence_excerpt"],
                 "source_doc_id": config["source_doc_id"],
                 "source_grade": config["source_grade"],
                 "data_status": str(config.get("data_status") or "execution"),
@@ -5284,6 +5335,12 @@ def load_next29_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[di
     return load_city_2025_fiscal_sources(NEXT29_2025_ECONOMIC_SOURCES)
 
 
+def load_next30_2025_city_economic() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    """读取福州市 2025 年官方统计公报经济财政指标。"""
+
+    return load_city_2025_fiscal_sources(NEXT30_2025_ECONOMIC_SOURCES)
+
+
 def compute_derived_values(row: Mapping[str, Any]) -> dict[str, Decimal | None]:
     general_limit = as_decimal(row.get("general_debt_limit_100m"))
     special_limit = as_decimal(row.get("special_debt_limit_100m"))
@@ -5409,6 +5466,7 @@ def build_macro_rows(
     next27_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next28_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     next29_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
+    next30_2025_economic: Mapping[str, Mapping[str, Any]] | None = None,
     jiangsu_city_fund: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     jiangsu_city_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     city_year_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
@@ -5454,6 +5512,7 @@ def build_macro_rows(
     next27_2025_economic = next27_2025_economic or {}
     next28_2025_economic = next28_2025_economic or {}
     next29_2025_economic = next29_2025_economic or {}
+    next30_2025_economic = next30_2025_economic or {}
     jiangsu_city_fund = jiangsu_city_fund or {}
     jiangsu_city_fiscal = jiangsu_city_fiscal or {}
     city_year_fiscal = city_year_fiscal or {}
@@ -5495,6 +5554,7 @@ def build_macro_rows(
         **next27_2025_economic,
         **next28_2025_economic,
         **next29_2025_economic,
+        **next30_2025_economic,
     }
     for city in city_master:
         year = int(city["metric_year"])
@@ -6800,6 +6860,7 @@ def main() -> None:
     next27_2025_economic, next27_2025_economic_sources = load_next27_2025_city_economic()
     next28_2025_economic, next28_2025_economic_sources = load_next28_2025_city_economic()
     next29_2025_economic, next29_2025_economic_sources = load_next29_2025_city_economic()
+    next30_2025_economic, next30_2025_economic_sources = load_next30_2025_city_economic()
     jiangsu_city_fund, jiangsu_city_fund_sources = load_jiangsu_city_fund_sources()
     jiangsu_city_fiscal, jiangsu_city_fiscal_sources = load_jiangsu_city_fiscal_sources()
     city_year_fiscal, city_year_fiscal_sources = load_city_year_fiscal_sources()
@@ -6860,6 +6921,7 @@ def main() -> None:
         next27_2025_economic,
         next28_2025_economic,
         next29_2025_economic,
+        next30_2025_economic,
         jiangsu_city_fund,
         jiangsu_city_fiscal,
         city_year_fiscal,
@@ -7027,6 +7089,7 @@ def main() -> None:
             *next27_2025_economic_sources,
             *next28_2025_economic_sources,
             *next29_2025_economic_sources,
+            *next30_2025_economic_sources,
             *jiangsu_city_fund_sources,
             *jiangsu_city_fiscal_sources,
             *city_year_fiscal_sources,
