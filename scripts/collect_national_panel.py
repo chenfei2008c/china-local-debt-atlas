@@ -6622,6 +6622,56 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     }
     for city_name, city_id, slug in _ZHEJIANG_2024_REGIONAL_FISCAL_SPECS
 )
+
+# 上交所公开披露的中证鹏元评级报告第 7 页表 1，集中列示广西壮族自治区
+# 2024 年 9 个地级市的全市 GDP、实际增速、一般公共预算收入和政府性基金收入。
+# 表格值为精确文本表格，不把人均 GDP 或其他派生指标写入主表，也不使用区县
+# 和市本级口径。
+_GUANGXI_2024_REGIONAL_FISCAL_SPECS = (
+    ("南宁市", "CN-450100", "NANNING"),
+    ("柳州市", "CN-450200", "LIUZHOU"),
+    ("桂林市", "CN-450300", "GUILIN"),
+    ("玉林市", "CN-450900", "YULIN"),
+    ("北海市", "CN-450500", "BEIHAI"),
+    ("梧州市", "CN-450400", "WUZHOU"),
+    ("河池市", "CN-451200", "HECHI"),
+    ("崇左市", "CN-451400", "CHONGZUO"),
+    ("来宾市", "CN-451300", "LAIBIN"),
+)
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    {
+        "year": 2024,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-GUANGXI-REGIONAL-FISCAL-2024-{slug}",
+        "url": "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2025-07-30/152930_20250730_SSLN.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "guangxi_2024_city_fiscal_rating_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "guangxi_2024_city_fiscal_rating_report_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "相关债券2025年跟踪评级报告",
+        "publisher": "中证鹏元资信评估股份有限公司（上海证券交易所公开披露）",
+        "publisher_level": "交易所公开披露的B2精确表格来源",
+        "publication_date": "2025-07-30",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "data_status": "execution",
+        "data_status_label": "2024年执行数（评级报告精确表格）",
+        "document_type": "评级报告地级市经济财政指标表",
+        "page_number": "PDF第7页，表1；2024年广西壮族自治区部分地级市经济财政指标情况",
+        "page_count": "22",
+        "raw_unit": "亿元",
+        "raw_units": {"gdp_real_growth_pct": "%"},
+        "patterns": {
+            "gdp_current_100m": rf"{city_name}｜([0-9.,]+)｜",
+            "gdp_real_growth_pct": rf"{city_name}｜[0-9.,]+｜([0-9.-]+)｜",
+            "general_public_revenue_100m": rf"{city_name}｜[0-9.,]+｜[0-9.-]+｜([0-9.,]+)｜",
+            "gov_fund_revenue_100m": rf"{city_name}｜[0-9.,]+｜[0-9.-]+｜[0-9.,]+｜([0-9.,]+)",
+        },
+        "source_locator": f"PDF第7页表1；城市={city_name}；2024年全市执行数",
+        "note": f"B2精确表格；报告表1列示{city_name}2024年全市GDP、实际增速、一般公共预算收入和政府性基金收入，资料来源为各市统计公报和财政预决算报告；不使用市本级数或图表目测值。",
+    }
+    for city_name, city_id, slug in _GUANGXI_2024_REGIONAL_FISCAL_SPECS
+)
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
