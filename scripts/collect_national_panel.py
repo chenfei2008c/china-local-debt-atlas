@@ -3449,6 +3449,28 @@ CITY_YEAR_FUND_SOURCES = (
         "page_count": "136",
         "note": "威海市财政局官方预算执行报告，明确全市与市本级口径；采用2025年全市政府性基金预算收入2255185万元，折算225.5185亿元并按统一标准入库225.52亿元；报告说明该执行数据为初步汇总数，决算完成后可能变化，登记为execution。",
     },
+    {
+        "year": 2025,
+        "city_name": "邯郸市",
+        "city_id": "CN-130400",
+        "source_doc_id": "SRC-B2-HANDAN-CITY-FUND-2025",
+        "url": "https://www.chinamoney.com.cn/dqs/cm-s-notice-query/fileDownLoad.do?contentId=3375478&mode=save&priority=0",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "handan_2025_rating_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "handan_2025_rating_report_excerpt.txt",
+        "document_title": "邯郸城市发展投资集团有限公司主体长期信用评级报告",
+        "publisher": "联合资信评估股份有限公司（交易所公开披露）",
+        "publisher_level": "交易所公开披露的B2精确表格来源",
+        "publication_date": "2026-07-13",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": r"原文摘录：.*?2025年（末）政府性基金收入（亿元）([0-9]+\.[0-9]+)",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数（评级报告精确表格）",
+        "document_type": "评级报告财政指标表",
+        "page_count": "23",
+        "note": "交易所公开披露的联合资信评级报告，图表2列示2023—2025年邯郸市主要财力指标；2025年政府性基金收入163.44亿元，表下注明根据《市本级决算和全市总决算情况的报告》和《2025年预算执行情况和2026年预算草案的报告》整理，明确为邯郸市全市口径。",
+    },
 )
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
