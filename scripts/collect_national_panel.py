@@ -3471,6 +3471,28 @@ CITY_YEAR_FUND_SOURCES = (
         "page_count": "23",
         "note": "交易所公开披露的联合资信评级报告，图表2列示2023—2025年邯郸市主要财力指标；2025年政府性基金收入163.44亿元，表下注明根据《市本级决算和全市总决算情况的报告》和《2025年预算执行情况和2026年预算草案的报告》整理，明确为邯郸市全市口径。",
     },
+    {
+        "year": 2025,
+        "city_name": "安庆市",
+        "city_id": "CN-340800",
+        "source_doc_id": "SRC-B2-ANQING-CITY-FUND-2025",
+        "url": "https://www.chinamoney.com.cn/dqs/cm-s-notice-query/fileDownLoad.do?contentId=3359176&mode=save&priority=0",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "anqing_2025_rating_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "anqing_2025_rating_report_excerpt.txt",
+        "document_title": "信用评级报告（东方金诚债跟踪评字【2026】0091号）",
+        "publisher": "东方金诚国际信用评估有限公司（交易所公开披露）",
+        "publisher_level": "交易所公开披露的B2精确表格来源",
+        "publication_date": "2026-06-15",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": r"原文摘录：.*?2025年政府性基金收入([0-9]+\.[0-9]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数（评级报告精确表格）",
+        "document_type": "评级报告财政指标表",
+        "page_count": "47",
+        "note": "交易所公开披露的东方金诚跟踪评级报告，图表15列示2023—2025年安庆市主要经济及财政指标；2025年政府性基金收入40.40亿元，报告注明依据《关于安庆市2025年预算执行情况和2026年预算草案的报告》等资料整理，明确为安庆市全市口径。",
+    },
 )
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 

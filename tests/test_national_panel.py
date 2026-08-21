@@ -1831,8 +1831,8 @@ class NationalPanelTests(unittest.TestCase):
     def test_city_year_fund_batch_extracts_hohhot_and_chifeng(self):
         values, sources = load_city_year_fund_sources()
 
-        self.assertEqual(len(values), 36)
-        self.assertEqual(len(sources), 36)
+        self.assertEqual(len(values), 37)
+        self.assertEqual(len(sources), 37)
         self.assertEqual(values[("CN-150100", "2024")]["gov_fund_revenue_100m"], Decimal("112.52"))
         self.assertEqual(values[("CN-150100", "2025")]["gov_fund_revenue_100m"], Decimal("75.78"))
         self.assertEqual(values[("CN-150400", "2025")]["gov_fund_revenue_100m"], Decimal("46.69"))
@@ -1871,6 +1871,8 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(values[("CN-371000", "2025")]["data_status"], "execution")
         self.assertEqual(values[("CN-130400", "2025")]["gov_fund_revenue_100m"], Decimal("163.44"))
         self.assertEqual(values[("CN-130400", "2025")]["data_status"], "execution")
+        self.assertEqual(values[("CN-340800", "2025")]["gov_fund_revenue_100m"], Decimal("40.40"))
+        self.assertEqual(values[("CN-340800", "2025")]["data_status"], "execution")
         self.assertEqual(values[("CN-410400", "2019")]["data_status"], "final")
         self.assertEqual(values[("CN-411200", "2018")]["gov_fund_revenue_100m"], Decimal("42.62"))
         self.assertEqual(values[("CN-141100", "2018")]["gov_fund_revenue_100m"], Decimal("22.21"))
