@@ -6425,6 +6425,58 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     for city_name, city_id, slug in _JIANGXI_2025_REGIONAL_FISCAL_SPECS
 )
 
+# 上交所公开披露的中证鹏元评级报告第 6 页表 1，集中列示江西省 2024 年
+# 11 个地级市的全市 GDP、实际增速、一般公共预算收入和政府性基金收入。
+# 表格值为精确文本表格，不把人均 GDP 或“—”转换为主表字段，也不使用区县
+# 和市本级口径。
+_JIANGXI_2024_REGIONAL_FISCAL_SPECS = (
+    ("南昌市", "CN-360100", "NANCHANG"),
+    ("赣州市", "CN-360700", "GANZHOU"),
+    ("九江市", "CN-360400", "JIUJIANG"),
+    ("上饶市", "CN-361100", "SHANGRAO"),
+    ("宜春市", "CN-360900", "YICHUN"),
+    ("吉安市", "CN-360800", "JI_AN"),
+    ("抚州市", "CN-361000", "FUZHOU"),
+    ("鹰潭市", "CN-360600", "YINGTAN"),
+    ("萍乡市", "CN-360300", "PINGXIANG"),
+    ("景德镇市", "CN-360200", "JINGDEZHEN"),
+    ("新余市", "CN-360500", "XINYU"),
+)
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    {
+        "year": 2024,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-JIANGXI-REGIONAL-FISCAL-2024-{slug}",
+        "url": "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2025-07-17/152792_20250717_RRYD.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "jiangxi_2024_city_fiscal_rating_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "jiangxi_2024_city_fiscal_rating_report_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "吉安市家庐陵投资开发有限公司相关债券2025年跟踪评级报告",
+        "publisher": "中证鹏元资信评估股份有限公司（上海证券交易所公开披露）",
+        "publisher_level": "交易所公开披露的B2精确表格来源",
+        "publication_date": "2025-07-17",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "data_status": "execution",
+        "data_status_label": "2024年执行数（评级报告精确表格）",
+        "document_type": "评级报告地级市经济财政指标表",
+        "page_number": "PDF第6页，表1；2024年江西省部分地市经济财政指标情况",
+        "page_count": "21",
+        "raw_unit": "亿元",
+        "raw_units": {"gdp_real_growth_pct": "%"},
+        "patterns": {
+            "gdp_current_100m": rf"{city_name}｜([0-9.,]+)｜",
+            "gdp_real_growth_pct": rf"{city_name}｜[0-9.,]+｜([0-9.-]+)｜",
+            "general_public_revenue_100m": rf"{city_name}｜[0-9.,]+｜[0-9.-]+｜([0-9.,]+)｜",
+            "gov_fund_revenue_100m": rf"{city_name}｜[0-9.,]+｜[0-9.-]+｜[0-9.,]+｜([0-9.,]+)",
+        },
+        "source_locator": f"PDF第6页表1；城市={city_name}；2024年全市执行数",
+        "note": f"B2精确表格；报告表1列示{city_name}2024年全市GDP、实际增速、一般公共预算收入和政府性基金收入，资料来源为各地市政府网站；不使用市本级数或图表目测值。",
+    }
+    for city_name, city_id, slug in _JIANGXI_2024_REGIONAL_FISCAL_SPECS
+)
+
 # 上交所公开披露的中证鹏元评级报告第 6 页表 1，集中列示浙江省 2024 年
 # 8 个地级市的全市 GDP、实际增速、一般公共预算收入和政府性基金收入。
 # 表格值为精确文本表格，不把人均 GDP 或“—”转换为主表字段，也不使用区县
