@@ -5702,6 +5702,58 @@ CITY_YEAR_FISCAL_SOURCES = (
         "note": "枣庄市统计局、国家统计局枣庄调查队统计公报转载精确披露2025年全市一般公共预算收入200.20亿元和支出369.16亿元；政府性基金收入保留已有B2精确来源287.24亿元。",
     },
 )
+
+# 远东资信《四川省区域经济与信用观察》表1（第9页）集中列示四川各市州
+# 2025 年一般公共预算收入。表格为精确二手来源，按 B2 登记；只接入表内
+# 明确披露的收入值，不使用财政自给率反推支出，也不将“—”转为零。
+_SICHUAN_2025_REGIONAL_REVENUE_SPECS = (
+    ("自贡市", "CN-510300", "ZIGONG"),
+    ("德阳市", "CN-510600", "DEYANG"),
+    ("绵阳市", "CN-510700", "MIANYANG"),
+    ("广元市", "CN-510800", "GUANGYUAN"),
+    ("遂宁市", "CN-510900", "SUINING"),
+    ("内江市", "CN-511000", "NEIJIANG"),
+    ("乐山市", "CN-511100", "LESHAN"),
+    ("南充市", "CN-511300", "NANCHONG"),
+    ("眉山市", "CN-511400", "MEISHAN"),
+    ("宜宾市", "CN-511500", "YIBIN"),
+    ("广安市", "CN-511600", "GUANGAN"),
+    ("达州市", "CN-511700", "DAZHOU"),
+    ("巴中市", "CN-511900", "BAZHONG"),
+    ("资阳市", "CN-512000", "ZIYANG"),
+    ("阿坝藏族羌族自治州", "CN-513200", "ABA"),
+    ("甘孜藏族自治州", "CN-513300", "GANZI"),
+    ("凉山彝族自治州", "CN-513400", "LIANGSHAN"),
+    ("攀枝花市", "CN-510400", "PANZHIHUA"),
+)
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    {
+        "year": 2025,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-SICHUAN-REGIONAL-FISCAL-2025-REVENUE-{slug}",
+        "url": "https://www.sfecr.com/upload/file/2026-03/col58/1774940677199.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "sichuan_2025_regional_fiscal_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "sichuan_2025_regional_fiscal_report_excerpt.txt",
+        "document_title": "四川省区域经济与信用观察",
+        "publisher": "远东资信评估有限公司",
+        "publisher_level": "专业评级研究机构（精确表格二手来源）",
+        "publication_date": "2026-03-24",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数（区域研究精确表格）",
+        "document_type": "区域经济与信用观察财政指标表",
+        "page_number": "9",
+        "page_count": "31",
+        "patterns": {
+            "general_public_revenue_100m": rf"{city_name}｜[^｜]+｜([0-9.]+)｜",
+        },
+        "note": f"报告第9页表1精确列示{city_name}2025年一般公共预算收入；按B2精确表格纳入，保持execution状态，不使用表中其他指标推导财政收支。",
+    }
+    for city_name, city_id, slug in _SICHUAN_2025_REGIONAL_REVENUE_SPECS
+)
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}

@@ -933,7 +933,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 55)
+        self.assertEqual(len(sources), 73)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2", "B2"})
         taian = values[("CN-370900", "2025")]
         self.assertEqual(taian["general_public_revenue_100m"], Decimal("261.96"))
@@ -1655,7 +1655,7 @@ class NationalPanelTests(unittest.TestCase):
             record = values[(city_id, "2025")]
             self.assertEqual(record["general_public_revenue_100m"], Decimal(revenue))
             self.assertEqual(record["general_public_expenditure_100m"], Decimal(expenditure))
-        self.assertEqual(len(sources), 55)
+        self.assertEqual(len(sources), 73)
         weifang_source = next(
             source for source in sources if source["source_doc_id"] == "SRC-A2-WEIFANG-CITY-FISCAL-2025"
         )
@@ -1681,7 +1681,44 @@ class NationalPanelTests(unittest.TestCase):
         )
         self.assertIn("hongheiku.com", zaozhuang_source["landing_page_url"])
         self.assertEqual(zaozhuang_source["source_grade"], "B2")
-        self.assertEqual(len(sources), 55)
+        self.assertEqual(len(sources), 73)
+
+    def test_sichuan_regional_report_adds_2025_revenue_for_18_city_years(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        expected = {
+            "CN-510300": "87.20",
+            "CN-510600": "210.32",
+            "CN-510700": "227.62",
+            "CN-510800": "77.50",
+            "CN-510900": "106.80",
+            "CN-511000": "93.43",
+            "CN-511100": "172.16",
+            "CN-511300": "118.95",
+            "CN-511400": "164.50",
+            "CN-511500": "333.90",
+            "CN-511600": "109.00",
+            "CN-511700": "200.30",
+            "CN-511900": "75.41",
+            "CN-512000": "73.60",
+            "CN-513200": "52.10",
+            "CN-513300": "71.86",
+            "CN-513400": "232.39",
+            "CN-510400": "105.20",
+        }
+        for city_id, revenue in expected.items():
+            self.assertEqual(
+                values[(city_id, "2025")]["general_public_revenue_100m"],
+                Decimal(revenue),
+            )
+
+        report_sources = [
+            source for source in sources
+            if source["source_doc_id"].startswith("SRC-B2-SICHUAN-REGIONAL-FISCAL-2025-REVENUE-")
+        ]
+        self.assertEqual(len(report_sources), 18)
+        self.assertEqual({source["source_grade"] for source in report_sources}, {"B2"})
+        self.assertTrue(all(values[(city_id, "2025")]["page_number"] == "9" for city_id in expected))
 
     def test_langfang_2025_official_budget_report_extracts_whole_city_fiscal_values(self):
         values, sources = load_city_year_fiscal_sources()
