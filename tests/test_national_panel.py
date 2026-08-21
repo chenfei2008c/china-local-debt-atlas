@@ -933,7 +933,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 51)
+        self.assertEqual(len(sources), 54)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2", "B2"})
         taian = values[("CN-370900", "2025")]
         self.assertEqual(taian["general_public_revenue_100m"], Decimal("261.96"))
@@ -1642,6 +1642,33 @@ class NationalPanelTests(unittest.TestCase):
                 "gov_fund_revenue_100m",
             },
         )
+
+    def test_city_year_fiscal_batch_adds_shandong_2025_budget_statistics(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        expected = {
+            "CN-370700": ("630.50", "909.00"),
+            "CN-370300": ("419.73", "583.28"),
+            "CN-371600": ("318.26", "516.72"),
+        }
+        for city_id, (revenue, expenditure) in expected.items():
+            record = values[(city_id, "2025")]
+            self.assertEqual(record["general_public_revenue_100m"], Decimal(revenue))
+            self.assertEqual(record["general_public_expenditure_100m"], Decimal(expenditure))
+        self.assertEqual(len(sources), 54)
+        weifang_source = next(
+            source for source in sources if source["source_doc_id"] == "SRC-A2-WEIFANG-CITY-FISCAL-2025"
+        )
+        self.assertIn("wfcmw.cn", weifang_source["landing_page_url"])
+        self.assertEqual(weifang_source["source_grade"], "A2")
+        zibo_source = next(
+            source for source in sources if source["source_doc_id"] == "SRC-A2-ZIBO-CITY-FISCAL-2025"
+        )
+        self.assertIn("zibo.gov.cn", zibo_source["landing_page_url"])
+        binzhou_source = next(
+            source for source in sources if source["source_doc_id"] == "SRC-B2-BINZHOU-CITY-FISCAL-2025"
+        )
+        self.assertEqual(binzhou_source["source_grade"], "B2")
 
     def test_langfang_2025_official_budget_report_extracts_whole_city_fiscal_values(self):
         values, sources = load_city_year_fiscal_sources()
