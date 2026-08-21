@@ -3798,6 +3798,28 @@ CITY_YEAR_FUND_SOURCES = (
         "page_count": "1",
         "note": "曲靖市财政局官方预算公开页面及报告，明确区分全市与市级口径；采用2025年全市政府性基金预算收入37.8亿元，保留执行状态。",
     },
+    {
+        "year": 2025,
+        "city_name": "江门市",
+        "city_id": "CN-440700",
+        "source_doc_id": "SRC-A2-JIANGMEN-CITY-FUND-2025",
+        "url": "https://www.jiangmen.gov.cn/attachment/0/375/375866/3447145.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "jiangmen_2025_budget_execution_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "jiangmen_2025_budget_execution_report_excerpt.txt",
+        "document_title": "2026年江门市本级政府预算公开（含2025年预算执行情况）",
+        "publisher": "江门市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2026-02-25",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "pattern": r"原文摘录：.*?2025年[,，]?全市政府性基金预算收入([0-9]+\.[0-9]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数",
+        "document_type": "城市财政预算执行报告（官方PDF）",
+        "page_count": "187",
+        "note": "江门市财政局官方预算执行报告正文明确区分全市与市本级口径；采用2025年全市政府性基金预算收入120.01亿元，保留execution状态，不使用市本级15.56亿元。",
+    },
 )
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 

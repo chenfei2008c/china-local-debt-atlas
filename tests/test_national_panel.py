@@ -1938,8 +1938,12 @@ class NationalPanelTests(unittest.TestCase):
     def test_city_year_fund_batch_extracts_hohhot_and_chifeng(self):
         values, sources = load_city_year_fund_sources()
 
-        self.assertEqual(len(values), 47)
-        self.assertEqual(len(sources), 47)
+        self.assertEqual(len(values), 48)
+        self.assertEqual(len(sources), 48)
+        self.assertEqual(values[("CN-440700", "2025")]["gov_fund_revenue_100m"], Decimal("120.01"))
+        jiangmen_source = next(source for source in sources if source["source_doc_id"] == "SRC-A2-JIANGMEN-CITY-FUND-2025")
+        self.assertIn("jiangmen.gov.cn", jiangmen_source["landing_page_url"])
+        self.assertEqual(jiangmen_source["source_grade"], "A2")
         self.assertEqual(values[("CN-150100", "2024")]["gov_fund_revenue_100m"], Decimal("112.52"))
         self.assertEqual(values[("CN-150100", "2025")]["gov_fund_revenue_100m"], Decimal("75.78"))
         self.assertEqual(values[("CN-150400", "2025")]["gov_fund_revenue_100m"], Decimal("46.69"))
