@@ -933,7 +933,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 88)
+        self.assertEqual(len(sources), 96)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2", "B2"})
 
     def test_jiangsu_2025_city_reports_add_six_missing_whole_city_fields(self):
@@ -1411,6 +1411,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(nanchang_rows[0]["general_public_expenditure_100m"], Decimal("914.44"))
         self.assertEqual(nanchang_rows[0]["gov_fund_revenue_100m"], Decimal("160.20"))
         self.assertEqual(nanchang_rows[0]["fund_revenue_dependence_pct"], Decimal("22.95"))
+
         self.assertEqual(nanchang_rows[0]["source_grade"], "A1")
         self.assertEqual(nanchang_rows[0]["data_status"], "execution")
         self.assertEqual(
@@ -1708,6 +1709,36 @@ class NationalPanelTests(unittest.TestCase):
             },
         )
 
+    def test_zhejiang_2024_regional_table_extracts_economic_and_fiscal_fields(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        expected = {
+            "CN-330100": ("21860.00", "4.70", "2640.33", "1531.08"),
+            "CN-330200": ("18147.70", "5.40", "1790.04", "716.61"),
+            "CN-330300": ("9718.80", "6.30", "632.58", "938.53"),
+            "CN-330400": ("7569.53", "5.60", "638.72", "446.62"),
+            "CN-330500": ("4213.40", "5.80", "410.73", "381.85"),
+            "CN-330600": ("8369.00", "6.50", "588.88", "411.60"),
+            "CN-330700": ("6925.52", "6.30", "536.80", "572.48"),
+            "CN-330800": ("2262.83", "6.40", "208.55", "192.06"),
+        }
+        for city_id, expected_values in expected.items():
+            record = values[(city_id, "2024")]
+            self.assertEqual(record["gdp_current_100m"], Decimal(expected_values[0]))
+            self.assertEqual(record["gdp_real_growth_pct"], Decimal(expected_values[1]))
+            self.assertEqual(record["general_public_revenue_100m"], Decimal(expected_values[2]))
+            self.assertEqual(record["gov_fund_revenue_100m"], Decimal(expected_values[3]))
+            self.assertEqual(record["source_grade"], "B2")
+            self.assertEqual(record["data_status"], "execution")
+
+        zhejiang_sources = [
+            source
+            for source in sources
+            if source["source_doc_id"].startswith("SRC-B2-ZHEJIANG-REGIONAL-FISCAL-2024-")
+        ]
+        self.assertEqual(len(zhejiang_sources), 8)
+        self.assertTrue(all(source["source_grade"] == "B2" for source in zhejiang_sources))
+
     def test_city_year_fiscal_batch_adds_shandong_2025_budget_statistics(self):
         values, sources = load_city_year_fiscal_sources()
 
@@ -1720,7 +1751,7 @@ class NationalPanelTests(unittest.TestCase):
             record = values[(city_id, "2025")]
             self.assertEqual(record["general_public_revenue_100m"], Decimal(revenue))
             self.assertEqual(record["general_public_expenditure_100m"], Decimal(expenditure))
-        self.assertEqual(len(sources), 88)
+        self.assertEqual(len(sources), 96)
         weifang_source = next(
             source for source in sources if source["source_doc_id"] == "SRC-A2-WEIFANG-CITY-FISCAL-2025"
         )
@@ -1746,7 +1777,7 @@ class NationalPanelTests(unittest.TestCase):
         )
         self.assertIn("hongheiku.com", zaozhuang_source["landing_page_url"])
         self.assertEqual(zaozhuang_source["source_grade"], "B2")
-        self.assertEqual(len(sources), 88)
+        self.assertEqual(len(sources), 96)
 
     def test_sichuan_regional_report_adds_2025_revenue_for_18_city_years(self):
         values, sources = load_city_year_fiscal_sources()

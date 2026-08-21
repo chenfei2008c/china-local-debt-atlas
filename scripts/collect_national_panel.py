@@ -6424,6 +6424,55 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     }
     for city_name, city_id, slug in _JIANGXI_2025_REGIONAL_FISCAL_SPECS
 )
+
+# 上交所公开披露的中证鹏元评级报告第 6 页表 1，集中列示浙江省 2024 年
+# 8 个地级市的全市 GDP、实际增速、一般公共预算收入和政府性基金收入。
+# 表格值为精确文本表格，不把人均 GDP 或“—”转换为主表字段，也不使用区县
+# 和市本级口径。
+_ZHEJIANG_2024_REGIONAL_FISCAL_SPECS = (
+    ("杭州市", "CN-330100", "HANGZHOU"),
+    ("宁波市", "CN-330200", "NINGBO"),
+    ("温州市", "CN-330300", "WENZHOU"),
+    ("嘉兴市", "CN-330400", "JIAXING"),
+    ("湖州市", "CN-330500", "HUZHOU"),
+    ("绍兴市", "CN-330600", "SHAOXING"),
+    ("金华市", "CN-330700", "JINHUA"),
+    ("衢州市", "CN-330800", "QUZHOU"),
+)
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    {
+        "year": 2024,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-ZHEJIANG-REGIONAL-FISCAL-2024-{slug}",
+        "url": "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2025-06-30/184197_20250630_NVI2.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "zhejiang_2024_city_fiscal_rating_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "zhejiang_2024_city_fiscal_rating_report_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "嘉兴科技城投资发展集团有限公司相关债券2025年跟踪评级报告",
+        "publisher": "中证鹏元资信评估股份有限公司（上海证券交易所公开披露）",
+        "publisher_level": "交易所公开披露的B2精确表格来源",
+        "publication_date": "2025-06-30",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "data_status": "execution",
+        "data_status_label": "2024年执行数（评级报告精确表格）",
+        "document_type": "评级报告地级市经济财政指标表",
+        "page_number": "PDF第6页，表1；2024年浙江省部分地市经济财政指标情况",
+        "page_count": "23",
+        "raw_unit": "亿元",
+        "raw_units": {"gdp_real_growth_pct": "%"},
+        "patterns": {
+            "gdp_current_100m": rf"{city_name}｜([0-9.,]+)｜",
+            "gdp_real_growth_pct": rf"{city_name}｜[0-9.,]+｜([0-9.-]+)｜",
+            "general_public_revenue_100m": rf"{city_name}｜[0-9.,]+｜[0-9.-]+｜([0-9.,]+)｜",
+            "gov_fund_revenue_100m": rf"{city_name}｜[0-9.,]+｜[0-9.-]+｜[0-9.,]+｜([0-9.,]+)",
+        },
+        "source_locator": f"PDF第6页表1；城市={city_name}；2024年全市执行数",
+        "note": f"B2精确表格；报告表1列示{city_name}2024年全市GDP、实际增速、一般公共预算收入和政府性基金收入，资料来源为各政府网站；不使用市本级数或图表目测值。",
+    }
+    for city_name, city_id, slug in _ZHEJIANG_2024_REGIONAL_FISCAL_SPECS
+)
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
