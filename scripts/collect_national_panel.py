@@ -60,10 +60,12 @@ try:
     from scripts.curated_city_fiscal_2025 import CURATED_2025_CITY_FISCAL_SOURCES
     from scripts.supplemental_city_fiscal_2025 import SUPPLEMENTAL_CITY_FISCAL_SOURCES
     from scripts.regional_fiscal_2024 import REGIONAL_FISCAL_2024_SOURCES
+    from scripts.city_fiscal_rating_2024_2025 import CITY_FISCAL_RATING_2024_2025_SOURCES
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
     from curated_city_fiscal_2025 import CURATED_2025_CITY_FISCAL_SOURCES
     from supplemental_city_fiscal_2025 import SUPPLEMENTAL_CITY_FISCAL_SOURCES
     from regional_fiscal_2024 import REGIONAL_FISCAL_2024_SOURCES
+    from city_fiscal_rating_2024_2025 import CITY_FISCAL_RATING_2024_2025_SOURCES
 
 getcontext().prec = 40
 
@@ -6234,6 +6236,10 @@ _SICHUAN_2025_REGIONAL_REVENUE_SPECS = (
     ("凉山彝族自治州", "CN-513400", "LIANGSHAN"),
     ("攀枝花市", "CN-510400", "PANZHIHUA"),
 )
+_SICHUAN_2025_REGIONAL_FUND_CITIES = {
+    "巴中市", "广安市", "内江市", "南充市", "德阳市", "宜宾市", "攀枝花市",
+    "阿坝藏族羌族自治州", "甘孜藏族自治州", "凉山彝族自治州", "乐山市",
+}
 CITY_YEAR_FISCAL_SOURCES += tuple(
     {
         "year": 2025,
@@ -6258,8 +6264,12 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
         "patterns": {
             "gdp_current_100m": rf"{city_name}｜([0-9.]+)｜",
             "general_public_revenue_100m": rf"{city_name}｜[^｜]+｜([0-9.]+)｜",
+            **(
+                {"gov_fund_revenue_100m": rf"{city_name}｜[^｜]+｜[^｜]+｜([0-9.]+)｜"}
+                if city_name in _SICHUAN_2025_REGIONAL_FUND_CITIES else {}
+            ),
         },
-        "note": f"报告第9页表1精确列示{city_name}2025年一般公共预算收入；按B2精确表格纳入，保持execution状态，不使用表中其他指标推导财政收支。",
+        "note": f"报告第9页表1精确列示{city_name}2025年一般公共预算收入和政府性基金收入；按B2精确表格纳入，保持execution状态，不使用表中其他指标推导财政收支。",
     }
     for city_name, city_id, slug in _SICHUAN_2025_REGIONAL_REVENUE_SPECS
 )
@@ -6786,6 +6796,41 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
 CITY_YEAR_FISCAL_SOURCES += CURATED_2025_CITY_FISCAL_SOURCES
 CITY_YEAR_FISCAL_SOURCES += tuple(SUPPLEMENTAL_CITY_FISCAL_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(REGIONAL_FISCAL_2024_SOURCES)
+CITY_YEAR_FISCAL_SOURCES += tuple(CITY_FISCAL_RATING_2024_2025_SOURCES)
+
+# 之前按“next”批次完成并通过独立适配器测试的 2025 年城市来源，统一转成
+# 全国主表的标准来源接口。原批次的 patterns 使用 (正则, 原单位) 元组，
+# 这里只做接口标准化，不改变原始正则、数值或来源等级；这样这些已归档来源
+# 才会进入主表、字段血缘和高等级覆盖率统计。
+_VALIDATED_NEXT_CITY_FISCAL_BATCHES = (
+    NEXT2_2025_FISCAL_SOURCES,
+    NEXT3_2025_FISCAL_SOURCES,
+    NEXT4_2025_FISCAL_SOURCES,
+    NEXT5_2025_FISCAL_SOURCES,
+    NEXT6_2025_FISCAL_SOURCES,
+    NEXT7_2025_FISCAL_SOURCES,
+)
+for _validated_batch in _VALIDATED_NEXT_CITY_FISCAL_BATCHES:
+    for _legacy_config in _validated_batch:
+        _normalized_config = dict(_legacy_config)
+        _normalized_config["year"] = 2025
+        _patterns: dict[str, str] = {}
+        _raw_units: dict[str, str] = {}
+        for _field, _spec in (_legacy_config.get("patterns") or {}).items():
+            if isinstance(_spec, (tuple, list)):
+                _patterns[_field] = str(_spec[0])
+                _raw_units[_field] = str(_spec[1])
+            else:
+                _patterns[_field] = str(_spec)
+        _normalized_config["patterns"] = _patterns
+        _normalized_config["raw_units"] = _raw_units
+        _normalized_config["raw_unit"] = "亿元"
+        _normalized_config["source_format"] = (
+            "html" if Path(_legacy_config["path"]).suffix.lower() in {".html", ".htm"} else "pdf"
+        )
+        _normalized_config["data_status"] = "execution"
+        _normalized_config["data_status_label"] = "2025年执行数"
+        CITY_YEAR_FISCAL_SOURCES += (_normalized_config,)
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
@@ -7686,6 +7731,9 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
                 if raw_unit in {"亿元", "%", "万人"}
                 else raw_value * D4
             )
+            negative_marker = str(config.get("negative_if", {}).get(field) or "")
+            if negative_marker and negative_marker in match.group(0):
+                normalized = -normalized
             record[field] = normalized
             record[f"{field}_raw_100m"] = raw_value
             record[f"{field}_raw_unit"] = raw_unit

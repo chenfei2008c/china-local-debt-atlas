@@ -138,6 +138,50 @@ class BatchSourceRegistryTests(unittest.TestCase):
         self.assertEqual(revenue["numeric_non_null_rows"], "1")
         self.assertEqual(revenue["numeric_missing_rows"], "1")
 
+    def test_calculated_debt_totals_inherit_grade_from_accepted_components(self):
+        macro_rows = [
+            {
+                "city_id": "CN-320100",
+                "metric_year": "2024",
+                "general_debt_limit_100m": "100.00",
+                "special_debt_limit_100m": "200.00",
+                "statutory_debt_limit_100m": "300.00",
+            }
+        ]
+        sources = [{"source_doc_id": "SRC-A2", "source_grade": "A2"}]
+        lineage = [
+            {
+                "target_record_id": "MACRO-CN-320100-2024-PREFECTURE",
+                "target_field": "general_debt_limit_100m",
+                "source_doc_id": "SRC-A2",
+                "normalized_value": "100.00",
+                "selected_flag": "true",
+            },
+            {
+                "target_record_id": "MACRO-CN-320100-2024-PREFECTURE",
+                "target_field": "special_debt_limit_100m",
+                "source_doc_id": "SRC-A2",
+                "normalized_value": "200.00",
+                "selected_flag": "true",
+            },
+            {
+                "target_record_id": "MACRO-CN-320100-2024-PREFECTURE",
+                "target_field": "statutory_debt_limit_100m",
+                "source_doc_id": "",
+                "normalized_value": "300.00",
+                "value_origin": "calculated",
+                "calculation_id": "CAL-CN-320100-2024-statutory_debt_limit_100m",
+                "selected_flag": "true",
+            },
+        ]
+
+        report = build_core_coverage_report(macro_rows, lineage, sources)
+        limit = next(row for row in report if row["field_name"] == "statutory_debt_limit_100m")
+
+        self.assertEqual(limit["numeric_non_null_rows"], "1")
+        self.assertEqual(limit["high_grade_rows"], "1")
+        self.assertEqual(limit["high_grade_missing_rows"], "0")
+
     def test_core_field_list_contains_the_eight_raw_dependencies(self):
         self.assertEqual(
             set(CORE_RAW_FIELDS),

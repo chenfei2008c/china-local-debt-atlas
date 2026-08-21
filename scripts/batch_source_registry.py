@@ -218,20 +218,61 @@ def build_core_coverage_report(
     accepted_by_key: set[tuple[str, str]] = set()
     provisional_by_key: set[tuple[str, str]] = set()
     attributed_by_key: set[tuple[str, str]] = set()
+    accepted_input_fields: dict[str, set[str]] = {}
+    calculated_input_fields = {
+        "general_debt_limit_100m",
+        "special_debt_limit_100m",
+        "general_debt_balance_100m",
+        "special_debt_balance_100m",
+    }
     for lineage in lineage_rows:
         if not _is_selected(lineage.get("selected_flag")):
             continue
         parsed = _parse_record_id(lineage.get("target_record_id"))
         field = _as_text(lineage.get("target_field"))
-        if parsed is None or field not in CORE_RAW_FIELDS or not _is_non_null(lineage.get("normalized_value")):
+        if parsed is None or not _is_non_null(lineage.get("normalized_value")):
             continue
         key = (lineage["target_record_id"], field)
-        grade = source_grades.get(_as_text(lineage.get("source_doc_id")), "")
-        attributed_by_key.add(key)
-        if grade in ACCEPTED_SOURCE_GRADES:
-            accepted_by_key.add(key)
-        else:
-            provisional_by_key.add(key)
+        if field in CORE_RAW_FIELDS:
+            grade = source_grades.get(_as_text(lineage.get("source_doc_id")), "")
+            attributed_by_key.add(key)
+            if grade in ACCEPTED_SOURCE_GRADES:
+                accepted_by_key.add(key)
+            else:
+                provisional_by_key.add(key)
+        if field in calculated_input_fields:
+            grade = source_grades.get(_as_text(lineage.get("source_doc_id")), "")
+            if grade in ACCEPTED_SOURCE_GRADES:
+                accepted_input_fields.setdefault(str(lineage["target_record_id"]), set()).add(field)
+
+    # 法定债务限额/余额是主表中的原始依赖字段，但在采集器中由同一年度、
+    # 同一行政范围的一般与专项分项相加得到。它们的数值血缘位于
+    # calculation_lineage，并没有 source_doc_id；只要两个分项都由 A1/A2/B1/B2
+    # 来源支持，合计值就应继承“高等级定稿”状态，不能因为计算血缘没有来源 ID
+    # 而被错误统计为未定稿。其它计算字段不在 CORE_RAW_FIELDS 中，不受此规则影响。
+    calculated_dependencies = {
+        "statutory_debt_limit_100m": {
+            "general_debt_limit_100m",
+            "special_debt_limit_100m",
+        },
+        "statutory_debt_balance_100m": {
+            "general_debt_balance_100m",
+            "special_debt_balance_100m",
+        },
+    }
+    calculated_accepted: set[tuple[str, str]] = set()
+    for lineage in lineage_rows:
+        if not _is_selected(lineage.get("selected_flag")):
+            continue
+        record_id = _as_text(lineage.get("target_record_id"))
+        field = _as_text(lineage.get("target_field"))
+        if (
+            _as_text(lineage.get("value_origin")) == "calculated"
+            and field in calculated_dependencies
+            and _is_non_null(lineage.get("normalized_value"))
+            and calculated_dependencies[field] <= accepted_input_fields.get(record_id, set())
+        ):
+            calculated_accepted.add((record_id, field))
 
     output: list[dict[str, str]] = []
     for field in CORE_RAW_FIELDS:
@@ -246,7 +287,7 @@ def build_core_coverage_report(
             non_null += 1
             record_id = f"MACRO-{row['city_id']}-{row['metric_year']}-PREFECTURE"
             key = (record_id, field)
-            if key in accepted_by_key:
+            if key in accepted_by_key or key in calculated_accepted:
                 high_grade += 1
             elif key in provisional_by_key:
                 provisional += 1

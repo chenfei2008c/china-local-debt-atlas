@@ -313,9 +313,9 @@ SUPPLEMENTAL_CITY_FISCAL_SOURCES: list[dict[str, Any]] = [
     _spec(
         file_name="taizhou_2025_finance_rating_excerpt.txt",
         city_name="泰州市", city_id="CN-321200", fields={
-            "general_public_revenue_100m": (r"一般公共预算收入（亿元）(?:[0-9]+\.[0-9]+){2}([0-9]+\.[0-9]+)", "亿元"),
-            "general_public_expenditure_100m": (r"一般公共预算支出（亿元）(?:[0-9]+\.[0-9]+){2}([0-9]+\.[0-9]+)", "亿元"),
-            "gov_fund_revenue_100m": (r"政府性基金预算收入（亿元）(?:[0-9]+\.[0-9]+){2}([0-9]+\.[0-9]+)", "亿元"),
+            "general_public_revenue_100m": (r"一般公共预算收入（亿元）439\.70453\.08([0-9]+\.[0-9]+)", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出（亿元）697\.42695\.93([0-9]+\.[0-9]+)", "亿元"),
+            "gov_fund_revenue_100m": (r"政府性基金预算收入（亿元）493\.01420\.56([0-9]+\.[0-9]+)", "亿元"),
         },
         grade="B2", publisher="评级机构公开披露",
         document_title="泰州市主要财政数据精确表格",
@@ -341,9 +341,9 @@ SUPPLEMENTAL_CITY_FISCAL_SOURCES: list[dict[str, Any]] = [
     _spec(
         file_name="xuzhou_2025_finance_rating_excerpt.txt",
         city_name="徐州市", city_id="CN-320300", fields={
-            "general_public_revenue_100m": (r"一般公共预算收入（亿元）(?:[0-9]+\.[0-9]+)([0-9]+\.[0-9]+)", "亿元"),
-            "general_public_expenditure_100m": (r"一般公共预算支出（亿元）(?:[0-9]+\.[0-9]+)([0-9]+\.[0-9]+)", "亿元"),
-            "gov_fund_revenue_100m": (r"政府性基金收入（亿元）(?:[0-9]+\.[0-9]+)([0-9]+\.[0-9]+)", "亿元"),
+            "general_public_revenue_100m": (r"一般公共预算收入（亿元）560\.29([0-9]+\.[0-9]+)", "亿元"),
+            "general_public_expenditure_100m": (r"一般公共预算支出（亿元）1052\.38([0-9]+\.[0-9]+)", "亿元"),
+            "gov_fund_revenue_100m": (r"政府性基金收入（亿元）388\.41([0-9]+\.[0-9]+)", "亿元"),
         },
         grade="B2", publisher="联合资信评估股份有限公司",
         document_title="徐州市主要财力指标精确表格",
