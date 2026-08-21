@@ -933,7 +933,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 22)
+        self.assertEqual(len(sources), 24)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2"})
         taian = values[("CN-370900", "2025")]
         self.assertEqual(taian["general_public_revenue_100m"], Decimal("261.96"))
@@ -997,6 +997,22 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(baoshan["general_public_expenditure_100m"], Decimal("261.71"))
         self.assertEqual(baoshan["gov_fund_revenue_100m"], Decimal("31.64"))
         self.assertEqual(baoshan["data_status"], "execution")
+        dali = values[("CN-532900", "2025")]
+        self.assertEqual(dali["general_public_revenue_100m"], Decimal("108.02"))
+        self.assertEqual(dali["general_public_expenditure_100m"], Decimal("372.30"))
+        self.assertEqual(dali["gov_fund_revenue_100m"], Decimal("15.94"))
+        self.assertEqual(dali["source_grade"], "A2")
+        self.assertEqual(dali["data_status"], "execution")
+        dali_source = next(source for source in sources if source["source_doc_id"] == "SRC-A2-DALI-CITY-FISCAL-2025")
+        self.assertIn("dali.gov.cn", dali_source["landing_page_url"])
+        honghe = values[("CN-532500", "2025")]
+        self.assertEqual(honghe["general_public_revenue_100m"], Decimal("153.90"))
+        self.assertEqual(honghe["general_public_expenditure_100m"], Decimal("513.50"))
+        self.assertEqual(honghe["gov_fund_revenue_100m"], Decimal("76.00"))
+        self.assertEqual(honghe["source_grade"], "A2")
+        self.assertEqual(honghe["data_status"], "execution")
+        honghe_source = next(source for source in sources if source["source_doc_id"] == "SRC-A2-HONGHE-CITY-FISCAL-2025")
+        self.assertIn("hh.gov.cn", honghe_source["landing_page_url"])
         lvliang = values[("CN-141100", "2025")]
         self.assertEqual(lvliang["general_public_revenue_100m"], Decimal("278.26"))
         self.assertEqual(lvliang["general_public_expenditure_100m"], Decimal("585.48"))
