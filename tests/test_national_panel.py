@@ -933,7 +933,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 46)
+        self.assertEqual(len(sources), 49)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2", "B2"})
         taian = values[("CN-370900", "2025")]
         self.assertEqual(taian["general_public_revenue_100m"], Decimal("261.96"))
@@ -2077,6 +2077,53 @@ class NationalPanelTests(unittest.TestCase):
                 "general_public_expenditure_100m",
                 "statutory_debt_limit_100m",
                 "statutory_debt_balance_100m",
+            },
+        )
+
+    def test_hohhot_weihai_ezhou_2025_official_reports_extract_whole_city_fiscal_values(self):
+        values, sources = load_city_year_fiscal_sources()
+        expected = {
+            "CN-150100": ("268.61", "582.60", "75.78", "B2"),
+            "CN-371000": ("257.91", "485.56", "225.52", "A2"),
+            "CN-420700": ("107.14", "187.37", "134.68", "A2"),
+        }
+        for city_id, (revenue, expenditure, fund_revenue, grade) in expected.items():
+            record = values[(city_id, "2025")]
+            self.assertEqual(record["general_public_revenue_100m"], Decimal(revenue))
+            self.assertEqual(record["general_public_expenditure_100m"], Decimal(expenditure))
+            self.assertEqual(record["gov_fund_revenue_100m"], Decimal(fund_revenue))
+            self.assertEqual(record["source_grade"], grade)
+            self.assertEqual(record["data_status"], "execution")
+
+        weihai_source = next(
+            source for source in sources if source["source_doc_id"] == "SRC-A2-WEIHAI-CITY-FISCAL-2025"
+        )
+        self.assertEqual(weihai_source["mime_type"], "application/pdf")
+        self.assertIn("weihai.gov.cn", weihai_source["landing_page_url"])
+        self.assertEqual(weihai_source["page_count"], "136")
+
+        city = {
+            "city_id": "CN-371000",
+            "admin_code_6": "371000",
+            "city_name_cn": "威海市",
+            "province_code": "37",
+            "province_name": "山东省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        rows, lineage = build_macro_rows([city], [], {}, {}, city_year_fiscal=values)
+        self.assertEqual(rows[0]["general_public_revenue_100m"], Decimal("257.91"))
+        self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("485.56"))
+        self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("225.52"))
+        self.assertEqual(rows[0]["source_grade"], "A2")
+        self.assertEqual(rows[0]["data_status"], "execution")
+        self.assertEqual(
+            {item["target_field"] for item in lineage},
+            {
+                "general_public_revenue_100m",
+                "general_public_expenditure_100m",
+                "gov_fund_revenue_100m",
             },
         )
 
