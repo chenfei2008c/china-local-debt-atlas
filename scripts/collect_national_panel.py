@@ -3427,6 +3427,28 @@ CITY_YEAR_FUND_SOURCES = (
         "page_count": "1",
         "note": "汕尾市财政局官方预算执行报告，明确区分全市与市级口径；采用2025年全市政府性基金预算收入31.4亿元，不使用市级18.5亿元。",
     },
+    {
+        "year": 2025,
+        "city_name": "威海市",
+        "city_id": "CN-371000",
+        "source_doc_id": "SRC-A2-WEIHAI-CITY-FUND-2025",
+        "url": "https://czj.weihai.gov.cn/attach/0/a6f1476961ba475e85d092558b833a51.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "weihai_2025_budget_execution_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "weihai_2025_budget_execution_report_excerpt.txt",
+        "document_title": "关于2025年威海市和市级预算执行情况与2026年威海市和市级预算草案的报告",
+        "publisher": "威海市财政局",
+        "publisher_level": "市级财政机构官方 PDF",
+        "publication_date": "2026-01-14",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "pattern": r"原文摘录：.*?2025年，全市政府性基金预算收入([0-9]+)万元",
+        "raw_unit": "万元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数（初步汇总数）",
+        "document_type": "城市财政预算执行报告（官方 PDF）",
+        "page_count": "136",
+        "note": "威海市财政局官方预算执行报告，明确全市与市本级口径；采用2025年全市政府性基金预算收入2255185万元，折算225.5185亿元并按统一标准入库225.52亿元；报告说明该执行数据为初步汇总数，决算完成后可能变化，登记为execution。",
+    },
 )
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
