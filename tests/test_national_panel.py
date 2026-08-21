@@ -933,7 +933,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 33)
+        self.assertEqual(len(sources), 34)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2", "B2"})
         taian = values[("CN-370900", "2025")]
         self.assertEqual(taian["general_public_revenue_100m"], Decimal("261.96"))
@@ -1805,6 +1805,49 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(
             {item["source_doc_id"] for item in lineage if item["target_field"] == "gov_fund_revenue_100m"},
             {"SRC-A2-TAIAN-CITY-FISCAL-2025"},
+        )
+
+    def test_datong_2025_official_budget_report_extracts_whole_city_fiscal_values(self):
+        values, sources = load_city_year_fiscal_sources()
+        datong = values[("CN-140200", "2025")]
+        self.assertEqual(datong["general_public_revenue_100m"], Decimal("175.39"))
+        self.assertEqual(datong["general_public_expenditure_100m"], Decimal("469.28"))
+        self.assertEqual(datong["gov_fund_revenue_100m"], Decimal("44.74"))
+        self.assertEqual(datong["source_grade"], "B2")
+        self.assertEqual(datong["data_status"], "execution")
+        datong_source = next(
+            source for source in sources if source["source_doc_id"] == "SRC-B2-DATONG-CITY-FISCAL-2025"
+        )
+        self.assertIn("dt.gov.cn", datong_source["landing_page_url"])
+        self.assertEqual(datong_source["mime_type"], "text/html")
+        self.assertEqual(datong_source["page_count"], "1")
+
+        city = {
+            "city_id": "CN-140200",
+            "admin_code_6": "140200",
+            "city_name_cn": "大同市",
+            "province_code": "14",
+            "province_name": "山西省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        rows, lineage = build_macro_rows(
+            [city], [], {}, {}, city_year_fiscal=values,
+        )
+        self.assertEqual(rows[0]["general_public_revenue_100m"], Decimal("175.39"))
+        self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("469.28"))
+        self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("44.74"))
+        self.assertEqual(rows[0]["fund_revenue_dependence_pct"], Decimal("20.32"))
+        self.assertEqual(rows[0]["source_grade"], "B2")
+        self.assertEqual(rows[0]["data_status"], "execution")
+        self.assertEqual(
+            {item["target_field"] for item in lineage},
+            {
+                "general_public_revenue_100m",
+                "general_public_expenditure_100m",
+                "gov_fund_revenue_100m",
+            },
         )
 
     def test_chaoyang_2025_fiscal_batch_builds_derived_values(self):
