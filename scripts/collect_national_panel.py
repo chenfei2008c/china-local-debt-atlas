@@ -6373,6 +6373,57 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     }
     for spec in _JIANGSU_2025_CITY_REPORT_SPECS
 )
+
+# 江西省 2025 年区域研究精确表格：上交所公开披露的中证鹏元跟踪评级报告
+# 第 7—8 页表 2 一次列示 11 个地级市的 GDP、实际增速、一般公共预算收入和
+# 政府性基金收入。本批只接入此前缺少高等级值的 9 市；南昌、景德镇已有更高
+# 优先级的官方城市预算来源，不用 B2 表格覆盖。表格明确为 2025 年值、全市口径，
+# 评级报告注明资料来源为各地级市政府网站，按 B2 精确表格纳入。
+_JIANGXI_2025_REGIONAL_FISCAL_SPECS = (
+    ("萍乡市", "CN-360300", "PINGXIANG"),
+    ("九江市", "CN-360400", "JIUJIANG"),
+    ("新余市", "CN-360500", "XINYU"),
+    ("鹰潭市", "CN-360600", "YINGTAN"),
+    ("赣州市", "CN-360700", "GANZHOU"),
+    ("吉安市", "CN-360800", "JI_AN"),
+    ("宜春市", "CN-360900", "YICHUN"),
+    ("抚州市", "CN-361000", "FUZHOU"),
+    ("上饶市", "CN-361100", "SHANGRAO"),
+)
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    {
+        "year": 2025,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-JIANGXI-REGIONAL-FISCAL-2025-{slug}",
+        "url": "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2026-05-27/152785_20260527_N2NC.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "jiangxi_2025_regional_fiscal_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "jiangxi_2025_regional_fiscal_report_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "吉安市新庐陵投资发展有限公司相关债券2026年跟踪评级报告",
+        "publisher": "中证鹏元资信评估股份有限公司（上海证券交易所公开披露）",
+        "publisher_level": "交易所公开披露的B2精确表格来源",
+        "publication_date": "2026-05-27",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数（评级报告精确表格）",
+        "document_type": "评级报告地级市经济财政指标表",
+        "page_number": "PDF第7—8页，表2；2025年江西省地级市经济财政指标情况",
+        "page_count": "23",
+        "raw_unit": "亿元",
+        "raw_units": {"gdp_real_growth_pct": "%"},
+        "patterns": {
+            "gdp_current_100m": rf"{city_name}\|([0-9.,]+)\|",
+            "gdp_real_growth_pct": rf"{city_name}\|[0-9.,]+\|([0-9.-]+)\|",
+            "general_public_revenue_100m": rf"{city_name}\|[0-9.,]+\|[0-9.-]+\|[0-9,]+\|([0-9.,]+)\|",
+            "gov_fund_revenue_100m": rf"{city_name}\|[0-9.,]+\|[0-9.-]+\|[0-9,]+\|[0-9.,]+\|([0-9.,]+)",
+        },
+        "source_locator": f"PDF第7—8页表2；城市={city_name}；2025年全市执行数",
+        "note": f"B2精确表格；报告表2列示{city_name}2025年GDP、实际增速、一般公共预算收入和政府性基金收入，资料来源为各地级市政府网站；不使用市本级数，不以图表目测代替表格值。",
+    }
+    for city_name, city_id, slug in _JIANGXI_2025_REGIONAL_FISCAL_SPECS
+)
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
@@ -7258,8 +7309,13 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
             if not match:
                 raise ValueError(f"未能从{config['city_name']}{year}年财政来源提取{field}")
             raw_value = Decimal(match.group(1).replace(",", "").replace("，", ""))
-            raw_unit = str(config.get("raw_unit") or "万元")
-            normalized = q2(raw_value if raw_unit == "亿元" else raw_value * D4)
+            raw_units = config.get("raw_units") or {}
+            raw_unit = str(raw_units.get(field) or config.get("raw_unit") or "万元")
+            normalized = q2(
+                raw_value
+                if raw_unit in {"亿元", "%", "万人"}
+                else raw_value * D4
+            )
             record[field] = normalized
             record[f"{field}_raw_100m"] = raw_value
             record[f"{field}_raw_unit"] = raw_unit
@@ -7990,6 +8046,8 @@ def build_macro_rows(
                 item for item in [prior_source, fiscal_source_id] if item
             )
             for field in (
+                "gdp_current_100m",
+                "gdp_real_growth_pct",
                 "general_public_revenue_100m",
                 "general_public_expenditure_100m",
                 "gov_fund_revenue_100m",
@@ -8294,6 +8352,8 @@ def _lineage_for_city_year_fiscal(
     row: Mapping[str, Any], source: Mapping[str, Any], field: str, value: Any
 ) -> dict[str, Any]:
     labels = {
+        "gdp_current_100m": "地区生产总值（GDP）",
+        "gdp_real_growth_pct": "GDP实际增速",
         "general_public_revenue_100m": "一般公共预算收入",
         "general_public_expenditure_100m": "一般公共预算支出",
         "gov_fund_revenue_100m": "政府性基金预算收入",
@@ -8304,11 +8364,12 @@ def _lineage_for_city_year_fiscal(
     year = row["metric_year"]
     data_status_label = str(source.get("data_status_label") or f"{year}年执行数")
     raw_unit = str(source.get(f"{field}_raw_unit") or "万元")
-    normalization_rule = (
-        "官方预算执行报告原始单位为亿元；数值直接读取，保留两位小数；全市口径。"
-        if raw_unit == "亿元"
-        else "官方预算执行报告原始单位为万元；原值÷10000=亿元，保留两位小数；全市口径。"
-    )
+    if raw_unit in {"亿元", "%", "万人"}:
+        normalization_rule = (
+            f"官方预算/统计表原始单位为{raw_unit}；数值直接读取，保留两位小数；全市口径。"
+        )
+    else:
+        normalization_rule = "官方预算执行报告原始单位为万元；原值÷10000=亿元，保留两位小数；全市口径。"
     source_format = str(source.get("source_format") or "pdf")
     locator_type = "docx_text_statement" if source_format == "docx" else "pdf_text_statement"
     extraction_method = (
