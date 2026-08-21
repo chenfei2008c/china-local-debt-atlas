@@ -3779,7 +3779,7 @@ TASK-CN-540500-2019-lgfv_company,CN-540500,2019,城投主体,主体公开发行�
 TASK-CN-540500-2019-lgfv_financial,CN-540500,2019,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-540500-2019-bond,CN-540500,2019,债券,交易场所/发行文件/存续期公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-540500-2019-credit_event,CN-540500,2019,信用/化债事件,政府、司法、交易场所或发行人公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
-TASK-CN-540600-2019-macro,CN-540600,2019,经济财政,城市统计年鉴/统计公报/财政决算,validated,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,补抓官方年度来源
+TASK-CN-540600-2019-macro,CN-540600,2019,经济财政,城市统计年鉴/统计公报/财政决算,needs_review,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,用官方年鉴、公报和决算表逐字段复核
 TASK-CN-540600-2019-debt,CN-540600,2019,法定债务,地方政府债务限额及余额公开表,evidence_based_missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,自治区报告只披露全区2019年债务限额和余额；那曲市审计公告披露财政收支及基金收支但未披露债务余额；公开评级报告明确注明未取得2019年那曲市政府债务余额。未找到全市年末可审计数值。,PUBLIC_SOURCE_EXHAUSTED,3,true,继续等待或申请那曲市/西藏自治区财政部门公开2019年地市债务决算表；不得用2018、2020或图表估读值推算。
 TASK-CN-540600-2019-lgfv_company,CN-540600,2019,城投主体,主体公开发行文件、审计报告、评级报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-540600-2019-lgfv_financial,CN-540600,2019,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零

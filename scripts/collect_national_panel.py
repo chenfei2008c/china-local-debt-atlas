@@ -40,6 +40,7 @@ try:
         build_core_coverage_report,
     )
     from scripts.batch_table_parser import parse_city_value_rows
+    from scripts.city_yearbook_sources import load_city_yearbook_sources
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
     from province_debt_sources import extract_official_debt_facts
     from data_quality import OFFICIAL_DEBT_EXCEPTION_STATUS, debt_fact_has_balance_limit_conflict
@@ -53,6 +54,14 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
         build_core_coverage_report,
     )
     from batch_table_parser import parse_city_value_rows
+    from city_yearbook_sources import load_city_yearbook_sources
+
+try:
+    from scripts.curated_city_fiscal_2025 import CURATED_2025_CITY_FISCAL_SOURCES
+    from scripts.supplemental_city_fiscal_2025 import SUPPLEMENTAL_CITY_FISCAL_SOURCES
+except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
+    from curated_city_fiscal_2025 import CURATED_2025_CITY_FISCAL_SOURCES
+    from supplemental_city_fiscal_2025 import SUPPLEMENTAL_CITY_FISCAL_SOURCES
 
 getcontext().prec = 40
 
@@ -6772,6 +6781,8 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     }
     for city_name, city_id, slug, has_fund in _SHAANXI_2024_REGIONAL_FISCAL_SPECS
 )
+CITY_YEAR_FISCAL_SOURCES += CURATED_2025_CITY_FISCAL_SOURCES
+CITY_YEAR_FISCAL_SOURCES += tuple(SUPPLEMENTAL_CITY_FISCAL_SOURCES)
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
@@ -7635,6 +7646,12 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
         text_path = Path(config["text_path"])
         content_hash = ensure_download(str(config.get("download_url") or config["url"]), source_path)
         report_text = text_path.read_text(encoding="utf-8")
+        # 部分已归档的摘录把入口页只写在原文首行；若配置没有重复抄录 URL，
+        # 从原文中提取第一个入口页，确保 source_document 仍可回溯到公开来源。
+        source_url = str(config.get("url") or "")
+        if not source_url:
+            url_match = re.search(r"https?://[^\s)）】】]+", report_text)
+            source_url = (url_match.group(0) if url_match else "").rstrip("，。；;）)]】")
         compact_text = re.sub(r"\s+", "", report_text)
         year = str(config["year"])
         data_status = str(config.get("data_status") or "execution")
@@ -7656,7 +7673,9 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
             match = re.search(str(pattern), compact_text)
             if not match:
                 raise ValueError(f"未能从{config['city_name']}{year}年财政来源提取{field}")
-            raw_value = Decimal(match.group(1).replace(",", "").replace("，", ""))
+            raw_value = Decimal(
+                match.group(1).replace(",", "").replace("，", "").replace("．", ".")
+            )
             raw_units = config.get("raw_units") or {}
             raw_unit = str(raw_units.get(field) or config.get("raw_unit") or "万元")
             normalized = q2(
@@ -7668,7 +7687,69 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
             record[f"{field}_raw_100m"] = raw_value
             record[f"{field}_raw_unit"] = raw_unit
             record[f"{field}_evidence_excerpt"] = match.group(0)
-        values[(str(config["city_id"]), year)] = record
+        key = (str(config["city_id"]), year)
+        prior_record = values.get(key)
+        if prior_record is None:
+            record["_field_sources"] = {
+                field: dict(record)
+                for field in config["patterns"]
+                if field in record
+            }
+            values[key] = record
+        else:
+            # 同一城市年度可能由独立来源分别补充经济财政和基金字段。
+            # 按字段合并，保留每个字段自己的来源血缘；同等级冲突值不静默覆盖。
+            field_sources = dict(prior_record.get("_field_sources") or {})
+            prior_source_ids = [
+                item for item in str(prior_record.get("source_doc_id") or "").split(";") if item
+            ]
+            current_source_id = str(record.get("source_doc_id") or "")
+            if current_source_id and current_source_id not in prior_source_ids:
+                prior_source_ids.append(current_source_id)
+            prior_record["source_doc_id"] = ";".join(prior_source_ids)
+            current_grade = str(record.get("source_grade") or "")
+            for field in config["patterns"]:
+                if field not in record:
+                    continue
+                prior_value = as_decimal(prior_record.get(field))
+                current_value = as_decimal(record.get(field))
+                prior_source = field_sources.get(field, prior_record)
+                prior_grade = str(prior_source.get("source_grade") or "")
+                if prior_value is None:
+                    prior_record[field] = record[field]
+                    for suffix in ("_raw_100m", "_raw_unit", "_evidence_excerpt"):
+                        source_key = f"{field}{suffix}"
+                        if source_key in record:
+                            prior_record[source_key] = record[source_key]
+                    field_sources[field] = dict(record)
+                elif current_value == prior_value:
+                    # 同值重复披露不构成冲突，但仍保留既有优先来源。
+                    continue
+                elif SOURCE_GRADE_RANK.get(current_grade, -1) > SOURCE_GRADE_RANK.get(prior_grade, -1):
+                    prior_record[field] = record[field]
+                    for suffix in ("_raw_100m", "_raw_unit", "_evidence_excerpt"):
+                        source_key = f"{field}{suffix}"
+                        if source_key in record:
+                            prior_record[source_key] = record[source_key]
+                    field_sources[field] = dict(record)
+                else:
+                    conflicts = list(prior_record.get("_field_conflicts") or [])
+                    conflicts.append({
+                        "field": field,
+                        "prior_value": str(prior_value),
+                        "candidate_value": str(current_value),
+                        "prior_source_doc_id": str(prior_source.get("source_doc_id") or ""),
+                        "candidate_source_doc_id": current_source_id,
+                    })
+                    prior_record["_field_conflicts"] = conflicts
+            prior_record["_field_sources"] = field_sources
+            if SOURCE_GRADE_RANK.get(current_grade, -1) > SOURCE_GRADE_RANK.get(
+                str(prior_record.get("source_grade") or ""), -1
+            ):
+                prior_record["source_grade"] = current_grade
+            if not prior_record.get("data_status") or prior_record.get("data_status") == "not_collected":
+                prior_record["data_status"] = data_status
+                prior_record["data_status_label"] = data_status_label
         sources.append(
             {
                 "source_doc_id": config["source_doc_id"],
@@ -7678,15 +7759,17 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
                 "title_source": "official_budget_report",
                 "attachment_title": source_path.name,
                 "document_type": config["document_type"],
-                "source_url": config["url"],
-                "landing_page_url": config.get("landing_page_url") or config["url"],
-                "attachment_url": config.get("attachment_url") or config["url"],
-                "canonical_url": config.get("landing_page_url") or config["url"],
-                "final_resolved_url": config.get("attachment_url") or config["url"],
+                "source_url": source_url,
+                "landing_page_url": config.get("landing_page_url") or source_url,
+                "attachment_url": config.get("attachment_url") or source_url,
+                "canonical_url": config.get("landing_page_url") or source_url,
+                "final_resolved_url": config.get("attachment_url") or source_url,
                 "file_name": source_path.name,
                 "mime_type": (
                     "text/html"
                     if config.get("source_format") == "html"
+                    else "text/plain"
+                    if config.get("source_format") == "txt"
                     else "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                     if config.get("source_format") == "docx"
                     else "application/x-7z-compressed"
@@ -8050,6 +8133,7 @@ def build_macro_rows(
     jiangsu_city_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     city_year_fiscal: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
     city_year_fund: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
+    city_yearbook_macro: Mapping[tuple[str, str], Mapping[str, Any]] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     panel_by_key = {(str(r.get("city_code", "")).zfill(6), int(r["year"])): r for r in panel_rows if r.get("year", "").isdigit()}
     lineage: list[dict[str, Any]] = []
@@ -8096,6 +8180,7 @@ def build_macro_rows(
     jiangsu_city_fiscal = jiangsu_city_fiscal or {}
     city_year_fiscal = city_year_fiscal or {}
     city_year_fund = city_year_fund or {}
+    city_yearbook_macro = city_yearbook_macro or {}
     city_2025_fiscal = {
         **ningxia_2025_fiscal,
         **shandong_2025_fiscal,
@@ -8258,6 +8343,58 @@ def build_macro_rows(
                 )
                 + "GDP、人口和债务字段按各自来源单独记录。"
             )
+        yearbook_source = city_yearbook_macro.get((str(city["city_id"]), str(year)))
+        if yearbook_source:
+            yearbook_grade = str(yearbook_source.get("source_grade") or "B2")
+            existing_grade = str(row.get("source_grade") or "")
+            applied_fields: list[str] = []
+            for field in (
+                "gdp_current_100m",
+                "gdp_real_growth_pct",
+                "resident_population_10k",
+                "general_public_revenue_100m",
+                "general_public_expenditure_100m",
+            ):
+                value = as_decimal(yearbook_source.get(field))
+                if value is None:
+                    continue
+                # 年鉴 B2 可以补空值或升级研究型 D 值，但不能覆盖 A1/A2/B1。
+                if row.get(field) is not None and SOURCE_GRADE_RANK.get(existing_grade, -1) > SOURCE_GRADE_RANK.get("D", 0):
+                    continue
+                replacing_provisional = row.get(field) is not None and existing_grade == "D"
+                if replacing_provisional:
+                    record_id = _macro_record_id(row)
+                    for prior_lineage in lineage:
+                        if (
+                            prior_lineage.get("target_record_id") == record_id
+                            and prior_lineage.get("target_field") == field
+                            and prior_lineage.get("source_doc_id") == "SRC-CITY-PANEL-1990-2023"
+                        ):
+                            prior_lineage["selected_flag"] = False
+                            prior_lineage["selection_reason"] = "被B2城市统计年鉴精确表升级替换，保留为暂存历史"
+                row[field] = q2(value)
+                batch_lineage.append(
+                    _lineage_for_city_yearbook(row, yearbook_source, field, row[field])
+                )
+                applied_fields.append(field)
+            if applied_fields:
+                source_id = str(yearbook_source.get("source_doc_id") or "")
+                prior_source_ids = [
+                    item.strip()
+                    for item in str(row.get("source_doc_id") or "").split(";")
+                    if item.strip()
+                ]
+                row["source_doc_id"] = ";".join(dict.fromkeys(prior_source_ids + ([source_id] if source_id else [])))
+                if SOURCE_GRADE_RANK.get(yearbook_grade, -1) > SOURCE_GRADE_RANK.get(existing_grade, -1):
+                    row["source_grade"] = yearbook_grade
+                if row.get("data_status") in {None, "", "provisional", "not_collected"}:
+                    row["data_status"] = "yearbook"
+                row["collection_status"] = "needs_review"
+                row["note"] = (
+                    str(row.get("note") or "")
+                    + ("；" if row.get("note") else "")
+                    + "已接入中国城市统计年鉴地级市全市精确表；B2 年鉴值升级/补充 D 级暂存字段，待官方原件复核。"
+                )
         economic_source = economic_2025.get(city["city_id"]) if year == 2025 else None
         if economic_source:
             applied_fields: list[str] = []
@@ -8708,6 +8845,7 @@ def _lineage_for_city_year_fiscal(
         "statutory_debt_limit_100m": "法定债务限额",
         "statutory_debt_balance_100m": "法定债务余额",
     }
+    source = source.get("_field_sources", {}).get(field, source)
     field_label = labels[field]
     year = row["metric_year"]
     data_status_label = str(source.get("data_status_label") or f"{year}年执行数")
@@ -8747,6 +8885,50 @@ def _lineage_for_city_year_fiscal(
         selection_reason=(
             "市级财政机构官方预算执行报告明确披露全市财政字段，"
             f"年度、行政范围和{data_status_label}状态清晰。"
+        ),
+    )
+
+
+def _lineage_for_city_yearbook(
+    row: Mapping[str, Any], source: Mapping[str, Any], field: str, value: Any
+) -> dict[str, Any]:
+    labels = {
+        "gdp_current_100m": "地区生产总值（当年价格）",
+        "gdp_real_growth_pct": "地区生产总值增长率",
+        "resident_population_10k": "常住人口",
+        "general_public_revenue_100m": "地方一般公共预算收入",
+        "general_public_expenditure_100m": "地方一般公共预算支出",
+    }
+    selected_source = source.get("_field_sources", {}).get(field, source)
+    raw_unit = str(selected_source.get(f"{field}_raw_unit") or "")
+    if raw_unit == "万元":
+        normalization_rule = "年鉴全市表原始单位为万元；原值÷10000=亿元，保留两位小数。"
+    else:
+        normalization_rule = f"年鉴全市表原始单位为{raw_unit}；数值直接读取，保留两位小数。"
+    return _lineage_base(
+        row,
+        field,
+        str(selected_source.get("source_doc_id", "")),
+        "disclosed",
+        value,
+        source_locator=(
+            f"{selected_source.get('source_locator', '')}；字段={labels[field]}；"
+            f"单元格={selected_source.get(f'{field}_cell_range', '')}"
+        ),
+        locator_type="xlsx_cell",
+        table_name=str(selected_source.get("table_name", "中国城市统计年鉴地级市截面表")),
+        sheet_name=str(selected_source.get("sheet_name", "Sheet1")),
+        cell_range=str(selected_source.get(f"{field}_cell_range", "")),
+        raw_value=selected_source.get(f"{field}_raw", value),
+        raw_unit=raw_unit,
+        machine_extracted_value=value,
+        evidence_excerpt=selected_source.get(f"{field}_evidence_excerpt", ""),
+        normalization_rule=normalization_rule,
+        extraction_method="xlsx-xml-cell-parser",
+        parse_confidence="0.99",
+        selection_reason=(
+            "B2 精确年鉴表，城市全市口径与年度一致；用于补空或升级 D 级研究面板值，"
+            "不覆盖 A1/A2/B1 来源。"
         ),
     )
 
@@ -9469,6 +9651,7 @@ def main() -> None:
     jiangsu_city_fiscal, jiangsu_city_fiscal_sources = load_jiangsu_city_fiscal_sources()
     city_year_fiscal, city_year_fiscal_sources = load_city_year_fiscal_sources()
     city_year_fund, city_year_fund_sources = load_city_year_fund_sources()
+    city_yearbook_macro, city_yearbook_sources = load_city_yearbook_sources(ROOT, city_master)
     city_year_fund.update(xinjiang_city_fund)
     city_year_fund_sources.extend(xinjiang_city_fund_sources)
     gd_2025_gdp = {
@@ -9532,6 +9715,7 @@ def main() -> None:
         jiangsu_city_fiscal,
         city_year_fiscal,
         city_year_fund,
+        city_yearbook_macro,
     )
     new_fiscal_lineage = [
         item
@@ -9701,6 +9885,7 @@ def main() -> None:
             *jiangsu_city_fiscal_sources,
             *city_year_fiscal_sources,
             *city_year_fund_sources,
+            *city_yearbook_sources,
         ],
         EVIDENCE_SOURCE_DOCUMENTS,
     )

@@ -1,7 +1,7 @@
 ﻿city_id,city_name_cn,province_name,metric_year,sample_tier,data_status,source_doc_id,source_grade,collection_status,note
 CN-460300,三沙市,海南省,2018,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-460300,三沙市,海南省,2019,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
-CN-540600,那曲市,西藏自治区,2019,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
+CN-540600,那曲市,西藏自治区,2019,core,yearbook,SRC-CITY-PANEL-1990-2023;SRC-B2-CITY-YEARBOOK-2020,B2,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。；已接入中国城市统计年鉴地级市全市精确表；B2 年鉴值升级/补充 D 级暂存字段，待官方原件复核。
 CN-460300,三沙市,海南省,2020,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-460300,三沙市,海南省,2021,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-460300,三沙市,海南省,2022,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
