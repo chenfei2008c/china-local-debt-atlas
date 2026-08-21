@@ -933,8 +933,8 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 29)
-        self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2"})
+        self.assertEqual(len(sources), 30)
+        self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2", "B2"})
         taian = values[("CN-370900", "2025")]
         self.assertEqual(taian["general_public_revenue_100m"], Decimal("261.96"))
         self.assertEqual(taian["general_public_expenditure_100m"], Decimal("486.44"))
@@ -1057,6 +1057,14 @@ class NationalPanelTests(unittest.TestCase):
         lincang_source = next(source for source in sources if source["source_doc_id"] == "SRC-A2-LINCANG-CITY-FISCAL-2025")
         self.assertIn("lincang.gov.cn", lincang_source["landing_page_url"])
         self.assertIn(".pdf", lincang_source["attachment_url"])
+        puer = values[("CN-530800", "2025")]
+        self.assertEqual(puer["general_public_revenue_100m"], Decimal("62.57"))
+        self.assertEqual(puer["general_public_expenditure_100m"], Decimal("306.28"))
+        self.assertEqual(puer["gov_fund_revenue_100m"], Decimal("19.53"))
+        self.assertEqual(puer["source_grade"], "B2")
+        self.assertEqual(puer["data_status"], "execution")
+        puer_source = next(source for source in sources if source["source_doc_id"] == "SRC-B2-PUER-CITY-FISCAL-2025")
+        self.assertIn("puerw.cn", puer_source["landing_page_url"])
         lvliang = values[("CN-141100", "2025")]
         self.assertEqual(lvliang["general_public_revenue_100m"], Decimal("278.26"))
         self.assertEqual(lvliang["general_public_expenditure_100m"], Decimal("585.48"))
@@ -1124,6 +1132,33 @@ class NationalPanelTests(unittest.TestCase):
                 "gov_fund_revenue_100m",
                 "statutory_debt_limit_100m",
                 "statutory_debt_balance_100m",
+            },
+        )
+
+        puer_city = {
+            "city_id": "CN-530800",
+            "admin_code_6": "530800",
+            "city_name_cn": "普洱市",
+            "province_code": "53",
+            "province_name": "云南省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        puer_rows, puer_lineage = build_macro_rows(
+            [puer_city], [], {}, {}, city_year_fiscal=values,
+        )
+        self.assertEqual(puer_rows[0]["general_public_revenue_100m"], Decimal("62.57"))
+        self.assertEqual(puer_rows[0]["general_public_expenditure_100m"], Decimal("306.28"))
+        self.assertEqual(puer_rows[0]["gov_fund_revenue_100m"], Decimal("19.53"))
+        self.assertEqual(puer_rows[0]["fund_revenue_dependence_pct"], Decimal("23.79"))
+        self.assertEqual(puer_rows[0]["source_grade"], "B2")
+        self.assertEqual(
+            {item["target_field"] for item in puer_lineage},
+            {
+                "general_public_revenue_100m",
+                "general_public_expenditure_100m",
+                "gov_fund_revenue_100m",
             },
         )
 
