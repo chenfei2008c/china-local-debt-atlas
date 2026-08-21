@@ -933,7 +933,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 21)
+        self.assertEqual(len(sources), 22)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2"})
         taian = values[("CN-370900", "2025")]
         self.assertEqual(taian["general_public_revenue_100m"], Decimal("261.96"))
@@ -942,6 +942,13 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(taian["data_status"], "execution")
         taian_source = next(source for source in sources if source["source_doc_id"] == "SRC-A2-TAIAN-CITY-FISCAL-2025")
         self.assertIn("czj.taian.gov.cn", taian_source["landing_page_url"])
+        chaoyang_2025 = values[("CN-211300", "2025")]
+        self.assertEqual(chaoyang_2025["general_public_revenue_100m"], Decimal("90.31"))
+        self.assertEqual(chaoyang_2025["general_public_expenditure_100m"], Decimal("301.34"))
+        self.assertEqual(chaoyang_2025["gov_fund_revenue_100m"], Decimal("13.48"))
+        self.assertEqual(chaoyang_2025["data_status"], "execution")
+        chaoyang_source = next(source for source in sources if source["source_doc_id"] == "SRC-A2-CHAOYANG-CITY-FISCAL-2025")
+        self.assertIn("files.chaoyang.gov.cn", chaoyang_source["landing_page_url"])
         nanchang = values[("CN-360100", "2025")]
         self.assertEqual(nanchang["general_public_revenue_100m"], Decimal("537.77"))
         self.assertEqual(nanchang["general_public_expenditure_100m"], Decimal("914.44"))
@@ -1541,6 +1548,34 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(
             {item["source_doc_id"] for item in lineage if item["target_field"] == "gov_fund_revenue_100m"},
             {"SRC-A2-TAIAN-CITY-FISCAL-2025"},
+        )
+
+    def test_chaoyang_2025_fiscal_batch_builds_derived_values(self):
+        values, _ = load_city_year_fiscal_sources()
+        city = {
+            "city_id": "CN-211300",
+            "admin_code_6": "211300",
+            "city_name_cn": "朝阳市",
+            "province_code": "21",
+            "province_name": "辽宁省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        rows, lineage = build_macro_rows([city], [], {}, {}, city_year_fiscal=values)
+        self.assertEqual(rows[0]["general_public_revenue_100m"], Decimal("90.31"))
+        self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("301.34"))
+        self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("13.48"))
+        self.assertEqual(rows[0]["fund_revenue_dependence_pct"], Decimal("12.99"))
+        self.assertEqual(rows[0]["source_grade"], "A2")
+        self.assertEqual(rows[0]["data_status"], "execution")
+        self.assertEqual(
+            {item["target_field"] for item in lineage},
+            {
+                "general_public_revenue_100m",
+                "general_public_expenditure_100m",
+                "gov_fund_revenue_100m",
+            },
         )
 
     def test_next9_2025_henan_economic_batch_extracts_three_cities(self):
