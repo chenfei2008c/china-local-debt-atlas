@@ -933,7 +933,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 40)
+        self.assertEqual(len(sources), 45)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2", "B2"})
         taian = values[("CN-370900", "2025")]
         self.assertEqual(taian["general_public_revenue_100m"], Decimal("261.96"))
@@ -1978,6 +1978,54 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(rows[0]["fund_revenue_dependence_pct"], Decimal("7.30"))
         self.assertEqual(rows[0]["source_grade"], "A2")
         self.assertEqual(rows[0]["data_status"], "final")
+        self.assertEqual(
+            {item["target_field"] for item in lineage},
+            {
+                "general_public_revenue_100m",
+                "general_public_expenditure_100m",
+                "gov_fund_revenue_100m",
+            },
+        )
+
+    def test_chifeng_ankang_yaan_tangshan_sanya_2025_reports_extract_whole_city_fiscal_values(self):
+        values, sources = load_city_year_fiscal_sources()
+        expected = {
+            "CN-150400": ("126.25", "687.27", "46.69", "B2"),
+            "CN-610900": ("39.34", "400.04", "36.98", "B2"),
+            "CN-511800": ("87.86", "251.34", "37.92", "B2"),
+            "CN-130200": ("588.20", "1082.75", "299.63", "B2"),
+            "CN-460200": ("155.20", "239.20", "138.70", "A2"),
+        }
+        for city_id, (revenue, expenditure, fund_revenue, grade) in expected.items():
+            record = values[(city_id, "2025")]
+            self.assertEqual(record["general_public_revenue_100m"], Decimal(revenue))
+            self.assertEqual(record["general_public_expenditure_100m"], Decimal(expenditure))
+            self.assertEqual(record["gov_fund_revenue_100m"], Decimal(fund_revenue))
+            self.assertEqual(record["source_grade"], grade)
+            self.assertEqual(record["data_status"], "execution")
+
+        sanya_source = next(
+            source for source in sources if source["source_doc_id"] == "SRC-A2-SANYA-CITY-FISCAL-2025"
+        )
+        self.assertEqual(sanya_source["mime_type"], "text/html")
+        self.assertIn("sanya.gov.cn", sanya_source["landing_page_url"])
+
+        city = {
+            "city_id": "CN-610900",
+            "admin_code_6": "610900",
+            "city_name_cn": "安康市",
+            "province_code": "61",
+            "province_name": "陕西省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        rows, lineage = build_macro_rows([city], [], {}, {}, city_year_fiscal=values)
+        self.assertEqual(rows[0]["general_public_revenue_100m"], Decimal("39.34"))
+        self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("400.04"))
+        self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("36.98"))
+        self.assertEqual(rows[0]["source_grade"], "B2")
+        self.assertEqual(rows[0]["data_status"], "execution")
         self.assertEqual(
             {item["target_field"] for item in lineage},
             {
