@@ -933,7 +933,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 36)
+        self.assertEqual(len(sources), 40)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2", "B2"})
         taian = values[("CN-370900", "2025")]
         self.assertEqual(taian["general_public_revenue_100m"], Decimal("261.96"))
@@ -1938,6 +1938,55 @@ class NationalPanelTests(unittest.TestCase):
             },
         )
 
+    def test_liaoning_and_luan_2025_official_reports_extract_whole_city_fiscal_values(self):
+        values, sources = load_city_year_fiscal_sources()
+        expected = {
+            "CN-210400": ("77.20", "187.80", "5.60", "final", "6.76"),
+            "CN-210900": ("53.68", "174.24", "4.23", "final", "7.30"),
+            "CN-211100": ("150.10", "216.30", "16.10", "execution", "9.69"),
+            "CN-341500": ("184.20", "215.70", "41.00", "execution", "18.21"),
+        }
+        self.assertEqual(len({city_id for city_id, year in values if year == "2025" and city_id in expected}), 4)
+        for city_id, (revenue, expenditure, fund_revenue, data_status, dependence) in expected.items():
+            record = values[(city_id, "2025")]
+            self.assertEqual(record["general_public_revenue_100m"], Decimal(revenue))
+            self.assertEqual(record["general_public_expenditure_100m"], Decimal(expenditure))
+            self.assertEqual(record["gov_fund_revenue_100m"], Decimal(fund_revenue))
+            self.assertEqual(record["source_grade"], "A2")
+            self.assertEqual(record["data_status"], data_status)
+
+        fuxin_source = next(
+            source for source in sources if source["source_doc_id"] == "SRC-A2-FUXIN-CITY-FISCAL-2025"
+        )
+        self.assertEqual(fuxin_source["mime_type"], "text/html")
+        self.assertIn("fuxin.gov.cn", fuxin_source["landing_page_url"])
+
+        city = {
+            "city_id": "CN-210900",
+            "admin_code_6": "210900",
+            "city_name_cn": "阜新市",
+            "province_code": "21",
+            "province_name": "辽宁省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        rows, lineage = build_macro_rows([city], [], {}, {}, city_year_fiscal=values)
+        self.assertEqual(rows[0]["general_public_revenue_100m"], Decimal("53.68"))
+        self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("174.24"))
+        self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("4.23"))
+        self.assertEqual(rows[0]["fund_revenue_dependence_pct"], Decimal("7.30"))
+        self.assertEqual(rows[0]["source_grade"], "A2")
+        self.assertEqual(rows[0]["data_status"], "final")
+        self.assertEqual(
+            {item["target_field"] for item in lineage},
+            {
+                "general_public_revenue_100m",
+                "general_public_expenditure_100m",
+                "gov_fund_revenue_100m",
+            },
+        )
+
     def test_chaoyang_2025_fiscal_batch_builds_derived_values(self):
         values, _ = load_city_year_fiscal_sources()
         city = {
@@ -2364,7 +2413,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(values[("CN-130200", "2025")]["gov_fund_revenue_100m"], Decimal("299.63"))
         self.assertEqual(values[("CN-210400", "2025")]["gov_fund_revenue_100m"], Decimal("5.60"))
         self.assertEqual(values[("CN-210400", "2025")]["data_status"], "final")
-        self.assertEqual(values[("CN-210900", "2025")]["gov_fund_revenue_100m"], Decimal("4.22"))
+        self.assertEqual(values[("CN-210900", "2025")]["gov_fund_revenue_100m"], Decimal("4.23"))
         self.assertEqual(values[("CN-210900", "2025")]["data_status"], "final")
         self.assertEqual(values[("CN-211100", "2025")]["gov_fund_revenue_100m"], Decimal("16.10"))
         self.assertEqual(values[("CN-211100", "2025")]["data_status"], "execution")
