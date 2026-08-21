@@ -4347,10 +4347,39 @@ CITY_YEAR_FISCAL_SOURCES = (
         },
         "note": "平顶山市财政局官方预算执行报告明确披露全市口径；采用2025年全市一般公共预算收入2266166万元、支出4512625万元，均为执行数，统一换算为亿元；政府性基金收入沿用同一报告的独立基金来源记录。",
     },
+    {
+        "year": 2025,
+        "city_name": "泰安市",
+        "city_id": "CN-370900",
+        "source_doc_id": "SRC-A2-TAIAN-CITY-FISCAL-2025",
+        "url": "https://czj.taian.gov.cn/art/2026/2/25/art_364743_10316699.html",
+        "download_url": "https://czj.taian.gov.cn/module/download/downfile.jsp?classid=0&filename=87442e1685384132bdf6efc0b6702b56.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "taian_2025_budget_execution_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "taian_2025_budget_execution_report_excerpt.txt",
+        "document_title": "泰安市2025年预算执行情况和2026年预算草案",
+        "publisher": "泰安市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2026-02-25",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数（官方预算执行表）",
+        "document_type": "城市财政预算执行报告（官方PDF）",
+        "page_number": "表1、表2、表17",
+        "raw_unit": "万元",
+        "patterns": {
+            "general_public_revenue_100m": r"表1.*?本年收入合计(2619610)",
+            "general_public_expenditure_100m": r"表2.*?本年支出合计(4864386)",
+            "gov_fund_revenue_100m": r"表17.*?本年收入合计(1307675)",
+        },
+        "note": "泰安市财政局官方预算执行表，表1、表2、表17均明确为全市口径；采用2025年一般公共预算收入2619610万元、支出4864386万元和政府性基金预算收入1307675万元，统一换算为亿元，保留execution状态；不使用市级数。",
+    },
 )
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
+
+SOURCE_GRADE_RANK = {"A1": 5, "A2": 4, "B1": 3, "B2": 2, "C": 1, "D": 0}
 
 D0 = Decimal("0")
 D1 = Decimal("1")
@@ -5986,6 +6015,14 @@ def build_macro_rows(
                 )
                 batch_lineage.append(_lineage_for_jiangsu_city_fund(row, jiangsu_fund_source, fund_value))
         city_year_fund_source = city_year_fund.get((city["city_id"], str(year)))
+        # 同一城市年度基金字段可能同时存在于“财政三字段”与独立基金来源。
+        # 先前已选中的高等级官方财政来源不能被后置的低等级重复记录覆盖。
+        if city_year_fiscal_source and city_year_fund_source:
+            fiscal_fund_value = as_decimal(city_year_fiscal_source.get("gov_fund_revenue_100m"))
+            fiscal_grade = str(city_year_fiscal_source.get("source_grade") or "")
+            fund_grade = str(city_year_fund_source.get("source_grade") or "B2")
+            if fiscal_fund_value is not None and SOURCE_GRADE_RANK.get(fiscal_grade, -1) >= SOURCE_GRADE_RANK.get(fund_grade, -1):
+                city_year_fund_source = None
         if city_year_fund_source:
             fund_value = as_decimal(city_year_fund_source.get("gov_fund_revenue_100m"))
             if fund_value is not None:

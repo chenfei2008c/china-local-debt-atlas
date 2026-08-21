@@ -933,8 +933,15 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 20)
+        self.assertEqual(len(sources), 21)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2"})
+        taian = values[("CN-370900", "2025")]
+        self.assertEqual(taian["general_public_revenue_100m"], Decimal("261.96"))
+        self.assertEqual(taian["general_public_expenditure_100m"], Decimal("486.44"))
+        self.assertEqual(taian["gov_fund_revenue_100m"], Decimal("130.77"))
+        self.assertEqual(taian["data_status"], "execution")
+        taian_source = next(source for source in sources if source["source_doc_id"] == "SRC-A2-TAIAN-CITY-FISCAL-2025")
+        self.assertIn("czj.taian.gov.cn", taian_source["landing_page_url"])
         nanchang = values[("CN-360100", "2025")]
         self.assertEqual(nanchang["general_public_revenue_100m"], Decimal("537.77"))
         self.assertEqual(nanchang["general_public_expenditure_100m"], Decimal("914.44"))
@@ -1504,6 +1511,36 @@ class NationalPanelTests(unittest.TestCase):
                 "general_public_expenditure_100m",
                 "gov_fund_revenue_100m",
             },
+        )
+
+    def test_official_fiscal_fund_value_wins_over_lower_grade_fund_duplicate(self):
+        fiscal_values, _ = load_city_year_fiscal_sources()
+        city = {
+            "city_id": "CN-370900",
+            "admin_code_6": "370900",
+            "city_name_cn": "泰安市",
+            "province_code": "37",
+            "province_name": "山东省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        duplicate_fund = {
+            ("CN-370900", "2025"): {
+                "gov_fund_revenue_100m": Decimal("130.77"),
+                "source_doc_id": "SRC-B2-TAIAN-CITY-FUND-2025",
+                "source_grade": "B2",
+                "data_status": "execution",
+            }
+        }
+        rows, lineage = build_macro_rows(
+            [city], [], {}, {}, city_year_fiscal=fiscal_values, city_year_fund=duplicate_fund
+        )
+        self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("130.77"))
+        self.assertEqual(rows[0]["source_grade"], "A2")
+        self.assertEqual(
+            {item["source_doc_id"] for item in lineage if item["target_field"] == "gov_fund_revenue_100m"},
+            {"SRC-A2-TAIAN-CITY-FISCAL-2025"},
         )
 
     def test_next9_2025_henan_economic_batch_extracts_three_cities(self):
