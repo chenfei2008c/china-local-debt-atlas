@@ -74,6 +74,30 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(values[("CN-110000", "2023")]["resident_population_10k"], Decimal("2186.00"))
         self.assertNotIn("resident_population_10k", values[("CN-110000", "2021")])
 
+    def test_jiangsu_2025_budget_excerpts_extract_six_whole_city_batches(self):
+        values, sources = load_city_year_fiscal_sources()
+        expected = {
+            "CN-320100": ("1620.90", "1704.90", "886.40"),
+            "CN-320600": ("730.00", "1188.70", "768.90"),
+            "CN-320700": ("305.70", "607.80", "206.50"),
+            "CN-320800": ("335.30", "718.30", "311.60"),
+            "CN-320900": ("515.74", "1099.03", "425.83"),
+            "CN-321300": ("316.60", "688.60", "215.10"),
+        }
+        for city_id, (revenue, expenditure, fund_revenue) in expected.items():
+            with self.subTest(city_id=city_id):
+                row = values[(city_id, "2025")]
+                self.assertEqual(row["general_public_revenue_100m"], Decimal(revenue))
+                self.assertEqual(row["general_public_expenditure_100m"], Decimal(expenditure))
+                self.assertEqual(row["gov_fund_revenue_100m"], Decimal(fund_revenue))
+                self.assertEqual(row["data_status"], "execution")
+        source_ids = {
+            item["source_doc_id"]
+            for item in sources
+            if "JIANGSU_" in item["source_doc_id"]
+        }
+        self.assertEqual(len(source_ids), 6)
+
     def test_city_yearbook_upgrades_provisional_panel_values_without_overwriting_official(self):
         city = {
             "city_id": "CN-110000",
@@ -144,7 +168,7 @@ class NationalPanelTests(unittest.TestCase):
             source for source in sources
             if str(source.get("source_doc_id", "")).startswith("SRC-SUPPLEMENTAL-CITY-FISCAL-2025-")
         ]
-        self.assertEqual(len(supplemental), 59)
+        self.assertEqual(len(supplemental), 68)
         self.assertTrue(all(source["content_hash_sha256"] for source in supplemental))
         self.assertTrue(any("chinamoney.com.cn" in source["source_url"] for source in supplemental))
 
@@ -1159,7 +1183,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 296)
+        self.assertEqual(len(sources), 305)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2", "B2"})
 
     def test_city_year_fiscal_batch_adds_curated_2025_statistical_and_budget_sources(self):
@@ -1204,7 +1228,7 @@ class NationalPanelTests(unittest.TestCase):
                     self.assertNotIn(field, record)
                 else:
                     self.assertEqual(record[field], Decimal(expected_value))
-        self.assertEqual(len(sources), 296)
+        self.assertEqual(len(sources), 305)
         curated_ids = {
             source["source_doc_id"]
             for source in sources
@@ -1634,6 +1658,7 @@ class NationalPanelTests(unittest.TestCase):
             {
                 "gdp_current_100m",
                 "gdp_real_growth_pct",
+                "resident_population_10k",
                 "general_public_revenue_100m",
                 "general_public_expenditure_100m",
                 "gov_fund_revenue_100m",
@@ -1662,6 +1687,7 @@ class NationalPanelTests(unittest.TestCase):
             {
                 "gdp_current_100m",
                 "gdp_real_growth_pct",
+                "resident_population_10k",
                 "general_public_revenue_100m",
                 "general_public_expenditure_100m",
                 "gov_fund_revenue_100m",
@@ -1690,6 +1716,7 @@ class NationalPanelTests(unittest.TestCase):
             {
                 "gdp_current_100m",
                 "gdp_real_growth_pct",
+                "resident_population_10k",
                 "general_public_revenue_100m",
                 "general_public_expenditure_100m",
                 "gov_fund_revenue_100m",
@@ -1778,6 +1805,7 @@ class NationalPanelTests(unittest.TestCase):
             {
                 "gdp_current_100m",
                 "gdp_real_growth_pct",
+                "resident_population_10k",
                 "general_public_revenue_100m",
                 "general_public_expenditure_100m",
                 "gov_fund_revenue_100m",
@@ -2251,7 +2279,7 @@ class NationalPanelTests(unittest.TestCase):
             record = values[(city_id, "2025")]
             self.assertEqual(record["general_public_revenue_100m"], Decimal(revenue))
             self.assertEqual(record["general_public_expenditure_100m"], Decimal(expenditure))
-        self.assertEqual(len(sources), 296)
+        self.assertEqual(len(sources), 305)
         weifang_source = next(
             source for source in sources if source["source_doc_id"] == "SRC-A2-WEIFANG-CITY-FISCAL-2025"
         )
@@ -2277,7 +2305,41 @@ class NationalPanelTests(unittest.TestCase):
         )
         self.assertIn("hongheiku.com", zaozhuang_source["landing_page_url"])
         self.assertEqual(zaozhuang_source["source_grade"], "B2")
-        self.assertEqual(len(sources), 296)
+        self.assertEqual(len(sources), 305)
+
+    def test_2025_statistical_bulletins_fill_zaozhuang_taizhou_wuhai_economic_gaps(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        zaozhuang = values[("CN-370400", "2025")]
+        self.assertEqual(zaozhuang["gdp_current_100m"], Decimal("2502.52"))
+        self.assertEqual(zaozhuang["gdp_real_growth_pct"], Decimal("5.70"))
+        self.assertEqual(zaozhuang["resident_population_10k"], Decimal("380.04"))
+
+        taizhou = values[("CN-321200", "2025")]
+        self.assertEqual(taizhou["resident_population_10k"], Decimal("445.10"))
+
+        wuhai = values[("CN-150300", "2025")]
+        self.assertEqual(wuhai["resident_population_10k"], Decimal("54.90"))
+
+        for city_id in ("CN-370400", "CN-321200", "CN-150300"):
+            city_sources = [
+                source for source in sources
+                if city_id.replace("-", "") in source["source_doc_id"]
+            ]
+            self.assertTrue(city_sources)
+
+        city = {
+            "city_id": "CN-370400",
+            "admin_code_6": "370400",
+            "city_name_cn": "枣庄市",
+            "province_code": "37",
+            "province_name": "山东省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2025",
+        }
+        rows, _ = build_macro_rows([city], [], {}, {}, city_year_fiscal=values)
+        self.assertEqual(rows[0]["resident_population_10k"], Decimal("380.04"))
 
     def test_sichuan_regional_report_adds_2025_revenue_for_18_city_years(self):
         values, sources = load_city_year_fiscal_sources()

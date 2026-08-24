@@ -29,6 +29,9 @@ def _spec(
     document_title: str,
     note: str,
     secondary: bool = False,
+    url: str = "",
+    publication_date: str = "",
+    source_format: str = "txt",
 ) -> dict[str, Any]:
     path = RAW / ("secondary" if secondary else "official") / file_name
     return {
@@ -36,16 +39,16 @@ def _spec(
         "city_name": city_name,
         "city_id": city_id,
         "source_doc_id": f"SRC-SUPPLEMENTAL-CITY-FISCAL-2025-{city_id.replace('-', '')}-{file_name.split('_2025', 1)[0].upper()}",
-        "url": "",
+        "url": url,
         "path": path,
         "text_path": path,
         "text_is_curated": True,
         "document_title": document_title,
         "publisher": publisher,
         "publisher_level": "评级机构公开披露" if secondary else "市级/州级官方公开资料",
-        "publication_date": "",
+        "publication_date": publication_date,
         "source_grade": grade,
-        "source_format": "txt",
+        "source_format": source_format,
         "data_status": "execution",
         "data_status_label": "2025年执行数",
         "document_type": "城市财政/统计公报精确摘录",
@@ -375,6 +378,140 @@ SUPPLEMENTAL_CITY_FISCAL_SOURCES: list[dict[str, Any]] = [
         secondary=True,
     ),
 ]
+
+
+# 江苏六市 2025 年预算执行报告摘录。摘录同时给出一般预算收入、一般预算
+# 支出和政府性基金收入，均明确为全市口径；执行数保留 execution 状态。
+JIANGSU_2025_FISCAL_FIELDS = {
+    "general_public_revenue_100m": (rf"一般公共预算收入({N})亿元", "亿元"),
+    "general_public_expenditure_100m": (rf"一般公共预算支出({N})亿元", "亿元"),
+    "gov_fund_revenue_100m": (rf"政府性基金(?:预算)?收入({N})亿元", "亿元"),
+}
+
+for file_name, city_name, city_id, url in (
+    (
+        "jiangsu_huaian_2026_budget_report_excerpt.txt",
+        "淮安市",
+        "CN-320800",
+        "https://hadz.huaian.gov.cn/upload/2026-02/084b0575-e82f-4ccd-a8ac-06929ab35a12.pdf",
+    ),
+    (
+        "jiangsu_lianyungang_2026_budget_report_excerpt.txt",
+        "连云港市",
+        "CN-320700",
+        "https://www.lyg.gov.cn/zglygzfmhwz/xwfbh/content/d0337394-8514-4c7d-8e0c-ec40c8dea5bd.htm",
+    ),
+    (
+        "jiangsu_nanjing_2026_budget_report_excerpt.txt",
+        "南京市",
+        "CN-320100",
+        "https://czj.nanjing.gov.cn/njsczj/202603/t20260304_5799618.html",
+    ),
+    (
+        "jiangsu_nantong_2026_budget_report_excerpt.txt",
+        "南通市",
+        "CN-320600",
+        "https://www.nantong.gov.cn/ntsrmzf/upload/a28abdfd-2a7a-4c2b-86ba-5769759045f3.pdf",
+    ),
+    (
+        "jiangsu_suqian_2026_budget_report_excerpt.txt",
+        "宿迁市",
+        "CN-321300",
+        "",
+    ),
+    (
+        "jiangsu_yancheng_2026_budget_report_excerpt.txt",
+        "盐城市",
+        "CN-320900",
+        "https://www.yancheng.gov.cn/art/2026/2/11/art_34200_4409369.html",
+    ),
+):
+    SUPPLEMENTAL_CITY_FISCAL_SOURCES.append(
+        _spec(
+            file_name=file_name,
+            city_name=city_name,
+            city_id=city_id,
+            fields=JIANGSU_2025_FISCAL_FIELDS,
+            grade="A2",
+            publisher=f"{city_name}财政局/市人民政府",
+            document_title=f"{city_name}关于2025年预算执行情况和2026年预算草案的报告",
+            note=(
+                "官方预算报告精确摘录；三项字段均为全市口径的2025年执行数，"
+                "不使用市本级数。宿迁市入口页尚未随摘录归档，待补充入口链接。"
+                if city_id == "CN-321300"
+                else "官方预算报告精确摘录；三项字段均为全市口径的2025年执行数，不使用市本级数。"
+            ),
+            url=url,
+        )
+    )
+
+
+SUPPLEMENTAL_CITY_FISCAL_SOURCES.extend(
+    [
+        _spec(
+            file_name="zaozhuang_2025_statistical_bulletin.html",
+            city_name="枣庄市",
+            city_id="CN-370400",
+            fields={
+                "gdp_current_100m": (rf"全年实现生产总值({N})亿元", "亿元"),
+                "gdp_real_growth_pct": (rf"全年实现生产总值{N}亿元，比上年增长({N})%", "%"),
+                "resident_population_10k": (rf"年末常住人口({N})万人", "万人"),
+            },
+            grade="B2",
+            publisher="枣庄市统计局、国家统计局枣庄调查队（公开转载）",
+            document_title="2025年枣庄市国民经济和社会发展统计公报",
+            note=(
+                "B2精确转载中的统计公报经济和人口段落；三项字段均为枣庄市全市口径，"
+                "不使用区县或市本级口径。财政字段沿用已有来源。"
+            ),
+            secondary=True,
+            url="https://stjj.zaozhuang.gov.cn/xwzx/tjgb/",
+            publication_date="2026-03-24",
+            source_format="html",
+        ),
+        _spec(
+            file_name="taizhou_2025_statistical_bulletin.html",
+            city_name="泰州市",
+            city_id="CN-321200",
+            fields={"resident_population_10k": (rf"年末常住人口({N})万人", "万人")},
+            grade="A2",
+            publisher="泰州市统计局",
+            document_title="2025年泰州市国民经济和社会发展统计公报",
+            note=(
+                "泰州市统计局官方统计公报明确披露年末全市常住人口445.10万人；"
+                "该字段为全市年末常住人口，不使用户籍人口。"
+            ),
+            url=(
+                "https://tjj.taizhou.gov.cn/xxgk/fdzdgknr/tjxx/tjgb/"
+                "art/2026/art_2be9ac8eac814cd784c0ece81a1ee73b.html"
+            ),
+            publication_date="2026-05-27",
+            source_format="html",
+        ),
+        _spec(
+            file_name="wuhai_2025_statistical_bulletin.html",
+            city_name="乌海市",
+            city_id="CN-150300",
+            fields={
+                "resident_population_10k": (
+                    rf"年末全市常住人口.*?({N})(?:<[^>]+>)*万人",
+                    "万人",
+                )
+            },
+            grade="B2",
+            publisher="乌海市统计局（精确公开转载）",
+            document_title="乌海市2025年国民经济和社会发展统计公报",
+            note=(
+                "B2精确转载的乌海市统计公报人口段落；年末全市常住人口为54.90万人，"
+                "不使用户籍人口。经济财政字段沿用既有来源，避免重复替换。"
+            ),
+            secondary=True,
+            url="https://www.sohu.com/a/1016888972_121106854",
+            publication_date="2026-04-30",
+            source_format="html",
+        ),
+    ]
+)
 
 
 ECONOMIC_FIELDS = {

@@ -8584,6 +8584,7 @@ def build_macro_rows(
             for field in (
                 "gdp_current_100m",
                 "gdp_real_growth_pct",
+                "resident_population_10k",
                 "general_public_revenue_100m",
                 "general_public_expenditure_100m",
                 "gov_fund_revenue_100m",
@@ -8890,6 +8891,7 @@ def _lineage_for_city_year_fiscal(
     labels = {
         "gdp_current_100m": "地区生产总值（GDP）",
         "gdp_real_growth_pct": "GDP实际增速",
+        "resident_population_10k": "年末常住人口",
         "general_public_revenue_100m": "一般公共预算收入",
         "general_public_expenditure_100m": "一般公共预算支出",
         "gov_fund_revenue_100m": "政府性基金预算收入",
@@ -8908,10 +8910,18 @@ def _lineage_for_city_year_fiscal(
     else:
         normalization_rule = "官方预算执行报告原始单位为万元；原值÷10000=亿元，保留两位小数；全市口径。"
     source_format = str(source.get("source_format") or "pdf")
-    locator_type = "docx_text_statement" if source_format == "docx" else "pdf_text_statement"
+    locator_type = (
+        "docx_text_statement"
+        if source_format == "docx"
+        else "html_text_statement"
+        if source_format == "html"
+        else "pdf_text_statement"
+    )
     extraction_method = (
         "curated-official-docx-statement-parser"
         if source_format == "docx"
+        else "curated-official-html-statement-parser"
+        if source_format == "html"
         else "curated-official-pdf-statement-parser"
     )
     return _lineage_base(
