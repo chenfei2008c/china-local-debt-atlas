@@ -167,8 +167,20 @@ def load_city_yearbook_sources(
         for city in city_master
         if city.get("city_name_cn")
     }
-    # 2021 年鉴中个别镜像表把“菏泽市”误写为“荷泽市”，只做名称匹配修正。
-    city_by_name["荷泽市"] = city_by_name.get("菏泽市", {})
+    # 年鉴镜像存在少量 OCR/转码名称变体。匹配依据同时核对了工作簿
+    # 的英文城市名和行政代码，不能把这些行当作缺失；这里只修正名称，
+    # 不改变任何数值和行政范围。
+    city_name_aliases = {
+        "荷泽市": "菏泽市",
+        "麥庄市": "枣庄市",
+        "深河市": "漯河市",
+        "常徳市": "常德市",
+        "脩州市": "儋州市",
+        "那曲冇": "那曲地区",
+    }
+    for alias, canonical in city_name_aliases.items():
+        if canonical in city_by_name:
+            city_by_name[alias] = city_by_name[canonical]
     values: dict[tuple[str, str], dict[str, Any]] = {}
     sources: list[dict[str, Any]] = []
     base_dir = root / "raw" / "macro_fiscal" / "city_yearbook"

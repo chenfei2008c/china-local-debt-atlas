@@ -1,4 +1,5 @@
 import csv
+import tempfile
 from decimal import Decimal
 from pathlib import Path
 
@@ -53,9 +54,98 @@ from scripts.collect_national_panel import (
     validate_city_master,
     validate_no_zero_for_missing,
 )
+from scripts.gotohui_city_series import load_gotohui_city_series_sources
+from scripts.gotohui_snapshot_collector import (
+    _read_city_targets,
+    acceptable_series_title,
+    normalize_series_value,
+    merge_snapshot_series,
+)
+from scripts.crei_city_bulletins import is_target_bulletin_title, parse_bulletin_text
 
 
 class NationalPanelTests(unittest.TestCase):
+
+    def test_gotohui_snapshot_collector_rejects_budget_and_component_titles(self):
+        self.assertTrue(
+            acceptable_series_title("fund", "西宁市", "西宁市地方政府性基金收入")
+        )
+        self.assertTrue(
+            acceptable_series_title("fund", "西宁市", "西宁市地方政府性基金本级收入")
+        )
+        self.assertFalse(
+            acceptable_series_title("fund", "西宁市", "西宁市政府性基金收入预算数")
+        )
+        self.assertFalse(
+            acceptable_series_title("fund", "西宁市", "西宁市政府性基金收入:国有土地使用权出让收入")
+        )
+
+    def test_gotohui_snapshot_collector_normalizes_units_and_deduplicates_series(self):
+        self.assertEqual(normalize_series_value("revenue", "123456", "万元"), Decimal("12.35"))
+        self.assertEqual(normalize_series_value("population", "3142300", "人"), Decimal("314.23"))
+        existing = [{"series_id": "1", "metric": "gdp"}]
+        additions = [{"series_id": "1", "metric": "gdp"}, {"series_id": "2", "metric": "growth"}]
+        self.assertEqual(
+            [item["series_id"] for item in merge_snapshot_series(existing, additions)],
+            ["1", "2"],
+        )
+
+    def test_gotohui_snapshot_collector_skips_city_years_not_in_roster(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            output = root / "outputs/national_prefecture_panel_2018_2026"
+            output.mkdir(parents=True)
+            with (output / "city_macro_fiscal.csv").open("w", encoding="utf-8", newline="") as handle:
+                writer = csv.DictWriter(
+                    handle,
+                    fieldnames=["city_id", "city_name_cn", "metric_year", "gdp_current_100m"],
+                )
+                writer.writeheader()
+                writer.writerow(
+                    {
+                        "city_id": "CN-133100",
+                        "city_name_cn": "雄安新区",
+                        "metric_year": "2025",
+                        "gdp_current_100m": "",
+                    }
+                )
+            self.assertEqual(_read_city_targets(root, {"gdp"}), [("gdp", "CN-133100", "雄安新区")])
+
+    def test_crei_bulletin_parser_keeps_prefecture_scope_and_exact_units(self):
+        title = "2025年清远市国民经济和社会发展统计公报"
+        self.assertTrue(is_target_bulletin_title(title, "清远市"))
+        self.assertFalse(is_target_bulletin_title("2025年清远市清新区国民经济和社会发展统计公报", "清远市"))
+        parsed = parse_bulletin_text(
+            "根据统一核算，2025年全市地区生产总值2317.47亿元，比上年增长4.5%。"
+            "年末全市常住人口397.64万人。全年一般公共预算收入123.45亿元，"
+            "一般公共预算支出234.56亿元。"
+        )
+        self.assertEqual(parsed["gdp_current_100m"], Decimal("2317.47"))
+        self.assertEqual(parsed["gdp_real_growth_pct"], Decimal("4.50"))
+        self.assertEqual(parsed["resident_population_10k"], Decimal("397.64"))
+        self.assertEqual(parsed["general_public_revenue_100m"], Decimal("123.45"))
+        self.assertEqual(parsed["general_public_expenditure_100m"], Decimal("234.56"))
+
+    def test_gotohui_public_series_adapter_keeps_exact_units_and_b2_lineage(self):
+        root = Path(__file__).resolve().parents[1]
+        with (root / "outputs/national_prefecture_panel_2018_2026/dim_city.csv").open(
+            encoding="utf-8-sig", newline=""
+        ) as handle:
+            city_master = list(csv.DictReader(handle))
+        values, sources = load_gotohui_city_series_sources(root, city_master)
+
+        self.assertGreaterEqual(len(sources), 1500)
+        population = values[("CN-340400", "2018")]
+        self.assertEqual(population["resident_population_10k"], Decimal("314.23"))
+        self.assertEqual(population["source_grade"], "B2")
+        self.assertEqual(population["source_platform"], "gotohui")
+        revenue = values[("CN-152900", "2018")]
+        self.assertEqual(revenue["general_public_revenue_100m"], Decimal("24.31"))
+        self.assertIn("2018", revenue["general_public_revenue_100m_evidence_excerpt"])
+        fund = values[("CN-440300", "2018")]
+        self.assertEqual(fund["gov_fund_revenue_100m"], Decimal("964.64"))
+        limit = values[("CN-440300", "2018")]
+        self.assertEqual(limit["statutory_debt_limit_100m"], Decimal("385.00"))
 
     def test_city_yearbook_adapter_reads_exact_city_cells_and_units(self):
         root = Path(__file__).resolve().parents[1]
@@ -1183,7 +1273,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("12.56"))
         self.assertEqual(record["data_status"], "execution")
         self.assertEqual(record["data_status_label"], "2024年快报数")
-        self.assertEqual(len(sources), 305)
+        self.assertEqual(len(sources), 311)
         self.assertEqual({source["source_grade"] for source in sources}, {"A1", "A2", "B2"})
 
     def test_city_year_fiscal_batch_adds_curated_2025_statistical_and_budget_sources(self):
@@ -1228,7 +1318,7 @@ class NationalPanelTests(unittest.TestCase):
                     self.assertNotIn(field, record)
                 else:
                     self.assertEqual(record[field], Decimal(expected_value))
-        self.assertEqual(len(sources), 305)
+        self.assertEqual(len(sources), 311)
         curated_ids = {
             source["source_doc_id"]
             for source in sources
@@ -2279,7 +2369,7 @@ class NationalPanelTests(unittest.TestCase):
             record = values[(city_id, "2025")]
             self.assertEqual(record["general_public_revenue_100m"], Decimal(revenue))
             self.assertEqual(record["general_public_expenditure_100m"], Decimal(expenditure))
-        self.assertEqual(len(sources), 305)
+        self.assertEqual(len(sources), 311)
         weifang_source = next(
             source for source in sources if source["source_doc_id"] == "SRC-A2-WEIFANG-CITY-FISCAL-2025"
         )
@@ -2305,7 +2395,7 @@ class NationalPanelTests(unittest.TestCase):
         )
         self.assertIn("hongheiku.com", zaozhuang_source["landing_page_url"])
         self.assertEqual(zaozhuang_source["source_grade"], "B2")
-        self.assertEqual(len(sources), 305)
+        self.assertEqual(len(sources), 311)
 
     def test_2025_statistical_bulletins_fill_zaozhuang_taizhou_wuhai_economic_gaps(self):
         values, sources = load_city_year_fiscal_sources()

@@ -221,7 +221,7 @@ def _build_sources() -> Iterable[dict[str, Any]]:
             2024: {"general_public_revenue_100m": "一般公共预算收入", "general_public_expenditure_100m": "一般公共预算支出", "gov_fund_revenue_100m": "政府性基金收入"},
         },
         "xuzhou": {
-            2024: {"general_public_revenue_100m": "一般公共预算收入", "general_public_expenditure_100m": "一般公共预算支出", "gov_fund_revenue_100m": "政府性基金收入"},
+            2024: {"gdp_current_100m": "GDP", "gdp_real_growth_pct": "GDP增速", "general_public_revenue_100m": "一般公共预算收入", "general_public_expenditure_100m": "一般公共预算支出", "gov_fund_revenue_100m": "政府性基金收入"},
             2025: {"gdp_current_100m": "GDP", "gdp_real_growth_pct": "GDP增速"},
         },
         "taizhou": {
