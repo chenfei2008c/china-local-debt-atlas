@@ -16187,7 +16187,7 @@ TASK-CN-620800-2025-lgfv_company,CN-620800,2025,城投主体,主体公开发行�
 TASK-CN-620800-2025-lgfv_financial,CN-620800,2025,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-620800-2025-bond,CN-620800,2025,债券,交易场所/发行文件/存续期公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-620800-2025-credit_event,CN-620800,2025,信用/化债事件,政府、司法、交易场所或发行人公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
-TASK-CN-620900-2025-macro,CN-620900,2025,经济财政,城市统计年鉴/统计公报/财政决算,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,未找到已归档且可审计的城市年度来源,NOT_YET_COLLECTED,0,false,补抓官方年度来源
+TASK-CN-620900-2025-macro,CN-620900,2025,经济财政,城市统计年鉴/统计公报/财政决算,needs_review,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,用官方年鉴、公报和决算表逐字段复核
 TASK-CN-620900-2025-debt,CN-620900,2025,法定债务,地方政府债务限额及余额公开表,evidence_based_missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,酒泉市官方年度预算和执行页面公开一般预算、政府性基金及市级债务预算资料，但未公开2025年末全市（含县市区）法定债务余额；2025年债务简报截至10月，亦非年末决算口径；甘肃省级汇总表只到全省及市县合计。,PUBLIC_SOURCE_EXHAUSTED,3,true,等待酒泉市2025年度决算及全市债务限额余额表公开；不得以市本级预算或2024年末余额代填全市2025年末值。
 TASK-CN-620900-2025-lgfv_company,CN-620900,2025,城投主体,主体公开发行文件、审计报告、评级报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-620900-2025-lgfv_financial,CN-620900,2025,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零

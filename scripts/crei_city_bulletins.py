@@ -76,7 +76,9 @@ def is_target_bulletin_title(title: str, city_name: str) -> bool:
 
 def _decimal(raw: str, unit: str) -> Decimal:
     try:
-        value = Decimal(raw.replace(",", "").replace("，", ""))
+        normalized = re.sub(r"\s+", "", raw).replace(",", "").replace("，", "")
+        normalized = normalized.replace("．", ".")
+        value = Decimal(normalized)
     except (InvalidOperation, ValueError):
         raise ValueError(f"无法解析公报数值：{raw!r}") from None
     if unit == "万元":
@@ -86,7 +88,11 @@ def _decimal(raw: str, unit: str) -> Decimal:
 
 def _amount_after(text: str, label_pattern: str) -> Decimal | None:
     match = re.search(
-        rf"{label_pattern}[^。；;\n]{{0,60}}?([0-9][0-9,.]*)\s*(亿元|万元)",
+        rf"(?:{label_pattern})"
+        rf"\s*(?:[（(][^）)]{{0,30}}[）)])?"
+        rf"\s*(?:\[[^\]]{{1,8}}\]|【[^】]{{1,8}}】)?"
+        rf"\s*(?:完成|为|是|达(?:到)?|实现|约|达到)?"
+        rf"\s*([0-9][0-9,.\s，．]*)\s*(亿元|万元)",
         text,
     )
     return _decimal(match.group(1), match.group(2)) if match else None
@@ -98,7 +104,7 @@ def parse_bulletin_text(text: str) -> dict[str, Decimal]:
     text = re.sub(r"\s+", " ", text or "")
     result: dict[str, Decimal] = {}
     gdp_match = re.search(
-        r"(?<!人均)(?:地区生产总值|生产总值)(?:\s*（?GDP）?)?[^。；;\n]{0,100}?([0-9][0-9,.]*)\s*亿元",
+        r"(?<!人均)(?:地区生产总值|生产总值)(?:\s*（?GDP）?)?[^。；;\n]{0,100}?([0-9][0-9,.\s，．]*)\s*亿元",
         text,
     )
     if gdp_match:
@@ -108,15 +114,15 @@ def parse_bulletin_text(text: str) -> dict[str, Decimal]:
         if growth:
             result["gdp_real_growth_pct"] = _decimal(growth.group(1), "%")
     population = re.search(
-        r"(?<!城镇)(?:年末[^。；;\n]{0,20}?常住(?:总)?人口|常住(?:总)?人口)[^。；;\n]{0,40}?([0-9][0-9,.]*)\s*万人",
+        r"(?<!城镇)(?:年末[^。；;\n]{0,20}?常住(?:总)?人口|常住(?:总)?人口)[^。；;\n]{0,40}?([0-9][0-9,.\s，．]*)\s*万人",
         text,
     )
     if population:
         result["resident_population_10k"] = _decimal(population.group(1), "万人")
-    revenue = _amount_after(text, r"(?:地方)?一般公共预算收入")
+    revenue = _amount_after(text, r"(?:地方)?(?:一般公共预算收入|一般公共财政预算收入|公共财政预算收入)")
     if revenue is not None:
         result["general_public_revenue_100m"] = revenue
-    expenditure = _amount_after(text, r"(?:地方)?一般公共预算支出")
+    expenditure = _amount_after(text, r"(?:地方)?(?:一般公共预算支出|一般公共财政预算支出|公共财政预算支出)")
     if expenditure is not None:
         result["general_public_expenditure_100m"] = expenditure
     return result

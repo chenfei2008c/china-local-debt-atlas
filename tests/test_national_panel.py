@@ -175,6 +175,34 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(parsed["general_public_revenue_100m"], Decimal("123.45"))
         self.assertEqual(parsed["general_public_expenditure_100m"], Decimal("234.56"))
 
+    def test_crei_bulletin_parser_does_not_use_later_deposit_balance_as_revenue(self):
+        parsed = parse_bulletin_text(
+            "全年全市公共财政预算收入完成125.7亿元，比上年增长15.5%。"
+            "其中，税收收入完成79.3亿元。一般公共预算支出509.9亿元。"
+            "年末全市金融机构人民币各项存款余额2523.1亿元。"
+        )
+        self.assertEqual(parsed["general_public_revenue_100m"], Decimal("125.70"))
+        self.assertEqual(parsed["general_public_expenditure_100m"], Decimal("509.90"))
+
+    def test_crei_bulletin_parser_handles_spaced_numbers_and_parenthetical_scope(self):
+        parsed = parse_bulletin_text(
+            "其中，地方一般公共预算收入（含两县）87.25亿元，"
+            "地方一般公共预算支出（含两县）317.57亿元。"
+            "全市一般公共预算支出8 00.12亿元。"
+            "年末全市常住人口225．00万人。"
+        )
+        self.assertEqual(parsed["general_public_revenue_100m"], Decimal("87.25"))
+        self.assertEqual(parsed["general_public_expenditure_100m"], Decimal("317.57"))
+        self.assertEqual(parsed["resident_population_10k"], Decimal("225.00"))
+
+    def test_crei_bulletin_parser_handles_footnotes_and_public_finance_variants(self):
+        parsed = parse_bulletin_text(
+            "全年地方一般公共预算收入[8]184.20亿元，"
+            "一般公共财政预算支出599.20亿元。"
+        )
+        self.assertEqual(parsed["general_public_revenue_100m"], Decimal("184.20"))
+        self.assertEqual(parsed["general_public_expenditure_100m"], Decimal("599.20"))
+
     def test_gotohui_public_series_adapter_keeps_exact_units_and_b2_lineage(self):
         root = Path(__file__).resolve().parents[1]
         with (root / "outputs/national_prefecture_panel_2018_2026/dim_city.csv").open(
