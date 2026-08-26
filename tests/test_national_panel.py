@@ -62,9 +62,58 @@ from scripts.gotohui_snapshot_collector import (
     merge_snapshot_series,
 )
 from scripts.crei_city_bulletins import is_target_bulletin_title, parse_bulletin_text
+from scripts.province_debt_sources import extract_official_debt_facts
 
 
 class NationalPanelTests(unittest.TestCase):
+
+    def test_guangdong_2025_provincial_debt_table_extracts_whole_city_limit_and_balance(self):
+        city_master = [
+            {
+                "city_id": "CN-440200",
+                "city_name_cn": "韶关市",
+                "province_name": "广东省",
+                "metric_year": "2025",
+            },
+            {
+                "city_id": "CN-441700",
+                "city_name_cn": "阳江市",
+                "province_name": "广东省",
+                "metric_year": "2025",
+            },
+            {
+                "city_id": "CN-440300",
+                "city_name_cn": "深圳市",
+                "province_name": "广东省",
+                "metric_year": "2025",
+            },
+            {
+                "city_id": "CN-440400",
+                "city_name_cn": "珠海市",
+                "province_name": "广东省",
+                "metric_year": "2025",
+            },
+        ]
+
+        facts, sources = extract_official_debt_facts(city_master)
+
+        shaoguan = facts[("CN-440200", "2025")]
+        self.assertEqual(shaoguan["statutory_debt_limit_100m"], Decimal("943.99"))
+        self.assertEqual(shaoguan["statutory_debt_balance_100m"], Decimal("937.62"))
+        self.assertEqual(shaoguan["source_grade"], "A2")
+        self.assertTrue(any(item["source_doc_id"] == "SRC-PROVINCE-DEBT-GUANGDONG-2025" for item in sources))
+
+        yangjiang = facts[("CN-441700", "2025")]
+        self.assertEqual(yangjiang["statutory_debt_limit_100m"], Decimal("683.97"))
+        self.assertEqual(yangjiang["statutory_debt_balance_100m"], Decimal("679.70"))
+
+        shenzhen = facts[("CN-440300", "2025")]
+        self.assertEqual(shenzhen["statutory_debt_limit_100m"], Decimal("4557.18"))
+        self.assertEqual(shenzhen["statutory_debt_balance_100m"], Decimal("4492.30"))
+
+        zhuhai = facts[("CN-440400", "2025")]
+        self.assertEqual(zhuhai["statutory_debt_limit_100m"], Decimal("1743.64"))
+        self.assertEqual(zhuhai["statutory_debt_balance_100m"], Decimal("1737.09"))
 
     def test_gotohui_snapshot_collector_rejects_budget_and_component_titles(self):
         self.assertTrue(

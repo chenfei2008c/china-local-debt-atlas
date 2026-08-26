@@ -980,6 +980,33 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
     ]
 )
 
+
+OFFICIAL_PROVINCE_DEBT_SOURCES.append(
+    {
+        "source_doc_id": "SRC-PROVINCE-DEBT-GUANGDONG-2025",
+        "province_name": "广东省",
+        "year": 2025,
+        "path": ROOT / "raw" / "province_fiscal" / "2025" / "official" / "guangdong_2025_budget_attachment_3.pdf",
+        "text_path": ROOT / "raw" / "province_fiscal" / "2025" / "official" / "guangdong_2025_budget_attachment_3.txt",
+        "source_url": "https://czt.gd.gov.cn/czysjs/content/post_4857651.html",
+        "attachment_url": "https://czt.gd.gov.cn/attachment/0/607/607013/4857651.pdf",
+        "document_title": "广东省2025年预算执行情况和2026年预算草案附件二",
+        "publication_date": "2026-02-14",
+        "publisher": "广东省财政厅",
+        "publisher_level": "省级财政机构",
+        "source_grade": "A2",
+        "unit": "亿元",
+        "layout": "total6",
+        # PDF 文本层把 67 表的表头排在第一页中部，珠海、深圳两行位于
+        # 表头之前；从相邻的 66 表标题切片，才能保留完整的 67 表城市行。
+        "start": "全省地方政府债券分年度偿还计划情况表",
+        "end": "2025  年全省新增债务限额安排情况表",
+        "table_name": "2025年全省地方政府债务限额及余额情况表",
+        "data_status": "execution",
+        "note": "广东省财政厅官方预算执行附件第67表，逐行列示2025年各地级市债务限额、年末余额及一般/专项拆分；单位为亿元，采用全市口径，排除市本级、区县和小计行。表中执行数保留 execution 状态，不视为最终决算数。",
+    }
+)
+
 OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
     [
         {
