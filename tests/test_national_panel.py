@@ -55,6 +55,7 @@ from scripts.collect_national_panel import (
     validate_no_zero_for_missing,
 )
 from scripts.gotohui_city_series import load_gotohui_city_series_sources
+from scripts.dachuang_city_panel import load_dachuang_city_panel_sources
 from scripts.gotohui_snapshot_collector import (
     _read_city_targets,
     acceptable_series_title,
@@ -223,6 +224,26 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(fund["gov_fund_revenue_100m"], Decimal("964.64"))
         limit = values[("CN-440300", "2018")]
         self.assertEqual(limit["statutory_debt_limit_100m"], Decimal("385.00"))
+
+    def test_dachuang_public_panel_is_explicit_d_provisional_and_normalizes_units(self):
+        root = Path(__file__).resolve().parents[1]
+        with (root / "outputs/national_prefecture_panel_2018_2026/dim_city.csv").open(
+            encoding="utf-8-sig", newline=""
+        ) as handle:
+            city_master = list(csv.DictReader(handle))
+        values, sources = load_dachuang_city_panel_sources(root, city_master)
+
+        shenzhen = values[("CN-440300", "2021")]
+        self.assertEqual(shenzhen["gdp_current_100m"], Decimal("31473.84"))
+        self.assertEqual(shenzhen["general_public_revenue_100m"], Decimal("3857.39"))
+        self.assertEqual(shenzhen["resident_population_10k"], Decimal("1768.16"))
+        self.assertEqual(shenzhen["source_grade"], "D")
+        self.assertEqual(shenzhen["data_status"], "provisional")
+        self.assertEqual(shenzhen["source_platform"], "dachuang")
+        self.assertTrue(sources[0]["content_hash_sha256"])
+
+        # 2022 年临汾人口是明显的十倍异常值，适配器宁可留空，也不把异常值写入主表。
+        self.assertNotIn("resident_population_10k", values[("CN-141000", "2022")])
 
     def test_city_yearbook_adapter_reads_exact_city_cells_and_units(self):
         root = Path(__file__).resolve().parents[1]

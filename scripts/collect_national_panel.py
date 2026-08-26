@@ -67,6 +67,7 @@ try:
     from scripts.celma_city_annual import load_celma_city_annual_sources
     from scripts.gotohui_city_series import load_gotohui_city_series_sources
     from scripts.crei_city_bulletins import load_crei_city_bulletin_sources
+    from scripts.dachuang_city_panel import load_dachuang_city_panel_sources
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
     from curated_city_fiscal_2025 import CURATED_2025_CITY_FISCAL_SOURCES
     from supplemental_city_fiscal_2025 import SUPPLEMENTAL_CITY_FISCAL_SOURCES
@@ -78,6 +79,7 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
     from celma_city_annual import load_celma_city_annual_sources
     from gotohui_city_series import load_gotohui_city_series_sources
     from crei_city_bulletins import load_crei_city_bulletin_sources
+    from dachuang_city_panel import load_dachuang_city_panel_sources
 
 getcontext().prec = 40
 
@@ -8590,10 +8592,9 @@ def build_macro_rows(
         city_year_fiscal_source = city_year_fiscal.get((city["city_id"], str(year)))
         if city_year_fiscal_source:
             fiscal_source_id = str(city_year_fiscal_source.get("source_doc_id") or "")
-            prior_source = str(row.get("source_doc_id") or "")
-            row["source_doc_id"] = ";".join(
-                item for item in [prior_source, fiscal_source_id] if item
-            )
+            applied_fields: list[str] = []
+            applied_dachuang_fields: list[str] = []
+            applied_standard_fields: list[str] = []
             for field in (
                 "gdp_current_100m",
                 "gdp_real_growth_pct",
@@ -8607,7 +8608,19 @@ def build_macro_rows(
                 value = as_decimal(city_year_fiscal_source.get(field))
                 if value is None:
                     continue
+                field_source = city_year_fiscal_source.get("_field_sources", {}).get(field, city_year_fiscal_source)
+                field_is_dachuang = (
+                    str(field_source.get("source_platform") or "") == "dachuang"
+                    and str(field_source.get("source_grade") or "") == "D"
+                )
+                if field_is_dachuang and row.get(field) is not None:
+                    continue
                 row[field] = q2(value)
+                applied_fields.append(field)
+                if field_is_dachuang:
+                    applied_dachuang_fields.append(field)
+                else:
+                    applied_standard_fields.append(field)
                 if field == "gov_fund_revenue_100m":
                     row["gov_fund_source_status"] = "城市财政局官方预算执行报告（全市口径）"
                 batch_lineage.append(
@@ -8615,15 +8628,35 @@ def build_macro_rows(
                         row, city_year_fiscal_source, field, row[field]
                     )
                 )
-            row["data_status"] = str(city_year_fiscal_source.get("data_status") or "execution")
-            row["source_grade"] = str(city_year_fiscal_source.get("source_grade") or "A2")
-            row["collection_status"] = "extracted"
-            row["note"] = (
-                str(row.get("note") or "")
-                + ("；" if row.get("note") else "")
-                + f"已接入{year}年{city['city_name_cn']}官方预算执行报告；"
-                "财政三项字段为全市快报数，保留execution状态，不改写为最终决算。"
-            )
+            if applied_fields:
+                prior_source = str(row.get("source_doc_id") or "")
+                row["source_doc_id"] = ";".join(
+                    item for item in [prior_source, fiscal_source_id] if item
+                )
+                if applied_dachuang_fields:
+                    # 行级等级可能已由其他字段的 A/B 来源决定，D 级字段
+                    # 只在行级仍为空或 D 时保留为 D，避免整体降级。
+                    if str(row.get("source_grade") or "") in {"", "D"}:
+                        row["source_grade"] = "D"
+                    if row.get("data_status") in {None, "", "not_collected", "provisional"}:
+                        row["data_status"] = "provisional"
+                    row["collection_status"] = "needs_review"
+                    row["note"] = (
+                        str(row.get("note") or "")
+                        + ("；" if row.get("note") else "")
+                        + f"已接入{year}年大创公开研究面板 D 级临时值（字段={','.join(applied_dachuang_fields)}）；"
+                        "仅用于原始空缺覆盖，待官方统计年鉴/公报复核，不计入高等级定稿率。"
+                    )
+                if applied_standard_fields:
+                    row["data_status"] = str(city_year_fiscal_source.get("data_status") or "execution")
+                    row["source_grade"] = str(city_year_fiscal_source.get("source_grade") or "A2")
+                    row["collection_status"] = "extracted"
+                    row["note"] = (
+                        str(row.get("note") or "")
+                        + ("；" if row.get("note") else "")
+                        + f"已接入{year}年{city['city_name_cn']}官方预算执行报告；"
+                        "财政三项字段为全市快报数，保留execution状态，不改写为最终决算。"
+                    )
         jiangsu_fund_source = jiangsu_city_fund.get((city["city_id"], str(year)))
         if jiangsu_fund_source:
             fund_value = as_decimal(jiangsu_fund_source.get("gov_fund_revenue_100m"))
@@ -8914,9 +8947,13 @@ def _lineage_for_city_year_fiscal(
     source = source.get("_field_sources", {}).get(field, source)
     field_label = labels[field]
     year = row["metric_year"]
+    source_grade = str(source.get("source_grade") or "B2")
+    is_dachuang = str(source.get("source_platform") or "") == "dachuang" and source_grade == "D"
     data_status_label = str(source.get("data_status_label") or f"{year}年执行数")
     raw_unit = str(source.get(f"{field}_raw_unit") or "万元")
-    if raw_unit in {"亿元", "%", "万人"}:
+    if raw_unit == "十亿元" and field == "gdp_current_100m":
+        normalization_rule = "公开研究面板 GDP 原始单位为十亿元；原值×10=亿元，保留两位小数；D级临时值。"
+    elif raw_unit in {"亿元", "%", "万人"}:
         normalization_rule = (
             f"官方预算/统计表原始单位为{raw_unit}；数值直接读取，保留两位小数；全市口径。"
         )
@@ -8928,6 +8965,9 @@ def _lineage_for_city_year_fiscal(
     is_gotohui = str(source.get("source_platform") or "") == "gotohui"
     is_crei = str(source.get("source_platform") or "") == "crei"
     locator_type = (
+        "csv_cell"
+        if is_dachuang
+        else
         "docx_text_statement"
         if source_format == "docx"
         else "html_text_statement"
@@ -8937,6 +8977,9 @@ def _lineage_for_city_year_fiscal(
         else "pdf_text_statement"
     )
     extraction_method = (
+        "public-research-panel-csv-parser"
+        if is_dachuang
+        else
         "curated-official-docx-statement-parser"
         if source_format == "docx"
         else "crei-public-html-bulletin-parser"
@@ -8953,7 +8996,7 @@ def _lineage_for_city_year_fiscal(
         row,
         field,
         str(source.get("source_doc_id", "")),
-        "disclosed",
+        "provisional" if is_dachuang else "disclosed",
         value,
         source_locator=(
             f"{source.get('source_locator', '')}；字段={field_label}"
@@ -8969,6 +9012,12 @@ def _lineage_for_city_year_fiscal(
         extraction_method=extraction_method,
         parse_confidence="0.99",
         selection_reason=(
+            (
+                "D级公开研究面板临时值，仅补空、不覆盖已有来源，待官方统计年鉴/公报复核；"
+                "不计入高等级定稿率。"
+            )
+            if is_dachuang
+            else
             (
                 "财政部地方政府债券信息公开平台城市年度接口返回精确记录，"
                 f"年度、行政范围和{data_status_label}状态清晰。"
@@ -9974,6 +10023,42 @@ def main() -> None:
         if prior.get("data_status") in {None, "", "provisional", "not_collected"}:
             prior["data_status"] = str(candidate.get("data_status") or "reported")
     city_year_fiscal_sources.extend(celma_city_annual_sources)
+    # 公开研究面板只作为 D 级临时补缺：仅填充经过前述高等级来源和
+    # 年鉴来源仍为空的字段，不覆盖任何已有值，也不提高高等级完成率。
+    dachuang_city_panel, dachuang_city_panel_sources = load_dachuang_city_panel_sources(ROOT, city_master)
+    for key, candidate in dachuang_city_panel.items():
+        prior = city_year_fiscal.get(key)
+        if prior is None:
+            city_year_fiscal[key] = candidate
+            continue
+        field_sources = dict(prior.get("_field_sources") or {})
+        source_ids = [item for item in str(prior.get("source_doc_id") or "").split(";") if item]
+        candidate_id = str(candidate.get("source_doc_id") or "")
+        if candidate_id and candidate_id not in source_ids:
+            source_ids.append(candidate_id)
+        for field in (
+            "gdp_current_100m",
+            "resident_population_10k",
+            "general_public_revenue_100m",
+            "general_public_expenditure_100m",
+        ):
+            candidate_value = as_decimal(candidate.get(field))
+            if candidate_value is None:
+                continue
+            prior_source = field_sources.get(field, prior)
+            prior_value = as_decimal(prior_source.get(field) if prior_source else prior.get(field))
+            # D 级来源只能补空；既有 D 值也不重复覆盖，方便后续回溯。
+            if prior_value is not None:
+                continue
+            prior[field] = candidate_value
+            for suffix in ("_raw_100m", "_raw_unit", "_evidence_excerpt"):
+                source_key = f"{field}{suffix}"
+                if source_key in candidate:
+                    prior[source_key] = candidate[source_key]
+            field_sources[field] = dict(candidate.get("_field_sources", {}).get(field, candidate))
+        prior["source_doc_id"] = ";".join(source_ids)
+        prior["_field_sources"] = field_sources
+    city_year_fiscal_sources.extend(dachuang_city_panel_sources)
     city_year_fund, city_year_fund_sources = load_city_year_fund_sources()
     city_yearbook_macro, city_yearbook_sources = load_city_yearbook_sources(ROOT, city_master)
     city_year_fund.update(xinjiang_city_fund)
