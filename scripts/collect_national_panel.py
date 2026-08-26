@@ -68,6 +68,7 @@ try:
     from scripts.gotohui_city_series import load_gotohui_city_series_sources
     from scripts.crei_city_bulletins import load_crei_city_bulletin_sources
     from scripts.dachuang_city_panel import load_dachuang_city_panel_sources
+    from scripts.haidatas_city_panel import HAIDATAS_SOURCE_ID, load_haidatas_city_panel_sources
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
     from curated_city_fiscal_2025 import CURATED_2025_CITY_FISCAL_SOURCES
     from supplemental_city_fiscal_2025 import SUPPLEMENTAL_CITY_FISCAL_SOURCES
@@ -80,6 +81,7 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
     from gotohui_city_series import load_gotohui_city_series_sources
     from crei_city_bulletins import load_crei_city_bulletin_sources
     from dachuang_city_panel import load_dachuang_city_panel_sources
+    from haidatas_city_panel import HAIDATAS_SOURCE_ID, load_haidatas_city_panel_sources
 
 getcontext().prec = 40
 
@@ -8593,7 +8595,7 @@ def build_macro_rows(
         if city_year_fiscal_source:
             fiscal_source_id = str(city_year_fiscal_source.get("source_doc_id") or "")
             applied_fields: list[str] = []
-            applied_dachuang_fields: list[str] = []
+            applied_public_panel_fields: list[str] = []
             applied_standard_fields: list[str] = []
             for field in (
                 "gdp_current_100m",
@@ -8609,16 +8611,17 @@ def build_macro_rows(
                 if value is None:
                     continue
                 field_source = city_year_fiscal_source.get("_field_sources", {}).get(field, city_year_fiscal_source)
-                field_is_dachuang = (
-                    str(field_source.get("source_platform") or "") == "dachuang"
+                field_is_public_panel = (
+                    str(field_source.get("source_platform") or "")
+                    in {"dachuang", "haidatas"}
                     and str(field_source.get("source_grade") or "") == "D"
                 )
-                if field_is_dachuang and row.get(field) is not None:
+                if field_is_public_panel and row.get(field) is not None:
                     continue
                 row[field] = q2(value)
                 applied_fields.append(field)
-                if field_is_dachuang:
-                    applied_dachuang_fields.append(field)
+                if field_is_public_panel:
+                    applied_public_panel_fields.append(field)
                 else:
                     applied_standard_fields.append(field)
                 if field == "gov_fund_revenue_100m":
@@ -8633,7 +8636,7 @@ def build_macro_rows(
                 row["source_doc_id"] = ";".join(
                     item for item in [prior_source, fiscal_source_id] if item
                 )
-                if applied_dachuang_fields:
+                if applied_public_panel_fields:
                     # 行级等级可能已由其他字段的 A/B 来源决定，D 级字段
                     # 只在行级仍为空或 D 时保留为 D，避免整体降级。
                     if str(row.get("source_grade") or "") in {"", "D"}:
@@ -8644,7 +8647,7 @@ def build_macro_rows(
                     row["note"] = (
                         str(row.get("note") or "")
                         + ("；" if row.get("note") else "")
-                        + f"已接入{year}年大创公开研究面板 D 级临时值（字段={','.join(applied_dachuang_fields)}）；"
+                        + f"已接入{year}年第三方公开研究面板 D 级临时值（字段={','.join(applied_public_panel_fields)}）；"
                         "仅用于原始空缺覆盖，待官方统计年鉴/公报复核，不计入高等级定稿率。"
                     )
                 if applied_standard_fields:
@@ -8948,10 +8951,18 @@ def _lineage_for_city_year_fiscal(
     field_label = labels[field]
     year = row["metric_year"]
     source_grade = str(source.get("source_grade") or "B2")
-    is_dachuang = str(source.get("source_platform") or "") == "dachuang" and source_grade == "D"
+    is_public_panel = (
+        str(source.get("source_platform") or "") in {"dachuang", "haidatas"}
+        and source_grade == "D"
+    )
     data_status_label = str(source.get("data_status_label") or f"{year}年执行数")
     raw_unit = str(source.get(f"{field}_raw_unit") or "万元")
-    if raw_unit == "十亿元" and field == "gdp_current_100m":
+    if is_public_panel and source.get("source_platform") == "haidatas":
+        normalization_rule = (
+            f"海数据第三方公开面板原始单位为{raw_unit}；数值直接读取，"
+            "保留两位小数；全市口径；D级临时值。"
+        )
+    elif raw_unit == "十亿元" and field == "gdp_current_100m":
         normalization_rule = "公开研究面板 GDP 原始单位为十亿元；原值×10=亿元，保留两位小数；D级临时值。"
     elif raw_unit in {"亿元", "%", "万人"}:
         normalization_rule = (
@@ -8965,8 +8976,10 @@ def _lineage_for_city_year_fiscal(
     is_gotohui = str(source.get("source_platform") or "") == "gotohui"
     is_crei = str(source.get("source_platform") or "") == "crei"
     locator_type = (
-        "csv_cell"
-        if is_dachuang
+        "xlsx_cell"
+        if is_public_panel and source.get("source_platform") == "haidatas"
+        else "csv_cell"
+        if is_public_panel
         else
         "docx_text_statement"
         if source_format == "docx"
@@ -8977,8 +8990,10 @@ def _lineage_for_city_year_fiscal(
         else "pdf_text_statement"
     )
     extraction_method = (
-        "public-research-panel-csv-parser"
-        if is_dachuang
+        "public-research-panel-xlsx-parser"
+        if is_public_panel and source.get("source_platform") == "haidatas"
+        else "public-research-panel-csv-parser"
+        if is_public_panel
         else
         "curated-official-docx-statement-parser"
         if source_format == "docx"
@@ -8996,7 +9011,7 @@ def _lineage_for_city_year_fiscal(
         row,
         field,
         str(source.get("source_doc_id", "")),
-        "provisional" if is_dachuang else "disclosed",
+        "provisional" if is_public_panel else "disclosed",
         value,
         source_locator=(
             f"{source.get('source_locator', '')}；字段={field_label}"
@@ -9016,7 +9031,7 @@ def _lineage_for_city_year_fiscal(
                 "D级公开研究面板临时值，仅补空、不覆盖已有来源，待官方统计年鉴/公报复核；"
                 "不计入高等级定稿率。"
             )
-            if is_dachuang
+            if is_public_panel
             else
             (
                 "财政部地方政府债券信息公开平台城市年度接口返回精确记录，"
@@ -10059,6 +10074,46 @@ def main() -> None:
         prior["source_doc_id"] = ";".join(source_ids)
         prior["_field_sources"] = field_sources
     city_year_fiscal_sources.extend(dachuang_city_panel_sources)
+    # 海数据公开资源也是第三方 D 级面板。按字段合并时只补空值，避免覆盖
+    # 前面的官方/年鉴来源以及已有的其他研究面板暂存值。
+    haidatas_city_panel, haidatas_city_panel_sources = load_haidatas_city_panel_sources(
+        ROOT, city_master
+    )
+    for key, candidate in haidatas_city_panel.items():
+        prior = city_year_fiscal.get(key)
+        if prior is None:
+            city_year_fiscal[key] = candidate
+            continue
+        field_sources = dict(prior.get("_field_sources") or {})
+        source_ids = [item for item in str(prior.get("source_doc_id") or "").split(";") if item]
+        candidate_id = str(candidate.get("source_doc_id") or "")
+        if candidate_id and candidate_id not in source_ids:
+            source_ids.append(candidate_id)
+        for field in (
+            "gdp_current_100m",
+            "gdp_real_growth_pct",
+            "general_public_revenue_100m",
+            "general_public_expenditure_100m",
+            "gov_fund_revenue_100m",
+            "statutory_debt_limit_100m",
+            "statutory_debt_balance_100m",
+        ):
+            candidate_value = as_decimal(candidate.get(field))
+            if candidate_value is None:
+                continue
+            prior_source = field_sources.get(field, prior)
+            prior_value = as_decimal(prior_source.get(field) if prior_source else prior.get(field))
+            if prior_value is not None:
+                continue
+            prior[field] = candidate_value
+            for suffix in ("_raw_100m", "_raw_unit", "_evidence_excerpt", "_cell_range"):
+                source_key = f"{field}{suffix}"
+                if source_key in candidate:
+                    prior[source_key] = candidate[source_key]
+            field_sources[field] = dict(candidate.get("_field_sources", {}).get(field, candidate))
+        prior["source_doc_id"] = ";".join(source_ids)
+        prior["_field_sources"] = field_sources
+    city_year_fiscal_sources.extend(haidatas_city_panel_sources)
     city_year_fund, city_year_fund_sources = load_city_year_fund_sources()
     city_yearbook_macro, city_yearbook_sources = load_city_yearbook_sources(ROOT, city_master)
     city_year_fund.update(xinjiang_city_fund)
@@ -10133,6 +10188,7 @@ def main() -> None:
             {"SRC-GD-CITY-FISCAL-2025"}
             | JIANGSU_CITY_FISCAL_SOURCE_IDS
             | CITY_YEAR_FISCAL_SOURCE_IDS
+            | {HAIDATAS_SOURCE_ID}
         )
     ]
     new_fund_lineage = [
@@ -10150,6 +10206,7 @@ def main() -> None:
             | {"SRC-GD-CITY-FISCAL-2025"}
             | JIANGSU_CITY_FISCAL_SOURCE_IDS
             | CITY_YEAR_FISCAL_SOURCE_IDS
+            | {HAIDATAS_SOURCE_ID}
         )
     ]
     attach_lineage_ids(lineage)

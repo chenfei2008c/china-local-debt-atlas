@@ -56,6 +56,7 @@ from scripts.collect_national_panel import (
 )
 from scripts.gotohui_city_series import load_gotohui_city_series_sources
 from scripts.dachuang_city_panel import load_dachuang_city_panel_sources
+from scripts.haidatas_city_panel import load_haidatas_city_panel_sources
 from scripts.gotohui_snapshot_collector import (
     _read_city_targets,
     acceptable_series_title,
@@ -244,6 +245,30 @@ class NationalPanelTests(unittest.TestCase):
 
         # 2022 年临汾人口是明显的十倍异常值，适配器宁可留空，也不把异常值写入主表。
         self.assertNotIn("resident_population_10k", values[("CN-141000", "2022")])
+
+    def test_haidatas_public_panel_reads_exact_cells_and_excludes_ambiguous_population(self):
+        root = Path(__file__).resolve().parents[1]
+        with (root / "outputs/national_prefecture_panel_2018_2026/dim_city.csv").open(
+            encoding="utf-8-sig", newline=""
+        ) as handle:
+            city_master = list(csv.DictReader(handle))
+        values, sources = load_haidatas_city_panel_sources(root, city_master)
+
+        self.assertEqual(len(sources), 1)
+        self.assertEqual(len(values), 1348)
+        anqing = values[("CN-340800", "2018")]
+        self.assertEqual(anqing["gdp_current_100m"], Decimal("2196.75"))
+        self.assertEqual(anqing["general_public_revenue_100m"], Decimal("133.20"))
+        self.assertEqual(anqing["gov_fund_revenue_100m"], Decimal("177.30"))
+        self.assertEqual(anqing["statutory_debt_limit_100m"], Decimal("413.17"))
+        self.assertEqual(anqing["source_grade"], "D")
+        self.assertEqual(anqing["source_platform"], "haidatas")
+        self.assertEqual(
+            anqing["_field_sources"]["gov_fund_revenue_100m"]["cell_range"],
+            "AF1017",
+        )
+        self.assertNotIn("resident_population_10k", anqing)
+        self.assertTrue(sources[0]["content_hash_sha256"])
 
     def test_city_yearbook_adapter_reads_exact_city_cells_and_units(self):
         root = Path(__file__).resolve().parents[1]
