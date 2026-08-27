@@ -10,6 +10,8 @@ class HongheikuBulletinTests(unittest.TestCase):
         self.assertTrue(is_target_bulletin_title("(河北省)保定市2025年国民经济和社会发展统计公报", "保定市"))
         self.assertTrue(is_target_bulletin_title("二〇二五年辽阳市国民经济和社会发展统计公报", "辽阳市"))
         self.assertTrue(is_target_bulletin_title("2025年巴州国民经济和社会发展统计公报", "巴音郭楞蒙古自治州"))
+        self.assertTrue(is_target_bulletin_title("甘孜州二Ｏ二三年国民经济和社会发展主要统计数据公报", "甘孜藏族自治州", "2023"))
+        self.assertTrue(is_target_bulletin_title("2024年保定市国民经济和社会发展统计公报", "保定市", "2024"))
         self.assertFalse(is_target_bulletin_title("(保定市)蠡县2025年国民经济和社会发展统计公报", "保定市"))
 
     def test_page_normalization_keeps_exact_prefecture_values(self):
@@ -21,4 +23,3 @@ class HongheikuBulletinTests(unittest.TestCase):
         self.assertEqual(parsed["gdp_real_growth_pct"], Decimal("5.10"))
         self.assertEqual(parsed["general_public_revenue_100m"], Decimal("48.30"))
         self.assertEqual(parsed["general_public_expenditure_100m"], Decimal("126.40"))
-
