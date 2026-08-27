@@ -119,10 +119,16 @@ def parse_bulletin_text(text: str) -> dict[str, Decimal]:
     )
     if population:
         result["resident_population_10k"] = _decimal(population.group(1), "万人")
-    revenue = _amount_after(text, r"(?:地方)?(?:一般公共预算收入|一般公共财政预算收入|公共财政预算收入)")
+    revenue = _amount_after(
+        text,
+        r"(?:地方)?(?:一般公共预算收入|一般公共财政预算收入|公共财政预算收入|公共财政一般预算收入)",
+    )
     if revenue is not None:
         result["general_public_revenue_100m"] = revenue
-    expenditure = _amount_after(text, r"(?:地方)?(?:一般公共预算支出|一般公共财政预算支出|公共财政预算支出)")
+    expenditure = _amount_after(
+        text,
+        r"(?:地方)?(?:一般公共预算支出|一般公共财政预算支出|公共财政预算支出|财政一般预算支出)",
+    )
     if expenditure is not None:
         result["general_public_expenditure_100m"] = expenditure
     return result
@@ -249,7 +255,13 @@ def load_crei_city_bulletin_sources(root: Path, city_master: list[Mapping[str, A
             "general_public_revenue_100m": "亿元",
             "general_public_expenditure_100m": "亿元",
         }
-        for field, raw in (item.get("values") or {}).items():
+        stored_values = dict(item.get("values") or {})
+        # 快照保留原始解析结果；加载时用当前解析器只补充快照正文中
+        # 当时未识别的规范字段，便于解析规则修复后无需重抓网页。
+        for field, parsed in parse_bulletin_text(str(item.get("text") or "")).items():
+            if field not in stored_values:
+                stored_values[field] = str(parsed)
+        for field, raw in stored_values.items():
             try:
                 value = Decimal(str(raw)).quantize(Decimal("0.01"))
             except (InvalidOperation, ValueError):

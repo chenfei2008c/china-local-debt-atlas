@@ -27,3 +27,10 @@ class HongheikuBulletinTests(unittest.TestCase):
         self.assertEqual(parsed["gdp_real_growth_pct"], Decimal("5.10"))
         self.assertEqual(parsed["general_public_revenue_100m"], Decimal("48.30"))
         self.assertEqual(parsed["general_public_expenditure_100m"], Decimal("126.40"))
+
+    def test_page_parser_handles_public_finance_word_order_variants(self):
+        parsed = parse_bulletin_text(
+            "全年全市公共财政一般预算收入118.17亿元。全市财政一般预算支出330.21亿元。"
+        )
+        self.assertEqual(parsed["general_public_revenue_100m"], Decimal("118.17"))
+        self.assertEqual(parsed["general_public_expenditure_100m"], Decimal("330.21"))

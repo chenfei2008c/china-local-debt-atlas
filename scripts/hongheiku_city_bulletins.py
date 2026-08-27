@@ -292,7 +292,13 @@ def load_hongheiku_city_bulletin_sources(
             "general_public_revenue_100m": "亿元",
             "general_public_expenditure_100m": "亿元",
         }
-        for field, raw in (item.get("values") or {}).items():
+        stored_values = dict(item.get("values") or {})
+        # 快照保留原始解析结果；加载时用当前解析器只补充快照正文中
+        # 当时未识别的规范字段，便于解析规则修复后无需重抓网页。
+        for field, parsed in parse_bulletin_text(str(item.get("text") or "")).items():
+            if field in TARGET_FIELDS and field not in stored_values:
+                stored_values[field] = str(parsed)
+        for field, raw in stored_values.items():
             try:
                 value = Decimal(str(raw)).quantize(Decimal("0.01"))
             except (InvalidOperation, ValueError):
