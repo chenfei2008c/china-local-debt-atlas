@@ -1,7 +1,7 @@
-"""红黑统计公报库地级市 2021—2025 年公报批量适配器。
+"""红黑统计公报库地级市 2020—2025 年公报批量适配器。
 
 红黑统计公报库是公开的统计公报转载索引。本适配器只接受标题明确指向
-地级行政单元本身的 2021—2025 年公报，并把页面正文作为 B2 精确二手来源：
+地级行政单元本身的 2020—2025 年公报，并把页面正文作为 B2 精确二手来源：
 不读取区县页面，不从图表估读，也不把转载页标为官方 A2 来源。
 
 与 CREI 快照适配器分开保存，避免混淆两个转载入口；两者最终都通过
@@ -34,7 +34,7 @@ except ModuleNotFoundError:  # 允许以 python scripts/hongheiku_city_bulletins
 
 SNAPSHOT_PATH = Path("raw/province_fiscal/hongheiku/city_bulletin_snapshot.json")
 SITEMAP_URL = "https://tjgb.hongheiku.com/wp-sitemap-posts-post-10.xml"
-SUPPORTED_YEARS = {"2021", "2022", "2023", "2024", "2025"}
+SUPPORTED_YEARS = {"2020", "2021", "2022", "2023", "2024", "2025"}
 SOURCE_GRADE = "B2"
 TARGET_FIELDS = (
     "gdp_current_100m",
@@ -80,6 +80,7 @@ def is_target_bulletin_title(title: str, city_name: str, year: str = "2025") -> 
     if year not in SUPPORTED_YEARS:
         return False
     years = {
+        "2020": ("2020年", "2020年度", "二〇二〇年", "二○二〇年", "二Ｏ二〇年"),
         "2021": ("2021年", "2021年度", "二〇二一年", "二○二一年", "二Ｏ二一年"),
         "2022": ("2022年", "2022年度", "二〇二二年", "二○二二年", "二Ｏ二二年"),
         "2023": ("2023年", "2023年度", "二〇二三年", "二○二三年", "二Ｏ二三年"),
@@ -248,7 +249,7 @@ def _write_snapshot(snapshot_path: Path, items: Iterable[Mapping[str, Any]]) -> 
     output = {
         "snapshot_date": time.strftime("%Y-%m-%d"),
         "source_platform": "红黑统计公报库（地方统计公报公开转载）",
-        "selection_note": "只保留标题明确为2021—2025年地级行政单元本身的统计公报；区县公报、图表估读和无法解析的页面排除。数值以页面正文直接读取，来源等级为B2。",
+        "selection_note": "只保留标题明确为2020—2025年地级行政单元本身的统计公报；区县公报、图表估读和无法解析的页面排除。数值以页面正文直接读取，来源等级为B2。",
         "bulletins": sorted(items, key=lambda item: (item.get("city_id", ""), item.get("metric_year", ""), item.get("source_url", ""))),
     }
     snapshot_path.parent.mkdir(parents=True, exist_ok=True)
@@ -338,7 +339,7 @@ def load_hongheiku_city_bulletin_sources(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="抓取红黑统计公报库地级市2021—2025年公报")
+    parser = argparse.ArgumentParser(description="抓取红黑统计公报库地级市2020—2025年公报")
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--workers", type=int, default=16)
     parser.add_argument("--sitemap-url", action="append", default=None, help="要抓取的 WordPress 站点地图，可重复指定")
