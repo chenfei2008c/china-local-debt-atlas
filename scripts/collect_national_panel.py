@@ -8197,6 +8197,148 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     )
 )
 
+# 2024 年新疆官方地州批量表与统计公报补缺：财政厅表十、表十一
+# 提供各地一般公共预算收入、支出（原始单位万元），克州、塔城官方
+# 统计材料提供 GDP 与实际增速，和田工作总结提供全地区 GDP 增速。
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    _make_curated_city_source(**spec)
+    for spec in (
+        {
+            "year": 2024,
+            "city_name": "克孜勒苏柯尔克孜自治州",
+            "city_id": "CN-653000",
+            "source_doc_id": "SRC-A2-XINJIANG-KIZILSU-MACRO-2024",
+            "url": "https://www.xjkz.gov.cn/xjkz/c101981/202502/11606b4da264429bbd0d8351a170852e.shtml",
+            "path": RAW_DIR / "province_fiscal" / "2024" / "official" / "xinjiang_2024_city_macro_official_excerpt.txt",
+            "document_title": "克州2024年经济运行情况",
+            "publisher": "克孜勒苏柯尔克孜自治州统计局",
+            "publisher_level": "州级统计机构",
+            "publication_date": "2025-02-12",
+            "source_grade": "A2",
+            "fields": ("gdp_current_100m", "gdp_real_growth_pct"),
+            "raw_units": {"gdp_real_growth_pct": "%"},
+            "source_format": "html",
+            "data_status": "preliminary",
+            "data_status_label": "2024年公报初步统计数",
+            "document_type": "官方州级经济运行情况",
+            "page_number": "官方网页正文；综合部分",
+            "note": "A2克州统计局官方经济运行情况；采用克州全州地区生产总值256.66亿元和按不变价格计算的实际增速4.2%。",
+        },
+        {
+            "year": 2024,
+            "city_name": "塔城地区",
+            "city_id": "CN-654200",
+            "source_doc_id": "SRC-A2-XINJIANG-TACHENG-MACRO-2024",
+            "url": "https://www.xjtc.gov.cn/upload/main/contentmanage/article/file/2025/04/17/202504171907016890.pdf",
+            "path": RAW_DIR / "province_fiscal" / "2024" / "official" / "xinjiang_2024_city_macro_official_excerpt.txt",
+            "document_title": "塔城地区2024年国民经济和社会发展统计公报",
+            "publisher": "塔城地区统计局",
+            "publisher_level": "地区统计机构",
+            "publication_date": "2025-04-17",
+            "source_grade": "A2",
+            "fields": ("gdp_current_100m", "gdp_real_growth_pct"),
+            "raw_units": {"gdp_real_growth_pct": "%"},
+            "source_format": "pdf",
+            "data_status": "preliminary",
+            "data_status_label": "2024年公报初步统计数",
+            "document_type": "官方统计公报经济指标（PDF）",
+            "page_number": "PDF第1页、第3页综合部分",
+            "note": "A2塔城地区统计局官方统计公报；采用全地区GDP现价绝对数998.72亿元和按不变价格计算的实际增速6.6%。",
+        },
+        {
+            "year": 2024,
+            "city_name": "和田地区",
+            "city_id": "CN-653200",
+            "source_doc_id": "SRC-A2-XINJIANG-HOTAN-GDP-GROWTH-2024",
+            "url": "https://www.xjht.gov.cn/xjht/c128274/202512/5ab9986d4cd0424c92374d6ac91ceb5b.shtml",
+            "path": RAW_DIR / "province_fiscal" / "2024" / "official" / "hotan_2024_gdp_growth_official_excerpt.txt",
+            "document_title": "和田地区行署2024年工作总结和2025年工作安排",
+            "publisher": "和田地区行政公署办公室",
+            "publisher_level": "地区政府",
+            "publication_date": "2025-03-04",
+            "source_grade": "A2",
+            "fields": ("gdp_real_growth_pct",),
+            "raw_units": {"gdp_real_growth_pct": "%"},
+            "source_format": "html",
+            "data_status": "preliminary",
+            "data_status_label": "2024年工作总结统计数",
+            "document_type": "官方政府工作总结经济指标",
+            "page_number": "官方网页正文；2024年工作总结部分",
+            "note": "A2和田地区行政公署官方工作总结；明确列示2024年全地区GDP增长6.4%，因材料未列GDP绝对数不进行推算。",
+        },
+    )
+)
+
+# 新疆财政厅 2024 年表十、表十一：各地一般公共预算收入、支出完成数。
+# 原始表单位为万元，字段级换算由统一来源解析器完成；该批次不覆盖
+# 已有更高等级字段。
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    _make_curated_city_source(**spec)
+    for spec in (
+        {
+            "year": 2024,
+            "city_name": city,
+            "city_id": city_id,
+            "source_doc_id": f"SRC-A1-XINJIANG-CITY-FISCAL-2024-{slug}",
+            "url": "https://czt.xinjiang.gov.cn/xjczt/c115511/202501/4a78ff1bea3045eeba621d2d1d7db349.shtml",
+            "path": RAW_DIR / "province_fiscal" / "2024" / "official" / "xinjiang_2024_city_fiscal_execution_excerpt.txt",
+            "document_title": "2024年自治区预算执行情况和2025年自治区预算（四本预算）",
+            "publisher": "新疆维吾尔自治区财政厅",
+            "publisher_level": "自治区财政部门",
+            "publication_date": "2025-01-23",
+            "source_grade": "A1",
+            "fields": ("general_public_revenue_100m", "general_public_expenditure_100m"),
+            "raw_unit": "万元",
+            "source_format": "pdf",
+            "data_status": "execution",
+            "data_status_label": "2024年预算执行完成数",
+            "document_type": "自治区财政厅分地州预算执行表",
+            "page_number": "PDF表十第12页、表十一第13页",
+            "note": "A1新疆财政厅官方分地州预算执行表；表十、表十一逐项列示地州全地区一般公共预算收入、支出完成数，原始单位万元，换算为亿元入表。",
+        }
+        for city, city_id, slug in (
+            ("克孜勒苏柯尔克孜自治州", "CN-653000", "KIZILSU"),
+            ("和田地区", "CN-653200", "HOTAN"),
+            ("塔城地区", "CN-654200", "TACHENG"),
+        )
+    )
+)
+
+# 吉林省统计局 2025 年官方分市 GDP 表，补齐四平、通化、延边的 GDP
+# 和实际增速；来源为省级统计机构的城市表，保留公报/年报快报状态。
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    _make_curated_city_source(**spec)
+    for spec in (
+        {
+            "year": 2025,
+            "city_name": city,
+            "city_id": city_id,
+            "source_doc_id": f"SRC-A1-JILIN-CITY-GDP-2025-{slug}",
+            "url": "https://tjj.jl.gov.cn/tjsj/jdsj/dqsczz/202602/t20260228_3580306.html",
+            "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "jilin_2025_city_gdp_official_excerpt.txt",
+            "document_title": "2025年1—4季度地区生产总值",
+            "publisher": "吉林省统计局",
+            "publisher_level": "省级统计机构",
+            "publication_date": "2026-02-28",
+            "source_grade": "A1",
+            "fields": ("gdp_current_100m", "gdp_real_growth_pct"),
+            "raw_units": {"gdp_real_growth_pct": "%"},
+            "text_city_name": text_name,
+            "source_format": "html",
+            "data_status": "preliminary",
+            "data_status_label": "2025年1—4季度统计数",
+            "document_type": "省级统计局官方分市GDP表",
+            "page_number": "官方网页表格；2025年1—4季度地区生产总值",
+            "note": "A1吉林省统计局官方分市GDP表；表格逐项列示2025年四平、通化、延边全市/全州GDP及增速，GDP单位亿元、增速单位%。",
+        }
+        for city, city_id, slug, text_name in (
+            ("四平市", "CN-220300", "SIPING", "四平市"),
+            ("通化市", "CN-220500", "TONGHUA", "通化市"),
+            ("延边朝鲜族自治州", "CN-222400", "YANBIAN", "延边州"),
+        )
+    )
+)
+
 # 之前按“next”批次完成并通过独立适配器测试的 2025 年城市来源，统一转成
 # 全国主表的标准来源接口。原批次的 patterns 使用 (正则, 原单位) 元组，
 # 这里只做接口标准化，不改变原始正则、数值或来源等级；这样这些已归档来源
