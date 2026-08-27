@@ -7971,6 +7971,78 @@ CITY_YEAR_FISCAL_SOURCES += (
     },
 )
 
+# 2025 年官方/精确公报长图批次：汉中、恩施州、日照。三条来源均逐项
+# 列示全市（州）GDP、实际增速和一般公共预算收支；公报长图先转为标准
+# 摘录文本，再由统一城市来源接口解析，避免把图片目测或市本级数据写入主表。
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    _make_curated_city_source(**spec)
+    for spec in (
+        {
+            "year": 2025,
+            "city_name": "汉中市",
+            "city_id": "CN-610700",
+            "source_doc_id": "SRC-A2-HANZHONG-CITY-MACRO-FISCAL-2025",
+            "url": "https://tjj.hanzhong.gov.cn/hztjj/tjgb/202606/a327c601520c4b0888cbd094803dd422.shtml",
+            "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "hanzhong_2025_statistical_bulletin_excerpt.txt",
+            "document_title": "汉中市2025年国民经济和社会发展统计公报",
+            "publisher": "汉中市统计局、国家统计局汉中调查队",
+            "publisher_level": "市级统计机构",
+            "publication_date": "2026-05-28",
+            "source_grade": "A2",
+            "fields": ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"),
+            "raw_units": {"gdp_real_growth_pct": "%"},
+            "source_format": "html",
+            "data_status": "preliminary",
+            "data_status_label": "2025年公报初步统计数",
+            "document_type": "官方统计公报经济财政指标（正文长图）",
+            "page_number": "官方公报正文长图综合及财政金融部分",
+            "note": "A2汉中市统计局官方统计公报；正文以长图发布，采用汉中市全市GDP、实际增速和一般公共预算收支，财政数据注明来自市财政局。",
+        },
+        {
+            "year": 2025,
+            "city_name": "日照市",
+            "city_id": "CN-371100",
+            "source_doc_id": "SRC-B2-RIZHAO-CITY-MACRO-FISCAL-2025",
+            "url": "https://tjgb.hongheiku.com/djs/68596.html",
+            "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "rizhao_2025_statistical_bulletin_excerpt.txt",
+            "document_title": "日照市2025年国民经济和社会发展统计公报",
+            "publisher": "日照市统计局公报精确转载",
+            "publisher_level": "市级统计机构公报转载",
+            "publication_date": "2026-04-09",
+            "source_grade": "B2",
+            "fields": ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"),
+            "raw_units": {"gdp_real_growth_pct": "%"},
+            "source_format": "pdf",
+            "data_status": "preliminary",
+            "data_status_label": "2025年公报年快报/初步统计数",
+            "document_type": "市级统计公报经济财政指标精确转载PDF",
+            "page_number": "PDF第2页综合部分、第5页财政金融部分",
+            "note": "B2精确公报PDF；公报明确日照市全市GDP、实际增速和一般公共预算收支，财政段落未混用区县或市本级口径。",
+        },
+        {
+            "year": 2025,
+            "city_name": "恩施土家族苗族自治州",
+            "city_id": "CN-422800",
+            "source_doc_id": "SRC-B2-ENSHI-PREFECTURE-MACRO-FISCAL-2025",
+            "url": "https://tjgb.hongheiku.com/xjtjgb/xj2020/71889.html",
+            "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "enshi_2025_statistical_bulletin_excerpt.txt",
+            "document_title": "恩施土家族苗族自治州2025年国民经济和社会发展统计公报",
+            "publisher": "恩施土家族苗族自治州统计局公报转载",
+            "publisher_level": "州级统计机构公报转载",
+            "publication_date": "2026-05-20",
+            "source_grade": "B2",
+            "fields": ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"),
+            "raw_units": {"gdp_real_growth_pct": "%"},
+            "source_format": "html",
+            "data_status": "preliminary",
+            "data_status_label": "2025年公报初步统计数",
+            "document_type": "州级统计公报经济财政指标精确转载（正文长图）",
+            "page_number": "公报第1张、第11张图片综合及财政金融部分",
+            "note": "B2精确公报长图转载；采用恩施州全州GDP、实际增速和一般公共预算收支，公报明确财政收支数据来自州财政局。",
+        },
+    )
+)
+
 # 之前按“next”批次完成并通过独立适配器测试的 2025 年城市来源，统一转成
 # 全国主表的标准来源接口。原批次的 patterns 使用 (正则, 原单位) 元组，
 # 这里只做接口标准化，不改变原始正则、数值或来源等级；这样这些已归档来源
