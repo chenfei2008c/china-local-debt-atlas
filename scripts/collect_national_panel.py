@@ -67,6 +67,7 @@ try:
     from scripts.celma_city_annual import load_celma_city_annual_sources
     from scripts.gotohui_city_series import load_gotohui_city_series_sources
     from scripts.crei_city_bulletins import load_crei_city_bulletin_sources
+    from scripts.hongheiku_city_bulletins import load_hongheiku_city_bulletin_sources
     from scripts.dachuang_city_panel import load_dachuang_city_panel_sources
     from scripts.haidatas_city_panel import HAIDATAS_SOURCE_ID, load_haidatas_city_panel_sources
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
@@ -80,6 +81,7 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
     from celma_city_annual import load_celma_city_annual_sources
     from gotohui_city_series import load_gotohui_city_series_sources
     from crei_city_bulletins import load_crei_city_bulletin_sources
+    from hongheiku_city_bulletins import load_hongheiku_city_bulletin_sources
     from dachuang_city_panel import load_dachuang_city_panel_sources
     from haidatas_city_panel import HAIDATAS_SOURCE_ID, load_haidatas_city_panel_sources
 
@@ -8975,6 +8977,7 @@ def _lineage_for_city_year_fiscal(
     source_format = str(source.get("source_format") or "pdf")
     is_gotohui = str(source.get("source_platform") or "") == "gotohui"
     is_crei = str(source.get("source_platform") or "") == "crei"
+    is_hongheiku = str(source.get("source_platform") or "") == "hongheiku"
     locator_type = (
         "xlsx_cell"
         if is_public_panel and source.get("source_platform") == "haidatas"
@@ -8984,7 +8987,7 @@ def _lineage_for_city_year_fiscal(
         "docx_text_statement"
         if source_format == "docx"
         else "html_text_statement"
-        if source_format == "html" or is_gotohui or is_crei
+        if source_format == "html" or is_gotohui or is_crei or is_hongheiku
         else "api_json_record"
         if source_format == "json"
         else "pdf_text_statement"
@@ -8999,6 +9002,8 @@ def _lineage_for_city_year_fiscal(
         if source_format == "docx"
         else "crei-public-html-bulletin-parser"
         if is_crei
+        else "hongheiku-public-html-bulletin-parser"
+        if is_hongheiku
         else "curated-official-html-statement-parser"
         if source_format == "html"
         else "gotohui-public-html-table-parser"
@@ -9043,6 +9048,11 @@ def _lineage_for_city_year_fiscal(
                 "标题、年度和行政范围与目标一致；不使用区县、公报图表目测值或户籍人口。"
             )
             if is_crei
+            else (
+                "红黑统计公报库公开转载的地方统计局年度公报正文明确披露城市全市/全州字段，"
+                "标题、年度和行政范围与目标一致；不使用区县、公报图表目测值或户籍人口。"
+            )
+            if is_hongheiku
             else (
                 "B2公开二手历史序列页面的总量表格，标题与城市、指标、年度完全匹配；"
                 "页面标注原始来源和单位，空白、预算、本级、分项及辖区条目未接入。"
@@ -9860,6 +9870,48 @@ def main() -> None:
         if prior.get("data_status") in {None, "", "provisional", "not_collected"}:
             prior["data_status"] = "preliminary"
     city_year_fiscal_sources.extend(crei_city_bulletin_sources)
+    hongheiku_city_bulletins, hongheiku_city_bulletin_sources = load_hongheiku_city_bulletin_sources(ROOT, city_master)
+    # 红黑统计公报库是另一条公开转载索引。按字段合并时仅补空值或替换D级暂存值，
+    # 不覆盖A1/A2/B1/B2正式字段；快照中已排除区县标题和无法解析的页面。
+    for key, candidate in hongheiku_city_bulletins.items():
+        prior = city_year_fiscal.get(key)
+        if prior is None:
+            city_year_fiscal[key] = candidate
+            continue
+        field_sources = dict(prior.get("_field_sources") or {})
+        source_ids = [item for item in str(prior.get("source_doc_id") or "").split(";") if item]
+        candidate_id = str(candidate.get("source_doc_id") or "")
+        if candidate_id and candidate_id not in source_ids:
+            source_ids.append(candidate_id)
+        for field in (
+            "gdp_current_100m",
+            "gdp_real_growth_pct",
+            "general_public_revenue_100m",
+            "general_public_expenditure_100m",
+        ):
+            candidate_value = as_decimal(candidate.get(field))
+            if candidate_value is None:
+                continue
+            candidate_source = candidate.get("_field_sources", {}).get(field, candidate)
+            prior_source = field_sources.get(field, prior)
+            prior_value = as_decimal(prior_source.get(field) if prior_source else prior.get(field))
+            prior_grade = str(prior_source.get("source_grade") or "") if prior_source else ""
+            if prior_value is None or SOURCE_GRADE_RANK.get("B2", -1) > SOURCE_GRADE_RANK.get(prior_grade, -1):
+                prior[field] = candidate_value
+                for suffix in ("_raw_100m", "_raw_unit", "_evidence_excerpt"):
+                    source_key = f"{field}{suffix}"
+                    if source_key in candidate:
+                        prior[source_key] = candidate[source_key]
+                    elif source_key in candidate_source:
+                        prior[source_key] = candidate_source[source_key]
+                field_sources[field] = dict(candidate_source)
+        prior["source_doc_id"] = ";".join(source_ids)
+        prior["_field_sources"] = field_sources
+        if SOURCE_GRADE_RANK.get("B2", -1) > SOURCE_GRADE_RANK.get(str(prior.get("source_grade") or ""), -1):
+            prior["source_grade"] = "B2"
+        if prior.get("data_status") in {None, "", "provisional", "not_collected"}:
+            prior["data_status"] = "preliminary"
+    city_year_fiscal_sources.extend(hongheiku_city_bulletin_sources)
     nbs_city_annual_2024, nbs_city_annual_sources = load_nbs_city_annual_2024(ROOT, city_master)
     # 国家统计局接口与既有城市年鉴/财政来源可能覆盖同一城市年度。按字段合并，
     # A1 国家数据只替换低等级值，不静默覆盖同等级或更高等级正式来源。
