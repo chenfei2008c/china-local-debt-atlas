@@ -1,7 +1,7 @@
-"""红黑统计公报库地级市 2025 年公报批量适配器。
+"""红黑统计公报库地级市 2024—2025 年公报批量适配器。
 
 红黑统计公报库是公开的统计公报转载索引。本适配器只接受标题明确指向
-地级行政单元本身的 2025 年公报，并把页面正文作为 B2 精确二手来源：
+地级行政单元本身的 2024—2025 年公报，并把页面正文作为 B2 精确二手来源：
 不读取区县页面，不从图表估读，也不把转载页标为官方 A2 来源。
 
 与 CREI 快照适配器分开保存，避免混淆两个转载入口；两者最终都通过
@@ -34,7 +34,7 @@ except ModuleNotFoundError:  # 允许以 python scripts/hongheiku_city_bulletins
 
 SNAPSHOT_PATH = Path("raw/province_fiscal/hongheiku/city_bulletin_snapshot.json")
 SITEMAP_URL = "https://tjgb.hongheiku.com/wp-sitemap-posts-post-10.xml"
-YEAR = "2025"
+SUPPORTED_YEARS = {"2024", "2025"}
 SOURCE_GRADE = "B2"
 TARGET_FIELDS = (
     "gdp_current_100m",
@@ -72,11 +72,16 @@ def _compact(value: Any) -> str:
     return re.sub(r"\s+", "", html.unescape(str(value or "")))
 
 
-def is_target_bulletin_title(title: str, city_name: str) -> bool:
-    """匹配地级市本身的 2025 公报标题，排除该市下辖区县公报。"""
+def is_target_bulletin_title(title: str, city_name: str, year: str = "2025") -> bool:
+    """匹配地级市本身的指定年度公报标题，排除该市下辖区县公报。"""
 
     compact = _compact(title).strip("・")
-    years = ("2025年", "2025年度", "二〇二五年", "二○二五年")
+    if year not in SUPPORTED_YEARS:
+        return False
+    years = {
+        "2024": ("2024年", "2024年度", "二〇二四年", "二○二四年"),
+        "2025": ("2025年", "2025年度", "二〇二五年", "二○二五年"),
+    }[year]
     city = _compact(city_name)
     aliases = {city}
     if city.endswith("市"):
@@ -133,7 +138,7 @@ def _fetch(url: str) -> tuple[bytes, str] | None:
     try:
         response = urlopen(
             Request(url, headers={"User-Agent": "Mozilla/5.0"}),
-            timeout=12,
+            timeout=6,
             context=ssl._create_unverified_context(),
         )
         return response.read(), response.headers.get_content_charset() or "utf-8"
@@ -141,8 +146,8 @@ def _fetch(url: str) -> tuple[bytes, str] | None:
         return None
 
 
-def _sitemap_urls() -> list[str]:
-    fetched = _fetch(SITEMAP_URL)
+def _sitemap_urls(sitemap_url: str = SITEMAP_URL) -> list[str]:
+    fetched = _fetch(sitemap_url)
     if not fetched:
         return []
     body, charset = fetched
@@ -153,15 +158,16 @@ def _sitemap_urls() -> list[str]:
     return [item.findtext("s:loc", namespaces=XML_NS) for item in root.findall("s:url", XML_NS) if item.findtext("s:loc", namespaces=XML_NS)]
 
 
-def _match_city(title: str, city_master: Iterable[Mapping[str, Any]]) -> tuple[str, str] | None:
+def _match_city(title: str, city_master: Iterable[Mapping[str, Any]]) -> tuple[str, str, str] | None:
     matches = []
     for city in city_master:
-        if str(city.get("metric_year")) != YEAR:
+        year = str(city.get("metric_year") or "")
+        if year not in SUPPORTED_YEARS:
             continue
         city_id = str(city.get("city_id") or "")
         city_name = str(city.get("city_name_cn") or "")
-        if city_id and city_name and is_target_bulletin_title(title, city_name):
-            matches.append((city_id, city_name))
+        if city_id and city_name and is_target_bulletin_title(title, city_name, year):
+            matches.append((city_id, city_name, year))
     return matches[0] if len(matches) == 1 else None
 
 
@@ -181,11 +187,11 @@ def _fetch_candidate(url: str, city_master: list[Mapping[str, Any]]) -> dict[str
     values = {field: value for field, value in values.items() if field in TARGET_FIELDS}
     if not values:
         return None
-    city_id, city_name = city
+    city_id, city_name, year = city
     return {
         "city_id": city_id,
         "city_name": city_name,
-        "metric_year": YEAR,
+        "metric_year": year,
         "title": _compact(title),
         "source_url": url,
         "publisher": _publisher(text),
@@ -200,8 +206,9 @@ def crawl_hongheiku_bulletins(
     root: Path,
     city_master: list[Mapping[str, Any]],
     workers: int = 16,
+    sitemap_urls: Iterable[str] | None = None,
 ) -> dict[str, int]:
-    """批量抓取最新公报 sitemap 中可匹配的地级市公报。"""
+    """批量抓取指定 sitemap 中可匹配的地级市公报。"""
 
     snapshot_path = root / SNAPSHOT_PATH
     if snapshot_path.exists():
@@ -209,23 +216,39 @@ def crawl_hongheiku_bulletins(
     else:
         payload = {"bulletins": []}
     existing = {str(item.get("source_url")): item for item in payload.get("bulletins") or []}
-    urls = _sitemap_urls()
+    sitemap_list = list(sitemap_urls or (SITEMAP_URL,))
+    urls: list[str] = []
+    for sitemap_url in sitemap_list:
+        urls.extend(_sitemap_urls(sitemap_url))
+    urls = list(dict.fromkeys(urls))
     additions: list[dict[str, Any]] = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
-        for item in executor.map(lambda url: _fetch_candidate(url, city_master), urls):
+        futures = [executor.submit(_fetch_candidate, url, city_master) for url in urls]
+        for index, future in enumerate(concurrent.futures.as_completed(futures), start=1):
+            try:
+                item = future.result()
+            except Exception:
+                item = None
             if item and item["source_url"] not in existing:
                 additions.append(item)
                 existing[item["source_url"]] = item
+            # 允许长批次中断后从已完成的页面继续，不丢失前面的可用证据。
+            if index % 100 == 0:
+                _write_snapshot(snapshot_path, existing.values())
     all_items = sorted(existing.values(), key=lambda item: (item.get("city_id", ""), item.get("metric_year", ""), item.get("source_url", "")))
+    _write_snapshot(snapshot_path, all_items)
+    return {"sitemap_urls": len(urls), "total_bulletins": len(all_items), "new_bulletins": len(additions)}
+
+
+def _write_snapshot(snapshot_path: Path, items: Iterable[Mapping[str, Any]]) -> None:
     output = {
         "snapshot_date": time.strftime("%Y-%m-%d"),
         "source_platform": "红黑统计公报库（地方统计公报公开转载）",
-        "selection_note": "只保留标题明确为2025年地级行政单元本身的统计公报；区县公报、图表估读和无法解析的页面排除。数值以页面正文直接读取，来源等级为B2。",
-        "bulletins": all_items,
+        "selection_note": "只保留标题明确为2024—2025年地级行政单元本身的统计公报；区县公报、图表估读和无法解析的页面排除。数值以页面正文直接读取，来源等级为B2。",
+        "bulletins": sorted(items, key=lambda item: (item.get("city_id", ""), item.get("metric_year", ""), item.get("source_url", ""))),
     }
     snapshot_path.parent.mkdir(parents=True, exist_ok=True)
     snapshot_path.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    return {"sitemap_urls": len(urls), "total_bulletins": len(all_items), "new_bulletins": len(additions)}
 
 
 def load_hongheiku_city_bulletin_sources(
@@ -242,7 +265,7 @@ def load_hongheiku_city_bulletin_sources(
     for item in payload.get("bulletins") or []:
         city_id = str(item.get("city_id") or "")
         year = str(item.get("metric_year") or "")
-        if city_id not in city_ids or year != YEAR:
+        if city_id not in city_ids or year not in SUPPORTED_YEARS:
             continue
         source_id = f"SRC-B2-HONGHEIKU-CITY-BULLETIN-{city_id}-{year}"
         record: dict[str, Any] = {
@@ -251,9 +274,9 @@ def load_hongheiku_city_bulletin_sources(
             "source_format": "html",
             "source_platform": "hongheiku",
             "data_status": "preliminary",
-            "data_status_label": "2025年统计公报公开值（转载）",
-            "source_locator": f"{SNAPSHOT_PATH}；URL={item.get('source_url')};标题={item.get('title')};城市={item.get('city_name')};2025年全市/全州口径",
-            "table_name": "2025年国民经济和社会发展统计公报",
+            "data_status_label": f"{year}年统计公报公开值（转载）",
+            "source_locator": f"{SNAPSHOT_PATH}；URL={item.get('source_url')};标题={item.get('title')};城市={item.get('city_name')};{year}年全市/全州口径",
+            "table_name": f"{year}年国民经济和社会发展统计公报",
             "page_number": "HTML正文",
             "_field_sources": {},
         }
@@ -294,7 +317,7 @@ def load_hongheiku_city_bulletin_sources(
             "mime_type": "text/html",
             "publication_date": item.get("publication_date", ""),
             "publication_date_raw": item.get("publication_date", ""),
-            "period_end": "2025-12-31",
+            "period_end": f"{year}-12-31",
             "downloaded_at": "2026-08-27T00:00:00+08:00",
             "content_hash_sha256": item.get("content_hash_sha256", ""),
             "archive_uri": f"archive://national-prefecture-panel/{SNAPSHOT_PATH}",
@@ -311,13 +334,14 @@ def load_hongheiku_city_bulletin_sources(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="抓取红黑统计公报库地级市2025年公报")
+    parser = argparse.ArgumentParser(description="抓取红黑统计公报库地级市2024—2025年公报")
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--workers", type=int, default=16)
+    parser.add_argument("--sitemap-url", action="append", default=None, help="要抓取的 WordPress 站点地图，可重复指定")
     args = parser.parse_args()
     with (args.root / "outputs/national_prefecture_panel_2018_2026/dim_city.csv").open(encoding="utf-8-sig", newline="") as handle:
         city_master = list(csv.DictReader(handle))
-    print(json.dumps(crawl_hongheiku_bulletins(args.root, city_master, args.workers), ensure_ascii=False))
+    print(json.dumps(crawl_hongheiku_bulletins(args.root, city_master, args.workers, args.sitemap_url), ensure_ascii=False))
 
 
 if __name__ == "__main__":
