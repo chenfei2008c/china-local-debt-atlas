@@ -7186,6 +7186,71 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     _make_curated_city_source(**spec) for spec in _CURATED_2024_CITY_MACRO_FISCAL_SPECS
 )
 
+# 2024 年陕西市级财政报告补充的全市一般公共预算支出执行数。原有陕西
+# 年鉴/评级摘录主要覆盖 GDP、增速和收入，本批单独接入四个仍缺支出的城市，
+# 以官方预算执行报告中的全市合计为准，原始单位为万元。
+_CURATED_2024_SHAANXI_EXPENDITURE_SPECS = (
+    {
+        "year": 2024,
+        "city_name": city,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-A2-SHAANXI-CITY-EXPENDITURE-2024-{slug}",
+        "url": url,
+        "path": RAW_DIR / "province_fiscal" / "2024" / "official" / "shaanxi_2024_city_expenditure_execution_excerpt.txt",
+        "document_title": title,
+        "publisher": publisher,
+        "publisher_level": "市级政府/财政/人大官方公开文件",
+        "publication_date": publication_date,
+        "source_grade": "A2",
+        "fields": ("general_public_expenditure_100m",),
+        "raw_unit": "万元",
+        "source_format": "pdf" if url.lower().endswith(".pdf") else "html",
+        "data_status": "execution",
+        "data_status_label": "2024年全市一般公共预算支出执行数",
+        "page_number": locator,
+        "document_type": "市级预算执行报告/预算公开表",
+        "note": "A2市级官方预算执行材料；采用全市合计执行数，原始单位万元，统一换算为亿元，不使用市本级、区县或预算数。",
+    }
+    for city, city_id, slug, url, title, publisher, publication_date, locator in (
+        (
+            "宝鸡市", "CN-610300", "BAOJI",
+            "https://www.baoji.gov.cn/col9816/col9818/col9845/col9847/202503/P020250306619675671760.pdf",
+            "宝鸡市2024年一般公共预算支出执行情况表",
+            "宝鸡市财政局",
+            "2025-03-06",
+            "官方PDF第2页表2；支出合计4485454万元",
+        ),
+        (
+            "榆林市", "CN-610800", "YULIN",
+            "https://www.yl.gov.cn/zwgk/fdzdgknr/czxx/czyjs/szfczys/202505/P020250703576007878613.pdf",
+            "关于榆林市2024年财政预算执行情况和2025年预算草案的报告",
+            "榆林市财政局/榆林市人民政府",
+            "2025-05-01",
+            "报告正文及表2；全市一般公共预算支出1224.7亿元",
+        ),
+        (
+            "安康市", "CN-610900", "ANKANG",
+            "https://www.ankang.gov.cn/Content-2792684.html",
+            "安康市2024年财政预算执行情况和2025年财政预算（草案）的报告",
+            "安康市人民政府",
+            "2025-02-01",
+            "官方网页一般公共预算执行情况；全市一般公共预算支出410.77亿元",
+        ),
+        (
+            "商洛市", "CN-611000", "SHANGLUO",
+            "https://www.shangluo.gov.cn/__local/3/A7/CC/24A02E3BAE184552717016E42D1_D7E34652_ABC635.pdf",
+            "商洛市五届人大五次会议文件（12）",
+            "商洛市人民政府/商洛市人大",
+            "2025-02-27",
+            "会议文件第2页；全市一般公共预算支出325.98亿元",
+        ),
+    )
+)
+
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    _make_curated_city_source(**spec) for spec in _CURATED_2024_SHAANXI_EXPENDITURE_SPECS
+)
+
 _CURATED_2025_CITY_MACRO_FISCAL_SPECS = (
     *(
         {
