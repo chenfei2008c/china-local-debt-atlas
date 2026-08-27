@@ -6817,6 +6817,66 @@ CITY_YEAR_FISCAL_SOURCES += tuple(REGIONAL_FISCAL_2024_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(CITY_FISCAL_RATING_2024_2025_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(DAGONG_CITY_FISCAL_SOURCES)
 
+# 唐山市 2025 年公开报告批次：财政报告由唐山市财政局向市人大提交，
+# 经济指标由唐山劳动日报完整披露。两条来源均明确区分“全市”与“本级”，
+# 作为 B2 精确公开来源归档；财政字段保留 execution 状态。
+CITY_YEAR_FISCAL_SOURCES += (
+    {
+        "year": 2025,
+        "city_name": "唐山市",
+        "city_id": "CN-130200",
+        "source_doc_id": "SRC-B2-TANGSHAN-CITY-STATISTICAL-2025",
+        "url": "https://epaper.huanbohainews.com.cn/tsldrb/pc/content/202608/11/content_127012.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "tangshan_2025_gdp_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "tangshan_2025_gdp_report.html",
+        "text_is_curated": True,
+        "document_title": "唐山高质量发展迈出坚实步伐",
+        "publisher": "唐山劳动日报社",
+        "publisher_level": "市级党报公开披露",
+        "publication_date": "2026-08-11",
+        "source_grade": "B2",
+        "source_format": "html",
+        "data_status": "preliminary",
+        "data_status_label": "2025年公报/新闻公开值",
+        "document_type": "城市经济指标公开报道",
+        "patterns": {
+            "gdp_current_100m": r"2025年总量达([0-9.]+)亿元、同比增长[0-9.]+%",
+            "gdp_real_growth_pct": r"2025年总量达[0-9.]+亿元、同比增长([0-9.]+)%",
+        },
+        "raw_unit": "亿元",
+        "note": "B2精确公开报道；报道明确披露唐山市2025年地区生产总值10450.2亿元、同比增长6.2%，未与其他城市或市辖区口径混用。",
+    },
+    {
+        "year": 2025,
+        "city_name": "济宁市",
+        "city_id": "CN-370800",
+        "source_doc_id": "SRC-A2-JINING-CITY-STATISTICAL-2025",
+        "url": "https://tjj.jining.gov.cn/art/2026/4/1/art_6828_2707453.html",
+        "attachment_url": "https://tjj.jining.gov.cn/module/download/downfile.jsp?classid=0&filename=ef37863a917c4a58b785993b69ec730c.pdf&showname=2025%E5%B9%B4%E6%B5%8E%E5%AE%81%E5%B8%82%E5%9B%BD%E6%B0%91%E7%BB%8F%E6%B5%8E%E5%92%8C%E7%A4%BE%E4%BC%9A%E5%8F%91%E5%B1%95%E7%BB%9F%E8%AE%A1%E5%85%AC%E6%8A%A5.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "jining_2025_statistical_bulletin.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "jining_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2025年济宁市国民经济和社会发展统计公报",
+        "publisher": "济宁市统计局、国家统计局济宁调查队",
+        "publisher_level": "市级统计机构",
+        "publication_date": "2026-04-01",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "data_status": "preliminary",
+        "data_status_label": "2025年公报初步统计数",
+        "document_type": "官方统计公报经济财政指标（PDF）",
+        "page_number": "PDF第1、11页",
+        "patterns": {
+            "gdp_current_100m": r"全市生产总值实现([0-9.]+)亿元",
+            "gdp_real_growth_pct": r"全市生产总值实现[0-9.]+亿元，按不变价格计算，比上年增长([0-9.]+)%",
+            "general_public_revenue_100m": r"全年一般公共预算收入完成([0-9.]+)亿元",
+            "general_public_expenditure_100m": r"一般公共预算支出完成([0-9.]+)亿元",
+        },
+        "raw_unit": "亿元",
+        "note": "A2济宁市统计局、国家统计局济宁调查队官方统计公报；采用2025年全市GDP、实际增速和一般公共预算收支，公报注明数据为初步统计数，行政范围为全市。",
+    },
+)
+
 # 之前按“next”批次完成并通过独立适配器测试的 2025 年城市来源，统一转成
 # 全国主表的标准来源接口。原批次的 patterns 使用 (正则, 原单位) 元组，
 # 这里只做接口标准化，不改变原始正则、数值或来源等级；这样这些已归档来源
