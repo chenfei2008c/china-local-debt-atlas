@@ -13,6 +13,7 @@ class HongheikuBulletinTests(unittest.TestCase):
         self.assertTrue(is_target_bulletin_title("甘孜州二Ｏ二三年国民经济和社会发展主要统计数据公报", "甘孜藏族自治州", "2023"))
         self.assertTrue(is_target_bulletin_title("2024年保定市国民经济和社会发展统计公报", "保定市", "2024"))
         self.assertTrue(is_target_bulletin_title("2022年贵阳市国民经济和社会发展统计公报", "贵阳市", "2022"))
+        self.assertTrue(is_target_bulletin_title("2021年铜陵市国民经济和社会发展统计公报", "铜陵市", "2021"))
         self.assertFalse(is_target_bulletin_title("(保定市)蠡县2025年国民经济和社会发展统计公报", "保定市"))
 
     def test_page_normalization_keeps_exact_prefecture_values(self):
