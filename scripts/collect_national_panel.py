@@ -8043,6 +8043,80 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     )
 )
 
+# 2025 年官方统计公报四字段补缺：海南州、大兴安岭地区、黑河市。
+# 三份公报均逐项列示全州/全区/全市 GDP、实际增速和一般公共预算收支，
+# 统一按亿元解析；2025 年经济数据保留公报的初步统计状态，财政数按公报
+# 所载全年执行数接入，不使用预算目标或由比例反推的数值。
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    _make_curated_city_source(**spec)
+    for spec in (
+        {
+            "year": 2025,
+            "city_name": "海南藏族自治州",
+            "city_id": "CN-632500",
+            "source_doc_id": "SRC-A2-QINGHAI-HAINAN-CITY-MACRO-FISCAL-2025",
+            "url": "https://www.hainanzhou.gov.cn/zwgk/fdzdgknr/tjxx/tjxx1/content_400016530",
+            "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "hainan_2025_city_macro_fiscal_excerpt.txt",
+            "document_title": "2025年海南州经济运行情况",
+            "publisher": "海南州统计局",
+            "publisher_level": "州级统计机构",
+            "publication_date": "2026-01-30",
+            "source_grade": "A2",
+            "fields": ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"),
+            "raw_units": {"gdp_real_growth_pct": "%"},
+            "source_format": "html",
+            "data_status": "preliminary",
+            "data_status_label": "2025年统计公报/全年执行数",
+            "document_type": "州级统计公报经济财政指标",
+            "page_number": "官方网页正文；经济运行基本情况、财政收入和财政支出部分",
+            "text_city_name": "海南州",
+            "note": "A2海南州统计局官方公开统计信息；明确为全州口径，GDP和增速为统一核算结果，一般公共预算收入、支出为全年数据。",
+        },
+        {
+            "year": 2025,
+            "city_name": "大兴安岭地区",
+            "city_id": "CN-232700",
+            "source_doc_id": "SRC-A2-HEILONGJIANG-DAXINGANLING-CITY-MACRO-FISCAL-2025",
+            "url": "https://dxal.gov.cn/dxal/c100066/202606/c13_339001.shtml",
+            "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "daxinganling_2025_city_macro_fiscal_excerpt.txt",
+            "document_title": "2025年大兴安岭地区国民经济和社会发展统计公报",
+            "publisher": "大兴安岭地区统计局",
+            "publisher_level": "地区统计机构",
+            "publication_date": "2026-06-04",
+            "source_grade": "A2",
+            "fields": ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"),
+            "raw_units": {"gdp_real_growth_pct": "%"},
+            "source_format": "html",
+            "data_status": "preliminary",
+            "data_status_label": "2025年统计公报初步统计数",
+            "document_type": "地区统计公报经济财政指标",
+            "page_number": "官方公报；综合和财政金融部分",
+            "note": "A2大兴安岭地区统计局官方统计公报；明确为全区口径，财政收支数据来自财政局。",
+        },
+        {
+            "year": 2025,
+            "city_name": "黑河市",
+            "city_id": "CN-231100",
+            "source_doc_id": "SRC-A2-HEILONGJIANG-HEIHE-CITY-MACRO-FISCAL-2025",
+            "url": "https://www.heihe.gov.cn/hhs/c103137/202604/c11_352062.shtml",
+            "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "heihe_2025_city_macro_fiscal_excerpt.txt",
+            "document_title": "2025年黑河市国民经济和社会发展统计公报",
+            "publisher": "黑河市统计局",
+            "publisher_level": "市级统计机构",
+            "publication_date": "2026-04-29",
+            "source_grade": "A2",
+            "fields": ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"),
+            "raw_units": {"gdp_real_growth_pct": "%"},
+            "source_format": "html",
+            "data_status": "preliminary",
+            "data_status_label": "2025年统计公报初步统计数",
+            "document_type": "市级统计公报经济财政指标",
+            "page_number": "官方公报；综合和财政金融拆分页面",
+            "note": "A2黑河市统计局官方统计公报及政府门户拆分页；明确为全市口径，财政收支逐项公开。",
+        },
+    )
+)
+
 # 本批补缺：优先接入已逐项核验的官方公报/决算与交易所公开精确表格。
 # 阜新经济指标和财政决算拆成两个来源，保留各自的数据状态；其余来源
 # 只写入当前仍为空的字段，避免用二手摘录覆盖已有更高等级值。
@@ -8372,6 +8446,120 @@ for _validated_batch in _VALIDATED_NEXT_CITY_FISCAL_BATCHES:
         _normalized_config["data_status"] = "execution"
         _normalized_config["data_status_label"] = "2025年执行数"
         CITY_YEAR_FISCAL_SOURCES += (_normalized_config,)
+def _make_autonomous_bulletin_batch(
+    *,
+    year: int,
+    path: Path,
+    entries: Iterable[tuple[str, str, str, str, str, tuple[str, ...], str, str]],
+) -> tuple[dict[str, Any], ...]:
+    """将自治州、盟和地区的逐项公报摘录接入统一来源接口。"""
+
+    sources: list[dict[str, Any]] = []
+    for city, city_id, slug, url, grade, fields, source_format, publisher in entries:
+        sources.append(
+            _make_curated_city_source(
+                year=year,
+                city_name=city,
+                city_id=city_id,
+                source_doc_id=f"SRC-{grade}-AUTONOMOUS-CITY-MACRO-{year}-{slug}",
+                url=url,
+                path=path,
+                document_title=f"{city}{year}年国民经济和社会发展统计公报及财政摘录",
+                publisher=publisher,
+                publisher_level="市州统计/财政机构或精确公开转载",
+                publication_date=None,
+                source_grade=grade,
+                fields=fields,
+                raw_units={"gdp_real_growth_pct": "%"},
+                source_format=source_format,
+                data_status="preliminary" if "gdp_current_100m" in fields else "execution",
+                data_status_label=f"{year}年公报初步统计数/财政执行数",
+                document_type="自治州/盟/地区统计公报及财政执行指标摘录",
+                page_number="原文综合部分、财政金融部分或分地区表格",
+                note=(
+                    f"{grade}逐项公开摘录；行政范围为{city}全域，GDP现价总量和实际增速与一般公共预算执行数分字段接入；"
+                    "不使用预算目标、区县数或由比例反推的数值。"
+                ),
+            )
+        )
+    return tuple(sources)
+
+
+# 2022 年自治州、盟和地区公报批次：只传入当前主表仍为空的字段，避免
+# 重复来源覆盖已有更高等级值。红黑、智果、中国县域等转载仅在正文逐项
+# 列示全域数值时作为 B2；政府门户和省级统计年鉴作为 A1/A2。
+CITY_YEAR_FISCAL_SOURCES += _make_autonomous_bulletin_batch(
+    year=2022,
+    path=RAW_DIR / "province_fiscal" / "2022" / "secondary" / "2022_autonomous_city_statistical_bulletins_excerpt.txt",
+    entries=(
+        ("兴安盟", "CN-152200", "XINGAN", "https://tjgb.hongheiku.com/djs/35982.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "兴安盟统计局公报精确转载"),
+        ("锡林郭勒盟", "CN-152500", "XILINGOL", "https://tjgb.hongheiku.com/djs/36770.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "锡林郭勒盟统计局公报精确转载"),
+        ("大兴安岭地区", "CN-232700", "DAXINGANLING", "https://tjgb.hongheiku.com/djs/38550.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct"), "html", "大兴安岭地区统计局公报精确转载"),
+        ("恩施土家族苗族自治州", "CN-422800", "ENSHI", "https://tjgb.hongheiku.com/djs/35605.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "恩施州统计局公报精确转载"),
+        ("湘西土家族苗族自治州", "CN-433100", "XIANGXI", "https://tjgb.hongheiku.com/djs/35498.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct"), "html", "湘西州统计局公报精确转载"),
+        ("阿坝藏族羌族自治州", "CN-513200", "ABA", "https://tjgb.hongheiku.com/djs/35923.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "阿坝州统计局公报精确转载"),
+        ("凉山彝族自治州", "CN-513400", "LIANGSHAN", "https://tjgb.hongheiku.com/djs/36988.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "凉山州统计局公报精确转载"),
+        ("黔西南布依族苗族自治州", "CN-522300", "QIANXINAN", "https://tjgb.hongheiku.com/djs/38247.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct"), "html", "黔西南州统计局公报精确转载"),
+        ("黔东南苗族侗族自治州", "CN-522600", "QIANDONGNAN", "https://tjj.qdn.gov.cn/tjsj/qdntjnj/202312/P020250827674565503170.pdf", "A1", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "pdf", "黔东南州统计局统计年鉴"),
+        ("黔南布依族苗族自治州", "CN-522700", "QIANNAN", "https://tjgb.hongheiku.com/djs/37339.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct"), "html", "黔南州统计局公报精确转载"),
+        ("楚雄彝族自治州", "CN-532300", "CHUXIONG", "https://tjgb.hongheiku.com/djs/36726.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "楚雄州统计局公报精确转载"),
+        ("文山壮族苗族自治州", "CN-532600", "WENSHAN", "https://tjgb.hongheiku.com/djs/36221.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct"), "html", "文山州统计局公报精确转载"),
+        ("西双版纳傣族自治州", "CN-532800", "XISHUANGBANNA", "https://tjgb.hongheiku.com/djs/35595.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "西双版纳州统计局公报精确转载"),
+        ("大理白族自治州", "CN-532900", "DALI", "https://tjgb.hongheiku.com/djs/34810.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "大理州统计局公报精确转载"),
+        ("迪庆藏族自治州", "CN-533400", "DIQING", "https://tjgb.hongheiku.com/djs/38633.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct"), "html", "迪庆州统计局公报精确转载"),
+        ("海北藏族自治州", "CN-632200", "HAIBEI", "https://tjgb.hongheiku.com/djs/35063.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "海北州统计局公报精确转载"),
+        ("黄南藏族自治州", "CN-632300", "HUANGNAN", "https://www.bbthy.net/kb/5754.html", "B2", ("general_public_revenue_100m", "general_public_expenditure_100m"), "html", "黄南州统计局公报精确转载"),
+        ("果洛藏族自治州", "CN-632600", "GUOLUO", "https://tjgb.hongheiku.com/djs/48231.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "果洛州统计局公报精确转载"),
+        ("玉树藏族自治州", "CN-632700", "YUSHU", "https://www.zgrkk.com/pdf/42509/1693367624-202303100836524027.pdf", "B2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "pdf", "玉树州人民政府公报精确转载"),
+        ("博尔塔拉蒙古自治州", "CN-652700", "BOERTALA", "https://tjgb.hongheiku.com/djs/35573.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct"), "html", "博州统计局公报精确转载"),
+        ("阿克苏地区", "CN-652900", "AKESU", "https://tjgb.hongheiku.com/djs/35725.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct"), "html", "阿克苏地区统计局公报精确转载"),
+        ("克孜勒苏柯尔克孜自治州", "CN-653000", "KIZILSU", "https://tjgb.hongheiku.com/djs/42709.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "克州统计局公报精确转载"),
+        ("和田地区", "CN-653200", "HOTAN", "https://xjht.gov.cn/file/upload/202305/24/183553394.pdf", "A2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "pdf", "和田地区行政公署统计局"),
+        ("伊犁哈萨克自治州", "CN-654000", "YILI", "https://www.xjyl.gov.cn/xjylz/c112816/202306/6cadb0fae6fb44b4b2b71a7e2ae69985.shtml", "A2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "伊犁州统计局"),
+        ("临夏回族自治州", "CN-622900", "LINXIA", "https://www.linxia.gov.cn/lxz/zwgk/bmxxgkpt/lxztjj/fdzdgknr/tjsj/tjgb/art/2023/art_1c876c8d037f4cf089ebe4325d08a45d.html", "A2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "临夏州统计局、国家统计局临夏调查队"),
+    ),
+)
+
+# 2023 年自治州和新疆地州公报批次。
+CITY_YEAR_FISCAL_SOURCES += _make_autonomous_bulletin_batch(
+    year=2023,
+    path=RAW_DIR / "province_fiscal" / "2023" / "secondary" / "2023_autonomous_city_statistical_bulletins_excerpt.txt",
+    entries=(
+        ("兴安盟", "CN-152200", "XINGAN", "https://tjgb.hongheiku.com/djs/46086.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "兴安盟统计局公报精确转载"),
+        ("大兴安岭地区", "CN-232700", "DAXINGANLING", "https://tjgb.hongheiku.com/xjtjgb/xj2020/52904.html", "B2", ("gdp_current_100m", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "大兴安岭地区统计局公报精确转载"),
+        ("甘孜藏族自治州", "CN-513300", "GANZI", "https://tjgb.hongheiku.com/djs/49987.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "甘孜州统计局公报精确转载"),
+        ("凉山彝族自治州", "CN-513400", "LIANGSHAN", "https://tjgb.hongheiku.com/djs/52313.html", "B2", ("general_public_expenditure_100m",), "html", "凉山州统计局公报精确转载"),
+        ("黔西南布依族苗族自治州", "CN-522300", "QIANXINAN", "https://tjgb.hongheiku.com/djs/51780.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct"), "html", "黔西南州统计局公报精确转载"),
+        ("黔东南苗族侗族自治州", "CN-522600", "QIANDONGNAN", "https://www.zzdsj.com.cn/site4/n439/20240521/i291.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "黔东南州统计局公报精确转载"),
+        ("黔南布依族苗族自治州", "CN-522700", "QIANNAN", "https://tjgb.hongheiku.com/djs/50203.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct"), "html", "黔南州统计局公报精确转载"),
+        ("文山壮族苗族自治州", "CN-532600", "WENSHAN", "https://www.bbthy.net/kb/5578.html", "B2", ("general_public_revenue_100m", "general_public_expenditure_100m"), "html", "文山州统计局公报精确转载"),
+        ("怒江傈僳族自治州", "CN-533300", "NUJIANG", "https://www.tjnj.net/newsview/20250414143215", "B2", ("general_public_revenue_100m", "general_public_expenditure_100m"), "html", "怒江州统计局公报精确转载"),
+        ("临夏回族自治州", "CN-622900", "LINXIA", "https://tjgb.hongheiku.com/djs/46026.html", "B2", ("general_public_revenue_100m", "general_public_expenditure_100m"), "html", "临夏州统计局公报精确转载"),
+        ("玉树藏族自治州", "CN-632700", "YUSHU", "https://tjgb.hongheiku.com/djs/55597.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "玉树州统计局公报精确转载"),
+        ("克孜勒苏柯尔克孜自治州", "CN-653000", "KIZILSU", "https://www.xjkz.gov.cn/xjkz/c101979/202404/b88ebce7774447a29e854529c6647e74.shtml", "A2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "克州统计局"),
+        ("和田地区", "CN-653200", "HOTAN", "https://xjht.gov.cn/file/upload/202404/01/184021914.pdf", "A2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "pdf", "和田地区行政公署统计局"),
+        ("塔城地区", "CN-654200", "TACHENG", "https://xjtc.gov.cn/upload/main/infopublicity/publicinformation/file/2024/04/26/202404261830271399.pdf", "A2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "pdf", "塔城地区统计局"),
+        ("伊犁哈萨克自治州", "CN-654000", "YILI", "https://www.xjyl.gov.cn/xjylz/c112794/202402/4c9df36c49cf468da12e22278b0bc24d.shtml", "A2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "伊犁州统计局"),
+        ("昌吉回族自治州", "CN-652300", "CHANGJI", "https://www.cj.gov.cn/p135/bmyw/20240222/210798.html", "A2", ("gdp_current_100m", "gdp_real_growth_pct"), "html", "昌吉州统计局"),
+        ("喀什地区", "CN-653100", "KASHI", "https://www.kashi.gov.cn/ksdqxzgs/c112198/202404/fc4969a2247b416c8e6eb3ef41310a6b.shtml", "A2", ("gdp_current_100m", "gdp_real_growth_pct"), "html", "喀什地区统计局"),
+    ),
+)
+
+# 2025 年补入当前仍为空且已逐项核验的核心字段。蚌埠 GDP 增速在公报
+# 正文与表格中出现 5.5%/5.2% 冲突，因此本批只接入 GDP、收入和支出，
+# 增速保留空值并等待复核，不让冲突值进入定稿。
+CITY_YEAR_FISCAL_SOURCES += _make_autonomous_bulletin_batch(
+    year=2025,
+    path=RAW_DIR / "province_fiscal" / "2025" / "secondary" / "2025_core_macro_fiscal_supplement_excerpt.txt",
+    entries=(
+        ("长春市", "CN-220100", "CHANGCHUN", "https://tjgb.hongheiku.com/djs/69916.html", "B2", ("general_public_revenue_100m", "general_public_expenditure_100m"), "html", "长春市统计局公报精确转载"),
+        ("蚌埠市", "CN-340300", "BENGBU", "https://tjgb.hongheiku.com/djs/70929.html", "B2", ("gdp_current_100m", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "蚌埠市统计公报精确转载"),
+        ("吉安市", "CN-360800", "JIAN", "https://tjgb.hongheiku.com/wp-content/uploads/2026/05/1779205233-430ea0d9f5.pdf", "B2", ("general_public_expenditure_100m",), "pdf", "吉安市统计公报精确转载"),
+        ("桂林市", "CN-450300", "GUILIN", "https://www.ceicdata.com/zh-hans/china/government-revenue-prefecture-level-city/government-revenue-guangxi-guilin", "B2", ("general_public_revenue_100m",), "html", "桂林市统计局数据精确转载"),
+        ("延安市", "CN-610600", "YANAN", "https://www.chinamoney.com.cn/dqs/cm-s-notice-query/fileDownLoad.do?contentId=3364631&mode=save&priority=0", "B2", ("general_public_revenue_100m",), "pdf", "延安市统计公报及交易所公开披露"),
+    ),
+)
+
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
