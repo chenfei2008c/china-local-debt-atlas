@@ -939,6 +939,54 @@ class NationalPanelTests(unittest.TestCase):
         self.assertIn("SRC-A2-ALI-REGION-MACRO-FISCAL-2025", source_ids)
         self.assertIn("SRC-B2-HEZE-CITY-MACRO-FISCAL-2025", source_ids)
 
+    def test_2024_2025_official_macro_followup_batch_extracts_ten_core_values(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        expected = {
+            ("CN-533400", "2024"): {
+                "gdp_current_100m": Decimal("307.01"),
+                "gdp_real_growth_pct": Decimal("0.40"),
+            },
+            ("CN-653200", "2024"): {
+                "gdp_current_100m": Decimal("598.36"),
+            },
+            ("CN-131000", "2025"): {
+                "gdp_current_100m": Decimal("4040.50"),
+                "gdp_real_growth_pct": Decimal("5.80"),
+            },
+            ("CN-140300", "2024"): {
+                "gdp_real_growth_pct": Decimal("-0.90"),
+            },
+            ("CN-460100", "2024"): {
+                "gdp_real_growth_pct": Decimal("4.00"),
+            },
+            ("CN-654000", "2024"): {
+                "gdp_real_growth_pct": Decimal("6.00"),
+            },
+            ("CN-230100", "2024"): {
+                "gdp_real_growth_pct": Decimal("4.30"),
+            },
+            ("CN-230400", "2024"): {
+                "gdp_real_growth_pct": Decimal("-2.90"),
+            },
+        }
+        for key, fields in expected.items():
+            self.assertIn(key, values)
+            for field, expected_value in fields.items():
+                self.assertEqual(values[key][field], expected_value)
+
+        source_ids = {source["source_doc_id"] for source in sources}
+        self.assertTrue({
+            "SRC-A2-DIQING-CITY-MACRO-FISCAL-2024",
+            "SRC-B2-HOTAN-REGION-GDP-2024",
+            "SRC-A2-LANGFANG-CITY-MACRO-2025",
+            "SRC-A2-YANGQUAN-CITY-GROWTH-2024",
+            "SRC-B2-HAIKOU-CITY-GROWTH-2024",
+            "SRC-A2-YILI-REGION-GROWTH-2024",
+            "SRC-A2-HARBIN-CITY-GROWTH-2024",
+            "SRC-A2-HEGANG-CITY-GROWTH-2024",
+        }.issubset(source_ids))
+
     def test_next_2025_city_fiscal_batch_extracts_four_official_city_sources(self):
         values, sources = load_next_2025_city_fiscal()
 
@@ -2742,6 +2790,8 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(
             {item["target_field"] for item in lineage},
             {
+                "gdp_current_100m",
+                "gdp_real_growth_pct",
                 "general_public_revenue_100m",
                 "general_public_expenditure_100m",
                 "gov_fund_revenue_100m",
