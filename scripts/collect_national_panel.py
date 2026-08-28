@@ -8882,6 +8882,94 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     )
 )
 
+# 2024 黑河及 2025 阿里、菏泽核心四字段补缺。黑河采用市统计局公报官方附件；
+# 阿里只接入页面明确列示的 GDP、增速和一般公共预算支出，不把“地方财政收入”
+# 误当作一般公共预算收入；菏泽采用评级报告第15页精确表格中的三项值。
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    _make_curated_city_source(**spec)
+    for spec in (
+        {
+            "year": 2024,
+            "city_name": "黑河市",
+            "city_id": "CN-231100",
+            "source_doc_id": "SRC-A2-HEIHE-CITY-MACRO-FISCAL-2024",
+            "url": "https://www.heihe.gov.cn/hhs/c103137/202505/c11_328796.shtml",
+            "path": RAW_DIR / "province_fiscal" / "2024" / "official" / "heihe_2024_statistical_bulletin_excerpt.txt",
+            "document_title": "2024年黑河市国民经济和社会发展统计公报",
+            "publisher": "黑河市统计局",
+            "publisher_level": "市级统计机构",
+            "publication_date": "2025-05-14",
+            "source_grade": "A2",
+            "fields": (
+                "gdp_current_100m",
+                "gdp_real_growth_pct",
+                "general_public_revenue_100m",
+                "general_public_expenditure_100m",
+            ),
+            "raw_unit": "亿元",
+            "raw_units": {"gdp_real_growth_pct": "%"},
+            "source_format": "txt",
+            "data_status": "preliminary",
+            "data_status_label": "2024年统计公报初步统计数",
+            "document_type": "市级统计公报经济财政指标",
+            "page_number": "PDF第1页、第8页；全市口径",
+            "note": "A2黑河市统计局官方公报；采用全市GDP711.4亿元、实际增速3.3%、一般公共预算收入56.2亿元和支出323.5亿元，公报注明数据为初步统计数。",
+        },
+        {
+            "year": 2025,
+            "city_name": "阿里地区",
+            "city_id": "CN-542500",
+            "source_doc_id": "SRC-A2-ALI-REGION-MACRO-FISCAL-2025",
+            "url": "https://www.al.gov.cn/zjal/jjsh.htm",
+            "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "ali_2025_economic_fiscal_excerpt.txt",
+            "document_title": "阿里地区经济社会信息（2025年）",
+            "publisher": "阿里地区行政公署、阿里地区统计局",
+            "publisher_level": "地区政府及统计机构",
+            "publication_date": "2026-03-31",
+            "source_grade": "A2",
+            "fields": (
+                "gdp_current_100m",
+                "gdp_real_growth_pct",
+                "general_public_expenditure_100m",
+            ),
+            "raw_unit": "亿元",
+            "raw_units": {"gdp_real_growth_pct": "%"},
+            "source_format": "txt",
+            "data_status": "preliminary",
+            "data_status_label": "2025年官方公开值",
+            "document_type": "地区政府经济财政指标公开页面摘录",
+            "page_number": "官方页面经济社会栏目；全地区口径",
+            "note": "A2阿里地区行政公署官方页面；采用全地区GDP114.21亿元、实际增速6.6%和一般公共预算支出174.61亿元。页面另列地方财政收入37094万元，但未明确为全地区一般公共预算收入，故不代入该字段。",
+        },
+        {
+            "year": 2025,
+            "city_name": "菏泽市",
+            "city_id": "CN-371700",
+            "source_doc_id": "SRC-B2-HEZE-CITY-MACRO-FISCAL-2025",
+            "url": "https://www.chinamoney.com.cn/dqs/cm-s-notice-query/fileDownLoad.do?contentId=3353993&mode=save&priority=0",
+            "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "heze_2025_rating_report_excerpt.txt",
+            "document_title": "菏泽市城市建设投资集团有限公司及相关债项2026年度跟踪评级报告",
+            "publisher": "东方金诚",
+            "publisher_level": "评级机构精确表格披露",
+            "publication_date": "2026-05-29",
+            "source_grade": "B2",
+            "fields": (
+                "gdp_current_100m",
+                "gdp_real_growth_pct",
+                "general_public_revenue_100m",
+            ),
+            "raw_unit": "亿元",
+            "raw_units": {"gdp_real_growth_pct": "%"},
+            "source_format": "txt",
+            "data_status": "preliminary",
+            "data_status_label": "2025年评级报告精确公开值",
+            "document_type": "评级报告城市经济财政指标表",
+            "page_number": "PDF第15页图表11；全市口径",
+            "note": "B2精确表格；图表11列示菏泽市2025年GDP4937.4亿元、实际增速5.0%和一般公共预算收入333.37亿元。报告未列示一般公共预算支出，故不作推算或代填。",
+        },
+    )
+)
+
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}

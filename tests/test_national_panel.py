@@ -907,6 +907,38 @@ class NationalPanelTests(unittest.TestCase):
             "SRC-B2-ZIGONG-CITY-FISCAL-2024",
         }.issubset(source_ids))
 
+    def test_2024_heihe_and_2025_ali_heze_batch_extracts_remaining_core_fields(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        expected = {
+            ("CN-231100", "2024"): {
+                "gdp_current_100m": Decimal("711.40"),
+                "gdp_real_growth_pct": Decimal("3.30"),
+                "general_public_revenue_100m": Decimal("56.20"),
+                "general_public_expenditure_100m": Decimal("323.50"),
+            },
+            ("CN-542500", "2025"): {
+                "gdp_current_100m": Decimal("114.21"),
+                "gdp_real_growth_pct": Decimal("6.60"),
+                "general_public_expenditure_100m": Decimal("174.61"),
+            },
+            ("CN-371700", "2025"): {
+                "gdp_current_100m": Decimal("4937.40"),
+                "gdp_real_growth_pct": Decimal("5.00"),
+                "general_public_revenue_100m": Decimal("333.37"),
+            },
+        }
+        for key, fields in expected.items():
+            self.assertIn(key, values)
+            for field, expected_value in fields.items():
+                self.assertEqual(values[key][field], expected_value)
+
+        self.assertNotIn("general_public_revenue_100m", values[("CN-542500", "2025")])
+        source_ids = {source["source_doc_id"] for source in sources}
+        self.assertIn("SRC-A2-HEIHE-CITY-MACRO-FISCAL-2024", source_ids)
+        self.assertIn("SRC-A2-ALI-REGION-MACRO-FISCAL-2025", source_ids)
+        self.assertIn("SRC-B2-HEZE-CITY-MACRO-FISCAL-2025", source_ids)
+
     def test_next_2025_city_fiscal_batch_extracts_four_official_city_sources(self):
         values, sources = load_next_2025_city_fiscal()
 
