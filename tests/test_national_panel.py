@@ -69,6 +69,36 @@ from scripts.province_debt_sources import extract_official_debt_facts
 
 class NationalPanelTests(unittest.TestCase):
 
+    def test_sina_2025_city_revenue_chart_extracts_qinhuangdao_and_xingtai(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        self.assertEqual(
+            values[("CN-130300", "2025")]["general_public_revenue_100m"],
+            Decimal("174.70"),
+        )
+        self.assertEqual(
+            values[("CN-130500", "2025")]["general_public_revenue_100m"],
+            Decimal("185.14"),
+        )
+        source_ids = {item["source_doc_id"] for item in sources}
+        self.assertIn("SRC-B2-SINA-300-CITIES-2025-QINHUANGDAO-REVENUE", source_ids)
+        self.assertIn("SRC-B2-SINA-300-CITIES-2025-XINGTAI-REVENUE", source_ids)
+
+    def test_ali_official_history_fills_2020_revenue_and_corrects_2021_gdp(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        self.assertEqual(
+            values[("CN-542500", "2020")]["general_public_revenue_100m"],
+            Decimal("4.45"),
+        )
+        self.assertEqual(
+            values[("CN-542500", "2021")]["gdp_current_100m"],
+            Decimal("77.65"),
+        )
+        source_ids = {item["source_doc_id"] for item in sources}
+        self.assertIn("SRC-B2-ALI-REGION-REVENUE-2020", source_ids)
+        self.assertIn("SRC-A2-ALI-REGION-GDP-2021-REVIEW", source_ids)
+
     def test_guangdong_2025_provincial_debt_table_extracts_whole_city_limit_and_balance(self):
         city_master = [
             {

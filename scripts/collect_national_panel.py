@@ -6862,6 +6862,7 @@ def _make_curated_city_source(
     source_doc_id: str,
     url: str,
     path: Path,
+    attachment_url: str | None = None,
     document_title: str,
     publisher: str,
     publisher_level: str,
@@ -6896,6 +6897,7 @@ def _make_curated_city_source(
         "city_id": city_id,
         "source_doc_id": source_doc_id,
         "url": url,
+        "attachment_url": attachment_url,
         "path": path,
         "text_path": path,
         "text_is_curated": True,
@@ -7209,6 +7211,56 @@ _CURATED_2024_CITY_MACRO_FISCAL_SPECS = (
 
 CITY_YEAR_FISCAL_SOURCES += tuple(
     _make_curated_city_source(**spec) for spec in _CURATED_2024_CITY_MACRO_FISCAL_SPECS
+)
+
+# 财通证券研究所《2025年全国300个城市财政数据》图6的精确表格值。图表
+# 由新浪财经公开转载并提供原图，行级摘录保留入口页、图表定位、单位和全市
+# 行政范围；仅补入当前仍为空的一般公共预算收入，不从图表增速或其他口径反推。
+CITY_YEAR_FISCAL_SOURCES += (
+    _make_curated_city_source(
+        year=2025,
+        city_name="秦皇岛市",
+        city_id="CN-130300",
+        source_doc_id="SRC-B2-SINA-300-CITIES-2025-QINHUANGDAO-REVENUE",
+        url="https://finance.sina.com.cn/wm/2026-04-03/doc-inhteimp9034920.shtml",
+        path=RAW_DIR / "province_fiscal" / "2025" / "secondary" / "sina_300_city_2025_revenue_excerpt.txt",
+        attachment_url="https://n.sinaimg.cn/spider20260403/639/w993h1246/20260403/ecc4-e0436f0d302f24c785a8154430c5ac1d.png",
+        document_title="2025年全国300个城市财政数据（图6）",
+        publisher="财通证券研究所（新浪财经公开转载）",
+        publisher_level="证券研究机构公开转载",
+        publication_date="2026-04-03",
+        source_grade="B2",
+        fields=("general_public_revenue_100m",),
+        raw_unit="亿元",
+        source_format="png",
+        data_status="preliminary",
+        data_status_label="2025年公开执行值",
+        page_number="图6；秦皇岛市行",
+        document_type="研究机构城市财政精确图表",
+        note="B2精确图表值；原图图6逐行列示秦皇岛市2025年一般预算收入174.70亿元，图表口径为全市，单位亿元；不使用图表增速或其他财政口径替代目标字段。",
+    ),
+    _make_curated_city_source(
+        year=2025,
+        city_name="邢台市",
+        city_id="CN-130500",
+        source_doc_id="SRC-B2-SINA-300-CITIES-2025-XINGTAI-REVENUE",
+        url="https://finance.sina.com.cn/wm/2026-04-03/doc-inhteimp9034920.shtml",
+        path=RAW_DIR / "province_fiscal" / "2025" / "secondary" / "sina_300_city_2025_revenue_excerpt.txt",
+        attachment_url="https://n.sinaimg.cn/spider20260403/639/w993h1246/20260403/ecc4-e0436f0d302f24c785a8154430c5ac1d.png",
+        document_title="2025年全国300个城市财政数据（图6）",
+        publisher="财通证券研究所（新浪财经公开转载）",
+        publisher_level="证券研究机构公开转载",
+        publication_date="2026-04-03",
+        source_grade="B2",
+        fields=("general_public_revenue_100m",),
+        raw_unit="亿元",
+        source_format="png",
+        data_status="preliminary",
+        data_status_label="2025年公开执行值",
+        page_number="图6；邢台市行",
+        document_type="研究机构城市财政精确图表",
+        note="B2精确图表值；原图图6逐行列示邢台市2025年一般预算收入185.14亿元，图表口径为全市，单位亿元；不使用图表增速或其他财政口径替代目标字段。",
+    ),
 )
 
 # 雄安新区 2024—2025 年全区一般公共预算决算。官方附件以万元列示，摘录
@@ -9770,6 +9822,61 @@ CITY_YEAR_FISCAL_SOURCES += (
     ),
 )
 
+# 阿里地区官方政务公开页面补入2020年一般公共预算收入，并用官方“十四五”
+# 回顾页校正2021年GDP。2020年页面同时出现另一处存在冲突的GDP表述，故只
+# 接入明确无歧义的一般公共预算收入；2021年GDP仅采用回顾页明确列示值，
+# 不从期间平均增速反推其他年份。
+CITY_YEAR_FISCAL_SOURCES += (
+    _make_curated_city_source(
+        year=2020,
+        city_name="阿里地区",
+        city_id="CN-542500",
+        source_doc_id="SRC-B2-ALI-REGION-REVENUE-2020",
+        url="https://www.al.gov.cn/info/1116/39577.htm",
+        path=RAW_DIR / "province_fiscal" / "2020" / "secondary" / "ali_2020_public_revenue_excerpt.txt",
+        document_title="去年阿里地区生产总值完成68.6亿元（2020年财政收入摘录）",
+        publisher="阿里地区行政公署官方门户转载中国西藏新闻网信息",
+        publisher_level="地级行政公署官方门户转载",
+        publication_date="2021-08-10",
+        source_grade="B2",
+        fields=("general_public_revenue_100m",),
+        raw_unit="亿元",
+        source_format="html",
+        data_status="execution",
+        data_status_label="2020年全地区一般公共预算收入完成数",
+        document_type="官方政务公开经济财政指标摘录",
+        page_number="官方页面正文第114行；全地区口径",
+        note=(
+            "B2官方政务公开页面明确列示2020年阿里地区一般公共预算收入完成4.45亿元；"
+            "同页GDP表述与其他官方页面存在冲突，故仅接入一般公共预算收入，不覆盖GDP。"
+        ),
+    ),
+    _make_curated_city_source(
+        year=2021,
+        city_name="阿里地区",
+        city_id="CN-542500",
+        source_doc_id="SRC-A2-ALI-REGION-GDP-2021-REVIEW",
+        url="https://al.gov.cn/info/1097/174924.htm",
+        path=RAW_DIR / "province_fiscal" / "2021" / "official" / "ali_2021_gdp_review_excerpt.txt",
+        document_title="阿里地区‘十四五’时期经济社会发展回顾（2021年GDP摘录）",
+        publisher="阿里地区行政公署",
+        publisher_level="地区级政府机构",
+        publication_date="2025-11-18",
+        source_grade="A2",
+        fields=("gdp_current_100m",),
+        raw_unit="亿元",
+        source_format="html",
+        data_status="final",
+        data_status_label="2021年官方回顾页明确值",
+        document_type="官方政务公开历史经济指标",
+        page_number="官方页面正文第118行；全地区口径",
+        note=(
+            "A2阿里地区行政公署官方回顾页明确列示2021年阿里地区生产总值77.65亿元；"
+            "用于替换主表中来源等级较低且不一致的11.72亿元临时值，不从平均增速反推其他年度。"
+        ),
+    ),
+)
+
 # 四平市财政局官方预算执行报告补入2025年全市一般公共预算收支。
 # 报告同时列示市级、区级和全市县（市）口径；这里严格采用“全市县（市）”
 # 汇总数，不把市级或市区数代入四平市全域主表。
@@ -10918,6 +11025,8 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
                     if config.get("source_format") == "html"
                     else "text/plain"
                     if config.get("source_format") == "txt"
+                    else "image/png"
+                    if config.get("source_format") == "png"
                     else "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                     if config.get("source_format") == "docx"
                     else "application/x-7z-compressed"
@@ -10938,6 +11047,8 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
                 "access_status": (
                     "官方网页已归档"
                     if config.get("source_format") == "html"
+                    else "精确图表已归档"
+                    if config.get("source_format") == "png"
                     else "官方DOCX附件已归档"
                     if config.get("source_format") == "docx"
                     else "官方Excel附件已归档"
