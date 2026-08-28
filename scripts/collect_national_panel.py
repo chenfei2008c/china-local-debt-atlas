@@ -7186,6 +7186,106 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     _make_curated_city_source(**spec) for spec in _CURATED_2024_CITY_MACRO_FISCAL_SPECS
 )
 
+# 雄安新区 2024—2025 年全区一般公共预算决算。官方附件以万元列示，摘录
+# 已保留等值亿元数，且只接入“全区”合计，不把新区本级或三县区分项误当作
+# 雄安新区全域口径。
+CITY_YEAR_FISCAL_SOURCES += (
+    _make_curated_city_source(
+        year=2024,
+        city_name="雄安新区",
+        city_id="CN-133100",
+        source_doc_id="SRC-A2-XIONGAN-CITY-FISCAL-2024",
+        url="https://www.xiongan.gov.cn/20250815/55ee154e81654d3bbc6989f33626347f/c.html",
+        path=RAW_DIR / "province_fiscal" / "2024" / "official" / "xiongan_2024_city_fiscal_final_excerpt.txt",
+        document_title="2024年河北雄安新区区本级和全区财政决算公开报表及有关情况的说明",
+        publisher="雄安新区财政局",
+        publisher_level="新区财政机构",
+        publication_date="2025-08-15",
+        source_grade="A2",
+        fields=("general_public_revenue_100m", "general_public_expenditure_100m"),
+        raw_unit="亿元",
+        source_format="pdf",
+        data_status="final",
+        data_status_label="2024年全区财政决算数",
+        page_number="官方附件全区一般公共预算收入、支出合计行",
+        document_type="新区财政决算公开报表",
+        note="A2雄安新区财政局官方决算附件；原表单位为万元，采用全区一般公共预算收入355827万元、支出4989790万元，折算为亿元；不使用区本级分项。",
+    ),
+    _make_curated_city_source(
+        year=2025,
+        city_name="雄安新区",
+        city_id="CN-133100",
+        source_doc_id="SRC-A2-XIONGAN-CITY-FISCAL-2025",
+        url="https://www.xiongan.gov.cn/20260810/bb65ff29eff342a58bc2218d3cf02000/c.html",
+        path=RAW_DIR / "province_fiscal" / "2025" / "official" / "xiongan_2025_city_fiscal_final_excerpt.txt",
+        document_title="2025年河北雄安新区区本级和全区财政决算公开报表及有关情况的说明",
+        publisher="雄安新区财政局",
+        publisher_level="新区财政机构",
+        publication_date="2026-08-10",
+        source_grade="A2",
+        fields=("general_public_revenue_100m", "general_public_expenditure_100m"),
+        raw_unit="亿元",
+        source_format="pdf",
+        data_status="final",
+        data_status_label="2025年全区财政决算数",
+        page_number="官方附件全区一般公共预算收入、支出合计行",
+        document_type="新区财政决算公开报表",
+        note="A2雄安新区财政局官方决算附件；原表单位为万元，采用全区一般公共预算收入470849万元、支出4751997万元，折算为亿元；不使用区本级分项。",
+    ),
+)
+
+# 盘锦市 2024 年全市一般公共预算支出官方执行快报。正式决算页面已公开，
+# 但本批只采用财政局 2025-01-08 的全市快报值，并明确保留 execution 状态。
+CITY_YEAR_FISCAL_SOURCES += (
+    _make_curated_city_source(
+        year=2024,
+        city_name="盘锦市",
+        city_id="CN-211100",
+        source_doc_id="SRC-A2-PANJIN-CITY-FISCAL-2024",
+        url="https://czj.panjin.gov.cn/2025_01/08_10/content-508554.html",
+        path=RAW_DIR / "province_fiscal" / "2024" / "official" / "panjin_2024_city_fiscal_execution_excerpt.txt",
+        document_title="盘锦市2024年全市预算执行情况",
+        publisher="盘锦市财政局",
+        publisher_level="市级财政机构",
+        publication_date="2025-01-08",
+        source_grade="A2",
+        fields=("general_public_expenditure_100m",),
+        raw_unit="亿元",
+        source_format="html",
+        data_status="execution",
+        data_status_label="2024年全市一般公共预算支出执行快报数",
+        page_number="官方财政局网页；全市一般公共预算支出完成数",
+        document_type="市级财政预算执行信息",
+        note="A2盘锦市财政局官方页面；采用全市一般公共预算支出210.80亿元，明确标记为执行快报数，不冒充正式决算。",
+    ),
+)
+
+# 大兴安岭地区 2023 年公报正文的 GDP 增速补录。原已有 GDP、收入和支出，
+# 本配置只补缺失的增速字段，避免同一公报重复覆盖其他字段。
+CITY_YEAR_FISCAL_SOURCES += (
+    _make_curated_city_source(
+        year=2023,
+        city_name="大兴安岭地区",
+        city_id="CN-232700",
+        source_doc_id="SRC-B2-DAXINGANLING-CITY-MACRO-2023",
+        url="https://tjgb.hongheiku.com/xjtjgb/xj2020/52904.html",
+        path=RAW_DIR / "province_fiscal" / "2023" / "official" / "daxinganling_2023_city_macro_excerpt.txt",
+        document_title="大兴安岭地区2023年国民经济和社会发展统计公报",
+        publisher="大兴安岭地区统计局公报精确转载",
+        publisher_level="公开披露B2来源",
+        publication_date="2024-05-29",
+        source_grade="B2",
+        fields=("gdp_real_growth_pct",),
+        raw_unit="%",
+        source_format="html",
+        data_status="preliminary",
+        data_status_label="2023年统计公报初步统计数",
+        page_number="公报正文‘国民经济’段",
+        document_type="地区统计公报经济指标精确转载",
+        note="B2精确转载；原公报来源为大兴安岭地区统计局，明确全区行政范围和按不变价格计算的实际增速-0.4%。",
+    ),
+)
+
 # 2024 年陕西市级财政报告补充的全市一般公共预算支出执行数。原有陕西
 # 年鉴/评级摘录主要覆盖 GDP、增速和收入，本批单独接入四个仍缺支出的城市，
 # 以官方预算执行报告中的全市合计为准，原始单位为万元。
@@ -9407,6 +9507,102 @@ _CURATED_2024_2025_MACRO_FOLLOWUP_SPECS = (
 CITY_YEAR_FISCAL_SOURCES += tuple(
     _make_curated_city_source(**spec)
     for spec in _CURATED_2024_2025_MACRO_FOLLOWUP_SPECS
+)
+
+# 2025年财通证券研究所公开的地市经济财政精确表格（图4、图6）补充当前仍为空的
+# 海西、七台河和榆林字段。图表中的数值是可逐项读取的表格单元格，按B2登记；不以
+# 研究报告的柱状图目测值代替，也不覆盖已有的A1/A2/B1值。
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    _make_curated_city_source(
+        year=2025,
+        city_name=city_name,
+        city_id=city_id,
+        source_doc_id=f"SRC-B2-SINA-CREDIT-300-CITIES-2025-{slug}",
+        url="https://finance.sina.cn/2026-04-03/detail-inhteimp9034920.d.html?vt=4&wm=2",
+        path=RAW_DIR / "province_fiscal" / "2025" / "secondary" / "sina_finance_2025_macro_table_excerpt.txt",
+        document_title="信用｜2025年，300城经济财政怎么看？",
+        publisher="财通证券研究所（新浪财经公开转载）",
+        publisher_level="专业研究机构公开精确表格（二手来源）",
+        publication_date="2026-04-03",
+        source_grade="B2",
+        fields=fields,
+        raw_units={"gdp_real_growth_pct": "%"},
+        source_format="html",
+        data_status="preliminary",
+        data_status_label="2025年公开整理精确表格值",
+        document_type="公开研究机构地市经济财政指标表",
+        page_number="图4、图6；对应城市行",
+        note=(
+            "B2公开研究机构精确表格；财通证券研究所说明数据由企业预警通、财通证券研究所整理。"
+            "仅接入图4/图6中明确的GDP、实际增速或一般公共预算收入单元格，"
+            "不使用柱状图目测，不覆盖更高等级来源。"
+        ),
+    )
+    for city_name, city_id, slug, fields in (
+        ("海西蒙古族藏族自治州", "CN-632800", "HAIXI", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m")),
+        ("七台河市", "CN-230900", "QITAIHE", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m")),
+        ("榆林市", "CN-610800", "YULIN", ("general_public_revenue_100m",)),
+    )
+)
+
+# 华经产业研究院公开页面对2024年聊城、咸阳的一般预算财政支出给出精确值；
+# 这是B2二手整理，只补主表空缺，不将其收入数覆盖到已有的更高等级来源。
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    _make_curated_city_source(
+        year=2024,
+        city_name=city_name,
+        city_id=city_id,
+        source_doc_id=f"SRC-B2-HUAON-CITY-FISCAL-2024-{slug}",
+        url=url,
+        path=RAW_DIR / "province_fiscal" / "2024" / "secondary" / "huajing_2024_city_fiscal_excerpt.txt",
+        document_title=title,
+        publisher="华经产业研究院",
+        publisher_level="专业研究机构公开城市财政页面（二手来源）",
+        publication_date=publication_date,
+        source_grade="B2",
+        fields=("general_public_expenditure_100m",),
+        source_format="html",
+        data_status="preliminary",
+        data_status_label="2024年公开整理财政数",
+        document_type="城市一般预算财政收支公开页面",
+        page_number="正文第一部分；一般预算财政收入和一般预算财政支出情况",
+        note=(
+            "B2非政府二手整理页面，正文精确列示城市一般预算财政支出；"
+            "本批仅补主表空缺字段，不覆盖已有更高等级或冲突值。"
+        ),
+    )
+    for city_name, city_id, slug, url, title, publication_date in (
+        ("聊城市", "CN-371500", "LIAOCHENG", "https://www.huaon.com/channel/distdata/1067274.html", "2024年聊城市一般预算财政收入、一般预算财政支出及收支差额情况", "2025-04-13"),
+        ("咸阳市", "CN-610400", "XIANYANG", "https://www.huaon.com/channel/distdata/1067882.html", "2024年咸阳市一般预算财政收入、一般预算财政支出及收支差额情况", "2025-04-15"),
+    )
+)
+
+# 延安市统计公报公开转载明确列示2024年全市财政支出560.58亿元；仅补支出，
+# 并保留B2等级，不把同页“地方财政收入”当作一般公共预算收入。
+CITY_YEAR_FISCAL_SOURCES += (
+    _make_curated_city_source(
+        year=2024,
+        city_name="延安市",
+        city_id="CN-610600",
+        source_doc_id="SRC-B2-YANAN-STATISTICAL-BULLETIN-FISCAL-2024",
+        url="https://www.zgrkk.com/reports/237.html",
+        path=RAW_DIR / "province_fiscal" / "2024" / "secondary" / "yanan_2024_statistical_bulletin_fiscal_excerpt.txt",
+        document_title="2024年延安市国民经济和社会发展统计公报",
+        publisher="延安市统计局、国家统计局延安调查队（公开转载）",
+        publisher_level="官方统计公报公开转载（二手来源）",
+        publication_date="2025-05-13",
+        source_grade="B2",
+        fields=("general_public_expenditure_100m",),
+        source_format="html",
+        data_status="preliminary",
+        data_status_label="2024年统计公报财政数",
+        document_type="统计公报财政指标",
+        page_number="公报财政段；全市口径",
+        note=(
+            "B2官方统计公报公开转载；正文明确列示2024年全市财政支出560.58亿元。"
+            "仅接入一般公共预算支出，不将地方财政收入自动等同于一般公共预算收入。"
+        ),
+    ),
 )
 
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}

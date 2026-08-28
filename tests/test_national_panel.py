@@ -2988,6 +2988,83 @@ class NationalPanelTests(unittest.TestCase):
             {"SRC-A2-TAIAN-CITY-FISCAL-2025"},
         )
 
+    def test_new_verified_macro_gap_batch_is_loaded_with_field_provenance(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        xiongan_2024 = values[("CN-133100", "2024")]
+        self.assertEqual(xiongan_2024["general_public_revenue_100m"], Decimal("35.58"))
+        self.assertEqual(xiongan_2024["general_public_expenditure_100m"], Decimal("498.98"))
+        self.assertEqual(xiongan_2024["source_grade"], "A2")
+        self.assertEqual(xiongan_2024["data_status"], "final")
+
+        xiongan_2025 = values[("CN-133100", "2025")]
+        self.assertEqual(xiongan_2025["general_public_revenue_100m"], Decimal("47.08"))
+        self.assertEqual(xiongan_2025["general_public_expenditure_100m"], Decimal("475.20"))
+        self.assertEqual(xiongan_2025["source_grade"], "A2")
+        self.assertEqual(xiongan_2025["data_status"], "final")
+
+        panjin_2024 = values[("CN-211100", "2024")]
+        self.assertEqual(panjin_2024["general_public_expenditure_100m"], Decimal("210.80"))
+        self.assertEqual(panjin_2024["source_grade"], "A2")
+        self.assertEqual(panjin_2024["data_status"], "execution")
+
+        daxinganling_2023 = values[("CN-232700", "2023")]
+        self.assertEqual(daxinganling_2023["gdp_real_growth_pct"], Decimal("-0.40"))
+        self.assertEqual(daxinganling_2023["source_grade"], "B2")
+
+        source_ids = {item["source_doc_id"] for item in sources}
+        self.assertTrue(
+            {
+                "SRC-A2-XIONGAN-CITY-FISCAL-2024",
+                "SRC-A2-XIONGAN-CITY-FISCAL-2025",
+                "SRC-A2-PANJIN-CITY-FISCAL-2024",
+                "SRC-B2-DAXINGANLING-CITY-MACRO-2023",
+            }.issubset(source_ids)
+        )
+
+    def test_current_four_field_gap_batch_is_loaded_with_field_provenance(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        haixi = values[("CN-632800", "2025")]
+        self.assertEqual(haixi["gdp_current_100m"], Decimal("917.29"))
+        self.assertEqual(haixi["gdp_real_growth_pct"], Decimal("7.50"))
+        self.assertEqual(haixi["general_public_revenue_100m"], Decimal("81.52"))
+        self.assertEqual(haixi["source_grade"], "B2")
+
+        qitaihe = values[("CN-230900", "2025")]
+        self.assertEqual(qitaihe["gdp_current_100m"], Decimal("249.40"))
+        self.assertEqual(qitaihe["gdp_real_growth_pct"], Decimal("5.50"))
+        self.assertEqual(qitaihe["general_public_revenue_100m"], Decimal("34.68"))
+        self.assertEqual(qitaihe["source_grade"], "B2")
+
+        yulin = values[("CN-610800", "2025")]
+        self.assertEqual(yulin["general_public_revenue_100m"], Decimal("562.52"))
+        self.assertEqual(yulin["source_grade"], "B2")
+
+        liaocheng = values[("CN-371500", "2024")]
+        self.assertEqual(liaocheng["general_public_expenditure_100m"], Decimal("576.50"))
+        self.assertEqual(liaocheng["source_grade"], "B2")
+
+        xianyang = values[("CN-610400", "2024")]
+        self.assertEqual(xianyang["general_public_expenditure_100m"], Decimal("517.50"))
+        self.assertEqual(xianyang["source_grade"], "B2")
+
+        yanan = values[("CN-610600", "2024")]
+        self.assertEqual(yanan["general_public_expenditure_100m"], Decimal("560.58"))
+        self.assertEqual(yanan["source_grade"], "B2")
+
+        source_ids = {item["source_doc_id"] for item in sources}
+        self.assertTrue(
+            {
+                "SRC-B2-SINA-CREDIT-300-CITIES-2025-HAIXI",
+                "SRC-B2-SINA-CREDIT-300-CITIES-2025-QITAIHE",
+                "SRC-B2-SINA-CREDIT-300-CITIES-2025-YULIN",
+                "SRC-B2-HUAON-CITY-FISCAL-2024-LIAOCHENG",
+                "SRC-B2-HUAON-CITY-FISCAL-2024-XIANYANG",
+                "SRC-B2-YANAN-STATISTICAL-BULLETIN-FISCAL-2024",
+            }.issubset(source_ids)
+        )
+
     def test_datong_2025_official_budget_report_extracts_whole_city_fiscal_values(self):
         values, sources = load_city_year_fiscal_sources()
         datong = values[("CN-140200", "2025")]
