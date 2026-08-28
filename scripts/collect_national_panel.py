@@ -2265,6 +2265,31 @@ NEXT24_2025_ECONOMIC_SOURCES = (
         "note": "A2官方来源组合：和田地区统计局2025年统计公报补录GDP实际增速，和田地区财政局2025年度政府决算公开正式决算表补录全地区一般公共预算收入517283万元、支出4542199万元和政府性基金收入103427万元，统一换算为亿元。正式决算表优先于阶段性执行口径；不使用地区本级表数，也不把2025年统计公报中未披露的GDP绝对额、人口推断填入。",
     },
     {
+        "city_name": "和田地区",
+        "city_id": "CN-653200",
+        "source_doc_id": "SRC-B2-XINJIANG-PREFECTURE-HOTAN-2025-GDP-TOTAL",
+        "url": "https://xj.chinadaily.com.cn/a/202605/21/WS6a0eccc1a310942cc49ad950.html",
+        "attachment_url": "https://xj.chinadaily.com.cn/a/202605/21/WS6a0eccc1a310942cc49ad950.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "hotan_2025_gdp_chinadaily.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "hotan_2025_gdp_chinadaily_excerpt.txt",
+        "text_is_curated": True,
+        "source_format": "html",
+        "document_title": "中国日报网：开局起步‘十五五’——新疆和田进入历史上最好、最快、最稳发展时期",
+        "publisher": "中国日报网（新疆自治区人民政府新闻办公室新闻发布会报道）",
+        "publisher_level": "中央媒体精确公开报道",
+        "publication_date": "2026-05-21",
+        "title_source": "chinadaily_news_release",
+        "document_type": "公开报道引用地区经济指标",
+        "mime_type": "text/html",
+        "source_grade": "B2",
+        "data_status": "preliminary",
+        "source_locator": "hotan_2025_gdp_chinadaily_excerpt.txt；正文第96行附近；和田地区全地区",
+        "patterns": {
+            "gdp_current_100m": (r"城市=和田地区｜年度=2025｜GDP=([0-9.]+)亿元", "亿元"),
+        },
+        "note": "B2精确公开报道；中国日报网报道新疆自治区人民政府新闻办公室新闻发布会，明确和田地区生产总值2025年增长至648.11亿元。和田地区官方统计公报未披露GDP绝对额，本来源仅补GDP现价总量，不覆盖A2官方来源已接入的GDP增速和财政字段；不使用平均增速反推GDP。",
+    },
+    {
         "city_name": "克孜勒苏柯尔克孜自治州",
         "city_id": "CN-653000",
         "source_doc_id": "SRC-A2-XINJIANG-PREFECTURE-KIZILSU-2025-STATISTICS-FISCAL",
@@ -9605,6 +9630,238 @@ CITY_YEAR_FISCAL_SOURCES += (
     ),
 )
 
+# 榆林市财政局2025年财政预算执行报告明确列示全市一般公共预算支出；
+# 仅接入表二“支出合计”执行数，不使用市级表或2026年预算数。
+CITY_YEAR_FISCAL_SOURCES += (
+    _make_curated_city_source(
+        year=2025,
+        city_name="榆林市",
+        city_id="CN-610800",
+        source_doc_id="SRC-A1-YULIN-CITY-FISCAL-2025",
+        url="https://www.yl.gov.cn/zwgk/fdzdgknr/czxx/czyjs/szfczys/202603/t20260319_2082424.html",
+        path=RAW_DIR / "province_fiscal" / "2025" / "official" / "ylin_2025_budget_execution_excerpt.txt",
+        document_title="关于榆林市2025年财政预算执行情况和2026年财政预算草案的报告",
+        publisher="榆林市财政局",
+        publisher_level="市级财政机构",
+        publication_date="2026-03-19",
+        source_grade="A1",
+        fields=("general_public_expenditure_100m",),
+        raw_unit="万元",
+        source_format="pdf",
+        data_status="execution",
+        data_status_label="2025年全市一般公共预算支出执行数",
+        document_type="市级财政预算执行报告",
+        page_number="PDF第8页表二；全市口径；支出合计行",
+        note=(
+            "A1榆林市财政局官方预算执行报告；表二列示2025年全市一般公共预算支出执行数"
+            "11507100万元，换算为1150.71亿元。仅使用全市表，不使用市级表或预算数。"
+        ),
+    ),
+)
+
+# 2024年汉中、渭南和2025年海西的全市一般公共预算支出补缺。
+# 前两项来自公开精确城市财政/统计公报页面，后一项来自公开报道中的精确全州值；
+# 均只补当前空值，不覆盖已有更高等级记录，也不使用市本级或预算数。
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    _make_curated_city_source(**spec)
+    for spec in (
+        {
+            "year": 2024,
+            "city_name": "汉中市",
+            "city_id": "CN-610700",
+            "source_doc_id": "SRC-B2-HANZHONG-CITY-FISCAL-2024",
+            "url": "https://www.huaon.com/channel/distdata/1067883.html",
+            "path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "2024_city_fiscal_followup_excerpt.txt",
+            "document_title": "2024年汉中市一般预算财政收入、一般预算财政支出及收支差额情况",
+            "publisher": "华经产业研究院",
+            "publisher_level": "专业研究机构公开城市财政页面（二手来源）",
+            "publication_date": "2025-04-15",
+            "source_grade": "B2",
+            "fields": ("general_public_expenditure_100m",),
+            "raw_unit": "亿元",
+            "source_format": "html",
+            "data_status": "preliminary",
+            "data_status_label": "2024年公开整理财政数",
+            "document_type": "城市一般预算财政收支公开页面",
+            "page_number": "正文第一部分；一般预算财政支出",
+            "note": (
+                "B2公开精确页面；正文列示2024年汉中市一般预算财政支出440.3亿元，"
+                "城市口径与年度明确，仅补一般公共预算支出。"
+            ),
+        },
+        {
+            "year": 2024,
+            "city_name": "渭南市",
+            "city_id": "CN-610500",
+            "source_doc_id": "SRC-B2-WEINAN-CITY-BULLETIN-FISCAL-2024",
+            "url": "https://tjgb.hongheiku.com/xjtjgb/xj2020/61374.html",
+            "path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "2024_city_fiscal_followup_excerpt.txt",
+            "document_title": "2024年渭南市国民经济和社会发展统计公报",
+            "publisher": "渭南市统计局公报公开转载",
+            "publisher_level": "市级统计机构公报公开转载（二手来源）",
+            "publication_date": "2025-05-02",
+            "source_grade": "B2",
+            "fields": ("general_public_expenditure_100m",),
+            "raw_unit": "亿元",
+            "source_format": "html",
+            "data_status": "preliminary",
+            "data_status_label": "2024年统计公报初步统计数",
+            "document_type": "市级统计公报财政指标",
+            "page_number": "公报第八部分财政、金融和保险；全市口径",
+            "note": (
+                "B2官方统计公报公开转载；财政段列示2024年全市财政支出576.48亿元，"
+                "公报注明为初步统计数；本批仅将该全市财政支出作为一般公共预算支出补缺。"
+            ),
+        },
+        {
+            "year": 2025,
+            "city_name": "海西蒙古族藏族自治州",
+            "city_id": "CN-632800",
+            "source_doc_id": "SRC-B2-HAIXI-STATE-FISCAL-2025",
+            "url": "https://www.sohu.com/a/984487505_121106869",
+            "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "haixi_2025_statistical_fiscal_excerpt.txt",
+            "document_title": "硬核经济托底 暖心民生作答——2025年海西州发展民生双向奔赴绘幸福长卷",
+            "publisher": "公开报道（二手来源）",
+            "publisher_level": "公开报道精确转载（二手来源）",
+            "publication_date": "2026-02-06",
+            "source_grade": "B2",
+            "fields": ("general_public_expenditure_100m",),
+            "raw_unit": "亿元",
+            "source_format": "html",
+            "data_status": "execution",
+            "data_status_label": "2025年全州一般公共预算支出执行数",
+            "document_type": "全州经济运行公开财政指标",
+            "page_number": "正文财政段；全州口径",
+            "note": (
+                "B2公开报道精确列示2025年全州一般公共预算支出198.28亿元，"
+                "并给出民生支出160.08亿元及占比80.7%；仅补全州一般公共预算支出。"
+            ),
+        },
+    )
+)
+
+# 阿里地区财政局官方《2021年财政决算报告（草案）》明确列示全地区口径；
+# 仅接入全地区地方一般公共预算收入和一般公共预算支出，不使用地区本级数。
+CITY_YEAR_FISCAL_SOURCES += (
+    _make_curated_city_source(
+        year=2021,
+        city_name="阿里地区",
+        city_id="CN-542500",
+        source_doc_id="SRC-A2-ALI-REGION-FISCAL-2021",
+        url="https://www.al.gov.cn/_mediafile/word2pdf/1512064483/2023-01-11/5ECC899E-9D4B-45F7-A8C6-5D649A548455.pdf",
+        path=RAW_DIR / "province_fiscal" / "2021" / "official" / "ali_2021_final_budget_excerpt.txt",
+        document_title="阿里地区2021年财政决算报告（草案）",
+        publisher="阿里地区财政局",
+        publisher_level="地区级财政机构",
+        publication_date="2023-01-11",
+        source_grade="A2",
+        fields=("general_public_revenue_100m", "general_public_expenditure_100m"),
+        raw_unit="万元",
+        source_format="pdf",
+        data_status="final",
+        data_status_label="2021年全地区一般公共预算收支决算数",
+        document_type="地区级财政决算报告（草案）",
+        page_number="PDF第1—3页；全地区一般公共预算收入/支出决算情况",
+        note=(
+            "A2阿里地区财政局官方财政决算报告（草案）；明确列示全地区地方一般公共预算收入"
+            "37633万元、一般公共预算支出962454万元，换算为3.7633亿元和96.2454亿元。"
+            "不使用地区本级收入9589万元和本级支出314648万元。"
+        ),
+    ),
+)
+
+# 四平市财政局官方预算执行报告补入2025年全市一般公共预算收支。
+# 报告同时列示市级、区级和全市县（市）口径；这里严格采用“全市县（市）”
+# 汇总数，不把市级或市区数代入四平市全域主表。
+CITY_YEAR_FISCAL_SOURCES += (
+    _make_curated_city_source(
+        year=2025,
+        city_name="四平市",
+        city_id="CN-220300",
+        source_doc_id="SRC-A2-SIPING-CITY-FISCAL-2025",
+        url="http://www.siping.gov.cn/zw/zwxxgkzl/czysgk/202601/t20260119_758254.html",
+        path=RAW_DIR / "province_fiscal" / "2025" / "official" / "siping_2025_budget_execution_excerpt.txt",
+        document_title="关于四平市2025年预算执行情况和2026年预算草案的报告",
+        publisher="四平市财政局",
+        publisher_level="市级财政机构",
+        publication_date="2026-01-13",
+        source_grade="A2",
+        fields=("general_public_revenue_100m", "general_public_expenditure_100m"),
+        raw_unit="万元",
+        source_format="pdf",
+        data_status="execution",
+        data_status_label="2025年全市一般公共预算执行数",
+        document_type="市级财政预算执行报告",
+        page_number="PDF第2页；汇总市级和区级预算执行情况；全市县（市）口径",
+        note=(
+            "A2四平市财政局官方报告；采用全市一般公共预算地方级财政收入751426万元、"
+            "一般公共预算支出2914380万元，换算为75.1426亿元和291.4380亿元；"
+            "不使用同页市级或市区口径数字。"
+        ),
+    ),
+)
+
+# 辽源市财政局官方年度预算执行页面补入2025年全市一般公共预算收支。
+# “一般公共预算地方级收入”在本页面与“全口径财政收入”并列，明确对应
+# 目标字段；支出则明确标注为“全市一般公共预算财政支出”，均不是预算安排数。
+CITY_YEAR_FISCAL_SOURCES += (
+    _make_curated_city_source(
+        year=2025,
+        city_name="辽源市",
+        city_id="CN-220400",
+        source_doc_id="SRC-A2-LIAOYUAN-CITY-FISCAL-2025",
+        url="http://www.liaoyuan.gov.cn/xxgk/zwgkzdlyxx/czxx/czyszx/202604/t20260414_735187.html",
+        path=RAW_DIR / "province_fiscal" / "2025" / "official" / "liaoyuan_2025_budget_execution_excerpt.txt",
+        document_title="2025年12月份预算执行情况",
+        publisher="辽源市财政局",
+        publisher_level="市级财政机构",
+        publication_date="2026-04-14",
+        source_grade="A2",
+        fields=("general_public_revenue_100m", "general_public_expenditure_100m"),
+        raw_unit="万元",
+        source_format="html",
+        data_status="execution",
+        data_status_label="2025年1—12月份全市一般公共预算执行数",
+        document_type="市级财政预算执行网页",
+        page_number="官方网页正文；2025年12月份预算执行情况；2025年1—12月份累计",
+        note=(
+            "A2辽源市财政局官方预算执行页面；收入采用明确写作“一般公共预算地方级收入”的"
+            "全市累计数317674万元，支出采用“全市一般公共预算财政支出”1742658万元；"
+            "不使用全口径财政收入464814万元。"
+        ),
+    ),
+)
+
+# 延边州财政局官方年度预算执行页面补入2025年全州一般公共预算收支。
+# 页面同时提供收支 Excel 附件；这里以正文全州口径为主证据，保留附件入口供复核。
+CITY_YEAR_FISCAL_SOURCES += (
+    _make_curated_city_source(
+        year=2025,
+        city_name="延边朝鲜族自治州",
+        city_id="CN-222400",
+        source_doc_id="SRC-A2-YANBIAN-STATE-FISCAL-2025",
+        url="http://czj.yanbian.gov.cn/sj/czsj/202602/t20260209_567196.html",
+        path=RAW_DIR / "province_fiscal" / "2025" / "official" / "yanbian_2025_budget_execution_excerpt.txt",
+        document_title="2025年1-12全州财政预算执行情况",
+        publisher="延边州财政局",
+        publisher_level="州级财政机构",
+        publication_date="2026-01-22",
+        source_grade="A2",
+        fields=("general_public_revenue_100m", "general_public_expenditure_100m"),
+        raw_unit="亿元",
+        source_format="html",
+        data_status="execution",
+        data_status_label="2025年1—12月全州一般公共预算执行数",
+        document_type="州级财政预算执行网页",
+        page_number="官方网页正文；一、一般公共预算收支情况；全州情况",
+        note=(
+            "A2延边州财政局官方预算执行页面；采用全州一般公共预算收入94.8亿元、"
+            "一般公共预算支出402.6亿元；页面另提供财政收支Excel附件，不使用州本级收入4.8亿元"
+            "和州本级支出42.1亿元。"
+        ),
+    ),
+)
+
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
@@ -10079,7 +10336,73 @@ def load_city_2025_fiscal_sources(
             city_values[f"{field}_raw"] = raw_value
             city_values[f"{field}_raw_unit"] = raw_unit
             city_values[f"{field}_evidence_excerpt"] = match.group(0)
-        values[config["city_id"]] = city_values
+        city_id = config["city_id"]
+        prior_values = values.get(city_id)
+        if prior_values is None:
+            city_values["_field_sources"] = {
+                field: dict(city_values)
+                for field in config["patterns"]
+                if field in city_values
+            }
+            values[city_id] = city_values
+        else:
+            # 同一城市可能由独立来源分别补充经济和财政字段。按字段合并，
+            # 保留字段级血缘；同值不重复覆盖，同等级冲突进入复核队列。
+            field_sources = dict(prior_values.get("_field_sources") or {})
+            prior_source_ids = [
+                item for item in str(prior_values.get("source_doc_id") or "").split(";") if item
+            ]
+            current_source_id = str(city_values.get("source_doc_id") or "")
+            if current_source_id and current_source_id not in prior_source_ids:
+                prior_source_ids.append(current_source_id)
+            current_grade = str(city_values.get("source_grade") or "")
+            for field in config["patterns"]:
+                if field not in city_values:
+                    continue
+                current_value = as_decimal(city_values.get(field))
+                if current_value is None:
+                    continue
+                prior_source = field_sources.get(field, prior_values)
+                prior_value = as_decimal(
+                    prior_source.get(field) if prior_source else prior_values.get(field)
+                )
+                prior_grade = str(prior_source.get("source_grade") or "") if prior_source else ""
+                if prior_value is None:
+                    prior_values[field] = city_values[field]
+                    for suffix in ("_raw_100m", "_raw_unit", "_evidence_excerpt"):
+                        source_key = f"{field}{suffix}"
+                        if source_key in city_values:
+                            prior_values[source_key] = city_values[source_key]
+                    field_sources[field] = dict(city_values)
+                elif current_value == prior_value:
+                    continue
+                elif SOURCE_GRADE_RANK.get(current_grade, -1) > SOURCE_GRADE_RANK.get(prior_grade, -1):
+                    prior_values[field] = city_values[field]
+                    for suffix in ("_raw_100m", "_raw_unit", "_evidence_excerpt"):
+                        source_key = f"{field}{suffix}"
+                        if source_key in city_values:
+                            prior_values[source_key] = city_values[source_key]
+                    field_sources[field] = dict(city_values)
+                else:
+                    conflicts = list(prior_values.get("_field_conflicts") or [])
+                    conflicts.append(
+                        {
+                            "field": field,
+                            "prior_value": str(prior_value),
+                            "candidate_value": str(current_value),
+                            "prior_source_doc_id": str(prior_source.get("source_doc_id") or ""),
+                            "candidate_source_doc_id": current_source_id,
+                        }
+                    )
+                    prior_values["_field_conflicts"] = conflicts
+            prior_values["source_doc_id"] = ";".join(prior_source_ids)
+            prior_values["_field_sources"] = field_sources
+            if SOURCE_GRADE_RANK.get(current_grade, -1) > SOURCE_GRADE_RANK.get(
+                str(prior_values.get("source_grade") or ""), -1
+            ):
+                prior_values["source_grade"] = current_grade
+            if not prior_values.get("data_status") or prior_values.get("data_status") == "not_collected":
+                prior_values["data_status"] = city_values.get("data_status")
         sources.append(
             {
                 "source_doc_id": config["source_doc_id"],

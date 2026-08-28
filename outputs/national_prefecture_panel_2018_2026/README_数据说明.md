@@ -5,10 +5,10 @@
 - 生成时间：2026-08-01T00:00:00+08:00
 - 城市主表行数：3,074（城市×年度版本；直辖市单列，自治州/地区/盟扩展）
 - 经济财政主表行数：3,074
-- GDP 非空行数：1,823，覆盖率 59.30%
-- 一般公共预算收入非空行数：1,860，覆盖率 60.51%
-- 法定政府债务余额非空行数：2,722，覆盖率 88.55%
-- 2018—2025 法定政府债务余额硬门槛：未通过（2,722/2,732 个城市年度键）
+- GDP 非空行数：2,687，覆盖率 87.41%
+- 一般公共预算收入非空行数：2,681，覆盖率 87.22%
+- 法定政府债务余额非空行数：2,723，覆盖率 88.58%
+- 2018—2025 法定政府债务余额硬门槛：未通过（2,723/2,732 个城市年度键）
 
 ## 数据状态与来源
 
@@ -30,4 +30,4 @@
 
 ## 表格目录
 
-主表包括 `dim_city.csv`、`city_macro_fiscal.csv`、`city_gov_debt.csv`、`risk_metric.csv`、`source_document.csv`、`field_lineage.csv`、`collection_status.csv`、`evidence_based_missing.csv` 以及公式和质量表。LGFV、逐券债券、特殊条款、募集资金用途和信用事件文件已经按设计文档建立字段结构；当前没有可靠批量来源的模块不虚构记录。
+主表包括 `dim_city.csv`、`city_macro_fiscal.csv`、`city_gov_debt.csv`、`risk_metric.csv`、`source_document.csv`、`field_lineage.csv`、`collection_status.csv`、`evidence_based_missing.csv`、`batch_source_registry.csv`、`core_coverage_report_2018_2025.csv` 以及公式和质量表。LGFV、逐券债券、特殊条款、募集资金用途和信用事件文件已经按设计文档建立字段结构；当前没有可靠批量来源的模块不虚构记录。

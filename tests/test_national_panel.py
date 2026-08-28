@@ -205,6 +205,54 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(parsed["general_public_revenue_100m"], Decimal("184.20"))
         self.assertEqual(parsed["general_public_expenditure_100m"], Decimal("599.20"))
 
+    def test_siping_2025_official_report_uses_whole_city_county_scope(self):
+        values, sources = load_city_year_fiscal_sources()
+        siping = values[("CN-220300", "2025")]
+        self.assertEqual(siping["general_public_revenue_100m"], Decimal("75.14"))
+        self.assertEqual(siping["general_public_expenditure_100m"], Decimal("291.44"))
+        self.assertEqual(
+            siping["_field_sources"]["general_public_revenue_100m"]["source_grade"],
+            "A2",
+        )
+        self.assertEqual(
+            siping["_field_sources"]["general_public_expenditure_100m"]["source_grade"],
+            "A2",
+        )
+        self.assertIn("SRC-A2-SIPING-CITY-FISCAL-2025", siping["source_doc_id"])
+        self.assertTrue(any(item["source_doc_id"] == "SRC-A2-SIPING-CITY-FISCAL-2025" for item in sources))
+
+    def test_liaoyuan_2025_official_page_uses_local_general_budget_revenue_and_expenditure(self):
+        values, sources = load_city_year_fiscal_sources()
+        liaoyuan = values[("CN-220400", "2025")]
+        self.assertEqual(liaoyuan["general_public_revenue_100m"], Decimal("31.77"))
+        self.assertEqual(liaoyuan["general_public_expenditure_100m"], Decimal("174.27"))
+        self.assertEqual(
+            liaoyuan["_field_sources"]["general_public_revenue_100m"]["source_grade"],
+            "A2",
+        )
+        self.assertEqual(
+            liaoyuan["_field_sources"]["general_public_expenditure_100m"]["source_grade"],
+            "A2",
+        )
+        self.assertIn("SRC-A2-LIAOYUAN-CITY-FISCAL-2025", liaoyuan["source_doc_id"])
+        self.assertTrue(any(item["source_doc_id"] == "SRC-A2-LIAOYUAN-CITY-FISCAL-2025" for item in sources))
+
+    def test_yanbian_2025_official_page_uses_whole_state_budget_values(self):
+        values, sources = load_city_year_fiscal_sources()
+        yanbian = values[("CN-222400", "2025")]
+        self.assertEqual(yanbian["general_public_revenue_100m"], Decimal("94.80"))
+        self.assertEqual(yanbian["general_public_expenditure_100m"], Decimal("402.60"))
+        self.assertEqual(
+            yanbian["_field_sources"]["general_public_revenue_100m"]["source_grade"],
+            "A2",
+        )
+        self.assertEqual(
+            yanbian["_field_sources"]["general_public_expenditure_100m"]["source_grade"],
+            "A2",
+        )
+        self.assertIn("SRC-A2-YANBIAN-STATE-FISCAL-2025", yanbian["source_doc_id"])
+        self.assertTrue(any(item["source_doc_id"] == "SRC-A2-YANBIAN-STATE-FISCAL-2025" for item in sources))
+
     def test_gotohui_public_series_adapter_keeps_exact_units_and_b2_lineage(self):
         root = Path(__file__).resolve().parents[1]
         with (root / "outputs/national_prefecture_panel_2018_2026/dim_city.csv").open(
@@ -3039,7 +3087,15 @@ class NationalPanelTests(unittest.TestCase):
 
         yulin = values[("CN-610800", "2025")]
         self.assertEqual(yulin["general_public_revenue_100m"], Decimal("562.52"))
-        self.assertEqual(yulin["source_grade"], "B2")
+        self.assertEqual(yulin["source_grade"], "A1")
+        self.assertEqual(
+            yulin["_field_sources"]["general_public_revenue_100m"]["source_grade"],
+            "B2",
+        )
+        self.assertEqual(
+            yulin["_field_sources"]["general_public_expenditure_100m"]["source_grade"],
+            "A1",
+        )
 
         liaocheng = values[("CN-371500", "2024")]
         self.assertEqual(liaocheng["general_public_expenditure_100m"], Decimal("576.50"))
@@ -3767,7 +3823,8 @@ class NationalPanelTests(unittest.TestCase):
         values, sources = load_next24_2025_city_economic()
 
         self.assertEqual(len(values), 2)
-        self.assertEqual(len(sources), 2)
+        self.assertEqual(len(sources), 3)
+        self.assertEqual(values["CN-653200"]["gdp_current_100m"], Decimal("648.11"))
         self.assertEqual(values["CN-653200"]["gdp_real_growth_pct"], Decimal("6.60"))
         self.assertEqual(values["CN-653200"]["general_public_revenue_100m"], Decimal("51.73"))
         self.assertEqual(values["CN-653200"]["general_public_expenditure_100m"], Decimal("454.22"))
@@ -3776,7 +3833,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(values["CN-653000"]["resident_population_10k"], Decimal("64.07"))
         self.assertEqual(values["CN-653000"]["general_public_revenue_100m"], Decimal("28.63"))
         self.assertEqual(values["CN-653000"]["general_public_expenditure_100m"], Decimal("199.90"))
-        self.assertEqual({source["source_grade"] for source in sources}, {"A2"})
+        self.assertEqual({source["source_grade"] for source in sources}, {"A2", "B2"})
 
     def test_next25_2025_xinjiang_economic_batch_extracts_aksu_and_kashgar(self):
         values, sources = load_next25_2025_city_economic()
