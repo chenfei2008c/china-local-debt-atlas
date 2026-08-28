@@ -863,6 +863,50 @@ class NationalPanelTests(unittest.TestCase):
             "gov_fund_revenue_100m",
         })
 
+    def test_2024_sichuan_and_lijiang_batch_extracts_remaining_core_fields(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        expected = {
+            ("CN-530700", "2024"): {
+                "general_public_expenditure_100m": Decimal("181.01"),
+            },
+            ("CN-511700", "2024"): {
+                "general_public_expenditure_100m": Decimal("598.20"),
+            },
+            ("CN-513300", "2024"): {
+                "gdp_current_100m": Decimal("580.52"),
+                "gdp_real_growth_pct": Decimal("5.40"),
+                "general_public_revenue_100m": Decimal("60.50"),
+                "general_public_expenditure_100m": Decimal("454.50"),
+            },
+            ("CN-513400", "2024"): {
+                "gdp_current_100m": Decimal("2474.90"),
+                "gdp_real_growth_pct": Decimal("6.00"),
+                "general_public_revenue_100m": Decimal("220.30"),
+                "general_public_expenditure_100m": Decimal("848.50"),
+            },
+            ("CN-510300", "2024"): {
+                "gdp_current_100m": Decimal("1876.24"),
+                "gdp_real_growth_pct": Decimal("7.10"),
+                "general_public_revenue_100m": Decimal("85.30"),
+                "general_public_expenditure_100m": Decimal("304.27"),
+            },
+        }
+        for key, fields in expected.items():
+            self.assertIn(key, values)
+            for field, expected_value in fields.items():
+                self.assertEqual(values[key][field], expected_value)
+
+        source_ids = {source["source_doc_id"] for source in sources}
+        self.assertTrue({
+            "SRC-A2-LIJIANG-CITY-FISCAL-EXPENDITURE-2024",
+            "SRC-A2-DAZHOU-CITY-FISCAL-EXPENDITURE-2024",
+            "SRC-B2-GANZI-CITY-MACRO-FISCAL-2024",
+            "SRC-B2-LIANGSHAN-CITY-MACRO-FISCAL-2024",
+            "SRC-B2-ZIGONG-CITY-MACRO-2024",
+            "SRC-B2-ZIGONG-CITY-FISCAL-2024",
+        }.issubset(source_ids))
+
     def test_next_2025_city_fiscal_batch_extracts_four_official_city_sources(self):
         values, sources = load_next_2025_city_fiscal()
 
