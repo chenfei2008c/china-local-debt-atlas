@@ -77,6 +77,23 @@ def is_target_bulletin_title(title: str, city_name: str, year: str = "2025") -> 
     """匹配地级市本身的指定年度公报标题，排除该市下辖区县公报。"""
 
     compact = _compact(title).strip("・")
+    # 部分区县/开发区标题会以“(地级市)2024年...”开头，导致仅按城市别名和
+    # 年份匹配时误归入地级市。开发区、园区和县级公报均不属于本适配器的
+    # 地级行政单元范围；“新区”不在排除列表中，因为雄安新区本身是主表单元。
+    excluded_scope_markers = (
+        "县级统计公报",
+        "县级公报",
+        "开发区",
+        "高新区",
+        "高新技术产业开发区",
+        "经济技术开发区",
+        "经开区",
+        "工业园区",
+        "管理区",
+        "示范区",
+    )
+    if any(marker in compact for marker in excluded_scope_markers):
+        return False
     if year not in SUPPORTED_YEARS:
         return False
     years = {
@@ -272,6 +289,10 @@ def load_hongheiku_city_bulletin_sources(
         city_id = str(item.get("city_id") or "")
         year = str(item.get("metric_year") or "")
         if city_id not in city_ids or year not in SUPPORTED_YEARS:
+            continue
+        # 快照可能来自旧版匹配器；加载时再次按标题校验，避免历史上已经
+        # 错归到地级市的区县/开发区记录继续进入主表。
+        if not is_target_bulletin_title(str(item.get("title") or ""), str(item.get("city_name") or ""), year):
             continue
         source_id = f"SRC-B2-HONGHEIKU-CITY-BULLETIN-{city_id}-{year}"
         record: dict[str, Any] = {

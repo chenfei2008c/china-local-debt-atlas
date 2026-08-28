@@ -17,6 +17,13 @@ class HongheikuBulletinTests(unittest.TestCase):
         self.assertTrue(is_target_bulletin_title("2020年白城市国民经济和社会发展统计公报", "白城市", "2020"))
         self.assertTrue(is_target_bulletin_title("2019年白城市国民经济和社会发展统计公报", "白城市", "2019"))
         self.assertFalse(is_target_bulletin_title("(保定市)蠡县2025年国民经济和社会发展统计公报", "保定市"))
+        self.assertFalse(
+            is_target_bulletin_title(
+                "(聊城市)2024年聊城高新技术产业开发区国民经济和社会发展统计公报",
+                "聊城市",
+                "2024",
+            )
+        )
 
     def test_page_normalization_keeps_exact_prefecture_values(self):
         parsed = parse_bulletin_text(

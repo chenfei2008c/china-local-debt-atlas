@@ -987,6 +987,75 @@ class NationalPanelTests(unittest.TestCase):
             "SRC-A2-HEGANG-CITY-GROWTH-2024",
         }.issubset(source_ids))
 
+    def test_2023_2025_macro_gap_batch_extracts_reviewed_values(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        expected = {
+            ("CN-370800", "2024"): {
+                "gdp_real_growth_pct": Decimal("5.80"),
+                "general_public_revenue_100m": Decimal("496.30"),
+                "general_public_expenditure_100m": Decimal("800.20"),
+            },
+            ("CN-411100", "2024"): {
+                "general_public_revenue_100m": Decimal("139.00"),
+                "general_public_expenditure_100m": Decimal("269.70"),
+            },
+            ("CN-371600", "2024"): {
+                "gdp_current_100m": Decimal("3404.74"),
+                "gdp_real_growth_pct": Decimal("6.20"),
+                "general_public_revenue_100m": Decimal("306.92"),
+                "general_public_expenditure_100m": Decimal("570.22"),
+            },
+            ("CN-371500", "2024"): {
+                "gdp_real_growth_pct": Decimal("5.70"),
+                "general_public_revenue_100m": Decimal("257.10"),
+            },
+            ("CN-510100", "2024"): {
+                "gdp_real_growth_pct": Decimal("5.70"),
+            },
+            ("CN-512000", "2024"): {
+                "gdp_real_growth_pct": Decimal("6.50"),
+            },
+            ("CN-653100", "2023"): {
+                "gdp_current_100m": Decimal("1508.35"),
+                "gdp_real_growth_pct": Decimal("6.40"),
+                "general_public_revenue_100m": Decimal("86.43"),
+                "general_public_expenditure_100m": Decimal("773.41"),
+            },
+            ("CN-652300", "2023"): {
+                "general_public_revenue_100m": Decimal("227.35"),
+                "general_public_expenditure_100m": Decimal("385.49"),
+            },
+            ("CN-433100", "2023"): {
+                "gdp_current_100m": Decimal("825.85"),
+                "gdp_real_growth_pct": Decimal("2.60"),
+                "general_public_revenue_100m": Decimal("79.90"),
+                "general_public_expenditure_100m": Decimal("369.79"),
+            },
+            ("CN-360200", "2024"): {
+                "general_public_expenditure_100m": Decimal("250.00"),
+            },
+            ("CN-420700", "2024"): {
+                "general_public_expenditure_100m": Decimal("171.24"),
+            },
+            ("CN-421100", "2025"): {
+                "general_public_revenue_100m": Decimal("205.60"),
+            },
+        }
+        for key, fields in expected.items():
+            self.assertIn(key, values)
+            for field, expected_value in fields.items():
+                self.assertEqual(values[key][field], expected_value)
+
+        source_ids = {source["source_doc_id"] for source in sources}
+        self.assertTrue({
+            "SRC-B2-JINING-CITY-MACRO-FISCAL-2024",
+            "SRC-B2-BINZHOU-CITY-MACRO-FISCAL-2024",
+            "SRC-A2-KASHI-REGION-MACRO-FISCAL-2023-REVIEWED",
+            "SRC-B2-XIANGXI-PREFECTURE-MACRO-FISCAL-2023",
+            "SRC-A2-EZHOU-CITY-EXPENDITURE-2024",
+        }.issubset(source_ids))
+
     def test_next_2025_city_fiscal_batch_extracts_four_official_city_sources(self):
         values, sources = load_next_2025_city_fiscal()
 
@@ -2437,7 +2506,8 @@ class NationalPanelTests(unittest.TestCase):
             self.assertEqual(record["gdp_real_growth_pct"], Decimal(expected_values[1]))
             self.assertEqual(record["general_public_revenue_100m"], Decimal(expected_values[2]))
             self.assertEqual(record["gov_fund_revenue_100m"], Decimal(expected_values[3]))
-            self.assertEqual(record["source_grade"], "B2")
+            expected_grade = "A2" if city_id == "CN-360200" else "B2"
+            self.assertEqual(record["source_grade"], expected_grade)
             self.assertEqual(record["data_status"], "execution")
 
         jiangxi_sources = [
@@ -2470,7 +2540,8 @@ class NationalPanelTests(unittest.TestCase):
                 self.assertNotIn("gov_fund_revenue_100m", record)
             else:
                 self.assertEqual(record["gov_fund_revenue_100m"], Decimal(expected_values[3]))
-            self.assertEqual(record["source_grade"], "B2")
+            expected_grade = "A2" if city_id == "CN-420700" else "B2"
+            self.assertEqual(record["source_grade"], expected_grade)
             self.assertEqual(record["data_status"], "execution")
 
         hubei_sources = [
