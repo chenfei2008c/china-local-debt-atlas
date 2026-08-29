@@ -84,6 +84,16 @@ class NationalPanelTests(unittest.TestCase):
         self.assertIn("SRC-B2-SINA-300-CITIES-2025-QINHUANGDAO-REVENUE", source_ids)
         self.assertIn("SRC-B2-SINA-300-CITIES-2025-XINGTAI-REVENUE", source_ids)
 
+    def test_gotohui_songyuan_2025_area_indicator_fills_general_budget_revenue(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        self.assertEqual(
+            values[("CN-220700", "2025")]["general_public_revenue_100m"],
+            Decimal("71.99"),
+        )
+        source_ids = {item["source_doc_id"] for item in sources}
+        self.assertIn("SRC-B2-GOTOHUI-SONGYUAN-2025-REVENUE", source_ids)
+
     def test_ali_official_history_fills_2020_revenue_and_corrects_2021_gdp(self):
         values, sources = load_city_year_fiscal_sources()
 
