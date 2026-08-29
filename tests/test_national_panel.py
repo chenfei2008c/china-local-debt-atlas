@@ -114,6 +114,28 @@ class NationalPanelTests(unittest.TestCase):
         source_ids = {item["source_doc_id"] for item in sources}
         self.assertIn("SRC-A2-HUBEI-2025-BULLETINS-429000-CORE", source_ids)
 
+    def test_hainan_direct_admin_yearbook_fills_gdp_history_and_2023_fiscal(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        self.assertEqual(
+            values[("CN-469000", "2018")]["gdp_current_100m"],
+            Decimal("2181.88"),
+        )
+        self.assertEqual(
+            values[("CN-469000", "2023")]["gdp_current_100m"],
+            Decimal("3217.66"),
+        )
+        self.assertEqual(
+            values[("CN-469000", "2023")]["general_public_revenue_100m"],
+            Decimal("196.92"),
+        )
+        self.assertEqual(
+            values[("CN-469000", "2023")]["general_public_expenditure_100m"],
+            Decimal("792.51"),
+        )
+        source_ids = {item["source_doc_id"] for item in sources}
+        self.assertIn("SRC-A2-HAINAN-YEARBOOK-2024-469000-CORE-2018", source_ids)
+
     def test_sina_2025_city_revenue_chart_extracts_qinhuangdao_and_xingtai(self):
         values, sources = load_city_year_fiscal_sources()
 
