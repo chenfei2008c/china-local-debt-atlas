@@ -171,6 +171,35 @@ class NationalPanelTests(unittest.TestCase):
         self.assertIn("SRC-A2-HAINAN-YEARBOOK-2023-469000-REVENUE-2022", source_ids)
         self.assertIn("SRC-A2-HAINAN-YEARBOOK-2023-469000-EXPENDITURE-2022", source_ids)
 
+    def test_hainan_2019_to_2021_yearbooks_fill_2018_to_2020_fiscal_values(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        expected = {
+            "2018": ("167.38", "709.42"),
+            "2019": ("176.69", "754.67"),
+            "2020": ("172.10", "770.86"),
+        }
+        for year, (revenue, expenditure) in expected.items():
+            self.assertEqual(
+                values[("CN-469000", year)]["general_public_revenue_100m"],
+                Decimal(revenue),
+            )
+            self.assertEqual(
+                values[("CN-469000", year)]["general_public_expenditure_100m"],
+                Decimal(expenditure),
+            )
+
+        source_ids = {item["source_doc_id"] for item in sources}
+        for yearbook_year, data_year in ((2019, 2018), (2020, 2019), (2021, 2020)):
+            self.assertIn(
+                f"SRC-A2-HAINAN-YEARBOOK-{yearbook_year}-469000-REVENUE-{data_year}",
+                source_ids,
+            )
+            self.assertIn(
+                f"SRC-A2-HAINAN-YEARBOOK-{yearbook_year}-469000-EXPENDITURE-{data_year}",
+                source_ids,
+            )
+
     def test_jiyuan_official_bulletins_fill_2024_and_2025_core_values(self):
         values, sources = load_city_year_fiscal_sources()
 
