@@ -154,3 +154,77 @@ HAINAN_DIRECT_ADMIN_YEARBOOK_2025_SOURCES = (
         label="地方一般公共预算支出",
     ),
 )
+
+
+# 《海南统计年鉴2023》表7-7、表7-8分别列示2022年各市县地方一般公共预算
+# 收入和支出。本批只归档两张官方表页PNG，15个直辖县级单元按同一年度、同一
+# 行口径逐项加总，不把海口、三亚、儋州或三沙市混入汇总行。
+RAW_2023_BASE = ROOT / "raw" / "province_fiscal" / "hainan_yearbook" / "2023"
+YEARBOOK_2023_URL = (
+    "https://stats.hainan.gov.cn/tjj/tjsu/ndsj/2023/202311/"
+    "P020240603544257625279.pdf"
+)
+
+
+def _historical_scan_source(
+    *,
+    field: str,
+    source_doc_id: str,
+    page_number: str,
+    image_name: str,
+    excerpt_name: str,
+    value_pattern: str,
+    label: str,
+) -> dict[str, object]:
+    return {
+        "year": 2022,
+        "city_name": "海南省直辖县级行政区划",
+        "city_id": "CN-469000",
+        "source_doc_id": source_doc_id,
+        "url": YEARBOOK_2023_URL,
+        "attachment_url": YEARBOOK_2023_URL,
+        "path": RAW_2023_BASE / image_name,
+        "text_path": RAW_2023_BASE / excerpt_name,
+        "document_title": f"海南统计年鉴2023（2022年各市县{label}表）",
+        "publisher": "海南省统计局",
+        "publisher_level": "省级统计机构",
+        "publication_date": "2023-11-23",
+        "source_grade": "A2",
+        "source_format": "png",
+        "raw_unit": "亿元",
+        "data_status": "yearbook",
+        "data_status_label": "2022年官方统计年鉴值",
+        "document_type": "省级统计年鉴官方扫描表页证据（直辖县级行政区划汇总）",
+        "title_source": "official_yearbook",
+        "page_number": page_number,
+        "page_count": "536",
+        "patterns": {field: value_pattern},
+        "note": (
+            "A2海南省统计局《海南统计年鉴2023》官方PDF表页；"
+            f"{label}表{page_number}列示15个直辖县级单元。"
+            "本批按15行原始单位万元逐项加总并换算为亿元，摘录值已由OCR与人工视觉复核；"
+            "不含海口、三亚、儋州等地级市，也不含三沙市。"
+        ),
+    }
+
+
+HAINAN_DIRECT_ADMIN_YEARBOOK_2023_SOURCES = (
+    _historical_scan_source(
+        field="general_public_revenue_100m",
+        source_doc_id="SRC-A2-HAINAN-YEARBOOK-2023-469000-REVENUE-2022",
+        page_number="第126页（PDF第154页）表7-7",
+        image_name="hainan_2023_7-7_page154.png",
+        excerpt_name="hainan_2023_469000_2022_revenue_excerpt.txt",
+        value_pattern=r"收入=([0-9.]+)",
+        label="地方一般公共预算收入",
+    ),
+    _historical_scan_source(
+        field="general_public_expenditure_100m",
+        source_doc_id="SRC-A2-HAINAN-YEARBOOK-2023-469000-EXPENDITURE-2022",
+        page_number="第128页（PDF第156页）表7-8",
+        image_name="hainan_2023_7-8_page156.png",
+        excerpt_name="hainan_2023_469000_2022_expenditure_excerpt.txt",
+        value_pattern=r"支出=([0-9.]+)",
+        label="地方一般公共预算支出",
+    ),
+)
