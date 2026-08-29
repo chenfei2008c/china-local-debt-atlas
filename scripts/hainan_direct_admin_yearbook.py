@@ -71,3 +71,86 @@ def _source(year: int) -> dict[str, object]:
 
 
 HAINAN_DIRECT_ADMIN_YEARBOOK_SOURCES = tuple(_source(year) for year in range(2018, 2024))
+
+
+# 《海南统计年鉴2025》为扫描版 PDF。本批只归档与 2024 年汇总值直接相关的三张
+# 清晰表页 PNG，保留官方原始 PDF 入口；摘录中的数值均由表格 15 行逐项加总，
+# 并经过 OCR 与人工视觉复核，避免把 325MB 整本扫描附件提交进 Git 仓库。
+RAW_2025_BASE = ROOT / "raw" / "province_fiscal" / "hainan_yearbook" / "2025"
+YEARBOOK_2025_URL = (
+    "https://stats.hainan.gov.cn/tjj/tjsu/ndsj/2025/202606/"
+    "P020260618358658287664.pdf"
+)
+
+
+def _scan_source(
+    *,
+    field: str,
+    source_doc_id: str,
+    page_number: str,
+    image_name: str,
+    excerpt_name: str,
+    value_pattern: str,
+    label: str,
+) -> dict[str, object]:
+    return {
+        "year": 2024,
+        "city_name": "海南省直辖县级行政区划",
+        "city_id": "CN-469000",
+        "source_doc_id": source_doc_id,
+        "url": YEARBOOK_2025_URL,
+        "attachment_url": YEARBOOK_2025_URL,
+        "path": RAW_2025_BASE / image_name,
+        "text_path": RAW_2025_BASE / excerpt_name,
+        "document_title": f"海南统计年鉴2025（2024年各市县{label}表）",
+        "publisher": "海南省统计局",
+        "publisher_level": "省级统计机构",
+        "publication_date": "2026-06-18",
+        "source_grade": "A2",
+        "source_format": "png",
+        "raw_unit": "亿元",
+        "data_status": "yearbook",
+        "data_status_label": "2024年官方统计年鉴值",
+        "document_type": "省级统计年鉴官方扫描表页证据（直辖县级行政区划汇总）",
+        "title_source": "official_yearbook",
+        "page_number": page_number,
+        "page_count": "544",
+        "patterns": {field: value_pattern},
+        "note": (
+            "A2海南省统计局《海南统计年鉴2025》官方扫描PDF；本地归档对应表页PNG，"
+            f"原始PDF入口保留在 attachment_url；表格{page_number}列示同口径15个直辖县级单元。"
+            f"{label}值按15行原始单位万元逐项加总并换算为亿元，摘录值已由OCR与人工视觉复核。"
+            "本批不含海口、三亚、儋州等地级市，也不含三沙市；不使用图表目测估值。"
+        ),
+    }
+
+
+HAINAN_DIRECT_ADMIN_YEARBOOK_2025_SOURCES = (
+    _scan_source(
+        field="gdp_current_100m",
+        source_doc_id="SRC-A2-HAINAN-YEARBOOK-2025-469000-GDP-2024",
+        page_number="第74页（印刷页第48页）表3-12",
+        image_name="hainan_2025_3-12_page74.png",
+        excerpt_name="hainan_2025_469000_2024_gdp_excerpt.txt",
+        value_pattern=r"GDP=([0-9.]+)",
+        label="生产总值",
+    ),
+    _scan_source(
+        field="general_public_revenue_100m",
+        source_doc_id="SRC-A2-HAINAN-YEARBOOK-2025-469000-REVENUE-2024",
+        page_number="第150页（印刷页第124页）表7-7",
+        image_name="hainan_2025_7-7_page150.png",
+        excerpt_name="hainan_2025_469000_2024_revenue_excerpt.txt",
+        value_pattern=r"收入=([0-9.]+)",
+        label="地方一般公共预算收入",
+    ),
+    _scan_source(
+        field="general_public_expenditure_100m",
+        source_doc_id="SRC-A2-HAINAN-YEARBOOK-2025-469000-EXPENDITURE-2024",
+        page_number="第152页（印刷页第126页）表7-8",
+        image_name="hainan_2025_7-8_page152.png",
+        excerpt_name="hainan_2025_469000_2024_expenditure_excerpt.txt",
+        value_pattern=r"支出=([0-9.]+)",
+        label="地方一般公共预算支出",
+    ),
+)
