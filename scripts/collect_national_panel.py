@@ -9402,6 +9402,33 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
             "page_number": "PDF第15页图表11；全市口径",
             "note": "B2精确表格；图表11列示菏泽市2025年GDP4937.4亿元、实际增速5.0%和一般公共预算收入333.37亿元。报告未列示一般公共预算支出，故不作推算或代填。",
         },
+        {
+            "year": 2025,
+            "city_name": "菏泽市",
+            "city_id": "CN-371700",
+            "source_doc_id": "SRC-A2-HEZE-CITY-FISCAL-2025",
+            "url": "http://www.heze.gov.cn/0530/2c908088819842f701819a2ab278002d/2028655444125499392.html",
+            "attachment_url": "http://www.heze.gov.cn/upload-service/0530/2c908088819842f701819a2ab278002d/WY2028655400047480832.pdf",
+            "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "heze_2025_budget_execution_excerpt.txt",
+            "document_title": "菏泽市2025年预算执行情况和2026年预算草案报告",
+            "publisher": "菏泽市财政局",
+            "publisher_level": "市级财政机构",
+            "publication_date": "2026-02-06",
+            "source_grade": "A2",
+            "fields": ("general_public_revenue_100m", "general_public_expenditure_100m"),
+            "raw_unit": "亿元",
+            "source_format": "pdf",
+            "data_status": "execution",
+            "data_status_label": "2025年全市一般公共预算执行数",
+            "document_type": "市级财政预算执行报告",
+            "page_number": "官方报告第1—2页；全市口径",
+            "note": (
+                "A2菏泽市财政局官方预算执行报告；收入采用全市一般公共预算收入333.37亿元，"
+                "支出采用报告明确的当年支出759.26亿元。报告同时列示含上解、债务还本、"
+                "预算稳定调节基金和结转下年的一般公共预算总支出996.58亿元，未将该总额代入年度支出字段；"
+                "附表入口保留在来源摘录中供复核。"
+            ),
+        },
     )
 )
 

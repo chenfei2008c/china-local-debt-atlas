@@ -99,6 +99,28 @@ class NationalPanelTests(unittest.TestCase):
         self.assertIn("SRC-B2-ALI-REGION-REVENUE-2020", source_ids)
         self.assertIn("SRC-A2-ALI-REGION-GDP-2021-REVIEW", source_ids)
 
+    def test_heze_2025_official_budget_execution_fills_whole_city_fiscal_values(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        self.assertEqual(
+            values[("CN-371700", "2025")]["general_public_revenue_100m"],
+            Decimal("333.37"),
+        )
+        self.assertEqual(
+            values[("CN-371700", "2025")]["general_public_expenditure_100m"],
+            Decimal("759.26"),
+        )
+        heze_source = next(
+            source
+            for source in sources
+            if source["source_doc_id"] == "SRC-A2-HEZE-CITY-FISCAL-2025"
+        )
+        self.assertEqual(heze_source["source_grade"], "A2")
+        self.assertEqual(
+            values[("CN-371700", "2025")]["_field_sources"]["general_public_expenditure_100m"]["data_status"],
+            "execution",
+        )
+
     def test_guangdong_2025_provincial_debt_table_extracts_whole_city_limit_and_balance(self):
         city_master = [
             {
