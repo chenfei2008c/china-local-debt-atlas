@@ -10123,6 +10123,71 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     )
 )
 
+# CEIC 公开页面补入 2025 年三项一般公共预算支出缺口。秦皇岛使用月度
+# Year-to-Date 页面 2025 年 12 月年累计值，七台河和延安使用年度页面 Last
+# 值；页面均明确标注对应市统计局为原始来源。三项均按 B2 记录，不替代
+# 财政部门正式预算执行报告。
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    _make_curated_city_source(
+        year=year,
+        city_name=city_name,
+        city_id=city_id,
+        source_doc_id=source_doc_id,
+        url=url,
+        path=RAW_DIR / "province_fiscal" / "2025" / "secondary" / file_name,
+        document_title=document_title,
+        publisher="CEIC Data",
+        publisher_level="商业数据库公开指标页（二手来源）",
+        publication_date="2026-08-29",
+        source_grade="B2",
+        fields=("general_public_expenditure_100m",),
+        raw_unit="百万元人民币",
+        source_format="html",
+        data_status="reported",
+        data_status_label="2025年年度指标页值",
+        document_type="CEIC地级区域财政指标页面精确摘要",
+        page_number=page_number,
+        title_source="secondary_public_page",
+        access_status="公开指标页已归档",
+        note=note,
+    )
+    for year, city_name, city_id, source_doc_id, url, file_name, document_title, page_number, note in (
+        (
+            2025,
+            "秦皇岛市",
+            "CN-130300",
+            "SRC-B2-CEIC-QINHUANGDAO-2025-EXPENDITURE-YTD",
+            "https://www.ceicdata.com/en/china/government-expenditure-prefecture-level-city-monthly/government-expenditure-ytd-hebei-qinhuangdao",
+            "qinhuangdao_2025_ceic_expenditure_ytd_excerpt.txt",
+            "Government Expenditure: Year to Date: Hebei: Qinhuangdao",
+            "CEIC指标页；2025年12月年累计值；全市口径",
+            "B2 CEIC公开指标页；页面标题为Government Expenditure: Year to Date: Hebei: Qinhuangdao，注明原始来源为Qinhuangdao Municipal Bureau of Statistics（秦皇岛市统计局）；页面明确列出2025年12月年累计值39890.000百万元，按年度一般公共预算支出接入；不替代官方决算。",
+        ),
+        (
+            2025,
+            "七台河市",
+            "CN-230900",
+            "SRC-B2-CEIC-QITAIHE-2025-EXPENDITURE",
+            "https://www.ceicdata.com/en/china/government-expenditure-prefecture-level-city/government-expenditure-heilongjiang-qitaihe",
+            "qitaihe_2025_ceic_expenditure_excerpt.txt",
+            "Government Expenditure: Heilongjiang: Qitaihe",
+            "CEIC指标页；2025年Last摘要；全市口径",
+            "B2 CEIC公开指标页；页面标题为Government Expenditure: Heilongjiang: Qitaihe，注明原始来源为Qitaihe Municipal Bureau of Statistics（七台河市统计局）；2025年Last摘要值为11530.000百万元；不替代官方决算。",
+        ),
+        (
+            2025,
+            "延安市",
+            "CN-610600",
+            "SRC-B2-CEIC-YANAN-2025-EXPENDITURE",
+            "https://www.ceicdata.com/en/china/government-expenditure-prefecture-level-city/government-expenditure-shaanxi-yanan",
+            "yanan_2025_ceic_expenditure_excerpt.txt",
+            "Government Expenditure: Shaanxi: Yanan",
+            "CEIC指标页；2025年Last摘要；全市口径",
+            "B2 CEIC公开指标页；页面标题为Government Expenditure: Shaanxi: Yanan，注明原始来源为Yanan Municipal Bureau of Statistics（延安市统计局）；2025年Last摘要值为51587.680百万元；不替代官方决算。",
+        ),
+    )
+)
+
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
@@ -12318,7 +12383,7 @@ def _lineage_for_city_year_fiscal(
     elif raw_unit in {"百万元", "百万元人民币"}:
         normalization_rule = (
             "CEIC公开指标页原始单位为百万元人民币；原值×0.01=亿元，保留两位小数；"
-            "页面标注来源为阿里地区统计局，口径为全地区；按B2记录。"
+            "页面标注来源为相应地方统计机构，口径为全市（州/地区）；按B2记录。"
         )
     elif raw_unit == "人" and field == "resident_population_10k":
         normalization_rule = "公开序列原始单位为人；原值÷10000=万人，保留两位小数；全市口径。"
@@ -12407,7 +12472,7 @@ def _lineage_for_city_year_fiscal(
             )
             if is_hongheiku
             else (
-                "CEIC公开指标页的年度 Last/Previous 精确摘要明确标注指标、单位、年度和阿里地区统计局来源；"
+                "CEIC公开指标页的年度 Last/Previous 或年累计精确摘要明确标注指标、单位、年度和相应地方统计机构来源；"
                 "仅作B2补缺，不替代官方财政决算。"
             )
             if is_ceic

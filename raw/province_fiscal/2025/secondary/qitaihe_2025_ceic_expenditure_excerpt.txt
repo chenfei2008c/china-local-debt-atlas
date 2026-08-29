@@ -1,0 +1,6 @@
+来源入口：https://www.ceicdata.com/en/china/government-expenditure-prefecture-level-city/government-expenditure-heilongjiang-qitaihe
+页面标题：Government Expenditure: Heilongjiang: Qitaihe
+页面元数据：2003—2025，年度，RMB mn；原始来源：Qitaihe Municipal Bureau of Statistics（七台河市统计局）。
+页面摘要原文：Government Expenditure: Heilongjiang: Qitaihe data was reported at 11,530.000 RMB mn in 2025. This records an increase from the previous number of 11,272.020 RMB mn for 2024.
+标准化摘录：城市=七台河市｜年度=2025｜一般公共预算支出=11530.000百万元人民币
+口径说明：页面指标为七台河市全市年度一般公共预算支出。按B2记录，不替代官方财政决算。

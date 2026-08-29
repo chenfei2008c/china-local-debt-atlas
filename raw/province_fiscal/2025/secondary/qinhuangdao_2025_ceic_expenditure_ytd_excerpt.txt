@@ -1,0 +1,6 @@
+来源入口：https://www.ceicdata.com/en/china/government-expenditure-prefecture-level-city-monthly/government-expenditure-ytd-hebei-qinhuangdao
+页面标题：Government Expenditure: Year to Date: Hebei: Qinhuangdao
+页面元数据：2008—2026，月度，RMB mn；原始来源：Qinhuangdao Municipal Bureau of Statistics（秦皇岛市统计局）。
+页面摘要原文：The data reached an all-time high of 39,890.000 RMB mn in Dec 2025.
+标准化摘录：城市=秦皇岛市｜年度=2025｜一般公共预算支出=39890.000百万元人民币
+口径说明：页面为全市一般公共预算支出年累计序列；2025年12月年累计值等于2025年度总量。按B2记录，不替代官方财政决算。

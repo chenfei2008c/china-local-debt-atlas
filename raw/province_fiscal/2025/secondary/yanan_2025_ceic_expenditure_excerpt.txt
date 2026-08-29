@@ -1,0 +1,6 @@
+来源入口：https://www.ceicdata.com/en/china/government-expenditure-prefecture-level-city/government-expenditure-shaanxi-yanan
+页面标题：Government Expenditure: Shaanxi: Yanan
+页面元数据：2003—2025，年度，RMB mn；原始来源：Yanan Municipal Bureau of Statistics（延安市统计局）。
+页面摘要原文：Government Expenditure: Shaanxi: Yanan data was reported at 51,587.680 RMB mn in 2025. This records an increase from the previous number of 50,797.220 RMB mn for 2024.
+标准化摘录：城市=延安市｜年度=2025｜一般公共预算支出=51587.680百万元人民币
+口径说明：页面指标为延安市全市年度一般公共预算支出。按B2记录，不替代官方财政决算。

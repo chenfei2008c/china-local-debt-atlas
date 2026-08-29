@@ -155,6 +155,35 @@ class NationalPanelTests(unittest.TestCase):
             "B2",
         )
 
+    def test_ceic_2025_expenditure_pages_fill_qinhuangdao_qitaihe_yanan(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        self.assertEqual(
+            values[("CN-130300", "2025")]["general_public_expenditure_100m"],
+            Decimal("398.90"),
+        )
+        self.assertEqual(
+            values[("CN-230900", "2025")]["general_public_expenditure_100m"],
+            Decimal("115.30"),
+        )
+        self.assertEqual(
+            values[("CN-610600", "2025")]["general_public_expenditure_100m"],
+            Decimal("515.88"),
+        )
+        source_ids = {item["source_doc_id"] for item in sources}
+        for source_id in (
+            "SRC-B2-CEIC-QINHUANGDAO-2025-EXPENDITURE-YTD",
+            "SRC-B2-CEIC-QITAIHE-2025-EXPENDITURE",
+            "SRC-B2-CEIC-YANAN-2025-EXPENDITURE",
+        ):
+            self.assertIn(source_id, source_ids)
+        for city_id in ("CN-130300", "CN-230900", "CN-610600"):
+            self.assertEqual(
+                values[(city_id, "2025")]["_field_sources"]
+                ["general_public_expenditure_100m"]["source_grade"],
+                "B2",
+            )
+
     def test_heze_2025_official_budget_execution_fills_whole_city_fiscal_values(self):
         values, sources = load_city_year_fiscal_sources()
 
