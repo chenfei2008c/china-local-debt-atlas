@@ -70,6 +70,7 @@ try:
     from scripts.hongheiku_city_bulletins import load_hongheiku_city_bulletin_sources
     from scripts.dachuang_city_panel import load_dachuang_city_panel_sources
     from scripts.haidatas_city_panel import HAIDATAS_SOURCE_ID, load_haidatas_city_panel_sources
+    from scripts.hubei_direct_admin_yearbook import HUBEI_DIRECT_ADMIN_YEARBOOK_SOURCES
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
     from curated_city_fiscal_2025 import CURATED_2025_CITY_FISCAL_SOURCES
     from supplemental_city_fiscal_2025 import SUPPLEMENTAL_CITY_FISCAL_SOURCES
@@ -84,6 +85,7 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
     from hongheiku_city_bulletins import load_hongheiku_city_bulletin_sources
     from dachuang_city_panel import load_dachuang_city_panel_sources
     from haidatas_city_panel import HAIDATAS_SOURCE_ID, load_haidatas_city_panel_sources
+    from hubei_direct_admin_yearbook import HUBEI_DIRECT_ADMIN_YEARBOOK_SOURCES
 
 getcontext().prec = 40
 
@@ -10219,6 +10221,11 @@ CITY_YEAR_FISCAL_SOURCES += (
     ),
 )
 
+# 湖北省统计局官方统计年鉴批量补入省直管县级行政区划（仙桃、潜江、天门、
+# 神农架林区）四行汇总。只接入同年度官方表中可逐项加总的现价 GDP、一般预算
+# 收入和支出；没有官方合计行的 GDP 实际增速由适配器明确保持缺失。
+CITY_YEAR_FISCAL_SOURCES += tuple(HUBEI_DIRECT_ADMIN_YEARBOOK_SOURCES)
+
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
@@ -11281,6 +11288,8 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
                     if config.get("source_format") == "png"
                     else "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                     if config.get("source_format") == "docx"
+                    else "application/vnd.ms-excel"
+                    if config.get("source_format") == "xls"
                     else "application/x-7z-compressed"
                     if config.get("source_format") == "7z"
                     else "application/pdf"
@@ -11305,6 +11314,8 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
                     if config.get("source_format") == "docx"
                     else "官方Excel附件已归档"
                     if config.get("source_format") == "xlsx"
+                    else "官方Excel附件已归档"
+                    if config.get("source_format") == "xls"
                     else "官方7z附件已归档"
                     if config.get("source_format") == "7z"
                     else "官方PDF已归档"

@@ -69,6 +69,32 @@ from scripts.province_debt_sources import extract_official_debt_facts
 
 class NationalPanelTests(unittest.TestCase):
 
+    def test_hubei_direct_admin_yearbook_fills_2018_core_values(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        self.assertEqual(
+            values[("CN-429000", "2018")]["gdp_current_100m"],
+            Decimal("2175.65"),
+        )
+        self.assertEqual(
+            values[("CN-429000", "2018")]["general_public_revenue_100m"],
+            Decimal("84.69"),
+        )
+        self.assertEqual(
+            values[("CN-429000", "2018")]["general_public_expenditure_100m"],
+            Decimal("260.25"),
+        )
+        self.assertNotIn("gdp_real_growth_pct", values[("CN-429000", "2018")])
+        source_ids = {item["source_doc_id"] for item in sources}
+        self.assertIn("SRC-A2-HUBEI-YEARBOOK-2019-429000-CORE", source_ids)
+        source = next(
+            item
+            for item in sources
+            if item["source_doc_id"] == "SRC-A2-HUBEI-YEARBOOK-2019-429000-CORE"
+        )
+        self.assertEqual(source["mime_type"], "application/vnd.ms-excel")
+        self.assertEqual(source["access_status"], "官方Excel附件已归档")
+
     def test_sina_2025_city_revenue_chart_extracts_qinhuangdao_and_xingtai(self):
         values, sources = load_city_year_fiscal_sources()
 
