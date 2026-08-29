@@ -94,6 +94,16 @@ class NationalPanelTests(unittest.TestCase):
         source_ids = {item["source_doc_id"] for item in sources}
         self.assertIn("SRC-B2-GOTOHUI-SONGYUAN-2025-REVENUE", source_ids)
 
+    def test_ali_2024_rating_report_fills_gdp_growth(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        self.assertEqual(
+            values[("CN-542500", "2024")]["gdp_real_growth_pct"],
+            Decimal("8.60"),
+        )
+        source_ids = {item["source_doc_id"] for item in sources}
+        self.assertIn("SRC-B2-ALI-REGION-GDP-GROWTH-2024", source_ids)
+
     def test_ali_official_history_fills_2020_revenue_and_corrects_2021_gdp(self):
         values, sources = load_city_year_fiscal_sources()
 

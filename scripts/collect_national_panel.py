@@ -9634,6 +9634,37 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     for spec in _CURATED_2024_2025_MACRO_FOLLOWUP_SPECS
 )
 
+# 新世纪评级公开的西藏区域研究报告第9页正文逐项列示阿里地区2024年GDP增速；
+# 该值有明确的全地区口径和精确文本定位，不采用同页图表目测值。
+CITY_YEAR_FISCAL_SOURCES += (
+    _make_curated_city_source(
+        year=2024,
+        city_name="阿里地区",
+        city_id="CN-542500",
+        source_doc_id="SRC-B2-ALI-REGION-GDP-GROWTH-2024",
+        url="https://pdf.dfcfw.com/pdf/H3_AP202601021813288922_1.pdf?1767512274000.pdf=",
+        path=RAW_DIR / "province_fiscal" / "2024" / "secondary" / "ali_2024_rating_report_gdp_growth_excerpt.txt",
+        document_title="西藏自治区及下辖市（地区）经济财政实力与债务研究（2025）",
+        publisher="新世纪评级",
+        publisher_level="评级机构公开披露（二手来源）",
+        publication_date="2026-01-02",
+        source_grade="B2",
+        fields=("gdp_real_growth_pct",),
+        raw_unit="%",
+        raw_units={"gdp_real_growth_pct": "%"},
+        source_format="pdf",
+        data_status="preliminary",
+        data_status_label="2024年公开整理GDP增速值",
+        document_type="评级报告地区经济指标精确文本披露",
+        page_number="PDF第9页正文；阿里地区全地区口径",
+        note=(
+            "B2公开评级报告精确文本；第9页明确写明阿里地区2024年GDP为105.85亿元、"
+            "GDP增速为8.6%，并在同页说明数据来源为各地市统计公报及其他公开资料；"
+            "本批仅接入缺失的GDP实际增速，不使用图表目测值。"
+        ),
+    ),
+)
+
 # 2025年财通证券研究所公开的地市经济财政精确表格（图4、图6）补充当前仍为空的
 # 海西、七台河和榆林字段。图表中的数值是可逐项读取的表格单元格，按B2登记；不以
 # 研究报告的柱状图目测值代替，也不覆盖已有的A1/A2/B1值。
