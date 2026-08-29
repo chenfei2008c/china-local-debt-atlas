@@ -74,6 +74,7 @@ try:
     from scripts.hubei_direct_admin_2025_bulletins import HUBEI_DIRECT_ADMIN_2025_BULLETIN_SOURCE
     from scripts.hainan_direct_admin_yearbook import HAINAN_DIRECT_ADMIN_YEARBOOK_SOURCES
     from scripts.hainan_direct_admin_yearbook import HAINAN_DIRECT_ADMIN_YEARBOOK_2025_SOURCES
+    from scripts.henan_direct_admin_bulletins import HENAN_DIRECT_ADMIN_BULLETIN_SOURCES
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
     from curated_city_fiscal_2025 import CURATED_2025_CITY_FISCAL_SOURCES
     from supplemental_city_fiscal_2025 import SUPPLEMENTAL_CITY_FISCAL_SOURCES
@@ -92,6 +93,7 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
     from hubei_direct_admin_2025_bulletins import HUBEI_DIRECT_ADMIN_2025_BULLETIN_SOURCE
     from hainan_direct_admin_yearbook import HAINAN_DIRECT_ADMIN_YEARBOOK_SOURCES
     from hainan_direct_admin_yearbook import HAINAN_DIRECT_ADMIN_YEARBOOK_2025_SOURCES
+    from henan_direct_admin_bulletins import HENAN_DIRECT_ADMIN_BULLETIN_SOURCES
 
 getcontext().prec = 40
 
@@ -10234,6 +10236,7 @@ CITY_YEAR_FISCAL_SOURCES += tuple(HUBEI_DIRECT_ADMIN_YEARBOOK_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += (HUBEI_DIRECT_ADMIN_2025_BULLETIN_SOURCE,)
 CITY_YEAR_FISCAL_SOURCES += tuple(HAINAN_DIRECT_ADMIN_YEARBOOK_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(HAINAN_DIRECT_ADMIN_YEARBOOK_2025_SOURCES)
+CITY_YEAR_FISCAL_SOURCES += tuple(HENAN_DIRECT_ADMIN_BULLETIN_SOURCES)
 
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
