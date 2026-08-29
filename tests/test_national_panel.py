@@ -2028,6 +2028,19 @@ class NationalPanelTests(unittest.TestCase):
             if source["source_doc_id"].startswith("SRC-2025-CURATED-")
         }
         self.assertEqual(len(curated_ids), 22)
+
+    def test_bengbu_2025_bulletin_adds_exact_gdp_growth_sentence(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        record = values[("CN-340300", "2025")]
+        self.assertEqual(record["gdp_current_100m"], Decimal("2421.10"))
+        self.assertEqual(record["gdp_real_growth_pct"], Decimal("5.50"))
+        self.assertEqual(record["gdp_real_growth_pct_raw_unit"], "%")
+        self.assertIn("5.5%", record["gdp_real_growth_pct_evidence_excerpt"])
+        source = next(
+            item for item in sources if item["source_doc_id"] == "SRC-B2-AUTONOMOUS-CITY-MACRO-2025-BENGBU"
+        )
+        self.assertEqual(source["source_grade"], "B2")
         self.assertTrue(all(source["source_grade"] in {"A1", "A2", "B2"} for source in sources))
 
     def test_jiangsu_2025_city_reports_add_six_missing_whole_city_fields(self):

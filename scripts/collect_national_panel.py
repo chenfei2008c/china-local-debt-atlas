@@ -9195,15 +9195,14 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     )
 )
 
-# 2025 年补入当前仍为空且已逐项核验的核心字段。蚌埠 GDP 增速在公报
-# 正文与表格中出现 5.5%/5.2% 冲突，因此本批只接入 GDP、收入和支出，
-# 增速保留空值并等待复核，不让冲突值进入定稿。
+# 2025 年补入当前仍为空且已逐项核验的核心字段。蚌埠 GDP 增速依据公报
+# 首页正文明确句“比上年增长5.5%”接入；不采用无法定位来源的二手冲突值。
 CITY_YEAR_FISCAL_SOURCES += _make_autonomous_bulletin_batch(
     year=2025,
     path=RAW_DIR / "province_fiscal" / "2025" / "secondary" / "2025_core_macro_fiscal_supplement_excerpt.txt",
     entries=(
         ("长春市", "CN-220100", "CHANGCHUN", "https://tjgb.hongheiku.com/djs/69916.html", "B2", ("general_public_revenue_100m", "general_public_expenditure_100m"), "html", "长春市统计局公报精确转载"),
-        ("蚌埠市", "CN-340300", "BENGBU", "https://tjgb.hongheiku.com/djs/70929.html", "B2", ("gdp_current_100m", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "蚌埠市统计公报精确转载"),
+        ("蚌埠市", "CN-340300", "BENGBU", "https://tjgb.hongheiku.com/djs/70929.html", "B2", ("gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "general_public_expenditure_100m"), "html", "蚌埠市统计公报精确转载"),
         ("吉安市", "CN-360800", "JIAN", "https://tjgb.hongheiku.com/wp-content/uploads/2026/05/1779205233-430ea0d9f5.pdf", "B2", ("general_public_expenditure_100m",), "pdf", "吉安市统计公报精确转载"),
         ("桂林市", "CN-450300", "GUILIN", "https://www.ceicdata.com/zh-hans/china/government-revenue-prefecture-level-city/government-revenue-guangxi-guilin", "B2", ("general_public_revenue_100m",), "html", "桂林市统计局数据精确转载"),
         ("延安市", "CN-610600", "YANAN", "https://www.chinamoney.com.cn/dqs/cm-s-notice-query/fileDownLoad.do?contentId=3364631&mode=save&priority=0", "B2", ("general_public_revenue_100m",), "pdf", "延安市统计公报及交易所公开披露"),
