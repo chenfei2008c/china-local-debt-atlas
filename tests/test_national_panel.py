@@ -184,6 +184,25 @@ class NationalPanelTests(unittest.TestCase):
                 "B2",
             )
 
+    def test_anyang_2025_finance_infographic_fills_whole_city_expenditure(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        self.assertEqual(
+            values[("CN-410500", "2025")]["general_public_expenditure_100m"],
+            Decimal("458.90"),
+        )
+        source = next(
+            item for item in sources
+            if item["source_doc_id"] == "SRC-B2-ANYANG-2025-EXPENDITURE"
+        )
+        self.assertEqual(source["source_grade"], "B2")
+        self.assertEqual(source["title_source"], "secondary_public_page")
+        self.assertEqual(
+            values[("CN-410500", "2025")]["_field_sources"]
+            ["general_public_expenditure_100m"]["data_status"],
+            "execution",
+        )
+
     def test_heze_2025_official_budget_execution_fills_whole_city_fiscal_values(self):
         values, sources = load_city_year_fiscal_sources()
 

@@ -10188,6 +10188,37 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     )
 )
 
+# 安阳日报数字报转载安阳市财政报告图解，精确披露 2025 年全市一般公共
+# 预算支出；作为 B2 二手公开来源接入，不把图解中的市级或分项支出代替全市值。
+CITY_YEAR_FISCAL_SOURCES += (
+    _make_curated_city_source(
+        year=2025,
+        city_name="安阳市",
+        city_id="CN-410500",
+        source_doc_id="SRC-B2-ANYANG-2025-EXPENDITURE",
+        url="https://www.ayrbs.com/szb/pc/content/202602/08/content_105697.html",
+        path=RAW_DIR / "province_fiscal" / "2025" / "secondary" / "anyang_2025_finance_infographic_excerpt.txt",
+        document_title="财政报告（图解）",
+        publisher="安阳日报数字报",
+        publisher_level="地市党报转载（二手来源）",
+        publication_date="2026-02-08",
+        source_grade="B2",
+        fields=("general_public_expenditure_100m",),
+        raw_unit="亿元",
+        source_format="html",
+        data_status="execution",
+        data_status_label="2025年全市一般公共预算支出执行数",
+        document_type="地方财政报告图解精确摘录",
+        page_number="公开网页正文；2025年钱花到哪儿了",
+        title_source="secondary_public_page",
+        access_status="公开网页已归档",
+        note=(
+            "B2安阳日报数字报转载安阳市财政报告图解；正文明确披露2025年全市一般公共预算支出"
+            "458.9亿元，年度、行政范围和指标名称清晰；不使用民生支出或市级分项值，不替代正式决算。"
+        ),
+    ),
+)
+
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
