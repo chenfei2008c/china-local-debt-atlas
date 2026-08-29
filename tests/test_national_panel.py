@@ -95,6 +95,25 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(source["mime_type"], "application/vnd.ms-excel")
         self.assertEqual(source["access_status"], "官方Excel附件已归档")
 
+    def test_hubei_direct_admin_bulletins_fill_2025_core_values(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        self.assertEqual(
+            values[("CN-429000", "2025")]["gdp_current_100m"],
+            Decimal("3089.08"),
+        )
+        self.assertEqual(
+            values[("CN-429000", "2025")]["general_public_revenue_100m"],
+            Decimal("125.22"),
+        )
+        self.assertEqual(
+            values[("CN-429000", "2025")]["general_public_expenditure_100m"],
+            Decimal("329.76"),
+        )
+        self.assertNotIn("gdp_real_growth_pct", values[("CN-429000", "2025")])
+        source_ids = {item["source_doc_id"] for item in sources}
+        self.assertIn("SRC-A2-HUBEI-2025-BULLETINS-429000-CORE", source_ids)
+
     def test_sina_2025_city_revenue_chart_extracts_qinhuangdao_and_xingtai(self):
         values, sources = load_city_year_fiscal_sources()
 
