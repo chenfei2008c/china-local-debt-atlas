@@ -9209,6 +9209,59 @@ CITY_YEAR_FISCAL_SOURCES += _make_autonomous_bulletin_batch(
     ),
 )
 
+# 阿里地区 2022—2023 年 GDP 缺口补录。2022 年采用联合资信报告表7的
+# 精确 GDP 单元格；报告脚注说明增速是由 GDP 绝对值计算得到，因此只接入
+# GDP，不把该推算增速伪装为原始统计值。2023 年采用西藏日报对阿里地区
+# 行署专员的正式访谈，原文明确使用“预计”，故保留 preliminary 状态。
+CITY_YEAR_FISCAL_SOURCES += (
+    {
+        "year": 2022,
+        "city_name": "阿里地区",
+        "city_id": "CN-542500",
+        "source_doc_id": "SRC-B2-ALI-REGION-GDP-2022-RATING",
+        "url": "https://www.lhratings.com/file/f732353344d.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "tibet_2022_regional_rating_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "ali_2022_gdp_rating_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "西藏自治区及下辖市（区）经济财政实力与债务研究",
+        "publisher": "联合资信评估股份有限公司",
+        "publisher_level": "评级机构精确表格披露",
+        "publication_date": "2023-10-31",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "data_status": "reported",
+        "data_status_label": "2022年公开报告值",
+        "document_type": "评级报告地市GDP精确表格",
+        "page_number": "PDF第11页表7；阿里地区全地区口径",
+        "raw_unit": "亿元",
+        "patterns": {
+            "gdp_current_100m": r"城市=阿里地区｜年度=2022｜GDP=([0-9.,-]+)亿元",
+        },
+        "note": "B2评级报告表7精确单元格；阿里地区2022年GDP为80.51亿元。报告脚注明确GDP增速0.50%由GDP绝对值计算得出，故不接入该增速。",
+    },
+    _make_curated_city_source(
+        year=2023,
+        city_name="阿里地区",
+        city_id="CN-542500",
+        source_doc_id="SRC-B2-ALI-REGION-MACRO-2023-INTERVIEW",
+        url="https://xz.people.com.cn/n2/2024/0111/c138901-40710421.html",
+        path=RAW_DIR / "province_fiscal" / "2023" / "official" / "ali_2023_economic_interview_excerpt.txt",
+        document_title="努力建设雪域高原的‘西部明珠’——阿里地区行署专员正式访谈",
+        publisher="西藏日报（人民网西藏频道公开转载）",
+        publisher_level="省级党报公开访谈",
+        publication_date="2024-01-11",
+        source_grade="B2",
+        fields=("gdp_current_100m", "gdp_real_growth_pct"),
+        raw_units={"gdp_real_growth_pct": "%"},
+        source_format="html",
+        data_status="preliminary",
+        data_status_label="2023年预计/初步值",
+        document_type="地区经济指标正式访谈摘录",
+        page_number="网页正文；阿里地区经济社会发展指标段",
+        note="B2省级党报正式访谈；原文明确为阿里地区全地区2023年预计GDP91.51亿元、同比增长13%，保留preliminary状态，不表述为最终决算数。",
+    ),
+)
+
 # 2024 年核心四字段补缺批次：丽江、达州、甘孜州、凉山州和自贡。来源均
 # 明确列示全市（州）口径；其中丽江使用官方预算附件中的2024年决算列，
 # 其余来源使用官方公报、政府公开经济运行信息或精确公开报告摘录。

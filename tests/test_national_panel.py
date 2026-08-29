@@ -2043,6 +2043,24 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(source["source_grade"], "B2")
         self.assertTrue(all(source["source_grade"] in {"A1", "A2", "B2"} for source in sources))
 
+    def test_ali_2022_2023_gdp_batch_keeps_derived_growth_out_and_marks_estimate(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        ali_2022 = values[("CN-542500", "2022")]
+        self.assertEqual(ali_2022["gdp_current_100m"], Decimal("80.51"))
+        self.assertNotIn("gdp_real_growth_pct", ali_2022)
+        self.assertEqual(ali_2022["source_grade"], "B2")
+
+        ali_2023 = values[("CN-542500", "2023")]
+        self.assertEqual(ali_2023["gdp_current_100m"], Decimal("91.51"))
+        self.assertEqual(ali_2023["gdp_real_growth_pct"], Decimal("13.00"))
+        self.assertEqual(ali_2023["data_status"], "preliminary")
+        ali_2023_source = next(
+            item for item in sources if item["source_doc_id"] == "SRC-B2-ALI-REGION-MACRO-2023-INTERVIEW"
+        )
+        self.assertIn("预计", ali_2023_source["note"])
+        self.assertTrue(any(item["source_doc_id"] == "SRC-B2-ALI-REGION-GDP-2022-RATING" for item in sources))
+
     def test_jiangsu_2025_city_reports_add_six_missing_whole_city_fields(self):
         values, sources = load_city_year_fiscal_sources()
 
