@@ -119,6 +119,42 @@ class NationalPanelTests(unittest.TestCase):
         self.assertIn("SRC-B2-ALI-REGION-REVENUE-2020", source_ids)
         self.assertIn("SRC-A2-ALI-REGION-GDP-2021-REVIEW", source_ids)
 
+    def test_ali_ceic_history_fills_2022_2023_revenue_and_expenditure(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        self.assertEqual(
+            values[("CN-542500", "2022")]["general_public_revenue_100m"],
+            Decimal("5.54"),
+        )
+        self.assertEqual(
+            values[("CN-542500", "2022")]["general_public_expenditure_100m"],
+            Decimal("113.92"),
+        )
+        self.assertEqual(
+            values[("CN-542500", "2023")]["general_public_revenue_100m"],
+            Decimal("7.20"),
+        )
+        self.assertEqual(
+            values[("CN-542500", "2023")]["general_public_expenditure_100m"],
+            Decimal("162.73"),
+        )
+        for source_id in (
+            "SRC-B2-CEIC-ALI-REVENUE-2022",
+            "SRC-B2-CEIC-ALI-REVENUE-2023",
+            "SRC-B2-CEIC-ALI-EXPENDITURE-2022",
+            "SRC-B2-CEIC-ALI-EXPENDITURE-2023",
+        ):
+            self.assertIn(source_id, {item["source_doc_id"] for item in sources})
+        ceic_source = next(
+            item for item in sources if item["source_doc_id"] == "SRC-B2-CEIC-ALI-REVENUE-2022"
+        )
+        self.assertEqual(ceic_source["title_source"], "secondary_public_page")
+        self.assertEqual(ceic_source["access_status"], "公开指标页已归档")
+        self.assertEqual(
+            values[("CN-542500", "2023")]["_field_sources"]["general_public_revenue_100m"]["source_grade"],
+            "B2",
+        )
+
     def test_heze_2025_official_budget_execution_fills_whole_city_fiscal_values(self):
         values, sources = load_city_year_fiscal_sources()
 

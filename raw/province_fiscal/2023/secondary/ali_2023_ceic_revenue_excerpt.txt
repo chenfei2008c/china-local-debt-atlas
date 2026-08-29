@@ -1,0 +1,6 @@
+来源入口：https://www.ceicdata.com/en/china/government-revenue-prefecture-level-region/government-revenue-tibet-ngri
+页面标题：Government Revenue: Tibet: Ngri
+页面元数据：2005—2023，年度，RMB mn；原始来源：Ngri Municipal Bureau of Statistics（阿里地区统计局）。
+页面摘要原文：Government Revenue: Tibet: Ngri data was reported at 720.180 RMB mn in 2023. This records an increase from the previous number of 553.580 RMB mn for 2022.
+标准化摘录：城市=阿里地区｜年度=2023｜一般公共预算收入=720.180百万元人民币
+口径说明：页面指标为阿里地区全地区一般公共预算收入，2023 年值来自页面的 Last 摘要；按 B2 记录，不替代官方决算。

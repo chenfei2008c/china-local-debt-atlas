@@ -6877,6 +6877,8 @@ def _make_curated_city_source(
     data_status_label: str | None = None,
     document_type: str = "城市经济财政指标精确摘录",
     page_number: str = "摘录文件；对应入口页/附件表格",
+    title_source: str = "official_budget_report",
+    access_status: str | None = None,
     note: str = "官方或精确公开表格摘录；行政范围为全市（州/地区），仅接入可逐项定位的数值。",
 ) -> dict[str, Any]:
     """把逐行城市摘录转换为标准城市财政来源配置。"""
@@ -6911,6 +6913,8 @@ def _make_curated_city_source(
         "data_status_label": data_status_label or f"{year}年执行数",
         "document_type": document_type,
         "page_number": page_number,
+        "title_source": title_source,
+        "access_status": access_status,
         "raw_unit": raw_unit,
         "raw_units": units,
         "patterns": patterns,
@@ -10048,6 +10052,77 @@ CITY_YEAR_FISCAL_SOURCES += (
     ),
 )
 
+# CEIC 阿里地区指标页给出 2023 年当前值及 2022 年同比基准值，页面同时标注
+# 原始来源为阿里地区统计局、单位为百万元人民币。两年的收入和支出均为精确
+# 的年度总量摘要，按 B2 接入；仅补主表空值，不把商业数据库页面升级为官方 A 级。
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    _make_curated_city_source(
+        year=year,
+        city_name="阿里地区",
+        city_id="CN-542500",
+        source_doc_id=f"SRC-B2-CEIC-ALI-{metric_slug}-{year}",
+        url=url,
+        path=RAW_DIR / "province_fiscal" / str(year) / "secondary" / file_name,
+        document_title=document_title,
+        publisher="CEIC Data",
+        publisher_level="商业数据库公开指标页（二手来源）",
+        publication_date="2026-08-01",
+        source_grade="B2",
+        fields=(field,),
+        raw_unit="百万元人民币",
+        source_format="html",
+        data_status="reported",
+        data_status_label=f"{year}年统计机构历史年度值",
+        document_type="CEIC地级区域财政指标页面精确摘要",
+        page_number=page_number,
+        title_source="secondary_public_page",
+        access_status="公开指标页已归档",
+        note=note,
+    )
+    for year, field, metric_slug, file_name, url, document_title, page_number, note in (
+        (
+            2022,
+            "general_public_revenue_100m",
+            "REVENUE",
+            "ali_2022_ceic_revenue_excerpt.txt",
+            "https://www.ceicdata.com/en/china/government-revenue-prefecture-level-region/government-revenue-tibet-ngri",
+            "Government Revenue: Tibet: Ngri",
+            "CEIC指标页；2022年Previous摘要；全地区口径",
+            "B2 CEIC公开指标页；页面标题为Government Revenue: Tibet: Ngri，注明原始来源为Ngri Municipal Bureau of Statistics（阿里地区统计局），2022年值为2023年页面的Previous摘要；仅补一般公共预算收入空值。",
+        ),
+        (
+            2023,
+            "general_public_revenue_100m",
+            "REVENUE",
+            "ali_2023_ceic_revenue_excerpt.txt",
+            "https://www.ceicdata.com/en/china/government-revenue-prefecture-level-region/government-revenue-tibet-ngri",
+            "Government Revenue: Tibet: Ngri",
+            "CEIC指标页；2023年Last摘要；全地区口径",
+            "B2 CEIC公开指标页；页面标题为Government Revenue: Tibet: Ngri，注明原始来源为Ngri Municipal Bureau of Statistics（阿里地区统计局），2023年Last摘要值为720.180百万元；仅补一般公共预算收入空值。",
+        ),
+        (
+            2022,
+            "general_public_expenditure_100m",
+            "EXPENDITURE",
+            "ali_2022_ceic_expenditure_excerpt.txt",
+            "https://www.ceicdata.com/en/china/government-expenditure-prefecture-level-region/government-expenditure-tibet-ngri",
+            "Government Expenditure: Tibet: Ngri",
+            "CEIC指标页；2022年Previous摘要；全地区口径",
+            "B2 CEIC公开指标页；页面标题为Government Expenditure: Tibet: Ngri，注明原始来源为Ngri Municipal Bureau of Statistics（阿里地区统计局），2022年值为2023年页面的Previous摘要；仅补一般公共预算支出空值。",
+        ),
+        (
+            2023,
+            "general_public_expenditure_100m",
+            "EXPENDITURE",
+            "ali_2023_ceic_expenditure_excerpt.txt",
+            "https://www.ceicdata.com/en/china/government-expenditure-prefecture-level-region/government-expenditure-tibet-ngri",
+            "Government Expenditure: Tibet: Ngri",
+            "CEIC指标页；2023年Last摘要；全地区口径",
+            "B2 CEIC公开指标页；页面标题为Government Expenditure: Tibet: Ngri，注明原始来源为Ngri Municipal Bureau of Statistics（阿里地区统计局），2023年Last摘要值为16273.000百万元；仅补一般公共预算支出空值。",
+        ),
+    )
+)
+
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
@@ -11009,11 +11084,13 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
             )
             raw_units = config.get("raw_units") or {}
             raw_unit = str(raw_units.get(field) or config.get("raw_unit") or "万元")
-            normalized = q2(
-                raw_value
-                if raw_unit in {"亿元", "%", "万人"}
-                else raw_value * D4
-            )
+            if raw_unit in {"亿元", "%", "万人"}:
+                normalized_value = raw_value
+            elif raw_unit in {"百万元", "百万元人民币"}:
+                normalized_value = raw_value * Decimal("0.01")
+            else:
+                normalized_value = raw_value * D4
+            normalized = q2(normalized_value)
             negative_marker = str(config.get("negative_if", {}).get(field) or "")
             if negative_marker and negative_marker in match.group(0):
                 normalized = -normalized
@@ -11090,7 +11167,7 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
                 "publisher": config["publisher"],
                 "publisher_level": config["publisher_level"],
                 "document_title": config["document_title"],
-                "title_source": "official_budget_report",
+                "title_source": config.get("title_source") or "official_budget_report",
                 "attachment_title": source_path.name,
                 "document_type": config["document_type"],
                 "source_url": source_url,
@@ -11123,7 +11200,7 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
                 "page_count": config.get("page_count", "179"),
                 "source_grade": config["source_grade"],
                 "http_status": "200",
-                "access_status": (
+                "access_status": config.get("access_status") or (
                     "官方网页已归档"
                     if config.get("source_format") == "html"
                     else "精确图表已归档"
@@ -12238,6 +12315,11 @@ def _lineage_for_city_year_fiscal(
         normalization_rule = (
             f"官方预算/统计表原始单位为{raw_unit}；数值直接读取，保留两位小数；全市口径。"
         )
+    elif raw_unit in {"百万元", "百万元人民币"}:
+        normalization_rule = (
+            "CEIC公开指标页原始单位为百万元人民币；原值×0.01=亿元，保留两位小数；"
+            "页面标注来源为阿里地区统计局，口径为全地区；按B2记录。"
+        )
     elif raw_unit == "人" and field == "resident_population_10k":
         normalization_rule = "公开序列原始单位为人；原值÷10000=万人，保留两位小数；全市口径。"
     else:
@@ -12246,6 +12328,7 @@ def _lineage_for_city_year_fiscal(
     is_gotohui = str(source.get("source_platform") or "") == "gotohui"
     is_crei = str(source.get("source_platform") or "") == "crei"
     is_hongheiku = str(source.get("source_platform") or "") == "hongheiku"
+    is_ceic = str(source.get("source_doc_id") or "").startswith("SRC-B2-CEIC-")
     locator_type = (
         "xlsx_cell"
         if is_public_panel and source.get("source_platform") == "haidatas"
@@ -12272,6 +12355,8 @@ def _lineage_for_city_year_fiscal(
         if is_crei
         else "hongheiku-public-html-bulletin-parser"
         if is_hongheiku
+        else "ceic-public-metadata-parser"
+        if is_ceic
         else "curated-official-html-statement-parser"
         if source_format == "html"
         else "gotohui-public-html-table-parser"
@@ -12321,6 +12406,11 @@ def _lineage_for_city_year_fiscal(
                 "标题、年度和行政范围与目标一致；不使用区县、公报图表目测值或户籍人口。"
             )
             if is_hongheiku
+            else (
+                "CEIC公开指标页的年度 Last/Previous 精确摘要明确标注指标、单位、年度和阿里地区统计局来源；"
+                "仅作B2补缺，不替代官方财政决算。"
+            )
+            if is_ceic
             else (
                 "B2公开二手历史序列页面的总量表格，标题与城市、指标、年度完全匹配；"
                 "页面标注原始来源和单位，空白、预算、本级、分项及辖区条目未接入。"
