@@ -171,6 +171,43 @@ class NationalPanelTests(unittest.TestCase):
         self.assertIn("SRC-A2-JIYUAN-2024-STATISTICAL-BULLETIN-CORE", source_ids)
         self.assertIn("SRC-A2-JIYUAN-2025-STATISTICAL-BULLETIN-CORE", source_ids)
 
+    def test_jiyuan_historical_official_sources_fill_2018_to_2023_core_values(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        expected = {
+            "2018": ("641.84", "8.30", "50.10", "69.00"),
+            "2019": ("686.96", "7.80", "57.10", "77.50"),
+            "2020": ("691.35", "3.30", "58.40", "81.30"),
+            "2021": ("762.23", "6.10", "59.10", "81.59"),
+            "2022": ("806.22", "4.40", "66.80", "84.20"),
+            "2023": ("788.61", "5.40", "60.00", "75.50"),
+        }
+        fields = (
+            "gdp_current_100m",
+            "gdp_real_growth_pct",
+            "general_public_revenue_100m",
+            "general_public_expenditure_100m",
+        )
+        for year, row in expected.items():
+            self.assertEqual(
+                tuple(str(values[("CN-419000", year)][field]) for field in fields),
+                row,
+            )
+        source_ids = {item["source_doc_id"] for item in sources}
+        for year in (2018, 2019, 2021, 2022, 2023):
+            self.assertIn(
+                f"SRC-A2-JIYUAN-{year}-STATISTICAL-BULLETIN-CORE",
+                source_ids,
+            )
+        self.assertIn("SRC-A2-JIYUAN-2020-BUDGET-EXECUTION-CORE", source_ids)
+        self.assertIn("SRC-A2-JIYUAN-2020-GDP-FINAL-REVIEW", source_ids)
+        source = next(
+            item
+            for item in sources
+            if item["source_doc_id"] == "SRC-A2-JIYUAN-2018-STATISTICAL-BULLETIN-CORE"
+        )
+        self.assertEqual(source["mime_type"], "application/msword")
+
     def test_sina_2025_city_revenue_chart_extracts_qinhuangdao_and_xingtai(self):
         values, sources = load_city_year_fiscal_sources()
 

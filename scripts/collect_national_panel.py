@@ -75,6 +75,7 @@ try:
     from scripts.hainan_direct_admin_yearbook import HAINAN_DIRECT_ADMIN_YEARBOOK_SOURCES
     from scripts.hainan_direct_admin_yearbook import HAINAN_DIRECT_ADMIN_YEARBOOK_2025_SOURCES
     from scripts.henan_direct_admin_bulletins import HENAN_DIRECT_ADMIN_BULLETIN_SOURCES
+    from scripts.jiyuan_historical_bulletins import JIYUAN_HISTORICAL_SOURCES
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
     from curated_city_fiscal_2025 import CURATED_2025_CITY_FISCAL_SOURCES
     from supplemental_city_fiscal_2025 import SUPPLEMENTAL_CITY_FISCAL_SOURCES
@@ -94,6 +95,7 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
     from hainan_direct_admin_yearbook import HAINAN_DIRECT_ADMIN_YEARBOOK_SOURCES
     from hainan_direct_admin_yearbook import HAINAN_DIRECT_ADMIN_YEARBOOK_2025_SOURCES
     from henan_direct_admin_bulletins import HENAN_DIRECT_ADMIN_BULLETIN_SOURCES
+    from jiyuan_historical_bulletins import JIYUAN_HISTORICAL_SOURCES
 
 getcontext().prec = 40
 
@@ -10237,6 +10239,7 @@ CITY_YEAR_FISCAL_SOURCES += (HUBEI_DIRECT_ADMIN_2025_BULLETIN_SOURCE,)
 CITY_YEAR_FISCAL_SOURCES += tuple(HAINAN_DIRECT_ADMIN_YEARBOOK_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(HAINAN_DIRECT_ADMIN_YEARBOOK_2025_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(HENAN_DIRECT_ADMIN_BULLETIN_SOURCES)
+CITY_YEAR_FISCAL_SOURCES += tuple(JIYUAN_HISTORICAL_SOURCES)
 
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
@@ -11300,6 +11303,8 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
                     if config.get("source_format") == "png"
                     else "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                     if config.get("source_format") == "docx"
+                    else "application/msword"
+                    if config.get("source_format") == "doc"
                     else "application/vnd.ms-excel"
                     if config.get("source_format") == "xls"
                     else "application/x-7z-compressed"
@@ -11324,6 +11329,8 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
                     if config.get("source_format") == "png"
                     else "官方DOCX附件已归档"
                     if config.get("source_format") == "docx"
+                    else "官方DOC附件已归档"
+                    if config.get("source_format") == "doc"
                     else "官方Excel附件已归档"
                     if config.get("source_format") == "xlsx"
                     else "官方Excel附件已归档"
