@@ -224,6 +224,18 @@ class NationalPanelTests(unittest.TestCase):
         self.assertIn("SRC-A2-HAINAN-YEARBOOK-2025-469000-REVENUE-2024", source_ids)
         self.assertIn("SRC-A2-HAINAN-YEARBOOK-2025-469000-EXPENDITURE-2024", source_ids)
 
+    def test_hainan_2025_december_monthly_report_fills_direct_admin_aggregate(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        record = values[("CN-469000", "2025")]
+        self.assertEqual(record["gdp_current_100m"], Decimal("3473.85"))
+        self.assertEqual(record["general_public_revenue_100m"], Decimal("206.57"))
+        self.assertEqual(record["general_public_expenditure_100m"], Decimal("836.42"))
+        self.assertEqual(record["gov_fund_revenue_100m"], Decimal("69.30"))
+        self.assertNotIn("gdp_real_growth_pct", record)
+        source_ids = {item["source_doc_id"] for item in sources}
+        self.assertIn("SRC-A2-HAINAN-2025-DEC-MONTHLY-469000-CORE", source_ids)
+
     def test_hainan_2023_yearbook_scanned_tables_fill_2022_fiscal_values(self):
         values, sources = load_city_year_fiscal_sources()
 

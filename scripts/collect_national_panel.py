@@ -76,6 +76,7 @@ try:
     from scripts.hainan_direct_admin_yearbook import HAINAN_DIRECT_ADMIN_YEARBOOK_2025_SOURCES
     from scripts.hainan_direct_admin_yearbook import HAINAN_DIRECT_ADMIN_YEARBOOK_2023_SOURCES
     from scripts.hainan_direct_admin_yearbook import HAINAN_DIRECT_ADMIN_YEARBOOK_2019_2021_SOURCES
+    from scripts.hainan_direct_admin_2025_monthly import HAINAN_DIRECT_ADMIN_2025_MONTHLY_SOURCE
     from scripts.henan_direct_admin_bulletins import HENAN_DIRECT_ADMIN_BULLETIN_SOURCES
     from scripts.jiyuan_historical_bulletins import JIYUAN_HISTORICAL_SOURCES
     from scripts.xinjiang_bingtuan_core import XPCC_CORE_SOURCES
@@ -99,6 +100,7 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
     from hainan_direct_admin_yearbook import HAINAN_DIRECT_ADMIN_YEARBOOK_2025_SOURCES
     from hainan_direct_admin_yearbook import HAINAN_DIRECT_ADMIN_YEARBOOK_2023_SOURCES
     from hainan_direct_admin_yearbook import HAINAN_DIRECT_ADMIN_YEARBOOK_2019_2021_SOURCES
+    from hainan_direct_admin_2025_monthly import HAINAN_DIRECT_ADMIN_2025_MONTHLY_SOURCE
     from henan_direct_admin_bulletins import HENAN_DIRECT_ADMIN_BULLETIN_SOURCES
     from jiyuan_historical_bulletins import JIYUAN_HISTORICAL_SOURCES
     from xinjiang_bingtuan_core import XPCC_CORE_SOURCES
@@ -10433,6 +10435,7 @@ CITY_YEAR_FISCAL_SOURCES += tuple(HAINAN_DIRECT_ADMIN_YEARBOOK_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(HAINAN_DIRECT_ADMIN_YEARBOOK_2025_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(HAINAN_DIRECT_ADMIN_YEARBOOK_2023_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(HAINAN_DIRECT_ADMIN_YEARBOOK_2019_2021_SOURCES)
+CITY_YEAR_FISCAL_SOURCES += (HAINAN_DIRECT_ADMIN_2025_MONTHLY_SOURCE,)
 CITY_YEAR_FISCAL_SOURCES += tuple(HENAN_DIRECT_ADMIN_BULLETIN_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(JIYUAN_HISTORICAL_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(XPCC_CORE_SOURCES)
