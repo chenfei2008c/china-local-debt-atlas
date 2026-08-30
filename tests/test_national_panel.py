@@ -95,6 +95,25 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(source["mime_type"], "application/vnd.ms-excel")
         self.assertEqual(source["access_status"], "官方Excel附件已归档")
 
+    def test_guilin_2024_official_report_fills_whole_city_expenditure(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        record = values[("CN-450300", "2024")]
+        self.assertEqual(record["general_public_expenditure_100m"], Decimal("519.64"))
+        self.assertIn("SRC-A2-GUILIN-CITY-FISCAL-EXPENDITURE-2024", record["source_doc_id"])
+        self.assertIn(
+            "一般公共预算支出=519.64亿元",
+            record["general_public_expenditure_100m_evidence_excerpt"],
+        )
+        source = next(
+            item
+            for item in sources
+            if item["source_doc_id"] == "SRC-A2-GUILIN-CITY-FISCAL-EXPENDITURE-2024"
+        )
+        self.assertEqual(source["publisher"], "桂林市财政局")
+        self.assertEqual(source["attachment_url"], "https://czj.guilin.gov.cn/zwgk/glsbjyjsgkpt/sbjzfzys/P020251216316883452399.pdf")
+        self.assertIn("不使用市本级162.38亿元", source["note"])
+
     def test_hubei_direct_admin_bulletins_fill_2025_core_values(self):
         values, sources = load_city_year_fiscal_sources()
 

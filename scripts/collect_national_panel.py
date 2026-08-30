@@ -9209,6 +9209,40 @@ CITY_YEAR_FISCAL_SOURCES += _make_autonomous_bulletin_batch(
     ),
 )
 
+# 桂林市财政局 2024 年全市一般公共预算支出。官方预算执行报告在同一
+# 正文中明确区分“全市”和“市本级”，本批只接入全市执行数519.64亿元，
+# 不把市本级162.38亿元误作地级市全辖口径。
+CITY_YEAR_FISCAL_SOURCES += (
+    {
+        "year": 2024,
+        "city_name": "桂林市",
+        "city_id": "CN-450300",
+        "source_doc_id": "SRC-A2-GUILIN-CITY-FISCAL-EXPENDITURE-2024",
+        "url": "https://czj.guilin.gov.cn/zwgk/glsbjyjsgkpt/sbjzfzys/t26796961.shtml",
+        "landing_page_url": "https://czj.guilin.gov.cn/zwgk/glsbjyjsgkpt/sbjzfzys/t26796961.shtml",
+        "attachment_url": "https://czj.guilin.gov.cn/zwgk/glsbjyjsgkpt/sbjzfzys/P020251216316883452399.pdf",
+        "download_url": "https://czj.guilin.gov.cn/zwgk/glsbjyjsgkpt/sbjzfzys/P020251216316883452399.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "official" / "guilin_2024_budget_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "official" / "guilin_2024_budget_report_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "关于桂林市全市与市本级2024年预算执行情况和2025年预算草案的报告",
+        "publisher": "桂林市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2025-04-24",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "data_status": "execution",
+        "data_status_label": "2024年全市预算执行数",
+        "document_type": "城市财政预算执行报告（官方PDF）",
+        "page_number": "网页正文（一）一般公共预算执行情况第1项‘全市’；附件1",
+        "raw_unit": "亿元",
+        "patterns": {
+            "general_public_expenditure_100m": r"城市=桂林市｜年度=2024｜一般公共预算支出=([0-9.,-]+)亿元",
+        },
+        "note": "A2桂林市财政局官方预算执行报告；正文明确区分全市与市本级，采用2024年全市一般公共预算支出519.64亿元，不使用市本级162.38亿元。",
+    },
+)
+
 # 阿里地区 2022—2023 年 GDP 缺口补录。2022 年采用联合资信报告表7的
 # 精确 GDP 单元格；报告脚注说明增速是由 GDP 绝对值计算得到，因此只接入
 # GDP，不把该推算增速伪装为原始统计值。2023 年采用西藏日报对阿里地区
