@@ -78,6 +78,7 @@ try:
     from scripts.hainan_direct_admin_yearbook import HAINAN_DIRECT_ADMIN_YEARBOOK_2019_2021_SOURCES
     from scripts.henan_direct_admin_bulletins import HENAN_DIRECT_ADMIN_BULLETIN_SOURCES
     from scripts.jiyuan_historical_bulletins import JIYUAN_HISTORICAL_SOURCES
+    from scripts.xinjiang_bingtuan_core import XPCC_CORE_SOURCES
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
     from curated_city_fiscal_2025 import CURATED_2025_CITY_FISCAL_SOURCES
     from supplemental_city_fiscal_2025 import SUPPLEMENTAL_CITY_FISCAL_SOURCES
@@ -100,6 +101,7 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
     from hainan_direct_admin_yearbook import HAINAN_DIRECT_ADMIN_YEARBOOK_2019_2021_SOURCES
     from henan_direct_admin_bulletins import HENAN_DIRECT_ADMIN_BULLETIN_SOURCES
     from jiyuan_historical_bulletins import JIYUAN_HISTORICAL_SOURCES
+    from xinjiang_bingtuan_core import XPCC_CORE_SOURCES
 
 getcontext().prec = 40
 
@@ -10412,6 +10414,7 @@ CITY_YEAR_FISCAL_SOURCES += tuple(HAINAN_DIRECT_ADMIN_YEARBOOK_2023_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(HAINAN_DIRECT_ADMIN_YEARBOOK_2019_2021_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(HENAN_DIRECT_ADMIN_BULLETIN_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(JIYUAN_HISTORICAL_SOURCES)
+CITY_YEAR_FISCAL_SOURCES += tuple(XPCC_CORE_SOURCES)
 
 # 聚汇数据玉树地区总览页补入2024年一般公共预算收入。地区总览的“前值”
 # 与指标入口标题及数据来源（玉树统计局）一致，但详细指标页对应年度仍为空，

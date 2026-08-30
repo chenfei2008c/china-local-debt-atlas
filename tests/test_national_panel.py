@@ -95,6 +95,35 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(source["mime_type"], "application/vnd.ms-excel")
         self.assertEqual(source["access_status"], "官方Excel附件已归档")
 
+    def test_xinjiang_bingtuan_official_bulletins_fill_2018_to_2023_core_values(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        expected = {
+            "2018": ("2515.16", "6.00", "103.82", "957.12"),
+            "2019": ("2747.07", "6.30", "142.54", "1158.16"),
+            "2020": ("2905.14", "4.50", "153.28", "1166.80"),
+            "2021": ("3395.61", "8.00", None, None),
+            "2022": ("3500.71", "3.00", None, None),
+            "2023": ("3696.58", "6.90", None, None),
+        }
+        fields = (
+            "gdp_current_100m",
+            "gdp_real_growth_pct",
+            "general_public_revenue_100m",
+            "general_public_expenditure_100m",
+        )
+        for year, expected_values in expected.items():
+            row = values.get(("CN-659000", year))
+            self.assertIsNotNone(row, year)
+            self.assertEqual(
+                tuple(str(row.get(field)) if row.get(field) is not None else None for field in fields),
+                expected_values,
+            )
+
+        source_ids = {item["source_doc_id"] for item in sources}
+        for year in expected:
+            self.assertIn(f"SRC-A2-XPCC-{year}-CORE", source_ids)
+
     def test_guilin_2024_official_report_fills_whole_city_expenditure(self):
         values, sources = load_city_year_fiscal_sources()
 
