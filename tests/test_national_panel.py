@@ -371,6 +371,28 @@ class NationalPanelTests(unittest.TestCase):
         source_ids = {item["source_doc_id"] for item in sources}
         self.assertIn("SRC-B2-GOTOHUI-SONGYUAN-2025-REVENUE", source_ids)
 
+    def test_songyuan_2025_statistical_bulletin_fills_whole_city_expenditure(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        row = values[("CN-220700", "2025")]
+        self.assertEqual(row["general_public_expenditure_100m"], Decimal("308.03"))
+        self.assertIn(
+            "一般公共预算支出=308.03亿元",
+            row["general_public_expenditure_100m_evidence_excerpt"],
+        )
+        self.assertEqual(
+            row["_field_sources"]["general_public_expenditure_100m"]["source_doc_id"],
+            "SRC-B2-SONGYUAN-STATISTICAL-BULLETIN-2025-EXPENDITURE",
+        )
+        source = next(
+            item
+            for item in sources
+            if item["source_doc_id"] == "SRC-B2-SONGYUAN-STATISTICAL-BULLETIN-2025-EXPENDITURE"
+        )
+        self.assertEqual(source["source_grade"], "B2")
+        self.assertEqual(source["period_end"], "2025-12-31")
+        self.assertIn("地方财政支出", source["note"])
+
     def test_baishan_2025_local_revenue_is_explicitly_mapped_to_general_budget_revenue(self):
         values, sources = load_city_year_fiscal_sources()
 
