@@ -10413,6 +10413,40 @@ CITY_YEAR_FISCAL_SOURCES += tuple(HAINAN_DIRECT_ADMIN_YEARBOOK_2019_2021_SOURCES
 CITY_YEAR_FISCAL_SOURCES += tuple(HENAN_DIRECT_ADMIN_BULLETIN_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(JIYUAN_HISTORICAL_SOURCES)
 
+# 聚汇数据玉树地区总览页补入2024年一般公共预算收入。地区总览的“前值”
+# 与指标入口标题及数据来源（玉树统计局）一致，但详细指标页对应年度仍为空，
+# 因而只按B2记录为公开总览精确值，不补支出，也不替代官方决算。
+CITY_YEAR_FISCAL_SOURCES += (
+    _make_curated_city_source(
+        year=2024,
+        city_name="玉树藏族自治州",
+        city_id="CN-632700",
+        source_doc_id="SRC-B2-GOTOHUI-YUSHU-2024-REVENUE",
+        url="https://www.gotohui.com/area/2439",
+        attachment_url="https://www.gotohui.com/finance/show-308662",
+        path=RAW_DIR / "province_fiscal" / "2024" / "secondary" / "yushu_2024_gotohui_revenue_excerpt.txt",
+        document_title="玉树州地方财政收入：一般公共预算收入",
+        publisher="聚汇数据",
+        publisher_level="公开城市总览页（二手来源）",
+        publication_date="2026-08-29",
+        source_grade="B2",
+        fields=("general_public_revenue_100m",),
+        raw_unit="亿元",
+        source_format="html",
+        data_status="reported",
+        data_status_label="2024年公开总览前值",
+        document_type="公开城市财政指标总览摘录",
+        page_number="地区总览页关键经济指标；2025年当前值/2024年前值；指标入口标题页",
+        title_source="secondary_public_page",
+        access_status="公开指标页已归档",
+        note=(
+            "B2聚汇数据公开总览页精确显示2024年前值3.74亿元；指标入口标题为"
+            "‘玉树州地方财政收入:一般公共预算收入’，并标注数据来源为玉树统计局。"
+            "详细指标页2024行未显示数值，因此仅补一般公共预算收入，不补支出，不替代官方决算。"
+        ),
+    ),
+)
+
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
