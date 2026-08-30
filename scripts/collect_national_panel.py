@@ -10505,6 +10505,43 @@ CITY_YEAR_FISCAL_SOURCES += tuple(JIYUAN_HISTORICAL_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(XPCC_CORE_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(JINAN_LAIWU_YEARBOOK_SOURCES)
 
+# 通化市财政局（市政府公开专栏）2026年预算公开附件补入2025年市区全域
+# 一般公共预算收支执行数。表格同时列示2024年决算数、2025年调整预算数和
+# 2025年执行数；这里只读取“执行数”列，不把市本级数或预算数代入全市口径。
+CITY_YEAR_FISCAL_SOURCES += (
+    _make_curated_city_source(
+        year=2025,
+        city_name="通化市",
+        city_id="CN-220500",
+        source_doc_id="SRC-A2-TONGHUA-CITY-FISCAL-2025",
+        url="https://www.tonghua.gov.cn/zwgk/czsj/ztjs/202604/t20260403_769792.html",
+        attachment_url="https://www.tonghua.gov.cn/zwgk/czsj/ztjs/202604/W020260509565744911962.pdf",
+        path=RAW_DIR / "province_fiscal" / "2025" / "official" / "tonghua_2025_budget_execution_excerpt.txt",
+        document_title="2026年通化市政府预算公开（含2025年预算执行情况）",
+        publisher="通化市财政局",
+        publisher_level="市级财政机构",
+        publication_date="2026-04-03",
+        source_grade="A2",
+        fields=("general_public_revenue_100m", "general_public_expenditure_100m"),
+        raw_unit="万元",
+        source_format="pdf",
+        data_status="execution",
+        data_status_label="2025年市区全市一般公共预算执行数",
+        document_type="市级财政预算执行报告官方PDF附件",
+        page_number="PDF第5—6页；2025年市区口径；执行数列",
+        custom_patterns={
+            "general_public_revenue_100m": r"2025年市区一般公共预算收入执行情况表.*?一、地方级财政收入219912454457(441025)97\.0200\.5",
+            "general_public_expenditure_100m": r"2025年市区一般公共预算支出执行情况表.*?一、一般公共预算支出8205061259920(1238175)98\.3150\.9",
+        },
+        note=(
+            "A2通化市财政局官方PDF附件；第5页‘2025年市区一般公共预算收入执行情况表’"
+            "列示地方级财政收入2025年执行数441025万元，第6页‘2025年市区一般公共预算"
+            "支出执行情况表’列示一般公共预算支出执行数1238175万元，均为市区全域口径；"
+            "换算为44.1025亿元和123.8175亿元，保留execution状态，不使用市本级表。"
+        ),
+    ),
+)
+
 # 玉树州财政局官方预算执行报告补入2024年全州一般公共预算支出，并以同值
 # 官方A2来源升级政府性基金收入的字段血缘；报告明确是执行数而非最终决算。
 CITY_YEAR_FISCAL_SOURCES += (YUSHU_2024_BUDGET_SOURCE,)
