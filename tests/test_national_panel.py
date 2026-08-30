@@ -133,6 +133,26 @@ class NationalPanelTests(unittest.TestCase):
         source_ids = {item["source_doc_id"] for item in sources}
         self.assertIn("SRC-A2-HUBEI-2025-BULLETINS-429000-CORE", source_ids)
 
+    def test_huanggang_2025_official_budget_report_fills_whole_city_expenditure(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        record = values[("CN-421100", "2025")]
+        self.assertEqual(record["general_public_revenue_100m"], Decimal("205.60"))
+        self.assertEqual(record["general_public_expenditure_100m"], Decimal("694.00"))
+        self.assertEqual(record["gov_fund_revenue_100m"], Decimal("96.88"))
+        self.assertIn("SRC-A2-HUANGGANG-CITY-FISCAL-2025", record["source_doc_id"])
+        self.assertIn(
+            "一般公共预算支出=694.00亿元",
+            record["general_public_expenditure_100m_evidence_excerpt"],
+        )
+        source = next(
+            item
+            for item in sources
+            if item["source_doc_id"] == "SRC-A2-HUANGGANG-CITY-FISCAL-2025"
+        )
+        self.assertEqual(source["publisher"], "黄冈市财政局")
+        self.assertEqual(source["source_grade"], "A2")
+
     def test_hainan_direct_admin_yearbook_fills_gdp_history_and_2023_fiscal(self):
         values, sources = load_city_year_fiscal_sources()
 

@@ -8409,6 +8409,43 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     _make_curated_city_source(**spec) for spec in _CURATED_2023_2025_MACRO_GAP_BATCH_SPECS
 )
 
+# 黄冈市财政局官方预算执行报告补入2025年全市一般公共预算收支和政府性基金收入。
+# 报告正文同时列示全口径财政收入、一般公共预算收入、政府性基金预算收入以及
+# 全市财政总支出和其中的一般公共预算支出；这里严格采用全市口径，不使用市本级数。
+CITY_YEAR_FISCAL_SOURCES += (
+    {
+        "year": 2025,
+        "city_name": "黄冈市",
+        "city_id": "CN-421100",
+        "source_doc_id": "SRC-A2-HUANGGANG-CITY-FISCAL-2025",
+        "url": "https://www.hg.gov.cn/zt/2026nsjyjs/sjzfysjsgk/9381643.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "huanggang_2025_budget.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "huanggang_2025_budget_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "关于黄冈市2025年预算执行情况和2026年预算草案的报告",
+        "publisher": "黄冈市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2026-01-28",
+        "source_grade": "A2",
+        "source_format": "html",
+        "data_status": "execution",
+        "data_status_label": "2025年全市一般公共预算和政府性基金预算执行数",
+        "document_type": "市级财政预算执行报告",
+        "page_number": "官方网页正文；2025年全市预算执行情况",
+        "raw_unit": "亿元",
+        "patterns": {
+            "general_public_revenue_100m": r"一般公共预算收入=([0-9.,]+)亿元",
+            "general_public_expenditure_100m": r"一般公共预算支出=([0-9.,]+)亿元",
+            "gov_fund_revenue_100m": r"政府性基金预算收入=([0-9.,]+)亿元",
+        },
+        "note": (
+            "A2黄冈市财政局官方预算执行报告；正文明确列示2025年全市一般公共预算收入205.6亿元、"
+            "一般公共预算支出694亿元和政府性基金预算收入96.88亿元，均为执行数；"
+            "不使用同一报告中的市本级249320万元收入或864010万元支出。"
+        ),
+    },
+)
+
 # 唐山市 2025 年公开报告批次：财政报告由唐山市财政局向市人大提交，
 # 经济指标由唐山劳动日报完整披露。两条来源均明确区分“全市”与“本级”，
 # 作为 B2 精确公开来源归档；财政字段保留 execution 状态。
