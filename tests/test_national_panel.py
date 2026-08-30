@@ -95,6 +95,23 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(source["mime_type"], "application/vnd.ms-excel")
         self.assertEqual(source["access_status"], "官方Excel附件已归档")
 
+    def test_jinan_2020_yearbook_fills_laiwu_2019_core_values(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        record = values[("CN-371200", "2019")]
+        self.assertEqual(record["gdp_current_100m"], Decimal("871.60"))
+        self.assertEqual(record["general_public_revenue_100m"], Decimal("50.98"))
+        self.assertEqual(record["general_public_expenditure_100m"], Decimal("70.23"))
+        self.assertNotIn("gdp_real_growth_pct", record)
+        self.assertIn("SRC-A2-JINAN-YEARBOOK-2020-LAIWU-2019", record["source_doc_id"])
+        source = next(
+            item
+            for item in sources
+            if item["source_doc_id"] == "SRC-A2-JINAN-YEARBOOK-2020-LAIWU-2019"
+        )
+        self.assertEqual(source["source_grade"], "A2")
+        self.assertIn("第129、188、192页", source["note"])
+
     def test_xinjiang_bingtuan_official_bulletins_fill_2018_to_2023_core_values(self):
         values, sources = load_city_year_fiscal_sources()
 
