@@ -10194,6 +10194,43 @@ CITY_YEAR_FISCAL_SOURCES += (
     ),
 )
 
+# 阿里地区财政局公开的2020年度财政总决算 Excel 附件补入全地区一般公共
+# 预算收入和支出。此前收入仅有官方门户转载的4.45亿元摘要；本批采用
+# 决算01表、决算02表的全地区“本年收入/支出合计”，由A2决算附件覆盖低等级
+# 摘要，并补齐2020年一般公共预算支出空缺。不使用同附件的地区本级工作簿。
+CITY_YEAR_FISCAL_SOURCES += (
+    _make_curated_city_source(
+        year=2020,
+        city_name="阿里地区",
+        city_id="CN-542500",
+        source_doc_id="SRC-A2-ALI-REGION-FISCAL-2020-DECISION-XLS",
+        url="https://al.gov.cn/info/1067/40346.htm",
+        attachment_url=(
+            "https://al.gov.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl"
+            "&owner=1512064483&wbfileid=BA3F2181A7BCE94A3399666B3625CD8E"
+        ),
+        path=RAW_DIR / "province_fiscal" / "2020" / "official" / "ali_2020_decision_attach1_excerpt.txt",
+        document_title="2020年度阿里地区财政总决算报表（官方Excel附件）",
+        publisher="阿里地区财政局",
+        publisher_level="地区级财政机构",
+        publication_date="2021-10-08",
+        source_grade="A2",
+        fields=("general_public_revenue_100m", "general_public_expenditure_100m"),
+        raw_unit="万元",
+        source_format="xls",
+        data_status="final",
+        data_status_label="2020年全地区一般公共预算决算数",
+        document_type="地区财政总决算明细表（官方Excel附件）",
+        page_number="工作簿J01第520行、J02第616行；全地区口径",
+        note=(
+            "A2阿里地区财政局官方2020年度财政总决算Excel附件；J01全地区本年收入合计"
+            "51777万元，J02全地区本年支出合计1010497万元，换算为5.1777亿元和"
+            "101.0497亿元。此前4.45亿元为官方转载摘要，本批以正式决算附件覆盖；"
+            "不使用同附件地区本级工作簿的收入6398万元和支出（本级口径）。"
+        ),
+    ),
+)
+
 # 四平市财政局官方预算执行报告补入2025年全市一般公共预算收支。
 # 报告同时列示市级、区级和全市县（市）口径；这里严格采用“全市县（市）”
 # 汇总数，不把市级或市区数代入四平市全域主表。
