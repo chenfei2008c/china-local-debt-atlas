@@ -524,12 +524,12 @@ class NationalPanelTests(unittest.TestCase):
             "B2",
         )
 
-    def test_yushu_2024_gotohui_overview_fills_general_budget_revenue_only(self):
+    def test_yushu_2024_gotohui_overview_is_preserved_with_official_fiscal_source(self):
         values, sources = load_city_year_fiscal_sources()
 
         row = values[("CN-632700", "2024")]
         self.assertEqual(row["general_public_revenue_100m"], Decimal("3.74"))
-        self.assertNotIn("general_public_expenditure_100m", row)
+        self.assertEqual(row["general_public_expenditure_100m"], Decimal("163.76"))
         source = next(
             item
             for item in sources
@@ -537,6 +537,36 @@ class NationalPanelTests(unittest.TestCase):
         )
         self.assertIn("总览", source["note"])
         self.assertIn("玉树统计局", source["note"])
+
+    def test_yushu_2024_official_budget_execution_fills_whole_prefecture_expenditure(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        row = values[("CN-632700", "2024")]
+        self.assertEqual(row["general_public_expenditure_100m"], Decimal("163.76"))
+        self.assertEqual(
+            row["_field_sources"]["general_public_expenditure_100m"]["source_doc_id"],
+            "SRC-A2-YUSHU-2024-BUDGET-EXECUTION",
+        )
+        self.assertEqual(
+            row["_field_sources"]["general_public_expenditure_100m"]["source_grade"],
+            "A2",
+        )
+        self.assertEqual(row["gov_fund_revenue_100m"], Decimal("0.25"))
+        self.assertEqual(
+            row["_field_sources"]["gov_fund_revenue_100m"]["source_doc_id"],
+            "SRC-A2-YUSHU-2024-BUDGET-EXECUTION",
+        )
+        source = next(
+            item
+            for item in sources
+            if item["source_doc_id"] == "SRC-A2-YUSHU-2024-BUDGET-EXECUTION"
+        )
+        self.assertEqual(source["source_grade"], "A2")
+        self.assertIn("全州", source["note"])
+        self.assertEqual(
+            row["_field_sources"]["general_public_expenditure_100m"]["data_status"],
+            "execution",
+        )
 
     def test_ceic_2025_expenditure_pages_fill_qinhuangdao_qitaihe_yanan(self):
         values, sources = load_city_year_fiscal_sources()

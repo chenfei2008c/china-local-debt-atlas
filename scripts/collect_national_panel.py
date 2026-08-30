@@ -81,6 +81,7 @@ try:
     from scripts.jiyuan_historical_bulletins import JIYUAN_HISTORICAL_SOURCES
     from scripts.jinan_laiwu_yearbook import JINAN_LAIWU_YEARBOOK_SOURCES
     from scripts.xinjiang_bingtuan_core import XPCC_CORE_SOURCES
+    from scripts.yushu_budget_2024 import YUSHU_2024_BUDGET_SOURCE
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
     from curated_city_fiscal_2025 import CURATED_2025_CITY_FISCAL_SOURCES
     from supplemental_city_fiscal_2025 import SUPPLEMENTAL_CITY_FISCAL_SOURCES
@@ -106,6 +107,7 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
     from jiyuan_historical_bulletins import JIYUAN_HISTORICAL_SOURCES
     from jinan_laiwu_yearbook import JINAN_LAIWU_YEARBOOK_SOURCES
     from xinjiang_bingtuan_core import XPCC_CORE_SOURCES
+    from yushu_budget_2024 import YUSHU_2024_BUDGET_SOURCE
 
 getcontext().prec = 40
 
@@ -10466,6 +10468,10 @@ CITY_YEAR_FISCAL_SOURCES += tuple(JIYUAN_HISTORICAL_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(XPCC_CORE_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(JINAN_LAIWU_YEARBOOK_SOURCES)
 
+# 玉树州财政局官方预算执行报告补入2024年全州一般公共预算支出，并以同值
+# 官方A2来源升级政府性基金收入的字段血缘；报告明确是执行数而非最终决算。
+CITY_YEAR_FISCAL_SOURCES += (YUSHU_2024_BUDGET_SOURCE,)
+
 # 聚汇数据玉树地区总览页补入2024年一般公共预算收入。地区总览的“前值”
 # 与指标入口标题及数据来源（玉树统计局）一致，但详细指标页对应年度仍为空，
 # 因而只按B2记录为公开总览精确值，不补支出，也不替代官方决算。
@@ -11511,7 +11517,16 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
                             prior_record[source_key] = record[source_key]
                     field_sources[field] = dict(record)
                 elif current_value == prior_value:
-                    # 同值重复披露不构成冲突，但仍保留既有优先来源。
+                    # 同值重复披露不构成数值冲突；若当前来源等级更高，仍应升级
+                    # 字段血缘和原始证据，避免官方值被低等级来源遮蔽。
+                    if SOURCE_GRADE_RANK.get(current_grade, -1) > SOURCE_GRADE_RANK.get(
+                        prior_grade, -1
+                    ):
+                        for suffix in ("_raw_100m", "_raw_unit", "_evidence_excerpt"):
+                            source_key = f"{field}{suffix}"
+                            if source_key in record:
+                                prior_record[source_key] = record[source_key]
+                        field_sources[field] = dict(record)
                     continue
                 elif SOURCE_GRADE_RANK.get(current_grade, -1) > SOURCE_GRADE_RANK.get(prior_grade, -1):
                     prior_record[field] = record[field]
