@@ -280,11 +280,37 @@ class NationalPanelTests(unittest.TestCase):
         )
         self.assertEqual(
             values[("CN-130500", "2025")]["general_public_revenue_100m"],
-            Decimal("185.14"),
+            Decimal("220.90"),
         )
         source_ids = {item["source_doc_id"] for item in sources}
         self.assertIn("SRC-B2-SINA-300-CITIES-2025-QINHUANGDAO-REVENUE", source_ids)
         self.assertIn("SRC-B2-SINA-300-CITIES-2025-XINGTAI-REVENUE", source_ids)
+
+    def test_xingtai_2025_official_budget_execution_overrides_secondary_revenue_and_fills_expenditure_and_fund(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        row = values[("CN-130500", "2025")]
+        self.assertEqual(row["general_public_revenue_100m"], Decimal("220.90"))
+        self.assertEqual(row["general_public_expenditure_100m"], Decimal("701.90"))
+        self.assertEqual(row["gov_fund_revenue_100m"], Decimal("120.20"))
+        self.assertEqual(
+            row["_field_sources"]["general_public_revenue_100m"]["source_doc_id"],
+            "SRC-A2-XINGTAI-CITY-FISCAL-2025",
+        )
+        self.assertEqual(
+            row["_field_sources"]["general_public_revenue_100m"]["data_status"],
+            "execution",
+        )
+        source = next(
+            item
+            for item in sources
+            if item["source_doc_id"] == "SRC-A2-XINGTAI-CITY-FISCAL-2025"
+        )
+        self.assertEqual(source["source_grade"], "A2")
+        self.assertEqual(
+            source["archive_path"],
+            "raw/province_fiscal/2025/official/xingtai_2025_budget_execution.pdf",
+        )
 
     def test_gotohui_songyuan_2025_area_indicator_fills_general_budget_revenue(self):
         values, sources = load_city_year_fiscal_sources()

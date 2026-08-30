@@ -7283,6 +7283,49 @@ CITY_YEAR_FISCAL_SOURCES += (
     ),
 )
 
+# 邢台市财政局官方《关于邢台市2025年预算执行情况和2026年预算草案的报告》
+# 明确列示全市一般公共预算收入、支出和政府性基金预算收入。报告披露的是
+# 2025年国库快报执行数，后续可能随财政决算审查汇总和省财政结算而调整，
+# 因此保留 execution 状态；不把市本级或开发区、高新区数字代入全市口径。
+CITY_YEAR_FISCAL_SOURCES += (
+    {
+        "year": 2025,
+        "city_name": "邢台市",
+        "city_id": "CN-130500",
+        "source_doc_id": "SRC-A2-XINGTAI-CITY-FISCAL-2025",
+        "url": "http://www.xingtai.gov.cn/zwgk/czyjszl/zfys/202602/t20260213_729118.html",
+        "landing_page_url": "http://www.xingtai.gov.cn/zwgk/czyjszl/zfys/202602/t20260213_729118.html",
+        "attachment_url": "http://www.xingtai.gov.cn/zwgk/czyjszl/zfys/202602/P020260213527706990202.pdf",
+        "download_url": "http://www.xingtai.gov.cn/zwgk/czyjszl/zfys/202602/P020260213527706990202.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "xingtai_2025_budget_execution.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "xingtai_2025_budget_execution_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "关于邢台市2025年预算执行情况和2026年预算草案的报告",
+        "publisher": "邢台市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2026-02-13",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "data_status": "execution",
+        "data_status_label": "2025年国库快报执行数",
+        "document_type": "城市财政预算执行报告（官方PDF）",
+        "page_number": "PDF第1—2页；全市财政预算执行情况",
+        "page_count": "11",
+        "raw_unit": "亿元",
+        "patterns": {
+            "general_public_revenue_100m": r"全市一般公共预算收入\s*([0-9,.]+)\s*亿元",
+            "general_public_expenditure_100m": r"全市一般公共预算支出\s*([0-9,.]+)\s*亿元",
+            "gov_fund_revenue_100m": r"全市政府性基金预算收入\s*([0-9,.]+)\s*亿元",
+        },
+        "note": (
+            "A2邢台市财政局官方预算执行报告，明确全市口径；采用2025年国库快报执行数"
+            "一般公共预算收入220.9亿元、支出701.9亿元、政府性基金预算收入120.2亿元。"
+            "报告说明上述数据在完成财政决算审查汇总及与省财政结算批复后还会变化，"
+            "保留execution状态；不使用市本级41.1/147.2亿元及开发区、高新区分项。"
+        ),
+    },
+)
+
 # 雄安新区 2024—2025 年全区一般公共预算决算。官方附件以万元列示，摘录
 # 已保留等值亿元数，且只接入“全区”合计，不把新区本级或三县区分项误当作
 # 雄安新区全域口径。
