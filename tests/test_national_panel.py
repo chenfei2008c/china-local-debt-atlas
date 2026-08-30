@@ -1480,6 +1480,7 @@ class NationalPanelTests(unittest.TestCase):
             ("CN-542500", "2025"): {
                 "gdp_current_100m": Decimal("114.21"),
                 "gdp_real_growth_pct": Decimal("6.60"),
+                "general_public_revenue_100m": Decimal("3.71"),
                 "general_public_expenditure_100m": Decimal("174.61"),
             },
             ("CN-371700", "2025"): {
@@ -1493,7 +1494,22 @@ class NationalPanelTests(unittest.TestCase):
             for field, expected_value in fields.items():
                 self.assertEqual(values[key][field], expected_value)
 
-        self.assertNotIn("general_public_revenue_100m", values[("CN-542500", "2025")])
+        ali_2025 = values[("CN-542500", "2025")]
+        self.assertIn(
+            "地方财政收入=37094万元",
+            ali_2025["general_public_revenue_100m_evidence_excerpt"],
+        )
+        ali_source = next(
+            source
+            for source in sources
+            if source["source_doc_id"] == "SRC-A2-ALI-REGION-MACRO-FISCAL-2025"
+        )
+        self.assertIn("地方财政收入", ali_source["note"])
+        self.assertIn("规范映射", ali_source["note"])
+        self.assertEqual(
+            ali_2025["_field_sources"]["general_public_revenue_100m"]["source_grade"],
+            "A2",
+        )
         source_ids = {source["source_doc_id"] for source in sources}
         self.assertIn("SRC-A2-HEIHE-CITY-MACRO-FISCAL-2024", source_ids)
         self.assertIn("SRC-A2-ALI-REGION-MACRO-FISCAL-2025", source_ids)

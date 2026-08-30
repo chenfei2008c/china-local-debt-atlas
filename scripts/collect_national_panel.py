@@ -6891,6 +6891,7 @@ def _make_curated_city_source(
     fields: tuple[str, ...],
     raw_unit: str = "亿元",
     raw_units: dict[str, str] | None = None,
+    custom_patterns: dict[str, str] | None = None,
     text_city_name: str | None = None,
     source_format: str = "pdf",
     data_status: str = "execution",
@@ -6905,7 +6906,7 @@ def _make_curated_city_source(
 
     text_city = text_city_name or city_name
     units = dict(raw_units or {})
-    patterns = {
+    patterns = custom_patterns or {
         field: (
             rf"城市={re.escape(text_city)}｜年度={year}｜"
             rf"(?:(?!城市=).)*?{re.escape(_CURATED_CITY_FIELD_LABELS[field])}="
@@ -9597,16 +9598,38 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
             "fields": (
                 "gdp_current_100m",
                 "gdp_real_growth_pct",
+                "general_public_revenue_100m",
                 "general_public_expenditure_100m",
             ),
             "raw_unit": "亿元",
-            "raw_units": {"gdp_real_growth_pct": "%"},
+            "raw_units": {
+                "gdp_real_growth_pct": "%",
+                "general_public_revenue_100m": "万元",
+            },
+            "custom_patterns": {
+                "gdp_current_100m": (
+                    r"城市=阿里地区｜年度=2025｜(?:(?!城市=).)*?"
+                    r"GDP=([0-9.,-]+)亿元"
+                ),
+                "gdp_real_growth_pct": (
+                    r"城市=阿里地区｜年度=2025｜(?:(?!城市=).)*?"
+                    r"GDP增速=([0-9.,-]+)%"
+                ),
+                "general_public_revenue_100m": (
+                    r"城市=阿里地区｜年度=2025｜(?:(?!城市=).)*?"
+                    r"地方财政收入=([0-9.,-]+)万元"
+                ),
+                "general_public_expenditure_100m": (
+                    r"城市=阿里地区｜年度=2025｜(?:(?!城市=).)*?"
+                    r"一般公共预算支出=([0-9.,-]+)亿元"
+                ),
+            },
             "source_format": "txt",
             "data_status": "preliminary",
             "data_status_label": "2025年官方公开值",
             "document_type": "地区政府经济财政指标公开页面摘录",
             "page_number": "官方页面经济社会栏目；全地区口径",
-            "note": "A2阿里地区行政公署官方页面；采用全地区GDP114.21亿元、实际增速6.6%和一般公共预算支出174.61亿元。页面另列地方财政收入37094万元，但未明确为全地区一般公共预算收入，故不代入该字段。",
+            "note": "A2阿里地区行政公署官方页面；采用全地区GDP114.21亿元、实际增速6.6%、地方财政收入37094万元和一般公共预算支出174.61亿元。原始页面使用“地方财政收入”标签；依据国家统计局财政收支口径说明及财政部门名词解释，该术语为地方一般公共预算收入的常用旧称，按规范映射为一般公共预算收入3.7094亿元后保留两位小数；不含政府性基金收入或转移支付。",
         },
         {
             "year": 2025,
