@@ -342,6 +342,26 @@ class NationalPanelTests(unittest.TestCase):
         source_ids = {item["source_doc_id"] for item in sources}
         self.assertIn("SRC-B2-GOTOHUI-SONGYUAN-2025-REVENUE", source_ids)
 
+    def test_baishan_2025_local_revenue_is_explicitly_mapped_to_general_budget_revenue(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        row = values[("CN-220600", "2025")]
+        self.assertEqual(row["general_public_revenue_100m"], Decimal("36.80"))
+        self.assertEqual(row["gdp_current_100m"], Decimal("590.17"))
+        self.assertEqual(row["gdp_real_growth_pct"], Decimal("5.60"))
+        self.assertEqual(row["general_public_expenditure_100m"], Decimal("230.21"))
+        self.assertIn(
+            "一般公共预算收入=36.80亿元",
+            row["general_public_revenue_100m_evidence_excerpt"],
+        )
+        source = next(
+            item
+            for item in sources
+            if item["source_doc_id"] == "SRC-B2-BAISHAN-CITY-MACRO-FISCAL-2025"
+        )
+        self.assertIn("地方级财政收入", source["note"])
+        self.assertIn("规范映射", source["note"])
+
     def test_ali_2024_rating_report_fills_gdp_growth(self):
         values, sources = load_city_year_fiscal_sources()
 
