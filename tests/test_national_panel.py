@@ -291,6 +291,16 @@ class NationalPanelTests(unittest.TestCase):
                 source_ids,
             )
 
+    def test_hainan_2022_yearbook_fills_2021_direct_admin_fiscal_values(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        row = values[("CN-469000", "2021")]
+        self.assertEqual(row["general_public_revenue_100m"], Decimal("203.20"))
+        self.assertEqual(row["general_public_expenditure_100m"], Decimal("700.55"))
+        source_ids = {item["source_doc_id"] for item in sources}
+        self.assertIn("SRC-A2-HAINAN-YEARBOOK-2022-469000-REVENUE-2021", source_ids)
+        self.assertIn("SRC-A2-HAINAN-YEARBOOK-2022-469000-EXPENDITURE-2021", source_ids)
+
     def test_jiyuan_official_bulletins_fill_2024_and_2025_core_values(self):
         values, sources = load_city_year_fiscal_sources()
 

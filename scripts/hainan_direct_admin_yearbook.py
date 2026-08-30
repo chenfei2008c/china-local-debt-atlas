@@ -249,11 +249,12 @@ HAINAN_DIRECT_ADMIN_YEARBOOK_2023_SOURCES = (
 
 
 # 海南统计局官方年鉴压缩包中的财政章节分别给出上一年度各市县地方一般公共预算
-# 收入和支出。2019、2020、2021 年鉴对应 2018、2019、2020 年数据；本地只归档
+# 收入和支出。2019、2020、2021、2022 年鉴对应 2018、2019、2020、2021 年数据；本地只归档
 # 表7-7和表7-8的清晰表页PNG，官方压缩包入口作为附件来源保留。
 RAW_2019_BASE = ROOT / "raw" / "province_fiscal" / "hainan_yearbook" / "2019"
 RAW_2020_BASE = ROOT / "raw" / "province_fiscal" / "hainan_yearbook" / "2020"
 RAW_2021_BASE = ROOT / "raw" / "province_fiscal" / "hainan_yearbook" / "2021"
+RAW_2022_BASE = ROOT / "raw" / "province_fiscal" / "hainan_yearbook" / "2022"
 YEARBOOK_2019_URL = (
     "https://stats.hainan.gov.cn/tjj/tjsu/ndsj/2019_77838/201909/"
     "P020240306633278360675.zip"
@@ -265,6 +266,10 @@ YEARBOOK_2020_URL = (
 YEARBOOK_2021_URL = (
     "https://stats.hainan.gov.cn/tjj/tjsu/ndsj/2021/202110/"
     "P020260202629383416266.zip"
+)
+YEARBOOK_2022_URL = (
+    "https://stats.hainan.gov.cn/tjj/tjsu/ndsj/2021_84481/202211/"
+    "P020231116624247052503.zip"
 )
 
 
@@ -356,6 +361,36 @@ HAINAN_DIRECT_ADMIN_YEARBOOK_2019_2021_SOURCES = (
         page_number="第138页（PDF第12页）表7-8",
         image_name="hainan_2021_7-8_page12.png",
         excerpt_name="hainan_2021_469000_2020_expenditure_excerpt.txt",
+        value_pattern=r"支出=([0-9.]+)",
+        label="地方一般公共预算支出",
+    ),
+    _historical_scan_source(
+        data_year=2021,
+        yearbook_year=2022,
+        yearbook_url=YEARBOOK_2022_URL,
+        raw_base=RAW_2022_BASE,
+        publication_date="2022-11-17",
+        page_count="20",
+        field="general_public_revenue_100m",
+        source_doc_id="SRC-A2-HAINAN-YEARBOOK-2022-469000-REVENUE-2021",
+        page_number="第126页（PDF第10页）表7-7",
+        image_name="hainan_2022_7-7_page10.png",
+        excerpt_name="hainan_2022_469000_2021_revenue_excerpt.txt",
+        value_pattern=r"收入=([0-9.]+)",
+        label="地方一般公共预算收入",
+    ),
+    _historical_scan_source(
+        data_year=2021,
+        yearbook_year=2022,
+        yearbook_url=YEARBOOK_2022_URL,
+        raw_base=RAW_2022_BASE,
+        publication_date="2022-11-17",
+        page_count="20",
+        field="general_public_expenditure_100m",
+        source_doc_id="SRC-A2-HAINAN-YEARBOOK-2022-469000-EXPENDITURE-2021",
+        page_number="第128页（PDF第12页）表7-8",
+        image_name="hainan_2022_7-8_page12.png",
+        excerpt_name="hainan_2022_469000_2021_expenditure_excerpt.txt",
         value_pattern=r"支出=([0-9.]+)",
         label="地方一般公共预算支出",
     ),
