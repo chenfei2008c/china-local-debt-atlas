@@ -102,7 +102,7 @@ class NationalPanelTests(unittest.TestCase):
             "2018": ("2515.16", "6.00", "103.82", "957.12"),
             "2019": ("2747.07", "6.30", "142.54", "1158.16"),
             "2020": ("2905.14", "4.50", "153.28", "1166.80"),
-            "2021": ("3395.61", "8.00", None, None),
+            "2021": ("3395.61", "8.00", "186.47", None),
             "2022": ("3500.71", "3.00", None, None),
             "2023": ("3696.58", "6.90", None, None),
         }
@@ -123,6 +123,17 @@ class NationalPanelTests(unittest.TestCase):
         source_ids = {item["source_doc_id"] for item in sources}
         for year in expected:
             self.assertIn(f"SRC-A2-XPCC-{year}-CORE", source_ids)
+        self.assertIn("SRC-B2-XPCC-2021-REVENUE-RATING", source_ids)
+        revenue_source = next(
+            item
+            for item in sources
+            if item["source_doc_id"] == "SRC-B2-XPCC-2021-REVENUE-RATING"
+        )
+        self.assertEqual(revenue_source["source_grade"], "B2")
+        self.assertEqual(
+            values[("CN-659000", "2021")]["_field_sources"]["general_public_revenue_100m"]["page_number"],
+            "13",
+        )
 
     def test_guilin_2024_official_report_fills_whole_city_expenditure(self):
         values, sources = load_city_year_fiscal_sources()

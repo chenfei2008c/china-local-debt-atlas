@@ -34,6 +34,13 @@ def _source(
     source_grade: str = "A2",
     publisher: str = "新疆生产建设兵团统计局、国家统计局兵团调查总队",
     publisher_level: str = "兵团统计机构/国家统计局调查总队",
+    source_doc_id: str | None = None,
+    path: Path | None = None,
+    document_title: str | None = None,
+    source_format: str = "html",
+    page_number: str = "官方公报综合及财政金融部分",
+    data_status: str = "preliminary",
+    data_status_label: str | None = None,
 ) -> dict:
     labels = {
         "gdp_current_100m": ("GDP", "亿元"),
@@ -41,26 +48,26 @@ def _source(
         "general_public_revenue_100m": ("一般公共预算收入", "亿元"),
         "general_public_expenditure_100m": ("一般公共预算支出", "亿元"),
     }
-    path = RAW_DIR / str(year) / "official" / f"xinjiang_bingtuan_{year}_core_excerpt.txt"
+    path = path or RAW_DIR / str(year) / "official" / f"xinjiang_bingtuan_{year}_core_excerpt.txt"
     return {
         "year": year,
         "city_name": CITY_NAME,
         "city_id": CITY_ID,
-        "source_doc_id": f"SRC-A2-XPCC-{year}-CORE",
+        "source_doc_id": source_doc_id or f"SRC-A2-XPCC-{year}-CORE",
         "url": url,
         "path": path,
         "text_path": path,
         "text_is_curated": True,
-        "document_title": f"新疆生产建设兵团{year}年国民经济和社会发展统计公报",
+        "document_title": document_title or f"新疆生产建设兵团{year}年国民经济和社会发展统计公报",
         "publisher": publisher,
         "publisher_level": publisher_level,
         "publication_date": publication_date,
         "source_grade": source_grade,
-        "source_format": "html",
-        "data_status": "preliminary",
-        "data_status_label": f"{year}年统计公报数（初步统计/执行口径）",
+        "source_format": source_format,
+        "data_status": data_status,
+        "data_status_label": data_status_label or f"{year}年统计公报数（初步统计/执行口径）",
         "document_type": "兵团统计公报核心经济财政指标",
-        "page_number": "官方公报综合及财政金融部分",
+        "page_number": page_number,
         "raw_unit": "亿元",
         "raw_units": {field: labels[field][1] for field in fields},
         "patterns": {
@@ -154,6 +161,27 @@ XPCC_CORE_SOURCES = (
             "B2兵团官方新闻门户精确转载；页面明确引用兵团统计数据，列示2023年兵团"
             "生产总值3696.58亿元、按不变价格计算比上年增长6.9%。当前未取得可定位的"
             "兵团官方统计公报财政收支全文，财政字段不代填；不扩展单个师市值。"
+        ),
+    ),
+    _source(
+        year=2021,
+        url="https://file.finance.sina.com.cn/211.154.219.97%3A9494/MRGG/BOND/2023/2023-7/2023-07-11/18959624.PDF",
+        publication_date="2023-07-11",
+        fields=("general_public_revenue_100m",),
+        source_grade="B2",
+        source_doc_id="SRC-B2-XPCC-2021-REVENUE-RATING",
+        path=RAW_DIR / "2021" / "official" / "xinjiang_bingtuan_2021_revenue_rating_excerpt.txt",
+        document_title="2023年新疆维吾尔自治区（新疆生产建设兵团）一般债券（四至五期）信用评级",
+        source_format="pdf",
+        page_number="13",
+        data_status="execution",
+        data_status_label="2021年全兵团一般公共预算收入（评级报告引用值）",
+        publisher="中债资信评估有限责任公司",
+        publisher_level="全国性政府债券评级机构",
+        note=(
+            "B2中债资信评级报告第13页附件四；表格明确列示行政范围为全兵团，"
+            "2021年一般公共预算收入186.47亿元。该来源未列示2021年全兵团一般公共预算支出，"
+            "因此不补支出；不把兵团本级或2022年上半年数据扩展为全年全兵团值。"
         ),
     ),
 )
