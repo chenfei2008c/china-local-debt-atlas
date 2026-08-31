@@ -3718,6 +3718,62 @@ class NationalPanelTests(unittest.TestCase):
             self.assertIn(f"SRC-A2-BAZHOU-CITY-BULLETIN-{year}-MACRO-FISCAL", source_ids)
         self.assertIn("SRC-B2-HAIDONG-CITY-BULLETIN-2024-FISCAL", source_ids)
 
+    def test_macro_gap_batch_2_sources_fill_current_missing_values(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        expected = {
+            ("CN-131100", "2024"): {
+                "general_public_revenue_100m": Decimal("152.7"),
+                "general_public_expenditure_100m": Decimal("451.7"),
+            },
+            ("CN-140600", "2024"): {
+                "general_public_expenditure_100m": Decimal("261.46"),
+            },
+            ("CN-341200", "2024"): {
+                "general_public_revenue_100m": Decimal("195.1"),
+                "general_public_expenditure_100m": Decimal("662.3"),
+            },
+            ("CN-421300", "2024"): {
+                "general_public_expenditure_100m": Decimal("238.37"),
+            },
+            ("CN-540500", "2024"): {
+                "general_public_revenue_100m": Decimal("21.4"),
+                "general_public_expenditure_100m": Decimal("284.5"),
+            },
+            ("CN-540600", "2024"): {
+                "general_public_revenue_100m": Decimal("11.43"),
+                "general_public_expenditure_100m": Decimal("319.48"),
+            },
+            ("CN-360300", "2025"): {
+                "general_public_expenditure_100m": Decimal("334.77"),
+            },
+            ("CN-510600", "2025"): {
+                "gdp_real_growth_pct": Decimal("5.4"),
+                "general_public_expenditure_100m": Decimal("437.3"),
+            },
+            ("CN-510800", "2025"): {
+                "gdp_real_growth_pct": Decimal("6.4"),
+                "general_public_expenditure_100m": Decimal("353.36"),
+            },
+            ("CN-420600", "2025"): {
+                "gdp_real_growth_pct": Decimal("2.1"),
+            },
+            ("CN-632300", "2022"): {
+                "gdp_current_100m": Decimal("110.89"),
+                "gdp_real_growth_pct": Decimal("0.2"),
+            },
+        }
+        for key, field_values in expected.items():
+            for field, expected_value in field_values.items():
+                self.assertEqual(values[key][field], expected_value, (key, field))
+            self.assertEqual(values[key]["source_grade"], "B2")
+
+        source_ids = {item["source_doc_id"] for item in sources}
+        self.assertEqual(len({values[key]["source_doc_id"] for key in expected}), 11)
+        for key in expected:
+            for source_id in values[key]["source_doc_id"].split(";"):
+                self.assertIn(source_id, source_ids)
+
     def test_langfang_2025_official_budget_report_extracts_whole_city_fiscal_values(self):
         values, sources = load_city_year_fiscal_sources()
         langfang = values[("CN-131000", "2025")]
