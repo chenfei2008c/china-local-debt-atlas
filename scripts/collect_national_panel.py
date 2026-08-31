@@ -84,6 +84,7 @@ try:
     from scripts.sichuan_aba_core import SICHUAN_ABA_CORE_SOURCES
     from scripts.sichuan_ganzi_yearbook import SICHUAN_GANZI_YEARBOOK_SOURCES
     from scripts.sichuan_liangshan_bulletins import SICHUAN_LIANGSHAN_BULLETIN_SOURCES
+    from scripts.yunnan_yearbooks import YUNNAN_YEARBOOK_SOURCES
     from scripts.yushu_budget_2024 import YUSHU_2024_BUDGET_SOURCE
     from scripts.hainan_sansha_residual import (
         HAINAN_SANSHA_RESIDUAL_SOURCES,
@@ -123,6 +124,7 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
     from sichuan_aba_core import SICHUAN_ABA_CORE_SOURCES
     from sichuan_ganzi_yearbook import SICHUAN_GANZI_YEARBOOK_SOURCES
     from sichuan_liangshan_bulletins import SICHUAN_LIANGSHAN_BULLETIN_SOURCES
+    from yunnan_yearbooks import YUNNAN_YEARBOOK_SOURCES
     from yushu_budget_2024 import YUSHU_2024_BUDGET_SOURCE
     from hainan_sansha_residual import (
         HAINAN_SANSHA_RESIDUAL_SOURCES,
@@ -11424,6 +11426,7 @@ CITY_YEAR_FISCAL_SOURCES += tuple(XPCC_CORE_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(SICHUAN_ABA_CORE_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(SICHUAN_GANZI_YEARBOOK_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(SICHUAN_LIANGSHAN_BULLETIN_SOURCES)
+CITY_YEAR_FISCAL_SOURCES += tuple(YUNNAN_YEARBOOK_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(JINAN_LAIWU_YEARBOOK_SOURCES)
 
 # 通化市财政局（市政府公开专栏）2026年预算公开附件补入2025年市区全域
@@ -12445,6 +12448,15 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
         year = str(config["year"])
         data_status = str(config.get("data_status") or "execution")
         data_status_label = str(config.get("data_status_label") or f"{year}年执行数")
+        source_locator = str(
+            config.get("source_locator")
+            or (
+                f"{text_path.relative_to(ROOT)}；报告正文；城市={config['city_name']}；"
+                f"{data_status_label}；行政范围=全市"
+            )
+        )
+        if data_status_label not in source_locator:
+            source_locator = f"{source_locator}；{data_status_label}"
         record: dict[str, Any] = {
             "source_doc_id": config["source_doc_id"],
             "source_grade": config["source_grade"],
@@ -12457,10 +12469,7 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
             "calculation_input_record_ids": str(config.get("calculation_input_record_ids") or ""),
             "calculation_input_fields": str(config.get("calculation_input_fields") or ""),
             "calculation_note": str(config.get("calculation_note") or ""),
-            "source_locator": (
-                f"{text_path.relative_to(ROOT)}；报告正文；城市={config['city_name']}；"
-                f"{data_status_label}；行政范围=全市"
-            ),
+            "source_locator": source_locator,
             "table_name": str(config.get("table_name") or f"{year}年全市财政预算执行情况"),
             "page_number": config.get("page_number", ""),
         }
