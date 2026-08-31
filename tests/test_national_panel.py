@@ -3796,6 +3796,20 @@ class NationalPanelTests(unittest.TestCase):
         self.assertIn("SRC-B2-DEZHOU-CITY-GDP-2025", source_ids)
         self.assertIn("SRC-B2-DEZHOU-CITY-FISCAL-2025", source_ids)
 
+    def test_macro_gap_batch_4_source_fills_shuangyashan_2025_core_gaps(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        shuangyashan = values[("CN-230500", "2025")]
+        self.assertEqual(shuangyashan["gdp_current_100m"], Decimal("571.1"))
+        self.assertEqual(shuangyashan["gdp_real_growth_pct"], Decimal("4.2"))
+        self.assertEqual(shuangyashan["general_public_revenue_100m"], Decimal("58.28"))
+        self.assertEqual(shuangyashan["general_public_expenditure_100m"], Decimal("224.52"))
+        self.assertIn("SRC-B2-SHUANGYASHAN-CITY-MACRO-FISCAL-2025", shuangyashan["source_doc_id"])
+        self.assertEqual(shuangyashan["source_grade"], "B2")
+
+        source_ids = {item["source_doc_id"] for item in sources}
+        self.assertIn("SRC-B2-SHUANGYASHAN-CITY-MACRO-FISCAL-2025", source_ids)
+
     def test_langfang_2025_official_budget_report_extracts_whole_city_fiscal_values(self):
         values, sources = load_city_year_fiscal_sources()
         langfang = values[("CN-131000", "2025")]

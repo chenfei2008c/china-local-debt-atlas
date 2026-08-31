@@ -1,9 +1,9 @@
 ﻿field_name,target_year_start,target_year_end,target_rows,numeric_non_null_rows,numeric_missing_rows,high_grade_rows,high_grade_missing_rows,provisional_rows,unattributed_rows,numeric_coverage_pct,high_grade_coverage_pct
-gdp_current_100m,2018,2025,2732,2719,13,2569,163,150,0,99.52,94.03
-gdp_real_growth_pct,2018,2025,2732,2699,33,2584,148,115,0,98.79,94.58
+gdp_current_100m,2018,2025,2732,2720,12,2570,162,150,0,99.56,94.07
+gdp_real_growth_pct,2018,2025,2732,2700,32,2585,147,115,0,98.83,94.62
 resident_population_10k,2018,2025,2732,2372,360,1661,1071,711,0,86.82,60.80
-general_public_revenue_100m,2018,2025,2732,2719,13,2574,158,145,0,99.52,94.22
-general_public_expenditure_100m,2018,2025,2732,2718,14,2574,158,144,0,99.49,94.22
+general_public_revenue_100m,2018,2025,2732,2720,12,2575,157,145,0,99.56,94.25
+general_public_expenditure_100m,2018,2025,2732,2719,13,2575,157,144,0,99.52,94.25
 gov_fund_revenue_100m,2018,2025,2732,1755,977,525,2207,1230,0,64.24,19.22
 statutory_debt_limit_100m,2018,2025,2732,2106,626,1303,1429,803,0,77.09,47.69
 statutory_debt_balance_100m,2018,2025,2732,2723,9,2594,138,129,0,99.67,94.95

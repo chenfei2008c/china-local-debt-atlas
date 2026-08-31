@@ -8996,6 +8996,44 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     _make_curated_city_source(**spec) for spec in _CURATED_2025_MACRO_GAP_BATCH_3_SPECS
 )
 
+# 本批补入双鸭山市2025年统计公报中的四项核心字段。公开转载页面明确
+# 标注来源为双鸭山市统计局，且四项数值均为“全市”口径；GDP增速明确按
+# 不变价格计算。仅接入当前主表仍缺失的字段，避免覆盖已有高等级值。
+_CURATED_2025_MACRO_GAP_BATCH_4_SPECS = (
+    {
+        "year": 2025,
+        "city_name": "双鸭山市",
+        "city_id": "CN-230500",
+        "source_doc_id": "SRC-B2-SHUANGYASHAN-CITY-MACRO-FISCAL-2025",
+        "url": "https://tjgb.hongheiku.com/xjtjgb/xj2020/75705.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "shuangyashan_2025_statistical_bulletin_excerpt.txt",
+        "document_title": "2025年双鸭山市国民经济和社会发展统计公报",
+        "publisher": "双鸭山市统计局（公开转载）",
+        "publisher_level": "市级统计机构公报精确转载",
+        "publication_date": "2026-07-21",
+        "source_grade": "B2",
+        "fields": (
+            "gdp_current_100m",
+            "gdp_real_growth_pct",
+            "general_public_revenue_100m",
+            "general_public_expenditure_100m",
+        ),
+        "raw_units": {"gdp_real_growth_pct": "%"},
+        "source_format": "html",
+        "data_status": "preliminary",
+        "data_status_label": "2025年公报初步统计数",
+        "document_type": "市级统计公报经济财政指标精确转载",
+        "page_number": "转载正文‘一、综合’及‘八、财政和金融’",
+        "title_source": "official_statistical_bulletin",
+        "access_status": "public_repost",
+        "note": "B2精确公报转载；采用双鸭山市全市GDP571.1亿元、按不变价格计算的实际增速4.2%、一般公共预算收入58.28亿元、支出224.52亿元，不使用县区或市本级数据。",
+    },
+)
+
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    _make_curated_city_source(**spec) for spec in _CURATED_2025_MACRO_GAP_BATCH_4_SPECS
+)
+
 # 本批四字段补缺：2023—2025 年经入口页、附件或精确公开表格逐项核验的
 # 地级市/自治州数据。这里只接入当前主表仍缺失的字段；同一城市年度已有
 # 更高等级值时，load_city_year_fiscal_sources 会按字段保留高等级来源。
