@@ -1325,7 +1325,11 @@ class NationalPanelTests(unittest.TestCase):
         debt_status = next(item for item in build_collection_status([city], [macro]) if item["module"] == "法定债务")
         self.assertEqual(debt_status["collection_status"], "evidence_based_missing")
         self.assertEqual(debt_status["error_code"], "PUBLIC_SOURCE_EXHAUSTED")
-        self.assertEqual(len(build_evidence_based_missing_rows()), 10)
+        macro_status = next(item for item in build_collection_status([city], [macro]) if item["module"] == "经济财政")
+        self.assertEqual(macro_status["collection_status"], "evidence_based_missing")
+        self.assertEqual(macro_status["error_code"], "PUBLIC_SOURCE_EXHAUSTED")
+        self.assertGreaterEqual(macro_status["evidence_count"], 3)
+        self.assertEqual(len(build_evidence_based_missing_rows()), 56)
 
     def test_new_fund_calculations_are_appended_after_existing_lineages(self):
         rows = [

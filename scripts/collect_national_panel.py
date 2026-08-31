@@ -30,7 +30,7 @@ from urllib.request import Request, urlopen
 try:
     from scripts.province_debt_sources import extract_official_debt_facts
     from scripts.data_quality import OFFICIAL_DEBT_EXCEPTION_STATUS, debt_fact_has_balance_limit_conflict
-    from scripts.evidence_based_missing import EVIDENCE_BY_KEY, EVIDENCE_CHECKED_AT, EVIDENCE_SOURCE_DOCUMENTS
+    from scripts.evidence_based_missing import CORE_GAP_FIELDS, EVIDENCE_BY_KEY, EVIDENCE_CHECKED_AT, EVIDENCE_SOURCE_DOCUMENTS
     from scripts.official_city_macro_sources import parse_city_fund_revenue_text, parse_guangdong_city_budget_page, parse_guangdong_city_gdp_html
     from scripts.pdf_layout_text import extract_pdf_text
     from scripts.batch_source_registry import (
@@ -44,7 +44,7 @@ try:
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
     from province_debt_sources import extract_official_debt_facts
     from data_quality import OFFICIAL_DEBT_EXCEPTION_STATUS, debt_fact_has_balance_limit_conflict
-    from evidence_based_missing import EVIDENCE_BY_KEY, EVIDENCE_CHECKED_AT, EVIDENCE_SOURCE_DOCUMENTS
+    from evidence_based_missing import CORE_GAP_FIELDS, EVIDENCE_BY_KEY, EVIDENCE_CHECKED_AT, EVIDENCE_SOURCE_DOCUMENTS
     from official_city_macro_sources import parse_city_fund_revenue_text, parse_guangdong_city_budget_page, parse_guangdong_city_gdp_html
     from pdf_layout_text import extract_pdf_text
     from batch_source_registry import (
@@ -14255,10 +14255,34 @@ def build_collection_status(city_master: list[dict[str, Any]], macro_rows: list[
         macro = macro_by_key[key]
         for module, expected, module_code in modules:
             if module_code == "macro":
-                status = "validated" if macro["data_status"] == "provisional" and macro["source_grade"] == "D" else ("needs_review" if macro["source_grade"] else "missing")
-                evidence_count = 1 if macro["source_doc_id"] else 0
-                next_action = "用官方年鉴、公报和决算表逐字段复核" if status == "needs_review" else "补抓官方年度来源"
-                missing_reason = "" if evidence_count else "未找到已归档且可审计的城市年度来源"
+                missing_core_fields = [
+                    field for field in CORE_GAP_FIELDS
+                    if macro.get(field) is None or macro.get(field) == ""
+                ]
+                core_evidence = [
+                    EVIDENCE_BY_KEY.get((city["city_id"], str(city["metric_year"]), field))
+                    for field in missing_core_fields
+                ]
+                if missing_core_fields and all(core_evidence):
+                    source_ids = []
+                    results = []
+                    next_actions = []
+                    for evidence in core_evidence:
+                        source_ids.extend(item for item in evidence["evidence_source_doc_ids"].split(";") if item)
+                        results.append(evidence["result"])
+                        next_actions.append(evidence["next_action"])
+                    unique_source_ids = list(dict.fromkeys(source_ids))
+                    unique_results = list(dict.fromkeys(results))
+                    unique_next_actions = list(dict.fromkeys(next_actions))
+                    status = "evidence_based_missing"
+                    evidence_count = len(unique_source_ids)
+                    next_action = "；".join(unique_next_actions)
+                    missing_reason = "；".join(unique_results)
+                else:
+                    status = "validated" if macro["data_status"] == "provisional" and macro["source_grade"] == "D" else ("needs_review" if macro["source_grade"] else "missing")
+                    evidence_count = 1 if macro["source_doc_id"] else 0
+                    next_action = "用官方年鉴、公报和决算表逐字段复核" if status == "needs_review" else "补抓官方年度来源"
+                    missing_reason = "" if evidence_count else "未找到已归档且可审计的城市年度来源"
             elif module_code == "debt" and macro.get("general_debt_balance_100m") is not None:
                 status, evidence_count, next_action, missing_reason = "validated", 1, "保留版本并在全国来源覆盖扩展后复核", ""
             elif module_code == "debt":
