@@ -3784,12 +3784,13 @@ class NationalPanelTests(unittest.TestCase):
 
         dezhou = values[("CN-371400", "2025")]
         self.assertEqual(dezhou["gdp_current_100m"], Decimal("4214.61"))
-        self.assertEqual(dezhou["general_public_revenue_100m"], Decimal("271.2"))
-        self.assertEqual(dezhou["general_public_expenditure_100m"], Decimal("572.7"))
-        self.assertNotIn("gdp_real_growth_pct", dezhou)
+        self.assertEqual(dezhou["gdp_real_growth_pct"], Decimal("5.3"))
+        self.assertEqual(dezhou["general_public_revenue_100m"], Decimal("271.24"))
+        self.assertEqual(dezhou["general_public_expenditure_100m"], Decimal("572.74"))
         self.assertIn("SRC-B2-DEZHOU-CITY-GDP-2025", dezhou["source_doc_id"])
         self.assertIn("SRC-B2-DEZHOU-CITY-FISCAL-2025", dezhou["source_doc_id"])
-        self.assertEqual(dezhou["source_grade"], "B2")
+        self.assertIn("SRC-A2-DEZHOU-CITY-MACRO-FISCAL-2025", dezhou["source_doc_id"])
+        self.assertEqual(dezhou["source_grade"], "A2")
 
         source_ids = {item["source_doc_id"] for item in sources}
         self.assertIn("SRC-B2-ANQING-CITY-FISCAL-2025", source_ids)
@@ -3809,6 +3810,20 @@ class NationalPanelTests(unittest.TestCase):
 
         source_ids = {item["source_doc_id"] for item in sources}
         self.assertIn("SRC-B2-SHUANGYASHAN-CITY-MACRO-FISCAL-2025", source_ids)
+
+    def test_macro_gap_batch_5_official_dezhou_bulletin_fills_growth_and_upgrades_fiscal_values(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        dezhou = values[("CN-371400", "2025")]
+        self.assertEqual(dezhou["gdp_current_100m"], Decimal("4214.61"))
+        self.assertEqual(dezhou["gdp_real_growth_pct"], Decimal("5.3"))
+        self.assertEqual(dezhou["general_public_revenue_100m"], Decimal("271.24"))
+        self.assertEqual(dezhou["general_public_expenditure_100m"], Decimal("572.74"))
+        self.assertIn("SRC-A2-DEZHOU-CITY-MACRO-FISCAL-2025", dezhou["source_doc_id"])
+        self.assertEqual(dezhou["source_grade"], "A2")
+
+        source_ids = {item["source_doc_id"] for item in sources}
+        self.assertIn("SRC-A2-DEZHOU-CITY-MACRO-FISCAL-2025", source_ids)
 
     def test_langfang_2025_official_budget_report_extracts_whole_city_fiscal_values(self):
         values, sources = load_city_year_fiscal_sources()

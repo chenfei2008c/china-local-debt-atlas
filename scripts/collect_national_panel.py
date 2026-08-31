@@ -9034,6 +9034,45 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     _make_curated_city_source(**spec) for spec in _CURATED_2025_MACRO_GAP_BATCH_4_SPECS
 )
 
+# 本批接入德州市统计局官方公报入口页及PDF附件。官方PDF第1页、第13页
+# 分别给出GDP/实际增速和全市一般公共预算收支，第19页明确增速按不变价格
+# 计算；因此除补齐GDP实际增速外，也用A2官方精确值升级原有B2近似值。
+_CURATED_2025_MACRO_GAP_BATCH_5_SPECS = (
+    {
+        "year": 2025,
+        "city_name": "德州市",
+        "city_id": "CN-371400",
+        "source_doc_id": "SRC-A2-DEZHOU-CITY-MACRO-FISCAL-2025",
+        "url": "http://dztj.dezhou.gov.cn/n54289016/n54289061/n54289115/c99531086/content.html",
+        "attachment_url": "http://dztj.dezhou.gov.cn/n54289016/n54289061/n54289115/c99531086/part/99531091.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "dezhou_2025_statistical_bulletin_excerpt.txt",
+        "document_title": "2025年德州市国民经济和社会发展统计公报",
+        "publisher": "德州市统计局",
+        "publisher_level": "市级统计机构",
+        "publication_date": "2026-04-03",
+        "source_grade": "A2",
+        "fields": (
+            "gdp_current_100m",
+            "gdp_real_growth_pct",
+            "general_public_revenue_100m",
+            "general_public_expenditure_100m",
+        ),
+        "raw_units": {"gdp_real_growth_pct": "%"},
+        "source_format": "pdf",
+        "data_status": "preliminary",
+        "data_status_label": "2025年官方公报初步统计数",
+        "document_type": "市级统计公报官方PDF经济财政指标",
+        "page_number": "PDF第1页、第13页、第19页注2",
+        "title_source": "official_statistical_bulletin",
+        "access_status": "官方入口页及PDF附件已归档",
+        "note": "A2德州市统计局官方公报PDF；采用全市GDP4214.61亿元、按不变价格计算的实际增速5.3%、一般公共预算收入271.24亿元、支出572.74亿元；第19页注2明确增长速度按不变价格计算，不使用市辖区或预算目标数。",
+    },
+)
+
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    _make_curated_city_source(**spec) for spec in _CURATED_2025_MACRO_GAP_BATCH_5_SPECS
+)
+
 # 本批四字段补缺：2023—2025 年经入口页、附件或精确公开表格逐项核验的
 # 地级市/自治州数据。这里只接入当前主表仍缺失的字段；同一城市年度已有
 # 更高等级值时，load_city_year_fiscal_sources 会按字段保留高等级来源。
