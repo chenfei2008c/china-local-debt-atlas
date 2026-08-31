@@ -87,6 +87,11 @@ try:
         HAINAN_SANSHA_FORMULA_DEPENDENCY,
         HAINAN_SANSHA_FORMULA_REGISTRY,
     )
+    from scripts.direct_admin_gdp_growth import (
+        DIRECT_ADMIN_GDP_GROWTH_SOURCES,
+        DIRECT_ADMIN_GDP_GROWTH_FORMULA_DEPENDENCY,
+        DIRECT_ADMIN_GDP_GROWTH_FORMULA_REGISTRY,
+    )
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
     from curated_city_fiscal_2025 import CURATED_2025_CITY_FISCAL_SOURCES
     from supplemental_city_fiscal_2025 import SUPPLEMENTAL_CITY_FISCAL_SOURCES
@@ -117,6 +122,11 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
         HAINAN_SANSHA_RESIDUAL_SOURCES,
         HAINAN_SANSHA_FORMULA_DEPENDENCY,
         HAINAN_SANSHA_FORMULA_REGISTRY,
+    )
+    from direct_admin_gdp_growth import (
+        DIRECT_ADMIN_GDP_GROWTH_SOURCES,
+        DIRECT_ADMIN_GDP_GROWTH_FORMULA_DEPENDENCY,
+        DIRECT_ADMIN_GDP_GROWTH_FORMULA_REGISTRY,
     )
 
 getcontext().prec = 40
@@ -11485,6 +11495,7 @@ CITY_YEAR_FISCAL_SOURCES += (
 # 海南省统计年鉴市县表不列三沙，但省级 GDP 总量包含三沙；只接入高于省级
 # 总量两位小数舍入区间的官方合计差额，并在字段/计算血缘中标为 calculated。
 CITY_YEAR_FISCAL_SOURCES += tuple(HAINAN_SANSHA_RESIDUAL_SOURCES)
+CITY_YEAR_FISCAL_SOURCES += tuple(DIRECT_ADMIN_GDP_GROWTH_SOURCES)
 
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
@@ -13777,10 +13788,16 @@ def _lineage_for_city_year_fiscal(
     else:
         normalization_rule = "官方预算执行报告原始单位为万元；原值÷10000=亿元，保留两位小数；全市口径。"
     if value_origin == "calculated":
-        normalization_rule = (
-            "官方统计年鉴/统计公报输入均已统一为亿元；按省级总量减18个市县合计计算，"
-            "结果保留两位小数并明确标记为 calculated。"
-        )
+        if str(source.get("calculation_formula_id") or "") == "F-DIRECT-ADMIN-GDP-GROWTH-WEIGHTED":
+            normalization_rule = (
+                "组成单元 GDP 原始值按官方表格单位换算为亿元；"
+                "以同年度上年 GDP 为权重对不变价增速加权，结果保留两位小数并明确标记为 calculated。"
+            )
+        else:
+            normalization_rule = (
+                "官方统计年鉴/统计公报输入均已统一为亿元；按省级总量减18个市县合计计算，"
+                "结果保留两位小数并明确标记为 calculated。"
+            )
     source_format = str(source.get("source_format") or "pdf")
     is_gotohui = str(source.get("source_platform") or "") == "gotohui"
     is_crei = str(source.get("source_platform") or "") == "crei"
@@ -15102,6 +15119,8 @@ def main() -> None:
     calc_rows, formula_registry, formula_dependency = build_calculations(macro_rows)
     formula_registry.append(dict(HAINAN_SANSHA_FORMULA_REGISTRY))
     formula_dependency.extend(dict(item) for item in HAINAN_SANSHA_FORMULA_DEPENDENCY)
+    formula_registry.append(dict(DIRECT_ADMIN_GDP_GROWTH_FORMULA_REGISTRY))
+    formula_dependency.extend(dict(item) for item in DIRECT_ADMIN_GDP_GROWTH_FORMULA_DEPENDENCY)
     # CEIC 合计和海南省级合计差额等非标准派生值，都必须把字段血缘中的
     # 公式、输入记录和计算说明复制到独立计算底稿，不能只保留一个数值。
     calc_rows.extend(

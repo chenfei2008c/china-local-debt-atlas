@@ -70,6 +70,10 @@ from scripts.hongheiku_city_bulletins import (
     _unfetched_urls,
     load_hongheiku_city_bulletin_sources,
 )
+from scripts.direct_admin_gdp_growth import (
+    DIRECT_ADMIN_GDP_GROWTH_FORMULA_ID,
+    calculate_weighted_growth,
+)
 from scripts.province_debt_sources import extract_official_debt_facts
 
 
@@ -138,7 +142,10 @@ class NationalPanelTests(unittest.TestCase):
             values[("CN-429000", "2018")]["general_public_expenditure_100m"],
             Decimal("260.25"),
         )
-        self.assertNotIn("gdp_real_growth_pct", values[("CN-429000", "2018")])
+        self.assertEqual(
+            values[("CN-429000", "2018")]["gdp_real_growth_pct"],
+            Decimal("8.29"),
+        )
         source_ids = {item["source_doc_id"] for item in sources}
         self.assertIn("SRC-A2-HUBEI-YEARBOOK-2019-429000-CORE", source_ids)
         source = next(
@@ -240,7 +247,10 @@ class NationalPanelTests(unittest.TestCase):
             values[("CN-429000", "2025")]["general_public_expenditure_100m"],
             Decimal("329.76"),
         )
-        self.assertNotIn("gdp_real_growth_pct", values[("CN-429000", "2025")])
+        self.assertEqual(
+            values[("CN-429000", "2025")]["gdp_real_growth_pct"],
+            Decimal("6.55"),
+        )
         source_ids = {item["source_doc_id"] for item in sources}
         self.assertIn("SRC-A2-HUBEI-2025-BULLETINS-429000-CORE", source_ids)
 
@@ -314,9 +324,50 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(record["general_public_revenue_100m"], Decimal("206.57"))
         self.assertEqual(record["general_public_expenditure_100m"], Decimal("836.42"))
         self.assertEqual(record["gov_fund_revenue_100m"], Decimal("69.30"))
-        self.assertNotIn("gdp_real_growth_pct", record)
+        self.assertEqual(record["gdp_real_growth_pct"], Decimal("2.80"))
         source_ids = {item["source_doc_id"] for item in sources}
         self.assertIn("SRC-A2-HAINAN-2025-DEC-MONTHLY-469000-CORE", source_ids)
+
+    def test_direct_admin_gdp_growth_is_reproducible_calculated_value(self):
+        values, _sources = load_city_year_fiscal_sources()
+        expected = {
+            ("CN-429000", "2018"): "8.29",
+            ("CN-429000", "2019"): "7.75",
+            ("CN-429000", "2020"): "-4.80",
+            ("CN-429000", "2021"): "10.00",
+            ("CN-429000", "2022"): "2.31",
+            ("CN-429000", "2023"): "5.65",
+            ("CN-429000", "2024"): "5.72",
+            ("CN-429000", "2025"): "6.55",
+            ("CN-469000", "2018"): "4.59",
+            ("CN-469000", "2019"): "4.40",
+            ("CN-469000", "2020"): "2.25",
+            ("CN-469000", "2021"): "8.76",
+            ("CN-469000", "2022"): "1.48",
+            ("CN-469000", "2023"): "7.75",
+            ("CN-469000", "2024"): "3.51",
+            ("CN-469000", "2025"): "2.80",
+        }
+        for key, raw_expected in expected.items():
+            row = values[key]
+            field_source = row["_field_sources"]["gdp_real_growth_pct"]
+            self.assertEqual(row["gdp_real_growth_pct"], Decimal(raw_expected), key)
+            self.assertEqual(field_source["value_origin"], "calculated", key)
+            self.assertEqual(
+                field_source["calculation_formula_id"],
+                DIRECT_ADMIN_GDP_GROWTH_FORMULA_ID,
+                key,
+            )
+            self.assertIn("previous_year_component_gdp_100m", field_source["calculation_input_fields"])
+            self.assertIn("component_gdp_real_growth_pct", field_source["calculation_input_fields"])
+            self.assertTrue(field_source["calculation_input_record_ids"], key)
+
+    def test_direct_admin_growth_formula_uses_previous_year_gdp_weights(self):
+        value = calculate_weighted_growth(
+            [Decimal("100"), Decimal("300")],
+            [Decimal("10"), Decimal("0")],
+        )
+        self.assertEqual(value, Decimal("2.50"))
 
     def test_hainan_2023_yearbook_scanned_tables_fill_2022_fiscal_values(self):
         values, sources = load_city_year_fiscal_sources()

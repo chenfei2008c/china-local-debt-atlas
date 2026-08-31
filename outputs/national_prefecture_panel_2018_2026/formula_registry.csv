@@ -9,3 +9,4 @@ F-FISCAL-SELF,财政自给率,一般公共预算收入 / 一般公共预算支�
 F-FUND-DEPEND,政府性基金收入依赖度,政府性基金预算收入 /（一般公共预算收入 + 政府性基金预算收入）× 100,gov_fund_revenue_100m;general_public_revenue_100m,fund_revenue_dependence_pct,v1.0,%,true
 F-FUND-REV-LEGACY,政府性基金收入/一般预算收入（兼容字段）,政府性基金预算收入 / 一般公共预算收入 × 100,gov_fund_revenue_100m;general_public_revenue_100m,gov_fund_to_general_revenue_pct,v1.0,%,true
 F-HN-SANSHA-GDP-RESIDUAL,三沙市 GDP 官方合计差额计算,海南省 GDP 总量 − 表3-12所列18个市县 GDP 合计,hainan_province_gdp_total_100m;hainan_18_city_gdp_sum_100m,gdp_current_100m,v1.0,亿元,true
+F-DIRECT-ADMIN-GDP-GROWTH-WEIGHTED,直管单元 GDP 实际增速（上年 GDP 权重）,Σ(上年组成单元GDP×(1+组成单元实际增速/100))/Σ上年组成单元GDP×100−100,previous_year_component_gdp_100m;component_gdp_real_growth_pct,gdp_real_growth_pct,v1.0,%,true
