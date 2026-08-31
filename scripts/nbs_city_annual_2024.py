@@ -137,6 +137,12 @@ def load_nbs_city_annual_2024(
             "downloaded_at": "2026-08-24T00:00:00+08:00",
             "content_hash_sha256": f"gdp={gdp_hash};fiscal={fiscal_hash}",
             "archive_uri": f"archive://national-prefecture-panel/{GDP_PATH}",
+            "archive_backend": "internal_object",
+            "archive_path": f"{GDP_PATH};{FISCAL_PATH}",
+            "source_grade": "A1",
+            "accepted_for_final": True,
+            "http_status": "200",
+            "access_status": "国家统计局公开接口响应已归档",
             "coverage_note": "接口请求342个行政单元，响应中仅36个主要城市有值；未返回城市保持空值。",
         }
     ]

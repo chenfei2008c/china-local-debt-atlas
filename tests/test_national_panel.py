@@ -75,9 +75,19 @@ from scripts.direct_admin_gdp_growth import (
     calculate_weighted_growth,
 )
 from scripts.province_debt_sources import extract_official_debt_facts
+from scripts.nbs_city_annual_2024 import load_nbs_city_annual_2024
 
 
 class NationalPanelTests(unittest.TestCase):
+
+    def test_nbs_annual_source_declares_a1_in_source_registry_payload(self):
+        root = Path(__file__).resolve().parents[1]
+        _values, sources = load_nbs_city_annual_2024(root, [])
+
+        self.assertEqual(len(sources), 1)
+        self.assertEqual(sources[0]["source_doc_id"], "SRC-A1-NBS-MAJOR-CITY-ANNUAL-2024")
+        self.assertEqual(sources[0]["source_grade"], "A1")
+        self.assertTrue(sources[0]["accepted_for_final"])
 
     def test_custom_calculation_lineage_preserves_formula_and_inputs(self):
         rows = build_custom_calculation_rows(
