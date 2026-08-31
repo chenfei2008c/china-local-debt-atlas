@@ -3578,6 +3578,25 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(source["publisher"], "鹤岗市统计局")
         self.assertEqual(source["source_grade"], "A2")
 
+    def test_liaoning_2025_official_bulletins_fill_huludao_and_liaoyang(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        expected = {
+            "CN-211400": ("1013.70", "3.50", "80.00", "250.00", "SRC-A2-HULUDAO-CITY-BULLETIN-2025-CORE"),
+            "CN-211000": ("1001.20", "4.10", "91.10", "168.30", "SRC-A2-LIAOYANG-CITY-BULLETIN-2025-CORE"),
+        }
+        for city_id, (gdp, growth, revenue, expenditure, source_id) in expected.items():
+            record = values[(city_id, "2025")]
+            self.assertEqual(record["gdp_current_100m"], Decimal(gdp))
+            self.assertEqual(record["gdp_real_growth_pct"], Decimal(growth))
+            self.assertEqual(record["general_public_revenue_100m"], Decimal(revenue))
+            self.assertEqual(record["general_public_expenditure_100m"], Decimal(expenditure))
+            self.assertEqual(record["source_grade"], "A2")
+            self.assertIn(source_id, record["source_doc_id"])
+        source_ids = {item["source_doc_id"] for item in sources}
+        self.assertTrue(expected["CN-211400"][4] in source_ids)
+        self.assertTrue(expected["CN-211000"][4] in source_ids)
+
     def test_langfang_2025_official_budget_report_extracts_whole_city_fiscal_values(self):
         values, sources = load_city_year_fiscal_sources()
         langfang = values[("CN-131000", "2025")]
