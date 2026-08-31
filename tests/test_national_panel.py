@@ -3774,6 +3774,28 @@ class NationalPanelTests(unittest.TestCase):
             for source_id in values[key]["source_doc_id"].split(";"):
                 self.assertIn(source_id, source_ids)
 
+    def test_macro_gap_batch_3_sources_fill_anqing_and_dezhou_2025_gaps(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        anqing = values[("CN-340800", "2025")]
+        self.assertEqual(anqing["general_public_expenditure_100m"], Decimal("585.1"))
+        self.assertIn("SRC-B2-ANQING-CITY-FISCAL-2025", anqing["source_doc_id"])
+        self.assertEqual(anqing["source_grade"], "B2")
+
+        dezhou = values[("CN-371400", "2025")]
+        self.assertEqual(dezhou["gdp_current_100m"], Decimal("4214.61"))
+        self.assertEqual(dezhou["general_public_revenue_100m"], Decimal("271.2"))
+        self.assertEqual(dezhou["general_public_expenditure_100m"], Decimal("572.7"))
+        self.assertNotIn("gdp_real_growth_pct", dezhou)
+        self.assertIn("SRC-B2-DEZHOU-CITY-GDP-2025", dezhou["source_doc_id"])
+        self.assertIn("SRC-B2-DEZHOU-CITY-FISCAL-2025", dezhou["source_doc_id"])
+        self.assertEqual(dezhou["source_grade"], "B2")
+
+        source_ids = {item["source_doc_id"] for item in sources}
+        self.assertIn("SRC-B2-ANQING-CITY-FISCAL-2025", source_ids)
+        self.assertIn("SRC-B2-DEZHOU-CITY-GDP-2025", source_ids)
+        self.assertIn("SRC-B2-DEZHOU-CITY-FISCAL-2025", source_ids)
+
     def test_langfang_2025_official_budget_report_extracts_whole_city_fiscal_values(self):
         values, sources = load_city_year_fiscal_sources()
         langfang = values[("CN-131000", "2025")]

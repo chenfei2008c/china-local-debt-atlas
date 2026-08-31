@@ -8920,6 +8920,82 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     _make_curated_city_source(**spec) for spec in _CURATED_2022_2025_MACRO_GAP_BATCH_2_SPECS
 )
 
+# 本批补入已核验的2025年四字段缺口。德州GDP页面的“同比增长4.1%”
+# 未明确按不变价格计算，故只接入现价GDP；财政转载明确为财政局发布的
+# 全市执行数。摘录仅保留主表当前缺失字段，避免低等级来源覆盖已有值。
+_CURATED_2025_MACRO_GAP_BATCH_3_SPECS = (
+    {
+        "year": 2025,
+        "city_name": "安庆市",
+        "city_id": "CN-340800",
+        "source_doc_id": "SRC-B2-ANQING-CITY-FISCAL-2025",
+        "url": "https://maptable.com/tjgb/2025/%E5%AE%89%E5%BE%BD%E7%9C%81/%E5%AE%89%E5%BA%86%E5%B8%82/report/an-hui-sheng-2025-nian-an-qing-shi-guo-min-jing-ji-he-she-hui-fa-zhan-tong-ji-gong-bao",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "anqing_2025_statistical_bulletin_excerpt.txt",
+        "document_title": "安庆市2025年国民经济和社会发展统计公报",
+        "publisher": "安庆市统计局（公开转载）",
+        "publisher_level": "市级统计机构公报精确转载",
+        "publication_date": "2026-08-06",
+        "source_grade": "B2",
+        "fields": ("general_public_expenditure_100m",),
+        "source_format": "html",
+        "data_status": "preliminary",
+        "data_status_label": "2025年公报初步统计数",
+        "document_type": "市级统计公报财政指标精确转载",
+        "page_number": "转载正文‘八、财政、金融和保险业’",
+        "title_source": "official_statistical_bulletin",
+        "access_status": "public_repost",
+        "note": "B2精确公报转载；采用安庆市全市一般公共预算支出585.1亿元，不使用市本级或区县数据。",
+    },
+    {
+        "year": 2025,
+        "city_name": "德州市",
+        "city_id": "CN-371400",
+        "source_doc_id": "SRC-B2-DEZHOU-CITY-GDP-2025",
+        "url": "https://www.selectshandong.com/cstj/dezhou/dezhoucsys/800366469419077.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "dezhou_2025_gdp_selectshandong_excerpt.txt",
+        "document_title": "德州城市资料（2025年经济数据）",
+        "publisher": "山东省商务厅（山东省投资促进机构）",
+        "publisher_level": "省级官方城市资料页面",
+        "publication_date": "2025-12-31",
+        "source_grade": "B2",
+        "fields": ("gdp_current_100m",),
+        "source_format": "html",
+        "data_status": "preliminary",
+        "data_status_label": "2025年公开城市资料值",
+        "document_type": "官方城市资料经济指标精确页面",
+        "page_number": "官方页面正文‘城市概况’",
+        "title_source": "official_page",
+        "access_status": "public",
+        "note": "B2精确官方页面值；采用德州市全市地区生产总值4214.61亿元。页面所写4.1%为未明确不变价格口径的同比增幅，未接入GDP实际增速。",
+    },
+    {
+        "year": 2025,
+        "city_name": "德州市",
+        "city_id": "CN-371400",
+        "source_doc_id": "SRC-B2-DEZHOU-CITY-FISCAL-2025",
+        "url": "https://dezhou.iqilu.com/dzminsheng/2026/0109/5882771.shtml",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "dezhou_2025_finance_qilu_excerpt.txt",
+        "document_title": "2025年德州市一般公共预算收支情况",
+        "publisher": "德州市财政局（齐鲁网·闪电新闻公开转述）",
+        "publisher_level": "市级财政机构信息精确转载",
+        "publication_date": "2026-01-09",
+        "source_grade": "B2",
+        "fields": ("general_public_revenue_100m", "general_public_expenditure_100m"),
+        "source_format": "html",
+        "data_status": "execution",
+        "data_status_label": "2025年财政执行数",
+        "document_type": "市级财政执行收支精确转载",
+        "page_number": "转载正文；德州市财政局发布的全市财政收支情况",
+        "title_source": "official_page_excerpt",
+        "access_status": "public_repost",
+        "note": "B2精确财政信息转载；原文明确为德州市财政局发布的2025年全市财政收支情况，采用一般公共预算收入271.2亿元、支出572.7亿元。",
+    },
+)
+
+CITY_YEAR_FISCAL_SOURCES += tuple(
+    _make_curated_city_source(**spec) for spec in _CURATED_2025_MACRO_GAP_BATCH_3_SPECS
+)
+
 # 本批四字段补缺：2023—2025 年经入口页、附件或精确公开表格逐项核验的
 # 地级市/自治州数据。这里只接入当前主表仍缺失的字段；同一城市年度已有
 # 更高等级值时，load_city_year_fiscal_sources 会按字段保留高等级来源。
