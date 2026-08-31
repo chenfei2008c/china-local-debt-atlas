@@ -90,6 +90,19 @@ YEARBOOK_SPECS = (
             "general_public_expenditure_100m": ("AE", "万元"),
         },
     },
+    {
+        "publication_year": 2025,
+        "metric_year": 2024,
+        "file_name": "china_city_statistical_yearbook_2025_population.xlsx",
+        "source_doc_id": "SRC-B2-CITY-YEARBOOK-2025-POPULATION",
+        "table_name": "中国城市统计年鉴--2025（2024年地级以上城市常住人口表）",
+        "sheet_name": "Sheet9",
+        "source_url": "https://www.chinautc.com/upload/fckeditor/2-1_%E4%BA%BA%E5%8F%A3%E6%95%B0.xlsx",
+        "landing_page_url": "https://www.chinautc.com/templates/H_information/content.aspx?contentid=106806&nodeid=6329&page=ContentPage",
+        "columns": {
+            "resident_population_10k": ("C", "万人"),
+        },
+    },
 )
 
 
@@ -148,6 +161,8 @@ def _yearbook_source_id(publication_year: int) -> str:
 
 
 def _raw_url(spec: Mapping[str, Any]) -> str:
+    if spec.get("source_url"):
+        return str(spec["source_url"])
     file_name = str(spec["file_name"])
     year = str(spec["publication_year"])
     return (
@@ -191,8 +206,14 @@ def load_city_yearbook_sources(
             raise FileNotFoundError(f"城市统计年鉴归档缺失：{path}")
         rows, content_hash = _read_workbook(path)
         metric_year = str(spec["metric_year"])
-        source_id = _yearbook_source_id(int(spec["publication_year"]))
-        table_name = f"中国城市统计年鉴--{spec['publication_year']}（{spec['metric_year']}年地级以上城市数据）"
+        source_id = str(spec.get("source_doc_id") or _yearbook_source_id(int(spec["publication_year"])))
+        table_name = str(
+            spec.get("table_name")
+            or f"中国城市统计年鉴--{spec['publication_year']}（{spec['metric_year']}年地级以上城市数据）"
+        )
+        sheet_name = str(spec.get("sheet_name") or "Sheet1")
+        landing_page_url = str(spec.get("landing_page_url") or _raw_url(spec))
+        source_url = _raw_url(spec)
         field_columns = dict(spec["columns"])
         # XML 的第一个城市数据行为 1-based row=6（列表下标 5），不能跳过北京市。
         for row in rows[5:]:
@@ -207,11 +228,11 @@ def load_city_yearbook_sources(
                 "data_status": "yearbook",
                 "data_status_label": f"{spec['metric_year']}年年鉴表",
                 "source_locator": (
-                    f"{path.relative_to(root)}；Sheet1；行={row.get('_row_number', '')}；"
+                    f"{path.relative_to(root)}；{sheet_name}；行={row.get('_row_number', '')}；"
                     f"城市={city_name}；表={table_name}；行政范围=全市"
                 ),
                 "table_name": table_name,
-                "sheet_name": "Sheet1",
+                "sheet_name": sheet_name,
                 "row_number": row.get("_row_number", ""),
             }
             for field, (column, raw_unit) in field_columns.items():
@@ -239,17 +260,17 @@ def load_city_yearbook_sources(
                 "title_source": "statistical_yearbook",
                 "attachment_title": path.name,
                 "document_type": "statistical_yearbook_excel",
-                "source_url": _raw_url(spec),
-                "landing_page_url": _raw_url(spec),
-                "attachment_url": _raw_url(spec),
-                "canonical_url": _raw_url(spec),
-                "final_resolved_url": _raw_url(spec),
+                "source_url": source_url,
+                "landing_page_url": landing_page_url,
+                "attachment_url": source_url,
+                "canonical_url": landing_page_url,
+                "final_resolved_url": source_url,
                 "file_name": path.name,
                 "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                 "publication_date": f"{spec['publication_year']}-12-31",
                 "publication_date_raw": str(spec["publication_year"]),
                 "period_end": f"{spec['metric_year']}-12-31",
-                "downloaded_at": "2026-08-21T00:00:00+08:00",
+                "downloaded_at": "2026-08-31T15:48:00+08:00" if int(spec["publication_year"]) == 2025 else "2026-08-21T00:00:00+08:00",
                 "content_hash_sha256": content_hash,
                 "archive_uri": f"archive://national-prefecture-panel/{path.relative_to(root)}",
                 "archive_backend": "internal_object",
@@ -261,6 +282,10 @@ def load_city_yearbook_sources(
                 "supersedes_doc_id": "",
                 "note": (
                     "原始出版者为国家统计局城市社会经济调查司；当前使用精确截面表镜像，"
+                    "GDP和财政字段为全市口径，财政原始单位为万元，常住人口仅使用表中明确标注的常住人口列；"
+                    "2025年人口附件来自中国城市统计年鉴归档入口，保留全市常住人口列。"
+                    if int(spec["publication_year"]) == 2025
+                    else "原始出版者为国家统计局城市社会经济调查司；当前使用精确截面表镜像，"
                     "GDP和财政字段为全市口径，财政原始单位为万元，常住人口仅使用表中明确标注的常住人口列。"
                 ),
             }

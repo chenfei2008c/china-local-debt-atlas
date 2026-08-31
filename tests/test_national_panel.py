@@ -900,7 +900,7 @@ class NationalPanelTests(unittest.TestCase):
             city_master = list(csv.DictReader(handle))
         values, sources = load_city_yearbook_sources(root, city_master)
 
-        self.assertEqual(len(sources), 6)
+        self.assertEqual(len(sources), 7)
         beijing_2019 = values[("CN-110000", "2019")]
         self.assertEqual(beijing_2019["gdp_current_100m"], Decimal("35371.00"))
         self.assertEqual(beijing_2019["general_public_revenue_100m"], Decimal("5817.10"))
@@ -908,6 +908,25 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(values[("CN-110000", "2020")]["resident_population_10k"], Decimal("2189.00"))
         self.assertEqual(values[("CN-110000", "2023")]["resident_population_10k"], Decimal("2186.00"))
         self.assertNotIn("resident_population_10k", values[("CN-110000", "2021")])
+
+    def test_city_yearbook_2025_population_adapter_reads_2024_resident_population(self):
+        root = Path(__file__).resolve().parents[1]
+        with (root / "outputs/national_prefecture_panel_2018_2026/dim_city.csv").open(
+            encoding="utf-8-sig", newline=""
+        ) as handle:
+            city_master = list(csv.DictReader(handle))
+        values, sources = load_city_yearbook_sources(root, city_master)
+
+        jincheng = values[("CN-140500", "2024")]
+        self.assertEqual(jincheng["resident_population_10k"], Decimal("217.00"))
+        self.assertEqual(jincheng["resident_population_10k_cell_range"], "C28")
+        self.assertEqual(jincheng["source_doc_id"], "SRC-B2-CITY-YEARBOOK-2025-POPULATION")
+        self.assertEqual(jincheng["source_grade"], "B2")
+        self.assertIn("Sheet9", jincheng["source_locator"])
+        self.assertEqual(len(sources), 7)
+        source = next(item for item in sources if item["source_doc_id"] == "SRC-B2-CITY-YEARBOOK-2025-POPULATION")
+        self.assertIn("chinautc.com", source["landing_page_url"])
+        self.assertTrue(source["content_hash_sha256"])
 
     def test_jiangsu_2025_budget_excerpts_extract_six_whole_city_batches(self):
         values, sources = load_city_year_fiscal_sources()
