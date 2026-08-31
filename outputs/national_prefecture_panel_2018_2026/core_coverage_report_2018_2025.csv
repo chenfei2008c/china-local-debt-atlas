@@ -1,6 +1,6 @@
 ﻿field_name,target_year_start,target_year_end,target_rows,numeric_non_null_rows,numeric_missing_rows,high_grade_rows,high_grade_missing_rows,provisional_rows,unattributed_rows,numeric_coverage_pct,high_grade_coverage_pct
 gdp_current_100m,2018,2025,2732,2726,6,2606,126,120,0,99.78,95.39
-gdp_real_growth_pct,2018,2025,2732,2717,15,2611,121,106,0,99.45,95.57
+gdp_real_growth_pct,2018,2025,2732,2717,15,2632,100,85,0,99.45,96.34
 resident_population_10k,2018,2025,2732,2372,360,1661,1071,711,0,86.82,60.80
 general_public_revenue_100m,2018,2025,2732,2720,12,2603,129,117,0,99.56,95.28
 general_public_expenditure_100m,2018,2025,2732,2719,13,2603,129,116,0,99.52,95.28

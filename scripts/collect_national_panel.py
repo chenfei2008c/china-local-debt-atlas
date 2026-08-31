@@ -85,6 +85,7 @@ try:
     from scripts.sichuan_ganzi_yearbook import SICHUAN_GANZI_YEARBOOK_SOURCES
     from scripts.sichuan_liangshan_bulletins import SICHUAN_LIANGSHAN_BULLETIN_SOURCES
     from scripts.yunnan_yearbooks import YUNNAN_YEARBOOK_SOURCES
+    from scripts.yunnan_growth_sources import YUNNAN_GDP_GROWTH_SOURCES
     from scripts.yushu_budget_2024 import YUSHU_2024_BUDGET_SOURCE
     from scripts.hainan_sansha_residual import (
         HAINAN_SANSHA_RESIDUAL_SOURCES,
@@ -125,6 +126,7 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
     from sichuan_ganzi_yearbook import SICHUAN_GANZI_YEARBOOK_SOURCES
     from sichuan_liangshan_bulletins import SICHUAN_LIANGSHAN_BULLETIN_SOURCES
     from yunnan_yearbooks import YUNNAN_YEARBOOK_SOURCES
+    from yunnan_growth_sources import YUNNAN_GDP_GROWTH_SOURCES
     from yushu_budget_2024 import YUSHU_2024_BUDGET_SOURCE
     from hainan_sansha_residual import (
         HAINAN_SANSHA_RESIDUAL_SOURCES,
@@ -11427,6 +11429,7 @@ CITY_YEAR_FISCAL_SOURCES += tuple(SICHUAN_ABA_CORE_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(SICHUAN_GANZI_YEARBOOK_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(SICHUAN_LIANGSHAN_BULLETIN_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(YUNNAN_YEARBOOK_SOURCES)
+CITY_YEAR_FISCAL_SOURCES += tuple(YUNNAN_GDP_GROWTH_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(JINAN_LAIWU_YEARBOOK_SOURCES)
 
 # 通化市财政局（市政府公开专栏）2026年预算公开附件补入2025年市区全域
@@ -12472,6 +12475,10 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
             "source_locator": source_locator,
             "table_name": str(config.get("table_name") or f"{year}年全市财政预算执行情况"),
             "page_number": config.get("page_number", ""),
+            "lineage_locator_type": str(config.get("lineage_locator_type") or ""),
+            "lineage_extraction_method": str(config.get("lineage_extraction_method") or ""),
+            "lineage_normalization_rule": str(config.get("lineage_normalization_rule") or ""),
+            "lineage_selection_reason": str(config.get("lineage_selection_reason") or ""),
         }
         for field, pattern in config["patterns"].items():
             match = re.search(str(pattern), compact_text)
@@ -13816,12 +13823,14 @@ def _lineage_for_city_year_fiscal(
                 "官方统计年鉴/统计公报输入均已统一为亿元；按省级总量减18个市县合计计算，"
                 "结果保留两位小数并明确标记为 calculated。"
             )
+    if value_origin != "calculated" and source.get("lineage_normalization_rule"):
+        normalization_rule = str(source["lineage_normalization_rule"])
     source_format = str(source.get("source_format") or "pdf")
     is_gotohui = str(source.get("source_platform") or "") == "gotohui"
     is_crei = str(source.get("source_platform") or "") == "crei"
     is_hongheiku = str(source.get("source_platform") or "") == "hongheiku"
     is_ceic = str(source.get("source_doc_id") or "").startswith("SRC-B2-CEIC-")
-    locator_type = (
+    locator_type = str(source.get("lineage_locator_type") or "") or (
         "xlsx_cell"
         if is_public_panel and source.get("source_platform") == "haidatas"
         else "csv_cell"
@@ -13835,7 +13844,7 @@ def _lineage_for_city_year_fiscal(
         if source_format == "json"
         else "pdf_text_statement"
     )
-    extraction_method = (
+    extraction_method = str(source.get("lineage_extraction_method") or "") or (
         "public-research-panel-xlsx-parser"
         if is_public_panel and source.get("source_platform") == "haidatas"
         else "public-research-panel-csv-parser"
@@ -13877,6 +13886,9 @@ def _lineage_for_city_year_fiscal(
         extraction_method=extraction_method,
         parse_confidence="0.99",
         selection_reason=(
+            str(source["lineage_selection_reason"])
+            if source.get("lineage_selection_reason")
+            else
             str(source.get("calculation_note") or "官方来源合计差额计算；结果明确标记为 calculated，不等同于目标城市直接披露值。")
             if value_origin == "calculated"
             else (
