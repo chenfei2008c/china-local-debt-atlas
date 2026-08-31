@@ -5495,7 +5495,7 @@ TASK-CN-460200-2020-lgfv_company,CN-460200,2020,城投主体,主体公开发行�
 TASK-CN-460200-2020-lgfv_financial,CN-460200,2020,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-460200-2020-bond,CN-460200,2020,债券,交易场所/发行文件/存续期公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-460200-2020-credit_event,CN-460200,2020,信用/化债事件,政府、司法、交易场所或发行人公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
-TASK-CN-460300-2020-macro,CN-460300,2020,经济财政,城市统计年鉴/统计公报/财政决算,validated,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,补抓官方年度来源
+TASK-CN-460300-2020-macro,CN-460300,2020,经济财政,城市统计年鉴/统计公报/财政决算,needs_review,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,用官方年鉴、公报和决算表逐字段复核
 TASK-CN-460300-2020-debt,CN-460300,2020,法定债务,地方政府债务限额及余额公开表,evidence_based_missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,官方债务表逐行公开海口、三亚、儋州及省直辖县级行政单位，但未列示三沙市；海南省财政厅公开年报明确三沙市整体涉密、不予公开。未找到可审计的三沙市年末法定债务余额。,PUBLIC_SOURCE_EXHAUSTED,2,true,若取得依法可公开的三沙市专项财政或债务披露，再补录并复核；在此之前保持 null。
 TASK-CN-460300-2020-lgfv_company,CN-460300,2020,城投主体,主体公开发行文件、审计报告、评级报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-460300-2020-lgfv_financial,CN-460300,2020,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
@@ -7541,7 +7541,7 @@ TASK-CN-460200-2021-lgfv_company,CN-460200,2021,城投主体,主体公开发行�
 TASK-CN-460200-2021-lgfv_financial,CN-460200,2021,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-460200-2021-bond,CN-460200,2021,债券,交易场所/发行文件/存续期公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-460200-2021-credit_event,CN-460200,2021,信用/化债事件,政府、司法、交易场所或发行人公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
-TASK-CN-460300-2021-macro,CN-460300,2021,经济财政,城市统计年鉴/统计公报/财政决算,validated,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,补抓官方年度来源
+TASK-CN-460300-2021-macro,CN-460300,2021,经济财政,城市统计年鉴/统计公报/财政决算,needs_review,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,用官方年鉴、公报和决算表逐字段复核
 TASK-CN-460300-2021-debt,CN-460300,2021,法定债务,地方政府债务限额及余额公开表,evidence_based_missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,官方债务表逐行公开海口、三亚、儋州及省直辖县级行政单位，但未列示三沙市；海南省财政厅公开年报明确三沙市整体涉密、不予公开。未找到可审计的三沙市年末法定债务余额。,PUBLIC_SOURCE_EXHAUSTED,2,true,若取得依法可公开的三沙市专项财政或债务披露，再补录并复核；在此之前保持 null。
 TASK-CN-460300-2021-lgfv_company,CN-460300,2021,城投主体,主体公开发行文件、审计报告、评级报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-460300-2021-lgfv_financial,CN-460300,2021,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
@@ -11633,7 +11633,7 @@ TASK-CN-460200-2023-lgfv_company,CN-460200,2023,城投主体,主体公开发行�
 TASK-CN-460200-2023-lgfv_financial,CN-460200,2023,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-460200-2023-bond,CN-460200,2023,债券,交易场所/发行文件/存续期公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-460200-2023-credit_event,CN-460200,2023,信用/化债事件,政府、司法、交易场所或发行人公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
-TASK-CN-460300-2023-macro,CN-460300,2023,经济财政,城市统计年鉴/统计公报/财政决算,validated,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,补抓官方年度来源
+TASK-CN-460300-2023-macro,CN-460300,2023,经济财政,城市统计年鉴/统计公报/财政决算,needs_review,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,用官方年鉴、公报和决算表逐字段复核
 TASK-CN-460300-2023-debt,CN-460300,2023,法定债务,地方政府债务限额及余额公开表,evidence_based_missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,官方债务表逐行公开海口、三亚、儋州及省直辖县级行政单位，但未列示三沙市；海南省财政厅公开年报明确三沙市整体涉密、不予公开。未找到可审计的三沙市年末法定债务余额。,PUBLIC_SOURCE_EXHAUSTED,2,true,若取得依法可公开的三沙市专项财政或债务披露，再补录并复核；在此之前保持 null。
 TASK-CN-460300-2023-lgfv_company,CN-460300,2023,城投主体,主体公开发行文件、审计报告、评级报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-460300-2023-lgfv_financial,CN-460300,2023,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
@@ -13685,7 +13685,7 @@ TASK-CN-460200-2024-lgfv_company,CN-460200,2024,城投主体,主体公开发行�
 TASK-CN-460200-2024-lgfv_financial,CN-460200,2024,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-460200-2024-bond,CN-460200,2024,债券,交易场所/发行文件/存续期公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-460200-2024-credit_event,CN-460200,2024,信用/化债事件,政府、司法、交易场所或发行人公告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
-TASK-CN-460300-2024-macro,CN-460300,2024,经济财政,城市统计年鉴/统计公报/财政决算,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,未找到已归档且可审计的城市年度来源,NOT_YET_COLLECTED,0,false,补抓官方年度来源
+TASK-CN-460300-2024-macro,CN-460300,2024,经济财政,城市统计年鉴/统计公报/财政决算,needs_review,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,,,1,true,用官方年鉴、公报和决算表逐字段复核
 TASK-CN-460300-2024-debt,CN-460300,2024,法定债务,地方政府债务限额及余额公开表,evidence_based_missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,官方债务表逐行公开海口、三亚、儋州及省直辖县级行政单位，但未列示三沙市；海南省财政厅公开年报明确三沙市整体涉密、不予公开。未找到可审计的三沙市年末法定债务余额。,PUBLIC_SOURCE_EXHAUSTED,2,true,若取得依法可公开的三沙市专项财政或债务披露，再补录并复核；在此之前保持 null。
 TASK-CN-460300-2024-lgfv_company,CN-460300,2024,城投主体,主体公开发行文件、审计报告、评级报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零
 TASK-CN-460300-2024-lgfv_financial,CN-460300,2024,城投财务,主体合并审计报告,missing,1,RUN-20260801-NATIONAL-PANEL,2026-08-01T00:00:00+08:00,全国批量模块尚未完成逐城市采集,NOT_YET_COLLECTED,0,false,继续检索公开来源；不得填充伪零

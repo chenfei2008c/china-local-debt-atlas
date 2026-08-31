@@ -9,6 +9,7 @@ from scripts.collect_national_panel import (
     build_city_master,
     build_debt_rows,
     build_collection_status,
+    build_custom_calculation_rows,
     build_evidence_based_missing_rows,
     build_macro_rows,
     compute_derived_values,
@@ -73,6 +74,54 @@ from scripts.province_debt_sources import extract_official_debt_facts
 
 
 class NationalPanelTests(unittest.TestCase):
+
+    def test_custom_calculation_lineage_preserves_formula_and_inputs(self):
+        rows = build_custom_calculation_rows(
+            [
+                {
+                    "target_record_id": "MACRO-CN-460300-2018-PREFECTURE",
+                    "target_field": "gdp_current_100m",
+                    "value_origin": "calculated",
+                    "calculation_id": "CAL-CN-460300-2018-gdp_current_100m",
+                    "calculation_formula_id": "F-HN-SANSHA-GDP-RESIDUAL",
+                    "calculation_input_record_ids": "SRC-HN-GDP-TOTAL-2018;SRC-HN-GDP-18-REGIONS-2018",
+                    "calculation_input_fields": "hainan_province_gdp_total_100m;hainan_18_city_gdp_sum_100m",
+                    "normalized_value": "0.09",
+                    "raw_unit": "亿元",
+                    "calculation_note": "省级总量减去18个市县合计。",
+                }
+            ],
+            set(),
+        )
+        self.assertEqual(rows[0]["formula_id"], "F-HN-SANSHA-GDP-RESIDUAL")
+        self.assertEqual(rows[0]["input_record_ids"], "SRC-HN-GDP-TOTAL-2018;SRC-HN-GDP-18-REGIONS-2018")
+        self.assertEqual(rows[0]["input_fields"], "hainan_province_gdp_total_100m;hainan_18_city_gdp_sum_100m")
+        self.assertEqual(rows[0]["output_value"], "0.09")
+
+    def test_hainan_sansha_gdp_residual_is_explicit_calculation(self):
+        values, _sources = load_city_year_fiscal_sources()
+
+        expected = {
+            "2018": Decimal("0.09"),
+            "2019": Decimal("3.61"),
+            "2020": Decimal("3.36"),
+            "2021": Decimal("2.00"),
+            "2023": Decimal("0.90"),
+            "2024": Decimal("6.42"),
+        }
+        for year, value in expected.items():
+            record = values.get(("CN-460300", year), {})
+            self.assertEqual(record.get("gdp_current_100m"), value, year)
+            self.assertEqual(record.get("value_origin"), "calculated", year)
+            self.assertEqual(
+                record.get("calculation_id"),
+                f"CAL-CN-460300-{year}-gdp_current_100m",
+                year,
+            )
+            self.assertIn("hainan_province_gdp_total_100m", record.get("calculation_input_fields", ""))
+            self.assertIn("hainan_18_city_gdp_sum_100m", record.get("calculation_input_fields", ""))
+
+        self.assertNotIn("2022", {year for city_id, year in values if city_id == "CN-460300"})
 
     def test_hubei_direct_admin_yearbook_fills_2018_core_values(self):
         values, sources = load_city_year_fiscal_sources()

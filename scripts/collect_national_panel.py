@@ -82,6 +82,11 @@ try:
     from scripts.jinan_laiwu_yearbook import JINAN_LAIWU_YEARBOOK_SOURCES
     from scripts.xinjiang_bingtuan_core import XPCC_CORE_SOURCES
     from scripts.yushu_budget_2024 import YUSHU_2024_BUDGET_SOURCE
+    from scripts.hainan_sansha_residual import (
+        HAINAN_SANSHA_RESIDUAL_SOURCES,
+        HAINAN_SANSHA_FORMULA_DEPENDENCY,
+        HAINAN_SANSHA_FORMULA_REGISTRY,
+    )
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
     from curated_city_fiscal_2025 import CURATED_2025_CITY_FISCAL_SOURCES
     from supplemental_city_fiscal_2025 import SUPPLEMENTAL_CITY_FISCAL_SOURCES
@@ -108,6 +113,11 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
     from jinan_laiwu_yearbook import JINAN_LAIWU_YEARBOOK_SOURCES
     from xinjiang_bingtuan_core import XPCC_CORE_SOURCES
     from yushu_budget_2024 import YUSHU_2024_BUDGET_SOURCE
+    from hainan_sansha_residual import (
+        HAINAN_SANSHA_RESIDUAL_SOURCES,
+        HAINAN_SANSHA_FORMULA_DEPENDENCY,
+        HAINAN_SANSHA_FORMULA_REGISTRY,
+    )
 
 getcontext().prec = 40
 
@@ -11472,6 +11482,10 @@ CITY_YEAR_FISCAL_SOURCES += (
     ),
 )
 
+# 海南省统计年鉴市县表不列三沙，但省级 GDP 总量包含三沙；只接入高于省级
+# 总量两位小数舍入区间的官方合计差额，并在字段/计算血缘中标为 calculated。
+CITY_YEAR_FISCAL_SOURCES += tuple(HAINAN_SANSHA_RESIDUAL_SOURCES)
+
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
 
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
@@ -12417,11 +12431,17 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
             "source_format": config["source_format"],
             "data_status": data_status,
             "data_status_label": data_status_label,
+            "value_origin": str(config.get("value_origin") or ""),
+            "calculation_id": str(config.get("calculation_id") or ""),
+            "calculation_formula_id": str(config.get("calculation_formula_id") or ""),
+            "calculation_input_record_ids": str(config.get("calculation_input_record_ids") or ""),
+            "calculation_input_fields": str(config.get("calculation_input_fields") or ""),
+            "calculation_note": str(config.get("calculation_note") or ""),
             "source_locator": (
                 f"{text_path.relative_to(ROOT)}；报告正文；城市={config['city_name']}；"
                 f"{data_status_label}；行政范围=全市"
             ),
-            "table_name": f"{year}年全市财政预算执行情况",
+            "table_name": str(config.get("table_name") or f"{year}年全市财政预算执行情况"),
             "page_number": config.get("page_number", ""),
         }
         for field, pattern in config["patterns"].items():
@@ -13310,6 +13330,7 @@ def build_macro_rows(
             applied_fields: list[str] = []
             applied_public_panel_fields: list[str] = []
             applied_standard_fields: list[str] = []
+            applied_calculated_fields: list[str] = []
             for field in (
                 "gdp_current_100m",
                 "gdp_real_growth_pct",
@@ -13333,7 +13354,10 @@ def build_macro_rows(
                     continue
                 row[field] = q2(value)
                 applied_fields.append(field)
-                if field_is_public_panel:
+                field_value_origin = str(field_source.get("value_origin") or "").strip()
+                if field_value_origin == "calculated":
+                    applied_calculated_fields.append(field)
+                elif field_is_public_panel:
                     applied_public_panel_fields.append(field)
                 else:
                     applied_standard_fields.append(field)
@@ -13372,6 +13396,16 @@ def build_macro_rows(
                         + ("；" if row.get("note") else "")
                         + f"已接入{year}年{city['city_name_cn']}官方预算执行报告；"
                         "财政三项字段为全市快报数，保留execution状态，不改写为最终决算。"
+                    )
+                if applied_calculated_fields:
+                    row["data_status"] = "calculated"
+                    row["source_grade"] = str(city_year_fiscal_source.get("source_grade") or "A2")
+                    row["collection_status"] = "extracted"
+                    row["note"] = (
+                        str(row.get("note") or "")
+                        + ("；" if row.get("note") else "")
+                        + f"已接入{year}年{city['city_name_cn']}官方合计差额计算值（字段={','.join(applied_calculated_fields)}）；"
+                        "结果标记为calculated，计算公式、输入记录和舍入不确定性见计算血缘。"
                     )
         jiangsu_fund_source = jiangsu_city_fund.get((city["city_id"], str(year)))
         if jiangsu_fund_source:
@@ -13465,6 +13499,10 @@ def _lineage_base(row: Mapping[str, Any], field: str, source_doc_id: str, value_
         "normalized_value": normalized,
         "normalization_rule": extra.pop("normalization_rule", ""),
         "calculation_id": extra.pop("calculation_id", ""),
+        "calculation_formula_id": extra.pop("calculation_formula_id", ""),
+        "calculation_input_record_ids": extra.pop("calculation_input_record_ids", ""),
+        "calculation_input_fields": extra.pop("calculation_input_fields", ""),
+        "calculation_note": extra.pop("calculation_note", ""),
         "conflict_group_id": "",
         "selected_flag": True,
         "selection_reason": extra.pop("selection_reason", ""),
@@ -13473,6 +13511,52 @@ def _lineage_base(row: Mapping[str, Any], field: str, source_doc_id: str, value_
         "reviewer": "national_panel_collector",
         "reviewed_at": RETRIEVED_AT,
     }
+
+
+def build_custom_calculation_rows(
+    lineage_rows: Iterable[Mapping[str, Any]],
+    existing_calculation_ids: set[str] | None = None,
+) -> list[dict[str, Any]]:
+    """把字段血缘中的 calculated 值转成可审计的计算底稿。"""
+
+    existing_ids = set(existing_calculation_ids or set())
+    rows: list[dict[str, Any]] = []
+    for item in lineage_rows:
+        if str(item.get("value_origin") or "") != "calculated":
+            continue
+        calculation_id = str(item.get("calculation_id") or "")
+        if not calculation_id or calculation_id in existing_ids:
+            continue
+        target_field = str(item.get("target_field") or "")
+        formula_id = str(item.get("calculation_formula_id") or "F-STATUTORY-BALANCE")
+        input_record_ids = str(item.get("calculation_input_record_ids") or item.get("target_record_id") or "")
+        input_fields = str(
+            item.get("calculation_input_fields")
+            or "CEIC一般债务余额;CEIC专项债务余额"
+        )
+        output_unit = str(item.get("raw_unit") or ("%" if target_field.endswith("pct") else "亿元"))
+        rows.append(
+            {
+                "calculation_id": calculation_id,
+                "target_table": "city_macro_fiscal",
+                "target_record_id": item.get("target_record_id", ""),
+                "target_field": target_field,
+                "formula_id": formula_id,
+                "formula_version": "v1.0",
+                "input_record_ids": input_record_ids,
+                "input_fields": input_fields,
+                "output_value": item.get("normalized_value", ""),
+                "output_unit": output_unit,
+                "calculation_status": "calculated",
+                "calculated_at": RETRIEVED_AT,
+                "note": str(
+                    item.get("calculation_note")
+                    or "CEIC 一般债务页与专项债务页均有值时合计；主表不反推官方分项。"
+                ),
+            }
+        )
+        existing_ids.add(calculation_id)
+    return rows
 
 
 def _lineage_for_panel(row: Mapping[str, Any], field: str, raw: Any, raw_unit: str, normalized: Any, rule: str, panel: Mapping[str, str]) -> dict[str, Any]:
@@ -13664,10 +13748,12 @@ def _lineage_for_city_year_fiscal(
     field_label = labels[field]
     year = row["metric_year"]
     source_grade = str(source.get("source_grade") or "B2")
+    configured_value_origin = str(source.get("value_origin") or "").strip()
     is_public_panel = (
         str(source.get("source_platform") or "") in {"dachuang", "haidatas"}
         and source_grade == "D"
     )
+    value_origin = configured_value_origin or ("provisional" if is_public_panel else "disclosed")
     data_status_label = str(source.get("data_status_label") or f"{year}年执行数")
     raw_unit = str(source.get(f"{field}_raw_unit") or "万元")
     if is_public_panel and source.get("source_platform") == "haidatas":
@@ -13690,6 +13776,11 @@ def _lineage_for_city_year_fiscal(
         normalization_rule = "公开序列原始单位为人；原值÷10000=万人，保留两位小数；全市口径。"
     else:
         normalization_rule = "官方预算执行报告原始单位为万元；原值÷10000=亿元，保留两位小数；全市口径。"
+    if value_origin == "calculated":
+        normalization_rule = (
+            "官方统计年鉴/统计公报输入均已统一为亿元；按省级总量减18个市县合计计算，"
+            "结果保留两位小数并明确标记为 calculated。"
+        )
     source_format = str(source.get("source_format") or "pdf")
     is_gotohui = str(source.get("source_platform") or "") == "gotohui"
     is_crei = str(source.get("source_platform") or "") == "crei"
@@ -13735,7 +13826,7 @@ def _lineage_for_city_year_fiscal(
         row,
         field,
         str(source.get("source_doc_id", "")),
-        "provisional" if is_public_panel else "disclosed",
+        value_origin,
         value,
         source_locator=(
             f"{source.get('source_locator', '')}；字段={field_label}"
@@ -13751,6 +13842,9 @@ def _lineage_for_city_year_fiscal(
         extraction_method=extraction_method,
         parse_confidence="0.99",
         selection_reason=(
+            str(source.get("calculation_note") or "官方来源合计差额计算；结果明确标记为 calculated，不等同于目标城市直接披露值。")
+            if value_origin == "calculated"
+            else (
             (
                 "D级公开研究面板临时值，仅补空、不覆盖已有来源，待官方统计年鉴/公报复核；"
                 "不计入高等级定稿率。"
@@ -13786,6 +13880,22 @@ def _lineage_for_city_year_fiscal(
                 "市级财政机构官方预算执行报告明确披露全市财政字段，"
                 f"年度、行政范围和{data_status_label}状态清晰。"
             )
+            )
+        ),
+        calculation_id=(
+            str(source.get("calculation_id") or "") if value_origin == "calculated" else ""
+        ),
+        calculation_formula_id=(
+            str(source.get("calculation_formula_id") or "") if value_origin == "calculated" else ""
+        ),
+        calculation_input_record_ids=(
+            str(source.get("calculation_input_record_ids") or "") if value_origin == "calculated" else ""
+        ),
+        calculation_input_fields=(
+            str(source.get("calculation_input_fields") or "") if value_origin == "calculated" else ""
+        ),
+        calculation_note=(
+            str(source.get("calculation_note") or "") if value_origin == "calculated" else ""
         ),
     )
 
@@ -14990,31 +15100,16 @@ def main() -> None:
     ]
     attach_lineage_ids(lineage)
     calc_rows, formula_registry, formula_dependency = build_calculations(macro_rows)
-    # CEIC 组件页没有把一般/专项数写入主表，只在归档层按两页合计形成
-    # 法定债务余额；为该来源层计算补充独立的计算底稿，避免把计算值误当作直接披露值。
-    calc_ids = {item["calculation_id"] for item in calc_rows}
-    for item in lineage:
-        calculation_id = item.get("calculation_id", "")
-        if item.get("value_origin") != "calculated" or not calculation_id or calculation_id in calc_ids:
-            continue
-        calc_rows.append(
-            {
-                "calculation_id": calculation_id,
-                "target_table": "city_macro_fiscal",
-                "target_record_id": item["target_record_id"],
-                "target_field": item["target_field"],
-                "formula_id": "F-STATUTORY-BALANCE",
-                "formula_version": "v1.0",
-                "input_record_ids": item["target_record_id"],
-                "input_fields": "CEIC一般债务余额;CEIC专项债务余额",
-                "output_value": item["normalized_value"],
-                "output_unit": "亿元",
-                "calculation_status": "calculated",
-                "calculated_at": RETRIEVED_AT,
-                "note": "CEIC 一般债务页与专项债务页均有值时合计；主表不反推官方分项。",
-            }
+    formula_registry.append(dict(HAINAN_SANSHA_FORMULA_REGISTRY))
+    formula_dependency.extend(dict(item) for item in HAINAN_SANSHA_FORMULA_DEPENDENCY)
+    # CEIC 合计和海南省级合计差额等非标准派生值，都必须把字段血缘中的
+    # 公式、输入记录和计算说明复制到独立计算底稿，不能只保留一个数值。
+    calc_rows.extend(
+        build_custom_calculation_rows(
+            lineage + new_fiscal_lineage + new_fund_lineage,
+            {item["calculation_id"] for item in calc_rows},
         )
-        calc_ids.add(calculation_id)
+    )
     # 为派生字段追加可反查的字段证据；计算值不覆盖原始披露证据。
     # 先写历史计算和本批财政原始证据，保持既有 lineage_id 稳定；基金派生值
     # 及其原始证据作为本批新增记录追加到末尾。
@@ -15042,6 +15137,10 @@ def main() -> None:
                 raw_unit=calc["output_unit"],
                 normalization_rule="",
                 calculation_id=calc["calculation_id"],
+                calculation_formula_id=calc["formula_id"],
+                calculation_input_record_ids=calc["input_record_ids"],
+                calculation_input_fields=calc["input_fields"],
+                calculation_note=calc["note"],
                 extraction_method="calculated",
                 parse_confidence="1.00",
                 selection_reason="公式依赖 DAG 校验通过",
@@ -15066,6 +15165,10 @@ def main() -> None:
                 raw_unit=calc["output_unit"],
                 normalization_rule="",
                 calculation_id=calc["calculation_id"],
+                calculation_formula_id=calc["formula_id"],
+                calculation_input_record_ids=calc["input_record_ids"],
+                calculation_input_fields=calc["input_fields"],
+                calculation_note=calc["note"],
                 extraction_method="calculated",
                 parse_confidence="1.00",
                 selection_reason="公式依赖 DAG 校验通过",
@@ -15141,7 +15244,7 @@ def main() -> None:
     debt_fields = list(build_debt_rows([macro_rows[0]])[0].keys()) if macro_rows else []
     risk_fields = list(risk_rows[0].keys()) if risk_rows else []
     source_fields = ["source_doc_id", "publisher", "publisher_level", "document_title", "title_source", "attachment_title", "document_type", "source_url", "landing_page_url", "attachment_url", "canonical_url", "final_resolved_url", "file_name", "mime_type", "publication_date", "publication_date_raw", "period_end", "downloaded_at", "content_hash_sha256", "archive_uri", "archive_backend", "archive_path", "page_count", "source_grade", "http_status", "access_status", "supersedes_doc_id", "note"]
-    lineage_fields = ["lineage_id", "target_table", "target_record_id", "target_field", "value_origin", "source_doc_id", "source_locator", "locator_type", "page_number", "table_name", "sheet_name", "cell_range", "row_label", "column_label", "evidence_excerpt", "raw_value", "raw_unit", "machine_extracted_value", "normalized_value", "normalization_rule", "calculation_id", "conflict_group_id", "selected_flag", "selection_reason", "extraction_method", "parse_confidence", "reviewer", "reviewed_at"]
+    lineage_fields = ["lineage_id", "target_table", "target_record_id", "target_field", "value_origin", "source_doc_id", "source_locator", "locator_type", "page_number", "table_name", "sheet_name", "cell_range", "row_label", "column_label", "evidence_excerpt", "raw_value", "raw_unit", "machine_extracted_value", "normalized_value", "normalization_rule", "calculation_id", "calculation_formula_id", "calculation_input_record_ids", "calculation_input_fields", "calculation_note", "conflict_group_id", "selected_flag", "selection_reason", "extraction_method", "parse_confidence", "reviewer", "reviewed_at"]
     collection_fields = ["task_id", "city_id", "metric_year", "module", "expected_document", "collection_status", "attempt_count", "agent_run_id", "last_checked_at", "missing_reason", "error_code", "evidence_count", "lineage_complete_flag", "next_action"]
     calc_fields = list(calc_rows[0].keys()) if calc_rows else ["calculation_id", "target_table", "target_record_id", "target_field", "formula_id", "formula_version", "input_record_ids", "input_fields", "output_value", "output_unit", "calculation_status", "calculated_at", "note"]
     formula_fields = list(formula_registry[0].keys())

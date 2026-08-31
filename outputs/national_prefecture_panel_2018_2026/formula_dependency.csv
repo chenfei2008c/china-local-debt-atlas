@@ -17,3 +17,5 @@ F-FUND-DEPEND,gov_fund_revenue_100m,input,v1.0
 F-FUND-DEPEND,general_public_revenue_100m,input,v1.0
 F-FUND-REV-LEGACY,gov_fund_revenue_100m,input,v1.0
 F-FUND-REV-LEGACY,general_public_revenue_100m,input,v1.0
+F-HN-SANSHA-GDP-RESIDUAL,hainan_province_gdp_total_100m,input,v1.0
+F-HN-SANSHA-GDP-RESIDUAL,hainan_18_city_gdp_sum_100m,input,v1.0
