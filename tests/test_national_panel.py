@@ -3617,6 +3617,29 @@ class NationalPanelTests(unittest.TestCase):
             {x[4] for x in expected.values()},
         )
 
+    def test_honghe_2025_official_gdp_and_chuzhou_wuzhong_2024_fiscal_fill_gaps(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        honghe = values[("CN-532500", "2025")]
+        self.assertEqual(honghe["gdp_current_100m"], Decimal("3154.52"))
+        self.assertEqual(honghe["gdp_real_growth_pct"], Decimal("5.5"))
+        self.assertIn("SRC-A2-HONGHE-CITY-GDP-2025", honghe["source_doc_id"])
+
+        chuzhou = values[("CN-341100", "2024")]
+        self.assertEqual(chuzhou["general_public_revenue_100m"], Decimal("307.1"))
+        self.assertEqual(chuzhou["general_public_expenditure_100m"], Decimal("579"))
+        self.assertIn("SRC-A2-CHUZHOU-CITY-BULLETIN-2024-FISCAL", chuzhou["source_doc_id"])
+
+        wuzhong = values[("CN-640300", "2024")]
+        self.assertEqual(wuzhong["general_public_revenue_100m"], Decimal("43.14"))
+        self.assertEqual(wuzhong["general_public_expenditure_100m"], Decimal("279.37"))
+        self.assertIn("SRC-A2-WUZHONG-CITY-FISCAL-2024", wuzhong["source_doc_id"])
+
+        source_ids = {item["source_doc_id"] for item in sources}
+        self.assertIn("SRC-A2-HONGHE-CITY-GDP-2025", source_ids)
+        self.assertIn("SRC-A2-CHUZHOU-CITY-BULLETIN-2024-FISCAL", source_ids)
+        self.assertIn("SRC-A2-WUZHONG-CITY-FISCAL-2024", source_ids)
+
     def test_langfang_2025_official_budget_report_extracts_whole_city_fiscal_values(self):
         values, sources = load_city_year_fiscal_sources()
         langfang = values[("CN-131000", "2025")]

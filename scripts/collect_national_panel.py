@@ -8342,6 +8342,97 @@ _CURATED_2024_2025_MACRO_PRIORITY_SPECS = (
     },
 )
 
+# 红河州统计局官方经济数据页、滁州统计公报和吴忠市财政局官方决算说明，
+# 分别补入当前缺口中的 2025 年红河州 GDP/增速以及 2024 年滁州、吴忠的
+# 全市一般公共预算收入/支出。三份材料均明确行政范围，不使用市本级、区县
+# 或预算总量替代全市一般预算口径。
+CITY_YEAR_FISCAL_SOURCES += (
+    {
+        "year": 2025,
+        "city_name": "红河哈尼族彝族自治州",
+        "city_id": "CN-532500",
+        "source_doc_id": "SRC-A2-HONGHE-CITY-GDP-2025",
+        "url": "https://www.hh.gov.cn/info/199882/1237442.htm",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "honghe_2025_gdp_official.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "honghe_2025_gdp_official_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2025年红河州实现地区生产总值3154亿余元",
+        "publisher": "红河州统计局",
+        "publisher_level": "州级统计机构官方数据资讯",
+        "publication_date": "2026-01-27",
+        "source_grade": "A2",
+        "source_format": "html",
+        "data_status": "preliminary",
+        "data_status_label": "2025年地区生产总值统一核算初步结果",
+        "document_type": "官方统计数据发布页",
+        "page_number": "网页正文；红河州2025年GDP数据段",
+        "raw_unit": "亿元",
+        "raw_units": {"gdp_real_growth_pct": "%"},
+        "patterns": {
+            "gdp_current_100m": r"2025年红河州实现地区生产总值（GDP）([0-9.]+)亿元",
+            "gdp_real_growth_pct": r"2025年红河州实现地区生产总值（GDP）[0-9.]+亿元，按不变价格计算，比上年增长([0-9.]+)%",
+        },
+        "source_locator": "honghe_2025_gdp_official_excerpt.txt；网页正文；州=红河哈尼族彝族自治州；2025年全州初步核算数",
+        "note": "A2红河州统计局官方数据发布页；明确为红河州全州 GDP 和按不变价格计算的同比增速；一般公共预算收入、支出沿用已登记的全州财政来源，不从本页推断。",
+    },
+    {
+        "year": 2024,
+        "city_name": "滁州市",
+        "city_id": "CN-341100",
+        "source_doc_id": "SRC-A2-CHUZHOU-CITY-BULLETIN-2024-FISCAL",
+        "url": "http://szbk.chuzhou.cn/czrb/pc/content/202504/28/content_130308.html",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "official" / "chuzhou_2024_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "official" / "chuzhou_2024_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "滁州市2024年国民经济和社会发展统计公报",
+        "publisher": "滁州市统计局",
+        "publisher_level": "市级统计机构官方统计公报公开版",
+        "publication_date": "2025-04-28",
+        "source_grade": "A2",
+        "source_format": "html",
+        "data_status": "preliminary",
+        "data_status_label": "2024年初步统计数",
+        "document_type": "官方统计公报（网页公开版）",
+        "page_number": "网页正文‘八、财政、金融和保险业’",
+        "raw_unit": "亿元",
+        "raw_units": {},
+        "patterns": {
+            "general_public_revenue_100m": r"全年全市一般公共预算收入([0-9.]+)亿元",
+            "general_public_expenditure_100m": r"一般公共预算支出([0-9.]+)亿元",
+        },
+        "source_locator": "chuzhou_2024_statistical_bulletin_excerpt.txt；网页正文‘八、财政、金融和保险业’；城市=滁州市；2024年全市初步统计数",
+        "note": "A2滁州市统计局官方统计公报公开版；财政段明确为滁州市全市一般公共预算收入和支出，不使用市本级或区县口径。",
+    },
+    {
+        "year": 2024,
+        "city_name": "吴忠市",
+        "city_id": "CN-640300",
+        "source_doc_id": "SRC-A2-WUZHONG-CITY-FISCAL-2024",
+        "url": "https://www.wuzhong.gov.cn/xxgk/zfxxgkml/yjsgkqk/zfysuan/2024/202509/t20250925_5037518.html",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "official" / "wuzhong_2024_final_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "official" / "wuzhong_2024_budget_report_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "关于2024年吴忠市本级决算和2025年上半年全市及市本级预算执行情况的报告",
+        "publisher": "吴忠市财政局",
+        "publisher_level": "市级财政机构官方决算公开页",
+        "publication_date": "2025-09-25",
+        "source_grade": "A2",
+        "source_format": "html",
+        "data_status": "final",
+        "data_status_label": "2024年全市一般公共预算决算数",
+        "document_type": "官方财政决算说明网页",
+        "page_number": "网页正文‘2024年全市一般公共预算全口径收支情况的说明’",
+        "raw_unit": "万元",
+        "raw_units": {},
+        "patterns": {
+            "general_public_revenue_100m": r"全市一般公共预算收入\s*([0-9,]+)\s*万元",
+            "general_public_expenditure_100m": r"全市一般公共预算支出\s*([0-9,]+)\s*万元",
+        },
+        "source_locator": "wuzhong_2024_budget_report_excerpt.txt；官方报告全市一般公共预算全口径收支说明；城市=吴忠市；2024年全市决算数",
+        "note": "A2吴忠市财政局官方决算公开页；报告同时列示全市与市本级数，本批仅使用全市收入431,363万元和支出2,793,743万元，按万元换算为亿元，不使用市本级数。",
+    },
+)
+
 CITY_YEAR_FISCAL_SOURCES += tuple(
     _make_curated_city_source(**spec) for spec in _CURATED_2024_2025_MACRO_PRIORITY_SPECS
 )
