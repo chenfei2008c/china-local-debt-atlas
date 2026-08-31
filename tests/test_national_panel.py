@@ -3597,6 +3597,26 @@ class NationalPanelTests(unittest.TestCase):
         self.assertTrue(expected["CN-211400"][4] in source_ids)
         self.assertTrue(expected["CN-211000"][4] in source_ids)
 
+    def test_qinghai_and_gannan_2025_official_bulletins_fill_four_target_fields(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        expected = {
+            "CN-630100": ("1914.80", "3.30", "213.40", "375.40", "SRC-A2-XINING-CITY-BULLETIN-2025-CORE"),
+            "CN-623000": ("275.62", "5.40", "14.50", "227.06", "SRC-A2-GANNAN-STATE-BULLETIN-2025-CORE"),
+        }
+        for city_id, (gdp, growth, revenue, expenditure, source_id) in expected.items():
+            record = values[(city_id, "2025")]
+            self.assertEqual(record["gdp_current_100m"], Decimal(gdp))
+            self.assertEqual(record["gdp_real_growth_pct"], Decimal(growth))
+            self.assertEqual(record["general_public_revenue_100m"], Decimal(revenue))
+            self.assertEqual(record["general_public_expenditure_100m"], Decimal(expenditure))
+            self.assertEqual(record["source_grade"], "A2")
+            self.assertIn(source_id, record["source_doc_id"])
+        self.assertEqual(
+            {item["source_doc_id"] for item in sources if item["source_doc_id"] in {x[4] for x in expected.values()}},
+            {x[4] for x in expected.values()},
+        )
+
     def test_langfang_2025_official_budget_report_extracts_whole_city_fiscal_values(self):
         values, sources = load_city_year_fiscal_sources()
         langfang = values[("CN-131000", "2025")]
