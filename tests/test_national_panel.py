@@ -64,7 +64,11 @@ from scripts.gotohui_snapshot_collector import (
     merge_snapshot_series,
 )
 from scripts.crei_city_bulletins import is_target_bulletin_title, parse_bulletin_text
-from scripts.hongheiku_city_bulletins import load_hongheiku_city_bulletin_sources
+from scripts.hongheiku_city_bulletins import (
+    _filter_sitemap_urls,
+    _unfetched_urls,
+    load_hongheiku_city_bulletin_sources,
+)
 from scripts.province_debt_sources import extract_official_debt_facts
 
 
@@ -771,6 +775,27 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(daqing["resident_population_10k"], Decimal("272.70"))
         self.assertEqual(daqing["gov_fund_revenue_100m"], Decimal("14.90"))
         self.assertNotIn(("CN-371400", "2025"), values)
+
+    def test_hongheiku_sitemap_filter_keeps_only_requested_city_directory(self):
+        urls = [
+            "https://tjgb.hongheiku.com/djs/123.html",
+            "https://tjgb.hongheiku.com/xjtjgb/xj2020/456.html",
+            "https://tjgb.hongheiku.com/djs/789.html",
+        ]
+        self.assertEqual(
+            _filter_sitemap_urls(urls, ("djs/",)),
+            [urls[0], urls[2]],
+        )
+
+    def test_hongheiku_crawler_skips_urls_already_in_snapshot(self):
+        urls = [
+            "https://tjgb.hongheiku.com/djs/123.html",
+            "https://tjgb.hongheiku.com/djs/456.html",
+        ]
+        self.assertEqual(
+            _unfetched_urls(urls, {urls[0]: {"source_url": urls[0]}}),
+            [urls[1]],
+        )
 
     def test_crei_bulletin_parser_does_not_use_later_deposit_balance_as_revenue(self):
         parsed = parse_bulletin_text(

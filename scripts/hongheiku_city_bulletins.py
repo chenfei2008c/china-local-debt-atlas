@@ -23,6 +23,7 @@ from datetime import datetime
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any, Iterable, Mapping
+from urllib.parse import urlencode, urlparse
 from urllib.request import Request, urlopen
 from xml.etree import ElementTree as ET
 
@@ -34,6 +35,8 @@ except ModuleNotFoundError:  # 允许以 python scripts/hongheiku_city_bulletins
 
 SNAPSHOT_PATH = Path("raw/province_fiscal/hongheiku/city_bulletin_snapshot.json")
 SITEMAP_URL = "https://tjgb.hongheiku.com/wp-sitemap-posts-post-10.xml"
+WP_API_POSTS_URL = "https://tjgb.hongheiku.com/wp-json/wp/v2/posts"
+WP_PREFECTURE_CATEGORY_ID = 2
 SUPPORTED_YEARS = {"2019", "2020", "2021", "2022", "2023", "2024", "2025"}
 SOURCE_GRADE = "B2"
 TARGET_FIELDS = (
@@ -185,6 +188,138 @@ def _fetch(url: str) -> tuple[bytes, str] | None:
         return None
 
 
+def _fetch_wp_api(params: Iterable[tuple[str, Any]]) -> tuple[list[dict[str, Any]], Mapping[str, str]] | None:
+    """读取 WordPress REST API，保留响应头中的分页信息。"""
+
+    query = urlencode(list(params), doseq=True)
+    url = f"{WP_API_POSTS_URL}?{query}"
+    try:
+        response = urlopen(
+            Request(url, headers={"User-Agent": "Mozilla/5.0", "Accept": "application/json"}),
+            timeout=20,
+            context=ssl._create_unverified_context(),
+        )
+        payload = json.loads(response.read().decode(response.headers.get_content_charset() or "utf-8"))
+        if not isinstance(payload, list):
+            return None
+        return payload, dict(response.headers.items())
+    except Exception:
+        return None
+
+
+def _wp_title(post: Mapping[str, Any]) -> str:
+    rendered = (post.get("title") or {}).get("rendered", "")
+    return _compact(re.sub(r"<[^>]+>", "", html.unescape(str(rendered))))
+
+
+def _wp_post_candidate(
+    post: Mapping[str, Any],
+    city_lookup: Mapping[str, Mapping[str, list[tuple[str, str, str]]]],
+) -> dict[str, Any] | None:
+    """将 WordPress 结构化帖子转换为现有快照格式。"""
+
+    title = _wp_title(post)
+    city = _match_city(title, city_lookup)
+    if not city:
+        return None
+    content = (post.get("content") or {}).get("rendered", "")
+    text = _page_text(str(content).encode("utf-8"))
+    values = {field: value for field, value in parse_bulletin_text(text).items() if field in TARGET_FIELDS}
+    if not values:
+        return None
+    city_id, city_name, year = city
+    source_url = str(post.get("link") or "")
+    post_date = str(post.get("date") or "")[:10]
+    return {
+        "city_id": city_id,
+        "city_name": city_name,
+        "metric_year": year,
+        "title": title,
+        "source_url": source_url,
+        "publisher": _publisher(text),
+        "publication_date": _published_date(text, source_url) or post_date,
+        "content_hash_sha256": hashlib.sha256(str(content).encode("utf-8")).hexdigest(),
+        "values": {field: str(value) for field, value in values.items()},
+        "text": text,
+    }
+
+
+def crawl_hongheiku_wp_api(
+    root: Path,
+    city_master: list[Mapping[str, Any]],
+    batch_size: int = 100,
+) -> dict[str, int]:
+    """通过地级市分类的 REST API 批量获取尚未归档的帖子正文。"""
+
+    snapshot_path = root / SNAPSHOT_PATH
+    if snapshot_path.exists():
+        payload = json.loads(snapshot_path.read_text(encoding="utf-8"))
+    else:
+        payload = {"bulletins": []}
+    existing = {str(item.get("source_url")): item for item in payload.get("bulletins") or []}
+    city_lookup = _build_city_lookup(city_master)
+    first = _fetch_wp_api(
+        (
+            ("categories", WP_PREFECTURE_CATEGORY_ID),
+            ("per_page", 100),
+            ("page", 1),
+            ("_fields", "id,link,title,date"),
+        )
+    )
+    if not first:
+        return {"api_pages": 0, "candidate_posts": 0, "total_bulletins": len(existing), "new_bulletins": 0}
+    metadata, headers = first
+    total_pages = int(headers.get("X-WP-TotalPages", "1"))
+    metadata_pages = [metadata]
+    for page in range(2, total_pages + 1):
+        result = _fetch_wp_api(
+            (
+                ("categories", WP_PREFECTURE_CATEGORY_ID),
+                ("per_page", 100),
+                ("page", page),
+                ("_fields", "id,link,title,date"),
+            )
+        )
+        if result:
+            metadata_pages.append(result[0])
+    candidates = []
+    for page in metadata_pages:
+        for post in page:
+            source_url = str(post.get("link") or "")
+            if source_url in existing:
+                continue
+            if _match_city(_wp_title(post), city_lookup):
+                candidates.append(post)
+
+    additions: list[dict[str, Any]] = []
+    for start in range(0, len(candidates), batch_size):
+        ids = [int(post["id"]) for post in candidates[start : start + batch_size] if post.get("id")]
+        if not ids:
+            continue
+        params: list[tuple[str, Any]] = [("categories", WP_PREFECTURE_CATEGORY_ID)]
+        params.extend(("include[]", post_id) for post_id in ids)
+        params.extend((("per_page", 100), ("_fields", "id,link,title,date,content")))
+        result = _fetch_wp_api(params)
+        if not result:
+            continue
+        for post in result[0]:
+            source_url = str(post.get("link") or "")
+            if source_url in existing:
+                continue
+            item = _wp_post_candidate(post, city_lookup)
+            if item:
+                additions.append(item)
+                existing[source_url] = item
+        _write_snapshot(snapshot_path, existing.values())
+    _write_snapshot(snapshot_path, existing.values())
+    return {
+        "api_pages": len(metadata_pages),
+        "candidate_posts": len(candidates),
+        "total_bulletins": len(existing),
+        "new_bulletins": len(additions),
+    }
+
+
 def _sitemap_urls(sitemap_url: str = SITEMAP_URL) -> list[str]:
     fetched = _fetch(sitemap_url)
     if not fetched:
@@ -197,20 +332,90 @@ def _sitemap_urls(sitemap_url: str = SITEMAP_URL) -> list[str]:
     return [item.findtext("s:loc", namespaces=XML_NS) for item in root.findall("s:url", XML_NS) if item.findtext("s:loc", namespaces=XML_NS)]
 
 
-def _match_city(title: str, city_master: Iterable[Mapping[str, Any]]) -> tuple[str, str, str] | None:
-    matches = []
+def _filter_sitemap_urls(urls: Iterable[str], path_prefixes: Iterable[str] = ()) -> list[str]:
+    """按 URL 路径前缀筛选站点地图，减少明显无关页面的请求。"""
+
+    prefixes = tuple(
+        "/" + str(prefix).strip().strip("/")
+        for prefix in path_prefixes
+        if str(prefix).strip().strip("/")
+    )
+    if not prefixes:
+        return list(urls)
+    return [
+        url
+        for url in urls
+        if any(urlparse(url).path.startswith(prefix + "/") or urlparse(url).path == prefix for prefix in prefixes)
+    ]
+
+
+def _unfetched_urls(urls: Iterable[str], existing: Mapping[str, Any]) -> list[str]:
+    """只返回快照中尚未归档的页面，避免重复请求已完成的批次。"""
+
+    return [url for url in urls if url not in existing]
+
+
+def _city_aliases(city_name: str) -> set[str]:
+    city = _compact(city_name)
+    aliases = {city}
+    if city.endswith("市"):
+        aliases.add(city[:-1])
+    if "自治州" in city:
+        aliases.add(city.replace("自治州", "州"))
+        short = SHORT_ALIASES.get(city)
+        if short:
+            aliases.add(short)
+    return {alias for alias in aliases if alias}
+
+
+def _build_city_lookup(city_master: Iterable[Mapping[str, Any]]) -> dict[str, dict[str, list[tuple[str, str, str]]]]:
+    lookup: dict[str, dict[str, list[tuple[str, str, str]]]] = {}
     for city in city_master:
         year = str(city.get("metric_year") or "")
-        if year not in SUPPORTED_YEARS:
-            continue
         city_id = str(city.get("city_id") or "")
         city_name = str(city.get("city_name_cn") or "")
-        if city_id and city_name and is_target_bulletin_title(title, city_name, year):
-            matches.append((city_id, city_name, year))
+        if year not in SUPPORTED_YEARS or not city_id or not city_name:
+            continue
+        year_aliases = lookup.setdefault(year, {})
+        for alias in _city_aliases(city_name):
+            year_aliases.setdefault(alias, []).append((city_id, city_name, year))
+    return lookup
+
+
+def _match_city(
+    title: str,
+    city_lookup: Mapping[str, Mapping[str, list[tuple[str, str, str]]]] | Iterable[Mapping[str, Any]],
+) -> tuple[str, str, str] | None:
+    compact = _compact(title)
+    year_match = re.search(r"20(?:19|20|21|22|23|24|25)", compact)
+    title_year = year_match.group(0) if year_match else ""
+    if isinstance(city_lookup, Mapping):
+        matches = []
+        for alias, cities in city_lookup.get(title_year, {}).items():
+            if f"{alias}{title_year}" not in compact and f"{title_year}{alias}" not in compact:
+                continue
+            for city_id, city_name, year in cities:
+                if is_target_bulletin_title(title, city_name, year):
+                    matches.append((city_id, city_name, year))
+    else:
+        matches = []
+        for city in city_lookup:
+            year = str(city.get("metric_year") or "")
+            if title_year and year != title_year:
+                continue
+            if year not in SUPPORTED_YEARS:
+                continue
+            city_id = str(city.get("city_id") or "")
+            city_name = str(city.get("city_name_cn") or "")
+            if city_id and city_name and is_target_bulletin_title(title, city_name, year):
+                matches.append((city_id, city_name, year))
     return matches[0] if len(matches) == 1 else None
 
 
-def _fetch_candidate(url: str, city_master: list[Mapping[str, Any]]) -> dict[str, Any] | None:
+def _fetch_candidate(
+    url: str,
+    city_lookup: Mapping[str, Mapping[str, list[tuple[str, str, str]]]],
+) -> dict[str, Any] | None:
     fetched = _fetch(url)
     if not fetched:
         return None
@@ -218,7 +423,7 @@ def _fetch_candidate(url: str, city_master: list[Mapping[str, Any]]) -> dict[str
     decoded = body.decode(charset, "ignore")
     title_match = re.search(r"<title[^>]*>(.*?)</title>", decoded, flags=re.S | re.I)
     title = re.sub(r"<[^>]+>", "", html.unescape(title_match.group(1) if title_match else ""))
-    city = _match_city(title, city_master)
+    city = _match_city(title, city_lookup)
     if not city:
         return None
     text = _page_text(body)
@@ -248,6 +453,7 @@ def crawl_hongheiku_bulletins(
     city_master: list[Mapping[str, Any]],
     workers: int = 16,
     sitemap_urls: Iterable[str] | None = None,
+    url_path_prefixes: Iterable[str] = (),
 ) -> dict[str, int]:
     """批量抓取指定 sitemap 中可匹配的地级市公报。"""
 
@@ -257,14 +463,16 @@ def crawl_hongheiku_bulletins(
     else:
         payload = {"bulletins": []}
     existing = {str(item.get("source_url")): item for item in payload.get("bulletins") or []}
+    city_lookup = _build_city_lookup(city_master)
     sitemap_list = list(sitemap_urls or (SITEMAP_URL,))
     urls: list[str] = []
     for sitemap_url in sitemap_list:
         urls.extend(_sitemap_urls(sitemap_url))
-    urls = list(dict.fromkeys(urls))
+    urls = _filter_sitemap_urls(dict.fromkeys(urls), url_path_prefixes)
+    urls = _unfetched_urls(urls, existing)
     additions: list[dict[str, Any]] = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
-        futures = [executor.submit(_fetch_candidate, url, city_master) for url in urls]
+        futures = [executor.submit(_fetch_candidate, url, city_lookup) for url in urls]
         for index, future in enumerate(concurrent.futures.as_completed(futures), start=1):
             try:
                 item = future.result()
@@ -394,10 +602,22 @@ def main() -> None:
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--workers", type=int, default=16)
     parser.add_argument("--sitemap-url", action="append", default=None, help="要抓取的 WordPress 站点地图，可重复指定")
+    parser.add_argument("--url-path-prefix", action="append", default=None, help="只抓取指定 URL 路径前缀，可重复指定，例如 djs/")
     args = parser.parse_args()
     with (args.root / "outputs/national_prefecture_panel_2018_2026/dim_city.csv").open(encoding="utf-8-sig", newline="") as handle:
         city_master = list(csv.DictReader(handle))
-    print(json.dumps(crawl_hongheiku_bulletins(args.root, city_master, args.workers, args.sitemap_url), ensure_ascii=False))
+    print(
+        json.dumps(
+            crawl_hongheiku_bulletins(
+                args.root,
+                city_master,
+                args.workers,
+                args.sitemap_url,
+                args.url_path_prefix or (),
+            ),
+            ensure_ascii=False,
+        )
+    )
 
 
 if __name__ == "__main__":
@@ -406,6 +626,7 @@ if __name__ == "__main__":
 
 __all__ = [
     "crawl_hongheiku_bulletins",
+    "crawl_hongheiku_wp_api",
     "is_target_bulletin_title",
     "load_hongheiku_city_bulletin_sources",
 ]
