@@ -6465,7 +6465,7 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
 
 # 江西省 2025 年区域研究精确表格：上交所公开披露的中证鹏元跟踪评级报告
 # 第 7—8 页表 2 一次列示 11 个地级市的 GDP、实际增速、一般公共预算收入和
-# 政府性基金收入。本批只接入此前缺少高等级值的 9 市；南昌、景德镇已有更高
+# 政府性基金收入；表中不含一般公共预算支出。本批只接入此前缺少高等级值的 9 市；南昌、景德镇已有更高
 # 优先级的官方城市预算来源，不用 B2 表格覆盖。表格明确为 2025 年值、全市口径，
 # 评级报告注明资料来源为各地级市政府网站，按 B2 精确表格纳入。
 _JIANGXI_2025_REGIONAL_FISCAL_SPECS = (
@@ -6478,6 +6478,41 @@ _JIANGXI_2025_REGIONAL_FISCAL_SPECS = (
     ("宜春市", "CN-360900", "YICHUN"),
     ("抚州市", "CN-361000", "FUZHOU"),
     ("上饶市", "CN-361100", "SHANGRAO"),
+)
+
+# 鹤岗市政府官网 2025 年统计公报，直接披露全市 GDP、实际增速和一般公共预算
+# 收支；全市口径，不使用全口径财政收支或市本级数据。
+CITY_YEAR_FISCAL_SOURCES += (
+    {
+        "year": 2025,
+        "city_name": "鹤岗市",
+        "city_id": "CN-230400",
+        "source_doc_id": "SRC-A2-HEGANG-CITY-BULLETIN-2025-CORE",
+        "url": "https://www.hegang.gov.cn/hegang/tjgb/202608/92535.shtml",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "hegang_2025_statistical_bulletin.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "hegang_2025_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "鹤岗市2025年国民经济和社会发展统计公报",
+        "publisher": "鹤岗市统计局",
+        "publisher_level": "鹤岗市政府官网官方统计公报",
+        "publication_date": "2026-08-06",
+        "source_grade": "A2",
+        "source_format": "html",
+        "data_status": "execution",
+        "data_status_label": "2025年初步统计/执行数",
+        "document_type": "官方统计公报（网页）",
+        "page_number": "网页正文第‘一、综合’及第‘七、财政、金融和保险’",
+        "raw_unit": "亿元",
+        "raw_units": {"gdp_real_growth_pct": "%"},
+        "patterns": {
+            "gdp_current_100m": r"地区生产总值（GDP）([0-9.]+)亿元",
+            "gdp_real_growth_pct": r"地区生产总值（GDP）[0-9.]+亿元，按不变价计算，同比增长([0-9.]+)%",
+            "general_public_revenue_100m": r"一般公共预算收入([0-9.]+)亿元",
+            "general_public_expenditure_100m": r"一般公共预算支出([0-9.]+)亿元",
+        },
+        "source_locator": "网页正文第‘一、综合’及第‘七、财政、金融和保险’；城市=鹤岗市；2025年全市初步统计/执行数",
+        "note": "A2官方统计公报；GDP及增速来自市（地）生产总值统一核算结果，一般预算收入和支出从全口径财政收支中明确区分；行政范围为鹤岗市全市，不使用全口径财政收支或市本级数。",
+    },
 )
 CITY_YEAR_FISCAL_SOURCES += tuple(
     {
@@ -6509,7 +6544,7 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
             "gov_fund_revenue_100m": rf"{city_name}\|[0-9.,]+\|[0-9.-]+\|[0-9,]+\|[0-9.,]+\|([0-9.,]+)",
         },
         "source_locator": f"PDF第7—8页表2；城市={city_name}；2025年全市执行数",
-        "note": f"B2精确表格；报告表2列示{city_name}2025年GDP、实际增速、一般公共预算收入和政府性基金收入，资料来源为各地级市政府网站；不使用市本级数，不以图表目测代替表格值。",
+        "note": f"B2精确表格；报告表2列示{city_name}2025年GDP、实际增速、一般公共预算收入和政府性基金收入，表中不含一般公共预算支出；资料来源为各地级市政府网站；不使用市本级数，不以图表目测代替表格值。",
     }
     for city_name, city_id, slug in _JIANGXI_2025_REGIONAL_FISCAL_SPECS
 )

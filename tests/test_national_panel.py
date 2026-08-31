@@ -2496,7 +2496,12 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(rows[0]["fund_revenue_dependence_pct"], Decimal("38.91"))
         self.assertEqual(
             {item["target_field"] for item in lineage},
-            {"gdp_current_100m", "gdp_real_growth_pct", "general_public_revenue_100m", "gov_fund_revenue_100m"},
+            {
+                "gdp_current_100m",
+                "gdp_real_growth_pct",
+                "general_public_revenue_100m",
+                "gov_fund_revenue_100m",
+            },
         )
         baoshan = values[("CN-530500", "2025")]
         self.assertEqual(baoshan["general_public_revenue_100m"], Decimal("65.42"))
@@ -3555,6 +3560,23 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(len(report_sources), 18)
         self.assertEqual({source["source_grade"] for source in report_sources}, {"B2"})
         self.assertTrue(all(values[(city_id, "2025")]["page_number"] == "9" for city_id in expected))
+
+    def test_hegang_2025_official_bulletin_fills_four_target_fields(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        record = values[("CN-230400", "2025")]
+        self.assertEqual(record["gdp_current_100m"], Decimal("392.20"))
+        self.assertEqual(record["gdp_real_growth_pct"], Decimal("5.10"))
+        self.assertEqual(record["general_public_revenue_100m"], Decimal("36.60"))
+        self.assertEqual(record["general_public_expenditure_100m"], Decimal("144.70"))
+        self.assertIn("2025年初步统计/执行数", record["source_locator"])
+        source = next(
+            item
+            for item in sources
+            if item["source_doc_id"] == "SRC-A2-HEGANG-CITY-BULLETIN-2025-CORE"
+        )
+        self.assertEqual(source["publisher"], "鹤岗市统计局")
+        self.assertEqual(source["source_grade"], "A2")
 
     def test_langfang_2025_official_budget_report_extracts_whole_city_fiscal_values(self):
         values, sources = load_city_year_fiscal_sources()
