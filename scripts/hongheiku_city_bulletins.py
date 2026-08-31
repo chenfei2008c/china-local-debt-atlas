@@ -39,8 +39,10 @@ SOURCE_GRADE = "B2"
 TARGET_FIELDS = (
     "gdp_current_100m",
     "gdp_real_growth_pct",
+    "resident_population_10k",
     "general_public_revenue_100m",
     "general_public_expenditure_100m",
+    "gov_fund_revenue_100m",
 )
 XML_NS = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
 SHORT_ALIASES = {
@@ -157,6 +159,20 @@ def _publisher(text: str) -> str:
     return value or "地方统计局（红黑统计公报库转载）"
 
 
+def _is_prefecture_bulletin_text(text: str) -> bool:
+    """按转载页正文分类再次确认地级市口径，排除县区公报误匹配。"""
+
+    compact = _compact(text)
+    # 站点公共导航同时包含“县级统计公报”和“地级市统计公报”，不能只按
+    # 页面全文查找；只检查正文开头的面包屑/分类元信息。
+    header = compact[:1600]
+    if re.search(r"当前位置：[^。]{0,120}>(?:县级|区县)统计公报", header):
+        return False
+    if re.search(r"分类：(?:县级|区县)统计公报", header):
+        return False
+    return True
+
+
 def _fetch(url: str) -> tuple[bytes, str] | None:
     try:
         response = urlopen(
@@ -206,6 +222,8 @@ def _fetch_candidate(url: str, city_master: list[Mapping[str, Any]]) -> dict[str
     if not city:
         return None
     text = _page_text(body)
+    if not _is_prefecture_bulletin_text(text):
+        return None
     values = parse_bulletin_text(text)
     values = {field: value for field, value in values.items() if field in TARGET_FIELDS}
     if not values:
@@ -310,13 +328,18 @@ def load_hongheiku_city_bulletin_sources(
         raw_units = {
             "gdp_current_100m": "亿元",
             "gdp_real_growth_pct": "%",
+            "resident_population_10k": "万人",
             "general_public_revenue_100m": "亿元",
             "general_public_expenditure_100m": "亿元",
+            "gov_fund_revenue_100m": "亿元",
         }
         stored_values = dict(item.get("values") or {})
+        bulletin_text = str(item.get("text") or "")
+        if not _is_prefecture_bulletin_text(bulletin_text):
+            continue
         # 快照保留原始解析结果；加载时用当前解析器只补充快照正文中
         # 当时未识别的规范字段，便于解析规则修复后无需重抓网页。
-        for field, parsed in parse_bulletin_text(str(item.get("text") or "")).items():
+        for field, parsed in parse_bulletin_text(bulletin_text).items():
             if field in TARGET_FIELDS and field not in stored_values:
                 stored_values[field] = str(parsed)
         for field, raw in stored_values.items():
@@ -327,7 +350,7 @@ def load_hongheiku_city_bulletin_sources(
             record[field] = value
             record[f"{field}_raw_100m"] = value
             record[f"{field}_raw_unit"] = raw_units[field]
-            record[f"{field}_evidence_excerpt"] = f"{item.get('title')}；{field}={raw}；正文={str(item.get('text') or '')[:500]}"
+            record[f"{field}_evidence_excerpt"] = f"{item.get('title')}；{field}={raw}；正文={bulletin_text[:500]}"
             record["_field_sources"][field] = dict(record)
         if not record["_field_sources"]:
             continue

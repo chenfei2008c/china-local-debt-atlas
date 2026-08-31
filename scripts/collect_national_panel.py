@@ -13678,6 +13678,7 @@ def main() -> None:
             "resident_population_10k",
             "general_public_revenue_100m",
             "general_public_expenditure_100m",
+            "gov_fund_revenue_100m",
         ):
             candidate_value = as_decimal(candidate.get(field))
             if candidate_value is None:
@@ -13718,8 +13719,10 @@ def main() -> None:
         for field in (
             "gdp_current_100m",
             "gdp_real_growth_pct",
+            "resident_population_10k",
             "general_public_revenue_100m",
             "general_public_expenditure_100m",
+            "gov_fund_revenue_100m",
         ):
             candidate_value = as_decimal(candidate.get(field))
             if candidate_value is None:

@@ -64,6 +64,7 @@ from scripts.gotohui_snapshot_collector import (
     merge_snapshot_series,
 )
 from scripts.crei_city_bulletins import is_target_bulletin_title, parse_bulletin_text
+from scripts.hongheiku_city_bulletins import load_hongheiku_city_bulletin_sources
 from scripts.province_debt_sources import extract_official_debt_facts
 
 
@@ -750,6 +751,26 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(parsed["resident_population_10k"], Decimal("397.64"))
         self.assertEqual(parsed["general_public_revenue_100m"], Decimal("123.45"))
         self.assertEqual(parsed["general_public_expenditure_100m"], Decimal("234.56"))
+
+    def test_bulletin_parser_reads_population_in_people_and_government_fund_revenue(self):
+        parsed = parse_bulletin_text(
+            "年末全市常住人口3294517人。全市政府性基金预算收入14.4亿元。"
+        )
+        self.assertEqual(parsed["resident_population_10k"], Decimal("329.45"))
+        self.assertEqual(parsed["gov_fund_revenue_100m"], Decimal("14.40"))
+
+    def test_hongheiku_loader_backfills_population_and_fund_but_excludes_county_pages(self):
+        root = Path(__file__).resolve().parents[1]
+        with (root / "outputs/national_prefecture_panel_2018_2026/dim_city.csv").open(
+            encoding="utf-8-sig", newline=""
+        ) as handle:
+            city_master = list(csv.DictReader(handle))
+        values, _sources = load_hongheiku_city_bulletin_sources(root, city_master)
+
+        daqing = values[("CN-230600", "2022")]
+        self.assertEqual(daqing["resident_population_10k"], Decimal("272.70"))
+        self.assertEqual(daqing["gov_fund_revenue_100m"], Decimal("14.90"))
+        self.assertNotIn(("CN-371400", "2025"), values)
 
     def test_crei_bulletin_parser_does_not_use_later_deposit_balance_as_revenue(self):
         parsed = parse_bulletin_text(

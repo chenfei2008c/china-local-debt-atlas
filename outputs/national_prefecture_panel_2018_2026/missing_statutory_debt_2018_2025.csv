@@ -7,4 +7,4 @@ CN-460300,三沙市,海南省,2022,core,provisional,SRC-CITY-PANEL-1990-2023,D,n
 CN-460300,三沙市,海南省,2023,core,provisional,SRC-CITY-PANEL-1990-2023,D,needs_review,公开研究型城市面板；字段口径与来源链条未完全公开，作为 provisional 暂存值，待官方年鉴/公报复核。
 CN-460300,三沙市,海南省,2024,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
 CN-460300,三沙市,海南省,2025,core,not_collected,,,needs_collection,未取得可审计的公开数值，保留 null，后续进入采集队列。
-CN-620900,酒泉市,甘肃省,2025,core,preliminary,SRC-B2-CREI-CITY-BULLETIN-CN-620900-2025;SRC-B2-HONGHEIKU-CITY-BULLETIN-CN-620900-2025,B2,extracted,未取得可审计的公开数值，保留 null，后续进入采集队列。；已接入2025年酒泉市官方预算执行报告；财政三项字段为全市快报数，保留execution状态，不改写为最终决算。
+CN-620900,酒泉市,甘肃省,2025,core,preliminary,SRC-B2-CREI-CITY-BULLETIN-CN-620900-2025,B2,extracted,未取得可审计的公开数值，保留 null，后续进入采集队列。；已接入2025年酒泉市官方预算执行报告；财政三项字段为全市快报数，保留execution状态，不改写为最终决算。

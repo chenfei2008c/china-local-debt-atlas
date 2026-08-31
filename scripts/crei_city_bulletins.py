@@ -81,7 +81,7 @@ def _decimal(raw: str, unit: str) -> Decimal:
         value = Decimal(normalized)
     except (InvalidOperation, ValueError):
         raise ValueError(f"无法解析公报数值：{raw!r}") from None
-    if unit == "万元":
+    if unit in {"万元", "人"}:
         value /= Decimal("10000")
     return value.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
 
@@ -99,7 +99,7 @@ def _amount_after(text: str, label_pattern: str) -> Decimal | None:
 
 
 def parse_bulletin_text(text: str) -> dict[str, Decimal]:
-    """从公报正文提取可直接定位的五项经济财政字段。"""
+    """从公报正文提取可直接定位的经济财政、人口和基金收入字段。"""
 
     text = re.sub(r"\s+", " ", text or "")
     result: dict[str, Decimal] = {}
@@ -114,11 +114,12 @@ def parse_bulletin_text(text: str) -> dict[str, Decimal]:
         if growth:
             result["gdp_real_growth_pct"] = _decimal(growth.group(1), "%")
     population = re.search(
-        r"(?<!城镇)(?:年末[^。；;\n]{0,20}?常住(?:总)?人口|常住(?:总)?人口)[^。；;\n]{0,40}?([0-9][0-9,.\s，．]*)\s*万人",
+        r"(?<!城镇)(?:年末[^。；;\n]{0,30}?常住(?:总)?人口|常住(?:总)?人口)"
+        r"[^。；;\n]{0,60}?([0-9][0-9,.\s，．]*)\s*(万人|人)",
         text,
     )
     if population:
-        result["resident_population_10k"] = _decimal(population.group(1), "万人")
+        result["resident_population_10k"] = _decimal(population.group(1), population.group(2))
     revenue = _amount_after(
         text,
         r"(?:地方)?(?:一般公共预算收入|一般公共财政预算收入|公共财政预算收入|公共财政一般预算收入)",
@@ -131,6 +132,9 @@ def parse_bulletin_text(text: str) -> dict[str, Decimal]:
     )
     if expenditure is not None:
         result["general_public_expenditure_100m"] = expenditure
+    fund_revenue = _amount_after(text, r"政府性基金(?:预算)?收入")
+    if fund_revenue is not None:
+        result["gov_fund_revenue_100m"] = fund_revenue
     return result
 
 
@@ -254,6 +258,7 @@ def load_crei_city_bulletin_sources(root: Path, city_master: list[Mapping[str, A
             "resident_population_10k": "万人",
             "general_public_revenue_100m": "亿元",
             "general_public_expenditure_100m": "亿元",
+            "gov_fund_revenue_100m": "亿元",
         }
         stored_values = dict(item.get("values") or {})
         # 快照保留原始解析结果；加载时用当前解析器只补充快照正文中
