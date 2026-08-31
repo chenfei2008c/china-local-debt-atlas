@@ -81,6 +81,7 @@ try:
     from scripts.jiyuan_historical_bulletins import JIYUAN_HISTORICAL_SOURCES
     from scripts.jinan_laiwu_yearbook import JINAN_LAIWU_YEARBOOK_SOURCES
     from scripts.xinjiang_bingtuan_core import XPCC_CORE_SOURCES
+    from scripts.sichuan_aba_core import SICHUAN_ABA_CORE_SOURCES
     from scripts.yushu_budget_2024 import YUSHU_2024_BUDGET_SOURCE
     from scripts.hainan_sansha_residual import (
         HAINAN_SANSHA_RESIDUAL_SOURCES,
@@ -117,6 +118,7 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
     from jiyuan_historical_bulletins import JIYUAN_HISTORICAL_SOURCES
     from jinan_laiwu_yearbook import JINAN_LAIWU_YEARBOOK_SOURCES
     from xinjiang_bingtuan_core import XPCC_CORE_SOURCES
+    from sichuan_aba_core import SICHUAN_ABA_CORE_SOURCES
     from yushu_budget_2024 import YUSHU_2024_BUDGET_SOURCE
     from hainan_sansha_residual import (
         HAINAN_SANSHA_RESIDUAL_SOURCES,
@@ -11415,6 +11417,7 @@ CITY_YEAR_FISCAL_SOURCES += (HAINAN_DIRECT_ADMIN_2025_MONTHLY_SOURCE,)
 CITY_YEAR_FISCAL_SOURCES += tuple(HENAN_DIRECT_ADMIN_BULLETIN_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(JIYUAN_HISTORICAL_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(XPCC_CORE_SOURCES)
+CITY_YEAR_FISCAL_SOURCES += tuple(SICHUAN_ABA_CORE_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(JINAN_LAIWU_YEARBOOK_SOURCES)
 
 # 通化市财政局（市政府公开专栏）2026年预算公开附件补入2025年市区全域
