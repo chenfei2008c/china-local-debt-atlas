@@ -3640,6 +3640,25 @@ class NationalPanelTests(unittest.TestCase):
         self.assertIn("SRC-A2-CHUZHOU-CITY-BULLETIN-2024-FISCAL", source_ids)
         self.assertIn("SRC-A2-WUZHONG-CITY-FISCAL-2024", source_ids)
 
+    def test_xuchang_and_baiyin_2024_official_fiscal_sources_fill_gaps(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        xuchang = values[("CN-411000", "2024")]
+        self.assertEqual(xuchang["general_public_revenue_100m"], Decimal("183.90"))
+        self.assertEqual(xuchang["general_public_expenditure_100m"], Decimal("364.10"))
+        self.assertIn("SRC-A2-XUCHANG-CITY-BULLETIN-2024-FISCAL", xuchang["source_doc_id"])
+        self.assertEqual(xuchang["source_grade"], "A2")
+
+        baiyin = values[("CN-620400", "2024")]
+        self.assertEqual(baiyin["general_public_revenue_100m"], Decimal("40.13"))
+        self.assertEqual(baiyin["general_public_expenditure_100m"], Decimal("223.39"))
+        self.assertIn("SRC-A2-BAIYIN-CITY-ECONOMIC-RUN-2024-FISCAL", baiyin["source_doc_id"])
+        self.assertEqual(baiyin["source_grade"], "A2")
+
+        source_ids = {item["source_doc_id"] for item in sources}
+        self.assertIn("SRC-A2-XUCHANG-CITY-BULLETIN-2024-FISCAL", source_ids)
+        self.assertIn("SRC-A2-BAIYIN-CITY-ECONOMIC-RUN-2024-FISCAL", source_ids)
+
     def test_langfang_2025_official_budget_report_extracts_whole_city_fiscal_values(self):
         values, sources = load_city_year_fiscal_sources()
         langfang = values[("CN-131000", "2025")]

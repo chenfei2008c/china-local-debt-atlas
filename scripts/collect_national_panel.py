@@ -8433,6 +8433,71 @@ CITY_YEAR_FISCAL_SOURCES += (
     },
 )
 
+# 许昌、白银2024年官方材料补入全市一般公共预算收入和支出。
+# 许昌统计公报正文已收录于官方《许昌统计年鉴2025》；白银采用市政府
+# 发布的2024年经济运行网页。两份材料均明确“全市”口径，不使用市本级、
+# 县区或部门预算数字。
+CITY_YEAR_FISCAL_SOURCES += (
+    {
+        "year": 2024,
+        "city_name": "许昌市",
+        "city_id": "CN-411000",
+        "source_doc_id": "SRC-A2-XUCHANG-CITY-BULLETIN-2024-FISCAL",
+        "url": "https://www.xuchang.gov.cn/xcsrmzfsjfb/037003/20250430/5cf2ea50-a46d-45fd-89e4-cf3648f50145.html",
+        "download_url": "https://www.xuchang.gov.cn/BigFileUpLoadStorage/temp/2026-04-29/2a3644d2-953e-42af-87d2-effcd2f9b703/%E8%AE%B8%E6%98%8C%E7%BB%9F%E8%AE%A1%E5%B9%B4%E9%89%B4-2025.pdf",
+        "attachment_url": "https://www.xuchang.gov.cn/BigFileUpLoadStorage/temp/2026-04-29/2a3644d2-953e-42af-87d2-effcd2f9b703/%E8%AE%B8%E6%98%8C%E7%BB%9F%E8%AE%A1%E5%B9%B4%E9%89%B4-2025.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "official" / "xuchang_statistical_yearbook_2025.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "official" / "xuchang_2024_statistical_bulletin_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2024年许昌市国民经济和社会发展统计公报（收录于许昌统计年鉴2025）",
+        "publisher": "许昌市统计局",
+        "publisher_level": "市级统计机构官方统计年鉴及统计公报",
+        "publication_date": "2025-04-30",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "data_status": "execution",
+        "data_status_label": "2024年全市财政实际完成数",
+        "document_type": "官方统计年鉴收录的城市统计公报",
+        "page_number": "官方PDF第47页（年鉴印刷页码—27—）",
+        "raw_unit": "亿元",
+        "raw_units": {},
+        "patterns": {
+            "general_public_revenue_100m": r"全年全市一般公共预算收入\s*([0-9.]+)\s*亿元",
+            "general_public_expenditure_100m": r"一般公共预算支出\s*([0-9.]+)\s*亿元",
+        },
+        "source_locator": "xuchang_2024_statistical_bulletin_excerpt.txt；官方统计年鉴PDF第47页；城市=许昌市；2024年全市财政实际完成数",
+        "note": "A2许昌市统计局官方材料；公报正文入口页当前下线，但同一公报已收录于官方《许昌统计年鉴2025》，全市一般公共预算收入183.9亿元、支出364.1亿元；不使用市本级44.6亿元和91.1亿元。",
+    },
+    {
+        "year": 2024,
+        "city_name": "白银市",
+        "city_id": "CN-620400",
+        "source_doc_id": "SRC-A2-BAIYIN-CITY-ECONOMIC-RUN-2024-FISCAL",
+        "url": "https://www.baiyin.gov.cn/zwgk/zfxxgk/xqbmptlj/stjj/fdzdgknr/tjxx/sjfb/art/2025/art_f32eb213f21343afaa8a093b8b22bb5b.html",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "official" / "baiyin_2024_economic_run.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "official" / "baiyin_2024_economic_run_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2024年白银市经济运行情况",
+        "publisher": "白银市人民政府（白银市统计局数据发布）",
+        "publisher_level": "市级政府及统计机构官方数据发布",
+        "publication_date": "2025-01-24",
+        "source_grade": "A2",
+        "source_format": "html",
+        "data_status": "execution",
+        "data_status_label": "2024年全市财政公开值",
+        "document_type": "官方经济运行数据发布页",
+        "page_number": "网页正文‘七、财政收支稳步增长’",
+        "raw_unit": "亿元",
+        "raw_units": {},
+        "patterns": {
+            "general_public_revenue_100m": r"全年全市一般公共预算收入完成\s*([0-9.]+)\s*亿元",
+            "general_public_expenditure_100m": r"一般公共预算支出完成\s*([0-9.]+)\s*亿元",
+        },
+        "source_locator": "baiyin_2024_economic_run_excerpt.txt；官方网页‘七、财政收支稳步增长’；城市=白银市；2024年全市财政公开值",
+        "note": "A2白银市人民政府官方数据发布页；页面明确全市一般公共预算收入40.13亿元、支出223.39亿元；不使用市级收入、县区收入或部门预算支出。",
+    },
+)
+
 CITY_YEAR_FISCAL_SOURCES += tuple(
     _make_curated_city_source(**spec) for spec in _CURATED_2024_2025_MACRO_PRIORITY_SPECS
 )
