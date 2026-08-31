@@ -3659,6 +3659,29 @@ class NationalPanelTests(unittest.TestCase):
         self.assertIn("SRC-A2-XUCHANG-CITY-BULLETIN-2024-FISCAL", source_ids)
         self.assertIn("SRC-A2-BAIYIN-CITY-ECONOMIC-RUN-2024-FISCAL", source_ids)
 
+    def test_baoshan_and_suihua_2024_official_bulletins_fill_all_four_core_fields(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        baoshan = values[("CN-530500", "2024")]
+        self.assertEqual(baoshan["gdp_current_100m"], Decimal("1281.91"))
+        self.assertEqual(baoshan["gdp_real_growth_pct"], Decimal("2.60"))
+        self.assertEqual(baoshan["general_public_revenue_100m"], Decimal("60.22"))
+        self.assertEqual(baoshan["general_public_expenditure_100m"], Decimal("253.84"))
+        self.assertIn("SRC-A2-BAOSHAN-CITY-BULLETIN-2024-MACRO-FISCAL", baoshan["source_doc_id"])
+        self.assertEqual(baoshan["source_grade"], "A2")
+
+        suihua = values[("CN-231200", "2024")]
+        self.assertEqual(suihua["gdp_current_100m"], Decimal("1244.00"))
+        self.assertEqual(suihua["gdp_real_growth_pct"], Decimal("3.20"))
+        self.assertEqual(suihua["general_public_revenue_100m"], Decimal("83.40"))
+        self.assertEqual(suihua["general_public_expenditure_100m"], Decimal("558.40"))
+        self.assertIn("SRC-A2-SUIHUA-CITY-BULLETIN-2024-MACRO-FISCAL", suihua["source_doc_id"])
+        self.assertEqual(suihua["source_grade"], "A2")
+
+        source_ids = {item["source_doc_id"] for item in sources}
+        self.assertIn("SRC-A2-BAOSHAN-CITY-BULLETIN-2024-MACRO-FISCAL", source_ids)
+        self.assertIn("SRC-A2-SUIHUA-CITY-BULLETIN-2024-MACRO-FISCAL", source_ids)
+
     def test_langfang_2025_official_budget_report_extracts_whole_city_fiscal_values(self):
         values, sources = load_city_year_fiscal_sources()
         langfang = values[("CN-131000", "2025")]
