@@ -86,6 +86,12 @@ try:
     from scripts.sichuan_liangshan_bulletins import SICHUAN_LIANGSHAN_BULLETIN_SOURCES
     from scripts.yunnan_yearbooks import YUNNAN_YEARBOOK_SOURCES
     from scripts.yunnan_growth_sources import YUNNAN_GDP_GROWTH_SOURCES
+    from scripts.xinjiang_2020_yearbook import (
+        XINJIANG_2020_SOURCE_IDS,
+        XINJIANG_GDP_INDEX_FORMULA_DEPENDENCY,
+        XINJIANG_GDP_INDEX_FORMULA_REGISTRY,
+        load_xinjiang_2020_yearbook_sources,
+    )
     from scripts.yushu_budget_2024 import YUSHU_2024_BUDGET_SOURCE
     from scripts.hainan_sansha_residual import (
         HAINAN_SANSHA_RESIDUAL_SOURCES,
@@ -127,6 +133,12 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
     from sichuan_liangshan_bulletins import SICHUAN_LIANGSHAN_BULLETIN_SOURCES
     from yunnan_yearbooks import YUNNAN_YEARBOOK_SOURCES
     from yunnan_growth_sources import YUNNAN_GDP_GROWTH_SOURCES
+    from xinjiang_2020_yearbook import (
+        XINJIANG_2020_SOURCE_IDS,
+        XINJIANG_GDP_INDEX_FORMULA_DEPENDENCY,
+        XINJIANG_GDP_INDEX_FORMULA_REGISTRY,
+        load_xinjiang_2020_yearbook_sources,
+    )
     from yushu_budget_2024 import YUSHU_2024_BUDGET_SOURCE
     from hainan_sansha_residual import (
         HAINAN_SANSHA_RESIDUAL_SOURCES,
@@ -11512,7 +11524,7 @@ CITY_YEAR_FISCAL_SOURCES += (
 CITY_YEAR_FISCAL_SOURCES += tuple(HAINAN_SANSHA_RESIDUAL_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(DIRECT_ADMIN_GDP_GROWTH_SOURCES)
 
-CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
+CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES} | XINJIANG_2020_SOURCE_IDS
 
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
 
@@ -14685,6 +14697,73 @@ def quality_report(city_master: list[dict[str, Any]], macro_rows: list[dict[str,
     }
 
 
+def merge_city_year_fiscal_batch(
+    target: dict[tuple[str, str], dict[str, Any]],
+    candidates: Mapping[tuple[str, str], Mapping[str, Any]],
+) -> tuple[int, int]:
+    """按字段等级合并一批城市年度来源，返回补空数和升级替换数。"""
+
+    fields = (
+        "gdp_current_100m",
+        "gdp_real_growth_pct",
+        "resident_population_10k",
+        "general_public_revenue_100m",
+        "general_public_expenditure_100m",
+        "gov_fund_revenue_100m",
+        "statutory_debt_limit_100m",
+        "statutory_debt_balance_100m",
+    )
+    filled = 0
+    upgraded = 0
+    for key, candidate in candidates.items():
+        prior = target.get(key)
+        if prior is None:
+            target[key] = dict(candidate)
+            filled += sum(as_decimal(candidate.get(field)) is not None for field in fields)
+            continue
+        field_sources = dict(prior.get("_field_sources") or {})
+        source_ids = [item for item in str(prior.get("source_doc_id") or "").split(";") if item]
+        source_ids.extend(
+            item for item in str(candidate.get("source_doc_id") or "").split(";")
+            if item and item not in source_ids
+        )
+        for field in fields:
+            candidate_value = as_decimal(candidate.get(field))
+            if candidate_value is None:
+                continue
+            candidate_source = dict(candidate.get("_field_sources", {}).get(field, candidate))
+            prior_source = field_sources.get(field, prior)
+            prior_value = as_decimal(prior.get(field))
+            prior_grade = str(prior_source.get("source_grade") or "")
+            candidate_grade = str(candidate_source.get("source_grade") or candidate.get("source_grade") or "")
+            candidate_rank = SOURCE_GRADE_RANK.get(candidate_grade, -1)
+            prior_rank = SOURCE_GRADE_RANK.get(prior_grade, -1)
+            if prior_value is None:
+                prior[field] = candidate_value
+                field_sources[field] = candidate_source
+                filled += 1
+            elif candidate_rank > prior_rank:
+                if prior_value != candidate_value:
+                    upgraded += 1
+                prior[field] = candidate_value
+                field_sources[field] = candidate_source
+            elif prior_value != candidate_value:
+                conflicts = list(prior.get("_field_conflicts") or [])
+                conflicts.append({
+                    "field": field,
+                    "prior_value": str(prior_value),
+                    "candidate_value": str(candidate_value),
+                    "prior_source_doc_id": str(prior_source.get("source_doc_id") or ""),
+                    "candidate_source_doc_id": str(candidate_source.get("source_doc_id") or ""),
+                })
+                prior["_field_conflicts"] = conflicts
+        prior["source_doc_id"] = ";".join(source_ids)
+        prior["_field_sources"] = field_sources
+        if SOURCE_GRADE_RANK.get(str(candidate.get("source_grade") or ""), -1) > SOURCE_GRADE_RANK.get(str(prior.get("source_grade") or ""), -1):
+            prior["source_grade"] = str(candidate.get("source_grade") or "")
+    return filled, upgraded
+
+
 def main() -> None:
     rosters, province_maps, area_hashes = load_rosters()
     city_master = build_city_master(rosters, province_maps=province_maps)
@@ -14732,6 +14811,9 @@ def main() -> None:
     xinjiang_city_fund, xinjiang_city_fund_sources = load_xinjiang_2024_city_fund_sources()
     jiangsu_city_fiscal, jiangsu_city_fiscal_sources = load_jiangsu_city_fiscal_sources()
     city_year_fiscal, city_year_fiscal_sources = load_city_year_fiscal_sources()
+    xinjiang_2020_macro, xinjiang_2020_sources = load_xinjiang_2020_yearbook_sources(
+        ROOT, city_master
+    )
     crei_city_bulletins, crei_city_bulletin_sources = load_crei_city_bulletin_sources(ROOT, city_master)
     # CREI转载的地方统计局公报按字段合并：只补空值或替换D级暂存值，
     # 不覆盖A1/A2/B1/B2正式字段；城市和年度不一致的记录不会进入主表。
@@ -15076,6 +15158,10 @@ def main() -> None:
     city_year_fiscal_sources.extend(haidatas_city_panel_sources)
     city_year_fund, city_year_fund_sources = load_city_year_fund_sources()
     city_yearbook_macro, city_yearbook_sources = load_city_yearbook_sources(ROOT, city_master)
+    # 所有研究型/二手批次完成后再做一次 A1 仲裁，确保低等级面板不会遮蔽
+    # 新疆统计局 2020 年地州年鉴的字段级血缘。
+    merge_city_year_fiscal_batch(city_year_fiscal, xinjiang_2020_macro)
+    city_year_fiscal_sources.extend(xinjiang_2020_sources)
     city_year_fund.update(xinjiang_city_fund)
     city_year_fund_sources.extend(xinjiang_city_fund_sources)
     gd_2025_gdp = {
@@ -15175,6 +15261,8 @@ def main() -> None:
     formula_dependency.extend(dict(item) for item in HAINAN_SANSHA_FORMULA_DEPENDENCY)
     formula_registry.append(dict(DIRECT_ADMIN_GDP_GROWTH_FORMULA_REGISTRY))
     formula_dependency.extend(dict(item) for item in DIRECT_ADMIN_GDP_GROWTH_FORMULA_DEPENDENCY)
+    formula_registry.append(dict(XINJIANG_GDP_INDEX_FORMULA_REGISTRY))
+    formula_dependency.extend(dict(item) for item in XINJIANG_GDP_INDEX_FORMULA_DEPENDENCY)
     # CEIC 合计和海南省级合计差额等非标准派生值，都必须把字段血缘中的
     # 公式、输入记录和计算说明复制到独立计算底稿，不能只保留一个数值。
     calc_rows.extend(

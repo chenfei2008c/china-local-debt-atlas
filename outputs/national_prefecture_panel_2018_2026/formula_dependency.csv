@@ -21,3 +21,4 @@ F-HN-SANSHA-GDP-RESIDUAL,hainan_province_gdp_total_100m,input,v1.0
 F-HN-SANSHA-GDP-RESIDUAL,hainan_18_city_gdp_sum_100m,input,v1.0
 F-DIRECT-ADMIN-GDP-GROWTH-WEIGHTED,previous_year_component_gdp_100m,input,v1.0
 F-DIRECT-ADMIN-GDP-GROWTH-WEIGHTED,component_gdp_real_growth_pct,input,v1.0
+F-XINJIANG-GDP-INDEX-TO-GROWTH,gdp_index_prev_year_100_pct,input,v1.0
