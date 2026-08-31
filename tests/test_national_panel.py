@@ -3682,6 +3682,42 @@ class NationalPanelTests(unittest.TestCase):
         self.assertIn("SRC-A2-BAOSHAN-CITY-BULLETIN-2024-MACRO-FISCAL", source_ids)
         self.assertIn("SRC-A2-SUIHUA-CITY-BULLETIN-2024-MACRO-FISCAL", source_ids)
 
+    def test_bazhou_2022_2023_and_haidong_2024_fiscal_sources_fill_gaps(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        bazhou_expected = {
+            "2022": ("1519.84", "1.80", "90.94", "290.56"),
+            "2023": ("1601.20", "6.20", "102.85", "303.71"),
+        }
+        fields = (
+            "gdp_current_100m",
+            "gdp_real_growth_pct",
+            "general_public_revenue_100m",
+            "general_public_expenditure_100m",
+        )
+        for year, expected in bazhou_expected.items():
+            bazhou = values[("CN-652800", year)]
+            self.assertEqual(
+                tuple(str(bazhou[field]) for field in fields),
+                expected,
+            )
+            self.assertIn(
+                f"SRC-A2-BAZHOU-CITY-BULLETIN-{year}-MACRO-FISCAL",
+                bazhou["source_doc_id"],
+            )
+            self.assertEqual(bazhou["source_grade"], "A2")
+
+        haidong = values[("CN-630200", "2024")]
+        self.assertEqual(haidong["general_public_revenue_100m"], Decimal("31.36"))
+        self.assertEqual(haidong["general_public_expenditure_100m"], Decimal("292.63"))
+        self.assertIn("SRC-B2-HAIDONG-CITY-BULLETIN-2024-FISCAL", haidong["source_doc_id"])
+        self.assertEqual(haidong["source_grade"], "B2")
+
+        source_ids = {item["source_doc_id"] for item in sources}
+        for year in bazhou_expected:
+            self.assertIn(f"SRC-A2-BAZHOU-CITY-BULLETIN-{year}-MACRO-FISCAL", source_ids)
+        self.assertIn("SRC-B2-HAIDONG-CITY-BULLETIN-2024-FISCAL", source_ids)
+
     def test_langfang_2025_official_budget_report_extracts_whole_city_fiscal_values(self):
         values, sources = load_city_year_fiscal_sources()
         langfang = values[("CN-131000", "2025")]
