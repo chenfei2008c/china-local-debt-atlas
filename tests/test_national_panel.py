@@ -120,6 +120,7 @@ class NationalPanelTests(unittest.TestCase):
             "2019": Decimal("3.61"),
             "2020": Decimal("3.36"),
             "2021": Decimal("2.00"),
+            "2022": Decimal("6.66"),
             "2023": Decimal("0.90"),
             "2024": Decimal("6.42"),
             "2025": Decimal("7.93"),
@@ -136,7 +137,6 @@ class NationalPanelTests(unittest.TestCase):
             self.assertIn("hainan_province_gdp_total_100m", record.get("calculation_input_fields", ""))
             self.assertIn("hainan_18_city_gdp_sum_100m", record.get("calculation_input_fields", ""))
 
-        self.assertNotIn("2022", {year for city_id, year in values if city_id == "CN-460300"})
 
     def test_hubei_direct_admin_yearbook_fills_2018_core_values(self):
         values, sources = load_city_year_fiscal_sources()

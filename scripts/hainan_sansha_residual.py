@@ -73,6 +73,8 @@ def _spec(
 
 _YEARBOOK_2024_PATH = RAW_DIR / "province_fiscal" / "hainan_yearbook" / "2024" / "hainan_2024_yearbook.pdf"
 _YEARBOOK_2024_TEXT = RAW_DIR / "province_fiscal" / "hainan_yearbook" / "2024" / "hainan_2024_sansha_gdp_residual_excerpt.txt"
+_YEARBOOK_2023_PATH = RAW_DIR / "province_fiscal" / "hainan_yearbook" / "2023" / "hainan_2023_sansha_gdp_residual_excerpt.txt"
+_YEARBOOK_2023_TEXT = RAW_DIR / "province_fiscal" / "hainan_yearbook" / "2023" / "hainan_2023_sansha_gdp_residual_excerpt.txt"
 _YEARBOOK_2025_PATH = RAW_DIR / "province_fiscal" / "hainan_yearbook" / "2025" / "hainan_2025_3-12_page74.png"
 _YEARBOOK_2025_TEXT = RAW_DIR / "province_fiscal" / "hainan_yearbook" / "2025" / "hainan_2025_sansha_gdp_residual_excerpt.txt"
 _SANSHA_2025_TEXT = RAW_DIR / "province_fiscal" / "2025" / "official" / "hainan_2025_sansha_gdp_residual_excerpt.txt"
@@ -114,6 +116,21 @@ HAINAN_SANSHA_RESIDUAL_SOURCES = (
         url="https://stats.hainan.gov.cn/tjj/tjsu/ndsj/2024/202412/P020250116308974141111.pdf",
         publication_date="2025-01-16",
         note="2021 年使用《海南统计年鉴2024》表3-1省级总量与表3-12 18个市县行；残差高于两位小数舍入区间。",
+    ),
+    _spec(
+        2022,
+        "6.6579",
+        path=_YEARBOOK_2023_PATH,
+        text_path=_YEARBOOK_2023_TEXT,
+        url="https://stats.hainan.gov.cn/tjj/tjsu/ndsj/2023/202311/P020240603544257625279.pdf",
+        publication_date="2023-11-23",
+        page_number="78（印刷页50）",
+        source_format="txt",
+        note=(
+            "2022 年使用海南统计局2023年统计年鉴表3-12的18个市县行与海南省2022年统计公报省级总量；"
+            "两者均为官方来源，且与主表现有2022年市县GDP版本一致。18行合计6811.5621亿元，"
+            "省级总量6818.22亿元，残差6.6579亿元，超过两位小数舍入区间；不采用2024年鉴的后续修订值。"
+        ),
     ),
     _spec(
         2023,
