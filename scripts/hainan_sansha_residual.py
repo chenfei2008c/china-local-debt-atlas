@@ -32,6 +32,8 @@ def _spec(
     url: str,
     publication_date: str,
     note: str,
+    page_number: str | None = None,
+    source_format: str | None = None,
 ) -> dict[str, object]:
     return {
         "city_name": "三沙市",
@@ -47,12 +49,12 @@ def _spec(
         "publisher_level": "province",
         "publication_date": publication_date,
         "source_grade": "A2",
-        "source_format": "pdf" if path.suffix.lower() == ".pdf" else "png",
+        "source_format": source_format or ("pdf" if path.suffix.lower() == ".pdf" else "png"),
         "document_type": "官方统计年鉴市县表与省级合计差额计算",
         "data_status": "calculated",
         "data_status_label": "官方年鉴合计差额计算值",
         "table_name": "官方统计年鉴市县 GDP 表与省级 GDP 总量差额",
-        "page_number": "70（印刷页42）" if year <= 2023 else "74（印刷页48）",
+        "page_number": page_number or ("70（印刷页42）" if year <= 2023 else "74（印刷页48）"),
         "patterns": {
             "gdp_current_100m": rf"RESIDUAL_GDP_{year}=({raw_value})亿元",
         },
@@ -73,6 +75,7 @@ _YEARBOOK_2024_PATH = RAW_DIR / "province_fiscal" / "hainan_yearbook" / "2024" /
 _YEARBOOK_2024_TEXT = RAW_DIR / "province_fiscal" / "hainan_yearbook" / "2024" / "hainan_2024_sansha_gdp_residual_excerpt.txt"
 _YEARBOOK_2025_PATH = RAW_DIR / "province_fiscal" / "hainan_yearbook" / "2025" / "hainan_2025_3-12_page74.png"
 _YEARBOOK_2025_TEXT = RAW_DIR / "province_fiscal" / "hainan_yearbook" / "2025" / "hainan_2025_sansha_gdp_residual_excerpt.txt"
+_SANSHA_2025_TEXT = RAW_DIR / "province_fiscal" / "2025" / "official" / "hainan_2025_sansha_gdp_residual_excerpt.txt"
 
 
 HAINAN_SANSHA_RESIDUAL_SOURCES = (
@@ -131,6 +134,21 @@ HAINAN_SANSHA_RESIDUAL_SOURCES = (
         note=(
             "2024 年使用《海南统计年鉴2025》表3-12 18个市县行与海南省2024年统计公报省级总量；"
             "公报入口=https://stats.hainan.gov.cn/tjj/tjgb/fzgb/2023_87039/202503/t20250313_3832017.html。"
+        ),
+    ),
+    _spec(
+        2025,
+        "7.9303",
+        path=_SANSHA_2025_TEXT,
+        text_path=_SANSHA_2025_TEXT,
+        url="https://stats.hainan.gov.cn/tjj/ywdt/xwfb/202601/t20260123_4015998.html",
+        publication_date="2026-04-24",
+        page_number="海南省统计局网页；海南省2025年12月份统计月报第36页；海口GDP数据页；三亚、儋州统计公报网页",
+        source_format="txt",
+        note=(
+            "2025 年使用海南省统计局2025年全省GDP官方发布值与2025年12月份统计月报分市县表，"
+            "并以海口市统计局、三亚市统计局和儋州市统计局官方年度GDP补齐表3-12未列示的18行；"
+            "五项输入均为2025年度现价GDP，残差超过省级总量两位小数的舍入区间。"
         ),
     ),
 )

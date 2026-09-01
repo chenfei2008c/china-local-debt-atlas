@@ -122,6 +122,7 @@ class NationalPanelTests(unittest.TestCase):
             "2021": Decimal("2.00"),
             "2023": Decimal("0.90"),
             "2024": Decimal("6.42"),
+            "2025": Decimal("7.93"),
         }
         for year, value in expected.items():
             record = values.get(("CN-460300", year), {})
