@@ -953,6 +953,37 @@ class NationalPanelTests(unittest.TestCase):
         self.assertIn("SRC-A2-SIPING-CITY-FISCAL-2025", siping["source_doc_id"])
         self.assertTrue(any(item["source_doc_id"] == "SRC-A2-SIPING-CITY-FISCAL-2025" for item in sources))
 
+    def test_2024_official_city_core_batch_upgrades_d_provisional_gdp_values(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        jining = values[("CN-370800", "2024")]
+        self.assertEqual(jining["gdp_current_100m"], Decimal("5867.50"))
+        self.assertEqual(
+            jining["_field_sources"]["gdp_current_100m"]["source_grade"],
+            "A2",
+        )
+        self.assertEqual(
+            jining["_field_sources"]["general_public_revenue_100m"]["source_grade"],
+            "A2",
+        )
+
+        mudanjiang = values[("CN-231000", "2024")]
+        self.assertEqual(mudanjiang["gdp_current_100m"], Decimal("1051.40"))
+        self.assertEqual(
+            mudanjiang["_field_sources"]["gdp_current_100m"]["source_grade"],
+            "A2",
+        )
+
+        baoji = values[("CN-610300", "2024")]
+        self.assertEqual(
+            baoji["_field_sources"]["gdp_real_growth_pct"]["source_grade"],
+            "A2",
+        )
+        self.assertIn(
+            "SRC-A2-BAOJI-CITY-STATISTICAL-BULLETIN-2024",
+            {item["source_doc_id"] for item in sources},
+        )
+
     def test_liaoyuan_2025_official_page_uses_local_general_budget_revenue_and_expenditure(self):
         values, sources = load_city_year_fiscal_sources()
         liaoyuan = values[("CN-220400", "2025")]

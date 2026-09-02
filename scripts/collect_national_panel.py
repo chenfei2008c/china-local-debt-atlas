@@ -62,6 +62,7 @@ try:
     from scripts.regional_fiscal_2024 import REGIONAL_FISCAL_2024_SOURCES
     from scripts.city_fiscal_rating_2024_2025 import CITY_FISCAL_RATING_2024_2025_SOURCES
     from scripts.dagong_city_fiscal_2024_2025 import DAGONG_CITY_FISCAL_SOURCES
+    from scripts.official_2024_city_core import OFFICIAL_2024_CITY_CORE_SOURCES
     from scripts.nbs_city_annual_2024 import load_nbs_city_annual_2024
     from scripts.regional_fiscal_2022_2024 import load_regional_fiscal_sources
     from scripts.celma_city_annual import load_celma_city_annual_sources
@@ -114,6 +115,7 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
     from regional_fiscal_2024 import REGIONAL_FISCAL_2024_SOURCES
     from city_fiscal_rating_2024_2025 import CITY_FISCAL_RATING_2024_2025_SOURCES
     from dagong_city_fiscal_2024_2025 import DAGONG_CITY_FISCAL_SOURCES
+    from official_2024_city_core import OFFICIAL_2024_CITY_CORE_SOURCES
     from nbs_city_annual_2024 import load_nbs_city_annual_2024
     from regional_fiscal_2022_2024 import load_regional_fiscal_sources
     from celma_city_annual import load_celma_city_annual_sources
@@ -7147,6 +7149,7 @@ CITY_YEAR_FISCAL_SOURCES += tuple(SUPPLEMENTAL_CITY_FISCAL_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(REGIONAL_FISCAL_2024_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(CITY_FISCAL_RATING_2024_2025_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(DAGONG_CITY_FISCAL_SOURCES)
+CITY_YEAR_FISCAL_SOURCES += tuple(OFFICIAL_2024_CITY_CORE_SOURCES)
 
 # 2024—2025 年新增的省级/城市批量摘录。摘录文件只保留可由入口页、附件或
 # 精确转载逐项核验的全市值；这里用统一的“城市—年度—字段”接口接入，避免
