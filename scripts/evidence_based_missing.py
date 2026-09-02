@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 
-EVIDENCE_CHECKED_AT = "2026-09-01"
+EVIDENCE_CHECKED_AT = "2026-09-02"
 
 CORE_GAP_FIELDS = (
     "gdp_current_100m",
@@ -127,7 +127,8 @@ def _core_rows() -> tuple[dict[str, str], ...]:
                 city_id="CN-659000", city_name_cn="自治区直辖县级行政区划", province_name="新疆生产建设兵团",
                 metric_year=year, field_name=field,
                 evidence_source_doc_ids=(
-                    "SRC-EVIDENCE-MISSING-XPCC-GDP-2024-2025;SRC-EVIDENCE-MISSING-XPCC-FISCAL-POST-2021"
+                    "SRC-EVIDENCE-MISSING-XPCC-GDP-2024-2025;SRC-EVIDENCE-MISSING-XPCC-GDP-REPORT-2025;"
+                    "SRC-EVIDENCE-MISSING-XPCC-GDP-INDEX-2026;SRC-EVIDENCE-MISSING-XPCC-FISCAL-POST-2021"
                     if is_gdp else
                     "SRC-EVIDENCE-MISSING-XPCC-FINANCE-INDEX;SRC-EVIDENCE-MISSING-XPCC-FISCAL-POST-2021"
                 ),
@@ -137,8 +138,8 @@ def _core_rows() -> tuple[dict[str, str], ...]:
                     "兵团财政局预决算公开和信息公开目录；兵团统计局/财政局官方页面；交易所公开评级报告"
                 ),
                 result=(
-                    "兵团官方及交易所资料仅取得2024年前三季度、2025年上半年等阶段性GDP数据，未取得2024或2025全年"
-                    "GDP总量/实际增速；阶段性数据不能代替年度值。"
+                    "兵团统计局公报目录及交易所公开评级材料仅取得2024年前三季度、2025年上半年/前三季度等阶段性GDP"
+                    "数据；评级材料明确未披露2024全年度经济数据，亦未取得2025全年GDP总量/实际增速。阶段性数据不能代替年度值。"
                     if is_gdp else
                     "兵团财政局公开目录和官方评级资料显示，2021年后未继续公开可定位的全兵团年度财政信息；"
                     "2022年上半年收入、预算数或自治区代编的兵团债务收支不能代替全年度全兵团一般预算收支。"
@@ -155,11 +156,14 @@ def _core_rows() -> tuple[dict[str, str], ...]:
             rows.append(_core_row(
                 city_id="CN-133100", city_name_cn="雄安新区", province_name="河北省",
                 metric_year=year, field_name=field,
-                evidence_source_doc_ids="SRC-EVIDENCE-MISSING-XIONGAN-GDP-STATUS;SRC-EVIDENCE-MISSING-XIONGAN-DECISION",
+                evidence_source_doc_ids=(
+                    "SRC-EVIDENCE-MISSING-XIONGAN-GDP-STATUS;SRC-EVIDENCE-MISSING-XIONGAN-STATISTICS-INDEX-2026;"
+                    "SRC-EVIDENCE-MISSING-XIONGAN-DECISION"
+                ),
                 searched_channels="中国雄安官网统计信息和站内检索；雄安新区财政预决算公开专栏；河北省及新区公开报告",
                 result=(
-                    "中国雄安官网公开材料可核验到‘十四五’期间GDP年均增长17.1%以及固定资产投资等指标，"
-                    "但未找到该年度新区全域GDP总量或按不变价格计算的实际增速；财政决算公开专栏不产生GDP数值。"
+                    "中国雄安官网统计信息目录及公开材料可核验到‘十四五’期间GDP年均增长17.1%、固定资产投资和外贸等"
+                    "指标，但未找到该年度新区全域GDP总量或按不变价格计算的实际增速；财政决算公开专栏不产生GDP数值。"
                     "网络文章按河北省市级合计差额推算的数值不具备全域官方表格血缘，不能入表。"
                 ),
                 next_action="若公开新区年度统计公报或全域GDP正式表格，再补录并复核；当前保持 null。",
@@ -298,6 +302,28 @@ EVIDENCE_SOURCE_DOCUMENTS: tuple[dict[str, str], ...] = (
         "note": "公开信息描述2024年经济运行但未给出全年GDP总量或实际增速；相关评级资料仅有2024年前三季度和2025年上半年数值。",
     },
     {
+        "source_doc_id": "SRC-EVIDENCE-MISSING-XPCC-GDP-REPORT-2025",
+        "publisher": "联合资信评估股份有限公司、上海证券交易所公开披露平台",
+        "publisher_level": "全国性政府债券评级机构/交易所公开披露平台",
+        "document_title": "2025年新疆维吾尔自治区（新疆生产建设兵团）地方政府债券信用评级报告",
+        "source_url": "https://static.sse.com.cn/disclosure/bond/announcement/local/c/new/2025-09-10/0000_20250910_I5Z5.pdf",
+        "publication_date": "2025-09-10",
+        "source_grade": "B2",
+        "document_type": "政府债券评级报告",
+        "note": "报告列示2023年全年GDP及2024年前三季度、2025年上半年阶段数据，并明确未取得2024全年度经济数据；不能据阶段值年化或外推2025全年值。",
+    },
+    {
+        "source_doc_id": "SRC-EVIDENCE-MISSING-XPCC-GDP-INDEX-2026",
+        "publisher": "新疆生产建设兵团统计局",
+        "publisher_level": "兵团统计机构",
+        "document_title": "兵团统计局统计公报目录（截至2026年9月2日复核）",
+        "source_url": "https://tjj.xjbt.gov.cn/sjzx/tjgb/",
+        "publication_date": "2026-09-02",
+        "source_grade": "A1",
+        "document_type": "统计公报公开目录",
+        "note": "复核兵团统计局统计公报入口及公开索引，当前未找到2024或2025年全年兵团国民经济和社会发展统计公报；仅有已公开的2023年全年及阶段性经济信息。",
+    },
+    {
         "source_doc_id": "SRC-EVIDENCE-MISSING-XIONGAN-GDP-STATUS",
         "publisher": "中国雄安官网",
         "publisher_level": "新区政府门户网站",
@@ -318,6 +344,17 @@ EVIDENCE_SOURCE_DOCUMENTS: tuple[dict[str, str], ...] = (
         "source_grade": "A1",
         "document_type": "政府决算公开目录",
         "note": "已核验2024、2025年全区财政决算公开入口；该专栏用于财政数值，不产生GDP数值。",
+    },
+    {
+        "source_doc_id": "SRC-EVIDENCE-MISSING-XIONGAN-STATISTICS-INDEX-2026",
+        "publisher": "中国雄安官网",
+        "publisher_level": "新区政府门户网站",
+        "document_title": "雄安新区统计信息公开目录（截至2026年9月2日复核）",
+        "source_url": "https://www.xiongan.gov.cn/zwgk/zfxxgk/fdgknr/tjxx.html",
+        "publication_date": "2026-09-02",
+        "source_grade": "A1",
+        "document_type": "统计信息公开目录",
+        "note": "复核新区统计信息目录，当前可见内容包括投资、外贸及阶段性区域信息，未找到2024或2025年新区全域GDP总量及实际增速表格。",
     },
     {
         "source_doc_id": "SRC-EVIDENCE-MISSING-LAIWU-YEARBOOK",
