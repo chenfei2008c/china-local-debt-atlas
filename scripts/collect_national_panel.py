@@ -14375,10 +14375,19 @@ def build_collection_status(city_master: list[dict[str, Any]], macro_rows: list[
     return output
 
 
-def build_evidence_based_missing_rows() -> list[dict[str, str]]:
-    """输出硬缺口的来源穷尽记录，避免把公开缺失误报为未开始采集。"""
+def build_evidence_based_missing_rows(macro_rows: list[dict[str, Any]]) -> list[dict[str, str]]:
+    """输出当前主表仍为空的来源穷尽记录，避免保留已补齐的历史缺口。"""
 
-    return [dict(row) for row in EVIDENCE_BY_KEY.values()]
+    macro_by_key = {(row["city_id"], str(row["metric_year"])): row for row in macro_rows}
+    output = []
+    for evidence in EVIDENCE_BY_KEY.values():
+        macro = macro_by_key.get((evidence["city_id"], str(evidence["metric_year"])))
+        if not macro:
+            continue
+        field = evidence["field_name"]
+        if macro.get(field) is None or macro.get(field) == "":
+            output.append(dict(evidence))
+    return output
 
 
 def source_document_rows(
@@ -15440,7 +15449,7 @@ def main() -> None:
     write_csv("formula_registry.csv", formula_fields, formula_registry)
     write_csv("formula_dependency.csv", dependency_fields, formula_dependency)
     write_csv("collection_status.csv", collection_fields, collection_rows)
-    write_csv("evidence_based_missing.csv", evidence_fields, build_evidence_based_missing_rows())
+    write_csv("evidence_based_missing.csv", evidence_fields, build_evidence_based_missing_rows(macro_rows))
     write_csv(
         "batch_source_registry.csv",
         list(BATCH_REGISTRY_FIELDS),

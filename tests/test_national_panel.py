@@ -58,6 +58,7 @@ from scripts.collect_national_panel import (
 from scripts.gotohui_city_series import load_gotohui_city_series_sources
 from scripts.dachuang_city_panel import load_dachuang_city_panel_sources
 from scripts.haidatas_city_panel import load_haidatas_city_panel_sources
+from scripts.evidence_based_missing import EVIDENCE_BY_KEY
 from scripts.gotohui_snapshot_collector import (
     _read_city_targets,
     acceptable_series_title,
@@ -1340,7 +1341,20 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(macro_status["collection_status"], "evidence_based_missing")
         self.assertEqual(macro_status["error_code"], "PUBLIC_SOURCE_EXHAUSTED")
         self.assertGreaterEqual(macro_status["evidence_count"], 3)
-        self.assertEqual(len(build_evidence_based_missing_rows()), 56)
+
+        macro_rows_by_key = {}
+        for evidence in EVIDENCE_BY_KEY.values():
+            key = (evidence["city_id"], str(evidence["metric_year"]))
+            macro_rows_by_key.setdefault(
+                key,
+                {"city_id": key[0], "metric_year": key[1]},
+            )[evidence["field_name"]] = None
+        evidence_rows = build_evidence_based_missing_rows(list(macro_rows_by_key.values()))
+        self.assertEqual(len(evidence_rows), 56)
+
+        macro_rows_by_key[("CN-460300", "2022")]["gdp_current_100m"] = "6.66"
+        filtered_rows = build_evidence_based_missing_rows(list(macro_rows_by_key.values()))
+        self.assertEqual(len(filtered_rows), 55)
 
     def test_new_fund_calculations_are_appended_after_existing_lineages(self):
         rows = [
@@ -4112,7 +4126,7 @@ class NationalPanelTests(unittest.TestCase):
         xiongan_2024 = values[("CN-133100", "2024")]
         self.assertEqual(xiongan_2024["general_public_revenue_100m"], Decimal("35.58"))
         self.assertEqual(xiongan_2024["general_public_expenditure_100m"], Decimal("498.98"))
-        self.assertEqual(xiongan_2024["source_grade"], "A2")
+        self.assertEqual(xiongan_2024["source_grade"], "A1")
         self.assertEqual(xiongan_2024["data_status"], "final")
 
         xiongan_2025 = values[("CN-133100", "2025")]
