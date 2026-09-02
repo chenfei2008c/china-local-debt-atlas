@@ -164,6 +164,26 @@ XPCC_CORE_SOURCES = (
         ),
     ),
     _source(
+        year=2024,
+        url="https://finance.sina.com.cn/jjxw/2025-11-17/doc-infxrser6045233.shtml",
+        publication_date="2025-11-17",
+        fields=("gdp_real_growth_pct",),
+        source_grade="B2",
+        publisher="兵团日报（新浪财经公开转载）",
+        publisher_level="兵团党报公开转载（二手来源）",
+        source_doc_id="SRC-B2-XPCC-2024-GDP-GROWTH-REPORT",
+        path=RAW_DIR / "2024" / "secondary" / "xinjiang_bingtuan_2024_growth_report_excerpt.txt",
+        document_title="中国式现代化兵团实践迈出坚实步伐",
+        page_number="网页正文第55行；十四五经济实力段落",
+        data_status="reported",
+        data_status_label="2024年全年兵团GDP实际增速公开报道值",
+        note=(
+            "B2兵团日报公开转载页面；正文明确列示2023年、2024年兵团生产总值增速分别为"
+            "6.9%、6.3%，并单独说明2025年前三季度为6.2%。本条仅录入2024年全年实际增速，"
+            "不以2025年前三季度阶段数据代替2025年全年值，也不据此反推2024年GDP总量。"
+        ),
+    ),
+    _source(
         year=2021,
         url="https://file.finance.sina.com.cn/211.154.219.97%3A9494/MRGG/BOND/2023/2023-7/2023-07-11/18959624.PDF",
         publication_date="2023-07-11",
