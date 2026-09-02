@@ -98,6 +98,11 @@ try:
         HAINAN_SANSHA_FORMULA_DEPENDENCY,
         HAINAN_SANSHA_FORMULA_REGISTRY,
     )
+    from scripts.hebei_xiongan_gdp_residual import (
+        XIONGAN_GDP_SOURCE,
+        HEBEI_XIONGAN_FORMULA_DEPENDENCY,
+        HEBEI_XIONGAN_FORMULA_REGISTRY,
+    )
     from scripts.direct_admin_gdp_growth import (
         DIRECT_ADMIN_GDP_GROWTH_SOURCES,
         DIRECT_ADMIN_GDP_GROWTH_FORMULA_DEPENDENCY,
@@ -144,6 +149,11 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
         HAINAN_SANSHA_RESIDUAL_SOURCES,
         HAINAN_SANSHA_FORMULA_DEPENDENCY,
         HAINAN_SANSHA_FORMULA_REGISTRY,
+    )
+    from hebei_xiongan_gdp_residual import (
+        XIONGAN_GDP_SOURCE,
+        HEBEI_XIONGAN_FORMULA_DEPENDENCY,
+        HEBEI_XIONGAN_FORMULA_REGISTRY,
     )
     from direct_admin_gdp_growth import (
         DIRECT_ADMIN_GDP_GROWTH_SOURCES,
@@ -11523,6 +11533,7 @@ CITY_YEAR_FISCAL_SOURCES += (
 # 总量两位小数舍入区间的官方合计差额，并在字段/计算血缘中标为 calculated。
 CITY_YEAR_FISCAL_SOURCES += tuple(HAINAN_SANSHA_RESIDUAL_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(DIRECT_ADMIN_GDP_GROWTH_SOURCES)
+CITY_YEAR_FISCAL_SOURCES += (XIONGAN_GDP_SOURCE,)
 
 CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES} | XINJIANG_2020_SOURCE_IDS
 
@@ -12609,6 +12620,8 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
                     if config.get("source_format") == "txt"
                     else "image/png"
                     if config.get("source_format") == "png"
+                    else "image/jpeg"
+                    if config.get("source_format") in {"jpg", "jpeg"}
                     else "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                     if config.get("source_format") == "docx"
                     else "application/msword"
@@ -15259,6 +15272,8 @@ def main() -> None:
     calc_rows, formula_registry, formula_dependency = build_calculations(macro_rows)
     formula_registry.append(dict(HAINAN_SANSHA_FORMULA_REGISTRY))
     formula_dependency.extend(dict(item) for item in HAINAN_SANSHA_FORMULA_DEPENDENCY)
+    formula_registry.append(dict(HEBEI_XIONGAN_FORMULA_REGISTRY))
+    formula_dependency.extend(dict(item) for item in HEBEI_XIONGAN_FORMULA_DEPENDENCY)
     formula_registry.append(dict(DIRECT_ADMIN_GDP_GROWTH_FORMULA_REGISTRY))
     formula_dependency.extend(dict(item) for item in DIRECT_ADMIN_GDP_GROWTH_FORMULA_DEPENDENCY)
     formula_registry.append(dict(XINJIANG_GDP_INDEX_FORMULA_REGISTRY))
