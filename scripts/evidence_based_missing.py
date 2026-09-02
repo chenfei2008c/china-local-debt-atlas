@@ -90,23 +90,26 @@ def _core_rows() -> tuple[dict[str, str], ...]:
                 searched_channels=sansha_channels, result=sansha_result, next_action=sansha_next,
             ))
 
-    for field, result, next_action, source_ids in (
+    for year, field, result, next_action, source_ids in (
         (
+            2020,
             "gdp_real_growth_pct",
             "官方阿里地区2020年信息公开页面只披露2020年GDP总量70.7亿元，没有按不变价格计算的实际增速；"
+            "阿里地区官方统计数据目录当前可见的年度经济条目仅到2017年，后续主要是2023年前三季度等阶段信息；"
             "未找到同年度官方公报或年鉴的实际增速。",
             "若取得阿里地区2020年官方统计公报/年鉴实际增速，再按全地区口径补录；不得由相邻年度总量计算。",
-            "SRC-EVIDENCE-MISSING-ALI-GROWTH-2020",
+            "SRC-EVIDENCE-MISSING-ALI-GROWTH-2020;SRC-EVIDENCE-MISSING-ALI-STATISTICS-INDEX-2026",
         ),
         (
+            2022,
             "gdp_real_growth_pct",
             "B2评级报告表格列出阿里地区2022年GDP及0.50%的增速，但脚注明确该增速由GDP绝对值计算，"
-            "不是公开披露的实际增速；按本项目口径不作为定稿值。",
+            "不是公开披露的实际增速；阿里地区官方统计数据目录也未提供2022年按不变价格计算的实际增速，"
+            "按本项目口径不作为定稿值。",
             "若取得阿里地区2022年官方按不变价格计算的实际增速，替换当前空值；不得采用评级报告推算值。",
-            "SRC-EVIDENCE-MISSING-ALI-GROWTH-2022",
+            "SRC-EVIDENCE-MISSING-ALI-GROWTH-2022;SRC-EVIDENCE-MISSING-ALI-STATISTICS-INDEX-2026",
         ),
     ):
-        year = 2020 if source_ids.endswith("2020") else 2022
         rows.append(_core_row(
             city_id="CN-542500", city_name_cn="阿里地区", province_name="西藏自治区",
             metric_year=year, field_name=field, evidence_source_doc_ids=source_ids,
@@ -172,11 +175,12 @@ def _core_rows() -> tuple[dict[str, str], ...]:
     rows.append(_core_row(
         city_id="CN-371200", city_name_cn="莱芜市", province_name="山东省", metric_year=2019,
         field_name="gdp_real_growth_pct",
-        evidence_source_doc_ids="SRC-EVIDENCE-MISSING-LAIWU-YEARBOOK;SRC-EVIDENCE-MISSING-LAIWU-2018-REPORT",
-        searched_channels="济南市统计局官方年鉴页面及2020年年鉴附件；济南市政府官方2019年工作/计划报告；中国城市统计年鉴公开目录",
+        evidence_source_doc_ids="SRC-EVIDENCE-MISSING-LAIWU-YEARBOOK;SRC-EVIDENCE-MISSING-LAIWU-2018-REPORT;SRC-EVIDENCE-MISSING-LAIWU-YEARBOOK-2019-EDITION",
+        searched_channels="济南市统计局官方年鉴页面及2020年年鉴附件；济南市政府官方2019年工作/计划报告；中国城市统计年鉴2019版公开表格",
         result=(
             "济南市2020年官方年鉴附件确认2019年莱芜全域GDP为871.60亿元，但该分地区表未列全域实际增速；"
-            "官方报告可定位到的7.2%是原莱芜市2018年增速，不是2019年。合并后的莱芜区/钢城区增速不能直接代表"
+            "中国城市统计年鉴2019版公开表格中的7.20%与1005.65亿元对应2018年，官方报告可定位到的7.2%也是原莱芜市2018年增速，"
+            "不是2019年。合并后的莱芜区/钢城区增速不能直接代表"
             "原地级莱芜市全域，故不作口径推算。"
         ),
         next_action="若取得2019年原莱芜全域按不变价格计算的官方实际增速，再补录；当前保持 null。",
@@ -267,6 +271,17 @@ EVIDENCE_SOURCE_DOCUMENTS: tuple[dict[str, str], ...] = (
         "source_grade": "B2",
         "document_type": "评级研究报告",
         "note": "报告表格脚注说明阿里地区2022年GDP增速由绝对值计算；由于不是公开披露的实际增速，按严格口径不写入主表。",
+    },
+    {
+        "source_doc_id": "SRC-EVIDENCE-MISSING-ALI-STATISTICS-INDEX-2026",
+        "publisher": "阿里地区行政公署",
+        "publisher_level": "地级行政公署",
+        "document_title": "阿里地区统计数据公开目录（截至2026年9月2日复核）",
+        "source_url": "https://www.al.gov.cn/gk/xxgkml1/tjsj/1.htm",
+        "publication_date": "2026-09-02",
+        "source_grade": "A1",
+        "document_type": "政府统计信息公开目录",
+        "note": "官方目录当前可见年度经济条目包括2017年GDP信息，近年主要为2023年前三季度等阶段性信息；未见2020或2022年阿里地区按不变价格计算的全年GDP实际增速表格。本来源用于登记已检索公开渠道，不产生增速值。",
     },
     {
         "source_doc_id": "SRC-EVIDENCE-MISSING-XPCC-FINANCE-INDEX",
@@ -377,6 +392,17 @@ EVIDENCE_SOURCE_DOCUMENTS: tuple[dict[str, str], ...] = (
         "source_grade": "A1",
         "document_type": "政府工作/计划报告",
         "note": "该报告中的原莱芜市GDP 1005.7亿元、增速7.2%对应2018年，不是2019年；本来源用于排除年度错配。",
+    },
+    {
+        "source_doc_id": "SRC-EVIDENCE-MISSING-LAIWU-YEARBOOK-2019-EDITION",
+        "publisher": "中国城市统计年鉴公开表格镜像",
+        "publisher_level": "公开统计年鉴表格镜像",
+        "document_title": "2019中国城市统计年鉴表2-9地区生产总值（莱芜市行）",
+        "source_url": "https://www.chinautc.com/upload/fckeditor/20192-9.pdf",
+        "publication_date": "2019",
+        "source_grade": "B2",
+        "document_type": "统计年鉴表格镜像（年度错配排除证据）",
+        "note": "该版年鉴表格的莱芜市行列示GDP 10056500（万元）及实际增速7.20%，与官方2018年原莱芜市GDP 1005.65亿元、增速7.2%一致；它是2018年度数据，不能用于填补2019年原莱芜市全域实际增速。本来源仅用于排除将年鉴版次误当数据年度。",
     },
     {
         "source_doc_id": "SRC-EVIDENCE-MISSING-NAQU-2019-AUDIT",
