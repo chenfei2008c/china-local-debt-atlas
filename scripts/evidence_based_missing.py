@@ -134,19 +134,20 @@ def _core_rows() -> tuple[dict[str, str], ...]:
                     "SRC-EVIDENCE-MISSING-XPCC-FOLLOWUP-2025;SRC-EVIDENCE-MISSING-XPCC-GDP-INDEX-2026;"
                     "SRC-EVIDENCE-MISSING-XPCC-FISCAL-POST-2021"
                     if is_gdp else
-                    "SRC-EVIDENCE-MISSING-XPCC-FINANCE-INDEX;SRC-EVIDENCE-MISSING-XPCC-FISCAL-POST-2021"
+                    "SRC-EVIDENCE-MISSING-XPCC-FINANCE-INDEX;SRC-EVIDENCE-MISSING-XPCC-FISCAL-POST-2021;"
+                    "SRC-EVIDENCE-MISSING-XPCC-TRANSPARENCY-2025"
                 ),
                 searched_channels=(
                     "兵团统计局统计公报和统计资料库；兵团官方新闻门户；交易所公开评级报告"
                     if is_gdp else
-                    "兵团财政局预决算公开和信息公开目录；兵团统计局/财政局官方页面；交易所公开评级报告"
+                    "兵团财政局预决算公开和信息公开目录；兵团统计局/财政局官方页面；交易所及中国政府债券信息公开平台评级报告"
                 ),
                 result=(
                     "兵团统计局公报目录及交易所公开评级材料仅取得2024年前三季度、2025年上半年/前三季度等阶段性GDP"
                     "数据；评级材料明确未披露2024全年度经济数据，亦未取得2025全年GDP总量/实际增速。阶段性数据不能代替年度值。"
                     if is_gdp else
                     "兵团财政局公开目录和官方评级资料显示，2021年后未继续公开可定位的全兵团年度财政信息；"
-                    "2022年上半年收入、预算数或自治区代编的兵团债务收支不能代替全年度全兵团一般预算收支。"
+                    "2025年评级报告进一步明确自2021年起未再披露后续年度财政信息；2022年上半年收入、预算数或自治区代编的兵团债务收支不能代替全年度全兵团一般预算收支。"
                 ),
                 next_action=(
                     "若取得兵团统计局正式年度公报或年鉴，再补录全年值；当前保持 null。"
@@ -349,6 +350,17 @@ EVIDENCE_SOURCE_DOCUMENTS: tuple[dict[str, str], ...] = (
         "source_grade": "B2",
         "document_type": "政府债券跟踪评级报告",
         "note": "报告第6页基础数据表仅列示2021—2023年兵团全年GDP及2017—2019年财政数据；报告未列出2024或2025年全年GDP总量或实际增速，不能用2024年前三季度、2025年上半年或前三季度数据替代年度值。本来源仅用于加强已检索渠道的证据化缺失记录。",
+    },
+    {
+        "source_doc_id": "SRC-EVIDENCE-MISSING-XPCC-TRANSPARENCY-2025",
+        "publisher": "联合资信评估股份有限公司、中国政府债券信息公开平台",
+        "publisher_level": "全国性政府债券评级机构/政府债券信息公开平台",
+        "document_title": "2025年新疆维吾尔自治区（新疆生产建设兵团）专项债券信用评级报告",
+        "source_url": "https://www.governbond.org.cn/uploadFiles/66/attachFiles/202512/33be9df3-8a08-4dcf-aaa7-f324e17e1137.pdf",
+        "publication_date": "2025-11-28",
+        "source_grade": "B2",
+        "document_type": "政府债券信用评级报告",
+        "note": "报告第11页明确说明自2021年起受政策调整等因素影响，兵团未再披露后续年度财政信息；第12页列示的2022年上半年一般公共预算收入不是全年数，不能替代2022—2025年全兵团年度一般预算收入或支出。本来源用于强化财政公开中断的证据化记录，不产生业务数值。",
     },
     {
         "source_doc_id": "SRC-EVIDENCE-MISSING-XIONGAN-GDP-STATUS",

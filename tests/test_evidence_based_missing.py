@@ -23,6 +23,23 @@ class EvidenceBasedMissingTests(unittest.TestCase):
         ):
             self.assertIn(source_id, EVIDENCE_BY_KEY[key]["evidence_source_doc_ids"])
 
+    def test_latest_xpcc_report_strengthens_post_2021_fiscal_missing_evidence(self):
+        source_id = "SRC-EVIDENCE-MISSING-XPCC-TRANSPARENCY-2025"
+        source = next(item for item in EVIDENCE_SOURCE_DOCUMENTS if item["source_doc_id"] == source_id)
+
+        self.assertEqual(source["publication_date"], "2025-11-28")
+        self.assertIn("33be9df3-8a08-4dcf-aaa7-f324e17e1137.pdf", source["source_url"])
+        self.assertIn("自2021年起", source["note"])
+        self.assertIn("上半年", source["note"])
+
+        for key in (
+            ("CN-659000", "2022", "general_public_revenue_100m"),
+            ("CN-659000", "2025", "general_public_revenue_100m"),
+            ("CN-659000", "2021", "general_public_expenditure_100m"),
+            ("CN-659000", "2025", "general_public_expenditure_100m"),
+        ):
+            self.assertIn(source_id, EVIDENCE_BY_KEY[key]["evidence_source_doc_ids"])
+
 
 if __name__ == "__main__":
     unittest.main()
