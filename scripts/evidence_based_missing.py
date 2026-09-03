@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 
-EVIDENCE_CHECKED_AT = "2026-09-02"
+EVIDENCE_CHECKED_AT = "2026-09-03"
 
 CORE_GAP_FIELDS = (
     "gdp_current_100m",
@@ -131,7 +131,8 @@ def _core_rows() -> tuple[dict[str, str], ...]:
                 metric_year=year, field_name=field,
                 evidence_source_doc_ids=(
                     "SRC-EVIDENCE-MISSING-XPCC-GDP-2024-2025;SRC-EVIDENCE-MISSING-XPCC-GDP-REPORT-2025;"
-                    "SRC-EVIDENCE-MISSING-XPCC-GDP-INDEX-2026;SRC-EVIDENCE-MISSING-XPCC-FISCAL-POST-2021"
+                    "SRC-EVIDENCE-MISSING-XPCC-FOLLOWUP-2025;SRC-EVIDENCE-MISSING-XPCC-GDP-INDEX-2026;"
+                    "SRC-EVIDENCE-MISSING-XPCC-FISCAL-POST-2021"
                     if is_gdp else
                     "SRC-EVIDENCE-MISSING-XPCC-FINANCE-INDEX;SRC-EVIDENCE-MISSING-XPCC-FISCAL-POST-2021"
                 ),
@@ -337,6 +338,17 @@ EVIDENCE_SOURCE_DOCUMENTS: tuple[dict[str, str], ...] = (
         "source_grade": "A1",
         "document_type": "统计公报公开目录",
         "note": "复核兵团统计局统计公报入口及公开索引，当前未找到2024或2025年全年兵团国民经济和社会发展统计公报；仅有已公开的2023年全年及阶段性经济信息。",
+    },
+    {
+        "source_doc_id": "SRC-EVIDENCE-MISSING-XPCC-FOLLOWUP-2025",
+        "publisher": "联合资信评估股份有限公司",
+        "publisher_level": "全国性政府债券评级机构",
+        "document_title": "新疆生产建设兵团政府债券2025年跟踪评级报告",
+        "source_url": "https://www.lhratings.com/reports/B029742-P83757-2025-C-GZ2025.pdf",
+        "publication_date": "2025-12-23",
+        "source_grade": "B2",
+        "document_type": "政府债券跟踪评级报告",
+        "note": "报告第6页基础数据表仅列示2021—2023年兵团全年GDP及2017—2019年财政数据；报告未列出2024或2025年全年GDP总量或实际增速，不能用2024年前三季度、2025年上半年或前三季度数据替代年度值。本来源仅用于加强已检索渠道的证据化缺失记录。",
     },
     {
         "source_doc_id": "SRC-EVIDENCE-MISSING-XIONGAN-GDP-STATUS",
