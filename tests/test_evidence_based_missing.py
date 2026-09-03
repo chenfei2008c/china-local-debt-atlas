@@ -7,6 +7,16 @@ from scripts.evidence_based_missing import (
 
 
 class EvidenceBasedMissingTests(unittest.TestCase):
+    def test_sansha_search_record_covers_latest_targeted_review(self):
+        source_id = "SRC-EVIDENCE-MISSING-SANSHA-SEARCH-2026"
+        source = next(item for item in EVIDENCE_SOURCE_DOCUMENTS if item["source_doc_id"] == source_id)
+
+        self.assertEqual(source["publication_date"], "2026-09-03")
+        self.assertIn("统计公报", source["note"])
+        self.assertIn("一般公共预算收入", source["note"])
+        self.assertIn("财政收支", source["note"])
+        self.assertIn("未取得可直接入表的年度全市数值", source["note"])
+
     def test_latest_xpcc_rating_followup_is_registered_without_creating_values(self):
         source_id = "SRC-EVIDENCE-MISSING-XPCC-FOLLOWUP-2025"
         source = next(item for item in EVIDENCE_SOURCE_DOCUMENTS if item["source_doc_id"] == source_id)

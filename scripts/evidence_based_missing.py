@@ -236,10 +236,10 @@ EVIDENCE_SOURCE_DOCUMENTS: tuple[dict[str, str], ...] = (
         "publisher_level": "市级政府",
         "document_title": "三沙市政府门户网站站内检索结果（年度GDP及财政关键词）",
         "source_url": "https://www.sansha.gov.cn/search5/html/searchResult.html",
-        "publication_date": "2026-09-01",
+        "publication_date": "2026-09-03",
         "source_grade": "A1",
         "document_type": "政府门户网站检索记录",
-        "note": "按2018—2025年度公报、地区生产总值、一般公共预算、财政决算、政府性基金预算等关键词检索；结果未取得可直接入表的年度全市数值，本来源仅登记检索结果。",
+        "note": "截至2026-09-03复核三沙市官网，按‘统计公报’、‘经济运行’、‘地区生产总值’、‘一般公共预算收入’、‘一般公共预算支出’、‘财政收支’、‘财政决算’、‘政府性基金预算’及2024/2025年度关键词检索；结果主要为外部机构转载或阶段性/事务性信息，未取得可直接入表的年度全市数值，本来源仅登记检索结果。",
     },
     {
         "source_doc_id": "SRC-EVIDENCE-MISSING-SANSHA-RATING-2024",
