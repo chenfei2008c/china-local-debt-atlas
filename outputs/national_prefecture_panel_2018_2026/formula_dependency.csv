@@ -19,6 +19,8 @@ F-FUND-REV-LEGACY,gov_fund_revenue_100m,input,v1.0
 F-FUND-REV-LEGACY,general_public_revenue_100m,input,v1.0
 F-HN-SANSHA-GDP-RESIDUAL,hainan_province_gdp_total_100m,input,v1.0
 F-HN-SANSHA-GDP-RESIDUAL,hainan_18_city_gdp_sum_100m,input,v1.0
+F-HN-SANSHA-FISCAL-RESIDUAL,hainan_all_regions_fiscal_subtotal_10000yuan,input,v1.0
+F-HN-SANSHA-FISCAL-RESIDUAL,hainan_18_city_fiscal_sum_10000yuan,input,v1.0
 F-HEBEI-XIONGAN-GDP-RESIDUAL,hebei_baoding_including_xiongan_gdp_100m,input,v1.0
 F-HEBEI-XIONGAN-GDP-RESIDUAL,hebei_baoding_excluding_xiongan_gdp_100m,input,v1.0
 F-HEBEI-XIONGAN-GDP-RESIDUAL,hebei_dingzhou_gdp_100m,input,v1.0

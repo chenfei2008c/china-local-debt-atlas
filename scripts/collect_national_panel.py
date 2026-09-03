@@ -107,6 +107,11 @@ try:
         HAINAN_SANSHA_FORMULA_DEPENDENCY,
         HAINAN_SANSHA_FORMULA_REGISTRY,
     )
+    from scripts.hainan_sansha_fiscal_residual import (
+        HAINAN_SANSHA_FISCAL_RESIDUAL_SOURCES,
+        HAINAN_SANSHA_FISCAL_FORMULA_DEPENDENCY,
+        HAINAN_SANSHA_FISCAL_FORMULA_REGISTRY,
+    )
     from scripts.hebei_xiongan_gdp_residual import (
         XIONGAN_GDP_SOURCE,
         HEBEI_XIONGAN_FORMULA_DEPENDENCY,
@@ -167,6 +172,11 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
         HAINAN_SANSHA_RESIDUAL_SOURCES,
         HAINAN_SANSHA_FORMULA_DEPENDENCY,
         HAINAN_SANSHA_FORMULA_REGISTRY,
+    )
+    from hainan_sansha_fiscal_residual import (
+        HAINAN_SANSHA_FISCAL_RESIDUAL_SOURCES,
+        HAINAN_SANSHA_FISCAL_FORMULA_DEPENDENCY,
+        HAINAN_SANSHA_FISCAL_FORMULA_REGISTRY,
     )
     from hebei_xiongan_gdp_residual import (
         XIONGAN_GDP_SOURCE,
@@ -11551,6 +11561,9 @@ CITY_YEAR_FISCAL_SOURCES += (
 # 海南省统计年鉴市县表不列三沙，但省级 GDP 总量包含三沙；只接入高于省级
 # 总量两位小数舍入区间的官方合计差额，并在字段/计算血缘中标为 calculated。
 CITY_YEAR_FISCAL_SOURCES += tuple(HAINAN_SANSHA_RESIDUAL_SOURCES)
+# 海南统计年鉴2019—2022的表7-7/7-8列出地市小计与18个已列市县行，
+# 以同表差额补入三沙2018—2021年一般预算收入和支出；保留 calculated 属性。
+CITY_YEAR_FISCAL_SOURCES += tuple(HAINAN_SANSHA_FISCAL_RESIDUAL_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(DIRECT_ADMIN_GDP_GROWTH_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += (XIONGAN_GDP_SOURCE,)
 CITY_YEAR_FISCAL_SOURCES += tuple(QINGHAI_2018_2019_FISCAL_SOURCES)
@@ -15311,6 +15324,8 @@ def main() -> None:
     calc_rows, formula_registry, formula_dependency = build_calculations(macro_rows)
     formula_registry.append(dict(HAINAN_SANSHA_FORMULA_REGISTRY))
     formula_dependency.extend(dict(item) for item in HAINAN_SANSHA_FORMULA_DEPENDENCY)
+    formula_registry.append(dict(HAINAN_SANSHA_FISCAL_FORMULA_REGISTRY))
+    formula_dependency.extend(dict(item) for item in HAINAN_SANSHA_FISCAL_FORMULA_DEPENDENCY)
     formula_registry.append(dict(HEBEI_XIONGAN_FORMULA_REGISTRY))
     formula_dependency.extend(dict(item) for item in HEBEI_XIONGAN_FORMULA_DEPENDENCY)
     formula_registry.append(dict(DIRECT_ADMIN_GDP_GROWTH_FORMULA_REGISTRY))

@@ -190,6 +190,34 @@ class NationalPanelTests(unittest.TestCase):
             self.assertIn("hainan_province_gdp_total_100m", record.get("calculation_input_fields", ""))
             self.assertIn("hainan_18_city_gdp_sum_100m", record.get("calculation_input_fields", ""))
 
+    def test_hainan_sansha_fiscal_residual_fills_2018_to_2021(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        expected = {
+            "2018": ("1.00", "24.17"),
+            "2019": ("0.47", "21.58"),
+            "2020": ("0.62", "22.23"),
+            "2021": ("0.89", "19.10"),
+        }
+        for year, (revenue, expenditure) in expected.items():
+            record = values[("CN-460300", year)]
+            self.assertEqual(record["general_public_revenue_100m"], Decimal(revenue), year)
+            self.assertEqual(record["general_public_expenditure_100m"], Decimal(expenditure), year)
+            for field in ("general_public_revenue_100m", "general_public_expenditure_100m"):
+                field_source = record["_field_sources"][field]
+                self.assertEqual(field_source["value_origin"], "calculated", year)
+                self.assertEqual(field_source["calculation_formula_id"], "F-HN-SANSHA-FISCAL-RESIDUAL", year)
+                self.assertIn("hainan_all_regions_fiscal_subtotal_10000yuan", field_source["calculation_input_fields"])
+                self.assertIn("hainan_18_city_fiscal_sum_10000yuan", field_source["calculation_input_fields"])
+
+        source_ids = {item["source_doc_id"] for item in sources}
+        for yearbook_year, data_year in ((2019, 2018), (2020, 2019), (2021, 2020), (2022, 2021)):
+            for field in ("REVENUE", "EXPENDITURE"):
+                self.assertIn(
+                    f"SRC-A2-HAINAN-YEARBOOK-{yearbook_year}-SANSHA-{field}-{data_year}",
+                    source_ids,
+                )
+
 
     def test_hubei_direct_admin_yearbook_fills_2018_core_values(self):
         values, sources = load_city_year_fiscal_sources()
