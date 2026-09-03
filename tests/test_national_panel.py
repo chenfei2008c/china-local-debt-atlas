@@ -58,6 +58,7 @@ from scripts.collect_national_panel import (
 from scripts.gotohui_city_series import load_gotohui_city_series_sources
 from scripts.dachuang_city_panel import load_dachuang_city_panel_sources
 from scripts.haidatas_city_panel import load_haidatas_city_panel_sources
+from scripts.sichuan_2018_yearbook import load_sichuan_2018_yearbook_sources
 from scripts.evidence_based_missing import EVIDENCE_BY_KEY
 from scripts.gotohui_snapshot_collector import (
     _read_city_targets,
@@ -80,6 +81,57 @@ from scripts.nbs_city_annual_2024 import load_nbs_city_annual_2024
 
 
 class NationalPanelTests(unittest.TestCase):
+
+    def test_sichuan_2018_official_yearbook_batch_covers_all_prefectures(self):
+        root = Path(__file__).resolve().parents[1]
+        with (root / "outputs/national_prefecture_panel_2018_2026/dim_city.csv").open(
+            encoding="utf-8-sig", newline=""
+        ) as handle:
+            city_master = list(csv.DictReader(handle))
+
+        values, sources = load_sichuan_2018_yearbook_sources(root, city_master)
+
+        self.assertEqual(len(values), 21)
+        chengdu = values[("CN-510100", "2018")]
+        self.assertEqual(chengdu["gdp_current_100m"], Decimal("15342.77"))
+        self.assertEqual(chengdu["gdp_real_growth_pct"], Decimal("8.00"))
+        self.assertEqual(chengdu["general_public_revenue_100m"], Decimal("1424.16"))
+        self.assertEqual(chengdu["general_public_expenditure_100m"], Decimal("1837.42"))
+        self.assertEqual({source["source_grade"] for source in sources}, {"A2"})
+        self.assertEqual(len(sources), 4)
+        self.assertIn("02-10.jpg", chengdu["_field_sources"]["gdp_current_100m"]["source_url"])
+        self.assertIn("08-04.jpg", chengdu["_field_sources"]["general_public_expenditure_100m"]["source_url"])
+
+    def test_qinghai_2018_2019_official_yearbook_fiscal_batch_upgrades_six_prefectures(self):
+        values, sources = load_city_year_fiscal_sources()
+
+        expected = {
+            ("CN-632200", "2018"): ("4.44", "79.30"),
+            ("CN-632300", "2018"): ("3.16", "86.04"),
+            ("CN-632500", "2018"): ("10.45", "107.42"),
+            ("CN-632600", "2018"): ("2.31", "77.78"),
+            ("CN-632700", "2018"): ("2.10", "100.96"),
+            ("CN-632800", "2018"): ("54.48", "138.18"),
+            ("CN-632200", "2019"): ("3.75", "82.98"),
+            ("CN-632300", "2019"): ("3.48", "109.03"),
+            ("CN-632500", "2019"): ("10.17", "116.51"),
+            ("CN-632600", "2019"): ("1.89", "93.81"),
+            ("CN-632700", "2019"): ("1.98", "153.45"),
+            ("CN-632800", "2019"): ("49.52", "163.58"),
+        }
+        for key, (revenue, expenditure) in expected.items():
+            record = values[key]
+            self.assertEqual(record["general_public_revenue_100m"], Decimal(revenue), key)
+            self.assertEqual(record["general_public_expenditure_100m"], Decimal(expenditure), key)
+            self.assertIn("SRC-A2-HAINAN-YEARBOOK-2022-QINGHAI", record["source_doc_id"])
+
+        batch_sources = [
+            source
+            for source in sources
+            if source["source_doc_id"].startswith("SRC-A2-HAINAN-YEARBOOK-2022-QINGHAI")
+        ]
+        self.assertEqual({source["source_grade"] for source in batch_sources}, {"A2"})
+        self.assertEqual({source["period_end"] for source in batch_sources}, {"2018-12-31", "2019-12-31"})
 
     def test_nbs_annual_source_declares_a1_in_source_registry_payload(self):
         root = Path(__file__).resolve().parents[1]

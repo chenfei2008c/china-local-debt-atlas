@@ -85,6 +85,14 @@ try:
     from scripts.sichuan_aba_core import SICHUAN_ABA_CORE_SOURCES
     from scripts.sichuan_ganzi_yearbook import SICHUAN_GANZI_YEARBOOK_SOURCES
     from scripts.sichuan_liangshan_bulletins import SICHUAN_LIANGSHAN_BULLETIN_SOURCES
+    from scripts.sichuan_2018_yearbook import (
+        SICHUAN_2018_SOURCE_IDS,
+        load_sichuan_2018_yearbook_sources,
+    )
+    from scripts.qinghai_2018_2019_yearbook import (
+        QINGHAI_2018_2019_FISCAL_SOURCES,
+        QINGHAI_2018_2019_SOURCE_IDS,
+    )
     from scripts.yunnan_yearbooks import YUNNAN_YEARBOOK_SOURCES
     from scripts.yunnan_growth_sources import YUNNAN_GDP_GROWTH_SOURCES
     from scripts.xinjiang_2020_yearbook import (
@@ -138,6 +146,14 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
     from sichuan_aba_core import SICHUAN_ABA_CORE_SOURCES
     from sichuan_ganzi_yearbook import SICHUAN_GANZI_YEARBOOK_SOURCES
     from sichuan_liangshan_bulletins import SICHUAN_LIANGSHAN_BULLETIN_SOURCES
+    from sichuan_2018_yearbook import (
+        SICHUAN_2018_SOURCE_IDS,
+        load_sichuan_2018_yearbook_sources,
+    )
+    from qinghai_2018_2019_yearbook import (
+        QINGHAI_2018_2019_FISCAL_SOURCES,
+        QINGHAI_2018_2019_SOURCE_IDS,
+    )
     from yunnan_yearbooks import YUNNAN_YEARBOOK_SOURCES
     from yunnan_growth_sources import YUNNAN_GDP_GROWTH_SOURCES
     from xinjiang_2020_yearbook import (
@@ -11537,8 +11553,14 @@ CITY_YEAR_FISCAL_SOURCES += (
 CITY_YEAR_FISCAL_SOURCES += tuple(HAINAN_SANSHA_RESIDUAL_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(DIRECT_ADMIN_GDP_GROWTH_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += (XIONGAN_GDP_SOURCE,)
+CITY_YEAR_FISCAL_SOURCES += tuple(QINGHAI_2018_2019_FISCAL_SOURCES)
 
-CITY_YEAR_FISCAL_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES} | XINJIANG_2020_SOURCE_IDS
+CITY_YEAR_FISCAL_SOURCE_IDS = (
+    {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
+    | XINJIANG_2020_SOURCE_IDS
+    | SICHUAN_2018_SOURCE_IDS
+    | QINGHAI_2018_2019_SOURCE_IDS
+)
 
 FUND_DERIVED_FIELDS = {"fund_revenue_dependence_pct", "gov_fund_to_general_revenue_pct"}
 
@@ -14836,6 +14858,11 @@ def main() -> None:
     xinjiang_city_fund, xinjiang_city_fund_sources = load_xinjiang_2024_city_fund_sources()
     jiangsu_city_fiscal, jiangsu_city_fiscal_sources = load_jiangsu_city_fiscal_sources()
     city_year_fiscal, city_year_fiscal_sources = load_city_year_fiscal_sources()
+    sichuan_2018_macro, sichuan_2018_sources = load_sichuan_2018_yearbook_sources(
+        ROOT, city_master
+    )
+    merge_city_year_fiscal_batch(city_year_fiscal, sichuan_2018_macro)
+    city_year_fiscal_sources.extend(sichuan_2018_sources)
     xinjiang_2020_macro, xinjiang_2020_sources = load_xinjiang_2020_yearbook_sources(
         ROOT, city_master
     )
