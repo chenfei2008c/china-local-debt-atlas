@@ -50,6 +50,30 @@ class EvidenceBasedMissingTests(unittest.TestCase):
         ):
             self.assertIn(source_id, EVIDENCE_BY_KEY[key]["evidence_source_doc_ids"])
 
+    def test_latest_xpcc_catalog_reviews_are_registered(self):
+        finance_id = "SRC-EVIDENCE-MISSING-XPCC-FINANCE-CATALOG-2026"
+        finance = next(item for item in EVIDENCE_SOURCE_DOCUMENTS if item["source_doc_id"] == finance_id)
+        self.assertEqual(finance["publication_date"], "2026-09-03")
+        self.assertIn("第1—10页逐页核验", finance["note"])
+        self.assertIn("2021—2025", finance["note"])
+
+        statistics_id = "SRC-EVIDENCE-MISSING-XPCC-STATISTICS-CATALOG-2026"
+        statistics = next(item for item in EVIDENCE_SOURCE_DOCUMENTS if item["source_doc_id"] == statistics_id)
+        self.assertEqual(statistics["publication_date"], "2026-09-03")
+        self.assertIn("当前列表为空", statistics["note"])
+        self.assertIn("2024或2025年", statistics["note"])
+
+        for key in (
+            ("CN-659000", "2024", "gdp_current_100m"),
+            ("CN-659000", "2025", "gdp_current_100m"),
+            ("CN-659000", "2022", "general_public_revenue_100m"),
+            ("CN-659000", "2025", "general_public_expenditure_100m"),
+        ):
+            self.assertIn(
+                statistics_id if key[2].startswith("gdp") else finance_id,
+                EVIDENCE_BY_KEY[key]["evidence_source_doc_ids"],
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

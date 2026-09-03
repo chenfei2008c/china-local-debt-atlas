@@ -132,9 +132,11 @@ def _core_rows() -> tuple[dict[str, str], ...]:
                 evidence_source_doc_ids=(
                     "SRC-EVIDENCE-MISSING-XPCC-GDP-2024-2025;SRC-EVIDENCE-MISSING-XPCC-GDP-REPORT-2025;"
                     "SRC-EVIDENCE-MISSING-XPCC-FOLLOWUP-2025;SRC-EVIDENCE-MISSING-XPCC-GDP-INDEX-2026;"
+                    "SRC-EVIDENCE-MISSING-XPCC-STATISTICS-CATALOG-2026;"
                     "SRC-EVIDENCE-MISSING-XPCC-FISCAL-POST-2021"
                     if is_gdp else
                     "SRC-EVIDENCE-MISSING-XPCC-FINANCE-INDEX;SRC-EVIDENCE-MISSING-XPCC-FISCAL-POST-2021;"
+                    "SRC-EVIDENCE-MISSING-XPCC-FINANCE-CATALOG-2026;"
                     "SRC-EVIDENCE-MISSING-XPCC-TRANSPARENCY-2025"
                 ),
                 searched_channels=(
@@ -278,12 +280,12 @@ EVIDENCE_SOURCE_DOCUMENTS: tuple[dict[str, str], ...] = (
         "source_doc_id": "SRC-EVIDENCE-MISSING-ALI-STATISTICS-INDEX-2026",
         "publisher": "阿里地区行政公署",
         "publisher_level": "地级行政公署",
-        "document_title": "阿里地区统计数据公开目录（截至2026年9月2日复核）",
+        "document_title": "阿里地区统计数据公开目录（截至2026年9月3日复核）",
         "source_url": "https://www.al.gov.cn/gk/xxgkml1/tjsj/1.htm",
-        "publication_date": "2026-09-02",
+        "publication_date": "2026-09-03",
         "source_grade": "A1",
         "document_type": "政府统计信息公开目录",
-        "note": "官方目录当前可见年度经济条目包括2017年GDP信息，近年主要为2023年前三季度等阶段性信息；未见2020或2022年阿里地区按不变价格计算的全年GDP实际增速表格。本来源用于登记已检索公开渠道，不产生增速值。",
+        "note": "本轮重新核查阿里地区行政公署官网统计数据目录及正式经济信息页面；当前可见年度经济条目包括2017年GDP信息，近年主要为2023年前三季度等阶段性信息；仍未见2020或2022年阿里地区按不变价格计算的全年GDP实际增速表格。本来源用于登记已检索公开渠道，不产生增速值。",
     },
     {
         "source_doc_id": "SRC-EVIDENCE-MISSING-XPCC-FINANCE-INDEX",
@@ -295,6 +297,17 @@ EVIDENCE_SOURCE_DOCUMENTS: tuple[dict[str, str], ...] = (
         "source_grade": "A1",
         "document_type": "财政信息公开目录",
         "note": "已检查兵团财政局预决算公开目录及信息公开索引，未找到可定位的2021年后全兵团年度一般预算收支表。",
+    },
+    {
+        "source_doc_id": "SRC-EVIDENCE-MISSING-XPCC-FINANCE-CATALOG-2026",
+        "publisher": "新疆生产建设兵团财政局",
+        "publisher_level": "兵团财政部门",
+        "document_title": "兵团财政局预决算公开目录逐页复核记录（截至2026年9月3日）",
+        "source_url": "https://cwj.xjbt.gov.cn/xxgk/yjsgkhbtzfxjjxzsyxsfmlqd/",
+        "publication_date": "2026-09-03",
+        "source_grade": "A1",
+        "document_type": "财政预决算公开目录复核记录",
+        "note": "本轮按目录第1—10页逐页核验：可见2025/2026年政府性基金目录、2020部门预算、2019部门决算及2019年兵团一般公共预算/政府性基金预算草案；未见2021—2025年全兵团一般公共预算收入/支出年度决算或预算执行表。本记录不产生业务数值。",
     },
     {
         "source_doc_id": "SRC-EVIDENCE-MISSING-XPCC-FISCAL-POST-2021",
@@ -333,12 +346,23 @@ EVIDENCE_SOURCE_DOCUMENTS: tuple[dict[str, str], ...] = (
         "source_doc_id": "SRC-EVIDENCE-MISSING-XPCC-GDP-INDEX-2026",
         "publisher": "新疆生产建设兵团统计局",
         "publisher_level": "兵团统计机构",
-        "document_title": "兵团统计局统计公报目录（截至2026年9月2日复核）",
+        "document_title": "兵团统计局统计公报入口复核记录（截至2026年9月3日）",
         "source_url": "https://tjj.xjbt.gov.cn/sjzx/tjgb/",
-        "publication_date": "2026-09-02",
+        "publication_date": "2026-09-03",
         "source_grade": "A1",
         "document_type": "统计公报公开目录",
-        "note": "复核兵团统计局统计公报入口及公开索引，当前未找到2024或2025年全年兵团国民经济和社会发展统计公报；仅有已公开的2023年全年及阶段性经济信息。",
+        "note": "本轮重新访问官方统计公报入口，当前列表为空，未见2024或2025年全兵团年度统计公报；阶段性经济信息不能替代全年GDP总量或实际增速。本记录不产生业务数值。",
+    },
+    {
+        "source_doc_id": "SRC-EVIDENCE-MISSING-XPCC-STATISTICS-CATALOG-2026",
+        "publisher": "新疆生产建设兵团统计局",
+        "publisher_level": "兵团统计机构",
+        "document_title": "兵团统计局统计公报入口复核记录（截至2026年9月3日）",
+        "source_url": "https://tjj.xjbt.gov.cn/sjzx/tjgb/",
+        "publication_date": "2026-09-03",
+        "source_grade": "A1",
+        "document_type": "统计公报目录复核记录",
+        "note": "本轮重新访问官方统计公报入口，当前列表为空，未见2024或2025年全兵团年度统计公报；阶段性经济信息不能替代全年GDP总量或实际增速。本记录不产生业务数值。",
     },
     {
         "source_doc_id": "SRC-EVIDENCE-MISSING-XPCC-FOLLOWUP-2025",
@@ -388,12 +412,12 @@ EVIDENCE_SOURCE_DOCUMENTS: tuple[dict[str, str], ...] = (
         "source_doc_id": "SRC-EVIDENCE-MISSING-XIONGAN-STATISTICS-INDEX-2026",
         "publisher": "中国雄安官网",
         "publisher_level": "新区政府门户网站",
-        "document_title": "雄安新区统计信息公开目录（截至2026年9月2日复核）",
+        "document_title": "雄安新区统计信息公开目录（截至2026年9月3日复核）",
         "source_url": "https://www.xiongan.gov.cn/zwgk/zfxxgk/fdgknr/tjxx.html",
-        "publication_date": "2026-09-02",
+        "publication_date": "2026-09-03",
         "source_grade": "A1",
         "document_type": "统计信息公开目录",
-        "note": "复核新区统计信息目录，当前可见内容包括投资、外贸及阶段性区域信息，未找到2024或2025年新区全域GDP总量及实际增速表格。",
+        "note": "本轮重新核查新区统计信息目录，当前可见内容包括投资、外贸、河北综合及阶段性区域信息，仍未找到2024或2025年新区全域GDP总量及实际增速表格。",
     },
     {
         "source_doc_id": "SRC-EVIDENCE-MISSING-LAIWU-YEARBOOK",
