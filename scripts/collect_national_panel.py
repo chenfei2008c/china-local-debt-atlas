@@ -7215,6 +7215,7 @@ def _make_curated_city_source(
     page_number: str = "摘录文件；对应入口页/附件表格",
     title_source: str = "official_budget_report",
     access_status: str | None = None,
+    source_locator: str | None = None,
     note: str = "官方或精确公开表格摘录；行政范围为全市（州/地区），仅接入可逐项定位的数值。",
 ) -> dict[str, Any]:
     """把逐行城市摘录转换为标准城市财政来源配置。"""
@@ -7249,6 +7250,7 @@ def _make_curated_city_source(
         "data_status_label": data_status_label or f"{year}年执行数",
         "document_type": document_type,
         "page_number": page_number,
+        "source_locator": source_locator,
         "title_source": title_source,
         "access_status": access_status,
         "raw_unit": raw_unit,
@@ -10376,6 +10378,43 @@ CITY_YEAR_FISCAL_SOURCES += (
         document_type="地区经济指标正式访谈摘录",
         page_number="网页正文；阿里地区经济社会发展指标段",
         note="B2省级党报正式访谈；原文明确为阿里地区全地区2023年预计GDP91.51亿元、同比增长13%，保留preliminary状态，不表述为最终决算数。",
+    ),
+)
+
+# 阿里地区官方概况页明确披露 2020 年全地区 GDP 同比增长 7.7%。该值是
+# 公开原文直接给出的年度同比增速，区别于 2022 年评级报告按 GDP 绝对值
+# 计算的派生增速，因此按 A1 原始统计信息接入。
+CITY_YEAR_FISCAL_SOURCES += (
+    _make_curated_city_source(
+        year=2020,
+        city_name="阿里地区",
+        city_id="CN-542500",
+        source_doc_id="SRC-A1-ALI-REGION-GDP-GROWTH-2020",
+        url="https://www.al.gov.cn/info/1127/40519.htm",
+        path=RAW_DIR / "province_fiscal" / "2020" / "official" / "ali_2020_gdp_growth_excerpt.txt",
+        document_title="阿里概况",
+        publisher="阿里地区行政公署",
+        publisher_level="地级行政公署",
+        publication_date="2021-11-01",
+        source_grade="A1",
+        fields=("gdp_real_growth_pct",),
+        raw_unit="%",
+        source_format="html",
+        data_status="reported",
+        data_status_label="2020年官方年度同比增速",
+        document_type="官方地区概况年度经济指标",
+        page_number="网页正文；2020年经济社会发展指标段",
+        custom_patterns={
+            "gdp_real_growth_pct": r"城市=阿里地区｜年度=2020｜GDP实际增速=([0-9.,-]+)%",
+        },
+        source_locator=(
+            "raw/province_fiscal/2020/official/ali_2020_gdp_growth_excerpt.txt；"
+            "官方网页正文；城市=阿里地区；2020年官方年度同比增速；行政范围=全地区"
+        ),
+        note=(
+            "A1阿里地区行政公署官方概况页；原文直接披露‘2020年，全地区生产总值完成70.67亿元、同比增长7.7%’，"
+            "接入同比增长7.7%作为全地区2020年GDP实际增速，不由GDP总量推算。"
+        ),
     ),
 )
 

@@ -92,15 +92,6 @@ def _core_rows() -> tuple[dict[str, str], ...]:
 
     for year, field, result, next_action, source_ids in (
         (
-            2020,
-            "gdp_real_growth_pct",
-            "官方阿里地区2020年信息公开页面只披露2020年GDP总量70.7亿元，没有按不变价格计算的实际增速；"
-            "阿里地区官方统计数据目录当前可见的年度经济条目仅到2017年，后续主要是2023年前三季度等阶段信息；"
-            "未找到同年度官方公报或年鉴的实际增速。",
-            "若取得阿里地区2020年官方统计公报/年鉴实际增速，再按全地区口径补录；不得由相邻年度总量计算。",
-            "SRC-EVIDENCE-MISSING-ALI-GROWTH-2020;SRC-EVIDENCE-MISSING-ALI-STATISTICS-INDEX-2026",
-        ),
-        (
             2022,
             "gdp_real_growth_pct",
             "B2评级报告表格列出阿里地区2022年GDP及0.50%的增速，但脚注明确该增速由GDP绝对值计算，"
@@ -256,15 +247,15 @@ EVIDENCE_SOURCE_DOCUMENTS: tuple[dict[str, str], ...] = (
         "note": "报告对三沙市近年经济财政数据缺失作出说明；仅用于确认公开渠道状态，不转录推算值。",
     },
     {
-        "source_doc_id": "SRC-EVIDENCE-MISSING-ALI-GROWTH-2020",
+        "source_doc_id": "SRC-A1-ALI-REGION-GDP-GROWTH-2020",
         "publisher": "阿里地区行政公署",
         "publisher_level": "地级行政公署",
-        "document_title": "阿里地区2020年经济社会发展再上新台阶",
-        "source_url": "https://www.al.gov.cn/info/1035/39331.htm",
-        "publication_date": "2021-07-20",
+        "document_title": "阿里概况",
+        "source_url": "https://www.al.gov.cn/info/1127/40519.htm",
+        "publication_date": "2021-11-01",
         "source_grade": "A1",
-        "document_type": "官方经济信息",
-        "note": "官方页面披露2020年GDP总量70.7亿元，但未披露按不变价格计算的实际增速；本来源不产生增速值。",
+        "document_type": "官方地区概况年度经济指标",
+        "note": "官方页面原文直接披露‘2020年，全地区生产总值完成70.67亿元、同比增长7.7%’；本来源产生阿里地区全地区2020年GDP实际增速7.7%，不由GDP总量推算。",
     },
     {
         "source_doc_id": "SRC-EVIDENCE-MISSING-ALI-GROWTH-2022",

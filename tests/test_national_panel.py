@@ -1461,11 +1461,12 @@ class NationalPanelTests(unittest.TestCase):
                 {"city_id": key[0], "metric_year": key[1]},
             )[evidence["field_name"]] = None
         evidence_rows = build_evidence_based_missing_rows(list(macro_rows_by_key.values()))
-        self.assertEqual(len(evidence_rows), 56)
+        # 阿里地区 2020 年 GDP 实际增速已由官方 A1 来源补录，不再登记为缺失。
+        self.assertEqual(len(evidence_rows), 55)
 
         macro_rows_by_key[("CN-460300", "2022")]["gdp_current_100m"] = "6.66"
         filtered_rows = build_evidence_based_missing_rows(list(macro_rows_by_key.values()))
-        self.assertEqual(len(filtered_rows), 55)
+        self.assertEqual(len(filtered_rows), 54)
 
     def test_new_fund_calculations_are_appended_after_existing_lineages(self):
         rows = [

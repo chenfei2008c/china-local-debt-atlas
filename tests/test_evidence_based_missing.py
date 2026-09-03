@@ -7,6 +7,14 @@ from scripts.evidence_based_missing import (
 
 
 class EvidenceBasedMissingTests(unittest.TestCase):
+    def test_ali_2020_growth_uses_official_direct_disclosure(self):
+        source_id = "SRC-A1-ALI-REGION-GDP-GROWTH-2020"
+        source = next(item for item in EVIDENCE_SOURCE_DOCUMENTS if item["source_doc_id"] == source_id)
+
+        self.assertEqual(source["source_grade"], "A1")
+        self.assertIn("7.7%", source["note"])
+        self.assertNotIn(("CN-542500", "2020", "gdp_real_growth_pct"), EVIDENCE_BY_KEY)
+
     def test_sansha_search_record_covers_latest_targeted_review(self):
         source_id = "SRC-EVIDENCE-MISSING-SANSHA-SEARCH-2026"
         source = next(item for item in EVIDENCE_SOURCE_DOCUMENTS if item["source_doc_id"] == source_id)
