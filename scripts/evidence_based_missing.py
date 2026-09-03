@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 
-EVIDENCE_CHECKED_AT = "2026-09-03"
+EVIDENCE_CHECKED_AT = "2026-09-04"
 
 CORE_GAP_FIELDS = (
     "gdp_current_100m",
@@ -132,6 +132,7 @@ def _core_rows() -> tuple[dict[str, str], ...]:
                 evidence_source_doc_ids=(
                     "SRC-EVIDENCE-MISSING-XPCC-GDP-2024-2025;SRC-EVIDENCE-MISSING-XPCC-GDP-REPORT-2025;"
                     "SRC-EVIDENCE-MISSING-XPCC-FOLLOWUP-2025;SRC-EVIDENCE-MISSING-XPCC-GDP-INDEX-2026;"
+                    "SRC-EVIDENCE-MISSING-XPCC-YEAR-END-2025;"
                     "SRC-EVIDENCE-MISSING-XPCC-STATISTICS-CATALOG-2026;"
                     "SRC-EVIDENCE-MISSING-XPCC-FISCAL-POST-2021"
                     if is_gdp else
@@ -165,7 +166,7 @@ def _core_rows() -> tuple[dict[str, str], ...]:
                 metric_year=year, field_name=field,
                 evidence_source_doc_ids=(
                     "SRC-EVIDENCE-MISSING-XIONGAN-GDP-STATUS;SRC-EVIDENCE-MISSING-XIONGAN-STATISTICS-INDEX-2026;"
-                    "SRC-EVIDENCE-MISSING-XIONGAN-DECISION"
+                    "SRC-EVIDENCE-MISSING-XIONGAN-DECISION;SRC-EVIDENCE-MISSING-XIONGAN-2025-DECISION-REPORT"
                 ),
                 searched_channels="中国雄安官网统计信息和站内检索；雄安新区财政预决算公开专栏；河北省及新区公开报告",
                 result=(
@@ -418,6 +419,28 @@ EVIDENCE_SOURCE_DOCUMENTS: tuple[dict[str, str], ...] = (
         "source_grade": "A1",
         "document_type": "统计信息公开目录",
         "note": "本轮重新核查新区统计信息目录，当前可见内容包括投资、外贸、河北综合及阶段性区域信息，仍未找到2024或2025年新区全域GDP总量及实际增速表格。",
+    },
+    {
+        "source_doc_id": "SRC-EVIDENCE-MISSING-XIONGAN-2025-DECISION-REPORT",
+        "publisher": "雄安新区财政局",
+        "publisher_level": "新区财政部门",
+        "document_title": "关于2025年雄安新区区本级决算情况的报告",
+        "source_url": "https://www.xiongan.gov.cn/20260810/d3ddd77a14d24ac597d3245be8d72812/c.html",
+        "publication_date": "2026-08-10",
+        "source_grade": "A1",
+        "document_type": "官方财政决算报告",
+        "note": "本轮核查该报告及其5页官方附件：报告精确披露2025年新区本级一般公共预算、政府性基金和债务余额，但未披露2024或2025年新区全域GDP总量及按不变价格计算的实际增速；财政决算数据不跨字段推导GDP。",
+    },
+    {
+        "source_doc_id": "SRC-EVIDENCE-MISSING-XPCC-YEAR-END-2025",
+        "publisher": "兵团官方新闻门户、兵团统计机构",
+        "publisher_level": "兵团官方新闻门户/统计机构公开信息",
+        "document_title": "2025年兵团经济运行年度总结公开信息复核记录",
+        "source_url": "https://bt.news.cn/20251231/0db974429a8144f198c21fdb0696b04a/c.html",
+        "publication_date": "2025-12-31",
+        "source_grade": "A1",
+        "document_type": "官方年度经济总结",
+        "note": "本轮核查兵团官方年度总结及2026年后续发布信息；年度总结仍只公开2025年前三季度生产总值2517.1亿元、同比增长6.2%等阶段数据，未公开2025全年GDP总量或实际增速，不能年化或用阶段值代替年度值。",
     },
     {
         "source_doc_id": "SRC-EVIDENCE-MISSING-LAIWU-YEARBOOK",

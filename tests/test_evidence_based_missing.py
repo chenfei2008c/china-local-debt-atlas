@@ -74,6 +74,30 @@ class EvidenceBasedMissingTests(unittest.TestCase):
                 EVIDENCE_BY_KEY[key]["evidence_source_doc_ids"],
             )
 
+    def test_latest_year_end_reviews_are_registered_without_creating_values(self):
+        xiongan_id = "SRC-EVIDENCE-MISSING-XIONGAN-2025-DECISION-REPORT"
+        xiongan = next(item for item in EVIDENCE_SOURCE_DOCUMENTS if item["source_doc_id"] == xiongan_id)
+        self.assertEqual(xiongan["publication_date"], "2026-08-10")
+        self.assertIn("5页官方附件", xiongan["note"])
+        self.assertIn("未披露2024或2025年新区全域GDP", xiongan["note"])
+
+        xpcc_id = "SRC-EVIDENCE-MISSING-XPCC-YEAR-END-2025"
+        xpcc = next(item for item in EVIDENCE_SOURCE_DOCUMENTS if item["source_doc_id"] == xpcc_id)
+        self.assertEqual(xpcc["publication_date"], "2025-12-31")
+        self.assertIn("前三季度", xpcc["note"])
+        self.assertIn("未公开2025全年GDP", xpcc["note"])
+
+        for key in (
+            ("CN-133100", "2024", "gdp_real_growth_pct"),
+            ("CN-133100", "2025", "gdp_current_100m"),
+            ("CN-659000", "2024", "gdp_current_100m"),
+            ("CN-659000", "2025", "gdp_real_growth_pct"),
+        ):
+            self.assertIn(
+                xiongan_id if key[0] == "CN-133100" else xpcc_id,
+                EVIDENCE_BY_KEY[key]["evidence_source_doc_ids"],
+            )
+
 
 if __name__ == "__main__":
     unittest.main()
