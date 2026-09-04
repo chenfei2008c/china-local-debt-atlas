@@ -25,6 +25,22 @@ class EvidenceBasedMissingTests(unittest.TestCase):
         self.assertIn("财政收支", source["note"])
         self.assertIn("未取得可直接入表的年度全市数值", source["note"])
 
+    def test_sansha_hainan_yearbook_review_is_registered_without_creating_values(self):
+        source_id = "SRC-EVIDENCE-MISSING-SANSHA-HN-YEARBOOK-2024"
+        source = next(item for item in EVIDENCE_SOURCE_DOCUMENTS if item["source_doc_id"] == source_id)
+
+        self.assertEqual(source["source_grade"], "A1")
+        self.assertIn("3-13", source["note"])
+        self.assertIn("未列三沙市", source["note"])
+        self.assertIn("官方PDF", source["note"])
+
+        for key in (
+            ("CN-460300", "2018", "gdp_real_growth_pct"),
+            ("CN-460300", "2022", "general_public_revenue_100m"),
+            ("CN-460300", "2025", "general_public_expenditure_100m"),
+        ):
+            self.assertIn(source_id, EVIDENCE_BY_KEY[key]["evidence_source_doc_ids"])
+
     def test_latest_xpcc_rating_followup_is_registered_without_creating_values(self):
         source_id = "SRC-EVIDENCE-MISSING-XPCC-FOLLOWUP-2025"
         source = next(item for item in EVIDENCE_SOURCE_DOCUMENTS if item["source_doc_id"] == source_id)

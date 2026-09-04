@@ -68,7 +68,8 @@ def _core_rows() -> tuple[dict[str, str], ...]:
     sansha_sources = (
         "SRC-EVIDENCE-MISSING-SANSHA-SEARCH-2026;"
         "SRC-EVIDENCE-MISSING-SANSHA-PUBLICATION-STATUS;"
-        "SRC-EVIDENCE-MISSING-SANSHA-RATING-2024"
+        "SRC-EVIDENCE-MISSING-SANSHA-RATING-2024;"
+        "SRC-EVIDENCE-MISSING-SANSHA-HN-YEARBOOK-2024"
     )
     sansha_channels = "三沙市政府门户网站站内检索；海南省财政厅政府信息公开和财政公开页面；评级报告及债务公开附件"
     sansha_result = (
@@ -245,6 +246,17 @@ EVIDENCE_SOURCE_DOCUMENTS: tuple[dict[str, str], ...] = (
         "source_grade": "B2",
         "document_type": "评级研究报告",
         "note": "报告对三沙市近年经济财政数据缺失作出说明；仅用于确认公开渠道状态，不转录推算值。",
+    },
+    {
+        "source_doc_id": "SRC-EVIDENCE-MISSING-SANSHA-HN-YEARBOOK-2024",
+        "publisher": "海南省统计局",
+        "publisher_level": "省级统计部门",
+        "document_title": "海南统计年鉴2024：3-13 各市县生产总值指数",
+        "source_url": "https://stats.hainan.gov.cn/tjj/tjsu/ndsj/2024/202412/P020250116308974141111.pdf",
+        "publication_date": "2025-01-16",
+        "source_grade": "A1",
+        "document_type": "官方统计年鉴PDF",
+        "note": "官方PDF第43页表3-13《各市县生产总值指数》公开列示18个市县（含海口、三亚、儋州及县级市县），未列三沙市；该表仅证明省级公开年鉴未提供三沙市该指标，不产生三沙市业务数值，也不以省级或其他市县数据反推。",
     },
     {
         "source_doc_id": "SRC-A1-ALI-REGION-GDP-GROWTH-2020",
