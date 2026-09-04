@@ -11704,6 +11704,64 @@ def pct(numerator: Any, denominator: Any) -> Decimal | None:
     return q2(num / den * D100)
 
 
+GOTOHUI_CITY_SERIES_FIELDS = (
+    "gdp_current_100m",
+    "gdp_real_growth_pct",
+    "resident_population_10k",
+    "general_public_revenue_100m",
+    "general_public_expenditure_100m",
+    "gov_fund_revenue_100m",
+    "statutory_debt_limit_100m",
+    "statutory_debt_balance_100m",
+)
+
+
+def merge_gotohui_city_series_batch(
+    city_year_fiscal: dict[tuple[str, str], dict[str, Any]],
+    candidates: Mapping[tuple[str, str], Mapping[str, Any]],
+) -> None:
+    """按字段合并聚汇公开序列，不能遗漏债务限额/余额字段。
+
+    聚汇适配器同时提供经济财政、基金收入和债务总额序列。这里保留字段级
+    来源选择：只补空值或替换 D 级暂存值，不覆盖已有 A1/A2/B1/B2 值。
+    """
+
+    for key, candidate in candidates.items():
+        prior = city_year_fiscal.get(key)
+        if prior is None:
+            city_year_fiscal[key] = dict(candidate)
+            continue
+        field_sources = dict(prior.get("_field_sources") or {})
+        source_ids = [item for item in str(prior.get("source_doc_id") or "").split(";") if item]
+        candidate_ids = [item for item in str(candidate.get("source_doc_id") or "").split(";") if item]
+        for candidate_id in candidate_ids:
+            if candidate_id not in source_ids:
+                source_ids.append(candidate_id)
+        for field in GOTOHUI_CITY_SERIES_FIELDS:
+            candidate_value = as_decimal(candidate.get(field))
+            if candidate_value is None:
+                continue
+            candidate_source = candidate.get("_field_sources", {}).get(field, candidate)
+            prior_source = field_sources.get(field, prior)
+            prior_value = as_decimal(prior_source.get(field) if prior_source else prior.get(field))
+            prior_grade = str(prior_source.get("source_grade") or "") if prior_source else ""
+            if prior_value is None or SOURCE_GRADE_RANK.get("B2", -1) > SOURCE_GRADE_RANK.get(prior_grade, -1):
+                prior[field] = candidate_value
+                for suffix in ("_raw_100m", "_raw_unit", "_evidence_excerpt"):
+                    source_key = f"{field}{suffix}"
+                    if source_key in candidate:
+                        prior[source_key] = candidate[source_key]
+                    elif source_key in candidate_source:
+                        prior[source_key] = candidate_source[source_key]
+                field_sources[field] = dict(candidate_source)
+        prior["source_doc_id"] = ";".join(source_ids)
+        prior["_field_sources"] = field_sources
+        if SOURCE_GRADE_RANK.get("B2", -1) > SOURCE_GRADE_RANK.get(str(prior.get("source_grade") or ""), -1):
+            prior["source_grade"] = "B2"
+        if prior.get("data_status") in {None, "", "provisional", "not_collected"}:
+            prior["data_status"] = "reported"
+
+
 def csv_value(value: Any) -> str:
     if value is None:
         return ""
@@ -15103,47 +15161,7 @@ def main() -> None:
     # 聚汇公开历史序列为 B2 精确二手来源。按字段合并，只补空值或替换
     # D 级暂存值；不覆盖已有 A1/A2/B1/B2 字段，并保留字段级来源。
     gotohui_city_series, gotohui_city_series_sources = load_gotohui_city_series_sources(ROOT, city_master)
-    for key, candidate in gotohui_city_series.items():
-        prior = city_year_fiscal.get(key)
-        if prior is None:
-            city_year_fiscal[key] = candidate
-            continue
-        field_sources = dict(prior.get("_field_sources") or {})
-        source_ids = [item for item in str(prior.get("source_doc_id") or "").split(";") if item]
-        candidate_ids = [item for item in str(candidate.get("source_doc_id") or "").split(";") if item]
-        for candidate_id in candidate_ids:
-            if candidate_id not in source_ids:
-                source_ids.append(candidate_id)
-        for field in (
-            "gdp_current_100m",
-            "gdp_real_growth_pct",
-            "resident_population_10k",
-            "general_public_revenue_100m",
-            "general_public_expenditure_100m",
-            "gov_fund_revenue_100m",
-        ):
-            candidate_value = as_decimal(candidate.get(field))
-            if candidate_value is None:
-                continue
-            candidate_source = candidate.get("_field_sources", {}).get(field, candidate)
-            prior_source = field_sources.get(field, prior)
-            prior_value = as_decimal(prior_source.get(field) if prior_source else prior.get(field))
-            prior_grade = str(prior_source.get("source_grade") or "") if prior_source else ""
-            if prior_value is None or SOURCE_GRADE_RANK.get("B2", -1) > SOURCE_GRADE_RANK.get(prior_grade, -1):
-                prior[field] = candidate_value
-                for suffix in ("_raw_100m", "_raw_unit", "_evidence_excerpt"):
-                    source_key = f"{field}{suffix}"
-                    if source_key in candidate:
-                        prior[source_key] = candidate[source_key]
-                    elif source_key in candidate_source:
-                        prior[source_key] = candidate_source[source_key]
-                field_sources[field] = dict(candidate_source)
-        prior["source_doc_id"] = ";".join(source_ids)
-        prior["_field_sources"] = field_sources
-        if SOURCE_GRADE_RANK.get("B2", -1) > SOURCE_GRADE_RANK.get(str(prior.get("source_grade") or ""), -1):
-            prior["source_grade"] = "B2"
-        if prior.get("data_status") in {None, "", "provisional", "not_collected"}:
-            prior["data_status"] = "reported"
+    merge_gotohui_city_series_batch(city_year_fiscal, gotohui_city_series)
     city_year_fiscal_sources.extend(gotohui_city_series_sources)
     # 财政部地方政府债券信息公开平台对大连、宁波、厦门、青岛、深圳提供城市级
     # 年度序列。A1接口值只按字段补空或替换低等级值，不覆盖同等级或更高等级来源。

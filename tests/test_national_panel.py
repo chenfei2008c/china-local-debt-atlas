@@ -56,6 +56,7 @@ from scripts.collect_national_panel import (
     validate_no_zero_for_missing,
 )
 from scripts.gotohui_city_series import load_gotohui_city_series_sources
+from scripts.collect_national_panel import merge_gotohui_city_series_batch
 from scripts.dachuang_city_panel import load_dachuang_city_panel_sources
 from scripts.haidatas_city_panel import load_haidatas_city_panel_sources
 from scripts.sichuan_2018_yearbook import load_sichuan_2018_yearbook_sources
@@ -1116,6 +1117,34 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(fund["gov_fund_revenue_100m"], Decimal("964.64"))
         limit = values[("CN-440300", "2018")]
         self.assertEqual(limit["statutory_debt_limit_100m"], Decimal("385.00"))
+
+    def test_gotohui_limit_series_is_merged_into_empty_national_fields(self):
+        root = Path(__file__).resolve().parents[1]
+        with (root / "outputs/national_prefecture_panel_2018_2026/dim_city.csv").open(
+            encoding="utf-8-sig", newline=""
+        ) as handle:
+            city_master = list(csv.DictReader(handle))
+        candidates, _sources = load_gotohui_city_series_sources(root, city_master)
+        target_keys = {("CN-360400", "2022"), ("CN-542500", "2022")}
+        merged = {}
+
+        merge_gotohui_city_series_batch(merged, {
+            key: candidates[key]
+            for key in target_keys
+        })
+
+        self.assertEqual(
+            merged[("CN-360400", "2022")]["statutory_debt_limit_100m"],
+            Decimal("1299.81"),
+        )
+        self.assertEqual(
+            merged[("CN-542500", "2022")]["statutory_debt_limit_100m"],
+            Decimal("30.58"),
+        )
+        self.assertIn(
+            "SRC-B2-GOTOHUI-LIMIT-1679381",
+            merged[("CN-360400", "2022")]["source_doc_id"],
+        )
 
     def test_dachuang_public_panel_is_explicit_d_provisional_and_normalizes_units(self):
         root = Path(__file__).resolve().parents[1]
