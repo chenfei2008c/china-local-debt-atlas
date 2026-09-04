@@ -67,6 +67,10 @@ from scripts.gotohui_snapshot_collector import (
     normalize_series_value,
     merge_snapshot_series,
 )
+from scripts.gotohui_batch_snapshot_collector import (
+    acceptable_city_total_series_title,
+    select_city_series_from_index,
+)
 from scripts.crei_city_bulletins import is_target_bulletin_title, parse_bulletin_text
 from scripts.hongheiku_city_bulletins import (
     _filter_sitemap_urls,
@@ -78,10 +82,93 @@ from scripts.direct_admin_gdp_growth import (
     calculate_weighted_growth,
 )
 from scripts.province_debt_sources import extract_official_debt_facts
+from scripts.province_debt_parser import extract_city_rows
 from scripts.nbs_city_annual_2024 import load_nbs_city_annual_2024
+from scripts.regional_fiscal_2022_2024 import load_regional_fiscal_sources
 
 
 class NationalPanelTests(unittest.TestCase):
+
+    def test_debt_parser_keeps_limit_only_publications_separate_from_balances(self):
+        total_only = extract_city_rows(
+            "上海市 11446.2",
+            {"上海市"},
+            2025,
+            "上海市",
+            "TEST-LIMIT-ONLY",
+            layout="limit1",
+        )[0]
+        self.assertEqual(total_only["statutory_debt_limit_100m"], Decimal("11446.2"))
+        self.assertIsNone(total_only["statutory_debt_balance_100m"])
+
+        split_limit = extract_city_rows(
+            "雅安市 540.2079 130.0759 410.1320",
+            {"雅安市"},
+            2025,
+            "四川省",
+            "TEST-LIMIT-3",
+            layout="limit3",
+        )[0]
+        self.assertEqual(split_limit["statutory_debt_limit_100m"], Decimal("540.2079"))
+        self.assertEqual(split_limit["general_debt_limit_100m"], Decimal("130.0759"))
+        self.assertEqual(split_limit["special_debt_limit_100m"], Decimal("410.1320"))
+        self.assertIsNone(split_limit["statutory_debt_balance_100m"])
+
+    def test_2025_city_budget_reports_supply_missing_statutory_limits(self):
+        city_master = [
+            {"city_id": "CN-610100", "city_name_cn": "西安市", "province_name": "陕西省", "metric_year": "2025"},
+            {"city_id": "CN-310000", "city_name_cn": "上海市", "province_name": "上海市", "metric_year": "2025"},
+            {"city_id": "CN-532900", "city_name_cn": "大理白族自治州", "province_name": "云南省", "metric_year": "2025"},
+            {"city_id": "CN-511800", "city_name_cn": "雅安市", "province_name": "四川省", "metric_year": "2025"},
+        ]
+        facts, sources = extract_official_debt_facts(city_master)
+
+        xian = facts[("CN-610100", "2025")]
+        self.assertEqual(xian["statutory_debt_limit_100m"], Decimal("5525"))
+        self.assertEqual(xian["general_debt_limit_100m"], Decimal("1284.87"))
+        self.assertEqual(xian["special_debt_limit_100m"], Decimal("4240.13"))
+
+        shanghai = facts[("CN-310000", "2025")]
+        self.assertEqual(shanghai["statutory_debt_limit_100m"], Decimal("11446.2"))
+        self.assertIsNone(shanghai["general_debt_limit_100m"])
+
+        dali = facts[("CN-532900", "2025")]
+        self.assertEqual(dali["statutory_debt_limit_100m"], Decimal("956.6178"))
+        self.assertIsNone(dali["general_debt_limit_100m"])
+
+        yaan = facts[("CN-511800", "2025")]
+        self.assertEqual(yaan["statutory_debt_limit_100m"], Decimal("540.2079"))
+        self.assertEqual(yaan["general_debt_limit_100m"], Decimal("130.0759"))
+        self.assertEqual(yaan["special_debt_limit_100m"], Decimal("410.1320"))
+        new_ids = {item["source_doc_id"] for item in sources}
+        self.assertTrue({
+            "SRC-A2-CITY-DEBT-SHAANXI-XIAN-2025-LIMIT",
+            "SRC-A1-CITY-DEBT-SHANGHAI-2025-LIMIT",
+            "SRC-A1-CITY-DEBT-YUNNAN-DALI-2025-LIMIT",
+            "SRC-A2-CITY-DEBT-SICHUAN-YAAN-2025-LIMIT",
+        }.issubset(new_ids))
+
+    def test_hubei_2022_rating_table_adds_only_explicit_whole_city_fund_values(self):
+        root = Path(__file__).resolve().parents[1]
+        values, sources = load_regional_fiscal_sources(root)
+
+        expected = {
+            ("CN-420600", "2022"): Decimal("145.83"),
+            ("CN-421000", "2022"): Decimal("135.22"),
+            ("CN-420300", "2022"): Decimal("106.78"),
+            ("CN-420800", "2022"): Decimal("70.90"),
+            ("CN-421200", "2022"): Decimal("65.52"),
+            ("CN-420700", "2022"): Decimal("54.35"),
+        }
+        for key, expected_value in expected.items():
+            self.assertEqual(values[key]["gov_fund_revenue_100m"], expected_value)
+            self.assertEqual(values[key]["source_grade"], "B2")
+        self.assertNotIn(("CN-420900", "2022"), values)
+        self.assertNotIn(("CN-420200", "2022"), values)
+        self.assertIn(
+            "SRC-B2-HUBEI-REGIONAL-FISCAL-2022",
+            {item["source_doc_id"] for item in sources},
+        )
 
     def test_sichuan_2018_official_yearbook_batch_covers_all_prefectures(self):
         root = Path(__file__).resolve().parents[1]
@@ -902,6 +989,39 @@ class NationalPanelTests(unittest.TestCase):
         self.assertFalse(
             acceptable_series_title("fund", "西宁市", "西宁市政府性基金收入:国有土地使用权出让收入")
         )
+
+    def test_gotohui_batch_index_accepts_only_whole_city_total_series(self):
+        self.assertTrue(
+            acceptable_city_total_series_title(
+                "fund", "安庆市", "安庆市地方政府性基金收入"
+            )
+        )
+        self.assertTrue(
+            acceptable_city_total_series_title(
+                "limit", "安庆市", "安庆市地方政府债务限额"
+            )
+        )
+        self.assertFalse(
+            acceptable_city_total_series_title(
+                "fund", "安庆市", "安庆市地方政府性基金本级收入"
+            )
+        )
+        self.assertFalse(
+            acceptable_city_total_series_title(
+                "limit", "安庆市", "安庆市:宜秀区地方政府债务限额"
+            )
+        )
+        selected = select_city_series_from_index(
+            "fund",
+            {"CN-340800": "安庆市"},
+            [
+                {"id": 1, "title": "安庆市地方政府性基金收入"},
+                {"id": 2, "title": "安庆市地方政府性基金本级收入"},
+                {"id": 3, "title": "安庆市:宜秀区地方政府性基金收入"},
+            ],
+        )
+        self.assertEqual([item["id"] for item in selected], [1])
+        self.assertEqual(selected[0]["city_id"], "CN-340800")
 
     def test_gotohui_snapshot_collector_normalizes_units_and_deduplicates_series(self):
         self.assertEqual(normalize_series_value("revenue", "123456", "万元"), Decimal("12.35"))

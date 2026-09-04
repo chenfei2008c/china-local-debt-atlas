@@ -980,6 +980,97 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
     ]
 )
 
+# 2025年官方预算执行报告中的限额补充。部分城市公开报告只给出法定总限额，
+# 不给一般/专项拆分；使用 limit1/limit3 只写入明确公开的限额字段，绝不把
+# 限额数字当作余额，也不从总额反推未披露的分项。
+OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
+    [
+        {
+            "source_doc_id": "SRC-A2-CITY-DEBT-SHAANXI-XIAN-2025-LIMIT",
+            "province_name": "陕西省",
+            "year": 2025,
+            "path": RAW_DIR / "2025" / "official" / "xian_2025_limit_total6.txt",
+            "text_path": RAW_DIR / "2025" / "official" / "xian_2025_limit_total6.txt",
+            "source_url": "https://xaczj.xa.gov.cn/zwgk/czyjs/2030898768368398337.html",
+            "document_title": "西安市2025年预算执行情况和2026年预算草案的报告",
+            "publication_date": "2026-03-09",
+            "publisher": "西安市财政局",
+            "publisher_level": "市级财政机构",
+            "source_grade": "A2",
+            "unit": "亿元",
+            "layout": "total6",
+            "start": "2025年西安市全市政府债务限额及余额（官方预算执行报告）",
+            "end": None,
+            "table_name": "2025年西安市全市政府债务限额及余额",
+            "data_status": "execution",
+            "note": "官方预算执行报告正文同时披露全市总限额、一般/专项限额、总余额及一般/专项余额，按亿元直接接入六项字段；不使用市级口径替代全市口径。",
+        },
+        {
+            "source_doc_id": "SRC-A1-CITY-DEBT-SHANGHAI-2025-LIMIT",
+            "province_name": "上海市",
+            "year": 2025,
+            "path": RAW_DIR / "2025" / "official" / "shanghai_2025_limit.txt",
+            "text_path": RAW_DIR / "2025" / "official" / "shanghai_2025_limit.txt",
+            "source_url": "https://www.shanghai.gov.cn/nw12338/20260515/a97f758537314ce7b2c0e26614e179f6.html",
+            "document_title": "关于上海市2025年预算执行情况和2026年预算草案的报告",
+            "publication_date": "2026-05-15",
+            "publisher": "上海市财政局",
+            "publisher_level": "省级（直辖市）财政机构",
+            "source_grade": "A1",
+            "unit": "亿元",
+            "layout": "limit1",
+            "start": "2025年上海市全市政府债务限额（官方预算执行报告）",
+            "end": None,
+            "table_name": "2025年上海市全市政府债务限额",
+            "data_status": "execution",
+            "note": "官方预算执行报告明确披露财政部核定的本市政府债务总限额；一般/专项限额未在本条摘录中公开，分项字段保持为空。",
+        },
+        {
+            "source_doc_id": "SRC-A1-CITY-DEBT-YUNNAN-DALI-2025-LIMIT",
+            "province_name": "云南省",
+            "year": 2025,
+            "path": RAW_DIR / "2025" / "official" / "dali_2025_limit.txt",
+            "text_path": RAW_DIR / "2025" / "official" / "dali_2025_limit.txt",
+            "source_url": "https://www.dali.gov.cn/dlzrmzf/xxgkml/c106264/pc/content/2026957153552601088/content_2026957153552601088.html",
+            "document_title": "关于大理白族自治州2025年地方财政预算执行情况和2026年地方财政预算草案的报告",
+            "publication_date": "2026-02-26",
+            "publisher": "大理白族自治州财政局",
+            "publisher_level": "州级财政机构",
+            "source_grade": "A1",
+            "unit": "万元",
+            "unit_factor": Decimal("0.0001"),
+            "layout": "limit1",
+            "aliases": {"大理州": "大理白族自治州"},
+            "start": "2025年大理州全州政府债务限额（官方预算执行报告）",
+            "end": None,
+            "table_name": "2025年大理州全州政府债务限额",
+            "data_status": "execution",
+            "note": "官方预算执行报告明确披露经州人大常委会批准的全州政府债务总限额9566178万元；一般/专项限额未在本条摘录中公开，分项字段保持为空。",
+        },
+        {
+            "source_doc_id": "SRC-A2-CITY-DEBT-SICHUAN-YAAN-2025-LIMIT",
+            "province_name": "四川省",
+            "year": 2025,
+            "path": RAW_DIR / "2025" / "official" / "yaan_2025_limit3.txt",
+            "text_path": RAW_DIR / "2025" / "official" / "yaan_2025_limit3.txt",
+            "source_url": "https://www.yaan.gov.cn/xinwen/show/511f3181-a603-469c-b00c-dd2e2370f460.html",
+            "document_title": "关于雅安市2025年预算执行情况和2026年预算草案的报告",
+            "publication_date": "2026-01-21",
+            "publisher": "雅安市人民政府",
+            "publisher_level": "市级政府财政公开",
+            "source_grade": "A2",
+            "unit": "万元",
+            "unit_factor": Decimal("0.0001"),
+            "layout": "limit3",
+            "start": "2025年雅安市全市政府债务限额（官方预算执行报告）",
+            "end": None,
+            "table_name": "2025年雅安市全市政府债务限额及一般/专项限额",
+            "data_status": "execution",
+            "note": "官方预算执行报告明确披露全市一般债务限额1300759万元、专项债务限额4101320万元及其合计；余额由既有全市余额来源独立接入，不在本条重复录入。",
+        },
+    ]
+)
+
 
 OFFICIAL_PROVINCE_DEBT_SOURCES.append(
     {
@@ -12592,7 +12683,7 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
             "layout": "balance3",
             "start": "2025年末地方政府债务余额（预算执行报告）",
             "table_name": "大理白族自治州2025年末地方政府债务余额",
-            "note": "官方预算执行报告披露全州政府债务余额9457.590亿元，其中一般债务2289.795亿元、专项债务7167.795亿元；限额为9566.178亿元。",
+            "note": "官方预算执行报告原文单位为万元，披露全州政府债务余额9457590万元（换算为945.759亿元），其中一般债务2289795万元（228.9795亿元）、专项债务7167795万元（716.7795亿元）；限额为9566178万元（956.6178亿元）。",
         },
         {
             "source_doc_id": "SRC-SECONDARY-DEBT-YUNNAN-LINCANG-2025",

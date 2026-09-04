@@ -7186,6 +7186,7 @@ _CURATED_CITY_FIELD_LABELS = {
     "gdp_real_growth_pct": "GDP增速",
     "general_public_revenue_100m": "一般公共预算收入",
     "general_public_expenditure_100m": "一般公共预算支出",
+    "gov_fund_revenue_100m": "政府性基金预算收入",
 }
 
 

@@ -124,6 +124,17 @@ CITY_IDS = {
 
 
 SOURCE_SPECS = {
+    "SRC-B2-HUBEI-REGIONAL-FISCAL-2022": {
+        "year": 2022,
+        "path": "raw/province_fiscal/2022/secondary/hubei_2022_city_fiscal_rating_report.pdf",
+        "text_path": "raw/province_fiscal/2022/secondary/hubei_2022_city_fiscal_rating_report_excerpt.txt",
+        "url": "https://static.cninfo.com.cn/finalpage/2023-06-28/1217162670.pdf",
+        "title": "2021年第二期十堰聚鑫国有资本投资运营集团有限公司公司债券2023年跟踪评级报告",
+        "publisher": "中证鹏元资信评估股份有限公司",
+        "publication_date": "2023-06-28",
+        "page_number": "PDF第9页表1",
+        "note": "B2精确表格；表1列示2022年湖北省部分地级市经济财政指标，政府性基金收入明确为全市/全州口径；孝感、黄石为“—”的两行保持缺失，不转换为零。",
+    },
     "SRC-B2-GANSU-REGIONAL-FISCAL-2023": {
         "year": 2023,
         "path": "raw/province_fiscal/2023/secondary/gansu_2023_city_fiscal_rating_report.pdf",
@@ -597,6 +608,12 @@ for city, gdp, growth, pop in [
     ("鄂州市", "1341.30", "6.5", "107.28"),
 ]:
     ROWS.append(_r("SRC-B2-HUBEI-REGIONAL-MACRO-2024", city, 2024, gdp_current_100m=gdp, gdp_real_growth_pct=growth, resident_population_10k=pop))
+
+for city, fund in [
+    ("襄阳市", "145.83"), ("荆州市", "135.22"), ("十堰市", "106.78"),
+    ("荆门市", "70.90"), ("咸宁市", "65.52"), ("鄂州市", "54.35"),
+]:
+    ROWS.append(_r("SRC-B2-HUBEI-REGIONAL-FISCAL-2022", city, 2022, gov_fund_revenue_100m=fund))
 
 for city, gdp, growth, pop in [
     ("南京市", "18500.81", "4.5", "957.70"), ("苏州市", "26727.0", "6.0", "1298.7"),

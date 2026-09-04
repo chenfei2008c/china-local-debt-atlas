@@ -30796,6 +30796,28 @@
       ]
     },
     {
+      "city_id": "CN-331000",
+      "city_name": "台州市",
+      "metric": "fund",
+      "series_id": "276367",
+      "title": "台州市地方财政收入:政府性基金收入",
+      "unit": "亿元",
+      "source": "台州统计局",
+      "data_range": "1994 - 2025",
+      "url": "https://www.gotohui.com/finance/show-276367",
+      "content_hash_sha256": "86a14c33d58db6641c21ac3ddd356f29e7d857495256eb8264097489f13f000f",
+      "rows": [
+        {
+          "year": "2018",
+          "value": 544.7128
+        },
+        {
+          "year": "2019",
+          "value": 840.508
+        }
+      ]
+    },
+    {
       "city_id": "CN-340100",
       "city_name": "合肥市",
       "metric": "fund",

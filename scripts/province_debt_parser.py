@@ -101,7 +101,7 @@ def extract_city_rows(
             continue
         numbers = parse_numeric_tokens(line)
         evidence_line = line
-        required_count = 9 if layout == "total9" else (6 if layout in {"total6", "balance6", "total6_balance_first"} else (3 if layout in {"component3", "component3_previous_balance", "balance3", "direct3_general_special", "direct3_general_special_after_year", "direct3_component_limit_new_balance"} else (1 if layout == "direct1" else 2)))
+        required_count = 9 if layout == "total9" else (6 if layout in {"total6", "balance6", "total6_balance_first"} else (3 if layout in {"component3", "component3_previous_balance", "balance3", "direct3_general_special", "direct3_general_special_after_year", "direct3_component_limit_new_balance", "limit3"} else (1 if layout in {"direct1", "limit1"} else 2)))
         # 部分 PDF 会把较长的自治州名称拆成两行，但数字仍在下一行；
         # 仅在已匹配白名单且当前数字列不足时合并下一行，避免跨行误配。
         if len(numbers) < required_count and index + 1 < len(lines):
@@ -125,6 +125,10 @@ def extract_city_rows(
         if layout == "direct3_component_limit_new_balance" and len(numbers) < 3:
             continue
         if layout == "direct1" and len(numbers) < 1:
+            continue
+        if layout == "limit1" and len(numbers) < 1:
+            continue
+        if layout == "limit3" and len(numbers) < 3:
             continue
         values = [value * unit_factor if value is not None else None for value in numbers]
         row: dict[str, object] = {
@@ -221,6 +225,17 @@ def extract_city_rows(
             )
         elif layout == "direct1":
             row["statutory_debt_balance_100m"] = values[0]
+        elif layout == "limit1":
+            row["statutory_debt_limit_100m"] = values[0]
+        elif layout == "limit3":
+            total_limit, general_limit, special_limit = values[:3]
+            row.update(
+                {
+                    "general_debt_limit_100m": general_limit,
+                    "special_debt_limit_100m": special_limit,
+                    "statutory_debt_limit_100m": total_limit,
+                }
+            )
         elif layout == "direct3_general_special":
             total_balance, general_balance, special_balance = values[:3]
             row.update(
