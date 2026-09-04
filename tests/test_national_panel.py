@@ -5245,8 +5245,8 @@ class NationalPanelTests(unittest.TestCase):
     def test_city_year_fund_batch_extracts_hohhot_and_chifeng(self):
         values, sources = load_city_year_fund_sources()
 
-        self.assertEqual(len(values), 82)
-        self.assertEqual(len(sources), 82)
+        self.assertEqual(len(values), 89)
+        self.assertEqual(len(sources), 89)
         self.assertEqual(values[("CN-445300", "2025")]["gov_fund_revenue_100m"], Decimal("10.22"))
         yunfu_source = next(source for source in sources if source["source_doc_id"] == "SRC-A2-YUNFU-CITY-FUND-2025")
         self.assertIn("yunfu.gov.cn", yunfu_source["landing_page_url"])
@@ -5320,6 +5320,31 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(values[("CN-371600", "2025")]["gov_fund_revenue_100m"], Decimal("156.32"))
         self.assertEqual(values[("CN-371100", "2025")]["gov_fund_revenue_100m"], Decimal("179.29"))
         self.assertEqual(values[("CN-370400", "2025")]["gov_fund_revenue_100m"], Decimal("287.24"))
+        expected_guangdong_2022 = {
+            "CN-440100": "1629.21",
+            "CN-440500": "52.49",
+            "CN-440800": "76.75",
+            "CN-440700": "141.30",
+            "CN-441500": "34.19",
+            "CN-441400": "22.78",
+        }
+        expected_status = {
+            "CN-440100": "execution",
+            "CN-440500": "execution",
+            "CN-440800": "final",
+            "CN-440700": "final",
+            "CN-441500": "execution",
+            "CN-441400": "final",
+        }
+        for city_id, fund_revenue in expected_guangdong_2022.items():
+            record = values[(city_id, "2022")]
+            self.assertEqual(record["gov_fund_revenue_100m"], Decimal(fund_revenue))
+            self.assertEqual(record["source_grade"], "A2")
+            self.assertEqual(record["data_status"], expected_status[city_id])
+            source = next(item for item in sources if item["source_doc_id"] == record["source_doc_id"])
+            self.assertIn("全市", source["note"])
+        self.assertEqual(values[("CN-371500", "2024")]["gov_fund_revenue_100m"], Decimal("187.03"))
+        self.assertEqual(values[("CN-371500", "2024")]["source_grade"], "B2")
 
     def test_2025_fund_batch_extracts_fujian_and_other_whole_city_values(self):
         values, sources = load_city_year_fund_sources()
