@@ -5245,8 +5245,8 @@ class NationalPanelTests(unittest.TestCase):
     def test_city_year_fund_batch_extracts_hohhot_and_chifeng(self):
         values, sources = load_city_year_fund_sources()
 
-        self.assertEqual(len(values), 98)
-        self.assertEqual(len(sources), 98)
+        self.assertEqual(len(values), 99)
+        self.assertEqual(len(sources), 99)
         self.assertEqual(values[("CN-445300", "2025")]["gov_fund_revenue_100m"], Decimal("10.22"))
         yunfu_source = next(source for source in sources if source["source_doc_id"] == "SRC-A2-YUNFU-CITY-FUND-2025")
         self.assertIn("yunfu.gov.cn", yunfu_source["landing_page_url"])
@@ -5265,6 +5265,9 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(values[("CN-140200", "2025")]["gov_fund_revenue_100m"], Decimal("44.74"))
         self.assertEqual(values[("CN-141100", "2025")]["gov_fund_revenue_100m"], Decimal("21.62"))
         self.assertEqual(values[("CN-410400", "2025")]["gov_fund_revenue_100m"], Decimal("70.30"))
+        self.assertEqual(values[("CN-411000", "2025")]["gov_fund_revenue_100m"], Decimal("80.10"))
+        self.assertEqual(values[("CN-411000", "2025")]["data_status"], "execution")
+        self.assertEqual(values[("CN-411000", "2025")]["source_grade"], "A2")
         self.assertEqual(values[("CN-610900", "2025")]["gov_fund_revenue_100m"], Decimal("36.98"))
         self.assertEqual(values[("CN-341800", "2025")]["gov_fund_revenue_100m"], Decimal("60.60"))
         self.assertEqual(values[("CN-511800", "2025")]["gov_fund_revenue_100m"], Decimal("37.92"))
