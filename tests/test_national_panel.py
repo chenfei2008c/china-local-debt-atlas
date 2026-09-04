@@ -1190,6 +1190,13 @@ class NationalPanelTests(unittest.TestCase):
         self.assertNotIn("resident_population_10k", anqing)
         self.assertTrue(sources[0]["content_hash_sha256"])
 
+        # 那曲在 2018 年仍为“那曲地区”，2019 年起变更为“那曲市”；
+        # 同一工作簿的历史行必须匹配到对应年度的稳定城市主键。
+        naqu_2020 = values[("CN-540600", "2020")]
+        self.assertEqual(naqu_2020["gov_fund_revenue_100m"], Decimal("4.21"))
+        self.assertEqual(naqu_2020["statutory_debt_limit_100m"], Decimal("67.59"))
+        self.assertNotIn(("CN-542400", "2020"), values)
+
     def test_city_yearbook_adapter_reads_exact_city_cells_and_units(self):
         root = Path(__file__).resolve().parents[1]
         with (root / "outputs/national_prefecture_panel_2018_2026/dim_city.csv").open(

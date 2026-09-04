@@ -210,30 +210,35 @@ def load_haidatas_city_panel_sources(
         raise ValueError(f"海数据城市面板缺少列：{sorted(missing)}")
 
     city_by_key: dict[tuple[str, str], Mapping[str, Any]] = {}
+    city_by_key_year: dict[tuple[str, str, str], Mapping[str, Any]] = {}
     for city in city_master:
         city_id = str(city.get("city_id") or "")
         if not city_id:
             continue
+        province_key = _name_key(city.get("province_name"))
+        city_key = _name_key(city.get("city_name_cn"))
+        metric_year = str(city.get("metric_year") or "")
         key = (
-            _name_key(city.get("province_name")),
-            _name_key(city.get("city_name_cn")),
+            province_key,
+            city_key,
         )
         city_by_key.setdefault(key, city)
+        if metric_year:
+            city_by_key_year[(province_key, city_key, metric_year)] = city
 
     values: dict[tuple[str, str], dict[str, Any]] = {}
     for row in rows[1:]:
         year = _decimal(row.get(headers["年份"]))
         if year is None or year != year.to_integral_value() or not 2018 <= int(year) <= 2021:
             continue
-        city = city_by_key.get(
-            (
-                _name_key(row.get(headers["省份"])),
-                _name_key(row.get(headers["地级市"])),
-            )
+        year_text = str(int(year))
+        province_key = _name_key(row.get(headers["省份"]))
+        city_key = _name_key(row.get(headers["地级市"]))
+        city = city_by_key_year.get((province_key, city_key, year_text)) or city_by_key.get(
+            (province_key, city_key)
         )
         if not city:
             continue
-        year_text = str(int(year))
         city_id = str(city["city_id"])
         record = values.setdefault(
             (city_id, year_text),
