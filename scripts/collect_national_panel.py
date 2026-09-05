@@ -12849,6 +12849,40 @@ CITY_YEAR_FISCAL_SOURCES += tuple(DIRECT_ADMIN_GDP_GROWTH_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += (XIONGAN_GDP_SOURCE,)
 CITY_YEAR_FISCAL_SOURCES += tuple(QINGHAI_2018_2019_FISCAL_SOURCES)
 
+# 济宁市财政局 2025 年预算执行报告补入全市政府性基金收入。报告正文明确
+# 区分全市与市级口径，采用全市执行数；原始单位亿元，保留 execution 状态。
+CITY_YEAR_FISCAL_SOURCES += (
+    _make_curated_city_source(
+        year=2025,
+        city_name="济宁市",
+        city_id="CN-370800",
+        source_doc_id="SRC-A2-JINING-CITY-FUND-2025",
+        url="https://jicz.jining.gov.cn/module/download/downfile.jsp?classid=0&filename=eade879312114166a048540c9038e30a.pdf&showname=%E5%85%B3%E4%BA%8E%E6%B5%8E%E5%AE%81%E5%B8%822025%E5%B9%B4%E9%A2%84%E7%AE%97%E6%89%A7%E8%A1%8C%E6%83%85%E5%86%B5%E4%B8%8E2026%E5%B9%B4%E9%A2%84%E7%AE%97%E8%8D%89%E6%A1%88%E7%9A%84%E6%8A%A5%E5%91%8A.pdf",
+        path=RAW_DIR / "province_fiscal" / "2025" / "official" / "jining_2025_budget_execution_report.pdf",
+        text_path=RAW_DIR / "province_fiscal" / "2025" / "official" / "jining_2025_budget_execution_report_excerpt.txt",
+        document_title="关于济宁市2025年预算执行情况与2026年预算草案的报告",
+        publisher="济宁市财政局",
+        publisher_level="市级财政机构",
+        publication_date="2026-02-06",
+        source_grade="A2",
+        fields=("gov_fund_revenue_100m",),
+        raw_unit="亿元",
+        source_format="pdf",
+        data_status="execution",
+        data_status_label="2025年全市政府性基金收入执行数",
+        document_type="城市财政预算执行报告（官方PDF）",
+        page_number="PDF第2—3页；全市政府性基金预算执行情况",
+        custom_patterns={
+            "gov_fund_revenue_100m": r"全市政府性基金收入\s*([0-9.]+)\s*亿元",
+        },
+        note=(
+            "A2济宁市财政局官方预算执行报告；正文明确披露2025年全市政府性基金收入387.2亿元，"
+            "并另列市级政府性基金收入56.8亿元，采用全市口径；报告说明结算仍在进行，保留execution状态，"
+            "不改写为最终决算。"
+        ),
+    ),
+)
+
 CITY_YEAR_FISCAL_SOURCE_IDS = (
     {item["source_doc_id"] for item in CITY_YEAR_FISCAL_SOURCES}
     | XINJIANG_2020_SOURCE_IDS

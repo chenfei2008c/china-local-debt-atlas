@@ -4453,6 +4453,14 @@ class NationalPanelTests(unittest.TestCase):
             "A1",
         )
 
+        jining = values[("CN-370800", "2025")]
+        self.assertEqual(jining["gov_fund_revenue_100m"], Decimal("387.20"))
+        self.assertEqual(jining["source_grade"], "A2")
+        self.assertEqual(
+            jining["_field_sources"]["gov_fund_revenue_100m"]["data_status"],
+            "execution",
+        )
+
         liaocheng = values[("CN-371500", "2024")]
         self.assertEqual(liaocheng["general_public_expenditure_100m"], Decimal("576.50"))
         self.assertEqual(liaocheng["source_grade"], "B2")
