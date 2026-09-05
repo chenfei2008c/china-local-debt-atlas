@@ -476,6 +476,25 @@ class ProvinceDebtParserTests(unittest.TestCase):
         self.assertIn("大连市 2897.630150 1659.179058 1238.451092", facts_2023[("CN-210200", "2023")]["evidence_excerpt"])
         self.assertEqual(facts_2023[("CN-211400", "2023")]["statutory_debt_balance_100m"], Decimal("546.367910"))
 
+    def test_liaoning_2022_and_2023_official_city_tables_fill_limit_columns(self):
+        from scripts.province_debt_sources import OFFICIAL_PROVINCE_DEBT_SOURCES, extract_official_debt_facts
+
+        source_ids = {str(source["source_doc_id"]) for source in OFFICIAL_PROVINCE_DEBT_SOURCES}
+        self.assertIn("SRC-OFFICIAL-DEBT-LIAONING-CITIES-2022-TOTAL6", source_ids)
+        self.assertIn("SRC-OFFICIAL-DEBT-LIAONING-CITIES-2023-TOTAL6", source_ids)
+        city_master = [
+            {"city_id": "CN-210100", "province_name": "辽宁省", "city_name_cn": "沈阳市", "metric_year": 2022},
+            {"city_id": "CN-211400", "province_name": "辽宁省", "city_name_cn": "葫芦岛市", "metric_year": 2022},
+            {"city_id": "CN-210100", "province_name": "辽宁省", "city_name_cn": "沈阳市", "metric_year": 2023},
+            {"city_id": "CN-211400", "province_name": "辽宁省", "city_name_cn": "葫芦岛市", "metric_year": 2023},
+        ]
+        facts, _ = extract_official_debt_facts(city_master)
+        self.assertEqual(facts[("CN-210100", "2022")]["statutory_debt_limit_100m"], Decimal("2077.79"))
+        self.assertEqual(facts[("CN-210100", "2022")]["general_debt_limit_100m"], Decimal("1057.97"))
+        self.assertEqual(facts[("CN-210100", "2022")]["statutory_debt_balance_100m"], Decimal("1907.80"))
+        self.assertEqual(facts[("CN-211400", "2023")]["statutory_debt_limit_100m"], Decimal("546.92"))
+        self.assertEqual(facts[("CN-211400", "2023")]["special_debt_balance_100m"], Decimal("144.969145"))
+
     def test_zhangye_2023_official_city_debt_source_is_registered_and_extracted(self):
         from scripts.province_debt_sources import OFFICIAL_PROVINCE_DEBT_SOURCES, extract_official_debt_facts
 
