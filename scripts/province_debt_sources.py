@@ -1068,6 +1068,26 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
             "data_status": "execution",
             "note": "官方预算执行报告明确披露全市一般债务限额1300759万元、专项债务限额4101320万元及其合计；余额由既有全市余额来源独立接入，不在本条重复录入。",
         },
+        {
+            "source_doc_id": "SRC-A2-CITY-DEBT-ANHUI-XUANCHENG-2025-LIMIT",
+            "province_name": "安徽省",
+            "year": 2025,
+            "path": ROOT / "raw" / "province_fiscal" / "2025" / "official" / "xuancheng_2025_budget_report.pdf",
+            "text_path": RAW_DIR / "2025" / "official" / "xuancheng_2025_debt_limit_excerpt.txt",
+            "source_url": "https://tyjr.xuancheng.gov.cn/file_xc/20/202602/20260206a37c3db21a3a448a91fb29d6117c45f5.pdf",
+            "document_title": "关于宣城市2025年预算执行情况和2026年预算草案的报告",
+            "publication_date": "2026-02-06",
+            "publisher": "宣城市财政局",
+            "publisher_level": "市级财政机构",
+            "source_grade": "A2",
+            "unit": "亿元",
+            "layout": "limit3",
+            "start": "2025年宣城市全市政府债务限额（官方预算执行报告）",
+            "end": None,
+            "table_name": "2025年宣城市全市政府债务限额及一般/专项限额",
+            "data_status": "execution",
+            "note": "官方预算执行报告第8页明确披露全市总限额933.2亿元、一般债务限额238.8亿元和专项债务限额694.4亿元；余额由既有全市余额来源独立接入，不使用市本级口径。",
+        },
     ]
 )
 

@@ -7597,6 +7597,7 @@ def _make_curated_city_source(
     source_doc_id: str,
     url: str,
     path: Path,
+    text_path: Path | None = None,
     attachment_url: str | None = None,
     document_title: str,
     publisher: str,
@@ -7638,7 +7639,7 @@ def _make_curated_city_source(
         "url": url,
         "attachment_url": attachment_url,
         "path": path,
-        "text_path": path,
+        "text_path": text_path or path,
         "text_is_curated": True,
         "document_title": document_title,
         "publisher": publisher,
@@ -9051,7 +9052,8 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     _make_curated_city_source(**spec) for spec in _CURATED_2024_2025_MACRO_PRIORITY_SPECS
 )
 
-# 巴州2022、2023年官方统计公报PDF分别覆盖四个核心字段；海东2024年
+# 巴州2022、2023年官方统计公报PDF分别覆盖核心经济财政字段；2022年
+# 公报同时明确披露全州政府性基金收入。海东2024年
 # 采用官方公报的精确公开转载页补齐两个财政字段，并保留B2等级说明。
 CITY_YEAR_FISCAL_SOURCES += (
     {
@@ -9082,9 +9084,10 @@ CITY_YEAR_FISCAL_SOURCES += (
             "gdp_real_growth_pct": r"全州实现生产总值（GDP）\s*[0-9.]+\s*亿元，比上年增长\s*([0-9.]+)%",
             "general_public_revenue_100m": r"地方一般公共预算收入\s*([0-9.]+)\s*亿元",
             "general_public_expenditure_100m": r"地方一般公共预算支出\s*([0-9.]+)\s*亿元",
+            "gov_fund_revenue_100m": r"政府性基金收入\s*([0-9.]+)\s*亿元",
         },
         "source_locator": "bazhou_2022_statistical_bulletin_excerpt.txt；官方PDF第1页、第9页；城市=巴音郭楞蒙古自治州；2022年全州初步统计数",
-        "note": "A2巴州统计局官方统计公报；明确全州GDP、同比增速和地方一般公共预算收支；人口段注明不含铁门关市，本批不以人口段替代经济财政口径。",
+        "note": "A2巴州统计局官方统计公报；明确全州GDP、同比增速、地方一般公共预算收支和政府性基金收入；人口段注明不含铁门关市，本批不以人口段替代经济财政口径。",
     },
     {
         "year": 2023,
@@ -10779,6 +10782,37 @@ CITY_YEAR_FISCAL_SOURCES += (
         document_type="地区经济指标正式访谈摘录",
         page_number="网页正文；阿里地区经济社会发展指标段",
         note="B2省级党报正式访谈；原文明确为阿里地区全地区2023年预计GDP91.51亿元、同比增长13%，保留preliminary状态，不表述为最终决算数。",
+    ),
+)
+
+# 西藏自治区及下辖市（区）经济财政实力与债务研究第14页正文明确披露
+# 拉萨市2022年政府性基金收入17.89亿元。该来源同页的其他地市基金收入
+# 仅以图表呈现，故只接入拉萨市这一条精确文字值，不进行图表估读。
+CITY_YEAR_FISCAL_SOURCES += (
+    _make_curated_city_source(
+        year=2022,
+        city_name="拉萨市",
+        city_id="CN-540100",
+        source_doc_id="SRC-B2-LH-RATING-TIBET-LHASA-FUND-2022",
+        url="https://www.lhratings.com/file/f732353344d.pdf",
+        path=RAW_DIR / "province_fiscal" / "2022" / "secondary" / "tibet_2022_regional_rating_report.pdf",
+        text_path=RAW_DIR / "province_fiscal" / "2022" / "secondary" / "lhasa_2022_fund_rating_excerpt.txt",
+        document_title="西藏自治区及下辖市（区）经济财政实力与债务研究",
+        publisher="联合资信评估股份有限公司",
+        publisher_level="评级机构精确文字披露",
+        publication_date="2023-10-31",
+        source_grade="B2",
+        fields=("gov_fund_revenue_100m",),
+        custom_patterns={
+            "gov_fund_revenue_100m": r"2022年，拉萨市政府性基金收入为([0-9.,-]+)亿元",
+        },
+        source_format="pdf",
+        data_status="reported",
+        data_status_label="2022年公开报告值",
+        document_type="评级报告地市政府性基金收入精确文字披露",
+        page_number="PDF第14页；拉萨市全市口径",
+        source_locator="lhasa_2022_fund_rating_excerpt.txt；PDF第14页正文；城市=拉萨市；2022年公开报告值",
+        note="B2联合资信报告第14页正文明确给出拉萨市2022年政府性基金收入17.89亿元；同页其他地市仅有图表，未作估读或拆分。",
     ),
 )
 
