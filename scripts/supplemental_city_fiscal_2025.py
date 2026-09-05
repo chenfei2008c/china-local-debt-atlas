@@ -196,6 +196,61 @@ SUPPLEMENTAL_CITY_FISCAL_SOURCES: list[dict[str, Any]] = [
         secondary=True,
     ),
     _spec(
+        file_name="wuhu_2025_rating_report_excerpt.txt",
+        city_name="芜湖市", city_id="CN-340200", fields=FUND_100M,
+        grade="B2", publisher="联合资信评估股份有限公司",
+        document_title="芜湖市地方政府与城投企业债务风险研究报告（表5）",
+        note=(
+            "B2 精确表格列示芜湖市全市 2025 年政府性基金收入 150.90 亿元；"
+            "不使用市本级或下辖区县口径。来源为公开评级研究报告 PDF 第7页表5。"
+        ),
+        secondary=True,
+        url="https://www.lhratings.com/file/g2a76d49c80.pdf",
+        source_format="txt",
+    ),
+    _spec(
+        file_name="chuzhou_2025_rating_report_excerpt.txt",
+        city_name="滁州市", city_id="CN-341100", fields=FUND_100M,
+        grade="B2", publisher="联合资信评估股份有限公司",
+        document_title="滁州市同创建设投资有限责任公司主体与相关债项2026年度跟踪评级报告（表2）",
+        note=(
+            "B2 精确表格列示滁州市全市 2025 年政府性基金收入 174.50 亿元；"
+            "来源为中国货币网公开评级报告 PDF 第8页表2，明确为全市口径。"
+        ),
+        secondary=True,
+        url="https://www.chinamoney.com.cn/dqs/cm-s-notice-query/fileDownLoad.do?contentId=3363358&mode=save&priority=0",
+        publication_date="2026-06-23",
+        source_format="txt",
+    ),
+    _spec(
+        file_name="hebi_2025_rating_report_excerpt.txt",
+        city_name="鹤壁市", city_id="CN-410600", fields=FUND_100M,
+        grade="B2", publisher="评级机构公开披露",
+        document_title="鹤壁投资集团有限公司2026年度债项跟踪评级报告",
+        note=(
+            "B2 精确表格列示鹤壁市全市 2025 年政府性基金收入 32.18 亿元；"
+            "来源为中国货币网公开评级报告 PDF 精确表格，采用全市口径，不使用市本级数。"
+        ),
+        secondary=True,
+        url="https://www.chinamoney.com.cn/dqs/cm-s-notice-query/fileDownLoad.do?contentId=3348782&mode=save&priority=0",
+        publication_date="2026-05-29",
+        source_format="txt",
+    ),
+    _spec(
+        file_name="chenzhou_2025_rating_report_excerpt.txt",
+        city_name="郴州市", city_id="CN-431000", fields=FUND_100M,
+        grade="B2", publisher="东方金诚国际信用评估有限公司",
+        document_title="桂阳县城投公司2026年度跟踪评级报告（表12）",
+        note=(
+            "B2 精确表格列示郴州市全市 2025 年政府性基金收入 134.70 亿元；"
+            "来源为上海证券交易所公开评级报告 PDF 第14页表12，明确为全市口径。"
+        ),
+        secondary=True,
+        url="https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2026-05-29/152758_20260529_3IDI.pdf",
+        publication_date="2026-05-26",
+        source_format="txt",
+    ),
+    _spec(
         file_name="baoji_2025_statistical_bulletin_excerpt.txt",
         city_name="宝鸡市", city_id="CN-610300", fields=FUND_100M,
         grade="B2", publisher="宝鸡市人民政府、宝鸡市统计局",

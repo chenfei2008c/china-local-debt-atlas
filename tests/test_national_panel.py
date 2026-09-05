@@ -1441,13 +1441,17 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(values[("CN-330100", "2025")]["gov_fund_revenue_100m"], Decimal("1717.13"))
         self.assertEqual(values[("CN-420100", "2025")]["gov_fund_revenue_100m"], Decimal("1453.81"))
         self.assertEqual(values[("CN-410200", "2025")]["gov_fund_revenue_100m"], Decimal("72.80"))
+        self.assertEqual(values[("CN-340200", "2025")]["gov_fund_revenue_100m"], Decimal("150.90"))
+        self.assertEqual(values[("CN-341100", "2025")]["gov_fund_revenue_100m"], Decimal("174.50"))
+        self.assertEqual(values[("CN-410600", "2025")]["gov_fund_revenue_100m"], Decimal("32.18"))
+        self.assertEqual(values[("CN-431000", "2025")]["gov_fund_revenue_100m"], Decimal("134.70"))
         self.assertEqual(values[("CN-653000", "2025")]["resident_population_10k"], Decimal("64.07"))
 
         supplemental = [
             source for source in sources
             if str(source.get("source_doc_id", "")).startswith("SRC-SUPPLEMENTAL-CITY-FISCAL-2025-")
         ]
-        self.assertEqual(len(supplemental), 68)
+        self.assertEqual(len(supplemental), 72)
         self.assertTrue(all(source["content_hash_sha256"] for source in supplemental))
         self.assertTrue(any("chinamoney.com.cn" in source["source_url"] for source in supplemental))
 
