@@ -5249,8 +5249,8 @@ class NationalPanelTests(unittest.TestCase):
     def test_city_year_fund_batch_extracts_hohhot_and_chifeng(self):
         values, sources = load_city_year_fund_sources()
 
-        self.assertEqual(len(values), 99)
-        self.assertEqual(len(sources), 99)
+        self.assertEqual(len(values), 110)
+        self.assertEqual(len(sources), 110)
         self.assertEqual(values[("CN-445300", "2025")]["gov_fund_revenue_100m"], Decimal("10.22"))
         yunfu_source = next(source for source in sources if source["source_doc_id"] == "SRC-A2-YUNFU-CITY-FUND-2025")
         self.assertIn("yunfu.gov.cn", yunfu_source["landing_page_url"])
@@ -5303,6 +5303,17 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(values[("CN-510400", "2025")]["gov_fund_revenue_100m"], Decimal("17.39"))
         self.assertEqual(values[("CN-513200", "2025")]["gov_fund_revenue_100m"], Decimal("12.50"))
         self.assertEqual(values[("CN-513300", "2025")]["gov_fund_revenue_100m"], Decimal("8.63"))
+        self.assertEqual(values[("CN-210100", "2024")]["gov_fund_revenue_100m"], Decimal("171.60"))
+        self.assertEqual(values[("CN-210400", "2024")]["gov_fund_revenue_100m"], Decimal("13.20"))
+        self.assertEqual(values[("CN-210500", "2024")]["gov_fund_revenue_100m"], Decimal("8.10"))
+        self.assertEqual(values[("CN-211100", "2024")]["gov_fund_revenue_100m"], Decimal("12.80"))
+        self.assertEqual(values[("CN-341000", "2024")]["gov_fund_revenue_100m"], Decimal("41.20"))
+        self.assertEqual(values[("CN-341500", "2024")]["gov_fund_revenue_100m"], Decimal("56.30"))
+        self.assertEqual(values[("CN-430400", "2024")]["gov_fund_revenue_100m"], Decimal("142.18"))
+        self.assertEqual(values[("CN-430900", "2024")]["gov_fund_revenue_100m"], Decimal("26.34"))
+        self.assertEqual(values[("CN-431100", "2024")]["gov_fund_revenue_100m"], Decimal("150.05"))
+        self.assertEqual(values[("CN-450600", "2024")]["gov_fund_revenue_100m"], Decimal("16.32"))
+        self.assertEqual(values[("CN-450700", "2024")]["gov_fund_revenue_100m"], Decimal("58.50"))
         self.assertEqual(values[("CN-513400", "2025")]["gov_fund_revenue_100m"], Decimal("56.53"))
         sichuan_sources = [source for source in sources if source["source_doc_id"].startswith("SRC-B2-SICHUAN-REGIONAL-FISCAL-2025")]
         self.assertEqual(len(sichuan_sources), 10)
