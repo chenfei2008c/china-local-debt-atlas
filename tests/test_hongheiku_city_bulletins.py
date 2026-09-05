@@ -41,3 +41,15 @@ class HongheikuBulletinTests(unittest.TestCase):
         )
         self.assertEqual(parsed["general_public_revenue_100m"], Decimal("118.17"))
         self.assertEqual(parsed["general_public_expenditure_100m"], Decimal("330.21"))
+
+    def test_page_parser_handles_fund_revenue_table_without_repeated_unit(self):
+        parsed = parse_bulletin_text(
+            "表：财政收入情况 指标名称 2023年 比上年±% "
+            "附：政府性基金预算收入 651.63 -0.7 全市一般公共预算支出711.24亿元。"
+        )
+        self.assertEqual(parsed["gov_fund_revenue_100m"], Decimal("651.63"))
+
+        compact_table = parse_bulletin_text(
+            "政府性基金预算收入 43.995.1 一般公共预算支出 360.74 21.2"
+        )
+        self.assertEqual(compact_table["gov_fund_revenue_100m"], Decimal("43.99"))

@@ -133,6 +133,19 @@ def parse_bulletin_text(text: str) -> dict[str, Decimal]:
     if expenditure is not None:
         result["general_public_expenditure_100m"] = expenditure
     fund_revenue = _amount_after(text, r"政府性基金(?:预算)?收入")
+    if fund_revenue is None:
+        # 部分转载公报的表格只在列标题中标注“亿元”，行内写成
+        # “政府性基金预算收入 651.63 -0.7”；HTML 清洗后相邻列还可能
+        # 粘连为“43.995.1”。这里只接受带小数点的首个金额，且要求后面
+        # 紧接增长率/分隔符，避免把其他“基金”语境中的数字误认成收入。
+        compact_table_fund = re.search(
+            r"政府性基金(?:预算)?收入\s*"
+            r"([0-9][0-9,]*\.[0-9]{1,2})"
+            r"(?=\s*(?:[-+−]?\d|[.，,。；;]|$))",
+            text,
+        )
+        if compact_table_fund:
+            fund_revenue = _decimal(compact_table_fund.group(1), "亿元")
     if fund_revenue is not None:
         result["gov_fund_revenue_100m"] = fund_revenue
     return result
