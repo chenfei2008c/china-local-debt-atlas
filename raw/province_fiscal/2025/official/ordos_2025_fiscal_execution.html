@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - 页面未找到 | 政府门户网站</title>
+    <style>
+        /* 基础重置与政务风格变量 */
+        :root {
+            --primary-color: #0057b8; /* 经典政务蓝 */
+            --text-color: #333333;
+            --sub-text-color: #666666;
+            --bg-color: #f5f7fa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+            background: #ffffff;
+            padding: 60px 40px;
+            border-radius: 4px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 404 数字样式 */
+        .error-code {
+            font-size: 120px;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        p {
+            font-size: 16px;
+            color: var(--sub-text-color);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* 操作按钮 */
+        .actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        a {
+            text-decoration: none;
+            padding: 10px 28px;
+            border-radius: 3px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #004a9e;
+        }
+
+        .btn-outline {
+            border-color: #d9d9d9;
+            color: var(--text-color);
+            background: #fff;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 480px) {
+            .error-code { font-size: 80px; }
+            h1 { font-size: 20px; }
+            .container { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-code">404</div>
+        <h1>抱歉，您访问的页面不存在</h1>
+        <p>
+            该页面可能已被移除、更改名称或暂时不可用。<br>
+            请检查您输入的网址是否正确，或尝试以下操作：
+        </p>
+        <div class="actions">
+            <a href="/" class="btn-primary">返回首页</a>
+            <a href="javascript:history.back()" class="btn-outline">返回上页</a>
+        </div>
+    </div>
+</body>
+</html>
