@@ -5257,8 +5257,11 @@ class NationalPanelTests(unittest.TestCase):
     def test_city_year_fund_batch_extracts_hohhot_and_chifeng(self):
         values, sources = load_city_year_fund_sources()
 
-        self.assertEqual(len(values), 133)
-        self.assertEqual(len(sources), 133)
+        self.assertEqual(len(values), 137)
+        self.assertEqual(len(sources), 137)
+        self.assertEqual(values[("CN-220100", "2025")]["gov_fund_revenue_100m"], Decimal("281.93"))
+        self.assertEqual(values[("CN-450100", "2022")]["gov_fund_revenue_100m"], Decimal("234.08"))
+        self.assertEqual(values[("CN-450100", "2023")]["gov_fund_revenue_100m"], Decimal("207.51"))
         self.assertEqual(values[("CN-445300", "2025")]["gov_fund_revenue_100m"], Decimal("10.22"))
         yunfu_source = next(source for source in sources if source["source_doc_id"] == "SRC-A2-YUNFU-CITY-FUND-2025")
         self.assertIn("yunfu.gov.cn", yunfu_source["landing_page_url"])
