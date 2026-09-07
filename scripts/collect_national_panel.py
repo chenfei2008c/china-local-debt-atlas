@@ -6141,6 +6141,32 @@ CITY_YEAR_FUND_SOURCES += (
         "note": "A2信阳市人大预算文件；公开全文明确列示2025年全市政府性基金预算收入134.98亿元，登记为预算数，不冒充执行数；原始附件直链对自动下载有限制，本地归档精确文本摘录并保留官方附件 URL。",
     },
 )
+# 本批补录：达州市 2025 年全市政府性基金收入执行数。
+CITY_YEAR_FUND_SOURCES += (
+    {
+        "year": 2025,
+        "city_name": "达州市",
+        "city_id": "CN-511700",
+        "source_doc_id": "SRC-B2-SICHUAN-DAZHOU-FUND-2025",
+        "url": "https://pad.dzrm.cn/dzrb/202603/18/content_134581.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "dazhou_2025_fiscal_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "dazhou_2025_fund_excerpt.txt",
+        "document_title": "关于达州市2025年预算执行情况和2026年预算草案的报告",
+        "publisher": "达州市财政局（达州日报转载）",
+        "publisher_level": "市级财政机构精确转载",
+        "publication_date": "2026-03-18",
+        "source_grade": "B2",
+        "source_format": "html",
+        "pattern": r"达州市\|2025年\|政府性基金收入（亿元）\|([0-9.]+)",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年全市政府性基金收入执行数",
+        "document_type": "城市财政预算执行报告（官方媒体精确转载）",
+        "page_number": "网页正文；政府性基金预算执行情况",
+        "page_count": "1",
+        "note": "B2精确转载；达州日报刊载达州市财政局报告，明确列示2025年全市政府性基金预算收入完成197.3亿元，为预算的100.4%；采用全市执行口径，不使用收入总量。",
+    },
+)
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
