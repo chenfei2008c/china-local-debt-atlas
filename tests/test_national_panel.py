@@ -5257,8 +5257,9 @@ class NationalPanelTests(unittest.TestCase):
     def test_city_year_fund_batch_extracts_hohhot_and_chifeng(self):
         values, sources = load_city_year_fund_sources()
 
-        self.assertEqual(len(values), 141)
-        self.assertEqual(len(sources), 141)
+        # 来源批次会持续增加；校验值与来源一一对应，并保留当前批次的最低覆盖。
+        self.assertEqual(len(values), len(sources))
+        self.assertGreaterEqual(len(values), 172)
         self.assertEqual(values[("CN-220100", "2025")]["gov_fund_revenue_100m"], Decimal("281.93"))
         self.assertEqual(values[("CN-450100", "2022")]["gov_fund_revenue_100m"], Decimal("234.08"))
         self.assertEqual(values[("CN-450100", "2023")]["gov_fund_revenue_100m"], Decimal("207.51"))

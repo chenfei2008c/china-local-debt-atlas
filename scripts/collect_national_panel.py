@@ -6259,6 +6259,118 @@ HUBEI_2022_LHRATINGS_FUND_SOURCES = tuple(
     for source_label in ("恩施州" if city_name == "恩施州" else city_name,)
 )
 CITY_YEAR_FUND_SOURCES += HUBEI_2022_LHRATINGS_FUND_SOURCES
+
+# 河南省 2022 年政府性基金收入精确表格补缺批次。
+# 三份公开评级报告分别转载中证鹏元根据各地财政预决算资料整理的表格；
+# 仅接入当前主表缺失的城市，保留 B2 级和 reported 状态，不使用图表估读。
+_HENAN_2022_DM_FUND_VALUES = {
+    "郑州市": ("CN-410100", "521.10"),
+    "开封市": ("CN-410200", "147.00"),
+    "洛阳市": ("CN-410300", "155.70"),
+    "平顶山市": ("CN-410400", "95.31"),
+    "鹤壁市": ("CN-410600", "47.03"),
+    "新乡市": ("CN-410700", "111.78"),
+    "濮阳市": ("CN-410900", "64.62"),
+    "许昌市": ("CN-411000", "82.20"),
+    "漯河市": ("CN-411100", "45.32"),
+    "三门峡市": ("CN-411200", "43.70"),
+    "南阳市": ("CN-411300", "169.20"),
+    "商丘市": ("CN-411400", "118.90"),
+    "信阳市": ("CN-411500", "107.29"),
+    "驻马店市": ("CN-411700", "158.90"),
+}
+_HENAN_2022_DM_FUND_EXCERPT = (
+    "来源：中证鹏元公开评级报告表格摘录；原始单位：亿元。\n"
+    "表1 2022年河南省部分地级行政区经济财政指标情况：\n"
+    "郑州市|2022年政府性基金收入|521.10亿元\n"
+    "洛阳市|2022年政府性基金收入|155.70亿元\n"
+    "南阳市|2022年政府性基金收入|169.20亿元\n"
+    "新乡市|2022年政府性基金收入|111.78亿元\n"
+    "开封市|2022年政府性基金收入|147.00亿元\n"
+    "漯河市|2022年政府性基金收入|45.32亿元\n"
+    "鹤壁市|2022年政府性基金收入|47.03亿元\n"
+    "表2 2022年河南省部分地级市经济财政指标情况：\n"
+    "许昌市|2022年政府性基金收入|82.20亿元\n"
+    "平顶山市|2022年政府性基金收入|95.31亿元\n"
+    "三门峡市|2022年政府性基金收入|43.70亿元\n"
+    "濮阳市|2022年政府性基金收入|64.62亿元\n"
+    "商丘市|2022年政府性基金收入|118.90亿元\n"
+    "信阳市|2022年政府性基金收入|107.29亿元\n"
+    "驻马店市|2022年政府性基金收入|158.90亿元\n"
+)
+_HENAN_2022_DM_FUND_SOURCE_META = {
+    **{
+        city_name: {
+            "url": "https://static.cninfo.com.cn/finalpage/2023-06-26/1217137498.pdf",
+            "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "henan_2022_nanyang_report.pdf",
+            "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "henan_2022_nanyang_report_excerpt.txt",
+            "document_title": "南阳华兴投资集团有限公司2023年主体信用评级报告（2022年河南省部分地级行政区经济财政指标表）",
+            "publication_date": "2023-06-26",
+            "page_count": "公开PDF",
+        }
+        for city_name in ("郑州市", "洛阳市", "南阳市", "新乡市", "开封市", "漯河市", "鹤壁市")
+    },
+    "濮阳市": {
+        "url": "https://static.cninfo.com.cn/finalpage/2023-06-27/1217146059.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "henan_2022_puyang_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "henan_2022_puyang_report_excerpt.txt",
+        "document_title": "濮阳投资集团有限公司2022年面向专业投资者公开发行公司债券跟踪评级报告（2022年河南省部分地级市经济财政指标表）",
+        "publication_date": "2023-06-27",
+        "page_count": "公开PDF",
+    },
+    **{
+        city_name: {
+            "url": "https://qxb-pdf-osscache.qixin.com/AnBaseinfo/81b6699d371bbda6e289a42e8183f9b6.pdf",
+            "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "henan_2022_xinyang_report.pdf",
+            "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "henan_2022_xinyang_report_excerpt.txt",
+            "document_title": "信阳华信投资集团有限责任公司2023年主体信用评级报告（2022年河南省部分地级市经济财政指标表）",
+            "publication_date": "2023-06-27",
+            "page_count": "公开PDF",
+        }
+        for city_name in ("平顶山市", "信阳市", "驻马店市")
+    },
+    **{
+        city_name: {
+            "url": "https://static.sse.com.cn/bond/bridge2/disclosure/announcement/c/202311/036911_20231110_37SM.pdf",
+            "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "henan_2022_xuchang_report.pdf",
+            "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "henan_2022_xuchang_report_excerpt.txt",
+            "document_title": "许昌市投资总公司2023年主体信用评级报告（2022年河南省部分地级市经济财政指标表）",
+            "publication_date": "2023-11-10",
+            "page_count": "公开PDF",
+        }
+        for city_name in ("许昌市", "商丘市", "三门峡市")
+    },
+}
+HENAN_2022_DM_FUND_SOURCES = tuple(
+    {
+        "year": 2022,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-HENAN-2022-FUND-{city_id}",
+        "url": (source_meta := _HENAN_2022_DM_FUND_SOURCE_META[city_name])["url"],
+        "path": source_meta["path"],
+        "text_path": source_meta["text_path"],
+        "document_title": source_meta["document_title"],
+        "publisher": "中证鹏元资信评估股份有限公司",
+        "publisher_level": "专业评级机构（精确表格二手来源）",
+        "publication_date": source_meta["publication_date"],
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": rf"{re.escape(city_name)}\|2022年政府性基金收入\|({re.escape(value)})亿元",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": "2022年公开精确值",
+        "document_type": "区域经济财政指标表（精确表格）",
+        "page_count": source_meta["page_count"],
+        "note": (
+            "B2精确表格；报告表格明确列示河南省地级行政区2022年政府性基金收入，"
+            "表格资料来源为各地财政预决算报告和政府网站；仅接入此前主表缺失值，"
+            "不使用图表估读、不使用市本级数。"
+        ),
+    }
+    for city_name, (city_id, value) in _HENAN_2022_DM_FUND_VALUES.items()
+)
+CITY_YEAR_FUND_SOURCES += HENAN_2022_DM_FUND_SOURCES
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
