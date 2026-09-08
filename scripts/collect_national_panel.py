@@ -16334,6 +16334,9 @@ def _lineage_for_ningxia_city_fiscal(
 
 
 def _lineage_for_official_debt(row: Mapping[str, Any], field: str, fact: Mapping[str, Any], value: Any) -> dict[str, Any]:
+    # 同一城市年度可能由不同官方附件分别披露余额和限额。债务合并器保留
+    # 字段级来源后，血缘必须按当前字段选择对应来源，不能默认取首个来源。
+    fact = fact.get("_field_sources", {}).get(field, fact)
     source_grade = str(fact.get("source_grade") or "A1")
     source_doc_id = str(fact.get("source_doc_id", ""))
     value_origin = str(fact.get("value_origin") or "disclosed")

@@ -105,6 +105,48 @@ class ProvinceDebtParserTests(unittest.TestCase):
         self.assertEqual(merged[0]["statutory_debt_limit_100m"], Decimal("969.5858"))
         self.assertEqual(merged[0]["statutory_debt_balance_100m"], Decimal("898.4892"))
 
+    def test_merges_field_values_without_losing_their_source_lineage(self):
+        rows = [
+            {
+                "city_name_cn": "张掖市",
+                "province_name": "甘肃省",
+                "metric_year": "2025",
+                "source_doc_id": "SRC-BALANCE",
+                "source_grade": "A2",
+                "line_number": 3,
+                "table_name": "2025年末法定债务余额",
+                "evidence_excerpt": "张掖市 333.40 91.78 241.62",
+                "general_debt_limit_100m": None,
+                "general_debt_balance_100m": Decimal("91.78"),
+                "special_debt_limit_100m": None,
+                "special_debt_balance_100m": Decimal("241.62"),
+                "statutory_debt_limit_100m": None,
+                "statutory_debt_balance_100m": Decimal("333.40"),
+            },
+            {
+                "city_name_cn": "张掖市",
+                "province_name": "甘肃省",
+                "metric_year": "2025",
+                "source_doc_id": "SRC-LIMIT",
+                "source_grade": "A2",
+                "line_number": 8,
+                "table_name": "2025年地方政府债务限额情况表",
+                "evidence_excerpt": "合计 377.51 101.37 276.15",
+                "general_debt_limit_100m": Decimal("101.37"),
+                "general_debt_balance_100m": None,
+                "special_debt_limit_100m": Decimal("276.15"),
+                "special_debt_balance_100m": None,
+                "statutory_debt_limit_100m": Decimal("377.51"),
+                "statutory_debt_balance_100m": None,
+            },
+        ]
+        merged = merge_debt_rows(rows)
+        self.assertEqual(len(merged), 1)
+        self.assertEqual(merged[0]["general_debt_balance_100m"], Decimal("91.78"))
+        self.assertEqual(merged[0]["general_debt_limit_100m"], Decimal("101.37"))
+        self.assertEqual(merged[0]["_field_sources"]["general_debt_balance_100m"]["source_doc_id"], "SRC-BALANCE")
+        self.assertEqual(merged[0]["_field_sources"]["general_debt_limit_100m"]["source_doc_id"], "SRC-LIMIT")
+
     def test_extracts_mixed_general_special_balance_rows(self):
         text = "哈尔滨市 16409355 17948198 17918648 12585443 14697083 14614159"
         rows = extract_city_rows(

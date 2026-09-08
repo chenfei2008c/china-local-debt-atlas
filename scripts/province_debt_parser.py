@@ -358,6 +358,15 @@ def extract_xlsx_city_rows(
 
 def merge_debt_rows(rows: Iterable[dict[str, object]]) -> list[dict[str, object]]:
     """按城市、年度合并总表及一般/专项分项表，并在分项齐全时勾稽合计。"""
+    debt_fields = (
+        "general_debt_limit_100m",
+        "general_debt_balance_100m",
+        "special_debt_limit_100m",
+        "special_debt_balance_100m",
+        "statutory_debt_limit_100m",
+        "statutory_debt_balance_100m",
+    )
+
     def source_priority(row: dict[str, object]) -> int:
         # 官方 A1/A2 应优先于审计/债券披露 B1/B2，后者又优先于 C/D
         # 线索。相同等级仍保持先出现者优先，避免无依据地覆盖同级冲突值。
@@ -385,32 +394,25 @@ def merge_debt_rows(rows: Iterable[dict[str, object]]) -> list[dict[str, object]
             initial_priority = source_priority(target)
             target["_field_source_priority"] = {
                 field: initial_priority
-                for field in (
-                    "general_debt_limit_100m",
-                    "general_debt_balance_100m",
-                    "special_debt_limit_100m",
-                    "special_debt_balance_100m",
-                    "statutory_debt_limit_100m",
-                    "statutory_debt_balance_100m",
-                )
+                for field in debt_fields
+                if target.get(field) is not None
+            }
+            target["_field_sources"] = {
+                field: dict(target)
+                for field in debt_fields
                 if target.get(field) is not None
             }
         field_priorities = target["_field_source_priority"]
+        field_sources = target["_field_sources"]
         incoming_priority = source_priority(incoming)
-        for field in (
-            "general_debt_limit_100m",
-            "general_debt_balance_100m",
-            "special_debt_limit_100m",
-            "special_debt_balance_100m",
-            "statutory_debt_limit_100m",
-            "statutory_debt_balance_100m",
-        ):
+        for field in debt_fields:
             if incoming.get(field) is None:
                 continue
             current_priority = int(field_priorities.get(field, source_priority(target)))
             if target.get(field) is None or incoming_priority > current_priority:
                 target[field] = incoming[field]
                 field_priorities[field] = incoming_priority
+                field_sources[field] = dict(incoming)
         if incoming.get("evidence_excerpt") and incoming.get("evidence_excerpt") != target.get("evidence_excerpt"):
             target["evidence_excerpt"] = f"{target.get('evidence_excerpt', '')} | {incoming['evidence_excerpt']}"
         if incoming.get("balance_limit_exception_note") and not target.get("balance_limit_exception_note"):
