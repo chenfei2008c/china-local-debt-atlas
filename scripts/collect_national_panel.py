@@ -6480,6 +6480,52 @@ SICHUAN_2022_DM_FUND_SOURCES = tuple(
     for city_name, (city_id, value) in _SICHUAN_2022_DM_FUND_VALUES.items()
 )
 CITY_YEAR_FUND_SOURCES += SICHUAN_2022_DM_FUND_SOURCES
+
+# 山东省 2022 年政府性基金收入精确表格补缺批次。
+# 天风证券公开报告表格列示16市财政数据；东营、菏泽标记为未披露，
+# 本批仅接入当前主表缺失且表格有明确数值的11个城市。
+_SHANDONG_2022_TF_FUND_VALUES = {
+    "济南市": ("CN-370100", "547.00"),
+    "淄博市": ("CN-370300", "268.00"),
+    "枣庄市": ("CN-370400", "331.00"),
+    "潍坊市": ("CN-370700", "709.00"),
+    "泰安市": ("CN-370900", "185.00"),
+    "威海市": ("CN-371000", "309.00"),
+    "日照市": ("CN-371100", "225.00"),
+    "临沂市": ("CN-371300", "617.00"),
+    "德州市": ("CN-371400", "244.00"),
+    "聊城市": ("CN-371500", "217.00"),
+    "滨州市": ("CN-371600", "254.00"),
+}
+SHANDONG_2022_TF_FUND_SOURCES = tuple(
+    {
+        "year": 2022,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-SHANDONG-2022-FUND-{city_id}",
+        "url": "https://file.iyanbao.com/pdf/70180-08343675-eed3-4fdb-a7b0-ffc680bac99b.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "shandong_2022_tianfeng_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "shandong_2022_tianfeng_report_excerpt.txt",
+        "document_title": "天风证券固定收益专题：城投系列研究——多视角看城投之一：山东",
+        "publisher": "天风证券股份有限公司",
+        "publisher_level": "专业证券研究机构（精确表格二手来源）",
+        "publication_date": "2023-05-01",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": rf"{re.escape(city_name)}\|2022年政府性基金收入\|({re.escape(value)})亿元",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": "2022年公开精确值",
+        "document_type": "区域经济财政债务研究报告（精确财政表）",
+        "page_count": "公开PDF",
+        "note": (
+            "B2精确表格；报告图4对应的原始文本表格逐项列示山东省各地级市2022年"
+            "政府性基金收入，资料来源为公开财政资料；不使用图表估读，东营和菏泽的未披露标记不转为零值。"
+        ),
+    }
+    for city_name, (city_id, value) in _SHANDONG_2022_TF_FUND_VALUES.items()
+)
+CITY_YEAR_FUND_SOURCES += SHANDONG_2022_TF_FUND_SOURCES
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
