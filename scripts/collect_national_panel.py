@@ -6717,6 +6717,39 @@ GUANGXI_MULTIYEAR_FUND_SOURCES = tuple(
     for year, value in batch["values"].items()
 )
 CITY_YEAR_FUND_SOURCES += GUANGXI_MULTIYEAR_FUND_SOURCES
+
+# 桂林市 2022—2023 年政府性基金收入精确表格补缺。
+# 原始评级报告表格按 2023、2022、2021 年列示桂林市全市数据；本批只接入
+# 当前主表空值，保留 2024 年既有记录，避免同一城市年度重复登记。
+GUANGXI_GUILIN_2022_2023_FUND_SOURCES = tuple(
+    {
+        "year": int(year),
+        "city_name": "桂林市",
+        "city_id": "CN-450300",
+        "source_doc_id": f"SRC-B2-GUANGXI-{year}-FUND-CN-450300",
+        "url": "https://qxb-pdf-osscache.qixin.com/AnBaseinfo/6ca9d58b6d35944116f236e245b66f57.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "guilin_2023_dagong_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "guilin_2023_dagong_report_excerpt.txt",
+        "document_title": "桂林新城投资开发集团有限公司主体与相关债项2024年度跟踪评级报告",
+        "publisher": "大公国际资信评估有限公司（公开评级报告）",
+        "publisher_level": "评级机构公开披露的精确表格二手来源",
+        "publication_date": "2024-06-28",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": rf"桂林市\\|{year}年政府性基金收入\\|({re.escape(value)})亿元",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": f"{year}年公开精确值",
+        "document_type": "评级报告地级市经济财政指标表",
+        "page_count": "公开PDF",
+        "note": (
+            "B2精确表格；原始报告表3列示桂林市全市政府性基金收入，"
+            "本批不使用临桂新区等区县口径，不使用图表估读。"
+        ),
+    }
+    for year, value in {"2022": "62.95", "2023": "60.42"}.items()
+)
+CITY_YEAR_FUND_SOURCES += GUANGXI_GUILIN_2022_2023_FUND_SOURCES
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
