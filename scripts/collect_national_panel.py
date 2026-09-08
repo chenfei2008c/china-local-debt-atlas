@@ -6889,6 +6889,37 @@ BAISE_2025_FUND_SOURCE = {
     ),
 }
 CITY_YEAR_FUND_SOURCES += (BAISE_2025_FUND_SOURCE,)
+
+# 南宁市 2025 年政府性基金收入精确表格补缺。
+# 东方金诚报告第 3 页同业比较表明确列示南宁市全市 2025 年政府性基金收入
+# 133.57 亿元，表注说明经济财政数据来自各地政府官网统计公报、预决算报告。
+NANNING_2025_FUND_SOURCE = {
+    "year": 2025,
+    "city_name": "南宁市",
+    "city_id": "CN-450100",
+    "source_doc_id": "SRC-B2-GUANGXI-2025-FUND-CN-450100",
+    "url": "https://www.chinamoney.org.cn/dqs/cm-s-notice-query/fileDownLoad.do?contentId=3363510&mode=save&priority=0",
+    "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "nanning_2025_dongfang_peer_report.pdf",
+    "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "nanning_2025_dongfang_peer_excerpt.txt",
+    "document_title": "邯郸市建设投资集团有限公司主体及相关债项2026年度跟踪评级报告",
+    "publisher": "东方金诚国际信用评估有限公司（中国货币网公开披露）",
+    "publisher_level": "评级机构公开披露的精确表格二手来源",
+    "publication_date": "2026-06-22",
+    "source_grade": "B2",
+    "source_format": "pdf",
+    "pattern": r"政府性基金收入（亿元）\|163\.44\|38\.95\|87\.97\|([0-9.]+)\|62\.87",
+    "raw_unit": "亿元",
+    "data_status": "reported",
+    "data_status_label": "2025年公开精确值",
+    "document_type": "评级报告地级市经济财政指标表",
+    "page_count": "PDF第3页（同业比较表）",
+    "note": (
+        "B2精确表格；同业比较表明确列示南宁市全市2025年政府性基金收入133.57亿元，"
+        "并注明表中数据年份为2025年、经济财政数据来自各地政府官网公开统计公报和预决算报告；"
+        "不使用图表估读、市本级或区县数。"
+    ),
+}
+CITY_YEAR_FUND_SOURCES += (NANNING_2025_FUND_SOURCE,)
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
