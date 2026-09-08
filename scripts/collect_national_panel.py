@@ -6583,6 +6583,62 @@ GUANGXI_2024_TARGETED_FUND_SOURCES = tuple(
     for city_name, (city_id, value) in _GUANGXI_2024_TARGETED_FUND_VALUES.items()
 )
 CITY_YEAR_FUND_SOURCES += GUANGXI_2024_TARGETED_FUND_SOURCES
+
+# 山东省东营、临沂 2023—2025 年政府性基金收入多年度精确表格补缺批次。
+# 两份公开评级报告均列示地级市全市财政表；本批只接入当前主表空值，
+# 不覆盖已存在的高等级值，不使用区县口径或图表估读。
+_SHANDONG_MULTIYEAR_FUND_META = {
+    "东营市": {
+        "city_id": "CN-370500",
+        "url": "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2026-06-05/152248_20260605_ROJ2.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "dongying_2025_dongfang_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "dongying_2025_dongfang_report_excerpt.txt",
+        "document_title": "东营区财金投资发展有限责任公司2026年度跟踪评级报告",
+        "publication_date": "2026-06-05",
+    },
+    "临沂市": {
+        "city_id": "CN-371300",
+        "url": "https://static.sse.com.cn/disclosure/bond/announcement/company/c/new/2026-06-28/188842_20260628_29WD.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "linyi_2025_dongfang_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "linyi_2025_dongfang_report_excerpt.txt",
+        "document_title": "临沂城市建设投资集团有限公司主体及‘21临城01’2026年度跟踪评级报告",
+        "publication_date": "2026-06-28",
+    },
+}
+_SHANDONG_MULTIYEAR_FUND_VALUES = {
+    "东营市": {"2023": "124.66", "2024": "117.92", "2025": "110.71"},
+    "临沂市": {"2023": "244.65", "2024": "265.90", "2025": "292.19"},
+}
+SHANDONG_MULTIYEAR_FUND_SOURCES = tuple(
+    {
+        "year": int(year),
+        "city_name": city_name,
+        "city_id": source_meta["city_id"],
+        "source_doc_id": f"SRC-B2-SHANDONG-{year}-FUND-{source_meta['city_id']}",
+        "url": source_meta["url"],
+        "path": source_meta["path"],
+        "text_path": source_meta["text_path"],
+        "document_title": source_meta["document_title"],
+        "publisher": "东方金诚国际信用评估有限公司（上海证券交易所公开披露）",
+        "publisher_level": "交易所公开披露的评级报告（精确表格二手来源）",
+        "publication_date": source_meta["publication_date"],
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": rf"{re.escape(city_name)}\\|{year}年政府性基金收入\\|({re.escape(value)})亿元",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": f"{year}年公开精确值",
+        "document_type": "评级报告地级市经济财政指标表",
+        "page_count": "公开PDF",
+        "note": (
+            "B2精确表格；报告列示该城市全市2023—2025年政府性基金收入，"
+            "数值来自公开财政决算或预算执行资料；不使用图表估读、不使用市本级或区县数。"
+        ),
+    }
+    for city_name, source_meta in _SHANDONG_MULTIYEAR_FUND_META.items()
+    for year, value in _SHANDONG_MULTIYEAR_FUND_VALUES[city_name].items()
+)
+CITY_YEAR_FUND_SOURCES += SHANDONG_MULTIYEAR_FUND_SOURCES
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
