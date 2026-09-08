@@ -2958,6 +2958,46 @@ XINJIANG_2024_CITY_FUND_SOURCES = (
 )
 XINJIANG_CITY_FUND_SOURCE_IDS = {item["source_doc_id"] for item in XINJIANG_2024_CITY_FUND_SOURCES}
 
+# 同一份新疆财政厅官方分地区表同时列示 2023 年决算数；当前全国主表中
+# 新疆 2023 年仅部分地州已有值，本批按官方表一次补齐缺口。value_index=1
+# 表示取“2023年决算数”，不把 2024 年完成数误写入 2023 年。
+XINJIANG_2023_CITY_FUND_SOURCES = (
+    {
+        "year": 2023,
+        "source_doc_id": "SRC-PROVINCE-FUND-XINJIANG-2023",
+        "url": "https://czt.xinjiang.gov.cn/xjczt/c115511/202501/4a78ff1bea3045eeba621d2d1d7db349/files/02-2024%E5%B9%B4%E8%87%AA%E6%B2%BB%E5%8C%BA%E9%A2%84%E7%AE%97%E6%89%A7%E8%A1%8C%E6%83%85%E5%86%B5%E5%92%8C2025%E5%B9%B4%E8%87%AA%E6%B2%BB%E5%8C%BA%E9%A2%84%E7%AE%97%EF%BC%88%E5%9B%9B%E6%9C%AC%E9%A2%84%E7%AE%97%EF%BC%89.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "official" / "xinjiang_2024_budget_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2023" / "official" / "xinjiang_2023_city_fund_excerpt.txt",
+        "document_title": "2024年自治区政府性基金预算执行情况与2025年自治区预算（四本预算）",
+        "publisher": "新疆维吾尔自治区财政厅",
+        "publisher_level": "省级财政机构",
+        "publication_date": "2025-01-01",
+        "table_name": "表五：2024年自治区各地政府性基金预算收入完成情况表（取2023年决算数）",
+        "page_number": "PDF第76页（印刷页74）",
+        "source_grade": "A1",
+        "data_status": "reported",
+        "data_status_label": "2023年决算数",
+        "value_index": 1,
+        "cities": {
+            "乌鲁木齐市": "CN-650100",
+            "伊犁州": "CN-654000",
+            "塔城地区": "CN-654200",
+            "阿勒泰地区": "CN-654300",
+            "克拉玛依市": "CN-650200",
+            "博尔塔拉州": "CN-652700",
+            "昌吉州": "CN-652300",
+            "哈密市": "CN-650500",
+            "吐鲁番市": "CN-650400",
+            "巴音郭楞州": "CN-652800",
+            "阿克苏地区": "CN-652900",
+            "克孜勒苏州": "CN-653000",
+            "喀什地区": "CN-653100",
+            "和田地区": "CN-653200",
+        },
+    },
+)
+XINJIANG_CITY_FUND_SOURCE_IDS |= {item["source_doc_id"] for item in XINJIANG_2023_CITY_FUND_SOURCES}
+
 # 内蒙古自治区城市财政报告中已核验的全市政府性基金收入。来源均能精确定位
 # 到报告正文，但不是省财政厅分地区原始表，因此按 B2 纳入，并保留 execution
 # 状态；不把市本级数替代为全市数。
@@ -14625,12 +14665,14 @@ def load_jiangsu_city_fund_sources() -> tuple[dict[tuple[str, str], dict[str, An
     return values, sources
 
 
-def load_xinjiang_2024_city_fund_sources() -> tuple[dict[tuple[str, str], dict[str, Any]], list[dict[str, Any]]]:
+def load_xinjiang_2024_city_fund_sources(
+    configs: Iterable[Mapping[str, Any]] | None = None,
+) -> tuple[dict[tuple[str, str], dict[str, Any]], list[dict[str, Any]]]:
     """读取新疆财政厅 2024 年各地政府性基金预算收入完成表。"""
 
     values: dict[tuple[str, str], dict[str, Any]] = {}
     sources: list[dict[str, Any]] = []
-    for config in XINJIANG_2024_CITY_FUND_SOURCES:
+    for config in configs or XINJIANG_2024_CITY_FUND_SOURCES:
         source_path = Path(config["path"])
         text_path = Path(config["text_path"])
         content_hash = ensure_download(str(config["url"]), source_path)
@@ -14640,7 +14682,7 @@ def load_xinjiang_2024_city_fund_sources() -> tuple[dict[tuple[str, str], dict[s
             rows,
             city_aliases=config["cities"],
             field_name="gov_fund_revenue_100m",
-            value_index=2,
+            value_index=int(config.get("value_index", 2)),
             raw_unit="万元",
             metric_year=int(config["year"]),
             source_doc_id=str(config["source_doc_id"]),
@@ -14708,6 +14750,12 @@ def load_xinjiang_2024_city_fund_sources() -> tuple[dict[tuple[str, str], dict[s
             }
         )
     return values, sources
+
+
+def load_xinjiang_2023_city_fund_sources() -> tuple[dict[tuple[str, str], dict[str, Any]], list[dict[str, Any]]]:
+    """读取新疆财政厅 2023 年各地政府性基金预算收入决算表。"""
+
+    return load_xinjiang_2024_city_fund_sources(XINJIANG_2023_CITY_FUND_SOURCES)
 
 
 def load_jiangsu_city_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any]], list[dict[str, Any]]]:
@@ -17250,6 +17298,9 @@ def main() -> None:
     next30_2025_economic, next30_2025_economic_sources = load_next30_2025_city_economic()
     jiangsu_city_fund, jiangsu_city_fund_sources = load_jiangsu_city_fund_sources()
     xinjiang_city_fund, xinjiang_city_fund_sources = load_xinjiang_2024_city_fund_sources()
+    xinjiang_2023_city_fund, xinjiang_2023_city_fund_sources = load_xinjiang_2023_city_fund_sources()
+    xinjiang_city_fund.update(xinjiang_2023_city_fund)
+    xinjiang_city_fund_sources.extend(xinjiang_2023_city_fund_sources)
     jiangsu_city_fiscal, jiangsu_city_fiscal_sources = load_jiangsu_city_fiscal_sources()
     city_year_fiscal, city_year_fiscal_sources = load_city_year_fiscal_sources()
     sichuan_2018_macro, sichuan_2018_sources = load_sichuan_2018_yearbook_sources(
