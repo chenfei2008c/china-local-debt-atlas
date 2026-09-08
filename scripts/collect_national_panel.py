@@ -7032,6 +7032,116 @@ ANHUI_2023_NEWCENTURY_FUND_SOURCES = tuple(
     )
 )
 CITY_YEAR_FUND_SOURCES += ANHUI_2023_NEWCENTURY_FUND_SOURCES
+
+
+def _make_city_fund_report_sources(
+    *,
+    year: int,
+    report_key: str,
+    report_path: Path,
+    text_path: Path,
+    url: str,
+    document_title: str,
+    publication_date: str,
+    cities: tuple[tuple[str, str, str], ...],
+) -> tuple[dict[str, Any], ...]:
+    """按同一份精确表格生成城市年度基金收入配置。"""
+
+    return tuple(
+        {
+            "year": year,
+            "city_name": city_name,
+            "city_id": city_id,
+            "source_doc_id": f"SRC-B2-{report_key}-{city_id}",
+            "url": url,
+            "path": report_path,
+            "text_path": text_path,
+            "document_title": document_title,
+            "publisher": "中证鹏元资信评估股份有限公司",
+            "publisher_level": "评级机构公开披露的精确表格二手来源",
+            "publication_date": publication_date,
+            "source_grade": "B2",
+            "source_format": "pdf",
+            "pattern": rf"{re.escape(city_name)}政府性基金收入([0-9.]+)亿元",
+            "raw_unit": "亿元",
+            "data_status": "reported",
+            "data_status_label": f"{year}年公开精确值",
+            "document_type": "评级报告地级市经济财政指标表",
+            "page_count": "评级报告精确表格页",
+            "note": (
+                f"B2精确表格；明确列示{city_name}全市{year}年政府性基金收入，"
+                "单位为亿元，资料来自地方统计公报和财政预决算报告；不使用图表估读或市本级数。"
+            ),
+        }
+        for city_name, city_id, _value in cities
+    )
+
+
+GUANGDONG_2023_PEER_FUND_SOURCES = _make_city_fund_report_sources(
+    year=2023,
+    report_key="GUANGDONG-2023-SANSHUI",
+    report_path=RAW_DIR / "province_fiscal" / "2023" / "secondary" / "guangdong_2023_sanshui_report.pdf",
+    text_path=RAW_DIR / "province_fiscal" / "2023" / "secondary" / "guangdong_2023_sanshui_report_excerpt.txt",
+    url="https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2024-07-30/184695_20240730_XVY1.pdf",
+    document_title="2023年广东省部分地级行政区经济财政指标情况（中证鹏元评级报告）",
+    publication_date="2024-07-30",
+    cities=(
+        ("深圳市", "CN-440300", "875.53"),
+        ("广州市", "CN-440100", "1588.78"),
+        ("佛山市", "CN-440600", "477.03"),
+        ("湛江市", "CN-440800", "60.92"),
+        ("汕头市", "CN-440500", "69.23"),
+        ("肇庆市", "CN-441200", "66.56"),
+        ("梅州市", "CN-441400", "25.17"),
+        ("云浮市", "CN-445300", "14.59"),
+    ),
+)
+
+SHANDONG_2023_PEER_A_FUND_SOURCES = _make_city_fund_report_sources(
+    year=2023,
+    report_key="SHANDONG-2023-PEER-A",
+    report_path=RAW_DIR / "province_fiscal" / "2023" / "secondary" / "shandong_2023_peer_report_a.pdf",
+    text_path=RAW_DIR / "province_fiscal" / "2023" / "secondary" / "shandong_2023_peer_report_excerpt.txt",
+    url="https://static.cninfo.com.cn/finalpage/2024-07-19/1220688301.pdf",
+    document_title="2023年山东省部分地级行政区经济财政指标情况（中证鹏元评级报告）",
+    publication_date="2024-07-19",
+    cities=(
+        ("青岛市", "CN-370200", "530.83"),
+        ("济南市", "CN-370100", "520.76"),
+        ("烟台市", "CN-370600", "278.21"),
+        ("济宁市", "CN-370800", "417.59"),
+        ("淄博市", "CN-370300", "213.67"),
+        ("菏泽市", "CN-371700", "360.33"),
+        ("聊城市", "CN-371500", "227.53"),
+        ("日照市", "CN-371100", "223.45"),
+    ),
+)
+
+SHANDONG_2023_PEER_B_FUND_SOURCES = _make_city_fund_report_sources(
+    year=2023,
+    report_key="SHANDONG-2023-PEER-B",
+    report_path=RAW_DIR / "province_fiscal" / "2023" / "secondary" / "shandong_2023_peer_report_b.pdf",
+    text_path=RAW_DIR / "province_fiscal" / "2023" / "secondary" / "shandong_2023_peer_report_b_excerpt.txt",
+    url="https://www.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2024-06-28/184665_20240628_4ZH1.pdf",
+    document_title="2023年山东省部分地级行政区经济财政指标情况（中证鹏元评级报告）",
+    publication_date="2024-06-28",
+    cities=(
+        ("青岛市", "CN-370200", "530.83"),
+        ("济南市", "CN-370100", "520.76"),
+        ("烟台市", "CN-370600", "278.21"),
+        ("潍坊市", "CN-370700", "490.91"),
+        ("临沂市", "CN-371300", "244.65"),
+        ("聊城市", "CN-371500", "227.53"),
+        ("日照市", "CN-371100", "223.45"),
+        ("枣庄市", "CN-370400", "324.19"),
+    ),
+)
+
+CITY_YEAR_FUND_SOURCES += (
+    GUANGDONG_2023_PEER_FUND_SOURCES
+    + SHANDONG_2023_PEER_A_FUND_SOURCES
+    + SHANDONG_2023_PEER_B_FUND_SOURCES
+)
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
