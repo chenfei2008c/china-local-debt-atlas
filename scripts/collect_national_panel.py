@@ -6216,6 +6216,49 @@ HUNAN_2023_LHRATINGS_FUND_SOURCES = tuple(
     for city_name, (city_id, value) in _HUNAN_2023_LHRATINGS_FUND_VALUES.items()
 )
 CITY_YEAR_FUND_SOURCES += HUNAN_2023_LHRATINGS_FUND_SOURCES
+
+# 联合资信《地方政府与城投企业债务风险研究报告—湖北篇》表5补录
+# 2022年湖北省地级市（州）政府性基金收入。报告第13页为精确文字表，
+# 数据来源明确为各地市（州）财政决算报告和预算执行情况报告；仅接入
+# 原表中此前主表缺失的五个全市/全州口径值，图表和本级口径不入表。
+_HUBEI_2022_LHRATINGS_FUND_VALUES = {
+    "黄冈市": ("CN-421100", "93.57"),
+    "孝感市": ("CN-420900", "115.60"),
+    "黄石市": ("CN-420200", "178.01"),
+    "恩施州": ("CN-422800", "59.77"),
+    "宜昌市": ("CN-420500", "215.53"),
+}
+HUBEI_2022_LHRATINGS_FUND_SOURCES = tuple(
+    {
+        "year": 2022,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-LHRATINGS-HUBEI-FUND-2022-{city_id[3:]}",
+        "url": "https://www.lhratings.com/file/f77d796efcc.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "hubei_2023_lhratings_city_fiscal_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "hubei_2023_lhratings_city_fund_excerpt.txt",
+        "document_title": "地方政府与城投企业债务风险研究报告—湖北篇",
+        "publisher": "联合资信评估股份有限公司",
+        "publisher_level": "专业评级机构（精确表格二手来源）",
+        "publication_date": "2023-11-24",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": rf"{re.escape(source_label)}｜2022年｜政府性基金收入（亿元）｜({re.escape(value)})",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": "2022年全市/全州政府性基金收入公开精确值",
+        "document_type": "区域经济与债务研究报告（精确财政表）",
+        "page_count": "18",
+        "note": (
+            "B2联合资信公开报告表5；表格明确列示2022年全市/全州政府性基金收入，"
+            "数据来源为各地市（州）财政决算报告和预算执行情况报告。仅接入原表中此前"
+            "主表缺失的五个真实年度值，不使用图表目测值或2021年本级口径。"
+        ),
+    }
+    for city_name, (city_id, value) in _HUBEI_2022_LHRATINGS_FUND_VALUES.items()
+    for source_label in ("恩施州" if city_name == "恩施州" else city_name,)
+)
+CITY_YEAR_FUND_SOURCES += HUBEI_2022_LHRATINGS_FUND_SOURCES
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
