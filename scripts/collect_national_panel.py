@@ -6639,6 +6639,84 @@ SHANDONG_MULTIYEAR_FUND_SOURCES = tuple(
     for year, value in _SHANDONG_MULTIYEAR_FUND_VALUES[city_name].items()
 )
 CITY_YEAR_FUND_SOURCES += SHANDONG_MULTIYEAR_FUND_SOURCES
+
+# 广西柳州、玉林、南宁 2022—2025 年政府性基金收入精确表格批次。
+# 柳州 2025 年使用 2026 年度跟踪评级报告，其余年份使用含明确三年序列的
+# 公开评级报告；玉林、南宁只接入报告明确列示的全市年度值。
+_GUANGXI_MULTIYEAR_FUND_BATCHES = (
+    {
+        "city_name": "柳州市",
+        "city_id": "CN-450200",
+        "url": "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2025-06-28/127639_20250628_TI4L.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "liuzhou_2024_fund_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "liuzhou_2024_fund_report_excerpt.txt",
+        "document_title": "柳州市基础设施投资开发集团有限公司2025年度跟踪评级报告",
+        "publication_date": "2025-06-28",
+        "values": {"2022": "211.37", "2023": "130.64", "2024": "60.66"},
+    },
+    {
+        "city_name": "柳州市",
+        "city_id": "CN-450200",
+        "url": "https://static.sse.com.cn/disclosure/bond/announcement/company/c/new/2026-06-26/185342_20260626_C5O4.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "liuzhou_2025_fund_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "liuzhou_2025_fund_report_excerpt.txt",
+        "document_title": "广西柳州市投资控股集团有限公司2026年度跟踪评级报告",
+        "publication_date": "2026-06-26",
+        "values": {"2025": "34.67"},
+    },
+    {
+        "city_name": "玉林市",
+        "city_id": "CN-450900",
+        "url": "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2025-06-27/152595_20250627_O97E.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "yulin_2024_fund_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "yulin_2024_fund_report_excerpt.txt",
+        "document_title": "玉林市城市建设投资集团有限公司2025年度跟踪评级报告",
+        "publication_date": "2025-06-27",
+        "values": {"2022": "60.80", "2023": "49.11", "2024": "48.09"},
+    },
+    {
+        "city_name": "南宁市",
+        "city_id": "CN-450100",
+        "url": "https://www.chinamoney.com.cn/dqs/cm-s-notice-query/fileDownLoad.do?contentId=3281083&mode=save&priority=0",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "nanning_2024_fund_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "nanning_2024_fund_report_excerpt.txt",
+        "document_title": "南宁绿港建设投资集团有限公司2025年度跟踪评级报告",
+        "publication_date": "2025-06-24",
+        # 2022、2023 已由既有南宁城市基金来源覆盖；本批只补入该报告可核验的 2024 值，
+        # 避免同一城市年度在来源清单中重复登记。
+        "values": {"2024": "150.59"},
+    },
+)
+GUANGXI_MULTIYEAR_FUND_SOURCES = tuple(
+    {
+        "year": int(year),
+        "city_name": batch["city_name"],
+        "city_id": batch["city_id"],
+        "source_doc_id": f"SRC-B2-GUANGXI-{year}-FUND-{batch['city_id']}",
+        "url": batch["url"],
+        "path": batch["path"],
+        "text_path": batch["text_path"],
+        "document_title": batch["document_title"],
+        "publisher": "评级机构（交易所/中国货币网公开披露）",
+        "publisher_level": "公开披露的评级报告（精确表格二手来源）",
+        "publication_date": batch["publication_date"],
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": rf"{re.escape(batch['city_name'])}\\|{year}年政府性基金收入\\|({re.escape(value)})亿元",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": f"{year}年公开精确值",
+        "document_type": "评级报告地级市经济财政指标表",
+        "page_count": "公开PDF",
+        "note": (
+            "B2精确表格；报告明确列示该城市全市政府性基金收入，"
+            "本批不使用图表估读、市本级或区县口径，不覆盖更高等级来源。"
+        ),
+    }
+    for batch in _GUANGXI_MULTIYEAR_FUND_BATCHES
+    for year, value in batch["values"].items()
+)
+CITY_YEAR_FUND_SOURCES += GUANGXI_MULTIYEAR_FUND_SOURCES
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
