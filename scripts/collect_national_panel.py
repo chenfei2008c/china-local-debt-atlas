@@ -6167,6 +6167,55 @@ CITY_YEAR_FUND_SOURCES += (
         "note": "B2精确转载；达州日报刊载达州市财政局报告，明确列示2025年全市政府性基金预算收入完成197.3亿元，为预算的100.4%；采用全市执行口径，不使用收入总量。",
     },
 )
+
+# 联合资信《地方政府与城投企业债务风险研究报告—湖南篇》表7补录
+# 2023年湖南省各地级市（州）政府性基金收入。原表为精确文字表，数据来源
+# 明确为各地市财政决算报告和预算执行情况报告；永州、张家界两行注明使用
+# 2024年预算数替代2023年数据，故排除，仅接入其余12个真实年度值。
+_HUNAN_2023_LHRATINGS_FUND_VALUES = {
+    "长沙市": ("CN-430100", "902.83"),
+    "株洲市": ("CN-430200", "199.67"),
+    "湘潭市": ("CN-430300", "67.64"),
+    "衡阳市": ("CN-430400", "225.64"),
+    "郴州市": ("CN-431000", "120.37"),
+    "邵阳市": ("CN-430500", "126.18"),
+    "岳阳市": ("CN-430600", "271.95"),
+    "常德市": ("CN-430700", "141.87"),
+    "益阳市": ("CN-430900", "52.18"),
+    "娄底市": ("CN-431300", "66.19"),
+    "怀化市": ("CN-431200", "107.04"),
+    "湘西州": ("CN-433100", "18.24"),
+}
+HUNAN_2023_LHRATINGS_FUND_SOURCES = tuple(
+    {
+        "year": 2023,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-LHRATINGS-HUNAN-FUND-2023-{city_id[3:]}",
+        "url": "https://www.lhratings.com/file/fc16ef416a2.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "hunan_2024_lhratings_city_fiscal_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "hunan_2024_lhratings_city_fund_excerpt.txt",
+        "document_title": "地方政府与城投企业债务风险研究报告—湖南篇",
+        "publisher": "联合资信评估股份有限公司",
+        "publisher_level": "专业评级机构（精确表格二手来源）",
+        "publication_date": "2024-11-28",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": rf"{re.escape(city_name)}｜2022年｜[0-9.]+｜2023年｜({re.escape(value)})",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": "2023年全市/全州政府性基金收入公开精确值",
+        "document_type": "区域经济与债务研究报告（精确财政表）",
+        "page_count": "24",
+        "note": (
+            "B2联合资信公开报告表7；表格明确列示2023年全市/全州政府性基金收入，"
+            "数据来源为各地市（州）财政决算报告和预算执行情况报告。仅接入原表真实"
+            "2023年值；永州、张家界因原表使用2024年预算替代，未作为2023年值录入。"
+        ),
+    }
+    for city_name, (city_id, value) in _HUNAN_2023_LHRATINGS_FUND_VALUES.items()
+)
+CITY_YEAR_FUND_SOURCES += HUNAN_2023_LHRATINGS_FUND_SOURCES
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
