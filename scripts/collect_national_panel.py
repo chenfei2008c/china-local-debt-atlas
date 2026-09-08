@@ -6756,6 +6756,30 @@ CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SO
 # 政府性基金收入。原文使用“快报数”，因此只登记为 execution，不冒充最终决算。
 CITY_YEAR_FISCAL_SOURCES = (
     {
+        "year": 2025,
+        "city_name": "嘉峪关市",
+        "city_id": "CN-620200",
+        "source_doc_id": "SRC-A2-JIAYUGUAN-CITY-FUND-2025",
+        "url": "https://www.jyg.gov.cn/zfxxgk/fdzdgknr/zdlyxxgk/czzjxx/sjzfyjs/art/2026/art_e5db66dedc0748059838d0a5e017e956.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "jiayuguan_2025_budget_report_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "jiayuguan_2025_budget_report_excerpt.txt",
+        "document_title": "关于嘉峪关市2025年市级财政预算执行情况和2026年市级财政预算草案的报告",
+        "publisher": "嘉峪关市人民政府、嘉峪关市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2026-05-22",
+        "source_grade": "A2",
+        "source_format": "txt",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年执行数",
+        "document_type": "城市财政预算执行报告（官方附件摘录）",
+        "page_number": "第28—29页",
+        "patterns": {
+            "gov_fund_revenue_100m": r"2025年市级政府性基金预算收入完成\s*([0-9.]+)\s*亿元",
+        },
+        "note": "嘉峪关市人民政府和财政局官方预算执行报告；嘉峪关为单一地级行政单元，采用市级（全市）政府性基金预算收入执行数2.06亿元，不将基金收入总量或专项债务转贷收入误作基金预算收入。",
+    },
+    {
         "year": 2024,
         "city_name": "朝阳市",
         "city_id": "CN-211300",
