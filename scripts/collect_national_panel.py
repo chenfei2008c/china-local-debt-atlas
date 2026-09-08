@@ -6782,6 +6782,38 @@ GUIGANG_2025_FUND_SOURCE = {
     ),
 }
 CITY_YEAR_FUND_SOURCES += (GUIGANG_2025_FUND_SOURCE,)
+
+# 梧州市 2025 年政府性基金收入精确表格补缺。
+# 东方金诚公开跟踪评级报告第 3 页同业比较表明确列示梧州市全市 2025 年
+# 政府性基金收入 38.90 亿元；表注说明数据来自各地政府官网公开统计公报、
+# 预决算报告等。本批只接入 2025 年主表空值，不使用市本级或图表估读。
+WUZHOU_2025_FUND_SOURCE = {
+    "year": 2025,
+    "city_name": "梧州市",
+    "city_id": "CN-450400",
+    "source_doc_id": "SRC-B2-GUANGXI-2025-FUND-CN-450400",
+    "url": "https://www.dfratings.com/uploads/files/2026/0624/PQZe1EPuFi2jsMpE4sOpuqHIkwk6WkqDWfwnt0eM.pdf",
+    "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "wuzhou_2025_dfratings_report.pdf",
+    "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "wuzhou_2025_dfratings_report_excerpt.txt",
+    "document_title": "广安金财投融资（集团）有限责任公司主体及‘20广安金财债/20广金债’2026年度跟踪评级报告",
+    "publisher": "东方金诚国际信用评估有限公司",
+    "publisher_level": "评级机构公开披露的精确表格二手来源",
+    "publication_date": "2026-06-22",
+    "source_grade": "B2",
+    "source_format": "pdf",
+    "pattern": r"政府性基金收入（亿元）\|97\.40\|172\.13\|17\.39\|([0-9.]+)",
+    "raw_unit": "亿元",
+    "data_status": "reported",
+    "data_status_label": "2025年公开精确值",
+    "document_type": "评级报告地级市经济财政指标表",
+    "page_count": "PDF第3页（同业比较表）",
+    "note": (
+        "B2精确表格；同业比较表明确列示梧州市全市2025年政府性基金收入38.90亿元，"
+        "并注明表中数据年份均为2025年、经济财政数据来自各地政府官网公开统计公报和预决算报告；"
+        "不使用图表估读、市本级或区县数。"
+    ),
+}
+CITY_YEAR_FUND_SOURCES += (WUZHOU_2025_FUND_SOURCE,)
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
