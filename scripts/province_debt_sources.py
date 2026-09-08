@@ -980,6 +980,7 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
     ]
 )
 
+
 # 2025年官方预算执行报告中的限额补充。部分城市公开报告只给出法定总限额，
 # 不给一般/专项拆分；使用 limit1/limit3 只写入明确公开的限额字段，绝不把
 # 限额数字当作余额，也不从总额反推未披露的分项。
@@ -8074,11 +8075,11 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
             "source_grade": "A1",
             "unit": "万元",
             "unit_factor": Decimal("0.0001"),
-            "layout": "total6",
-            "start": "【2022年西藏自治区各地市政府债务限额及余额（单位：万元）】",
+            "layout": "newlimit3_balance3",
+            "start": "2022年政府债务限额及余额决算情况表",
             "end": None,
             "table_name": "2022年西藏自治区各地市政府债务余额决算情况表",
-            "note": "官方决算表直接列示7个地市全辖行及一般/专项分项；原表单位为万元，按0.0001换算为亿元；排除自治区、自治区本级、市本级及区县行。",
+            "note": "官方决算附件一次覆盖七个地市全辖行；限额列中的第二、三列是新增一般/专项债务限额，不是一般/专项债务总限额，因此只接入法定总限额和余额三项，避免口径误用。",
         },
         {
             "source_doc_id": "SRC-OFFICIAL-DEBT-LIAONING-CITIES-2018",

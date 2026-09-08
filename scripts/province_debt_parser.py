@@ -101,7 +101,7 @@ def extract_city_rows(
             continue
         numbers = parse_numeric_tokens(line)
         evidence_line = line
-        required_count = 9 if layout == "total9" else (6 if layout in {"total6", "balance6", "total6_balance_first"} else (3 if layout in {"component3", "component3_previous_balance", "balance3", "direct3_general_special", "direct3_general_special_after_year", "direct3_component_limit_new_balance", "limit3"} else (1 if layout in {"direct1", "limit1"} else 2)))
+        required_count = 9 if layout == "total9" else (6 if layout in {"total6", "balance6", "total6_balance_first", "total_limit_new3_balance", "newlimit3_balance3"} else (3 if layout in {"component3", "component3_previous_balance", "balance3", "direct3_general_special", "direct3_general_special_after_year", "direct3_component_limit_new_balance", "limit3"} else (1 if layout in {"direct1", "limit1"} else 2)))
         # 部分 PDF 会把较长的自治州名称拆成两行，但数字仍在下一行；
         # 仅在已匹配白名单且当前数字列不足时合并下一行，避免跨行误配。
         if len(numbers) < required_count and index + 1 < len(lines):
@@ -110,7 +110,7 @@ def extract_city_rows(
             if len(next_numbers) >= required_count:
                 evidence_line = f"{line.rstrip()} {next_line.lstrip()}"
                 numbers = parse_numeric_tokens(evidence_line)
-        if layout in {"total6", "balance6", "total6_balance_first"} and len(numbers) < 6:
+        if layout in {"total6", "balance6", "total6_balance_first", "newlimit3_balance3"} and len(numbers) < 6:
             continue
         if layout == "total9" and len(numbers) < 9:
             continue
@@ -198,6 +198,31 @@ def extract_city_rows(
                     "special_debt_limit_100m": special_limit,
                     "special_debt_balance_100m": special_balance,
                     "statutory_debt_limit_100m": total_limit,
+                    "statutory_debt_balance_100m": total_balance,
+                }
+            )
+        elif layout == "total_limit_new3_balance":
+            # 西藏2022年表按“总限额、新增一般限额、新增专项限额；
+            # 余额合计、一般余额、专项余额”列示。中间两列是当年新增
+            # 限额，不是一般/专项债务总限额，不能写入分项限额字段。
+            total_limit, _new_general_limit, _new_special_limit = values[:3]
+            total_balance, general_balance, special_balance = values[3:6]
+            row.update(
+                {
+                    "general_debt_balance_100m": general_balance,
+                    "special_debt_balance_100m": special_balance,
+                    "statutory_debt_limit_100m": total_limit,
+                    "statutory_debt_balance_100m": total_balance,
+                }
+            )
+        elif layout == "newlimit3_balance3":
+            # 西藏2022年表的前三列是新增债务限额，不是法定总限额；
+            # 只接入末三列明确披露的余额合计、一般余额和专项余额。
+            total_balance, general_balance, special_balance = values[3:6]
+            row.update(
+                {
+                    "general_debt_balance_100m": general_balance,
+                    "special_debt_balance_100m": special_balance,
                     "statutory_debt_balance_100m": total_balance,
                 }
             )

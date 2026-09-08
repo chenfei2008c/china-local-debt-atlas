@@ -196,6 +196,23 @@ class ProvinceDebtParserTests(unittest.TestCase):
         self.assertEqual(rows[0]["general_debt_balance_100m"], Decimal("113.50"))
         self.assertEqual(rows[0]["special_debt_balance_100m"], Decimal("86.59"))
 
+    def test_extracts_total_limit_when_other_limit_columns_are_new_debt_only(self):
+        text = "拉萨市 136500 80500 56000 919426.86 358040.86 561386"
+        rows = extract_city_rows(
+            text,
+            expected_city_names={"拉萨市"},
+            year=2022,
+            province_name="西藏自治区",
+            source_doc_id="SRC-TEST-TIBET-2022",
+            layout="newlimit3_balance3",
+            unit_factor=Decimal("0.0001"),
+        )
+        self.assertEqual(len(rows), 1)
+        self.assertIsNone(rows[0]["statutory_debt_limit_100m"])
+        self.assertEqual(rows[0]["statutory_debt_balance_100m"], Decimal("91.942686"))
+        self.assertIsNone(rows[0]["general_debt_limit_100m"])
+        self.assertEqual(rows[0]["general_debt_balance_100m"], Decimal("35.804086"))
+
     def test_extracts_city_rows_from_shared_string_xlsx(self):
         sheet = """<?xml version='1.0'?><worksheet xmlns='http://schemas.openxmlformats.org/spreadsheetml/2006/main'><sheetData>
         <row r='10'><c r='C10' t='s'><v>0</v></c><c r='D10'><v>100</v></c><c r='E10'><v>40</v></c><c r='F10'><v>60</v></c><c r='G10'><v>90</v></c><c r='H10'><v>35</v></c><c r='I10'><v>55</v></c></row>
