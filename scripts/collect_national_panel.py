@@ -6991,6 +6991,47 @@ QINZHOU_2025_FUND_SOURCE = {
     ),
 }
 CITY_YEAR_FUND_SOURCES += (QINZHOU_2025_FUND_SOURCE,)
+
+# 安徽省 2023 年中证鹏元评级报告表3披露的地级市全市政府性基金收入。
+# 表格为精确数值，按城市拆分配置以保留字段级城市定位；原始单位为亿元。
+ANHUI_2023_NEWCENTURY_FUND_SOURCES = tuple(
+    {
+        "year": 2023,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-ANHUI-2023-FUND-{city_id}",
+        "url": "https://static.cninfo.com.cn/finalpage/2024-07-29/1220746711.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "anhui_2023_newcentury_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "anhui_2023_newcentury_report_excerpt.txt",
+        "document_title": "安徽省部分地级行政区经济财政指标情况（中证鹏元评级报告）",
+        "publisher": "中证鹏元资信评估股份有限公司",
+        "publisher_level": "评级机构公开披露的精确表格二手来源",
+        "publication_date": "2024-07-29",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": rf"{re.escape(city_name)}政府性基金收入([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": "2023年公开精确值",
+        "document_type": "评级报告地级市经济财政指标表",
+        "page_count": "PDF第10页（表3）",
+        "note": (
+            "B2精确表格；表3明确列示该市全市2023年政府性基金收入，"
+            "单位为亿元，资料来源注明各市统计公报和财政预决算报告；不使用图表估读或市本级数。"
+        ),
+    }
+    for city_name, city_id in (
+        ("合肥市", "CN-340100"),
+        ("芜湖市", "CN-340200"),
+        ("滁州市", "CN-341100"),
+        ("安庆市", "CN-340800"),
+        ("宿州市", "CN-341300"),
+        ("蚌埠市", "CN-340300"),
+        ("六安市", "CN-341500"),
+        ("宣城市", "CN-341800"),
+    )
+)
+CITY_YEAR_FUND_SOURCES += ANHUI_2023_NEWCENTURY_FUND_SOURCES
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
