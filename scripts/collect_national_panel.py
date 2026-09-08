@@ -6526,6 +6526,63 @@ SHANDONG_2022_TF_FUND_SOURCES = tuple(
     for city_name, (city_id, value) in _SHANDONG_2022_TF_FUND_VALUES.items()
 )
 CITY_YEAR_FUND_SOURCES += SHANDONG_2022_TF_FUND_SOURCES
+
+# 广西壮族自治区 2024 年政府性基金收入精确表格补缺批次。
+# 贵港市和百色市的公开评级报告分别精确列示 2024 年全市政府性基金收入；
+# 本批仅接入当前主表空值，不使用图表估读、区县或市本级口径。
+_GUANGXI_2024_TARGETED_FUND_VALUES = {
+    "贵港市": ("CN-450800", "29.52"),
+    "百色市": ("CN-451000", "41.77"),
+}
+_GUANGXI_2024_TARGETED_FUND_META = {
+    "贵港市": {
+        "url": "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2025-06-25/184117_20250625_Q88A.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "guigang_2024_dongfang_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "guigang_2024_dongfang_report_excerpt.txt",
+        "document_title": "广西贵港市城市投资发展集团有限公司主体及相关债项2025年度跟踪评级报告",
+        "publisher": "东方金诚国际信用评估有限公司（上海证券交易所公开披露）",
+        "publication_date": "2025-06-20",
+        "page_count": "公开PDF",
+    },
+    "百色市": {
+        "url": "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2025-06-20/152028_20250620_9UW2.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "baise_2024_zhongcheng_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "baise_2024_zhongcheng_report_excerpt.txt",
+        "document_title": "广西百色试验区发展集团有限公司2025年度跟踪评级报告",
+        "publisher": "中诚信国际信用评级有限责任公司（上海证券交易所公开披露）",
+        "publication_date": "2025-06-20",
+        "page_count": "公开PDF",
+    },
+}
+GUANGXI_2024_TARGETED_FUND_SOURCES = tuple(
+    {
+        "year": 2024,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-GUANGXI-2024-FUND-{city_id}",
+        "url": (source_meta := _GUANGXI_2024_TARGETED_FUND_META[city_name])["url"],
+        "path": source_meta["path"],
+        "text_path": source_meta["text_path"],
+        "document_title": source_meta["document_title"],
+        "publisher": source_meta["publisher"],
+        "publisher_level": "交易所公开披露的评级报告（精确表格二手来源）",
+        "publication_date": source_meta["publication_date"],
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": rf"{re.escape(city_name)}\\|2024年政府性基金收入\\|({re.escape(value)})亿元",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": "2024年公开精确值",
+        "document_type": "评级报告地级市经济财政指标表",
+        "page_count": source_meta["page_count"],
+        "note": (
+            "B2精确表格；报告明确列示该城市2024年全市政府性基金收入，"
+            "数据来自全市口径公开财政资料；不使用图表估读、不使用市本级或区县数。"
+        ),
+    }
+    for city_name, (city_id, value) in _GUANGXI_2024_TARGETED_FUND_VALUES.items()
+)
+CITY_YEAR_FUND_SOURCES += GUANGXI_2024_TARGETED_FUND_SOURCES
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
