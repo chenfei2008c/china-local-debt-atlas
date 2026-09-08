@@ -6750,6 +6750,38 @@ GUANGXI_GUILIN_2022_2023_FUND_SOURCES = tuple(
     for year, value in {"2022": "62.95", "2023": "60.42"}.items()
 )
 CITY_YEAR_FUND_SOURCES += GUANGXI_GUILIN_2022_2023_FUND_SOURCES
+
+# 贵港市 2025 年政府性基金收入精确表格补缺。
+# 东方金诚公开跟踪评级报告的图表 12 逐年列示 2023—2025 年贵港市全市
+# 政府性基金收入，报告注明资料来自 2023—2025 年财政预算执行资料；本批只
+# 接入 2025 年主表空值，不使用市本级数或图表估读。
+GUIGANG_2025_FUND_SOURCE = {
+    "year": 2025,
+    "city_name": "贵港市",
+    "city_id": "CN-450800",
+    "source_doc_id": "SRC-B2-GUANGXI-2025-FUND-CN-450800",
+    "url": "https://www.chinamoney.org.cn/dqs/cm-s-notice-query/fileDownLoad.do?contentId=3362370&mode=save&priority=0",
+    "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "guigang_2025_dongfang_report.pdf",
+    "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "guigang_2025_dongfang_report_excerpt.txt",
+    "document_title": "广西贵港市城市投资发展集团有限公司主体及相关债项2025年度跟踪评级报告",
+    "publisher": "东方金诚国际信用评估有限公司（中国货币网公开披露）",
+    "publisher_level": "评级机构公开披露的精确表格二手来源",
+    "publication_date": "2026-06-12",
+    "source_grade": "B2",
+    "source_format": "pdf",
+    "pattern": r"政府性基金收入\|40\.54\|29\.52\|([0-9.]+)",
+    "raw_unit": "亿元",
+    "data_status": "execution",
+    "data_status_label": "2025年公开精确执行值",
+    "document_type": "评级报告地级市经济财政指标表",
+    "page_count": "PDF第16页（图表12）",
+    "note": (
+        "B2精确表格；图表12明确列示贵港市全市2025年政府性基金收入18.22亿元，"
+        "并注明财政数据来自贵港市2023—2025年财政预算执行资料；不使用图表估读、"
+        "不使用市本级或区县数。"
+    ),
+}
+CITY_YEAR_FUND_SOURCES += (GUIGANG_2025_FUND_SOURCE,)
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
