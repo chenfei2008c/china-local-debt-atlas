@@ -6371,6 +6371,115 @@ HENAN_2022_DM_FUND_SOURCES = tuple(
     for city_name, (city_id, value) in _HENAN_2022_DM_FUND_VALUES.items()
 )
 CITY_YEAR_FUND_SOURCES += HENAN_2022_DM_FUND_SOURCES
+
+# 四川省 2022 年政府性基金收入精确表格补缺批次。
+# 多份公开评级报告对部分城市存在重叠值；本批仅接入无数值冲突的15个城市，
+# 内江市的97.66/103.05亿元冲突值留在复核队列，不直接覆盖主表。
+_SICHUAN_2022_DM_FUND_VALUES = {
+    "成都市": ("CN-510100", "2145.90"),
+    "自贡市": ("CN-510300", "106.99"),
+    "攀枝花市": ("CN-510400", "35.49"),
+    "泸州市": ("CN-510500", "164.00"),
+    "德阳市": ("CN-510600", "197.32"),
+    "绵阳市": ("CN-510700", "205.28"),
+    "广元市": ("CN-510800", "76.44"),
+    "遂宁市": ("CN-510900", "151.34"),
+    "乐山市": ("CN-511100", "148.45"),
+    "广安市": ("CN-511600", "111.50"),
+    "达州市": ("CN-511700", "219.30"),
+    "巴中市": ("CN-511900", "120.40"),
+    "阿坝藏族羌族自治州": ("CN-513200", "6.10"),
+    "甘孜藏族自治州": ("CN-513300", "4.40"),
+    "凉山彝族自治州": ("CN-513400", "83.20"),
+}
+_SICHUAN_2022_DM_FUND_SOURCE_META = {
+    **{
+        city_name: {
+            "url": "https://qxb-pdf-osscache.qixin.com/AnBaseinfo/1db3dbe41f8d3c2e5fb21c5303c70966.pdf",
+            "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "sichuan_2022_suining_report.pdf",
+            "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "sichuan_2022_suining_report_excerpt.txt",
+            "document_title": "四川天盈实业有限公司2022年跟踪评级报告（2022年四川省部分地级市经济财政指标表）",
+            "publication_date": "2023-06-27",
+        }
+        for city_name in ("成都市", "自贡市", "绵阳市", "遂宁市", "巴中市")
+    },
+    **{
+        city_name: {
+            "url": "https://qxb-pdf-osscache.qixin.com/AnBaseinfo/9b92b493e05e124851e3e6bf305cf446.pdf",
+            "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "sichuan_2022_luzhou_report.pdf",
+            "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "sichuan_2022_luzhou_report_excerpt.txt",
+            "document_title": "泸州兴阳投资集团有限公司2023年跟踪评级报告（2022年四川省部分地级行政区经济财政指标表）",
+            "publication_date": "2023-06-27",
+        }
+        for city_name in ("泸州市", "广元市", "凉山彝族自治州")
+    },
+    **{
+        city_name: {
+            "url": "https://qxb-pdf-osscache.qixin.com/AnBaseinfo/0273245978406e831d0bf9e01f464c86.pdf",
+            "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "sichuan_2022_dazhou_report.pdf",
+            "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "sichuan_2022_dazhou_report_excerpt.txt",
+            "document_title": "达州市高新科创有限公司2023年度跟踪评级报告（2022年四川省部分地级市经济财政指标表）",
+            "publication_date": "2023-06-27",
+        }
+        for city_name in ("达州市", "阿坝藏族羌族自治州", "甘孜藏族自治州")
+    },
+    **{
+        city_name: {
+            "url": "https://qxb-pdf-osscache.qixin.com/AnBaseinfo/842e137ad3ab36544f1728d2cfad7ab0.pdf",
+            "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "sichuan_2022_deyang_report.pdf",
+            "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "sichuan_2022_deyang_report_excerpt.txt",
+            "document_title": "四川西南发展控股集团有限公司2023年跟踪评级报告（2022年四川省部分地级市经济财政指标表）",
+            "publication_date": "2023-06-27",
+        }
+        for city_name in ("德阳市", "乐山市")
+    },
+    "广安市": {
+        "url": "https://qxb-pdf-osscache.qixin.com/AnBaseinfo/3e7315e727c01481c3995dd92cec70a9.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "sichuan_2022_guangan_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "sichuan_2022_guangan_report_excerpt.txt",
+        "document_title": "广安金财投融资（集团）有限责任公司东方金诚债跟踪评级报告（2022年广安市财政收支表）",
+        "publication_date": "2023-08-01",
+        "publisher": "东方金诚国际信用评估有限公司",
+    },
+    "攀枝花市": {
+        "url": "https://static.sse.com.cn/bond/bridge2/disclosure/announcement/c/202310/035480_20231023_17FB.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "sichuan_2022_panzhihua_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "sichuan_2022_panzhihua_report_excerpt.txt",
+        "document_title": "攀枝花市花城投资有限责任公司2023年面向专业投资者公开发行企业债券募集说明书（2022年财政收支披露）",
+        "publication_date": "2023-10-23",
+        "publisher": "上海证券交易所披露平台",
+    },
+}
+SICHUAN_2022_DM_FUND_SOURCES = tuple(
+    {
+        "year": 2022,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-SICHUAN-2022-FUND-{city_id}",
+        "url": (source_meta := _SICHUAN_2022_DM_FUND_SOURCE_META[city_name])["url"],
+        "path": source_meta["path"],
+        "text_path": source_meta["text_path"],
+        "document_title": source_meta["document_title"],
+        "publisher": source_meta.get("publisher", "中证鹏元资信评估股份有限公司"),
+        "publisher_level": "专业评级机构（精确表格二手来源）",
+        "publication_date": source_meta["publication_date"],
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": rf"{re.escape(city_name)}\|2022年政府性基金收入\|({re.escape(value)})亿元",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": "2022年公开精确值",
+        "document_type": "区域经济财政指标表（精确表格）",
+        "page_count": "公开PDF",
+        "note": (
+            "B2精确表格；报告列示四川省地级行政区2022年政府性基金收入，"
+            "数值来自公开报告表格；本批仅接入此前主表缺失且无表间数值冲突的城市，"
+            "不使用图表估读、不使用市本级数。"
+        ),
+    }
+    for city_name, (city_id, value) in _SICHUAN_2022_DM_FUND_VALUES.items()
+)
+CITY_YEAR_FUND_SOURCES += SICHUAN_2022_DM_FUND_SOURCES
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
