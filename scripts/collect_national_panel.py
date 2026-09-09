@@ -7978,6 +7978,85 @@ HENAN_2023_LHRATINGS_FUND_SOURCES = (
 
 CITY_YEAR_FUND_SOURCES += HENAN_2023_LHRATINGS_FUND_SOURCES
 
+# 本批补录：广西梧州、百色 2023 年评级报告精确表格，以及防城港市财政局
+# 官方预算附件中的 2023 年全市政府性基金收入执行数。
+GUANGXI_2023_FUND_EXACT_SOURCES = (
+    {
+        "year": 2023,
+        "city_name": "梧州市",
+        "city_id": "CN-450400",
+        "source_doc_id": "SRC-B2-GUANGXI-WUZHOU-FUND-2023-PENGYUAN",
+        "url": "https://www.cspengyuan.com/api/files/695fd9ebbe22fa0776b8c18a",
+        "path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "guangxi_2023_wuzhou_baise_fund_exact_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "guangxi_2023_wuzhou_baise_fund_exact_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "梧州市城市建设投资开发有限公司2025年度跟踪评级报告",
+        "publisher": "中证鹏元资信评估股份有限公司（引用梧州市政府网站公开资料）",
+        "publisher_level": "评级机构/市级财政数据",
+        "publication_date": "2026-04-01",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": r"梧州市｜2023年｜([0-9.]+)",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2023年执行数（B2精确表格）",
+        "document_type": "评级报告精确表格",
+        "page_number": "报告表3",
+        "page_count": "",
+        "note": "B2评级报告表3精确列示；梧州市2023年全市政府性基金收入82.28亿元，资料来源为梧州市政府网站，中证鹏元整理。",
+    },
+    {
+        "year": 2023,
+        "city_name": "百色市",
+        "city_id": "CN-451000",
+        "source_doc_id": "SRC-B2-GUANGXI-BAISE-FUND-2023-QIXIN",
+        "url": "https://qxb-pdf-osscache.qixin.com/AnBaseinfo/abe77ba5cf24d06c1cadc39d547e10bc.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "guangxi_2023_wuzhou_baise_fund_exact_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "guangxi_2023_wuzhou_baise_fund_exact_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "广西百色试验区发展集团有限公司公开评级报告（区域财政数据）",
+        "publisher": "公开评级报告（引用百色市公开资料）",
+        "publisher_level": "评级机构/市级财政数据",
+        "publication_date": "2025-07-01",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": r"百色市｜2023年｜([0-9.]+)",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2023年执行数（B2精确表格）",
+        "document_type": "评级报告精确表格",
+        "page_number": "区域财政指标表",
+        "page_count": "",
+        "note": "B2公开评级报告精确列示；百色市2023年全市政府性基金收入54.96亿元，采用全市口径。",
+    },
+    {
+        "year": 2023,
+        "city_name": "防城港市",
+        "city_id": "CN-450600",
+        "source_doc_id": "SRC-A1-GUANGXI-FANGCHENGGANG-FUND-2023-BUDGET-TABLE",
+        "url": "https://www.fcgs.gov.cn/zfxxgk/zdlyxxgk/czzj/szfys/zfys2024/W020240223648312183707.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2023" / "official" / "fangchenggang_2023_budget_tables_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2023" / "official" / "fangchenggang_2023_budget_tables_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "防城港市全市与市本级2023年预算执行情况和2024年预算（草案）报表",
+        "publisher": "防城港市财政局",
+        "publisher_level": "市级财政部门",
+        "publication_date": "2024-02-23",
+        "source_grade": "A1",
+        "source_format": "pdf",
+        "pattern": r"政府性基金预算收入合计｜2023年执行数｜([0-9,]+)",
+        "raw_unit": "万元",
+        "data_status": "execution",
+        "data_status_label": "2023年预算执行数",
+        "document_type": "官方全市政府性基金预算收入表",
+        "page_number": "PDF第46页",
+        "page_count": "62",
+        "note": "A1防城港市财政局官方预算附件表；全市政府性基金预算收入合计2023年执行数342602万元，折算为34.26亿元，不使用市本级收入。",
+    },
+)
+
+CITY_YEAR_FUND_SOURCES += GUANGXI_2023_FUND_EXACT_SOURCES
+
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
