@@ -4330,6 +4330,31 @@ CITY_YEAR_FUND_SOURCES = (
 CITY_YEAR_FUND_SOURCES += (
     {
         "year": 2024,
+        "city_name": "吕梁市",
+        "city_id": "CN-141100",
+        "source_doc_id": "SRC-A2-LVLIANG-CITY-FUND-EXECUTION-2024",
+        "url": "https://www.lvliang.gov.cn/llxxgk/zfxxgk/xxgkml/zjxx_21583/sjczyshsgjf/202503/t20250311_1937505.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "lvliang_2024_budget_report_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "lvliang_2024_budget_report_excerpt.txt",
+        "document_title": "关于吕梁市2024年全市和市本级预算执行情况与2025年全市和市本级预算草案的报告",
+        "publisher": "吕梁市财政局、吕梁市人民政府",
+        "publisher_level": "市级政府门户",
+        "publication_date": "2025-03-11",
+        "source_grade": "A2",
+        "source_format": "html",
+        "pattern": r"原文摘录：2024年全市政府性基金收入完成([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2024年全市政府性基金预算执行数",
+        "document_type": "市级政府预算执行报告HTML",
+        "page_number": "官方网页正文（二）政府性基金预算执行情况",
+        "note": "A2吕梁市政府门户预算执行报告正文，明确2024年全市口径；采用全市政府性基金收入完成33.94亿元，不使用市本级7.5亿元。",
+    },
+)
+
+CITY_YEAR_FUND_SOURCES += (
+    {
+        "year": 2024,
         "city_name": "唐山市",
         "city_id": "CN-130200",
         "source_doc_id": "SRC-B2-TANGSHAN-CITY-FUND-2024",
