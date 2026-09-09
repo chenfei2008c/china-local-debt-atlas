@@ -7399,6 +7399,28 @@ CITY_YEAR_FUND_SOURCES += (
         "page_number": "PDF表9《2025年塔城地区政府性基金收入表》",
         "note": "A2地区财政局官方预算公开PDF；表9明确列示2025年全地区政府性基金收入合计673082万元，换算为67.31亿元；不使用地区本级口径，不将预算安排数表述为决算执行数。",
     },
+    {
+        "year": 2025,
+        "city_name": "喀什地区",
+        "city_id": "CN-653100",
+        "source_doc_id": "SRC-A2-XINJIANG-KASHI-FUND-BUDGET-2025",
+        "url": "https://www.kashi.gov.cn/ksdqxzgs/c108100/202504/aec3afa6ae9543d78b8cdb6aac56200e.shtml",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "kashi_2025_budget_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "kashi_2025_fund_excerpt.txt",
+        "document_title": "喀什地区2025年政府预算公开",
+        "publisher": "喀什地区财政局、喀什地区行政公署",
+        "publisher_level": "地区财政机构及行政公署官网",
+        "publication_date": "2025-03-28",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "pattern": r"政府性基金收入合计([0-9]+)",
+        "raw_unit": "万元",
+        "data_status": "budget",
+        "data_status_label": "2025年全地区政府性基金预算安排数",
+        "document_type": "地区政府预算公开PDF",
+        "page_number": "PDF第88页表9《2025年喀什地区政府性基金收入表》",
+        "note": "A2地区财政局官方预算公开PDF；表9明确列示2025年全地区政府性基金收入合计774409万元，换算为77.44亿元；不使用地区本级口径，也不使用含转移支付、上年结余和债务转贷的收入总计。",
+    },
 )
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
