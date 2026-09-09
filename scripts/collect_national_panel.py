@@ -7467,6 +7467,35 @@ CITY_YEAR_FUND_SOURCES += (
         "note": "A2伊犁州财政局官方预算公开表页；第86页表9明确列示2025年全州政府性基金收入合计1563592万元，换算为156.36亿元；不使用州本级口径，不将预算安排数表述为决算执行数。",
     },
 )
+
+# 白银市 2025 年政府性基金预算收入表为市政府官网公开的全市附件，
+# 表内“本年预算数”明确列示全市政府性基金预算收入，原始单位为万元。
+CITY_YEAR_FUND_SOURCES += (
+    {
+        "year": 2025,
+        "city_name": "白银市",
+        "city_id": "CN-620400",
+        "source_doc_id": "SRC-A2-BAIYIN-CITY-FUND-BUDGET-2025",
+        "url": "https://www.baiyin.gov.cn/zwgk/zfxxgk/fdzdgknr/ysjs/sjczyjs/art/2025/art_24edfead59ca49e19b15b2a1b40c229a.html",
+        "attachment_url": "https://www.baiyin.gov.cn/api-gateway/jpaas-web-server/front/document/download?fileUrl=YW5UzzlvCwcM%2FNHHX%2FtT6JI7%2BmdwurFhswv%2Fk4IqNLbgKiHfUZ6f1dEwacoQbpvBm%2BfF4H%2FkofR%2Fbmw9uajSeF1EpEomP5aNLG32YWud348dNpMjPVIJLqKJK03uHZmNBh57PwovGFdyVGhJUe7XTXgxAiX%2FlInka20XS875Py4%3D&fileName=2025%E5%B9%B4%E7%99%BD%E9%93%B6%E5%B8%82%E6%94%BF%E5%BA%9C%E6%80%A7%E5%9F%BA%E9%87%91%E9%A2%84%E7%AE%97%E6%94%B6%E5%85%A5%E8%A1%A8.xls",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "baiyin_2025_fund_revenue.xls",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "baiyin_2025_fund_excerpt.txt",
+        "document_title": "2025年白银市政府性基金预算收入表",
+        "publisher": "白银市财政局、白银市人民政府",
+        "publisher_level": "市级财政机构及市政府官网",
+        "publication_date": "2025-02-28",
+        "source_grade": "A2",
+        "source_format": "xls",
+        "pattern": r"政府性基金预算收入,96445,([0-9,]+),",
+        "raw_unit": "万元",
+        "data_status": "budget",
+        "data_status_label": "2025年全市政府性基金预算安排数",
+        "document_type": "市级政府预算公开XLS附件",
+        "page_number": "XLS首行合计；科目名称为政府性基金预算收入",
+        "note": "A2市政府官网预算公开XLS；全市政府性基金预算收入本年预算数186371万元，换算为18.6371亿元；不使用市级财政预算草案附件中的市级口径，不将预算安排数表述为决算执行数。",
+    },
+)
+
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
