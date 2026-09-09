@@ -983,6 +983,45 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
 
 OFFICIAL_PROVINCE_DEBT_SOURCES.append(
     {
+        "source_doc_id": "SRC-A1-CITY-DEBT-HUBEI-HUANGSHI-2024-FINAL",
+        "province_name": "湖北省",
+        "year": 2024,
+        "path": RAW_DIR / "2024" / "official" / "huangshi_2024_debt_components_excerpt.txt",
+        "text_path": RAW_DIR / "2024" / "official" / "huangshi_2024_debt_components_excerpt.txt",
+        "source_url": "https://czj.huangshi.gov.cn/2020xxgkzn/2020gknr/2020czzj/sbjyjs/202509/t20250923_1262650.html",
+        "attachment_url": "https://czj.huangshi.gov.cn/2020xxgkzn/2020gknr/2020czzj/sbjyjs/202509/t20250918_1262655.html",
+        "document_title": "黄石市2024年政府决算公开表（表九、表十五）",
+        "publication_date": "2025-09-12",
+        "publisher": "黄石市财政局",
+        "publisher_level": "市级财政机构",
+        "source_grade": "A1",
+        "unit": "万元",
+        "unit_factor": Decimal("0.0001"),
+        "components": [
+            {
+                "component": "general",
+                "layout": "component2",
+                "start": "表九2024年全市一般债务限额和余额情况表",
+                "start_occurrence": 2,
+                "end": "表十五2024年全市专项债务限额和余额情况表",
+            },
+            {
+                "component": "special",
+                "layout": "component2",
+                "start": "表十五2024年全市专项债务限额和余额情况表",
+                "start_occurrence": 2,
+                "end": None,
+            },
+        ],
+        "table_name": "黄石市2024年全市一般、专项债务限额和余额决算表",
+        "data_status": "final",
+        "note": "官方决算公开表表九、表十五分别列示全市一般和专项债务限额、余额；合并后形成法定债务总限额和总余额，不使用市本级或区县行。",
+    }
+)
+
+
+OFFICIAL_PROVINCE_DEBT_SOURCES.append(
+    {
         "source_doc_id": "SRC-A2-CITY-DEBT-JIANGXI-JINGDEZHEN-2024-LIMIT-BALANCE",
         "province_name": "江西省",
         "year": 2024,
