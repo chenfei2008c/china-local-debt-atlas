@@ -7421,6 +7421,28 @@ CITY_YEAR_FUND_SOURCES += (
         "page_number": "PDF第88页表9《2025年喀什地区政府性基金收入表》",
         "note": "A2地区财政局官方预算公开PDF；表9明确列示2025年全地区政府性基金收入合计774409万元，换算为77.44亿元；不使用地区本级口径，也不使用含转移支付、上年结余和债务转贷的收入总计。",
     },
+    {
+        "year": 2025,
+        "city_name": "吐鲁番市",
+        "city_id": "CN-650400",
+        "source_doc_id": "SRC-A2-XINJIANG-TURPAN-FUND-BUDGET-2025",
+        "url": "https://www.tlf.gov.cn/tlfs/c106268/202502/934eb2682e2f4967aa16a90677377777.shtml",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "turpan_2025_budget_report.docx",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "turpan_2025_fund_excerpt.txt",
+        "document_title": "2025年吐鲁番市政府预算公开",
+        "publisher": "吐鲁番市财政局、吐鲁番市人民政府",
+        "publisher_level": "市级财政机构及市政府官网",
+        "publication_date": "2025-02-02",
+        "source_grade": "A2",
+        "source_format": "docx",
+        "pattern": r"地方政府性基金预算收入安排([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "budget",
+        "data_status_label": "2025年全市政府性基金预算安排数",
+        "document_type": "市级政府预算公开DOCX",
+        "page_number": "预算报告正文第二部分政府性基金预算草案",
+        "note": "A2市政府官网财政预算公开DOCX；正文明确代编全市政府性基金预算收入安排13.84亿元，并列示高昌区、鄯善县、托克逊县及市本级构成；不使用市本级0.49亿元，不将预算安排数表述为决算执行数。",
+    },
 )
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
