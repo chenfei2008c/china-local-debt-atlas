@@ -7226,6 +7226,36 @@ ANHUI_2022_SINA_FUND_SOURCES = tuple(
     for city_name, (city_id, value) in _ANHUI_2022_SINA_FUND_VALUES.items()
 )
 CITY_YEAR_FUND_SOURCES += ANHUI_2022_SINA_FUND_SOURCES
+
+# 大连市 2025 年政府性基金收入精确补录。
+# 联合资信 2026 年公开评级报告引用《关于大连市 2025 年预算执行情况和
+# 2026 年预算草案的报告》，明确列示大连市全市 2025 年执行数；只采用
+# “政府性基金收入”项目，不使用报告中的 2026 年预算安排数。
+CITY_YEAR_FUND_SOURCES += (
+    {
+        "year": 2025,
+        "city_name": "大连市",
+        "city_id": "CN-210200",
+        "source_doc_id": "SRC-B2-LHRATINGS-DALIAN-FUND-2025",
+        "url": "https://www.lhratings.com/reports/B026968-P88016-2026.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "dalian_2025_lhratings_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "dalian_2025_lhratings_fund_excerpt.txt",
+        "document_title": "2026年大连市地方政府再融资一般债券（二期）第一次续发行信用评级报告",
+        "publisher": "联合资信评估股份有限公司",
+        "publisher_level": "评级机构（精确文字转载）",
+        "publication_date": "2026-05-19",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": r"城市=大连市\\|年度=2025\\|政府性基金收入=([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年全市政府性基金收入执行数（评级报告精确转载）",
+        "document_type": "城市经济财政评级报告（精确文字）",
+        "page_number": "PDF第13页（印刷页10）；图表6后正文",
+        "page_count": "17",
+        "note": "B2精确文字来源；报告受大连市财政局委托，引用大连市2025年预算执行报告，明确披露全市政府性基金收入191.2亿元；不使用2026年预算安排数268.5亿元，不使用市本级口径。",
+    },
+)
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
