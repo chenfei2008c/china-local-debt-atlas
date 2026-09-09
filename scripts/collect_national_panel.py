@@ -6961,6 +6961,50 @@ NANNING_2025_FUND_SOURCE = {
 }
 CITY_YEAR_FUND_SOURCES += (NANNING_2025_FUND_SOURCE,)
 
+# 同一份东方金诚精确同业比较表还列示了延安市、漯河市全市 2025 年
+# 政府性基金收入。两市此前只有基金空值；按表格列顺序分别接入对应值，
+# 不把同表中的其他城市或市本级数据错配到目标城市。
+YANAN_2025_FUND_SOURCE = {
+    "year": 2025,
+    "city_name": "延安市",
+    "city_id": "CN-610600",
+    "source_doc_id": "SRC-B2-REGIONAL-FUND-2025-CN-610600",
+    "url": "https://www.chinamoney.org.cn/dqs/cm-s-notice-query/fileDownLoad.do?contentId=3363510&mode=save&priority=0",
+    "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "nanning_2025_dongfang_peer_report.pdf",
+    "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "nanning_2025_dongfang_peer_excerpt.txt",
+    "document_title": "邯郸市建设投资集团有限公司主体及相关债项2026年度跟踪评级报告",
+    "publisher": "东方金诚国际信用评估有限公司（中国货币网公开披露）",
+    "publisher_level": "评级机构公开披露的精确表格二手来源",
+    "publication_date": "2026-06-22",
+    "source_grade": "B2",
+    "source_format": "pdf",
+    "pattern": r"政府性基金收入（亿元）\|163\.44\|([0-9.]+)\|87\.97\|133\.57\|62\.87",
+    "raw_unit": "亿元",
+    "data_status": "reported",
+    "data_status_label": "2025年公开精确值",
+    "document_type": "评级报告地级市经济财政指标表",
+    "page_count": "PDF第3页（同业比较表）",
+    "note": (
+        "B2精确表格；同业比较表明确列示延安市全市 2025 年政府性基金收入 38.95 亿元，"
+        "表注说明经济财政数据来自各地政府官网统计公报和预决算报告；不使用图表估读、"
+        "市本级或区县数。"
+    ),
+}
+
+LUOHE_2025_FUND_SOURCE = {
+    **YANAN_2025_FUND_SOURCE,
+    "city_name": "漯河市",
+    "city_id": "CN-411100",
+    "source_doc_id": "SRC-B2-REGIONAL-FUND-2025-CN-411100",
+    "pattern": r"政府性基金收入（亿元）\|163\.44\|38\.95\|87\.97\|133\.57\|([0-9.]+)",
+    "note": (
+        "B2精确表格；同业比较表明确列示漯河市全市 2025 年政府性基金收入 62.87 亿元，"
+        "表注说明经济财政数据来自各地政府官网统计公报和预决算报告；不使用图表估读、"
+        "市本级或区县数。"
+    ),
+}
+CITY_YEAR_FUND_SOURCES += (YANAN_2025_FUND_SOURCE, LUOHE_2025_FUND_SOURCE)
+
 # 钦州市 2025 年政府性基金收入精确表格补缺。
 # 东方金诚报告第 3 页同业比较表明确列示钦州市全市 2025 年政府性基金收入
 # 65.00 亿元，表注说明经济财政数据来自各地政府官网统计公报、预决算报告。
@@ -7126,13 +7170,7 @@ SHANDONG_2023_PEER_B_FUND_SOURCES = _make_city_fund_report_sources(
     document_title="2023年山东省部分地级行政区经济财政指标情况（中证鹏元评级报告）",
     publication_date="2024-06-28",
     cities=(
-        ("青岛市", "CN-370200", "530.83"),
-        ("济南市", "CN-370100", "520.76"),
-        ("烟台市", "CN-370600", "278.21"),
         ("潍坊市", "CN-370700", "490.91"),
-        ("临沂市", "CN-371300", "244.65"),
-        ("聊城市", "CN-371500", "227.53"),
-        ("日照市", "CN-371100", "223.45"),
         ("枣庄市", "CN-370400", "324.19"),
     ),
 )
@@ -7142,6 +7180,52 @@ CITY_YEAR_FUND_SOURCES += (
     + SHANDONG_2023_PEER_A_FUND_SOURCES
     + SHANDONG_2023_PEER_B_FUND_SOURCES
 )
+
+# 安徽省 2022 年政府性基金收入精确文字批次。
+# 公开转载的区域研究正文逐项列示 11 个城市的全市口径数值；本批只接入
+# 当前主表空值，马鞍山、阜阳、亳州、铜陵的正文明确未披露，不以估算代填。
+_ANHUI_2022_SINA_FUND_VALUES = {
+    "芜湖市": ("CN-340200", "254.30"),
+    "滁州市": ("CN-341100", "188.20"),
+    "宿州市": ("CN-341300", "158.20"),
+    "安庆市": ("CN-340800", "139.50"),
+    "六安市": ("CN-341500", "134.00"),
+    "宣城市": ("CN-341800", "133.90"),
+    "淮南市": ("CN-340400", "90.90"),
+    "黄山市": ("CN-341000", "59.00"),
+    "蚌埠市": ("CN-340300", "55.30"),
+    "淮北市": ("CN-340600", "47.70"),
+    "池州市": ("CN-341700", "31.50"),
+}
+ANHUI_2022_SINA_FUND_SOURCES = tuple(
+    {
+        "year": 2022,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-ANHUI-2022-SINA-FUND-{city_id}",
+        "url": "https://finance.sina.com.cn/money/bond/2023-11-17/doc-imzuxmnn5599080.shtml",
+        "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "anhui_2022_sina_fund_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "anhui_2022_sina_fund_excerpt.txt",
+        "document_title": "安徽省及下辖各市经济财政实力与债务研究",
+        "publisher": "区域研究报告公开转载（新浪财经）",
+        "publisher_level": "评级/区域研究报告精确文字转载",
+        "publication_date": "2023-11-17",
+        "source_grade": "B2",
+        "source_format": "html",
+        "pattern": rf"城市={re.escape(city_name)}\|2022年政府性基金预算收入\|({re.escape(value)})亿元",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": "2022年公开精确值",
+        "document_type": "区域经济财政债务研究报告精确文字表",
+        "page_count": "网页正文",
+        "note": (
+            "B2精确文字来源；正文逐项列示安徽省城市2022年全市政府性基金预算收入，"
+            "单位为亿元；本批不使用图表估读、不使用市本级或县区口径。"
+        ),
+    }
+    for city_name, (city_id, value) in _ANHUI_2022_SINA_FUND_VALUES.items()
+)
+CITY_YEAR_FUND_SOURCES += ANHUI_2022_SINA_FUND_SOURCES
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
