@@ -4329,6 +4329,32 @@ CITY_YEAR_FUND_SOURCES = (
 # PDF/HTML 原件和字段级摘录均归档，避免用市本级数、预算安排数或媒体概述代替全市执行数。
 CITY_YEAR_FUND_SOURCES += (
     {
+        "year": 2024,
+        "city_name": "唐山市",
+        "city_id": "CN-130200",
+        "source_doc_id": "SRC-B2-TANGSHAN-CITY-FUND-2024",
+        "url": "https://epaper.huanbohainews.com.cn/tsldrb/pc/content/202501/21/content_111980.html",
+        "attachment_url": "https://epaper.huanbohainews.com.cn/tsldrb/pc/attachment/202501/21/dc632bad-7541-4837-9911-32c71f828b08.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "tangshan_2024_budget_report_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "tangshan_2024_budget_report_excerpt.txt",
+        "document_title": "唐山市2024年预算执行情况和2025年预算（草案）的报告",
+        "publisher": "唐山劳动日报（环渤海新闻网数字报）",
+        "publisher_level": "市级官方报纸网页",
+        "publication_date": "2025-01-21",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": r"原文摘录：2024年全市.*?政府性基金收入([0-9]+)万元",
+        "raw_unit": "万元",
+        "data_status": "execution",
+        "data_status_label": "2024年执行数（官方报告公开文本）",
+        "document_type": "城市财政预算执行报告（官方报纸网页及附件）",
+        "page_number": "官方报纸数字版正文；预算报告2024年执行情况段落",
+        "note": "官方地方报纸数字版公开市财政局预算报告原文，明确全市口径；采用2024年政府性基金收入3098426万元，折算309.8426亿元，不使用市级本级收入923867万元。",
+    },
+)
+
+CITY_YEAR_FUND_SOURCES += (
+    {
         "year": 2025,
         "city_name": "厦门市",
         "city_id": "CN-350200",
