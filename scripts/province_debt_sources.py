@@ -980,6 +980,33 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
     ]
 )
 
+# 定西市2025年官方债务余额附件中的限额分项单独摘录。
+# 余额已由同一官方附件的 direct3_general_special 来源接入；本条只补法定
+# 债务限额，避免把余额行再次解析为限额或覆盖既有余额。
+OFFICIAL_PROVINCE_DEBT_SOURCES.append(
+    {
+        "source_doc_id": "SRC-OFFICIAL-DEBT-GANSU-DINGXI-2025-LIMIT",
+        "province_name": "甘肃省",
+        "year": 2025,
+        "path": RAW_DIR / "2025" / "official" / "dingxi_2025_official.txt",
+        "text_path": RAW_DIR / "2025" / "official" / "dingxi_2025_limit_excerpt.txt",
+        "source_url": "https://www.dingxi.gov.cn/module/download/downfile.jsp?classid=0&filename=4b0645d1e53547479bcc564a595181d8.xlsx",
+        "document_title": "2026年全市及市级政府预算公开目录（定西市2025年地方政府债务余额情况表）",
+        "publication_date": "2026-02-02",
+        "publisher": "定西市人民政府、定西市财政局",
+        "publisher_level": "市级",
+        "source_grade": "A2",
+        "unit": "亿元",
+        "layout": "limit3",
+        "start": "定西市 447.8853322301 124.2653322301 323.62",
+        "end": None,
+        "table_name": "定西市2025年末全市政府债务限额",
+        "data_status": "execution",
+        "balance_limit_exception_note": "官方预算附件分项列示2025年末全市一般债务限额124.2653322301亿元、专项债务限额323.62亿元；总限额按两项分项相加为447.8853322301亿元。同期同一附件列示余额预计执行数448.87亿元，高于总限额约0.98亿元；原值保留并标记 official_debt_exception，待财政部门解释或更正，不以其他来源改写。",
+        "note": "官方预算附件分项列示2025年末全市一般债务限额124.2653322301亿元、专项债务限额323.62亿元；总限额按两项分项相加为447.8853322301亿元，保留原始精度后由主表按亿元两位小数输出。",
+    }
+)
+
 
 OFFICIAL_PROVINCE_DEBT_SOURCES.append(
     {
