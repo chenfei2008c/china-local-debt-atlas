@@ -7898,6 +7898,86 @@ HUBEI_2023_LHRATINGS_FUND_SOURCES = (
 
 CITY_YEAR_FUND_SOURCES += HUBEI_2023_LHRATINGS_FUND_SOURCES
 
+# 本批补录：联合资信河南专题报告正文精确列示的三项 2023 年全市基金收入。
+# 报告对其他城市主要呈现图表或同比变化，本批不做图表目测、同比倒算或省级总额拆分。
+HENAN_2023_LHRATINGS_FUND_SOURCES = (
+    {
+        "year": 2023,
+        "city_name": "郑州市",
+        "city_id": "CN-410100",
+        "source_doc_id": "SRC-B2-HENAN-ZHENGZHOU-FUND-2023-LRATINGS",
+        "url": "https://www.lhratings.com/file/fc16ef401dc.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "henan_2023_lhratings_fund_exact_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "henan_2023_lhratings_fund_exact_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "河南省各地级市政府性基金收入变动与综合财力变动情况分析",
+        "publisher": "联合资信评估股份有限公司（依据河南各地市财政资料）",
+        "publisher_level": "评级机构/地市财政数据",
+        "publication_date": "2024-11-28",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": r"郑州市｜2023年｜([0-9.]+)",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2023年执行数（B2精确段落）",
+        "document_type": "评级报告精确段落",
+        "page_number": "报告正文相关段落",
+        "page_count": "",
+        "note": "B2评级报告正文精确列示；郑州市2023年全市政府性基金收入387.86亿元，采用全市口径，不使用图表估读。",
+    },
+    {
+        "year": 2023,
+        "city_name": "南阳市",
+        "city_id": "CN-411300",
+        "source_doc_id": "SRC-B2-HENAN-NANYANG-FUND-2023-LRATINGS",
+        "url": "https://www.lhratings.com/file/fc16ef401dc.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "henan_2023_lhratings_fund_exact_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "henan_2023_lhratings_fund_exact_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "河南省各地级市政府性基金收入变动与综合财力变动情况分析",
+        "publisher": "联合资信评估股份有限公司（依据河南各地市财政资料）",
+        "publisher_level": "评级机构/地市财政数据",
+        "publication_date": "2024-11-28",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": r"南阳市｜2023年｜([0-9.]+)",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2023年执行数（B2精确段落）",
+        "document_type": "评级报告精确段落",
+        "page_number": "报告正文相关段落",
+        "page_count": "",
+        "note": "B2评级报告正文精确列示；南阳市2023年全市政府性基金收入159.21亿元，采用全市口径，不使用图表估读。",
+    },
+    {
+        "year": 2023,
+        "city_name": "驻马店市",
+        "city_id": "CN-411700",
+        "source_doc_id": "SRC-B2-HENAN-ZHUMADIAN-FUND-2023-LRATINGS",
+        "url": "https://www.lhratings.com/file/fc16ef401dc.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "henan_2023_lhratings_fund_exact_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "henan_2023_lhratings_fund_exact_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "河南省各地级市政府性基金收入变动与综合财力变动情况分析",
+        "publisher": "联合资信评估股份有限公司（依据河南各地市财政资料）",
+        "publisher_level": "评级机构/地市财政数据",
+        "publication_date": "2024-11-28",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": r"驻马店市｜2023年｜([0-9.]+)",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2023年执行数（B2精确段落）",
+        "document_type": "评级报告精确段落",
+        "page_number": "报告正文相关段落",
+        "page_count": "",
+        "source_note": "",
+        "note": "B2评级报告正文精确列示；驻马店市2023年全市政府性基金收入134.99亿元，采用全市口径，不使用图表估读。",
+    },
+)
+
+CITY_YEAR_FUND_SOURCES += HENAN_2023_LHRATINGS_FUND_SOURCES
+
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
