@@ -7256,6 +7256,57 @@ CITY_YEAR_FUND_SOURCES += (
         "note": "B2精确文字来源；报告受大连市财政局委托，引用大连市2025年预算执行报告，明确披露全市政府性基金收入191.2亿元；不使用2026年预算安排数268.5亿元，不使用市本级口径。",
     },
 )
+
+# 鹤岗市、湘西自治州 2025 年政府性基金预算收入精确补录。
+# 两个来源均明确为全市/全州口径，但属于预算安排或预计数，不能冒充年末决算；
+# 因此保留 data_status=budget，并在数据状态标签和备注中显式说明。
+CITY_YEAR_FUND_SOURCES += (
+    {
+        "year": 2025,
+        "city_name": "鹤岗市",
+        "city_id": "CN-230400",
+        "source_doc_id": "SRC-A2-HEGANG-CITY-FUND-BUDGET-2025",
+        "url": "https://www.hegang.gov.cn/hegang/szfyjs/202501/68341/files/2025%E5%B9%B4%E9%B9%A4%E5%B2%97%E5%B8%82%E6%94%BF%E5%BA%9C%E9%A2%84%E7%AE%97%E5%85%AC%E5%BC%80.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "hegang_2025_budget_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "hegang_2025_fund_excerpt.txt",
+        "document_title": "鹤岗市2025年政府预算公开",
+        "publisher": "鹤岗市财政局、鹤岗市人民政府",
+        "publisher_level": "市级财政机构及市政府官网",
+        "publication_date": "2025-01-23",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "pattern": r"全市政府性基金预算收入安排([0-9,]+)万元",
+        "raw_unit": "万元",
+        "data_status": "budget",
+        "data_status_label": "2025年全市政府性基金预算安排数",
+        "document_type": "市级政府预算公开PDF",
+        "page_number": "PDF第13页；2025年鹤岗市政府性基金预算收入表第108页",
+        "page_count": "138",
+        "note": "A2市政府官网预算公开PDF；第13页正文和第108页收入表均明确列示全市政府性基金预算收入安排82044万元，原始单位万元，换算为8.20亿元；这是预算安排数，不是年末决算数，不使用市本级67197万元。",
+    },
+    {
+        "year": 2025,
+        "city_name": "湘西土家族苗族自治州",
+        "city_id": "CN-433100",
+        "source_doc_id": "SRC-B2-HUNAN-XIANGXI-FUND-BUDGET-2025",
+        "url": "https://xxgxq.xxz.gov.cn/zwgk/fdzdgknr/czxx/202505/t20250506_2253084.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "xiangxi_2025_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "xiangxi_2025_fund_excerpt.txt",
+        "document_title": "关于湘西州2024年预算执行情况和2025年预算草案的报告",
+        "publisher": "湘西高新技术产业开发区管理委员会（转载团结报）",
+        "publisher_level": "地方政府官网转载州财政报告",
+        "publication_date": "2025-03-20",
+        "source_grade": "B2",
+        "source_format": "html",
+        "pattern": r"全州政府性基金预算收入预计为([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "budget",
+        "data_status_label": "2025年全州政府性基金预算预计数",
+        "document_type": "自治州财政预算报告公开转载",
+        "page_number": "网页正文第二部分2025年预算草案之（三）预算草案综述（二）政府性基金预算",
+        "note": "B2精确文字来源；官方地方政府网站完整转载州财政局向州人大报告，明确列示2025年全州政府性基金预算收入预计49.98亿元；不使用州本级0.1亿元，不将预算预计数表述为决算执行数。",
+    },
+)
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
