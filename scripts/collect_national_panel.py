@@ -7496,6 +7496,31 @@ CITY_YEAR_FUND_SOURCES += (
     },
 )
 
+CITY_YEAR_FUND_SOURCES += (
+    {
+        "year": 2025,
+        "city_name": "庆阳市",
+        "city_id": "CN-621000",
+        "source_doc_id": "SRC-A2-QINGYANG-CITY-FUND-BUDGET-2025",
+        "url": "https://zgqingyang.gov.cn/gk/zfxxgk/zfgb35zwgkb/content_27168",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "qingyang_2025_budget_report.html",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "qingyang_2025_fund_excerpt.txt",
+        "document_title": "关于庆阳市2024年财政预算执行情况和2025年全市及市级财政预算（草案）的报告",
+        "publisher": "庆阳市财政局、庆阳市人民政府",
+        "publisher_level": "市级财政机构及市政府官网",
+        "publication_date": "2025-01-20",
+        "source_grade": "A2",
+        "source_format": "html",
+        "pattern": r"全市政府性基金收入预算([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "budget",
+        "data_status_label": "2025年全市政府性基金预算安排数",
+        "document_type": "市级政府预算公开HTML",
+        "page_number": "报告正文第二部分（一）2.政府性基金预算",
+        "note": "A2市政府官网政府公报原文；明确列示2025年全市政府性基金收入预算31.38亿元；不使用同一报告中的市级政府性基金总收入15.71亿元，不将预算安排数表述为决算执行数。",
+    },
+)
+
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
