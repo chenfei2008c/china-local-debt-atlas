@@ -16742,6 +16742,11 @@ def build_macro_rows(
                     + f"来源等级为{fund_grade}，保留执行状态，不改写为最终决算。"
                 )
                 batch_lineage.append(_lineage_for_city_year_fund(row, city_year_fund_source, fund_value))
+        # 后置的经济财政/基金来源可能会更新行级 data_status，但不能覆盖债务
+        # 事实已经登记的官方限额/余额勾稽异常；否则质量报告会把例外误报为普通冲突。
+        if debt_fact and debt_fact.get("balance_limit_exception_note"):
+            row["data_status"] = OFFICIAL_DEBT_EXCEPTION_STATUS
+            row["collection_status"] = "needs_review"
         derived = compute_derived_values(row)
         for field, value in derived.items():
             if value is not None:
