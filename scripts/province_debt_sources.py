@@ -981,6 +981,31 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
 )
 
 
+OFFICIAL_PROVINCE_DEBT_SOURCES.append(
+    {
+        "source_doc_id": "SRC-A2-CITY-DEBT-SICHUAN-ABA-2025-LIMIT",
+        "province_name": "四川省",
+        "year": 2025,
+        "path": RAW_DIR / "2025" / "official" / "aba_2025_debt_limit_excerpt.txt",
+        "text_path": RAW_DIR / "2025" / "official" / "aba_2025_debt_limit_excerpt.txt",
+        "source_url": "https://www.abrd.gov.cn/zrdcwh/c104573/202512/2ae4848a63fe42ea9749e3e79290a6a2.shtml",
+        "document_title": "阿坝州人民政府关于阿坝州2025年政府债务限额情况的报告",
+        "publication_date": "2025-12-01",
+        "publisher": "阿坝藏族羌族自治州人民政府、阿坝州人大常委会",
+        "publisher_level": "州级人大公报及州级政府财政公开",
+        "source_grade": "A2",
+        "unit": "亿元",
+        "layout": "limit3",
+        "aliases": {"阿坝州": "阿坝藏族羌族自治州"},
+        "start": "数据表：2025年阿坝州地方政府债务限额情况表",
+        "end": None,
+        "table_name": "2025年阿坝州地方政府债务限额情况表",
+        "data_status": "execution",
+        "note": "官方人大公报披露2025年全州法定债务限额214.82亿元，其中一般债务93.08亿元、专项债务121.74亿元；主表余额采用独立官方来源的207.70亿元，不以限额替代余额。",
+    }
+)
+
+
 # 2025年官方预算执行报告中的限额补充。部分城市公开报告只给出法定总限额，
 # 不给一般/专项拆分；使用 limit1/limit3 只写入明确公开的限额字段，绝不把
 # 限额数字当作余额，也不从总额反推未披露的分项。
