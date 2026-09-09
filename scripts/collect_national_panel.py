@@ -7521,6 +7521,55 @@ CITY_YEAR_FUND_SOURCES += (
     },
 )
 
+CITY_YEAR_FUND_SOURCES += (
+    {
+        "year": 2024,
+        "city_name": "鸡西市",
+        "city_id": "CN-230300",
+        "source_doc_id": "SRC-A2-JIXI-CITY-FUND-EXECUTION-2024",
+        "url": "https://www.jixi.gov.cn/jixi/c100345krq/202501/c06_321502.shtml",
+        "attachment_url": "https://www.jixi.gov.cn/jixi/c100345krq/202501/321773/files/2025%E5%B9%B4%E9%B8%A1%E8%A5%BF%E5%B8%82%E6%9C%AC%E7%BA%A7%E6%94%BF%E5%BA%9C%E9%A2%84%E7%AE%97%E5%85%AC%E5%BC%80.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "jixi_2025_budget_report_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "jixi_2025_budget_report_excerpt.txt",
+        "document_title": "2025年鸡西市本级政府预算公开（含2024年预算执行情况）",
+        "publisher": "鸡西市财政局、鸡西市人民政府",
+        "publisher_level": "市级财政机构及市政府官网",
+        "publication_date": "2025-01-15",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "pattern": r"全市政府性基金预算收入完成([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2024年全市政府性基金预算执行数",
+        "document_type": "市级政府预算公开PDF（官方页面摘录）",
+        "page_number": "PDF第6页",
+        "note": "A2鸡西市财政局官方预算公开PDF；第6页明确列示2024年全市政府性基金预算收入完成4.8亿元，采用全市执行数，不使用市级3.3亿元。",
+    },
+    {
+        "year": 2025,
+        "city_name": "鸡西市",
+        "city_id": "CN-230300",
+        "source_doc_id": "SRC-A2-JIXI-CITY-FUND-BUDGET-2025",
+        "url": "https://www.jixi.gov.cn/jixi/c100345krq/202501/c06_321502.shtml",
+        "attachment_url": "https://www.jixi.gov.cn/jixi/c100345krq/202501/321773/files/2025%E5%B9%B4%E9%B8%A1%E8%A5%BF%E5%B8%82%E6%9C%AC%E7%BA%A7%E6%94%BF%E5%BA%9C%E9%A2%84%E7%AE%97%E5%85%AC%E5%BC%80.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "jixi_2025_budget_report_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "jixi_2025_budget_report_excerpt.txt",
+        "document_title": "2025年鸡西市本级政府预算公开（含2025年预算草案）",
+        "publisher": "鸡西市财政局、鸡西市人民政府",
+        "publisher_level": "市级财政机构及市政府官网",
+        "publication_date": "2025-01-15",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "pattern": r"全市政府性基金预算收入预计([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "budget",
+        "data_status_label": "2025年全市政府性基金预算预计数",
+        "document_type": "市级政府预算公开PDF（官方页面摘录）",
+        "page_number": "PDF第14页",
+        "note": "A2鸡西市财政局官方预算公开PDF；第14页明确列示2025年全市政府性基金预算收入预计20.4亿元，采用全市预算预计数，不使用市级17.7亿元，不把收入总计41.7亿元作为基金收入。",
+    },
+)
+
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
