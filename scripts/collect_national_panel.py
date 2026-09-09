@@ -7377,6 +7377,28 @@ CITY_YEAR_FUND_SOURCES += (
         "page_number": "PDF正文2025年政府性基金预算草案",
         "note": "A2自治州政府官网预算公开PDF；正文明确列示2025年全州政府性基金预算收入安排7.33亿元；不使用州本级6.176亿元，不将预算安排数表述为决算执行数。",
     },
+    {
+        "year": 2025,
+        "city_name": "塔城地区",
+        "city_id": "CN-654200",
+        "source_doc_id": "SRC-A2-XINJIANG-TACHENG-FUND-BUDGET-2025",
+        "url": "https://www.xjtc.gov.cn/zfxxgk/zdlygk/bjczgk/ysgk/content_4919",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "tacheng_2025_budget_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "tacheng_2025_fund_excerpt.txt",
+        "document_title": "2025年塔城地区政府预算公开",
+        "publisher": "塔城地区财政局、塔城地区行政公署",
+        "publisher_level": "地区财政机构及行政公署官网",
+        "publication_date": "2025-03-15",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "pattern": r"政府性基金收入合计([0-9]+)",
+        "raw_unit": "万元",
+        "data_status": "budget",
+        "data_status_label": "2025年全地区政府性基金预算安排数",
+        "document_type": "地区政府预算公开PDF",
+        "page_number": "PDF表9《2025年塔城地区政府性基金收入表》",
+        "note": "A2地区财政局官方预算公开PDF；表9明确列示2025年全地区政府性基金收入合计673082万元，换算为67.31亿元；不使用地区本级口径，不将预算安排数表述为决算执行数。",
+    },
 )
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
