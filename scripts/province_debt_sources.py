@@ -1006,6 +1006,30 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.append(
 )
 
 
+OFFICIAL_PROVINCE_DEBT_SOURCES.append(
+    {
+        "source_doc_id": "SRC-B2-CITY-DEBT-SICHUAN-DAZHOU-2025",
+        "province_name": "四川省",
+        "year": 2025,
+        "path": RAW_DIR / "2025" / "official" / "dazhou_2025_debt_limit_balance_excerpt.txt",
+        "text_path": RAW_DIR / "2025" / "official" / "dazhou_2025_debt_limit_balance_excerpt.txt",
+        "source_url": "https://pad.dzrm.cn/dzrb/202603/18/content_134581.html",
+        "document_title": "关于达州市2025年预算执行情况和2026年预算草案的报告",
+        "publication_date": "2026-03-18",
+        "publisher": "达州日报、达州市财政局",
+        "publisher_level": "市级官方报纸网页",
+        "source_grade": "B2",
+        "unit": "亿元",
+        "layout": "total6",
+        "start": "数据表：2025年达州市全市地方政府债务限额及余额",
+        "end": None,
+        "table_name": "2025年达州市全市地方政府债务限额及余额",
+        "data_status": "execution",
+        "note": "官方报纸刊载市财政局预算执行报告，明确全市口径；采用全市限额1499.0亿元和余额1427.7亿元及一般/专项拆分，不使用市级或市本级口径。",
+    }
+)
+
+
 # 2025年官方预算执行报告中的限额补充。部分城市公开报告只给出法定总限额，
 # 不给一般/专项拆分；使用 limit1/limit3 只写入明确公开的限额字段，绝不把
 # 限额数字当作余额，也不从总额反推未披露的分项。

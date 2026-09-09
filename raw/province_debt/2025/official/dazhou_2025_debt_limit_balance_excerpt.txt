@@ -1,0 +1,12 @@
+来源：达州日报数字版
+入口页：https://pad.dzrm.cn/dzrb/202603/18/content_134581.html
+报告标题：关于达州市2025年预算执行情况和2026年预算草案的报告
+数据表：2025年达州市全市地方政府债务限额及余额
+单位：亿元
+地区  债务限额  一般债务限额  专项债务限额  债务余额  一般债务余额  专项债务余额
+达州市  1499.0  437.5  1061.5  1427.7  429.7  998.0
+字段：statutory_debt_limit_100m、general_debt_limit_100m、special_debt_limit_100m、statutory_debt_balance_100m、general_debt_balance_100m、special_debt_balance_100m
+行政范围：全市
+数据状态：2025年执行数
+发布日期：2026-03-18
+定位：官方报纸数字版正文“地方政府债务”段落
