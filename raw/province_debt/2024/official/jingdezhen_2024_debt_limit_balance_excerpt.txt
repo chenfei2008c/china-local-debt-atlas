@@ -1,0 +1,13 @@
+来源：景德镇市人民政府预算公开附件
+入口页：https://www.jdz.gov.cn/zwgk/fdzdgknr/czxx/yjsgk/t1010086.shtml
+附件：https://www.jdz.gov.cn/zwgk/fdzdgknr/czxx/yjsgk/P020250818414576378930.pdf
+报告标题：关于景德镇市2024年全市和市级预算执行情况与2025年全市和市级预算草案的报告
+数据表：2024年及2025年地方债务情况
+单位：亿元
+地区  2024年债务限额  一般债务限额  专项债务限额  2024年债务余额  一般债务余额  专项债务余额
+景德镇市  774.82  206.92  567.90  710.12  203.00  507.12
+字段：statutory_debt_limit_100m、general_debt_limit_100m、special_debt_limit_100m、statutory_debt_balance_100m、general_debt_balance_100m、special_debt_balance_100m
+行政范围：全市
+数据状态：2024年执行数
+发布日期：2025-01-27
+定位：官方预算公开附件“2024年及2025年地方债务情况”第1页全市行

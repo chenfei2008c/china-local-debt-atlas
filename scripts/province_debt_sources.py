@@ -983,6 +983,31 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
 
 OFFICIAL_PROVINCE_DEBT_SOURCES.append(
     {
+        "source_doc_id": "SRC-A2-CITY-DEBT-JIANGXI-JINGDEZHEN-2024-LIMIT-BALANCE",
+        "province_name": "江西省",
+        "year": 2024,
+        "path": RAW_DIR / "2024" / "official" / "jingdezhen_2024_debt_limit_balance_excerpt.txt",
+        "text_path": RAW_DIR / "2024" / "official" / "jingdezhen_2024_debt_limit_balance_excerpt.txt",
+        "source_url": "https://www.jdz.gov.cn/zwgk/fdzdgknr/czxx/yjsgk/t1010086.shtml",
+        "attachment_url": "https://www.jdz.gov.cn/zwgk/fdzdgknr/czxx/yjsgk/P020250818414576378930.pdf",
+        "document_title": "关于景德镇市2024年全市和市级预算执行情况与2025年全市和市级预算草案的报告（附件29）",
+        "publication_date": "2025-01-27",
+        "publisher": "景德镇市财政局",
+        "publisher_level": "市级财政机构",
+        "source_grade": "A2",
+        "unit": "亿元",
+        "layout": "total6",
+        "start": "数据表：2024年及2025年地方债务情况",
+        "end": None,
+        "table_name": "2024年及2025年地方债务情况",
+        "data_status": "execution",
+        "note": "官方预算公开附件第1页明确列示景德镇市全市2024年债务限额774.82亿元、余额710.12亿元及一般/专项拆分；不使用市本级或区县行。",
+    }
+)
+
+
+OFFICIAL_PROVINCE_DEBT_SOURCES.append(
+    {
         "source_doc_id": "SRC-A2-CITY-DEBT-SICHUAN-ABA-2025-LIMIT",
         "province_name": "四川省",
         "year": 2025,
