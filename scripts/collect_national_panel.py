@@ -6853,6 +6853,86 @@ SHANDONG_2024_EXACT_FUND_SOURCES = tuple(
 )
 CITY_YEAR_FUND_SOURCES += SHANDONG_2024_EXACT_FUND_SOURCES
 
+# 江西省 2022—2023 年中证鹏元精确表补录。三份报告均明确列示全市口径；
+# 对同一年度可能存在的跨报告差异，只接入不重复的当前缺口城市，冲突值不静默覆盖。
+_JIANGXI_FUND_BATCHES = (
+    {
+        "year": 2023,
+        "url": "https://file.finance.sina.com.cn/211.154.219.97%3A9494/MRGG/BOND/2024/2024-7/2024-07-26/20598407.PDF",
+        "path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "jiangxi_2023_city_fiscal_rating_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "jiangxi_2023_city_fiscal_rating_report_excerpt.txt",
+        "document_title": "萍乡市汇丰投资有限公司绿色债券2024年跟踪评级报告",
+        "publication_date": "2024-07-26",
+        "page_count": "30",
+        "values": {
+            "南昌市": ("CN-360100", "270.81"), "赣州市": ("CN-360700", "326.72"),
+            "九江市": ("CN-360400", "177.50"), "宜春市": ("CN-360900", "187.35"),
+            "上饶市": ("CN-361100", "244.10"), "吉安市": ("CN-360800", "106.75"),
+            "抚州市": ("CN-361000", "155.93"), "新余市": ("CN-360500", "51.60"),
+            "鹰潭市": ("CN-360600", "73.10"), "景德镇市": ("CN-360200", "213.41"),
+        },
+        "text_note": "B2中证鹏元表1精确列示2023年江西各地级市全市政府性基金收入；萍乡市原表为未公告，未填零值。",
+    },
+    {
+        "year": 2022,
+        "url": "https://qxb-pdf-osscache.qixin.com/AnBaseinfo/daab25467740198c9e6250617d037508.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "jiangxi_2022_city_fiscal_report_yichun.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "jiangxi_2022_city_fiscal_report_yichun_excerpt.txt",
+        "document_title": "宜春发展投资集团有限公司2023年主体信用评级报告",
+        "publication_date": "2023-07-26",
+        "page_count": "29",
+        "values": {
+            "赣州市": ("CN-360700", "293.62"), "九江市": ("CN-360400", "154.20"),
+            "宜春市": ("CN-360900", "208.14"), "抚州市": ("CN-361000", "170.75"),
+            "鹰潭市": ("CN-360600", "86.23"), "萍乡市": ("CN-360300", "133.56"),
+            "景德镇市": ("CN-360200", "222.87"),
+        },
+        "text_note": "B2中证鹏元表1精确列示2022年江西各地级市全市政府性基金收入；南昌市原表为未公告，未填零值。",
+    },
+    {
+        "year": 2022,
+        "url": "https://file.finance.sina.com.cn/211.154.219.97%3A9494/MRGG/BOND/2024/2024-1/2024-01-05/19735165.PDF",
+        "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "jiangxi_2022_city_fiscal_report_jiujiang.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "jiangxi_2022_city_fiscal_report_jiujiang_excerpt.txt",
+        "document_title": "九江富和建设投资集团有限公司2023年主体信用评级报告",
+        "publication_date": "2023-08-25",
+        "page_count": "34",
+        "values": {
+            "上饶市": ("CN-361100", "279.20"), "吉安市": ("CN-360800", "99.12"),
+        },
+        "text_note": "B2中证鹏元表1精确列示2022年江西各地级市全市政府性基金收入；本批只接入当前缺口且未由同一年度其他报告接入的两市。",
+    },
+)
+JIANGXI_FUND_SOURCES = tuple(
+    {
+        "year": batch["year"],
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-CSPENGYUAN-JIANGXI-FUND-{batch['year']}-{city_id}",
+        "url": batch["url"],
+        "path": batch["path"],
+        "text_path": batch["text_path"],
+        "text_is_curated": True,
+        "document_title": batch["document_title"],
+        "publisher": "中证鹏元资信评估股份有限公司",
+        "publisher_level": "专业评级机构（精确表格二手来源）",
+        "publication_date": batch["publication_date"],
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": rf"{re.escape(city_name)}｜{batch['year']}年｜政府性基金收入｜({re.escape(value)})",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": f"{batch['year']}年全市政府性基金收入公开精确值",
+        "document_type": "评级报告地级市经济财政指标精确表",
+        "page_number": "PDF第9页表1",
+        "page_count": batch["page_count"],
+        "note": batch["text_note"],
+    }
+    for batch in _JIANGXI_FUND_BATCHES
+    for city_name, (city_id, value) in batch["values"].items()
+)
+CITY_YEAR_FUND_SOURCES += JIANGXI_FUND_SOURCES
+
 # 广西柳州、玉林、南宁 2022—2025 年政府性基金收入精确表格批次。
 # 柳州 2025 年使用 2026 年度跟踪评级报告，其余年份使用含明确三年序列的
 # 公开评级报告；玉林、南宁只接入报告明确列示的全市年度值。
