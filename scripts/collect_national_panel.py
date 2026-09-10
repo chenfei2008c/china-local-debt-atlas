@@ -6754,6 +6754,105 @@ SHANDONG_MULTIYEAR_FUND_SOURCES = tuple(
 )
 CITY_YEAR_FUND_SOURCES += SHANDONG_MULTIYEAR_FUND_SOURCES
 
+# 湖南篇表7的2022年精确列补录。与2023年批次共用同一份公开表格，
+# 但单独保留2022年摘录和来源ID，避免把年度口径混入2023年值。
+_HUNAN_2022_LHRATINGS_FUND_VALUES = {
+    "株洲市": ("CN-430200", "298.81"),
+    "湘潭市": ("CN-430300", "118.62"),
+    "怀化市": ("CN-431200", "119.39"),
+}
+HUNAN_2022_LHRATINGS_FUND_SOURCES = tuple(
+    {
+        "year": 2022,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-LHRATINGS-HUNAN-FUND-2022-{city_id[3:]}",
+        "url": "https://www.lhratings.com/file/fc16ef416a2.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "hunan_2024_lhratings_city_fiscal_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "hunan_2022_lhratings_city_fund_excerpt.txt",
+        "document_title": "地方政府与城投企业债务风险研究报告—湖南篇",
+        "publisher": "联合资信评估股份有限公司",
+        "publisher_level": "专业评级机构（精确表格二手来源）",
+        "publication_date": "2024-11-28",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": rf"{re.escape(city_name)}｜2022年｜({re.escape(value)})｜2023年｜",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": "2022年全市/全州政府性基金收入公开精确值",
+        "document_type": "区域经济与债务研究报告（精确财政表）",
+        "page_count": "24",
+        "note": (
+            "B2联合资信公开报告表7；接入表格明确列示的2022年全市/全州政府性基金收入，"
+            "数据来源为各地市（州）财政决算报告和预算执行情况报告；不使用图表估读或预算替代值。"
+        ),
+    }
+    for city_name, (city_id, value) in _HUNAN_2022_LHRATINGS_FUND_VALUES.items()
+)
+CITY_YEAR_FUND_SOURCES += HUNAN_2022_LHRATINGS_FUND_SOURCES
+
+# 吉林篇表7补录吉林市2024年政府性基金收入。表格为全市口径，空白项不填零。
+JILIN_2024_FUND_SOURCE = {
+    "year": 2024,
+    "city_name": "吉林市",
+    "city_id": "CN-220200",
+    "source_doc_id": "SRC-B2-LHRATINGS-JILIN-FUND-2024-CN-220200",
+    "url": "https://www.lhratings.com/file/ffef41a3e31.pdf",
+    "path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "jilin_2024_city_fiscal_rating_report.pdf",
+    "text_path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "jilin_2024_city_fiscal_rating_report_excerpt.txt",
+    "document_title": "吉林省及下辖各地市（州）经济财政实力与债务研究报告",
+    "publisher": "联合资信评估股份有限公司",
+    "publisher_level": "专业评级机构（精确表格二手来源）",
+    "publication_date": "2025-11-28",
+    "source_grade": "B2",
+    "source_format": "pdf",
+    "pattern": r"吉林市\|(25\.70)\|",
+    "raw_unit": "亿元",
+    "data_status": "reported",
+    "data_status_label": "2024年全市政府性基金收入公开精确值",
+    "document_type": "区域经济与债务研究报告（精确财政表）",
+    "page_count": "公开PDF",
+    "note": "B2公开报告表7；明确列示吉林市2024年全市政府性基金收入25.70亿元；不使用空白项、不使用图表估读或市本级口径。",
+}
+CITY_YEAR_FUND_SOURCES += (JILIN_2024_FUND_SOURCE,)
+
+# 山东省2024年政府性基金收入精确正文批次。来源为评级机构报告的公开正文转载，
+# 只接入当前主表缺失的四个地级市，济南、青岛、东营等已存在值不覆盖。
+_SHANDONG_2024_EXACT_FUND_VALUES = {
+    "枣庄市": ("CN-370400", "308.79"),
+    "烟台市": ("CN-370600", "349.40"),
+    "潍坊市": ("CN-370700", "577.03"),
+    "济宁市": ("CN-370800", "434.95"),
+}
+SHANDONG_2024_EXACT_FUND_SOURCES = tuple(
+    {
+        "year": 2024,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-NEWCENTURY-SHANDONG-FUND-2024-{city_id[3:]}",
+        "url": "https://www.vzkoo.com/read/4613453815805382656.html",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "shandong_2024_city_fund_exact_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "shandong_2024_city_fund_exact_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "山东省及下辖各市经济财政实力与债务研究（2025）",
+        "publisher": "新世纪评级（未来智库精读转载）",
+        "publisher_level": "评级机构报告精确正文转载",
+        "publication_date": "2025-11-28",
+        "source_grade": "B2",
+        "source_format": "html",
+        "pattern": rf"{re.escape(city_name)}=({re.escape(value)})",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": "2024年全市政府性基金预算收入公开精确值",
+        "document_type": "区域经济与债务研究报告（精确财政正文）",
+        "page_number": "网页正文：下辖各市财政实力分析—政府性基金预算分析",
+        "page_count": "1",
+        "note": "B2报告正文精确列示2024年地级市全市政府性基金预算收入；不使用图表估读、不使用市本级或区县数。",
+    }
+    for city_name, (city_id, value) in _SHANDONG_2024_EXACT_FUND_VALUES.items()
+)
+CITY_YEAR_FUND_SOURCES += SHANDONG_2024_EXACT_FUND_SOURCES
+
 # 广西柳州、玉林、南宁 2022—2025 年政府性基金收入精确表格批次。
 # 柳州 2025 年使用 2026 年度跟踪评级报告，其余年份使用含明确三年序列的
 # 公开评级报告；玉林、南宁只接入报告明确列示的全市年度值。
