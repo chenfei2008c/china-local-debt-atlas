@@ -87,6 +87,7 @@ try:
     from scripts.hongheiku_city_bulletins import load_hongheiku_city_bulletin_sources
     from scripts.dachuang_city_panel import load_dachuang_city_panel_sources
     from scripts.haidatas_city_panel import HAIDATAS_SOURCE_ID, load_haidatas_city_panel_sources
+    from scripts.ceic_city_limit_fund import load_ceic_city_limit_fund_sources
     from scripts.hubei_direct_admin_yearbook import HUBEI_DIRECT_ADMIN_YEARBOOK_SOURCES
     from scripts.hubei_direct_admin_2025_bulletins import HUBEI_DIRECT_ADMIN_2025_BULLETIN_SOURCE
     from scripts.hainan_direct_admin_yearbook import HAINAN_DIRECT_ADMIN_YEARBOOK_SOURCES
@@ -153,6 +154,7 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
     from hongheiku_city_bulletins import load_hongheiku_city_bulletin_sources
     from dachuang_city_panel import load_dachuang_city_panel_sources
     from haidatas_city_panel import HAIDATAS_SOURCE_ID, load_haidatas_city_panel_sources
+    from ceic_city_limit_fund import load_ceic_city_limit_fund_sources
     from hubei_direct_admin_yearbook import HUBEI_DIRECT_ADMIN_YEARBOOK_SOURCES
     from hubei_direct_admin_2025_bulletins import HUBEI_DIRECT_ADMIN_2025_BULLETIN_SOURCE
     from hainan_direct_admin_yearbook import HAINAN_DIRECT_ADMIN_YEARBOOK_SOURCES
@@ -8258,6 +8260,36 @@ GUANGXI_2023_FUND_EXACT_SOURCES = (
 )
 
 CITY_YEAR_FUND_SOURCES += GUANGXI_2023_FUND_EXACT_SOURCES
+
+# 自贡市财政局 2024 年预算执行报告通过自贡网精确公开全市政府性基金收入。
+# 报告注明执行数以当前执行情况为基础、最终以决算为准，因此按 execution
+# 纳入，不使用其中的 2025 年预算安排数，也不把市本级数替代为全市数。
+CITY_YEAR_FUND_SOURCES += (
+    {
+        "year": 2024,
+        "city_name": "自贡市",
+        "city_id": "CN-510300",
+        "source_doc_id": "SRC-B2-ZIGONG-CITY-FUND-2024",
+        "url": "https://dp.zgm.cn/show/33193",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "zigong_2024_macro_fiscal_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "zigong_2024_macro_fiscal_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "关于自贡市2024年预算执行情况和2025年预算草案的报告",
+        "publisher": "自贡市财政局报告经自贡网公开",
+        "publisher_level": "市级财政机构报告公开转载",
+        "publication_date": "2025-03-18",
+        "source_grade": "B2",
+        "source_format": "txt",
+        "pattern": r"城市=自贡市｜年度=2024｜政府性基金收入=([0-9,]+)万元",
+        "raw_unit": "万元",
+        "data_status": "execution",
+        "data_status_label": "2024年全市政府性基金预算收入执行数",
+        "document_type": "市级财政预算执行报告指标精确转载",
+        "page_number": "报告第二部分“政府性基金预算执行情况”；全市合计",
+        "page_count": "",
+        "note": "B2精确公开报告；原文明确列示2024年全市政府性基金预算收入完成1365857万元，折合136.5857亿元。报告同时说明相关执行数以当前执行情况为基础、最终以决算为准，因此保留execution状态；不使用2025年预算安排数或市本级口径。",
+    },
+)
 
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
@@ -18913,6 +18945,13 @@ def main() -> None:
         prior["_field_sources"] = field_sources
     city_year_fiscal_sources.extend(haidatas_city_panel_sources)
     city_year_fund, city_year_fund_sources = load_city_year_fund_sources()
+    ceic_city_limit_fund, ceic_city_limit_fund_sources = load_ceic_city_limit_fund_sources(
+        ROOT, city_master
+    )
+    # CEIC 公开城市页面只作为 B2 精确二手来源：按字段补空或替换更低等级
+    # 暂存值，保留总限额页或一般+专项分项页的原始证据与来源登记。
+    merge_city_year_fiscal_batch(city_year_fiscal, ceic_city_limit_fund)
+    city_year_fiscal_sources.extend(ceic_city_limit_fund_sources)
     city_yearbook_macro, city_yearbook_sources = load_city_yearbook_sources(ROOT, city_master)
     # 所有研究型/二手批次完成后再做一次 A1 仲裁，确保低等级面板不会遮蔽
     # 新疆统计局 2020 年地州年鉴的字段级血缘。

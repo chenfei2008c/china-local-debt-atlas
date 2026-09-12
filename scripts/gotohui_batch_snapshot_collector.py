@@ -12,6 +12,7 @@ import argparse
 import hashlib
 import json
 import ssl
+import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
@@ -95,6 +96,22 @@ def _json_request_short(url: str, timeout: float, retries: int = 1) -> dict[str,
     context = ssl._create_unverified_context()
     for attempt in range(max(1, retries)):
         try:
+            # 当前环境对 Gotohui 的 curl HTTP/1.1 路径比 urllib 更稳定；
+            # 仍保留 urllib 作为回退，保证脚本在普通环境中可直接运行。
+            result = subprocess.run(
+                [
+                    "curl", "--http1.1", "-L", "-sS",
+                    "--max-time", str(max(5, int(timeout))),
+                    "-A", "Mozilla/5.0",
+                    "-H", "Accept: application/json",
+                    url,
+                ],
+                capture_output=True,
+                timeout=max(timeout + 8.0, 20.0),
+                check=False,
+            )
+            if result.returncode == 0 and result.stdout:
+                return json.loads(result.stdout.decode("utf-8"))
             request = Request(
                 url,
                 headers={
