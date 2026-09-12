@@ -8291,6 +8291,45 @@ CITY_YEAR_FUND_SOURCES += (
     },
 )
 
+# 湖北省 2025 年中证鹏元公开评级报告表 2 的精确地级市/自治州政府性基金收入。
+# 该表来源为各市 2025 年统计公报、预算执行情况等；仅接入当前主表缺失的城市，
+# 不把表中的“－”转为零，也不覆盖主表已有但存在口径冲突的宜昌、黄冈等值。
+HUBEI_2025_CSPENGYUAN_FUND_VALUES = {
+    "襄阳市": ("CN-420600", "221.66"),
+    "十堰市": ("CN-420300", "93.70"),
+    "荆门市": ("CN-420800", "33.70"),
+    "咸宁市": ("CN-421200", "60.48"),
+    "恩施土家族苗族自治州": ("CN-422800", "64.07"),
+}
+HUBEI_2025_CSPENGYUAN_FUND_SOURCES = tuple(
+    {
+        "year": 2025,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-CSPENGYUAN-HUBEI-FUND-2025-{city_id[3:]}",
+        "url": "https://www.chinamoney.com.cn/dqs/cm-s-notice-query/fileDownLoad.do?contentId=3364639&mode=save&priority=0",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "hubei_2025_city_macro_rating_report.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "hubei_2025_cspengyuan_fund_table_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "十堰聚鑫国有资本投资运营集团有限公司相关债券2026年跟踪评级报告",
+        "publisher": "中证鹏元资信评估股份有限公司",
+        "publisher_level": "专业评级机构（中国货币网公开精确表格）",
+        "publication_date": "2026-06-25",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": rf"{re.escape(city_name)}｜2025年｜政府性基金收入｜([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2025年政府性基金收入公开执行/预算执行口径",
+        "document_type": "区域经济财政指标公开评级报告（精确财政表）",
+        "page_number": "PDF第7页表2",
+        "page_count": "24",
+        "note": "B2公开精确表格；表2明确列示2025年湖北省部分地级市经济财政指标，数据来源为各市2025年统计公报、预算执行情况等。仅接入此前主表缺失值，不把缺失符号转为零，不覆盖主表已有冲突值。",
+    }
+    for city_name, (city_id, value) in HUBEI_2025_CSPENGYUAN_FUND_VALUES.items()
+)
+CITY_YEAR_FUND_SOURCES += HUBEI_2025_CSPENGYUAN_FUND_SOURCES
+
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
