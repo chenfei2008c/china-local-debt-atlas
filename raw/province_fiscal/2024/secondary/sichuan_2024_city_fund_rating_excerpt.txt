@@ -1,0 +1,23 @@
+# 2024年四川省地级市/自治州政府性基金收入精确摘录
+# 以下均来自评级报告中的主要经济财政指标表，单位：亿元；行政范围为全市/全州。
+# 来源URL：
+# 攀枝花 https://qxb-pdf-osscache.qixin.com/AnBaseinfo/9997b66aac1688391fb81b3c873f7938.pdf
+# 德阳 https://qxb-pdf-osscache.qixin.com/AnBaseinfo/55af17ae5900205d28b0349f6551093f.pdf
+# 广元 https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2025-06-26/152971_20250626_ERHD.pdf
+# 遂宁 https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2025-06-25/184337_20250625_HYHK.pdf
+# 乐山 https://qxb-pdf-osscache.qixin.com/AnBaseinfo/86a7de72abacbc4116d3b01c3de52f0b.pdf
+# 宜宾 https://qxb-pdf-osscache.qixin.com/AnBaseinfo/8185d5be7cce0997aacbe65ccd54e0e9.pdf
+# 达州 https://www.cspengyuan.com/api/files/695fdaddbe22fa0776b8c21e
+# 雅安 https://www.shibor.org/dqs/cm-s-notice-query/fileDownLoad.do?contentId=3195142&mode=save&priority=0
+# 巴中 https://www.chinamoney.org.cn/dqs/cm-s-notice-query/fileDownLoad.do?contentId=3220503&mode=save&priority=0
+# 凉山 https://qxb-pdf-osscache.qixin.com/AnBaseinfo/970371a6df9aac812cc2ef0404aac9de.pdf
+城市=攀枝花市｜年度=2024｜政府性基金预算收入=21.21亿元
+城市=德阳市｜年度=2024｜政府性基金预算收入=197.32亿元
+城市=广元市｜年度=2024｜政府性基金预算收入=73.39亿元
+城市=遂宁市｜年度=2024｜政府性基金预算收入=145.50亿元
+城市=乐山市｜年度=2024｜政府性基金预算收入=119.93亿元
+城市=宜宾市｜年度=2024｜政府性基金预算收入=165.93亿元
+城市=达州市｜年度=2024｜政府性基金预算收入=199.80亿元
+城市=雅安市｜年度=2024｜政府性基金预算收入=42.20亿元
+城市=巴中市｜年度=2024｜政府性基金预算收入=110.99亿元
+城市=凉山彝族自治州｜年度=2024｜政府性基金预算收入=55.50亿元

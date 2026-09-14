@@ -10906,6 +10906,103 @@ SICHUAN_2023_B2_CITY_FUND_SOURCES = tuple(
 )
 CITY_YEAR_FISCAL_SOURCES += SICHUAN_2023_B2_CITY_FUND_SOURCES
 
+SICHUAN_2024_B2_CITY_FUND_SOURCES = tuple(
+    _make_sichuan_curated_city_source(
+        year=2024,
+        city_name=city_name,
+        city_id=city_id,
+        source_doc_id=f"SRC-B2-SICHUAN-CITY-FUND-2024-{slug}",
+        url=url,
+        path=RAW_DIR / "province_fiscal" / "2024" / "secondary" / "sichuan_2024_city_fund_rating_excerpt.txt",
+        document_title=document_title,
+        publisher=publisher,
+        publisher_level="评级机构公开精确表格",
+        publication_date=publication_date,
+        source_grade="B2",
+        fields=("gov_fund_revenue_100m",),
+        raw_unit="亿元",
+        source_format="txt",
+        data_status="reported",
+        data_status_label="2024年公开报告值",
+        document_type="评级报告地级市（州）主要财力指标表",
+        page_number=page_number,
+        custom_patterns={
+            "gov_fund_revenue_100m": rf"城市={re.escape(city_name)}｜年度=2024｜政府性基金预算收入=([0-9.,-]+)亿元",
+        },
+        source_locator=(
+            f"sichuan_2024_city_fund_rating_excerpt.txt；{page_number}；"
+            f"城市={city_name}；2024年公开报告值；行政范围=全市/全州"
+        ),
+        note=(
+            f"B2公开精确表格；明确列示{city_name}2024年政府性基金收入，"
+            "采用全市/全州口径，不使用市本级、区县数或图表目测值。"
+        ),
+    )
+    for city_name, city_id, slug, url, document_title, publisher, publication_date, page_number in (
+        (
+            "攀枝花市", "CN-510400", "PANZHIHUA",
+            "https://qxb-pdf-osscache.qixin.com/AnBaseinfo/9997b66aac1688391fb81b3c873f7938.pdf",
+            "攀枝花城建交通（集团）有限公司2025年度跟踪评级报告",
+            "中诚信国际信用评级有限责任公司", "2025-06-26", "PDF表1",
+        ),
+        (
+            "德阳市", "CN-510600", "DEYANG",
+            "https://qxb-pdf-osscache.qixin.com/AnBaseinfo/55af17ae5900205d28b0349f6551093f.pdf",
+            "什邡市国有投资控股集团有限公司2025年度跟踪评级报告",
+            "东方金诚国际信用评估有限公司", "2025-06-26", "PDF德阳市主要经济财政指标表",
+        ),
+        (
+            "广元市", "CN-510800", "GUANGYUAN",
+            "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2025-06-26/152971_20250626_ERHD.pdf",
+            "广元市投资发展集团有限公司2025年度跟踪评级报告",
+            "东方金诚国际信用评估有限公司", "2025-06-26", "PDF图表15",
+        ),
+        (
+            "遂宁市", "CN-510900", "SUINING",
+            "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2025-06-25/184337_20250625_HYHK.pdf",
+            "遂宁开达投资有限公司2025年度跟踪评级报告",
+            "中诚信国际信用评级有限责任公司", "2025-06-25", "PDF表1",
+        ),
+        (
+            "乐山市", "CN-511100", "LESHAN",
+            "https://qxb-pdf-osscache.qixin.com/AnBaseinfo/86a7de72abacbc4116d3b01c3de52f0b.pdf",
+            "乐山国有资产投资运营（集团）有限公司2025年度跟踪评级报告",
+            "联合资信评估股份有限公司", "2025-06-27", "PDF第8页表2",
+        ),
+        (
+            "宜宾市", "CN-511500", "YIBIN",
+            "https://qxb-pdf-osscache.qixin.com/AnBaseinfo/8185d5be7cce0997aacbe65ccd54e0e9.pdf",
+            "宜宾发展控股集团有限公司2025年度跟踪评级报告",
+            "中诚信国际信用评级有限责任公司", "2025-06-26", "PDF表12",
+        ),
+        (
+            "达州市", "CN-511700", "DAZHOU",
+            "https://www.cspengyuan.com/api/files/695fdaddbe22fa0776b8c21e",
+            "达州市投资有限公司相关债券2025年度跟踪评级报告",
+            "中证鹏元资信评估股份有限公司", "2025-06-27", "PDF表3",
+        ),
+        (
+            "雅安市", "CN-511800", "YAAN",
+            "https://www.shibor.org/dqs/cm-s-notice-query/fileDownLoad.do?contentId=3195142&mode=save&priority=0",
+            "雅安发展投资有限责任公司2025年度跟踪评级报告",
+            "中证鹏元资信评估股份有限公司", "2025-06-27", "PDF表3",
+        ),
+        (
+            "巴中市", "CN-511900", "BAZHONG",
+            "https://www.chinamoney.org.cn/dqs/cm-s-notice-query/fileDownLoad.do?contentId=3220503&mode=save&priority=0",
+            "巴中发展控股集团有限公司2025年度跟踪评级报告",
+            "中证鹏元资信评估股份有限公司", "2025-06-27", "PDF表",
+        ),
+        (
+            "凉山彝族自治州", "CN-513400", "LIANGSHAN",
+            "https://qxb-pdf-osscache.qixin.com/AnBaseinfo/970371a6df9aac812cc2ef0404aac9de.pdf",
+            "凉山州发展（控股）集团有限责任公司2025年度跟踪评级报告",
+            "东方金诚国际信用评估有限公司", "2025-06-26", "PDF表1",
+        ),
+    )
+)
+CITY_YEAR_FISCAL_SOURCES += SICHUAN_2024_B2_CITY_FUND_SOURCES
+
 # 2024—2025 年新增的省级/城市批量摘录。摘录文件只保留可由入口页、附件或
 # 精确转载逐项核验的全市值；这里用统一的“城市—年度—字段”接口接入，避免
 # 为每一张省级表重复编写解析器。字段级合并仍由 load_city_year_fiscal_sources
