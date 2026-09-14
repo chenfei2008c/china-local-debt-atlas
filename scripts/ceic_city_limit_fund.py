@@ -222,7 +222,7 @@ def _fund_url(slug: str) -> str:
     province = _province_slug(slug)
     return (
         f"https://www.ceicdata.com/en/china/government-funds-revenue--expenditure-{province}/"
-        f"cn-{slug}-government-funds-revenue-sum"
+        f"cn-{slug}-government-funds-revenue-total"
     )
 
 
@@ -318,7 +318,14 @@ def _discover_fund_urls(root: Path, slugs: list[str]) -> dict[str, str]:
                 if prefix in link and re.search(r"government-funds-revenue-(?:sum|total)$", link)
             ]
             if candidates:
-                selected = sorted(candidates, key=lambda item: ("-sum" not in item, len(item)))[0]
+                selected = sorted(
+                    candidates,
+                    key=lambda item: (
+                        not item.endswith("-government-funds-revenue-total"),
+                        not item.endswith("-government-funds-revenue-sum"),
+                        len(item),
+                    ),
+                )[0]
                 result[slug] = selected if selected.startswith("http") else f"https://www.ceicdata.com{selected}"
     return result
 
