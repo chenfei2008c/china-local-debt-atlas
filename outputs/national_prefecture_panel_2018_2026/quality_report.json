@@ -5,9 +5,9 @@
   "city_master_unique_key": true,
   "macro_rows": 3074,
   "macro_unique_key": true,
-  "field_lineage_rows": 59051,
-  "calculation_lineage_rows": 22389,
-  "non_null_macro_field_lineage_rows": 59051,
+  "field_lineage_rows": 59081,
+  "calculation_lineage_rows": 22409,
+  "non_null_macro_field_lineage_rows": 59081,
   "debt_limit_balance_violations": [
     "DEBT-CN-130500-2018-PREFECTURE",
     "DEBT-CN-130900-2018-PREFECTURE",
