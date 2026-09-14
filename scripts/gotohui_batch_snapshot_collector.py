@@ -45,8 +45,11 @@ except ModuleNotFoundError:  # 允许以 python scripts/... 直接运行
 CITY_TOTAL_SUFFIXES = {
     "fund": (
         "地方政府性基金收入",
+        "地方政府性基金收入:合计",
         "政府性基金收入",
+        "政府性基金收入:合计",
         "地方财政收入:政府性基金收入",
+        "地方财政收入:政府性基金收入:合计",
     ),
     "limit": ("地方政府债务限额",),
 }

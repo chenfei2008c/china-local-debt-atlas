@@ -980,6 +980,90 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
     ]
 )
 
+
+# 2022—2023 年官方城市级债务限额补充。各条均为全市/全州口径，
+# 使用 limit3 只接入限额总额及一般、专项限额，不从余额反推限额。
+OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
+    [
+        {
+            "source_doc_id": "SRC-A2-CITY-DEBT-HENAN-ZHENGZHOU-2022-LIMIT",
+            "province_name": "河南省",
+            "year": 2022,
+            "path": RAW_DIR / "2022" / "official" / "henan_zhengzhou_2022_limit.txt",
+            "text_path": RAW_DIR / "2022" / "official" / "henan_zhengzhou_2022_limit.txt",
+            "source_url": "https://public.zhengzhou.gov.cn/D190101X/6895955.jhtml",
+            "document_title": "关于郑州市2022年财政预算执行情况和2023年财政预算草案的报告",
+            "publication_date": "2023-01-19",
+            "publisher": "郑州市财政局",
+            "publisher_level": "市级财政机构",
+            "source_grade": "A2",
+            "unit": "亿元",
+            "layout": "limit3",
+            "start": "【2022年郑州市全市政府债务限额】",
+            "table_name": "2022年郑州市全市政府债务限额",
+            "note": "官方预算执行报告明确披露河南省财政厅核定的郑州市全市2022年政府债务限额3361.8亿元，其中一般债务1688.9亿元、专项债务1672.9亿元；报告同时区分市本级、城市新区和区县（市）口径，本条仅接入全市行。",
+        },
+        {
+            "source_doc_id": "SRC-A2-CITY-DEBT-HENAN-PINGDINGSHAN-2023-LIMIT",
+            "province_name": "河南省",
+            "year": 2023,
+            "path": RAW_DIR / "2023" / "official" / "henan_pingdingshan_2023_limit.txt",
+            "text_path": RAW_DIR / "2023" / "official" / "henan_pingdingshan_2023_limit.txt",
+            "source_url": "https://www.pds.gov.cn/contents/1378/400809.html",
+            "document_title": "关于平顶山市2023年预算执行情况和2024年预算草案的报告",
+            "publication_date": "2024-02-23",
+            "publisher": "平顶山市财政局",
+            "publisher_level": "市级财政机构",
+            "source_grade": "A2",
+            "unit": "万元",
+            "unit_factor": Decimal("0.0001"),
+            "layout": "limit3",
+            "start": "【2023年平顶山市全市政府债务限额】",
+            "table_name": "2023年平顶山市全市政府债务限额",
+            "data_status": "execution",
+            "note": "官方预算执行报告明确披露2023年全市政府债务限额7876130万元，其中一般债务2661647万元、专项债务5214483万元；采用全市口径，不使用市本级或县（市、区）行。",
+        },
+        {
+            "source_doc_id": "SRC-A2-CITY-DEBT-JIANGXI-GANZHOU-2022-LIMIT",
+            "province_name": "江西省",
+            "year": 2022,
+            "path": RAW_DIR / "2022" / "official" / "jiangxi_ganzhou_2022_limit.txt",
+            "text_path": RAW_DIR / "2022" / "official" / "jiangxi_ganzhou_2022_limit.txt",
+            "source_url": "https://www.ganzhou.gov.cn/zfxxgk/dfzwgl/202211/9192690468844f4096278f55742c5875.shtml",
+            "document_title": "赣州市人民政府关于2022年市级政府性基金预算调整方案（草案）以及2022年地方政府债务限额的报告",
+            "publication_date": "2022-11-04",
+            "publisher": "赣州市人民政府、赣州市财政局",
+            "publisher_level": "市级政府及财政机构",
+            "source_grade": "A2",
+            "unit": "亿元",
+            "layout": "limit3",
+            "start": "【2022年赣州市全市政府债务限额】",
+            "table_name": "2022年赣州市全市政府债务限额",
+            "data_status": "execution",
+            "note": "官方政府信息公开页面明确区分全市、赣州市级和县（市、区）口径；本条使用全市政府债务限额1733.57亿元，其中一般债务569.58亿元、专项债务1163.99亿元，不误用县（市、区）限额1308.52亿元。",
+        },
+        {
+            "source_doc_id": "SRC-A1-CITY-DEBT-SHAANXI-BAOJI-2022-LIMIT",
+            "province_name": "陕西省",
+            "year": 2022,
+            "path": RAW_DIR / "2022" / "official" / "shaanxi_baoji_2022_city_limit.txt",
+            "text_path": RAW_DIR / "2022" / "official" / "shaanxi_baoji_2022_city_limit.txt",
+            "source_url": "https://czj.baoji.gov.cn/col3281/col3283/202308/P020241228646214915421.pdf",
+            "document_title": "2022年地方政府债务限额和余额情况表",
+            "publication_date": "2023-07-24",
+            "publisher": "宝鸡市财政局",
+            "publisher_level": "市级财政机构",
+            "source_grade": "A1",
+            "unit": "万元",
+            "unit_factor": Decimal("0.0001"),
+            "layout": "limit3",
+            "start": "【2022年宝鸡市全市政府债务限额】",
+            "table_name": "2022年宝鸡市全市政府债务限额",
+            "note": "官方附件表六的“宝鸡市”行列示全市限额4317530万元，其中一般债务2263188万元、专项债务2054342万元；不使用市级、市本级和区县行。",
+        },
+    ]
+)
+
 # 定西市2025年官方债务余额附件中的限额分项单独摘录。
 # 余额已由同一官方附件的 direct3_general_special 来源接入；本条只补法定
 # 债务限额，避免把余额行再次解析为限额或覆盖既有余额。

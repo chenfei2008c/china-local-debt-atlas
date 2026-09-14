@@ -4722,7 +4722,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(huainan["general_public_expenditure_100m"], Decimal("345.40"))
         self.assertEqual(huainan["statutory_debt_limit_100m"], Decimal("793.10"))
         self.assertEqual(huainan["statutory_debt_balance_100m"], Decimal("782.70"))
-        self.assertNotIn("gov_fund_revenue_100m", huainan)
+        self.assertEqual(huainan["gov_fund_revenue_100m"], Decimal("46.42"))
         self.assertEqual(huainan["source_grade"], "A2")
         self.assertEqual(huainan["data_status"], "execution")
         huainan_source = next(
@@ -4747,6 +4747,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(rows[0]["general_public_expenditure_100m"], Decimal("345.40"))
         self.assertEqual(rows[0]["statutory_debt_limit_100m"], Decimal("793.10"))
         self.assertEqual(rows[0]["statutory_debt_balance_100m"], Decimal("782.70"))
+        self.assertEqual(rows[0]["gov_fund_revenue_100m"], Decimal("46.42"))
         self.assertEqual(rows[0]["debt_limit_utilization_pct"], Decimal("98.69"))
         self.assertEqual(rows[0]["source_grade"], "A2")
         self.assertEqual(rows[0]["data_status"], "execution")
@@ -4757,6 +4758,7 @@ class NationalPanelTests(unittest.TestCase):
                 "general_public_expenditure_100m",
                 "statutory_debt_limit_100m",
                 "statutory_debt_balance_100m",
+                "gov_fund_revenue_100m",
             },
         )
 
