@@ -980,6 +980,29 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
     ]
 )
 
+OFFICIAL_PROVINCE_DEBT_SOURCES.append(
+    {
+        "source_doc_id": "SRC-A1-XUCHANG-CITY-DEBT-LIMIT-2023",
+        "province_name": "河南省",
+        "year": 2023,
+        "path": RAW_DIR.parent / "province_fiscal" / "2023" / "official" / "xuchang_2023_decision_tables.pdf",
+        "text_path": RAW_DIR.parent / "province_fiscal" / "2023" / "official" / "xuchang_2023_decision_tables_excerpt.txt",
+        "source_url": "https://www.xuchang.gov.cn/czyjsgkpt/034001/034001002/034001002010/20240914/2045af94-75d8-4ef9-9e5b-e49cdf50e2f2.html",
+        "document_title": "许昌市2023年全市及市本级决算草案表格",
+        "publication_date": "2024-09-14",
+        "publisher": "许昌市财政局",
+        "publisher_level": "市级财政机构官网",
+        "source_grade": "A1",
+        "unit": "万元",
+        "unit_factor": Decimal("0.0001"),
+        "layout": "limit3",
+        "start": "许昌市2023年政府债务限额（全市口径）",
+        "end": None,
+        "table_name": "2023年政府一般债券、专项债券发行和还本付息情况表",
+        "note": "官方决算附件；限额总额由一般1917429万元与专项6417554万元构成；全市口径；仅接入限额，不以该表替换已存在的债务余额。",
+    }
+)
+
 
 # 2022—2023 年官方城市级债务限额补充。各条均为全市/全州口径，
 # 使用 limit3 只接入限额总额及一般、专项限额，不从余额反推限额。

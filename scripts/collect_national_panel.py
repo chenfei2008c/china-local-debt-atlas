@@ -8334,6 +8334,36 @@ HUBEI_2025_CSPENGYUAN_FUND_SOURCES = tuple(
 )
 CITY_YEAR_FUND_SOURCES += HUBEI_2025_CSPENGYUAN_FUND_SOURCES
 
+# 许昌市财政局 2023 年全市决算表同时披露政府性基金收入和全市政府债务
+# 分项限额。表格为官方 PDF，正文采用可回溯的精确摘录，避免从扫描/排版
+# 变体中重新猜测数字；基金收入使用全市口径而非市本级口径。
+CITY_YEAR_FUND_SOURCES += (
+    {
+        "year": 2023,
+        "city_name": "许昌市",
+        "city_id": "CN-411000",
+        "source_doc_id": "SRC-A1-XUCHANG-CITY-FUND-2023",
+        "url": "https://www.xuchang.gov.cn/czyjsgkpt/034001/034001002/034001002010/20240914/2045af94-75d8-4ef9-9e5b-e49cdf50e2f2.html",
+        "path": RAW_DIR / "province_fiscal" / "2023" / "official" / "xuchang_2023_decision_tables.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2023" / "official" / "xuchang_2023_decision_tables_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "许昌市2023年全市及市本级决算草案表格",
+        "publisher": "许昌市财政局",
+        "publisher_level": "市级财政机构官网",
+        "publication_date": "2024-09-14",
+        "source_grade": "A1",
+        "source_format": "pdf",
+        "pattern": r"2023年全市政府性基金预算收入决算数=([0-9,]+)万元",
+        "raw_unit": "万元",
+        "data_status": "reported",
+        "data_status_label": "2023年全市政府性基金收入决算数",
+        "document_type": "市级财政决算表",
+        "page_number": "PDF第31页（印刷页28）；表16/表17",
+        "page_count": "61",
+        "note": "A1官方决算表；全市口径；693197万元，不使用市本级231165万元。",
+    },
+)
+
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
