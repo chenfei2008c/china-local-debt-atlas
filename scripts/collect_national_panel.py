@@ -10767,6 +10767,145 @@ CITY_YEAR_FISCAL_SOURCES += tuple(CITY_FISCAL_RATING_2024_2025_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(DAGONG_CITY_FISCAL_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(OFFICIAL_2024_CITY_CORE_SOURCES)
 
+def _make_sichuan_curated_city_source(*, year, city_name, city_id, source_doc_id, url, path,
+                                      document_title, publisher, publisher_level, publication_date,
+                                      source_grade, page_number, fields, raw_unit,
+                                      source_format, data_status, data_status_label,
+                                      document_type, custom_patterns, source_locator,
+                                      note):
+    """在通用摘录构造器定义前，构造本批次的最小标准来源记录。"""
+    return {
+        "year": year,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": source_doc_id,
+        "url": url,
+        "attachment_url": None,
+        "path": path,
+        "text_path": path,
+        "text_is_curated": True,
+        "document_title": document_title,
+        "publisher": publisher,
+        "publisher_level": publisher_level,
+        "publication_date": publication_date,
+        "source_grade": source_grade,
+        "source_format": source_format,
+        "data_status": data_status,
+        "data_status_label": data_status_label,
+        "document_type": document_type,
+        "page_number": page_number,
+        "source_locator": source_locator,
+        "title_source": "rating_report",
+        "access_status": None,
+        "raw_unit": raw_unit,
+        "raw_units": {},
+        "patterns": custom_patterns,
+        "note": note,
+    }
+
+SICHUAN_2023_B2_CITY_FUND_SOURCES = tuple(
+    _make_sichuan_curated_city_source(
+        year=2023,
+        city_name=city_name,
+        city_id=city_id,
+        source_doc_id=f"SRC-B2-SICHUAN-CITY-FUND-2023-{slug}",
+        url=url,
+        path=RAW_DIR / "province_fiscal" / "2023" / "secondary" / "sichuan_2023_city_fund_rating_excerpt.txt",
+        document_title=document_title,
+        publisher=publisher,
+        publisher_level="评级机构公开精确表格",
+        publication_date=publication_date,
+        source_grade="B2",
+        fields=("gov_fund_revenue_100m",),
+        raw_unit="亿元",
+        source_format="txt",
+        data_status="reported",
+        data_status_label="2023年公开报告值",
+        document_type="评级报告地级市（州）主要财力指标表",
+        page_number=page_number,
+        custom_patterns={
+            "gov_fund_revenue_100m": rf"城市={re.escape(city_name)}｜年度=2023｜政府性基金预算收入=([0-9.,-]+)亿元",
+        },
+        source_locator=(
+            f"sichuan_2023_city_fund_rating_excerpt.txt；{page_number}；"
+            f"城市={city_name}；2023年公开报告值；行政范围=全市/全州"
+        ),
+        note=(
+            f"B2公开精确表格；明确列示{city_name}2023年政府性基金收入，"
+            "采用全市/全州口径，不使用市本级、区县数或图表目测值。"
+        ),
+    )
+    for city_name, city_id, slug, url, document_title, publisher, publication_date, page_number in (
+        (
+            "自贡市", "CN-510300", "ZIGONG",
+            "https://www.cspengyuan.com/pengyuancmscn/rating-announcement/rating-infor/20230705120734479/20240627200002710/2023%E5%B9%B4%E5%9B%9B%E5%B7%9D%E8%A5%BF%E5%8D%97%E5%8F%91%E5%B1%95%E6%8E%A7%E8%82%A1%E9%9B%86%E5%9B%A2%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E5%8E%BF%E5%9F%8E%E6%96%B0%E5%9E%8B%E5%9F%8E%E9%95%87%E5%8C%96%E5%BB%BA%E8%AE%BE%E4%B8%93%E9%A1%B9%E4%BC%81%E4%B8%9A%E5%80%BA%E5%88%B8%EF%BC%88%E7%AC%AC%E4%B8%80%E6%9C%9F%EF%BC%892024%E5%B9%B4%E8%B7%9F%E8%B8%AA%E8%AF%84%E7%BA%A7%E6%8A%A5%E5%91%8A.pdf",
+            "2023年四川西南发展控股集团有限公司县城新型城镇化建设专项企业债券（第一期）2024年跟踪评级报告",
+            "中证鹏元资信评估股份有限公司", "2024-06-27", "PDF第7页表2",
+        ),
+        (
+            "德阳市", "CN-510600", "DEYANG",
+            "https://www.cspengyuan.com/pengyuancmscn/rating-announcement/rating-infor/20230705120734479/20240627200002710/2023%E5%B9%B4%E5%9B%9B%E5%B7%9D%E8%A5%BF%E5%8D%97%E5%8F%91%E5%B1%95%E6%8E%A7%E8%82%A1%E9%9B%86%E5%9B%A2%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E5%8E%BF%E5%9F%8E%E6%96%B0%E5%9E%8B%E5%9F%8E%E9%95%87%E5%8C%96%E5%BB%BA%E8%AE%BE%E4%B8%93%E9%A1%B9%E4%BC%81%E4%B8%9A%E5%80%BA%E5%88%B8%EF%BC%88第 一期）2024年跟踪评级报告.pdf".replace("第 一期", "%EF%BC%88%E7%AC%AC%E4%B8%80%E6%9C%9F%EF%BC%89"),
+            "2023年四川西南发展控股集团有限公司县城新型城镇化建设专项企业债券（第一期）2024年跟踪评级报告",
+            "中证鹏元资信评估股份有限公司", "2024-06-27", "PDF第7页表2",
+        ),
+        (
+            "遂宁市", "CN-510900", "SUINING",
+            "https://www.cspengyuan.com/pengyuancmscn/rating-announcement/rating-infor/20230705120734479/20240627200002710/2023%E5%B9%B4%E5%9B%9B%E5%B7%9D%E8%A5%BF%E5%8D%97%E5%8F%91%E5%B1%95%E6%8E%A7%E8%82%A1%E9%9B%86%E5%9B%A2%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E5%8E%BF%E5%9F%8E%E6%96%B0%E5%9E%8B%E5%城镇化建设专项企业债券（第一期）2024年跟踪评级报告.pdf",
+            "2023年四川西南发展控股集团有限公司县城新型城镇化建设专项企业债券（第一期）2024年跟踪评级报告",
+            "中证鹏元资信评估股份有限公司", "2024-06-27", "PDF第7页表2",
+        ),
+        (
+            "内江市", "CN-511000", "NEIJIANG",
+            "https://www.cspengyuan.com/pengyuancmscn/rating-announcement/rating-infor/20230705120734479/20240627200002710/2023%E5%B9%B4%E5%9B%9B%E5%B7%9D%E8%A5%BF%E5%8D%97%E5%8F%91%E5%B1%95%E6%8E%A7%E8%82%A1%E9%9B%86%E5%9B%A2%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E5%8E%BF%E5%9F%8E%E6%96%B0%E5%9E%8B%E5%城镇化建设专项企业债券（第一期）2024年跟踪评级报告.pdf",
+            "2023年四川西南发展控股集团有限公司县城新型城镇化建设专项企业债券（第一期）2024年跟踪评级报告",
+            "中证鹏元资信评估股份有限公司", "2024-06-27", "PDF第7页表2",
+        ),
+        (
+            "巴中市", "CN-511900", "BAZHONG",
+            "https://static.sse.com.cn/disclosure/bond/announcement/company/c/new/2024-06-28/115024_20240628_0SGF.pdf",
+            "巴中市国有资本运营集团有限公司2024年度跟踪评级报告",
+            "联合资信评估股份有限公司", "2024-06-28", "PDF表3",
+        ),
+        (
+            "广安市", "CN-511600", "GUANGAN",
+            "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2024-07-30/127602_20240730_0VSS.pdf",
+            "广安鑫鸿投资控股有限公司主体及相关债项2024年度跟踪评级报告",
+            "中证鹏元资信评估股份有限公司", "2024-07-30", "PDF表2",
+        ),
+        (
+            "攀枝花市", "CN-510400", "PANZHIHUA",
+            "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2024-07-30/127602_20240730_0VSS.pdf",
+            "广安鑫鸿投资控股有限公司主体及相关债项2024年度跟踪评级报告",
+            "中证鹏元资信评估股份有限公司", "2024-07-30", "PDF表2",
+        ),
+        (
+            "广元市", "CN-510800", "GUANGYUAN",
+            "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2024-07-30/127602_20240730_0VSS.pdf",
+            "广安鑫鸿投资控股有限公司主体及相关债项2024年度跟踪评级报告",
+            "中证鹏元资信评估股份有限公司", "2024-07-30", "PDF表2",
+        ),
+        (
+            "雅安市", "CN-511800", "YAAN",
+            "https://www.chinamoney.org.cn/dqs/cm-s-notice-query/fileDownLoad.do?contentId=3195016&mode=save&priority=0",
+            "雅安发展投资有限责任公司2024年度跟踪评级报告",
+            "中证鹏元资信评估股份有限公司", "2024-06-28", "PDF表3",
+        ),
+        (
+            "凉山彝族自治州", "CN-513400", "LIANGSHAN",
+            "https://www.chinamoney.org.cn/dqs/cm-s-notice-query/fileDownLoad.do?contentId=2995217&mode=save&priority=0",
+            "凉山州发展（控股）集团有限责任公司2024年度信用评级报告",
+            "联合资信评估股份有限公司", "2024-06-28", "PDF第10页表1",
+        ),
+        (
+            "资阳市", "CN-512000", "ZIYANG",
+            "https://file.finance.sina.com.cn/211.154.219.97%3A9494/MRGG/BOND/2024/2024-6/2024-06-01/20405636.PDF",
+            "资阳市凯利建设投资有限责任公司2024年度跟踪评级报告",
+            "中诚信国际信用评级有限责任公司", "2024-06-01", "PDF第6页表1",
+        ),
+    )
+)
+CITY_YEAR_FISCAL_SOURCES += SICHUAN_2023_B2_CITY_FUND_SOURCES
+
 # 2024—2025 年新增的省级/城市批量摘录。摘录文件只保留可由入口页、附件或
 # 精确转载逐项核验的全市值；这里用统一的“城市—年度—字段”接口接入，避免
 # 为每一张省级表重复编写解析器。字段级合并仍由 load_city_year_fiscal_sources
