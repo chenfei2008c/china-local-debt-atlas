@@ -88,6 +88,7 @@ try:
     from scripts.dachuang_city_panel import load_dachuang_city_panel_sources
     from scripts.haidatas_city_panel import HAIDATAS_SOURCE_ID, load_haidatas_city_panel_sources
     from scripts.ceic_city_limit_fund import load_ceic_city_limit_fund_sources
+    from scripts.tuling_fund_preview import PUBLIC_PREVIEW_FUND_SOURCES
     from scripts.hubei_direct_admin_yearbook import HUBEI_DIRECT_ADMIN_YEARBOOK_SOURCES
     from scripts.hubei_direct_admin_2025_bulletins import HUBEI_DIRECT_ADMIN_2025_BULLETIN_SOURCE
     from scripts.hainan_direct_admin_yearbook import HAINAN_DIRECT_ADMIN_YEARBOOK_SOURCES
@@ -155,6 +156,7 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
     from dachuang_city_panel import load_dachuang_city_panel_sources
     from haidatas_city_panel import HAIDATAS_SOURCE_ID, load_haidatas_city_panel_sources
     from ceic_city_limit_fund import load_ceic_city_limit_fund_sources
+    from tuling_fund_preview import PUBLIC_PREVIEW_FUND_SOURCES
     from hubei_direct_admin_yearbook import HUBEI_DIRECT_ADMIN_YEARBOOK_SOURCES
     from hubei_direct_admin_2025_bulletins import HUBEI_DIRECT_ADMIN_2025_BULLETIN_SOURCE
     from hainan_direct_admin_yearbook import HAINAN_DIRECT_ADMIN_YEARBOOK_SOURCES
@@ -10762,6 +10764,7 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
 )
 CITY_YEAR_FISCAL_SOURCES += CURATED_2025_CITY_FISCAL_SOURCES
 CITY_YEAR_FISCAL_SOURCES += tuple(SUPPLEMENTAL_CITY_FISCAL_SOURCES)
+CITY_YEAR_FISCAL_SOURCES += tuple(PUBLIC_PREVIEW_FUND_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(REGIONAL_FISCAL_2024_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(CITY_FISCAL_RATING_2024_2025_SOURCES)
 CITY_YEAR_FISCAL_SOURCES += tuple(DAGONG_CITY_FISCAL_SOURCES)
