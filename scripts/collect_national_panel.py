@@ -6797,6 +6797,34 @@ HUNAN_2022_LHRATINGS_FUND_SOURCES = tuple(
 )
 CITY_YEAR_FUND_SOURCES += HUNAN_2022_LHRATINGS_FUND_SOURCES
 
+# 永州市财政局公开的2022年市级决算报告补录。报告正文明确给出永州市全市
+# 政府性基金收入，采用正式决算值，不使用市本级值或预算预计数。
+YONGZHOU_2022_FUND_SOURCE = {
+    "year": 2022,
+    "city_name": "永州市",
+    "city_id": "CN-431100",
+    "source_doc_id": "SRC-A2-HUNAN-YONGZHOU-FUND-2022-FINAL",
+    "url": "https://czj.yzcity.gov.cn/czj/030701/202403/3b9a5243bf304c8aae482bd595330d7e.shtml",
+    "path": RAW_DIR / "province_fiscal" / "2022" / "official" / "yongzhou_2022_fund_excerpt.txt",
+    "text_path": RAW_DIR / "province_fiscal" / "2022" / "official" / "yongzhou_2022_fund_excerpt.txt",
+    "text_is_curated": True,
+    "document_title": "关于2022年市级决算草案和2023年上半年预算执行情况的报告",
+    "publisher": "永州市财政局",
+    "publisher_level": "市级财政机构",
+    "publication_date": "2024-03",
+    "source_grade": "A2",
+    "source_format": "html",
+    "pattern": r"2022年，全市政府性基金收入([0-9.]+)亿元",
+    "raw_unit": "亿元",
+    "data_status": "final",
+    "data_status_label": "2022年决算数",
+    "document_type": "城市财政决算报告（官方网页）",
+    "page_number": "网页正文：政府性基金决算情况",
+    "page_count": "1",
+    "note": "A2永州市财政局官方决算报告；明确披露2022年永州市全市政府性基金收入270.17亿元，采用全市口径，不使用市本级34.94亿元或预算预计数。",
+}
+CITY_YEAR_FUND_SOURCES += (YONGZHOU_2022_FUND_SOURCE,)
+
 # 吉林篇表7补录吉林市2024年政府性基金收入。表格为全市口径，空白项不填零。
 JILIN_2024_FUND_SOURCE = {
     "year": 2024,
