@@ -7082,6 +7082,63 @@ GUIGANG_2025_FUND_SOURCE = {
 }
 CITY_YEAR_FUND_SOURCES += (GUIGANG_2025_FUND_SOURCE,)
 
+# 珠海市、贵港市 2023 年政府性基金收入精确表格补缺。
+# 两份公开评级报告均以表格逐年列示地级市全市口径；本批只接入当前主表空值，
+# 不把同表中的市本级、债务余额或其他年度数值错配到 2023 年。
+ZHUHAI_2023_FUND_SOURCE = {
+    "year": 2023,
+    "city_name": "珠海市",
+    "city_id": "CN-440400",
+    "source_doc_id": "SRC-B2-GUANGDONG-2023-FUND-CN-440400",
+    "url": "https://www.chinamoney.org.cn/dqs/cm-s-notice-query/fileDownLoad.do?contentId=3361527&mode=save&priority=0",
+    "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "zhuhai_2025_fiscal_rating.pdf",
+    "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "zhuhai_2025_fiscal_rating_excerpt.txt",
+    "document_title": "珠海华发综合发展有限公司2026年跟踪评级报告",
+    "publisher": "联合资信评估股份有限公司（交易所公开披露）",
+    "publisher_level": "交易所公开披露的B2精确表格来源",
+    "publication_date": "2026-06-12",
+    "source_grade": "B2",
+    "source_format": "pdf",
+    "pattern": r"政府性基金收入（亿元）\|\s*(86\.85)\s*\|",
+    "raw_unit": "亿元",
+    "data_status": "reported",
+    "data_status_label": "2023年公开精确值",
+    "document_type": "评级报告地级市经济财政指标表",
+    "page_count": "公开PDF",
+    "note": (
+        "B2精确表格；表3明确列示珠海市全市2023年政府性基金收入86.85亿元，"
+        "不使用图表估读、市本级或区县口径。"
+    ),
+}
+
+GUIGANG_2023_FUND_SOURCE = {
+    "year": 2023,
+    "city_name": "贵港市",
+    "city_id": "CN-450800",
+    "source_doc_id": "SRC-B2-GUANGXI-2023-FUND-CN-450800",
+    "url": "https://www.chinamoney.org.cn/dqs/cm-s-notice-query/fileDownLoad.do?contentId=3362370&mode=save&priority=0",
+    "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "guigang_2025_dongfang_report.pdf",
+    "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "guigang_2025_dongfang_report_excerpt.txt",
+    "document_title": "广西贵港市城市投资发展集团有限公司主体及相关债项2025年度跟踪评级报告",
+    "publisher": "东方金诚国际信用评估有限公司（中国货币网公开披露）",
+    "publisher_level": "评级机构公开披露的精确表格二手来源",
+    "publication_date": "2026-06-12",
+    "source_grade": "B2",
+    "source_format": "pdf",
+    "pattern": r"政府性基金收入\|\s*(40\.54)\s*\|29\.52\|18\.22",
+    "raw_unit": "亿元",
+    "data_status": "reported",
+    "data_status_label": "2023年公开精确值",
+    "document_type": "评级报告地级市经济财政指标表",
+    "page_count": "PDF第16页（图表12）",
+    "note": (
+        "B2精确表格；图表12明确列示贵港市全市2023年政府性基金收入40.54亿元，"
+        "并注明财政数据来自贵港市2023—2025年财政预算执行资料；不使用图表估读、"
+        "市本级或区县口径。"
+    ),
+}
+CITY_YEAR_FUND_SOURCES += (ZHUHAI_2023_FUND_SOURCE, GUIGANG_2023_FUND_SOURCE)
+
 # 梧州市 2025 年政府性基金收入精确表格补缺。
 # 东方金诚公开跟踪评级报告第 3 页同业比较表明确列示梧州市全市 2025 年
 # 政府性基金收入 38.90 亿元；表注说明数据来自各地政府官网公开统计公报、
