@@ -6995,6 +6995,41 @@ JIANGXI_XINYU_2022_FUND_SOURCE = {
 }
 CITY_YEAR_FUND_SOURCES += (JIANGXI_XINYU_2022_FUND_SOURCE,)
 
+# 中证鹏元广西表2补录2022年当前缺口城市；表格明确为各地级行政区全市口径。
+_GUANGXI_2022_CSPENGYUAN_FUND_VALUES = {
+    "百色市": ("CN-451000", "78.12"),
+    "防城港市": ("CN-450600", "30.40"),
+    "来宾市": ("CN-451300", "39.10"),
+}
+GUANGXI_2022_CSPENGYUAN_FUND_SOURCES = tuple(
+    {
+        "year": 2022,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-CSPENGYUAN-GUANGXI-FUND-2022-{city_id}",
+        "url": "https://static.sse.com.cn/disclosure/announcement/corporate/c/new/2023-06-28/152069_20230628_KCN8.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "guangxi_2022_cspengyuan_fund_exact_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "guangxi_2022_cspengyuan_fund_exact_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2018年第一期、第二期广西东投集团有限公司跟踪评级报告",
+        "publisher": "中证鹏元资信评估股份有限公司",
+        "publisher_level": "专业评级机构（精确表格二手来源）",
+        "publication_date": "2023-06-28",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": rf"{re.escape(city_name)}\s*\|\s*[^|]+\|\s*[^|]+\|\s*[^|]+\|\s*[^|]+\|\s*({re.escape(value)})",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": "2022年全市政府性基金收入公开精确值",
+        "document_type": "评级报告地级市经济财政指标精确表",
+        "page_number": "PDF第8页表2",
+        "page_count": "26",
+        "note": "B2中证鹏元表2精确列示2022年广西各地级行政区全市政府性基金收入；资料来源为各市全市与本级预算执行报告，中证鹏元整理，不使用市本级或区县数。",
+    }
+    for city_name, (city_id, value) in _GUANGXI_2022_CSPENGYUAN_FUND_VALUES.items()
+)
+CITY_YEAR_FUND_SOURCES += GUANGXI_2022_CSPENGYUAN_FUND_SOURCES
+
 # 广西柳州、玉林、南宁 2022—2025 年政府性基金收入精确表格批次。
 # 柳州 2025 年使用 2026 年度跟踪评级报告，其余年份使用含明确三年序列的
 # 公开评级报告；玉林、南宁只接入报告明确列示的全市年度值。
