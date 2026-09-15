@@ -980,6 +980,42 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
     ]
 )
 
+OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
+    [
+        {
+            "source_doc_id": "SRC-PROVINCE-DEBT-SHAANXI-2022-MOF",
+            "province_name": "陕西省",
+            "year": 2022,
+            "path": RAW_DIR / "2022" / "official" / "shaanxi_2022_mof_budget.pdf",
+            "text_path": RAW_DIR / "2022" / "official" / "shaanxi_2022_mof_budget.txt",
+            "source_url": "https://www.mof.gov.cn/zhuantihuigu/2023ysbghb/202302/P020230214612503171187.pdf",
+            "document_title": "2022年陕西省地方政府债务限额和余额情况表（官方预算公开附件）",
+            "publication_date": "2023-02-14",
+            "publisher": "陕西省财政厅",
+            "source_grade": "A1",
+            "unit": "亿元",
+            "components": [
+                {
+                    "component": "general",
+                    "layout": "component2",
+                    "start": "2022年一般债务限额和余额情况表",
+                    "end": "2022年专项债务限额和余额情况表",
+                    "start_occurrence": 2,
+                },
+                {
+                    "component": "special",
+                    "layout": "component2",
+                    "start": "2022年专项债务限额和余额情况表",
+                    "end": None,
+                    "start_occurrence": 2,
+                },
+            ],
+            "table_name": "2022年陕西省地方政府债务限额和余额情况表",
+            "note": "财政部预算公开资料中的陕西省官方预算附件；表六和表二十三分别列示全市一般/专项债务限额、余额，按全市地级行政单元口径接入；省级、合计、杨凌示范区不写入地级市目标行。",
+        },
+    ]
+)
+
 OFFICIAL_PROVINCE_DEBT_SOURCES.append(
     {
         "source_doc_id": "SRC-A1-XUCHANG-CITY-DEBT-LIMIT-2023",
