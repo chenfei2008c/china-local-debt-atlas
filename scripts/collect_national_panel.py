@@ -7167,6 +7167,35 @@ GUANGXI_2022_THREE_CITY_FUND_SOURCES[1]["publisher"] = "东方金诚国际信用
 GUANGXI_2022_THREE_CITY_FUND_SOURCES[1]["page_number"] = "PDF第4页同业比较表"
 CITY_YEAR_FUND_SOURCES += GUANGXI_2022_THREE_CITY_FUND_SOURCES
 
+# 六盘水市 2024 年政府性基金收入精确补缺。公开评级报告明确列示
+# 2024 年全市政府性基金预算收入 201.83 亿元，采用全市口径，不使用市本级数。
+CITY_YEAR_FUND_SOURCES += (
+    {
+        "year": 2024,
+        "city_name": "六盘水市",
+        "city_id": "CN-520200",
+        "source_doc_id": "SRC-B2-QIXIN-LIUPANSHUI-FUND-2024",
+        "url": "https://qxb-pdf-osscache.qixin.com/AnBaseinfo/44fb09c52445a31e938e35fa3beffdeb.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "liupanshui_2024_fund_rating_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "liupanshui_2024_fund_rating_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "六盘水交投相关债项2025年度跟踪评级报告",
+        "publisher": "公开评级报告（引用六盘水市财政公开资料）",
+        "publisher_level": "专业评级机构（精确表格/段落二手来源）",
+        "publication_date": "2025-01-01",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": r"全市政府性基金预算收入完成(201\.83)亿元",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2024年执行数（B2精确段落）",
+        "document_type": "评级报告地级市财政收支精确段落",
+        "page_number": "报告财政收支段落",
+        "page_count": "公开PDF",
+        "note": "B2公开评级报告精确披露2024年六盘水市全市政府性基金预算收入201.83亿元；同时列示一般公共预算收入和土地出让收入，行政范围明确为全市。",
+    },
+)
+
 # 广西柳州、玉林、南宁 2022—2025 年政府性基金收入精确表格批次。
 # 柳州 2025 年使用 2026 年度跟踪评级报告，其余年份使用含明确三年序列的
 # 公开评级报告；玉林、南宁只接入报告明确列示的全市年度值。
