@@ -6967,6 +6967,34 @@ JIANGXI_FUND_SOURCES = tuple(
 )
 CITY_YEAR_FUND_SOURCES += JIANGXI_FUND_SOURCES
 
+# 中证鹏元报告表4补录新余市2022年全市政府性基金收入。报告给出
+# 2024—2022年连续精确值，且明确资料来源为新余市政府网站；只接入当前缺口的2022年。
+JIANGXI_XINYU_2022_FUND_SOURCE = {
+    "year": 2022,
+    "city_name": "新余市",
+    "city_id": "CN-360500",
+    "source_doc_id": "SRC-B2-CSPENGYUAN-JIANGXI-XINYU-FUND-2022",
+    "url": "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2025-07-29/152868_20250729_VT2I.pdf",
+    "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "jiangxi_xinyu_2022_fund_excerpt.txt",
+    "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "jiangxi_xinyu_2022_fund_excerpt.txt",
+    "text_is_curated": True,
+    "document_title": "新余市城市建设投资开发有限公司相关债项2025年度跟踪评级报告",
+    "publisher": "中证鹏元资信评估股份有限公司",
+    "publisher_level": "专业评级机构（精确表格二手来源）",
+    "publication_date": "2025-07-29",
+    "source_grade": "B2",
+    "source_format": "pdf",
+    "pattern": r"政府性基金收入\s*\|\s*56\.00\s*\|\s*51\.63\s*\|\s*([0-9.]+)",
+    "raw_unit": "亿元",
+    "data_status": "reported",
+    "data_status_label": "2022年全市政府性基金收入公开精确值",
+    "document_type": "评级报告地级市经济财政指标精确表",
+    "page_number": "PDF第8页表4",
+    "page_count": "20",
+    "note": "B2中证鹏元报告表4精确列示2022年新余市全市政府性基金收入71.55亿元；资料来源注明为新余市政府网站，不使用市本级或区县数。",
+}
+CITY_YEAR_FUND_SOURCES += (JIANGXI_XINYU_2022_FUND_SOURCE,)
+
 # 广西柳州、玉林、南宁 2022—2025 年政府性基金收入精确表格批次。
 # 柳州 2025 年使用 2026 年度跟踪评级报告，其余年份使用含明确三年序列的
 # 公开评级报告；玉林、南宁只接入报告明确列示的全市年度值。
