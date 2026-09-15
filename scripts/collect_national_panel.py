@@ -7030,6 +7030,58 @@ GUANGXI_2022_CSPENGYUAN_FUND_SOURCES = tuple(
 )
 CITY_YEAR_FUND_SOURCES += GUANGXI_2022_CSPENGYUAN_FUND_SOURCES
 
+# 东方金诚两份广西地市跟踪评级报告补录贵港、钦州2022年全市政府性基金收入。
+_GUANGXI_2022_DF_FUND_VALUES = {
+    "贵港市": {
+        "city_id": "CN-450800",
+        "value": "46.89",
+        "url": "https://static.sse.com.cn/disclosure/announcement/corporate/c/new/2024-06-27/184117_20240627_EGWW.pdf",
+        "document_title": "广西贵港市城市投资发展集团有限公司2024年度跟踪评级报告",
+        "publication_date": "2024-06-27",
+        "page_number": "PDF第15页图表12",
+        "source_doc_id": "SRC-B2-DFRATINGS-GUIGANG-FUND-2022",
+        "note": "B2东方金诚图表12精确列示2022年贵港市全市政府性基金收入46.89亿元；来源注明为贵港市2021—2023年预算执行情况。",
+    },
+    "钦州市": {
+        "city_id": "CN-450700",
+        "value": "86.02",
+        "url": "https://www.dfratings.com/uploads/files/2024/0729/TdabgBPVs8G4CoVgokvSmxqpWofy0IMLz3b6zaRr.pdf",
+        "document_title": "钦州市滨海新城投资集团有限公司2024年度跟踪评级报告",
+        "publication_date": "2024-07-29",
+        "page_number": "PDF第12页图表13",
+        "source_doc_id": "SRC-B2-DFRATINGS-QINZHOU-FUND-2022",
+        "note": "B2东方金诚图表13精确列示2022年钦州市全市政府性基金收入86.02亿元；来源注明为钦州市2021—2023年预算执行情况。",
+    },
+}
+GUANGXI_2022_DF_FUND_SOURCES = tuple(
+    {
+        "year": 2022,
+        "city_name": city_name,
+        "city_id": meta["city_id"],
+        "source_doc_id": meta["source_doc_id"],
+        "url": meta["url"],
+        "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "guangxi_guigang_qinzhou_2022_fund_exact_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "guangxi_guigang_qinzhou_2022_fund_exact_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": meta["document_title"],
+        "publisher": "东方金诚国际信用评估有限公司",
+        "publisher_level": "专业评级机构（精确表格二手来源）",
+        "publication_date": meta["publication_date"],
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": rf"{re.escape(city_name)}.*政府性基金收入\s*\|\s*[^|]+\s*\|\s*({re.escape(meta['value'])})",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": "2022年全市政府性基金收入公开精确值",
+        "document_type": "评级报告地级市财政收支精确表",
+        "page_number": meta["page_number"],
+        "page_count": "公开PDF",
+        "note": meta["note"],
+    }
+    for city_name, meta in _GUANGXI_2022_DF_FUND_VALUES.items()
+)
+CITY_YEAR_FUND_SOURCES += GUANGXI_2022_DF_FUND_SOURCES
+
 # 广西柳州、玉林、南宁 2022—2025 年政府性基金收入精确表格批次。
 # 柳州 2025 年使用 2026 年度跟踪评级报告，其余年份使用含明确三年序列的
 # 公开评级报告；玉林、南宁只接入报告明确列示的全市年度值。
