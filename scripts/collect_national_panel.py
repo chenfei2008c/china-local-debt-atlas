@@ -7082,6 +7082,91 @@ GUANGXI_2022_DF_FUND_SOURCES = tuple(
 )
 CITY_YEAR_FUND_SOURCES += GUANGXI_2022_DF_FUND_SOURCES
 
+# 广西 2022 年政府性基金收入精确表格补录：崇左、梧州、河池。
+# 三份公开评级报告均明确列示全市口径和 2022 年数值；仅接入当前缺口，
+# 不把评级报告中的市本级或区县数替代为全市收入。
+GUANGXI_2022_THREE_CITY_FUND_SOURCES = (
+    {
+        "year": 2022,
+        "city_name": "崇左市",
+        "city_id": "CN-451400",
+        "source_doc_id": "SRC-B2-DFRATINGS-CHONGZUO-FUND-2022",
+        "url": "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2023-06-28/152486_20230628_AHAR.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "guangxi_2022_chongzuo_fund_exact_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "guangxi_2022_chongzuo_fund_exact_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "广西崇左市城市建设投资发展集团有限公司主体及相关债项2023年度跟踪评级报告",
+        "publisher": "东方金诚国际信用评估有限公司",
+        "publisher_level": "专业评级机构（精确表格二手来源）",
+        "publication_date": "2023-06-28",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": r"政府性基金收入\s*\|\s*68\.05\s*\|\s*76\.91\s*\|\s*(33\.09)",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": "2022年全市政府性基金收入公开精确值",
+        "document_type": "评级报告地级市财政收支精确表",
+        "page_number": "PDF第16页图表13",
+        "page_count": "21",
+        "note": "B2东方金诚图表13精确列示2022年崇左市全市政府性基金收入33.09亿元；来源注明为崇左市2020—2022年财政预算执行，不使用市本级或区县数。",
+    },
+    {
+        "year": 2022,
+        "city_name": "梧州市",
+        "city_id": "CN-450400",
+        "source_doc_id": "SRC-B2-CSPENGYUAN-WUZHOU-FUND-2022",
+        "url": "https://www.cspengyuan.com/pengyuancmscn/rating-announcement/rating-infor/wuzhouchengshijianshe/2019-Wuzhou-Urban-Construction-Special-Bond-Credit-Rating/20230628234346712/2018%E5%B9%B4%E7%AC%AC%E4%B8%80%E6%9C%9F%E3%80%812019%E5%B9%B4%E7%AC%AC%E4%B8%80%E6%9C%9F%E6%A2%A7%E5%B7%9E%E5%B8%82%E5%9F%8E%E5%B8%82%E5%BB%BA%E8%AE%BE%E6%8A%95%E8%B5%84%E5%BC%80%E5%8F%91%E6%9C%89%E9 限公司%E5%9F%8E%E5%B8%82%E5%9C%B0%E4%B8%8B%E7%BB%BC%E5%90%88%E7%AE%A1%E5%BB%8A%E5%BB%BA%E8%AE%BE%E4%B8%93%E9%A1%B9%E5%80%BA%E5%88%B82023%E5%B9%B4%E8%B7踪评级报告.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "guangxi_2022_wuzhou_fund_exact_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "guangxi_2022_wuzhou_fund_exact_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "梧州市城市建设投资开发有限公司城市地下综合管廊建设专项债券2023年跟踪评级报告",
+        "publisher": "中证鹏元资信评估股份有限公司",
+        "publisher_level": "专业评级机构（精确表格二手来源）",
+        "publication_date": "2023-06-28",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": r"梧州市｜2022年｜政府性基金收入｜(46\.19)",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": "2022年全市政府性基金收入公开精确值",
+        "document_type": "评级报告地级市经济财政指标精确表",
+        "page_number": "PDF表2",
+        "page_count": "公开PDF",
+        "note": "B2中证鹏元表2精确列示2022年梧州市全市政府性基金收入46.19亿元，采用全市口径。",
+    },
+    {
+        "year": 2022,
+        "city_name": "河池市",
+        "city_id": "CN-451200",
+        "source_doc_id": "SRC-B2-CSPENGYUAN-HECHI-FUND-2022",
+        "url": "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2023-06-26/139274_20230626_F1SN.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "guangxi_2022_hechi_fund_exact_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "guangxi_2022_hechi_fund_exact_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2016年河池市国有资产投资经营有限责任公司公司债券2023年跟踪评级报告",
+        "publisher": "中证鹏元资信评估股份有限公司",
+        "publisher_level": "专业评级机构（精确表格二手来源）",
+        "publication_date": "2023-06-26",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": r"河池市｜2022年｜政府性基金收入｜(32\.72)",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": "2022年全市政府性基金收入公开精确值",
+        "document_type": "评级报告地级市经济财政指标精确表",
+        "page_number": "PDF第8页表2",
+        "page_count": "26",
+        "note": "B2中证鹏元表2精确列示2022年河池市全市政府性基金收入32.72亿元，采用全市口径。",
+    },
+)
+# 梧州条目的精确表格同时出现在东方金诚公开报告的同业比较表中；将运行时
+# 来源统一到可稳定访问的公开 PDF，避免历史文件名中的非标准字符影响追溯。
+GUANGXI_2022_THREE_CITY_FUND_SOURCES[1]["url"] = "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2023-06-28/152486_20230628_AHAR.pdf"
+GUANGXI_2022_THREE_CITY_FUND_SOURCES[1]["document_title"] = "广西崇左市城市建设投资发展集团有限公司主体及相关债项2023年度跟踪评级报告（同业比较表）"
+GUANGXI_2022_THREE_CITY_FUND_SOURCES[1]["publisher"] = "东方金诚国际信用评估有限公司"
+GUANGXI_2022_THREE_CITY_FUND_SOURCES[1]["page_number"] = "PDF第4页同业比较表"
+CITY_YEAR_FUND_SOURCES += GUANGXI_2022_THREE_CITY_FUND_SOURCES
+
 # 广西柳州、玉林、南宁 2022—2025 年政府性基金收入精确表格批次。
 # 柳州 2025 年使用 2026 年度跟踪评级报告，其余年份使用含明确三年序列的
 # 公开评级报告；玉林、南宁只接入报告明确列示的全市年度值。
