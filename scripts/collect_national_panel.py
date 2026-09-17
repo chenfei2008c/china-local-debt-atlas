@@ -12444,6 +12444,37 @@ CITY_YEAR_FISCAL_SOURCES += tuple(
     _make_curated_city_source(**spec) for spec in _CURATED_2025_PRIORITY_CITY_SPECS
 )
 
+# 河源市 2025 年政府性基金预算收入：官方预算报告给出全市口径精确值，
+# 但属于预算数而非年度执行数，按 budget 状态接入，不与后续决算数混淆。
+CITY_YEAR_FISCAL_SOURCES += (
+    _make_curated_city_source(
+        year=2025,
+        city_name="河源市",
+        city_id="CN-441600",
+        source_doc_id="SRC-A2-GUANGDONG-HEYUAN-FUND-BUDGET-2025",
+        url="https://www.heyuan.gov.cn/hysczj/attachment/0/97/97164/641763.pdf",
+        path=RAW_DIR / "province_fiscal" / "2025" / "official" / "heyuan_2025_fund_budget_excerpt.txt",
+        document_title="2025年河源市本级政府预算公开",
+        publisher="河源市财政局",
+        publisher_level="市级财政机构",
+        publication_date="2025-02-01",
+        source_grade="A2",
+        fields=("gov_fund_revenue_100m",),
+        raw_unit="万元",
+        raw_units={"gov_fund_revenue_100m": "万元"},
+        custom_patterns={
+            "gov_fund_revenue_100m": r"城市=河源市｜年度=2025｜政府性基金预算收入=([0-9.,-]+)万元",
+        },
+        source_format="pdf",
+        data_status="budget",
+        data_status_label="2025年预算数（非执行数）",
+        document_type="城市财政预算报告（官方PDF）",
+        page_number="PDF第6页；印刷页码第4页；全市口径",
+        source_locator="heyuan_2025_fund_budget_excerpt.txt；官方预算报告正文；城市=河源市；年度=2025；全市口径",
+        note="A2河源市财政局官方预算报告；正文明确列示预计2025年全市政府性基金预算收入875237万元，换算为87.5237亿元；登记为预算数，不冒充执行数，也不使用市本级369629万元。",
+    ),
+)
+
 # 四字段重点补缺批次：2024—2025 年优先接入能够明确定位全市（州）GDP、增速和
 # 一般公共预算收支的城市公报。来源等级按入口可回溯性区分；正式决算优先于执行数，
 # 财政口径不明确的“全口径财政收入”“地方级财政收入”不写入一般预算收入字段。
