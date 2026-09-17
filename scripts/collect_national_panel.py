@@ -8988,6 +8988,41 @@ INNER_MONGOLIA_2022_CITY_FUND_SOURCES = tuple(
 )
 CITY_YEAR_FUND_SOURCES += INNER_MONGOLIA_2022_CITY_FUND_SOURCES
 
+# 河南省 2024 年鹤壁、周口全市政府性基金收入。两条均为公开评级报告
+# 的精确财政表格值，仅补空，不覆盖已有来源。
+HENAN_2024_CITY_FUND_VALUES = {
+    "鹤壁市": ("CN-410600", "30.88", "https://www.cspengyuan.com/api/files/695fd80cbe22fa0776b8c067", "SRC-B2-HENAN-HEBI-CITY-FUND-2024"),
+    "周口市": ("CN-411600", "79.64", "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2025-06-19/152969_20250619_7GZR.pdf", "SRC-B2-HENAN-ZHOUKOU-CITY-FUND-2024"),
+}
+HENAN_2024_CITY_FUND_SOURCES = tuple(
+    {
+        "year": 2024,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": source_doc_id,
+        "url": url,
+        "path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "henan_2024_city_fund_exact_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "henan_2024_city_fund_exact_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "河南省地级市2024年政府性基金收入公开评级表格",
+        "publisher": "中证鹏元资信评估股份有限公司/联合资信评估股份有限公司",
+        "publisher_level": "专业评级机构公开报告",
+        "publication_date": "2025-06-19",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": rf"城市={re.escape(city_name)}｜年度=2024｜政府性基金收入=([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": "2024年全市政府性基金收入报告数",
+        "document_type": "评级报告精确财政表格",
+        "page_number": "区域经济财政指标表；城市行精确值",
+        "page_count": "",
+        "note": "B2公开评级报告精确表格；全市口径；不使用图表估读、不使用市本级或区县口径。",
+    }
+    for city_name, (city_id, value, url, source_doc_id) in HENAN_2024_CITY_FUND_VALUES.items()
+)
+CITY_YEAR_FUND_SOURCES += HENAN_2024_CITY_FUND_SOURCES
+
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
