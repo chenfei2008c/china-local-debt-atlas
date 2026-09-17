@@ -8952,6 +8952,42 @@ HEILONGJIANG_2023_CITY_FUND_SOURCES = tuple(
 )
 CITY_YEAR_FUND_SOURCES += HEILONGJIANG_2023_CITY_FUND_SOURCES
 
+# 内蒙古自治区下辖盟市 2022 年政府性基金预算收入。公开报告正文给出
+# 精确的全市/全盟数值；呼和浩特市同值已在既有官方来源中存在，不重复接入。
+INNER_MONGOLIA_2022_CITY_FUND_VALUES = {
+    "鄂尔多斯市": ("CN-150600", "60.13"),
+    "包头市": ("CN-150200", "50.67"),
+    "锡林郭勒盟": ("CN-152500", "51.52"),
+}
+INNER_MONGOLIA_2022_CITY_FUND_SOURCES = tuple(
+    {
+        "year": 2022,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-INNER-MONGOLIA-CITY-FUND-2022-{city_id[3:]}",
+        "url": "https://www.fxbaogao.com/detail/4085556",
+        "path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "inner_mongolia_2022_city_fund_rating_exact_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2022" / "secondary" / "inner_mongolia_2022_city_fund_rating_exact_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2023内蒙古自治区及下辖各盟市经济财政实力与债务研究",
+        "publisher": "上海新世纪资信评估投资服务有限公司",
+        "publisher_level": "专业评级机构公开报告转载页",
+        "publication_date": "2023-12-27",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": rf"城市={re.escape(city_name)}｜年度=2022｜政府性基金收入=([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": "2022年全市/全盟政府性基金预算收入报告数",
+        "document_type": "区域经济财政实力与债务研究报告精确财政文字",
+        "page_number": "报告正文“财政实力”部分；政府性基金预算收入段落",
+        "page_count": "",
+        "note": "B2公开报告正文精确列示全市/全盟口径；本批数值不是图表估读，不重复覆盖呼和浩特市已有55.36亿元。",
+    }
+    for city_name, (city_id, value) in INNER_MONGOLIA_2022_CITY_FUND_VALUES.items()
+)
+CITY_YEAR_FUND_SOURCES += INNER_MONGOLIA_2022_CITY_FUND_SOURCES
+
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
