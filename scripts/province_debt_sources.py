@@ -18168,3 +18168,31 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
         },
     ]
 )
+
+
+# 丽江市财政局官方预算附件中的 2025 年全市债务限额表。原始 Excel
+# 表四十八同时列示全市及市本级、区县分解行；这里只接入“丽江市”全市行，
+# 余额继续由已有独立来源提供，不用限额表反推余额。
+OFFICIAL_PROVINCE_DEBT_SOURCES.append(
+    {
+        "source_doc_id": "SRC-A2-DEBT-YUNNAN-LIJIANG-2025-LIMIT",
+        "province_name": "云南省",
+        "year": 2025,
+        "path": ROOT / "raw" / "province_fiscal" / "2025" / "official" / "lijiang_2025_budget_attachment.xlsx",
+        "text_path": RAW_DIR / "2025" / "official" / "lijiang_2025_debt_limit.txt",
+        "source_url": "https://www.lijiang.gov.cn/ljsrmzf/c102171/202602/563a29840543411a84a8a934a27f9cc2.shtml",
+        "attachment_url": "https://www.lijiang.gov.cn/ljsrmzf/c102171/202602/563a29840543411a84a8a934a27f9cc2/files/3ee51c32d0444e26a516385e99529b9e.xlsx",
+        "document_title": "关于丽江市2025年地方财政预算执行情况和2026年地方财政预算草案的报告附件1——表四十八",
+        "publication_date": "2026-02-13",
+        "publisher": "丽江市财政局",
+        "publisher_level": "市级财政机构",
+        "source_grade": "A2",
+        "unit": "亿元",
+        "layout": "limit3",
+        "start": "丽江市 486.6591 161.5791 325.08",
+        "end": None,
+        "table_name": "丽江市2025年地方政府债务限额分地区情况表",
+        "data_status": "final",
+        "note": "丽江市财政局官方预算公开 Excel 附件表四十八明确列示 2025 年全市政府债务限额合计 486.6591 亿元，其中一般债务 161.5791 亿元、专项债务 325.08 亿元；只采集全市行，排除市本级和区县分解行，余额由独立来源保留。",
+    }
+)
