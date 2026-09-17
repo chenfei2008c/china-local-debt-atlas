@@ -8916,6 +8916,42 @@ CITY_YEAR_FUND_SOURCES += (
     },
 )
 
+# 黑龙江省及下辖各市（地区）2023年政府性基金收入。来源报告正文给出
+# 精确数字和全市/全区范围；不从图表目测，不覆盖已有的绥化、大庆值。
+HEILONGJIANG_2023_CITY_FUND_VALUES = {
+    "哈尔滨市": ("CN-230100", "51.4"),
+    "齐齐哈尔市": ("CN-230200", "14.5"),
+    "大兴安岭地区": ("CN-232700", "1.0"),
+}
+HEILONGJIANG_2023_CITY_FUND_SOURCES = tuple(
+    {
+        "year": 2023,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-HEILONGJIANG-CITY-FUND-2023-{city_id[3:]}",
+        "url": "https://pdf.dfcfw.com/pdf/H3_AP202412041641173680_1.pdf?1733319459000.pdf=",
+        "path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "hlj_2023_city_fund_rating_exact_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "hlj_2023_city_fund_rating_exact_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "黑龙江省及下辖各市（地区）经济财政实力与债务研究（2024）",
+        "publisher": "上海新世纪资信评估投资服务有限公司",
+        "publisher_level": "专业评级机构公开报告",
+        "publication_date": "2024-12-04",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": rf"城市={re.escape(city_name)}｜年度=2023｜政府性基金收入=([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": "2023年全市/全区政府性基金收入报告数",
+        "document_type": "区域经济财政实力与债务研究报告精确财政文字",
+        "page_number": "PDF第19—20页；图表24前正文",
+        "page_count": "35",
+        "note": "B2公开报告正文精确列示全市/全区口径；本批数值不是图表估读，不覆盖已有值。",
+    }
+    for city_name, (city_id, value) in HEILONGJIANG_2023_CITY_FUND_VALUES.items()
+)
+CITY_YEAR_FUND_SOURCES += HEILONGJIANG_2023_CITY_FUND_SOURCES
+
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
