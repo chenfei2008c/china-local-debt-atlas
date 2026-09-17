@@ -18,6 +18,12 @@ GRADE_RANK = {"A1": 5, "A2": 4, "B1": 3, "B2": 2, "C": 1, "D": 0}
 
 
 CITY_IDS = {
+    # 黑龙江
+    "哈尔滨市": "CN-230100", "齐齐哈尔市": "CN-230200", "鸡西市": "CN-230300",
+    "鹤岗市": "CN-230400", "双鸭山市": "CN-230500", "大庆市": "CN-230600",
+    "伊春市": "CN-230700", "佳木斯市": "CN-230800", "七台河市": "CN-230900",
+    "牡丹江市": "CN-231000", "黑河市": "CN-231100", "绥化市": "CN-231200",
+    "大兴安岭地区": "CN-232700",
     # 甘肃
     "兰州市": "CN-620100", "嘉峪关市": "CN-620200", "金昌市": "CN-620300",
     "白银市": "CN-620400", "天水市": "CN-620500", "武威市": "CN-620600",
@@ -366,6 +372,48 @@ SOURCE_SPECS = {
         "page_number": "PDF第9页表5",
         "note": "B2精确表格；表5为2024年贵州省各地级市（州）GDP、GDP增速和年末常住人口，均为全市/全州口径；不使用报告图表中的财政估读值。",
     },
+    "SRC-A2-HEILONGJIANG-HEGANG-FUND-2022": {
+        "year": 2022,
+        "path": "raw/province_fiscal/2022/official/hegang_2022_fund_excerpt.txt",
+        "text_path": "raw/province_fiscal/2022/official/hegang_2022_fund_excerpt.txt",
+        "url": "https://www.hgns.gov.cn/hegang/szfyjs/202311/1031/files/2022%E5%B9%B4%E9%B9%A4%E5%B2%97%E5%B8%82%E6%94%BF%E5%BA%9C%E5%8F%8A%E5%B8%82%E6%9C%AC%E7%BA%A7%E6%94%BF%E5%BA%9C%E5%86%B3%E7%AE%97%E5%85%AC%E5%BC%80.pdf",
+        "title": "2022年鹤岗市和市本级财政决算",
+        "publisher": "鹤岗市财政局/鹤岗市人民政府",
+        "publication_date": "2023-11-01",
+        "page_number": "政府性基金预算收支总表、政府性基金预算收入决算表",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "data_status": "final",
+        "note": "A2官方财政决算；摘录明确为鹤岗市全市口径，53,005万元折算为5.3005亿元。",
+    },
+    "SRC-A2-HEILONGJIANG-YICHUN-FUND-2022": {
+        "year": 2022,
+        "path": "raw/province_fiscal/2022/official/yichun_2022_fund_excerpt.txt",
+        "text_path": "raw/province_fiscal/2022/official/yichun_2022_fund_excerpt.txt",
+        "url": "https://www.yc.gov.cn/ycsrmzf/c102038/202304/303199/files/1-%E5%85%B3%E4%BA%8E%E4%BC%8A%E6%98%A5%E5%B8%822022%E5%B9%B4%E9%A2%84%E7%AE%97%E6%89%A7%E8%A1%8C%E6%83%85%E5%86%B5%E5%92%8C2023%E5%B9%B4%E9%A2%84%E7%AE%97%28%E8%8D%89%E6%A1%88%29%E7%9A%84%E6%8A%A5%E5%91%8A.pdf",
+        "title": "关于伊春市2022年预算执行情况和2023年预算（草案）的报告",
+        "publisher": "伊春市财政局/伊春市人民政府",
+        "publication_date": "2023-04-01",
+        "page_number": "政府性基金预算完成情况",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "data_status": "execution",
+        "note": "A2官方预算执行报告；摘录明确为伊春市全市口径，基金收入完成1.6亿元。",
+    },
+    "SRC-A2-HEILONGJIANG-JIXI-FUND-2022": {
+        "year": 2022,
+        "path": "raw/province_fiscal/2022/official/jixi_2022_fund_excerpt.txt",
+        "text_path": "raw/province_fiscal/2022/official/jixi_2022_fund_excerpt.txt",
+        "url": "https://www.jixi.gov.cn/jixi/c100484e/202310/272615/files/2022%E5%B9%B4%E9%B8%A1%E8%A5%BF%E5%B8%82%E5%85%A8%E5%B8%82%E5%92%8C%E5%B8%82%E6%9C%AC%E7%BA%A7%E8%B4%A2%E6%94%BF%E5%86%B3%E7%AE%97-20231010135522680.pdf",
+        "title": "2022年鸡西市全市和市本级财政决算",
+        "publisher": "鸡西市财政局/鸡西市人民政府",
+        "publication_date": "2023-10-01",
+        "page_number": "第20页表2.1、第64页表2.9",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "data_status": "final",
+        "note": "A2官方财政决算；第20页表2.1全市政府性基金预算收入决算数43,676万元，折算为4.3676亿元。",
+    },
 }
 
 
@@ -645,6 +693,10 @@ for city, gdp, growth, pop in [
 ]:
     ROWS.append(_r("SRC-B2-GUIZHOU-REGIONAL-MACRO-2024", city, 2024, gdp_current_100m=gdp, gdp_real_growth_pct=growth, resident_population_10k=pop))
 
+ROWS.append(_r("SRC-A2-HEILONGJIANG-HEGANG-FUND-2022", "鹤岗市", 2022, gov_fund_revenue_100m="5.3005"))
+ROWS.append(_r("SRC-A2-HEILONGJIANG-YICHUN-FUND-2022", "伊春市", 2022, gov_fund_revenue_100m="1.6"))
+ROWS.append(_r("SRC-A2-HEILONGJIANG-JIXI-FUND-2022", "鸡西市", 2022, gov_fund_revenue_100m="4.3676"))
+
 
 def _merge(values: dict[tuple[str, str], dict[str, Any]], key: tuple[str, str], candidate: dict[str, Any]) -> None:
     prior = values.get(key)
@@ -700,10 +752,10 @@ def load_regional_fiscal_sources(root: Path) -> tuple[dict[tuple[str, str], dict
         for row in rows_by_source.get(source_doc_id, []):
             candidate: dict[str, Any] = {
                 "source_doc_id": source_doc_id,
-                "source_grade": SOURCE_GRADE,
-                "source_format": "pdf",
-                "data_status": "execution",
-                "data_status_label": f"{row['year']}年执行数（评级报告精确表格）",
+                "source_grade": str(spec.get("source_grade", SOURCE_GRADE)),
+                "source_format": str(spec.get("source_format", "pdf")),
+                "data_status": str(spec.get("data_status", "execution")),
+                "data_status_label": f"{row['year']}年{('决算数' if spec.get('data_status') == 'final' else '执行数')}（官方全市财政资料）",
                 "source_locator": f"{spec['text_path']}；{spec['page_number']}；城市={row['city_name']}；年份={row['year']}；行政范围=全市/全州",
                 "table_name": spec["page_number"],
                 "page_number": spec["page_number"],
@@ -721,7 +773,7 @@ def load_regional_fiscal_sources(root: Path) -> tuple[dict[tuple[str, str], dict
         sources.append({
             "source_doc_id": source_doc_id,
             "publisher": spec["publisher"],
-            "publisher_level": "评级机构公开披露精确表格",
+            "publisher_level": "官方财政资料" if str(spec.get("source_grade", SOURCE_GRADE)) in {"A1", "A2"} else "评级机构公开披露精确表格",
             "document_title": spec["title"],
             "title_source": "rating_report_table",
             "attachment_title": pdf_path.name,
@@ -732,7 +784,7 @@ def load_regional_fiscal_sources(root: Path) -> tuple[dict[tuple[str, str], dict
             "canonical_url": spec["url"],
             "final_resolved_url": spec["url"],
             "file_name": pdf_path.name,
-            "mime_type": "application/pdf",
+            "mime_type": "application/pdf" if str(spec.get("source_format", "pdf")) == "pdf" else "text/plain",
             "publication_date": spec["publication_date"],
             "publication_date_raw": spec["publication_date"],
             "period_end": f"{spec['year']}-12-31",
@@ -742,7 +794,7 @@ def load_regional_fiscal_sources(root: Path) -> tuple[dict[tuple[str, str], dict
             "archive_backend": "internal_object",
             "archive_path": spec["path"],
             "page_count": "",
-            "source_grade": SOURCE_GRADE,
+            "source_grade": str(spec.get("source_grade", SOURCE_GRADE)),
             "http_status": "200",
             "access_status": "公开PDF已归档；表格行已人工核对",
             "supersedes_doc_id": "",

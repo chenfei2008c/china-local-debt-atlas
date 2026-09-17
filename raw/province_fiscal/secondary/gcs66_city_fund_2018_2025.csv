@@ -1,0 +1,2 @@
+﻿city_id,city_name_cn,province_name,metric_year,gov_fund_revenue_100m,gov_fund_revenue_raw_100m,gov_fund_revenue_raw_unit,data_status,value_origin,source_doc_id,source_url,document_title,archive_path,evidence_excerpt,source_grade
+CN-230500,双鸭山市,黑龙江省,2022,4.0,4.0,亿元,execution,disclosed,SRC-SECONDARY-GCS66-FUND-42E6CA88E7D2,https://www.gcs66.com/document_detail/106379.html,（黑龙江省）关于双鸭山市2021年财政预算执行情况和2022年财政预算（草案）的报告,raw/province_fiscal/secondary/gcs66_fund/shuangyashan_2022_fund_excerpt.txt,全市政府性基金预算收入完成4.0亿元，同比增长42.5%,B2

@@ -74,6 +74,36 @@ FUND_10K = {
 
 SUPPLEMENTAL_CITY_FISCAL_SOURCES: list[dict[str, Any]] = [
     _spec(
+        file_name="lhasa_2025_fiscal_execution_excerpt.txt",
+        city_name="拉萨市", city_id="CN-540100", fields=FUND_100M,
+        grade="A2", publisher="拉萨市财政局",
+        document_title="2025年我市财政收支再创历史新高",
+        note="官方财政动态于2026年1月27日披露2025年全市政府性基金预算收入20.07亿元，明确为全市年度执行数；不使用市本级或年初预算安排数。",
+        url="https://czj.lasa.gov.cn/czj/xxyw/202601/6a4c3c2c354247ee80b682b1f89292c3.shtml",
+        publication_date="2026-01-27",
+        source_format="html",
+    ),
+    _spec(
+        file_name="karamay_2025_final_decision_excerpt.txt",
+        city_name="克拉玛依市", city_id="CN-650200", fields=FUND_100M,
+        grade="A1", publisher="克拉玛依市财政局",
+        document_title="2025年度克拉玛依市政府决算公开",
+        note="官方政府决算公开报告第5页明确披露全市政府性基金预算收入5.9亿元，原始单位亿元；使用全市决算口径，不使用市本级或所属各区分项。",
+        url="https://www.klmy.gov.cn/klmys/szfysq/202608/3badff476e8642aca0e6505c91dcddb7.shtml",
+        publication_date="2026-07-15",
+        source_format="pdf",
+    ),
+    _spec(
+        file_name="yichun_2025_budget_report_excerpt.txt",
+        city_name="伊春市", city_id="CN-230700", fields=FUND_100M,
+        grade="A2", publisher="伊春市财政局",
+        document_title="伊春市2025年预算执行情况和2026年预算草案的报告（书面）",
+        note="官方预算执行报告第2页明确披露全市政府性基金预算收入完成7.3亿元，原始单位亿元；行政范围为伊春市全市，不使用市本级数或预算安排数。",
+        url="https://www.yc.gov.cn/ycsrmzf/c102038/202602/421157.shtml",
+        publication_date="2026-02-05",
+        source_format="pdf",
+    ),
+    _spec(
         file_name="fangchenggang_2025_budget_report_excerpt.txt",
         city_name="防城港市", city_id="CN-450600", fields=FUND_10K,
         grade="A2", publisher="防城港市财政局",

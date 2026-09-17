@@ -222,7 +222,9 @@ def _fund_url(slug: str) -> str:
     province = _province_slug(slug)
     return (
         f"https://www.ceicdata.com/en/china/government-funds-revenue--expenditure-{province}/"
-        f"cn-{slug}-government-funds-revenue-total"
+        # CEIC 城市总基金收入页面的稳定指标后缀为 sum；total 只在少数
+        # 旧目录页面存在，使用 total 会重定向到省级目录并被严格过滤。
+        f"cn-{slug}-government-funds-revenue-sum"
     )
 
 

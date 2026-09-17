@@ -44,6 +44,7 @@ def _download_ssl_context() -> ssl.SSLContext:
 DOWNLOAD_SSL_CONTEXT = _download_ssl_context()
 
 try:
+    from scripts.collect_gcs66_city_debt import load_gcs66_city_fund_sources
     from scripts.province_debt_sources import extract_official_debt_facts
     from scripts.data_quality import OFFICIAL_DEBT_EXCEPTION_STATUS, debt_fact_has_balance_limit_conflict
     from scripts.evidence_based_missing import CORE_GAP_FIELDS, EVIDENCE_BY_KEY, EVIDENCE_CHECKED_AT, EVIDENCE_SOURCE_DOCUMENTS
@@ -58,6 +59,7 @@ try:
     from scripts.batch_table_parser import parse_city_value_rows
     from scripts.city_yearbook_sources import load_city_yearbook_sources
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
+    from collect_gcs66_city_debt import load_gcs66_city_fund_sources
     from province_debt_sources import extract_official_debt_facts
     from data_quality import OFFICIAL_DEBT_EXCEPTION_STATUS, debt_fact_has_balance_limit_conflict
     from evidence_based_missing import CORE_GAP_FIELDS, EVIDENCE_BY_KEY, EVIDENCE_CHECKED_AT, EVIDENCE_SOURCE_DOCUMENTS
@@ -20066,6 +20068,10 @@ def main() -> None:
         prior["_field_sources"] = field_sources
     city_year_fiscal_sources.extend(haidatas_city_panel_sources)
     city_year_fund, city_year_fund_sources = load_city_year_fund_sources()
+    gcs66_city_fund, gcs66_city_fund_sources = load_gcs66_city_fund_sources(ROOT, city_master)
+    # GCS66 只作为 B2 精确全市口径来源：补空或升级 D 级暂存值，不能覆盖 A1/A2/B1。
+    merge_city_year_fiscal_batch(city_year_fund, gcs66_city_fund)
+    city_year_fund_sources.extend(gcs66_city_fund_sources)
     ceic_city_limit_fund, ceic_city_limit_fund_sources = load_ceic_city_limit_fund_sources(
         ROOT, city_master
     )
@@ -20153,10 +20159,18 @@ def main() -> None:
             | {HAIDATAS_SOURCE_ID}
         )
     ]
+    gcs66_fund_source_ids = {
+        str(item.get("source_doc_id") or "") for item in gcs66_city_fund_sources
+    }
     new_fund_lineage = [
         item
         for item in lineage
-        if item.get("source_doc_id") in (CITY_FUND_SOURCE_IDS | CITY_YEAR_FUND_SOURCE_IDS | XINJIANG_CITY_FUND_SOURCE_IDS)
+        if item.get("source_doc_id") in (
+            CITY_FUND_SOURCE_IDS
+            | CITY_YEAR_FUND_SOURCE_IDS
+            | XINJIANG_CITY_FUND_SOURCE_IDS
+            | gcs66_fund_source_ids
+        )
     ]
     lineage = [
         item
@@ -20165,6 +20179,7 @@ def main() -> None:
             CITY_FUND_SOURCE_IDS
             | CITY_YEAR_FUND_SOURCE_IDS
             | XINJIANG_CITY_FUND_SOURCE_IDS
+            | gcs66_fund_source_ids
             | {"SRC-GD-CITY-FISCAL-2025"}
             | JIANGSU_CITY_FISCAL_SOURCE_IDS
             | CITY_YEAR_FISCAL_SOURCE_IDS

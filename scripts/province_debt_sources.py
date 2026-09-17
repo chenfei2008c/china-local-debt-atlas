@@ -1069,6 +1069,54 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
     ]
 )
 
+# 2025 年四川省地级行政单元债务限额补充：广安市官方全市表、眉山市
+# 公开评级报告精确值。两条均明确为全市地级行政区口径，不使用市本级或
+# 区县行；广安表同时接入限额与余额，眉山本批只补限额。
+OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
+    [
+        {
+            "source_doc_id": "SRC-A1-SICHUAN-GUANGAN-2025-DEBT",
+            "province_name": "四川省",
+            "year": 2025,
+            "path": RAW_DIR / "2025" / "official" / "guangan_2025_budget_debt_excerpt.txt",
+            "text_path": RAW_DIR / "2025" / "official" / "guangan_2025_budget_debt_excerpt.txt",
+            "source_url": "https://www.scyc.gov.cn/zfxxgk/c105083/2031621210830336000/eUtvQjdJ.pdf",
+            "document_title": "广安市2025年预算执行情况和2026年预算草案的报告及附表",
+            "publication_date": "2026-02-27",
+            "publisher": "广安市财政局",
+            "publisher_level": "市级财政机构",
+            "source_grade": "A1",
+            "unit": "亿元",
+            "layout": "total6",
+            "start": "数据口径：广安市全市地级行政区",
+            "end": None,
+            "table_name": "广安市2025年政府债务限额及余额表",
+            "data_status": "execution",
+            "note": "官方预算执行附表明确列示广安市全市2025年债务限额1000.68亿元、余额968.03亿元及一般/专项分项；不使用市级、区县行。",
+        },
+        {
+            "source_doc_id": "SRC-B2-SICHUAN-MEISHAN-2025-DEBT-LIMIT",
+            "province_name": "四川省",
+            "year": 2025,
+            "path": RAW_DIR / "2025" / "secondary" / "meishan_2025_rating_limit_excerpt.txt",
+            "text_path": RAW_DIR / "2025" / "secondary" / "meishan_2025_rating_limit_excerpt.txt",
+            "source_url": "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2026-06-18/184276_20260618_7VXF.pdf",
+            "document_title": "仁寿发展投资集团有限公司2026年度跟踪评级报告——眉山市区域经济财政分析",
+            "publication_date": "2026-06-18",
+            "publisher": "东方金诚国际信用评估有限公司",
+            "publisher_level": "评级机构研究报告",
+            "source_grade": "B2",
+            "unit": "亿元",
+            "layout": "limit1",
+            "start": "数据口径：眉山市全市地级行政区",
+            "end": None,
+            "table_name": "眉山市2025年末政府债务限额",
+            "data_status": "reported",
+            "note": "评级报告第19页精确披露眉山市2025年末政府债务限额1040.52亿元；只补限额，不以报告中的余额替换现有值。",
+        },
+    ]
+)
+
 OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
     [
         {
