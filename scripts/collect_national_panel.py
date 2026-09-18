@@ -9232,6 +9232,59 @@ CITY_YEAR_FUND_SOURCES += tuple(
     )
 )
 
+# 内蒙古自治区 2023 年剩余盟市的官方预算执行批次。两条来源均明确为
+# 全市/全盟口径，使用精确文字值；不把市本级数混入全市数，也不从图表估读。
+CITY_YEAR_FUND_SOURCES += (
+    {
+        "year": 2023,
+        "city_name": "通辽市",
+        "city_id": "CN-150500",
+        "source_doc_id": "SRC-A2-INNER-MONGOLIA-TONGLIAO-FUND-2023",
+        "url": "https://czj.tongliao.gov.cn/zwgk/zfxxgk/fdzdgknr/czyjsgkk/zfys/202405/t20240513_772806.html",
+        "path": RAW_DIR / "province_fiscal" / "2023" / "official" / "tongliao_2023_fund_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2023" / "official" / "tongliao_2023_fund_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "关于通辽市2023年预算执行情况和2024年预算草案的报告",
+        "publisher": "通辽市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2024-02-01",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "pattern": r"城市=通辽市｜年度=2023｜政府性基金收入=([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2023年全市政府性基金收入执行数",
+        "document_type": "城市财政预算执行报告",
+        "page_number": "PDF正文第2页",
+        "page_count": "官方PDF",
+        "note": "A2官方报告明确披露全市政府性基金预算收入29.56亿元；同页市本级0.24亿元不纳入主表。",
+    },
+    {
+        "year": 2023,
+        "city_name": "锡林郭勒盟",
+        "city_id": "CN-152500",
+        "source_doc_id": "SRC-A2-INNER-MONGOLIA-XILINGOL-FUND-2023",
+        "url": "https://www.tpsq.gov.cn/eportal/ui?articleKey=b610ddffe5b04faba4e13e8248e271e3&columnId=25ad8cc678244bb3aaf9d19a5e30d5d7&pageId=b06355aee28b489d87f5f5980254b5bd",
+        "path": RAW_DIR / "province_fiscal" / "2023" / "official" / "xilingol_2023_fund_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2023" / "official" / "xilingol_2023_fund_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "锡林郭勒盟2023年1—12月财政预算执行情况",
+        "publisher": "锡林郭勒盟财政局",
+        "publisher_level": "盟级财政机构",
+        "publication_date": "2024-01-10",
+        "source_grade": "A2",
+        "source_format": "html",
+        "pattern": r"城市=锡林郭勒盟｜年度=2023｜政府性基金收入=([0-9.]+)万元",
+        "raw_unit": "万元",
+        "data_status": "execution",
+        "data_status_label": "2023年全盟政府性基金收入执行数",
+        "document_type": "盟级财政预算执行情况",
+        "page_number": "网页正文",
+        "page_count": "官方网页",
+        "note": "A2官方网页明确披露全盟政府性基金收入161582万元，标准化为16.1582亿元。",
+    },
+)
+
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和
