@@ -9199,6 +9199,39 @@ GUANGDONG_2022_2023_CITY_FUND_SOURCES = (
 )
 CITY_YEAR_FUND_SOURCES += GUANGDONG_2022_2023_CITY_FUND_SOURCES
 
+# 内蒙古自治区 2023 年盟市政府性基金收入批次。来源为公开评级报告正文中的
+# 精确文字表述，明确为各盟市全市口径；不从图表柱形高度估读，也不使用市本级数。
+CITY_YEAR_FUND_SOURCES += tuple(
+    {
+        "year": 2023,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-INNER-MONGOLIA-2023-FUND-{city_id}",
+        "url": "https://www.governbond.org.cn/uploadFiles/15/attachFiles/202412/088c40e9-2a20-4fc6-840f-3fde0b868ff9.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "inner_mongolia_2023_fund_exact_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2023" / "secondary" / "inner_mongolia_2023_fund_exact_excerpt.txt",
+        "document_title": "2024年内蒙古自治区政府再融资一般债券（十一期）信用评级报告",
+        "publisher": "新世纪评级公共融资部",
+        "publisher_level": "评级机构公开报告",
+        "publication_date": "2024-09-01",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": rf"城市={re.escape(city_name)}｜年度=2023｜政府性基金收入=({re.escape(value)})亿元",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": "2023年公开精确值",
+        "document_type": "区域经济财政债务研究报告（全市口径精确值）",
+        "page_count": "PDF正文第9页",
+        "note": "B2公开评级报告正文精确披露；各盟市值明确为全市/全盟口径，不使用图表估读，不以一般预算收入与比率反推。",
+    }
+    for city_name, city_id, value in (
+        ("呼和浩特市", "CN-150100", "81.88"),
+        ("包头市", "CN-150200", "55.39"),
+        ("赤峰市", "CN-150400", "51.27"),
+        ("鄂尔多斯市", "CN-150600", "99.06"),
+    )
+)
+
 CITY_YEAR_FUND_SOURCE_IDS = {item["source_doc_id"] for item in CITY_YEAR_FUND_SOURCES}
 
 # 朝阳市财政局 2024 年预算执行报告同时精确披露全市一般预算收入、支出和

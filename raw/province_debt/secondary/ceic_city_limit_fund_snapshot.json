@@ -13036,6 +13036,42 @@
       }
     },
     {
+      "city_id": "CN-620300",
+      "city_name_cn": "金昌市",
+      "slug": "gansu-jinchang",
+      "fetched_at": "2026-09-18T04:10:50.856090+00:00",
+      "metrics": {
+        "limit": {
+          "status": "ok",
+          "url": "https://www.ceicdata.com/en/china/local-government-debt-limit-prefecture-level-city-local-level/cn-local-government-debt-limit-local-level-gansu-jinchang",
+          "resolved_url": "https://www.ceicdata.com/en/china/local-government-debt-limit-prefecture-level-city-local-level/cn-local-government-debt-limit-local-level-gansu-jinchang",
+          "chart_url": "https://www.ceicdata.com/datapage/charts/o_china_cn-local-government-debt-limit-local-level-gansu-jinchang",
+          "title": "Local Government Debt Limit: Local Level: Gansu: Jinchang | Economic Indicators | CEIC",
+          "description": "Local Government Debt Limit: Local Level: Gansu: Jinchang data was reported at 5,186.576 RMB mn in Dec 2020. This records an increase from the previous number of 3,925.576 RMB mn for Dec 2019. Local Government Debt Limit: Local Level: Gansu: Jinchang data is updated yearly, averaging 3,018.396 RMB mn (Median) from Dec 2017 to 2020, with 4 observations. The data reached an all-time high of 5,186.576 RMB mn in 2020 and a record low of 2,798.396 RMB mn in 2017. Local Government Debt Limit: Local Level: Gansu: Jinchang data remains active status in CEIC and is reported by Jinchang Municipal Bureau of Statistics. The data is categorized under China Premium Database’s Government and Public Finance – Table CN.FAR: Local Government Debt Limit: Prefecture Level City: Local Level.",
+          "publisher": "Jinchang Municipal Bureau of Statistics",
+          "page_hash": "9ecba8ed9a8fa84972d5e51b87d4f5a8ee182461264e573f1c9bf282a15f736c",
+          "rows": [
+            {"year": 2018, "raw_value_rmb_mn": "3018.396", "evidence": "SVG data-label：年度标签与精确数值标签配对"},
+            {"year": 2019, "raw_value_rmb_mn": "3925.576", "evidence": "HTML description：previous number 前一年度"},
+            {"year": 2020, "raw_value_rmb_mn": "5186.576", "evidence": "HTML description：reported at 最新年度"}
+          ],
+          "components": {
+            "general": {"status": "fetch_failed", "url": "https://www.ceicdata.com/en/china/local-government-debt-limit-prefecture-level-city-local-level/cn-local-government-debt-limit-local-level-general-gansu-jinchang", "rows": []},
+            "special": {"status": "fetch_failed", "url": "https://www.ceicdata.com/en/china/local-government-debt-limit-prefecture-level-city-local-level/cn-local-government-debt-limit-local-level-special-gansu-jinchang", "rows": []}
+          }
+        },
+        "fund": {
+          "status": "no_exact_city_metric",
+          "url": "https://www.ceicdata.com/en/china/government-funds-revenue--expenditure-gansu/cn-gansu-jinchang-government-funds-revenue-sum",
+          "resolved_url": "https://www.ceicdata.com/en/china/government-funds-revenue--expenditure-gansu",
+          "title": "China | Government Funds Revenue & Expenditure: Gansu | CEIC",
+          "description": "Discover data on Government Funds Revenue & Expenditure: Gansu in China. Explore expert forecasts and historical data on economic indicators across 195+ countries.",
+          "page_hash": "cf22e10df63619340d65c89fd364cc6f2d3278e54032eac77e8c86ab9341468c",
+          "rows": []
+        }
+      }
+    },
+    {
       "city_id": "CN-620400",
       "city_name_cn": "白银市",
       "slug": "gansu-baiyin",

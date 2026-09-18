@@ -1,0 +1,9 @@
+来源 URL：https://www.ceicdata.com/en/china/local-government-debt-limit-prefecture-level-city-local-level/cn-local-government-debt-limit-local-level-gansu-jinchang
+页面标题：Local Government Debt Limit: Local Level: Gansu: Jinchang | Economic Indicators | CEIC
+页面原始来源机构：Jinchang Municipal Bureau of Statistics
+单位：RMB mn；标准化单位：亿元（除以100）；城市全市/地级市口径
+2018：3018.396 RMB mn = 30.18396 亿元
+2019：3925.576 RMB mn = 39.25576 亿元
+2020：5186.576 RMB mn = 51.86576 亿元
+证据定位：2018 为 SVG 年度标签与精确数值标签配对；2019、2020 为页面 HTML description 的前一年度/最新年度精确值。
+页面 SHA-256：9ecba8ed9a8fa84972d5e51b87d4f5a8ee182461264e573f1c9bf282a15f736c
