@@ -11598,7 +11598,7 @@
       "city_id": "CN-520100",
       "city_name_cn": "贵阳市",
       "slug": "guizhou-guiyang",
-      "fetched_at": "2026-09-15T02:44:09.415200+00:00",
+      "fetched_at": "2026-09-18T16:21:12+08:00",
       "metrics": {
         "limit": {
           "status": "no_exact_city_metric",
@@ -11617,8 +11617,18 @@
           "title": "Guizhou: Guiyang: Government Funds Revenue: Sum | Economic Indicators | CEIC",
           "description": "Guizhou: Guiyang: Government Funds Revenue: Sum data was reported at 80,901.640 RMB mn in Dec 2025. This records an increase from the previous number of 70,468.630 RMB mn for Dec 2024. Guizhou: Guiyang: Government Funds Revenue: Sum data is updated yearly, averaging 78,833.400 RMB mn (Median) from Dec 2017 to 2025, with 9 observations. The data reached an all-time high of 80,901.640 RMB mn in 2025 and a record low of 27,045.760 RMB mn in 2017. Guizhou: Guiyang: Government Funds Revenue: Sum data remains active status in CEIC and is reported by Guiyang Municipal Finance Bureau. The data is categorized under China Premium Database’s Government and Public Finance – Table CN.FC: Government Funds Revenue & Expenditure: Guizhou.",
           "publisher": "Guiyang Municipal Finance Bureau",
-          "page_hash": "1e35e2f6a90c3fa18ea4a5855f29d3dbd37253737f09024268fa325bfb6061d0",
+          "page_hash": "137b748e216c98579a1381829e963e14e15f964ca8a2d28cffaf916e70578350",
           "rows": [
+            {
+              "year": 2022,
+              "raw_value_rmb_mn": "80550.290",
+              "evidence": "SVG data-label：年度标签与精确数值标签配对"
+            },
+            {
+              "year": 2023,
+              "raw_value_rmb_mn": "64094.250",
+              "evidence": "SVG data-label：年度标签与精确数值标签配对"
+            },
             {
               "year": 2024,
               "raw_value_rmb_mn": "70468.630",

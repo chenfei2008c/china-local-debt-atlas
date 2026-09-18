@@ -162,13 +162,20 @@ def _meta_values(description: str) -> dict[int, tuple[Decimal, str]]:
 
 
 def _chart_base(page: str) -> str:
+    image_match = re.search(
+        r'<img[^>]+src=["\'](https?://www\.ceicdata\.com/datapage/charts/[^"\']+)',
+        page,
+        re.I,
+    )
     match = re.search(r'class=["\']chart-base-link["\'][^>]*value=["\']([^"\']+)', page, re.I)
     if not match:
         match = re.search(r'"image"\s*:\s*"(https?[^" ]*datapage/charts[^" ]*)', page, re.I)
         if not match:
             return ""
-        return html.unescape(match.group(1)).split("?", 1)[0]
+        return html.unescape(match.group(1))
     path = html.unescape(match.group(1)).split("?", 1)[0]
+    if image_match:
+        return html.unescape(image_match.group(1))
     if path.startswith("http"):
         return path
     return f"https://www.ceicdata.com{path}"
