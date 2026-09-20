@@ -5,9 +5,44 @@ from tempfile import TemporaryDirectory
 import zipfile
 
 from scripts.province_debt_parser import extract_city_rows, extract_xlsx_city_rows, merge_debt_rows, parse_numeric_tokens
+from scripts.province_debt_sources import extract_official_debt_facts
 
 
 class ProvinceDebtParserTests(unittest.TestCase):
+    def test_2022_hubei_henan_limit_gap_batch_is_registered(self):
+        city_master = [
+            {"city_id": "CN-420500", "city_name_cn": "宜昌市", "province_name": "湖北省", "metric_year": "2022"},
+            {"city_id": "CN-421100", "city_name_cn": "黄冈市", "province_name": "湖北省", "metric_year": "2022"},
+            {"city_id": "CN-421300", "city_name_cn": "随州市", "province_name": "湖北省", "metric_year": "2022"},
+            {"city_id": "CN-410200", "city_name_cn": "开封市", "province_name": "河南省", "metric_year": "2022"},
+            {"city_id": "CN-410300", "city_name_cn": "洛阳市", "province_name": "河南省", "metric_year": "2022"},
+            {"city_id": "CN-411300", "city_name_cn": "南阳市", "province_name": "河南省", "metric_year": "2022"},
+            {"city_id": "CN-410400", "city_name_cn": "平顶山市", "province_name": "河南省", "metric_year": "2022"},
+            {"city_id": "CN-411000", "city_name_cn": "许昌市", "province_name": "河南省", "metric_year": "2022"},
+            {"city_id": "CN-411600", "city_name_cn": "周口市", "province_name": "河南省", "metric_year": "2022"},
+            {"city_id": "CN-411500", "city_name_cn": "信阳市", "province_name": "河南省", "metric_year": "2022"},
+            {"city_id": "CN-350300", "city_name_cn": "莆田市", "province_name": "福建省", "metric_year": "2022"},
+            {"city_id": "CN-530500", "city_name_cn": "保山市", "province_name": "云南省", "metric_year": "2022"},
+        ]
+        facts, sources = extract_official_debt_facts(city_master)
+        expected = {
+            "CN-420500": Decimal("984.9"),
+            "CN-421100": Decimal("677.4487"),
+            "CN-421300": Decimal("241.1660"),
+            "CN-410200": Decimal("660.8"),
+            "CN-410300": Decimal("898.9"),
+            "CN-411300": Decimal("1154.5175"),
+            "CN-410400": Decimal("642.5077"),
+            "CN-411000": Decimal("716.96"),
+            "CN-411600": Decimal("834.5"),
+            "CN-411500": Decimal("899.65"),
+            "CN-350300": Decimal("1149.65"),
+            "CN-530500": Decimal("471.66"),
+        }
+        self.assertEqual(len(sources) >= 10, True)
+        for city_id, value in expected.items():
+            self.assertEqual(facts[(city_id, "2022")]["statutory_debt_limit_100m"], value)
+
     def test_parse_numeric_tokens_keeps_commas_and_dash_as_missing(self):
         self.assertEqual(
             parse_numeric_tokens("济南市 4,057.45 278.85 3,778.60 3,770.56 270.55 3,500.01"),
