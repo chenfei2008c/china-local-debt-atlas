@@ -383,6 +383,34 @@ SOURCE_SPECS = {
         "data_status": "final",
         "note": "A2官方预算执行报告；公开检索摘录明确写出2023年全市政府性基金预算收入完成30.92亿元，行政范围为全市，不使用市本级或开发区数。",
     },
+    "SRC-A2-LIAONING-FUSHUN-FUND-2023": {
+        "year": 2023,
+        "path": "raw/province_fiscal/2023/official/fushun_2023_city_fund_execution_excerpt.txt",
+        "text_path": "raw/province_fiscal/2023/official/fushun_2023_city_fund_execution_excerpt.txt",
+        "url": "https://www.fushun.gov.cn/zwgk/002008/002008003/002008003001/20240717/698cadde-e493-4c15-b4f9-8bc94090716f.html",
+        "title": "关于抚顺市2023年财政决算的报告",
+        "publisher": "抚顺市人民政府",
+        "publication_date": "2024-07-17",
+        "page_number": "网页正文：一、2023年财政决算情况（二）政府性基金预算收支情况",
+        "source_grade": "A2",
+        "source_format": "txt",
+        "data_status": "final",
+        "note": "A2官方财政决算报告；明确写出2023年全市政府性基金收入5.2亿元，行政范围为全市，不使用市本级数。",
+    },
+    "SRC-A2-LIAONING-BENXI-FUND-2023": {
+        "year": 2023,
+        "path": "raw/province_fiscal/2023/official/benxi_2023_city_fund_execution_excerpt.txt",
+        "text_path": "raw/province_fiscal/2023/official/benxi_2023_city_fund_execution_excerpt.txt",
+        "url": "https://czj.benxi.gov.cn/yjsbg/czyjsbg/content_619899",
+        "title": "关于本溪市2023年预算执行情况和2024年预算草案的报告",
+        "publisher": "本溪市财政局",
+        "publication_date": "2024-01-23",
+        "page_number": "网页第155—165行：政府性基金预算执行情况",
+        "source_grade": "A2",
+        "source_format": "txt",
+        "data_status": "execution",
+        "note": "A2官方预算执行报告；明确写出2023年全市政府性基金预算收入15.5亿元，行政范围为全市，不使用市本级数。报告为年初披露的全年执行数，保留execution状态。",
+    },
     "SRC-B2-INNER-MONGOLIA-REGIONAL-MACRO-2024": {
         "year": 2024,
         "path": "raw/province_fiscal/2024/secondary/inner_mongolia_2024_city_macro_rating_report.pdf",
@@ -853,6 +881,8 @@ for city, fund in [
 ROWS.append(_r("SRC-A2-SHANXI-DATONG-FUND-2023", "大同市", 2023, gov_fund_revenue_100m="36.6"))
 ROWS.append(_r("SRC-A2-SHANXI-CHANGZHI-FUND-2023", "长治市", 2023, gov_fund_revenue_100m="55.27"))
 ROWS.append(_r("SRC-A2-SHANXI-JINCHENG-FUND-2023", "晋城市", 2023, gov_fund_revenue_100m="30.92"))
+ROWS.append(_r("SRC-A2-LIAONING-FUSHUN-FUND-2023", "抚顺市", 2023, gov_fund_revenue_100m="5.2"))
+ROWS.append(_r("SRC-A2-LIAONING-BENXI-FUND-2023", "本溪市", 2023, gov_fund_revenue_100m="15.5"))
 
 
 def _merge(values: dict[tuple[str, str], dict[str, Any]], key: tuple[str, str], candidate: dict[str, Any]) -> None:
