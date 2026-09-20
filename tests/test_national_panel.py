@@ -196,6 +196,62 @@ class NationalPanelTests(unittest.TestCase):
             {item["source_doc_id"] for item in sources},
         )
 
+    def test_regional_handbook_2022_fund_batch_adds_only_exact_city_values(self):
+        root = Path(__file__).resolve().parents[1]
+        values, sources = load_regional_fiscal_sources(root)
+
+        expected = {
+            ("CN-130100", "2022"): Decimal("365.91"),
+            ("CN-130200", "2022"): Decimal("299.43"),
+            ("CN-130300", "2022"): Decimal("84.36"),
+            ("CN-130400", "2022"): Decimal("210.31"),
+            ("CN-130500", "2022"): Decimal("132.30"),
+            ("CN-130700", "2022"): Decimal("118.12"),
+            ("CN-130800", "2022"): Decimal("34.05"),
+            ("CN-130900", "2022"): Decimal("151.11"),
+            ("CN-131000", "2022"): Decimal("146.79"),
+            ("CN-131100", "2022"): Decimal("72.78"),
+            ("CN-220100", "2022"): Decimal("189.45"),
+            ("CN-220400", "2022"): Decimal("12.55"),
+            ("CN-220500", "2022"): Decimal("20.32"),
+            ("CN-222400", "2022"): Decimal("19.80"),
+            ("CN-330100", "2022"): Decimal("3202.24"),
+            ("CN-330300", "2022"): Decimal("1156.56"),
+            ("CN-330400", "2022"): Decimal("855.04"),
+            ("CN-330600", "2022"): Decimal("727.73"),
+            ("CN-330700", "2022"): Decimal("844.94"),
+            ("CN-330800", "2022"): Decimal("372.18"),
+            ("CN-330900", "2022"): Decimal("82.72"),
+            ("CN-331000", "2022"): Decimal("713.38"),
+            ("CN-331100", "2022"): Decimal("309.09"),
+            ("CN-440900", "2022"): Decimal("79.58"),
+            ("CN-441700", "2022"): Decimal("38.94"),
+            ("CN-441900", "2022"): Decimal("411.02"),
+            ("CN-445100", "2022"): Decimal("18.25"),
+            ("CN-445200", "2022"): Decimal("33.84"),
+            ("CN-445300", "2022"): Decimal("20.02"),
+            ("CN-610100", "2022"): Decimal("1262.94"),
+            ("CN-610200", "2022"): Decimal("11.76"),
+            ("CN-610300", "2022"): Decimal("58.97"),
+            ("CN-610400", "2022"): Decimal("112.17"),
+            ("CN-610500", "2022"): Decimal("67.60"),
+            ("CN-610600", "2022"): Decimal("36.44"),
+            ("CN-610700", "2022"): Decimal("43.69"),
+            ("CN-610800", "2022"): Decimal("72.10"),
+            ("CN-610900", "2022"): Decimal("43.41"),
+            ("CN-611000", "2022"): Decimal("25.33"),
+        }
+        self.assertEqual(len(expected), 39)
+        for key, expected_value in expected.items():
+            self.assertEqual(values[key]["gov_fund_revenue_100m"], expected_value)
+            self.assertEqual(values[key]["source_grade"], "B2")
+        self.assertNotIn(("CN-220200", "2022"), values)
+        self.assertNotIn(("CN-440200", "2022"), values)
+        self.assertIn(
+            "SRC-B2-REGIONAL-HANDBOOK-2022-FUND-BATCH",
+            {item["source_doc_id"] for item in sources},
+        )
+
     def test_sichuan_2018_official_yearbook_batch_covers_all_prefectures(self):
         root = Path(__file__).resolve().parents[1]
         with (root / "outputs/national_prefecture_panel_2018_2026/dim_city.csv").open(
