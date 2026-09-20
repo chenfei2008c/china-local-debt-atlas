@@ -411,6 +411,20 @@ SOURCE_SPECS = {
         "data_status": "execution",
         "note": "A2官方预算执行报告；明确写出2023年全市政府性基金预算收入15.5亿元，行政范围为全市，不使用市本级数。报告为年初披露的全年执行数，保留execution状态。",
     },
+    "SRC-A2-LIAONING-PANJIN-FUND-2023": {
+        "year": 2023,
+        "path": "raw/province_fiscal/2023/official/panjin_2023_city_fund_execution_excerpt.txt",
+        "text_path": "raw/province_fiscal/2023/official/panjin_2023_city_fund_execution_excerpt.txt",
+        "url": "https://www.pjrd.gov.cn/2024_01/10_15/content-463061.html",
+        "title": "关于盘锦市2023年预算执行情况和2024年预算（草案）的报告",
+        "publisher": "盘锦市人民代表大会常务委员会",
+        "publication_date": "2024-01-10",
+        "page_number": "网页第33—37行：政府性基金预算收支情况",
+        "source_grade": "A2",
+        "source_format": "txt",
+        "data_status": "execution",
+        "note": "A2官方预算执行报告；明确写出2023年全市政府性基金预算收入5.9亿元，行政范围为全市，不使用市本级数。报告为年初披露的全年执行数，保留execution状态。",
+    },
     "SRC-B2-INNER-MONGOLIA-REGIONAL-MACRO-2024": {
         "year": 2024,
         "path": "raw/province_fiscal/2024/secondary/inner_mongolia_2024_city_macro_rating_report.pdf",
@@ -883,6 +897,7 @@ ROWS.append(_r("SRC-A2-SHANXI-CHANGZHI-FUND-2023", "长治市", 2023, gov_fund_r
 ROWS.append(_r("SRC-A2-SHANXI-JINCHENG-FUND-2023", "晋城市", 2023, gov_fund_revenue_100m="30.92"))
 ROWS.append(_r("SRC-A2-LIAONING-FUSHUN-FUND-2023", "抚顺市", 2023, gov_fund_revenue_100m="5.2"))
 ROWS.append(_r("SRC-A2-LIAONING-BENXI-FUND-2023", "本溪市", 2023, gov_fund_revenue_100m="15.5"))
+ROWS.append(_r("SRC-A2-LIAONING-PANJIN-FUND-2023", "盘锦市", 2023, gov_fund_revenue_100m="5.9"))
 
 
 def _merge(values: dict[tuple[str, str], dict[str, Any]], key: tuple[str, str], candidate: dict[str, Any]) -> None:
