@@ -425,6 +425,20 @@ SOURCE_SPECS = {
         "data_status": "execution",
         "note": "A2官方预算执行报告；明确写出2023年全市政府性基金预算收入5.9亿元，行政范围为全市，不使用市本级数。报告为年初披露的全年执行数，保留execution状态。",
     },
+    "SRC-A2-LIAONING-SHENYANG-FUND-2023": {
+        "year": 2023,
+        "path": "raw/province_fiscal/2023/official/shenyang_2023_city_fund_final_excerpt.txt",
+        "text_path": "raw/province_fiscal/2023/official/shenyang_2023_city_fund_final_excerpt.txt",
+        "url": "https://www.shenyang.gov.cn/zx/fjk/202409/P020240914348178037374.pdf",
+        "title": "关于沈阳市2023年财政决算的报告",
+        "publisher": "沈阳市财政局",
+        "publication_date": "2024-09-14",
+        "page_number": "PDF第3页（报告内页第2页）：全市政府性基金预算收支情况",
+        "source_grade": "A2",
+        "source_format": "txt",
+        "data_status": "final",
+        "note": "A2官方财政决算报告；明确写出2023年全市政府性基金预算收入104亿元，行政范围为全市，不使用市本级数。",
+    },
     "SRC-B2-INNER-MONGOLIA-REGIONAL-MACRO-2024": {
         "year": 2024,
         "path": "raw/province_fiscal/2024/secondary/inner_mongolia_2024_city_macro_rating_report.pdf",
@@ -898,6 +912,7 @@ ROWS.append(_r("SRC-A2-SHANXI-JINCHENG-FUND-2023", "晋城市", 2023, gov_fund_r
 ROWS.append(_r("SRC-A2-LIAONING-FUSHUN-FUND-2023", "抚顺市", 2023, gov_fund_revenue_100m="5.2"))
 ROWS.append(_r("SRC-A2-LIAONING-BENXI-FUND-2023", "本溪市", 2023, gov_fund_revenue_100m="15.5"))
 ROWS.append(_r("SRC-A2-LIAONING-PANJIN-FUND-2023", "盘锦市", 2023, gov_fund_revenue_100m="5.9"))
+ROWS.append(_r("SRC-A2-LIAONING-SHENYANG-FUND-2023", "沈阳市", 2023, gov_fund_revenue_100m="104"))
 
 
 def _merge(values: dict[tuple[str, str], dict[str, Any]], key: tuple[str, str], candidate: dict[str, Any]) -> None:
