@@ -252,6 +252,52 @@ class NationalPanelTests(unittest.TestCase):
             {item["source_doc_id"] for item in sources},
         )
 
+    def test_regional_handbook_2022_fund_batch_two_adds_exact_values_and_skips_ambiguous_rows(self):
+        root = Path(__file__).resolve().parents[1]
+        values, sources = load_regional_fiscal_sources(root)
+
+        expected = {
+            ("CN-350100", "2022"): Decimal("617.34"),
+            ("CN-350300", "2022"): Decimal("91.07"),
+            ("CN-350400", "2022"): Decimal("62.96"),
+            ("CN-350600", "2022"): Decimal("225.23"),
+            ("CN-350700", "2022"): Decimal("74.21"),
+            ("CN-350800", "2022"): Decimal("78.85"),
+            ("CN-350900", "2022"): Decimal("102.01"),
+            ("CN-520200", "2022"): Decimal("105.30"),
+            ("CN-520400", "2022"): Decimal("72.14"),
+            ("CN-520500", "2022"): Decimal("150.00"),
+            ("CN-520600", "2022"): Decimal("117.97"),
+            ("CN-522300", "2022"): Decimal("97.51"),
+            ("CN-522600", "2022"): Decimal("90.00"),
+            ("CN-522700", "2022"): Decimal("203.22"),
+            ("CN-150300", "2022"): Decimal("11.50"),
+            ("CN-150500", "2022"): Decimal("31.90"),
+            ("CN-150700", "2022"): Decimal("12.87"),
+            ("CN-150800", "2022"): Decimal("11.00"),
+            ("CN-150900", "2022"): Decimal("18.40"),
+            ("CN-152200", "2022"): Decimal("12.47"),
+            ("CN-152900", "2022"): Decimal("6.41"),
+            ("CN-650200", "2022"): Decimal("11.53"),
+            ("CN-650400", "2022"): Decimal("9.75"),
+            ("CN-650500", "2022"): Decimal("14.66"),
+            ("CN-652900", "2022"): Decimal("40.82"),
+            ("CN-653000", "2022"): Decimal("4.61"),
+            ("CN-653200", "2022"): Decimal("13.21"),
+            ("CN-654000", "2022"): Decimal("46.75"),
+            ("CN-654300", "2022"): Decimal("18.40"),
+        }
+        self.assertEqual(len(expected), 29)
+        for key, expected_value in expected.items():
+            self.assertEqual(values[key]["gov_fund_revenue_100m"], expected_value)
+            self.assertEqual(values[key]["source_grade"], "B2")
+        self.assertNotIn(("CN-150400", "2022"), values)
+        self.assertNotIn(("CN-659000", "2022"), values)
+        self.assertIn(
+            "SRC-B2-REGIONAL-HANDBOOK-2022-FUND-BATCH-2",
+            {item["source_doc_id"] for item in sources},
+        )
+
     def test_sichuan_2018_official_yearbook_batch_covers_all_prefectures(self):
         root = Path(__file__).resolve().parents[1]
         with (root / "outputs/national_prefecture_panel_2018_2026/dim_city.csv").open(
