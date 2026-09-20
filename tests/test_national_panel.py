@@ -170,6 +170,32 @@ class NationalPanelTests(unittest.TestCase):
             {item["source_doc_id"] for item in sources},
         )
 
+    def test_liaoning_2022_handbook_batch_covers_missing_city_fund_values(self):
+        root = Path(__file__).resolve().parents[1]
+        values, sources = load_regional_fiscal_sources(root)
+
+        expected = {
+            ("CN-210300", "2022"): Decimal("25.06"),
+            ("CN-210400", "2022"): Decimal("11.30"),
+            ("CN-210500", "2022"): Decimal("10.73"),
+            ("CN-210600", "2022"): Decimal("23.58"),
+            ("CN-210700", "2022"): Decimal("22.40"),
+            ("CN-210800", "2022"): Decimal("22.89"),
+            ("CN-210900", "2022"): Decimal("4.25"),
+            ("CN-211000", "2022"): Decimal("11.17"),
+            ("CN-211100", "2022"): Decimal("9.92"),
+            ("CN-211200", "2022"): Decimal("7.40"),
+            ("CN-211300", "2022"): Decimal("35.24"),
+            ("CN-211400", "2022"): Decimal("10.56"),
+        }
+        for key, expected_value in expected.items():
+            self.assertEqual(values[key]["gov_fund_revenue_100m"], expected_value)
+            self.assertEqual(values[key]["source_grade"], "B2")
+        self.assertIn(
+            "SRC-B2-LIAONING-FUND-2022-HANDBOOK",
+            {item["source_doc_id"] for item in sources},
+        )
+
     def test_sichuan_2018_official_yearbook_batch_covers_all_prefectures(self):
         root = Path(__file__).resolve().parents[1]
         with (root / "outputs/national_prefecture_panel_2018_2026/dim_city.csv").open(

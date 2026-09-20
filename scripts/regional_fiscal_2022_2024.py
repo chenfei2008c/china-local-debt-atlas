@@ -284,6 +284,20 @@ SOURCE_SPECS = {
         "page_number": "PDF第8页表6",
         "note": "B2精确表格；表6为2023年辽宁省各地级市GDP、GDP增速和常住人口，常住人口缺失行保持空白；资料来源为各地统计公报，均为全市口径。",
     },
+    "SRC-B2-LIAONING-FUND-2022-HANDBOOK": {
+        "year": 2022,
+        "path": "raw/province_fiscal/2022/secondary/liaoning_2022_fund_handbook_excerpt.txt",
+        "text_path": "raw/province_fiscal/2022/secondary/liaoning_2022_fund_handbook_excerpt.txt",
+        "url": "https://www.scribd.com/document/911238563/2023%E5%8C%BA%E5%9F%9F%E7%BB%8F%E6%B5%8E%E6%89%8B%E5%86%8C%E7%94%B5%E5%AD%90%E7%89%88",
+        "title": "2023区域经济手册电子版",
+        "publisher": "公开区域经济资料整理方（Scribd公开页面）",
+        "publication_date": "2023-01-01",
+        "page_number": "网页摘录第025页：2022年下属辖区主要指标",
+        "source_grade": "B2",
+        "source_format": "txt",
+        "data_status": "final",
+        "note": "B2精确表格；公开页面明确列示辽宁省14个下属辖区2022年全市/全州口径，字段顺序含一般公共预算收入、政府性基金收入和土地出让收入。本批只提取政府性基金收入；原表‘—’不转换为零。",
+    },
     "SRC-B2-INNER-MONGOLIA-REGIONAL-MACRO-2024": {
         "year": 2024,
         "path": "raw/province_fiscal/2024/secondary/inner_mongolia_2024_city_macro_rating_report.pdf",
@@ -696,6 +710,15 @@ for city, gdp, growth, pop in [
 ROWS.append(_r("SRC-A2-HEILONGJIANG-HEGANG-FUND-2022", "鹤岗市", 2022, gov_fund_revenue_100m="5.3005"))
 ROWS.append(_r("SRC-A2-HEILONGJIANG-YICHUN-FUND-2022", "伊春市", 2022, gov_fund_revenue_100m="1.6"))
 ROWS.append(_r("SRC-A2-HEILONGJIANG-JIXI-FUND-2022", "鸡西市", 2022, gov_fund_revenue_100m="4.3676"))
+
+# 辽宁省2022年基金收入缺口批次：来自同一公开精确表格的12个尚缺城市行。
+for city, fund in [
+    ("鞍山市", "25.06"), ("抚顺市", "11.30"), ("本溪市", "10.73"),
+    ("丹东市", "23.58"), ("锦州市", "22.40"), ("营口市", "22.89"),
+    ("阜新市", "4.25"), ("辽阳市", "11.17"), ("盘锦市", "9.92"),
+    ("铁岭市", "7.40"), ("朝阳市", "35.24"), ("葫芦岛市", "10.56"),
+]:
+    ROWS.append(_r("SRC-B2-LIAONING-FUND-2022-HANDBOOK", city, 2022, gov_fund_revenue_100m=fund))
 
 
 def _merge(values: dict[tuple[str, str], dict[str, Any]], key: tuple[str, str], candidate: dict[str, Any]) -> None:
