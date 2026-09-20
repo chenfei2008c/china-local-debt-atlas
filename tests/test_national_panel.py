@@ -298,6 +298,17 @@ class NationalPanelTests(unittest.TestCase):
             {item["source_doc_id"] for item in sources},
         )
 
+    def test_official_datong_2023_fund_execution_uses_whole_city_value(self):
+        root = Path(__file__).resolve().parents[1]
+        values, sources = load_regional_fiscal_sources(root)
+        row = values[("CN-140200", "2023")]
+        self.assertEqual(row["gov_fund_revenue_100m"], Decimal("36.6"))
+        self.assertEqual(row["source_grade"], "A2")
+        self.assertIn(
+            "SRC-A2-SHANXI-DATONG-FUND-2023",
+            {item["source_doc_id"] for item in sources},
+        )
+
     def test_sichuan_2018_official_yearbook_batch_covers_all_prefectures(self):
         root = Path(__file__).resolve().parents[1]
         with (root / "outputs/national_prefecture_panel_2018_2026/dim_city.csv").open(

@@ -102,6 +102,8 @@ CITY_IDS = {
     "邯郸市": "CN-130400", "邢台市": "CN-130500", "保定市": "CN-130600",
     "张家口市": "CN-130700", "承德市": "CN-130800", "沧州市": "CN-130900",
     "廊坊市": "CN-131000", "衡水市": "CN-131100",
+    # 山西
+    "大同市": "CN-140200",
     # 广东（本批跨省基金来源仅使用以下六个缺口城市）
     "茂名市": "CN-440900", "阳江市": "CN-441700", "东莞市": "CN-441900",
     "潮州市": "CN-445100", "揭阳市": "CN-445200", "云浮市": "CN-445300",
@@ -338,6 +340,20 @@ SOURCE_SPECS = {
         "source_format": "txt",
         "data_status": "final",
         "note": "B2精确表格；公开页面按省份列示2022年地级行政单元全市/全州口径。本批只提取福建、贵州、内蒙古、新疆缺口城市中表格明确给出的政府性基金收入；‘—’及新疆兵团汇总单元不转换、不推算。",
+    },
+    "SRC-A2-SHANXI-DATONG-FUND-2023": {
+        "year": 2023,
+        "path": "raw/province_fiscal/2023/official/datong_2023_city_fund_execution_excerpt.txt",
+        "text_path": "raw/province_fiscal/2023/official/datong_2023_city_fund_execution_excerpt.txt",
+        "url": "https://www.dt.gov.cn/dtszf/lhzfgzydrunsgu/202404/6314f4b63c024cebb908a10db81bd80c.shtml",
+        "title": "关于大同市2023年全市和市本级预算执行情况与2024年全市和市本级预算（草案）的报告",
+        "publisher": "大同市人民政府",
+        "publication_date": "2024-04-01",
+        "page_number": "网页第178—183行：政府性基金预算执行情况",
+        "source_grade": "A2",
+        "source_format": "txt",
+        "data_status": "final",
+        "note": "A2官方预算执行报告；明确写出2023年全市政府性基金预算收入完成36.6亿元，行政范围为全市，不使用市本级或开发区数。",
     },
     "SRC-B2-INNER-MONGOLIA-REGIONAL-MACRO-2024": {
         "year": 2024,
@@ -805,6 +821,8 @@ for city, fund in [
     ("和田地区", "13.21"), ("伊犁哈萨克自治州", "46.75"), ("阿勒泰地区", "18.40"),
 ]:
     ROWS.append(_r("SRC-B2-REGIONAL-HANDBOOK-2022-FUND-BATCH-2", city, 2022, gov_fund_revenue_100m=fund))
+
+ROWS.append(_r("SRC-A2-SHANXI-DATONG-FUND-2023", "大同市", 2023, gov_fund_revenue_100m="36.6"))
 
 
 def _merge(values: dict[tuple[str, str], dict[str, Any]], key: tuple[str, str], candidate: dict[str, Any]) -> None:
