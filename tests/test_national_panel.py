@@ -327,6 +327,7 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(values[("CN-210500", "2023")]["gov_fund_revenue_100m"], Decimal("15.5"))
         self.assertEqual(values[("CN-211100", "2023")]["gov_fund_revenue_100m"], Decimal("5.9"))
         self.assertEqual(values[("CN-210100", "2023")]["gov_fund_revenue_100m"], Decimal("104"))
+        self.assertEqual(values[("CN-210900", "2023")]["gov_fund_revenue_100m"], Decimal("3.5375"))
         self.assertEqual(
             values[("CN-210400", "2023")]["_field_sources"]["gov_fund_revenue_100m"]["source_grade"],
             "A2",
@@ -343,11 +344,16 @@ class NationalPanelTests(unittest.TestCase):
             values[("CN-210100", "2023")]["_field_sources"]["gov_fund_revenue_100m"]["source_grade"],
             "A2",
         )
+        self.assertEqual(
+            values[("CN-210900", "2023")]["_field_sources"]["gov_fund_revenue_100m"]["source_grade"],
+            "A2",
+        )
         source_ids = {item["source_doc_id"] for item in sources}
         self.assertIn("SRC-A2-LIAONING-FUSHUN-FUND-2023", source_ids)
         self.assertIn("SRC-A2-LIAONING-BENXI-FUND-2023", source_ids)
         self.assertIn("SRC-A2-LIAONING-PANJIN-FUND-2023", source_ids)
         self.assertIn("SRC-A2-LIAONING-SHENYANG-FUND-2023", source_ids)
+        self.assertIn("SRC-A2-LIAONING-FUXIN-FUND-2023", source_ids)
 
     def test_sichuan_2018_official_yearbook_batch_covers_all_prefectures(self):
         root = Path(__file__).resolve().parents[1]

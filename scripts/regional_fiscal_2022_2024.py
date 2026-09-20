@@ -439,6 +439,20 @@ SOURCE_SPECS = {
         "data_status": "final",
         "note": "A2官方财政决算报告；明确写出2023年全市政府性基金预算收入104亿元，行政范围为全市，不使用市本级数。",
     },
+    "SRC-A2-LIAONING-FUXIN-FUND-2023": {
+        "year": 2023,
+        "path": "raw/province_fiscal/2023/official/fuxin_2023_city_fund_final_excerpt.txt",
+        "text_path": "raw/province_fiscal/2023/official/fuxin_2023_city_fund_final_excerpt.txt",
+        "url": "https://czj.fuxin.gov.cn/czj/file/2024-07-19/17213803253394028e4928e7a358a7250190ca4347db5aa4.pdf",
+        "title": "阜新市2023年财政决算报表及说明",
+        "publisher": "阜新市财政局",
+        "publication_date": "2024-07-19",
+        "page_number": "PDF第43页：2023年阜新市政府性基金收入决算表",
+        "source_grade": "A2",
+        "source_format": "txt",
+        "data_status": "final",
+        "note": "A2官方财政决算表；全市政府性基金预算收入决算数为35,375万元，折算为3.5375亿元，行政范围为全市，不使用市本级数。",
+    },
     "SRC-B2-INNER-MONGOLIA-REGIONAL-MACRO-2024": {
         "year": 2024,
         "path": "raw/province_fiscal/2024/secondary/inner_mongolia_2024_city_macro_rating_report.pdf",
@@ -913,6 +927,7 @@ ROWS.append(_r("SRC-A2-LIAONING-FUSHUN-FUND-2023", "抚顺市", 2023, gov_fund_r
 ROWS.append(_r("SRC-A2-LIAONING-BENXI-FUND-2023", "本溪市", 2023, gov_fund_revenue_100m="15.5"))
 ROWS.append(_r("SRC-A2-LIAONING-PANJIN-FUND-2023", "盘锦市", 2023, gov_fund_revenue_100m="5.9"))
 ROWS.append(_r("SRC-A2-LIAONING-SHENYANG-FUND-2023", "沈阳市", 2023, gov_fund_revenue_100m="104"))
+ROWS.append(_r("SRC-A2-LIAONING-FUXIN-FUND-2023", "阜新市", 2023, gov_fund_revenue_100m="3.5375"))
 
 
 def _merge(values: dict[tuple[str, str], dict[str, Any]], key: tuple[str, str], candidate: dict[str, Any]) -> None:
