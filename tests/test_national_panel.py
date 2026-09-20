@@ -309,6 +309,17 @@ class NationalPanelTests(unittest.TestCase):
             {item["source_doc_id"] for item in sources},
         )
 
+    def test_official_shanxi_2023_fund_execution_batch_uses_whole_city_values(self):
+        root = Path(__file__).resolve().parents[1]
+        values, sources = load_regional_fiscal_sources(root)
+        self.assertEqual(values[("CN-140400", "2023")]["gov_fund_revenue_100m"], Decimal("55.27"))
+        self.assertEqual(values[("CN-140500", "2023")]["gov_fund_revenue_100m"], Decimal("30.92"))
+        self.assertEqual(values[("CN-140400", "2023")]["source_grade"], "A2")
+        self.assertEqual(values[("CN-140500", "2023")]["source_grade"], "A2")
+        source_ids = {item["source_doc_id"] for item in sources}
+        self.assertIn("SRC-A2-SHANXI-CHANGZHI-FUND-2023", source_ids)
+        self.assertIn("SRC-A2-SHANXI-JINCHENG-FUND-2023", source_ids)
+
     def test_sichuan_2018_official_yearbook_batch_covers_all_prefectures(self):
         root = Path(__file__).resolve().parents[1]
         with (root / "outputs/national_prefecture_panel_2018_2026/dim_city.csv").open(

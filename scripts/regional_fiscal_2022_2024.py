@@ -103,7 +103,7 @@ CITY_IDS = {
     "张家口市": "CN-130700", "承德市": "CN-130800", "沧州市": "CN-130900",
     "廊坊市": "CN-131000", "衡水市": "CN-131100",
     # 山西
-    "大同市": "CN-140200",
+    "大同市": "CN-140200", "长治市": "CN-140400", "晋城市": "CN-140500",
     # 广东（本批跨省基金来源仅使用以下六个缺口城市）
     "茂名市": "CN-440900", "阳江市": "CN-441700", "东莞市": "CN-441900",
     "潮州市": "CN-445100", "揭阳市": "CN-445200", "云浮市": "CN-445300",
@@ -354,6 +354,34 @@ SOURCE_SPECS = {
         "source_format": "txt",
         "data_status": "final",
         "note": "A2官方预算执行报告；明确写出2023年全市政府性基金预算收入完成36.6亿元，行政范围为全市，不使用市本级或开发区数。",
+    },
+    "SRC-A2-SHANXI-CHANGZHI-FUND-2023": {
+        "year": 2023,
+        "path": "raw/province_fiscal/2023/official/changzhi_2023_city_fund_execution_excerpt.txt",
+        "text_path": "raw/province_fiscal/2023/official/changzhi_2023_city_fund_execution_excerpt.txt",
+        "url": "https://www.changzhi.gov.cn/xxgkml/zfxxgkml/szfgzbm/sczj/czsrmzf/czyjs_522/2024/202404/P020240402577467076241.pdf",
+        "title": "关于长治市2023年全市和市本级预算执行情况与2024年全市和市本级预算草案的报告",
+        "publisher": "长治市人民政府",
+        "publication_date": "2024-04-02",
+        "page_number": "PDF第5页（报告内页第4页）：政府性基金预算执行情况",
+        "source_grade": "A2",
+        "source_format": "txt",
+        "data_status": "final",
+        "note": "A2官方预算执行报告；明确写出2023年全市政府性基金收入完成55.27亿元，行政范围为全市，不使用市本级、高新区或经开区数。",
+    },
+    "SRC-A2-SHANXI-JINCHENG-FUND-2023": {
+        "year": 2023,
+        "path": "raw/province_fiscal/2023/official/jincheng_2023_city_fund_execution_excerpt.txt",
+        "text_path": "raw/province_fiscal/2023/official/jincheng_2023_city_fund_execution_excerpt.txt",
+        "url": "https://www.jcgov.gov.cn/zwgk/czxx_23406/zfys_24261/202404/P020240411588334087252.pdf",
+        "title": "晋城市八届人大四次会议文件（18）",
+        "publisher": "晋城市人民政府",
+        "publication_date": "2024-04-11",
+        "page_number": "PDF第5页（报告内页第4页）：政府性基金预算执行情况",
+        "source_grade": "A2",
+        "source_format": "txt",
+        "data_status": "final",
+        "note": "A2官方预算执行报告；公开检索摘录明确写出2023年全市政府性基金预算收入完成30.92亿元，行政范围为全市，不使用市本级或开发区数。",
     },
     "SRC-B2-INNER-MONGOLIA-REGIONAL-MACRO-2024": {
         "year": 2024,
@@ -823,6 +851,8 @@ for city, fund in [
     ROWS.append(_r("SRC-B2-REGIONAL-HANDBOOK-2022-FUND-BATCH-2", city, 2022, gov_fund_revenue_100m=fund))
 
 ROWS.append(_r("SRC-A2-SHANXI-DATONG-FUND-2023", "大同市", 2023, gov_fund_revenue_100m="36.6"))
+ROWS.append(_r("SRC-A2-SHANXI-CHANGZHI-FUND-2023", "长治市", 2023, gov_fund_revenue_100m="55.27"))
+ROWS.append(_r("SRC-A2-SHANXI-JINCHENG-FUND-2023", "晋城市", 2023, gov_fund_revenue_100m="30.92"))
 
 
 def _merge(values: dict[tuple[str, str], dict[str, Any]], key: tuple[str, str], candidate: dict[str, Any]) -> None:
