@@ -1976,10 +1976,44 @@ class NationalPanelTests(unittest.TestCase):
 
         rows, _ = build_macro_rows([city], [], {}, facts)
 
-        self.assertIsNone(rows[0]["statutory_debt_limit_100m"])
+        self.assertEqual(rows[0]["statutory_debt_limit_100m"], Decimal("290.57"))
+        self.assertIsNone(rows[0]["general_debt_balance_100m"])
+        self.assertIsNone(rows[0]["special_debt_balance_100m"])
         self.assertIsNone(rows[0]["statutory_debt_balance_100m"])
         self.assertEqual(rows[0]["collection_status"], "needs_review")
         self.assertIn("余额超过限额", rows[0]["note"])
+
+    def test_debt_fact_conflict_preserves_nonconflicting_limit_fields(self):
+        city = {
+            "city_id": "CN-410200",
+            "admin_code_6": "410200",
+            "city_name_cn": "开封市",
+            "province_code": "41",
+            "province_name": "河南省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2022",
+        }
+        facts = {
+            ("CN-410200", "2022"): {
+                "source_doc_id": "SRC-OFFICIAL-DEBT-HENAN-KAIFENG-2022",
+                "source_grade": "A2",
+                "general_debt_limit_100m": "260.80",
+                "general_debt_balance_100m": "300.00",
+                "special_debt_limit_100m": "400.00",
+                "special_debt_balance_100m": "350.00",
+            }
+        }
+
+        rows, _ = build_macro_rows([city], [], {}, facts)
+
+        self.assertEqual(rows[0]["general_debt_limit_100m"], Decimal("260.80"))
+        self.assertEqual(rows[0]["special_debt_limit_100m"], Decimal("400.00"))
+        self.assertEqual(rows[0]["statutory_debt_limit_100m"], Decimal("660.80"))
+        self.assertIsNone(rows[0]["general_debt_balance_100m"])
+        self.assertEqual(rows[0]["special_debt_balance_100m"], Decimal("350.00"))
+        self.assertIsNone(rows[0]["statutory_debt_balance_100m"])
+        self.assertEqual(rows[0]["collection_status"], "needs_review")
 
     def test_guangdong_2025_official_gdp_batch_is_field_level_lineaged(self):
         city = {

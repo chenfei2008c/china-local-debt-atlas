@@ -46,7 +46,11 @@ DOWNLOAD_SSL_CONTEXT = _download_ssl_context()
 try:
     from scripts.collect_gcs66_city_debt import load_gcs66_city_fund_sources
     from scripts.province_debt_sources import extract_official_debt_facts
-    from scripts.data_quality import OFFICIAL_DEBT_EXCEPTION_STATUS, debt_fact_has_balance_limit_conflict
+    from scripts.data_quality import (
+        OFFICIAL_DEBT_EXCEPTION_STATUS,
+        debt_fact_conflicting_fields,
+        debt_fact_has_balance_limit_conflict,
+    )
     from scripts.evidence_based_missing import CORE_GAP_FIELDS, EVIDENCE_BY_KEY, EVIDENCE_CHECKED_AT, EVIDENCE_SOURCE_DOCUMENTS
     from scripts.official_city_macro_sources import parse_city_fund_revenue_text, parse_guangdong_city_budget_page, parse_guangdong_city_gdp_html
     from scripts.pdf_layout_text import extract_pdf_text
@@ -61,7 +65,11 @@ try:
 except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.py 直接运行
     from collect_gcs66_city_debt import load_gcs66_city_fund_sources
     from province_debt_sources import extract_official_debt_facts
-    from data_quality import OFFICIAL_DEBT_EXCEPTION_STATUS, debt_fact_has_balance_limit_conflict
+    from data_quality import (
+        OFFICIAL_DEBT_EXCEPTION_STATUS,
+        debt_fact_conflicting_fields,
+        debt_fact_has_balance_limit_conflict,
+    )
     from evidence_based_missing import CORE_GAP_FIELDS, EVIDENCE_BY_KEY, EVIDENCE_CHECKED_AT, EVIDENCE_SOURCE_DOCUMENTS
     from official_city_macro_sources import parse_city_fund_revenue_text, parse_guangdong_city_budget_page, parse_guangdong_city_gdp_html
     from pdf_layout_text import extract_pdf_text
@@ -18620,6 +18628,7 @@ def build_macro_rows(
                 elif economic_note and economic_note not in str(row.get("note") or ""):
                     row["note"] = f"{row.get('note') or ''}；{economic_note}"
         debt_fact = official_debt_facts.get((city["city_id"], str(year)))
+        debt_conflict_fields: set[str] = set()
         if debt_fact and debt_fact_has_balance_limit_conflict(dict(debt_fact)):
             blocked_source_id = str(debt_fact.get("source_doc_id", ""))
             prior_source = str(row.get("source_doc_id") or "")
@@ -18627,8 +18636,12 @@ def build_macro_rows(
             row["source_grade"] = str(debt_fact.get("source_grade") or row.get("source_grade") or "")
             row["data_status"] = "needs_review"
             row["collection_status"] = "needs_review"
-            row["note"] = "债务来源已归档，但官方表中余额超过限额且未提供例外说明；按强校验阻塞入主表，待复核原表口径。"
-            debt_fact = None
+            debt_conflict_fields = debt_fact_conflicting_fields(dict(debt_fact))
+            row["note"] = (
+                "债务来源已归档，但官方表中部分余额超过限额且未提供例外说明；"
+                f"仅阻塞冲突字段（{','.join(sorted(debt_conflict_fields))}），"
+                "保留同一官方表中无冲突的限额及余额分项，待复核原表口径。"
+            )
         if debt_fact:
             debt_source_id = str(debt_fact.get("source_doc_id", ""))
             prior_source = str(row.get("source_doc_id") or "")
@@ -18661,6 +18674,8 @@ def build_macro_rows(
             for field in RAW_NUMERIC_FIELDS:
                 if field not in {"general_debt_limit_100m", "general_debt_balance_100m", "special_debt_limit_100m", "special_debt_balance_100m"}:
                     continue
+                if field in debt_conflict_fields:
+                    continue
                 value = debt_fact.get(field)
                 if value is None:
                     continue
@@ -18670,6 +18685,8 @@ def build_macro_rows(
             # 只有在分项不完整时才采用总额直录，避免用总额覆盖可勾稽的分项合计。
             if row.get("general_debt_balance_100m") is None or row.get("special_debt_balance_100m") is None:
                 for field in ("statutory_debt_limit_100m", "statutory_debt_balance_100m"):
+                    if field in debt_conflict_fields:
+                        continue
                     value = debt_fact.get(field)
                     if value is None:
                         continue
@@ -18677,7 +18694,11 @@ def build_macro_rows(
                     lineage.append(_lineage_for_official_debt(row, field, debt_fact, row[field]))
             # 直接披露的合计用于证据记录；主表的合计仍由同口径一般/专项分项勾稽生成。
             row["_official_direct_statutory_limit"] = debt_fact.get("statutory_debt_limit_100m")
-            row["_official_direct_statutory_balance"] = debt_fact.get("statutory_debt_balance_100m")
+            row["_official_direct_statutory_balance"] = (
+                None
+                if "statutory_debt_balance_100m" in debt_conflict_fields
+                else debt_fact.get("statutory_debt_balance_100m")
+            )
         jiangsu_fiscal_source = jiangsu_city_fiscal.get((city["city_id"], str(year)))
         if jiangsu_fiscal_source:
             prior_source = str(row.get("source_doc_id") or "")
@@ -18842,6 +18863,16 @@ def build_macro_rows(
         if debt_fact and debt_fact.get("balance_limit_exception_note"):
             row["data_status"] = OFFICIAL_DEBT_EXCEPTION_STATUS
             row["collection_status"] = "needs_review"
+        if debt_conflict_fields:
+            row["data_status"] = "needs_review"
+            row["collection_status"] = "needs_review"
+            if "余额超过限额" not in str(row.get("note") or ""):
+                row["note"] = (
+                    str(row.get("note") or "")
+                    + ("；" if row.get("note") else "")
+                    + "官方债务表部分余额超过限额且未提供例外说明；冲突余额字段已阻塞，"
+                    "无冲突限额及余额分项予以保留。"
+                )
         derived = compute_derived_values(row)
         for field, value in derived.items():
             if value is not None:

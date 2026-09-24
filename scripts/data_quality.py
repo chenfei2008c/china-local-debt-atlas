@@ -64,16 +64,31 @@ def assess_field_value(
 def debt_fact_has_balance_limit_conflict(fact: dict[str, Any], tolerance: Decimal = Decimal("0.20")) -> bool:
     """返回债务事实是否出现余额超过对应限额且未提供例外说明。"""
 
+    return bool(debt_fact_conflicting_fields(fact, tolerance=tolerance))
+
+
+def debt_fact_conflicting_fields(
+    fact: dict[str, Any], tolerance: Decimal = Decimal("0.20")
+) -> set[str]:
+    """返回债务事实中超过对应限额的字段集合。
+
+    余额与限额冲突只阻塞冲突余额及其法定余额合计，不能连带丢弃同一张
+    官方表中已经明确披露、且本身没有冲突的限额或另一分项余额。
+    """
+
     pairs = (
         ("general_debt_balance_100m", "general_debt_limit_100m"),
         ("special_debt_balance_100m", "special_debt_limit_100m"),
         ("statutory_debt_balance_100m", "statutory_debt_limit_100m"),
     )
     if fact.get("balance_limit_exception_note"):
-        return False
+        return set()
+    conflicts: set[str] = set()
     for balance_key, limit_key in pairs:
         balance = _as_decimal(fact.get(balance_key))
         limit = _as_decimal(fact.get(limit_key))
         if balance is not None and limit is not None and balance > limit + tolerance:
-            return True
-    return False
+            conflicts.add(balance_key)
+    if conflicts:
+        conflicts.add("statutory_debt_balance_100m")
+    return conflicts
