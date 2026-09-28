@@ -14067,6 +14067,48 @@
           "rows": []
         }
       }
+    },
+    {
+      "city_id": "CN-321100",
+      "city_name_cn": "镇江市",
+      "slug": "jiangsu-zhenjiang",
+      "fetched_at": "2026-09-28T02:14:54+00:00",
+      "metrics": {
+        "limit": {
+          "status": "ok",
+          "url": "https://www.ceicdata.com/en/china/local-government-debt-limit-prefecture-level-city-local-level/cn-local-government-debt-limit-local-level-jiangsu-zhenjiang",
+          "resolved_url": "https://www.ceicdata.com/en/china/local-government-debt-limit-prefecture-level-city-local-level/cn-local-government-debt-limit-local-level-jiangsu-zhenjiang",
+          "title": "Local Government Debt Limit: Local Level: Jiangsu: Zhenjiang | Economic Indicators | CEIC",
+          "description": "Local Government Debt Limit: Local Level: Jiangsu: Zhenjiang data was reported at 199,265.000 RMB mn in Dec 2025. This records an increase from the previous number of 93,411.000 RMB mn for Dec 2024. Local Government Debt Limit: Local Level: Jiangsu: Zhenjiang data is updated yearly, averaging 128,294.000 RMB mn (Median) from Dec 2018 to 2025, with 8 observations. The data reached an all-time high of 199,265.000 RMB mn in 2025 and a record low of 44,300.000 RMB mn in 2018. Local Government Debt Limit: Local Level: Jiangsu: Zhenjiang data remains active status in CEIC and is reported by Zhenjiang Municipal Bureau of Statistics. The data is categorized under China Premium Database’s Government and Public Finance – Table CN.FAR: Local Government Debt Limit: Prefecture Level City: Local Level.",
+          "publisher": "Zhenjiang Municipal Bureau of Statistics",
+          "page_hash": "f90a4d0923ec5b47968dd429a4d5c83e9217c8ffebd9fa19a3d161af5a24cd41",
+          "rows": [
+            {"year": 2024, "raw_value_rmb_mn": "93411.000", "evidence": "HTML description：previous number 前一年度"},
+            {"year": 2025, "raw_value_rmb_mn": "199265.000", "evidence": "HTML description：reported at 最新年度"}
+          ]
+        }
+      }
+    },
+    {
+      "city_id": "CN-620900",
+      "city_name_cn": "酒泉市",
+      "slug": "gansu-jiuquan",
+      "fetched_at": "2026-09-28T02:14:54+00:00",
+      "metrics": {
+        "limit": {
+          "status": "ok",
+          "url": "https://www.ceicdata.com/en/china/local-government-debt-limit-prefecture-level-city-local-level/cn-local-government-debt-limit-local-level-gansu-jiuquan",
+          "resolved_url": "https://www.ceicdata.com/en/china/local-government-debt-limit-prefecture-level-city-local-level/cn-local-government-debt-limit-local-level-gansu-jiuquan",
+          "title": "Local Government Debt Limit: Local Level: Gansu: Jiuquan | Economic Indicators | CEIC",
+          "description": "Local Government Debt Limit: Local Level: Gansu: Jiuquan data was reported at 4,839.095 RMB mn in Dec 2020. This records an increase from the previous number of 3,827.644 RMB mn for Dec 2019. Local Government Debt Limit: Local Level: Gansu: Jiuquan data is updated yearly, averaging 3,457.514 RMB mn (Median) from Dec 2017 to 2020, with 4 observations. The data reached an all-time high of 4,839.095 RMB mn in 2020 and a record low of 3,287.514 RMB mn in 2017. Local Government Debt Limit: Local Level: Gansu: Jiuquan data remains active status in CEIC and is reported by Jiuquan Municipal Bureau of Statistics. The data is categorized under China Premium Database’s Government and Public Finance – Table CN.FAR: Local Government Debt Limit: Prefecture Level City: Local Level.",
+          "publisher": "Jiuquan Municipal Bureau of Statistics",
+          "page_hash": "94be7a9918d41855f241271294e53d9c068d153a13d5c42f2fe7458a8d072e92",
+          "rows": [
+            {"year": 2019, "raw_value_rmb_mn": "3827.644", "evidence": "HTML description：previous number 前一年度"},
+            {"year": 2020, "raw_value_rmb_mn": "4839.095", "evidence": "HTML description：reported at 最新年度"}
+          ]
+        }
+      }
     }
   ]
 }
