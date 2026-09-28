@@ -435,6 +435,90 @@ def refresh_snapshot(root: Path, workers: int = 8) -> dict[str, Any]:
     return counts
 
 
+def _current_limit_gap_city_ids(root: Path) -> set[str]:
+    """返回主表中 2018—2025 至少一个限额缺口的城市。"""
+
+    path = root / "outputs" / "national_prefecture_panel_2018_2026" / "city_macro_fiscal.csv"
+    if not path.exists():
+        return set()
+    result: set[str] = set()
+    with path.open(encoding="utf-8-sig", newline="") as handle:
+        for row in csv.DictReader(handle):
+            try:
+                year = int(row.get("metric_year") or "")
+            except ValueError:
+                continue
+            if START_YEAR <= year <= END_YEAR and not str(row.get("statutory_debt_limit_100m") or "").strip():
+                city_id = str(row.get("city_id") or "").strip()
+                if city_id:
+                    result.add(city_id)
+    return result
+
+
+def refresh_limit_only(root: Path, workers: int = 16, only_missing: bool = True) -> dict[str, Any]:
+    """只刷新限额页面，保留现有基金快照，供高收益缺口批次使用。
+
+    全量刷新会为每个城市额外探测基金目录和一般/专项分项页面；限额缺口
+    修复阶段不需要这些请求。该模式只请求主限额页面及其 SVG 精确标签，
+    将结果合并回既有快照，避免中断批次丢失已归档基金值。
+    """
+
+    slug_path = root / SLUG_PATH
+    if not slug_path.exists():
+        raise FileNotFoundError(slug_path)
+    slug_map = json.loads(slug_path.read_text(encoding="utf-8"))
+    gap_city_ids = _current_limit_gap_city_ids(root) if only_missing else set()
+    items = [
+        (str(city_id), str(item[0]), str(item[1]))
+        for city_id, item in slug_map.items()
+        if isinstance(item, list)
+        and len(item) >= 2
+        and (not gap_city_ids or str(city_id) in gap_city_ids)
+    ]
+    with ThreadPoolExecutor(max_workers=max(1, workers)) as executor:
+        futures = {
+            executor.submit(_read_metric_page, _limit_url(slug), slug, "limit"): (city_id, city_name, slug)
+            for city_id, city_name, slug in items
+        }
+        refreshed: dict[str, dict[str, Any]] = {}
+        for future in as_completed(futures):
+            city_id, city_name, slug = futures[future]
+            refreshed[city_id] = {
+                "city_id": city_id,
+                "city_name_cn": city_name,
+                "slug": slug,
+                "fetched_at": datetime.now(timezone.utc).isoformat(),
+                "metrics": {"limit": future.result()},
+            }
+    path = root / SNAPSHOT_PATH
+    if path.exists():
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    else:
+        payload = {"source_grade": SOURCE_GRADE, "unit": "RMB mn; loader converts to 亿元", "cities": []}
+    existing = {str(city.get("city_id")): city for city in payload.get("cities", [])}
+    for city_id, city in refreshed.items():
+        old = existing.get(city_id, {})
+        metrics = dict(old.get("metrics") or {})
+        new_limit = city["metrics"]["limit"]
+        # 网络失败、重定向或无精确年度标签时，不得用空结果覆盖既有快照。
+        # 只有本次确实得到至少一条精确限额序列，才替换旧页面记录。
+        if new_limit.get("status") == "ok" and new_limit.get("rows"):
+            metrics["limit"] = new_limit
+        old.update({"city_id": city_id, "city_name_cn": city["city_name_cn"], "slug": city["slug"], "fetched_at": city["fetched_at"], "metrics": metrics})
+        existing[city_id] = old
+    payload["retrieved_at"] = datetime.now(timezone.utc).isoformat()
+    payload["cities"] = sorted(existing.values(), key=lambda item: str(item.get("city_id") or ""))
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    return {
+        "requested_cities": len(items),
+        "refreshed_cities": len(refreshed),
+        "ok_pages": sum(item["metrics"]["limit"].get("status") == "ok" for item in refreshed.values()),
+        "limit_values": sum(len(item["metrics"]["limit"].get("rows", [])) for item in refreshed.values()),
+        "snapshot": str(path),
+    }
+
+
 def repair_snapshot_meta(root: Path) -> dict[str, Any]:
     """修复已归档页面摘要中的月份前缀，不重新请求网络。"""
 
@@ -595,10 +679,14 @@ def main() -> None:
     parser.add_argument("--root", type=Path, default=ROOT)
     parser.add_argument("--workers", type=int, default=8)
     parser.add_argument("--refresh", action="store_true")
+    parser.add_argument("--limit-only", action="store_true", help="只刷新当前主表限额缺口城市，并保留既有基金快照")
+    parser.add_argument("--all-limit-pages", action="store_true", help="限额专用模式下刷新全部已归档城市页面")
     parser.add_argument("--repair-meta", action="store_true")
     args = parser.parse_args()
     if args.refresh:
         print(json.dumps(refresh_snapshot(args.root, args.workers), ensure_ascii=False))
+    elif args.limit_only:
+        print(json.dumps(refresh_limit_only(args.root, args.workers, only_missing=not args.all_limit_pages), ensure_ascii=False))
     elif args.repair_meta:
         print(json.dumps(repair_snapshot_meta(args.root), ensure_ascii=False))
     else:

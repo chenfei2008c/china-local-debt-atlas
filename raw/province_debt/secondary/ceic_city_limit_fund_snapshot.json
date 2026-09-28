@@ -13098,6 +13098,11 @@
           "page_hash": "17eb671b29c79d21f1dcc3027d07d66039099aa3b544daaf95b192566becd754",
           "rows": [
             {
+              "year": 2018,
+              "raw_value_rmb_mn": "6036.725",
+              "evidence": "SVG data-label：年度标签与精确数值标签配对"
+            },
+            {
               "year": 2019,
               "raw_value_rmb_mn": "6447.145",
               "evidence": "HTML description：previous number 前一年度"
