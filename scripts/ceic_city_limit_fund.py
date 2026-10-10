@@ -35,6 +35,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "raw" / "province_debt" / "secondary"
 SLUG_PATH = OUTPUT_DIR / "ceic_city_page_hits.json"
 SNAPSHOT_PATH = OUTPUT_DIR / "ceic_city_limit_fund_snapshot.json"
+RECOVERY_SNAPSHOT_PATH = OUTPUT_DIR / "ceic_city_limit_fund_recovery.json"
 SOURCE_GRADE = "B2"
 START_YEAR = 2018
 END_YEAR = 2025
@@ -415,13 +416,42 @@ def refresh_snapshot(root: Path, workers: int = 8) -> dict[str, Any]:
         for future in as_completed(futures):
             results.append(future.result())
     results.sort(key=lambda item: item["city_id"])
+    path = root / SNAPSHOT_PATH
+    if path.exists():
+        # 页面临时失败、重定向到省级目录或只返回元数据时，不得抹掉旧快照中
+        # 已有的精确年度序列；成功页面也只补回旧快照中本次未返回的年份。
+        previous = json.loads(path.read_text(encoding="utf-8"))
+        previous_by_city = {
+            str(city.get("city_id") or ""): city
+            for city in previous.get("cities", [])
+            if city.get("city_id")
+        }
+        for city in results:
+            old_city = previous_by_city.get(str(city.get("city_id") or ""))
+            if not old_city:
+                continue
+            old_metrics = old_city.get("metrics") or {}
+            new_metrics = city.setdefault("metrics", {})
+            for metric in ("limit", "fund"):
+                old_detail = old_metrics.get(metric) or {}
+                new_detail = new_metrics.get(metric) or {}
+                old_rows = list(old_detail.get("rows") or [])
+                new_rows = list(new_detail.get("rows") or [])
+                if not new_rows:
+                    if old_rows:
+                        new_metrics[metric] = old_detail
+                    continue
+                years = {int(row.get("year")) for row in new_rows if str(row.get("year") or "").isdigit()}
+                new_metrics[metric]["rows"] = sorted(
+                    new_rows + [row for row in old_rows if int(row.get("year", 0)) not in years],
+                    key=lambda row: int(row.get("year", 0)),
+                )
     payload = {
         "retrieved_at": datetime.now(timezone.utc).isoformat(),
         "source_grade": SOURCE_GRADE,
         "unit": "RMB mn; loader converts to 亿元",
         "cities": results,
     }
-    path = root / SNAPSHOT_PATH
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     counts = {"cities": len(results), "limit_values": 0, "fund_values": 0, "limit_hits": 0, "fund_hits": 0}
@@ -588,6 +618,49 @@ def _source_record(metric: str, city: Mapping[str, Any], item: Mapping[str, Any]
     }
 
 
+def _merge_recovery_snapshot(payload: dict[str, Any], recovery: Mapping[str, Any]) -> None:
+    """把已归档精确年度值补回当前快照，绝不让失败刷新覆盖它们。"""
+
+    cities = {
+        str(city.get("city_id") or ""): city
+        for city in payload.get("cities", [])
+        if city.get("city_id")
+    }
+    for item in recovery.get("records", []):
+        city_id = str(item.get("city_id") or "")
+        metric = str(item.get("metric") or "")
+        if not city_id or metric not in {"limit", "fund"}:
+            continue
+        city = cities.get(city_id)
+        if city is None:
+            city = {
+                "city_id": city_id,
+                "city_name_cn": str(item.get("city_name_cn") or ""),
+                "metrics": {},
+            }
+            payload.setdefault("cities", []).append(city)
+            cities[city_id] = city
+        metrics = city.setdefault("metrics", {})
+        detail = metrics.setdefault(metric, {})
+        rows = list(detail.get("rows") or [])
+        years = {int(row.get("year")) for row in rows if str(row.get("year") or "").isdigit()}
+        if int(item["year"]) not in years:
+            rows.append(
+                {
+                    "year": int(item["year"]),
+                    "raw_value_rmb_mn": str(item["raw_value_rmb_mn"]),
+                    "evidence": str(item.get("evidence") or "恢复快照精确值"),
+                }
+            )
+        detail["rows"] = sorted(rows, key=lambda row: int(row.get("year", 0)))
+        if detail["rows"]:
+            detail["status"] = "ok"
+            detail.setdefault("url", str(item.get("url") or ""))
+            detail.setdefault("resolved_url", str(item.get("url") or ""))
+            detail.setdefault("title", "CEIC公开城市年度指标页（已归档恢复值）")
+            detail.setdefault("publisher", "CEIC公开页面；HEAD:c74133a归档")
+
+
 def load_ceic_city_limit_fund_sources(
     root: Path, city_master: list[Mapping[str, Any]]
 ) -> tuple[dict[tuple[str, str], dict[str, Any]], list[dict[str, Any]]]:
@@ -596,6 +669,10 @@ def load_ceic_city_limit_fund_sources(
         return {}, []
     content = path.read_bytes()
     payload = json.loads(content.decode("utf-8"))
+    recovery_path = root / RECOVERY_SNAPSHOT_PATH
+    if recovery_path.exists():
+        recovery = json.loads(recovery_path.read_text(encoding="utf-8"))
+        _merge_recovery_snapshot(payload, recovery)
     snapshot_hash = hashlib.sha256(content).hexdigest()
     city_ids = {str(row.get("city_id")): row for row in city_master if row.get("city_id")}
     values: dict[tuple[str, str], dict[str, Any]] = {}
