@@ -17,6 +17,16 @@ class CityYearFundBatchTests(unittest.TestCase):
             "SRC-A2-DIQING-CITY-FUND-2024": ("迪庆藏族自治州", 2024, "0.38"),
             "SRC-A2-SHIZUISHAN-CITY-FUND-2024": ("石嘴山市", 2024, "3.41"),
             "SRC-A2-LASA-CITY-FUND-2024": ("拉萨市", 2024, "21.803"),
+            "SRC-A2-YULIN-CITY-FUND-2023": ("榆林市", 2023, "83.1934"),
+            "SRC-B2-HEBI-CITY-FUND-2023": ("鹤壁市", 2023, "32.06"),
+            "SRC-B2-YANGJIANG-CITY-FUND-2023": ("阳江市", 2023, "289898"),
+            "SRC-B2-SANMENXIA-CITY-FUND-2023": ("三门峡市", 2023, "37.25"),
+            "SRC-B2-LUOHE-CITY-FUND-2023": ("漯河市", 2023, "54.43"),
+            "SRC-B2-ANYANG-CITY-FUND-2023": ("安阳市", 2023, "65.10"),
+            "SRC-B2-ANSHUN-CITY-FUND-2023": ("安顺市", 2023, "98.43"),
+            "SRC-B2-CHANGSHA-CITY-FUND-2024": ("长沙市", 2024, "576.8"),
+            "SRC-B2-HAIKOU-CITY-FUND-2024": ("海口市", 2024, "120.4"),
+            "SRC-A2-DANZHOU-CITY-FUND-2024": ("儋州市", 2024, "4.57"),
         }
         sources = {
             item["source_doc_id"]: item
