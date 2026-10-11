@@ -4447,6 +4447,32 @@ CITY_YEAR_FUND_SOURCES += (
 
 CITY_YEAR_FUND_SOURCES += (
     {
+        "year": 2024,
+        "city_name": "承德市",
+        "city_id": "CN-130800",
+        "source_doc_id": "SRC-A1-CHENGDE-CITY-FUND-2024",
+        "url": "https://www.chengde.gov.cn/attach/0/646ee12fa88341b491b741e958001b45.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "chengde_2024_fund_decision_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "chengde_2024_fund_decision_excerpt.txt",
+        "document_title": "关于承德市2024年财政决算（草案）的报告",
+        "publisher": "承德市人民政府、承德市人大常委会",
+        "publisher_level": "市级政府及人大官方公开",
+        "publication_date": "2025-08-29",
+        "source_grade": "A1",
+        "source_format": "pdf",
+        "pattern": r"2024年全市政府性基金预算收入完成([0-9]+)万元",
+        "raw_unit": "万元",
+        "data_status": "final",
+        "data_status_label": "2024年全市政府性基金预算收入决算数",
+        "document_type": "市级财政决算报告",
+        "page_number": "PDF第4页",
+        "page_count": "待官方附件核对",
+        "note": "承德市官方财政决算报告明确列示2024年全市政府性基金预算收入完成464882万元；行政范围为全市，不使用市本级数或基金收入总计。",
+    },
+)
+
+CITY_YEAR_FUND_SOURCES += (
+    {
         "year": 2025,
         "city_name": "厦门市",
         "city_id": "CN-350200",
