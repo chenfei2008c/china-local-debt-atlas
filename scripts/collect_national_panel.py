@@ -4421,6 +4421,32 @@ CITY_YEAR_FUND_SOURCES += (
 
 CITY_YEAR_FUND_SOURCES += (
     {
+        "year": 2024,
+        "city_name": "石家庄市",
+        "city_id": "CN-130100",
+        "source_doc_id": "SRC-A1-SHIJIAZHUANG-CITY-FUND-2024",
+        "url": "https://www.sjz.gov.cn/yjsgk/atm/b16fa88e-0b1e-4fa9-a8d3-d54dccd37295/%E7%9F%B3%E5%AE%B6%E5%BA%84%E5%B8%822024%E5%B9%B4%E5%B8%82%E6%9C%AC%E7%BA%A7%E5%92%8C%E5%85%A8%E5%B8%82%E8%B4%A2%E6%94%BF%E5%86%B3%E7%AE%97%E5%85%AC%E5%BC%80%E6%8A%A5%E8%A1%A8%E5%8F%8A%E6%9C%89%E5%85%B3%E6%83%85%E5%86%B5%E7%9A%84%E8%AF%B4%E6%98%8E20250911164818949.pdf?sid=906fdd93-347f-48b9-9f43-5f056a32cf32",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "shijiazhuang_2024_fund_decision_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "shijiazhuang_2024_fund_decision_excerpt.txt",
+        "document_title": "石家庄市2024年度市级和全市财政决算公开报表及有关情况的说明",
+        "publisher": "石家庄市财政局",
+        "publisher_level": "市级财政机构官网",
+        "publication_date": "2025-09-11",
+        "source_grade": "A1",
+        "source_format": "pdf",
+        "pattern": r"本年基金收入合计([0-9]+)",
+        "raw_unit": "万元",
+        "data_status": "final",
+        "data_status_label": "2024年全市政府性基金收入决算数",
+        "document_type": "市级财政决算公开表",
+        "page_number": "PDF第82页（印刷页77）",
+        "page_count": "99",
+        "note": "石家庄市财政局官方决算附件第二部分全市表，明确列示2024年石家庄市全市政府性基金收入决算数3792041万元；不使用第一部分市本级表1982711万元。",
+    },
+)
+
+CITY_YEAR_FUND_SOURCES += (
+    {
         "year": 2025,
         "city_name": "厦门市",
         "city_id": "CN-350200",
