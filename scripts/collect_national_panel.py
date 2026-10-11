@@ -9184,6 +9184,57 @@ HEILONGJIANG_2023_CITY_FUND_SOURCES = tuple(
 )
 CITY_YEAR_FUND_SOURCES += HEILONGJIANG_2023_CITY_FUND_SOURCES
 
+# 黑龙江省 2023 年另外两条全市口径基金收入：牡丹江市来自官方预算执行报告，
+# 齐齐哈尔市来自公开评级报告中的精确文字并回溯标明官方预算执行报告及附表。
+CITY_YEAR_FUND_SOURCES += (
+    {
+        "year": 2023,
+        "city_name": "牡丹江市",
+        "city_id": "CN-231000",
+        "source_doc_id": "SRC-A2-MUDANJIANG-CITY-FUND-EXECUTION-2023",
+        "url": "https://mdj.gov.cn/mdjsrmzf/c105960/202402/942548/files/60ff965bf09345e5847184746a4851f8.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "official" / "mudanjiang_2023_fund_execution_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "official" / "mudanjiang_2023_fund_execution_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "关于牡丹江市2023年预算执行情况和2024年预算（草案）的报告",
+        "publisher": "牡丹江市财政局、牡丹江市人民政府",
+        "publisher_level": "市级财政机构及市政府官网",
+        "publication_date": "2024-02-02",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "pattern": r"全市基金预算收入([0-9]+)万元",
+        "raw_unit": "万元",
+        "data_status": "execution",
+        "data_status_label": "2023年全市政府性基金预算执行数",
+        "document_type": "市级政府预算执行报告",
+        "page_number": "报告正文（二）政府性基金预算执行情况",
+        "note": "A2牡丹江市官方预算执行报告；明确列示2023年全市基金预算收入60078万元，换算为6.0078亿元；不使用市级32410万元。",
+    },
+    {
+        "year": 2023,
+        "city_name": "齐齐哈尔市",
+        "city_id": "CN-230200",
+        "source_doc_id": "SRC-B2-QIQIHAER-CITY-FUND-2023",
+        "url": "https://qxb-pdf-osscache.qixin.com/AnBaseinfo/f6107ead04d0afbf76e296434abce07d.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "qiqihaer_2023_fund_rating_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "qiqihaer_2023_fund_rating_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "黑龙江省鹤城建设投资发展集团有限公司主体与相关债项2024年度跟踪评级报告",
+        "publisher": "评级机构公开报告",
+        "publisher_level": "专业评级机构公开报告",
+        "publication_date": "2024-06-28",
+        "source_grade": "B2",
+        "source_format": "pdf",
+        "pattern": r"全市政府性基金收入([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": "2023年全市政府性基金收入报告数",
+        "document_type": "评级报告精确财政文字",
+        "page_number": "报告财政数据说明及表3",
+        "note": "B2报告精确文字；报告明确说明数据来自齐齐哈尔市统计公报、预算执行报告及附表，列示2023年全市政府性基金收入14.48亿元；不使用市本级数。",
+    },
+)
+
 # 内蒙古自治区下辖盟市 2022 年政府性基金预算收入。公开报告正文给出
 # 精确的全市/全盟数值；呼和浩特市同值已在既有官方来源中存在，不重复接入。
 INNER_MONGOLIA_2022_CITY_FUND_VALUES = {
