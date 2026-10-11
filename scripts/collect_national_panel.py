@@ -19480,6 +19480,36 @@ CITY_YEAR_FUND_SOURCES += (
 )
 
 
+# 赤峰市 2024 年财政决算报告明确披露全市政府性基金预算收入；采用
+# 全市 430865 万元，不把同一报告中的市本级 60619 万元误作地级市全口径。
+CITY_YEAR_FUND_SOURCES += (
+    {
+        "year": 2024,
+        "city_name": "赤峰市",
+        "city_id": "CN-150400",
+        "source_doc_id": "SRC-A2-CHIFENG-CITY-FUND-2024",
+        "url": "https://czj.chifeng.gov.cn/cfsczjzwgk/cfsczjzfgkxx/fdzdgknr/cfsczjgkys/cfsczjzfyjs/202511/t20251121_2688329.html",
+        "attachment_url": "https://czj.chifeng.gov.cn/cfsczjzwgk/cfsczjzfgkxx/fdzdgknr/cfsczjgkys/202511/P020251121587140175388.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "official" / "chifeng_2024_city_fund_decision.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "official" / "chifeng_2024_city_fund_decision_excerpt.txt",
+        "document_title": "关于2024年赤峰市及市本级财政决算的报告",
+        "publisher": "赤峰市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2025-11-21",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "pattern": r"全市政府性基金预算收入总计[0-9,]+万元。其中：政府性基金预算收入([0-9,]+)万元",
+        "raw_unit": "万元",
+        "data_status": "final",
+        "data_status_label": "2024年全市政府性基金预算决算数",
+        "document_type": "市级财政决算报告及官方附件",
+        "page_number": "PDF第2页（印刷页码—3—附近）",
+        "page_count": "1",
+        "note": "A2赤峰市财政局官方决算报告；精确披露2024年赤峰市全市政府性基金预算收入430865万元，折算为43.0865亿元并按主表精度入库；不采用同一报告中的市本级60619万元。全市口径，决算数。",
+    },
+)
+
+
 def load_city_year_fund_sources() -> tuple[dict[tuple[str, str], dict[str, Any]], list[dict[str, Any]]]:
     """读取已核验的城市年度全市政府性基金收入精确披露。"""
 
