@@ -19510,6 +19510,35 @@ CITY_YEAR_FUND_SOURCES += (
 )
 
 
+# 石家庄市 2023 年全市财政决算表明确披露全市政府性基金收入决算数；
+# 采用全市 4650795 万元，不把市本级 1828490 万元误作全市口径。
+CITY_YEAR_FUND_SOURCES += (
+    {
+        "year": 2023,
+        "city_name": "石家庄市",
+        "city_id": "CN-130100",
+        "source_doc_id": "SRC-A1-SHIJIAZHUANG-CITY-FUND-2023",
+        "url": "https://www.sjz.gov.cn/yjsgk/attachments/1/202409/14/%E7%9F%B3%E5%AE%B6%E5%BA%84%E5%B8%822023%E5%B9%B4%E5%B8%82%E6%9C%AC%E7%BA%A7%E5%92%8C%E5%85%A8%E5%B8%82%E8%B4%A2%E6%94%BF%E5%86%B3%E7%AE%97%E5%85%AC%E5%BC%80%E6%8A%A5%E8%A1%A8%E5%8F%8A%E6%9C%89%E5%85%B3%E6%83%85%E5%86%B5%E7%9A%84%E8%AF%B4%E6%98%8E20240914064437395.pdf?sid=0d3cce0d-4958-4164-9b50-41b640d7da21",
+        "path": RAW_DIR / "province_fiscal" / "2023" / "official" / "shijiazhuang_2023_city_fund_decision.pdf",
+        "text_path": RAW_DIR / "province_fiscal" / "2023" / "official" / "shijiazhuang_2023_city_fund_decision_excerpt.txt",
+        "document_title": "石家庄市2023年市本级和全市财政决算公开报表及有关情况的说明",
+        "publisher": "石家庄市财政局",
+        "publisher_level": "市级财政机构",
+        "publication_date": "2024-09-14",
+        "source_grade": "A1",
+        "source_format": "pdf",
+        "pattern": r"本年基金收入合计71952504762258([0-9]+)97\.727\.1",
+        "raw_unit": "万元",
+        "data_status": "final",
+        "data_status_label": "2023年全市政府性基金预算决算数",
+        "document_type": "市级财政决算公开报表及官方附件",
+        "page_number": "PDF第77页（§4 2023年石家庄市政府性基金收入决算表）",
+        "page_count": "1",
+        "note": "A1石家庄市财政局官方全市决算表；精确披露2023年石家庄市全市政府性基金预算收入4650795万元，折算为465.0795亿元并按主表精度入库；不采用市本级1828490万元。全市口径，决算数。",
+    },
+)
+
+
 def load_city_year_fund_sources() -> tuple[dict[tuple[str, str], dict[str, Any]], list[dict[str, Any]]]:
     """读取已核验的城市年度全市政府性基金收入精确披露。"""
 
