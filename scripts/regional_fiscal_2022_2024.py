@@ -103,7 +103,9 @@ CITY_IDS = {
     "张家口市": "CN-130700", "承德市": "CN-130800", "沧州市": "CN-130900",
     "廊坊市": "CN-131000", "衡水市": "CN-131100",
     # 山西
-    "大同市": "CN-140200", "长治市": "CN-140400", "晋城市": "CN-140500",
+    "太原市": "CN-140100", "大同市": "CN-140200", "阳泉市": "CN-140300",
+    "长治市": "CN-140400", "晋城市": "CN-140500", "朔州市": "CN-140600",
+    "晋中市": "CN-140700", "运城市": "CN-140800", "忻州市": "CN-140900",
     # 广东（本批跨省基金来源仅使用以下六个缺口城市）
     "茂名市": "CN-440900", "阳江市": "CN-441700", "东莞市": "CN-441900",
     "潮州市": "CN-445100", "揭阳市": "CN-445200", "云浮市": "CN-445300",
@@ -120,6 +122,11 @@ CITY_IDS = {
     "荆门市": "CN-420800", "孝感市": "CN-420900", "荆州市": "CN-421000",
     "黄冈市": "CN-421100", "咸宁市": "CN-421200", "随州市": "CN-421300",
     "恩施州": "CN-422800",
+    # 江西
+    "南昌市": "CN-360100", "景德镇市": "CN-360200", "萍乡市": "CN-360300",
+    "九江市": "CN-360400", "新余市": "CN-360500", "鹰潭市": "CN-360600",
+    "赣州市": "CN-360700", "吉安市": "CN-360800", "宜春市": "CN-360900",
+    "抚州市": "CN-361000", "上饶市": "CN-361100",
     # 江苏
     "南京市": "CN-320100", "无锡市": "CN-320200", "徐州市": "CN-320300",
     "常州市": "CN-320400", "苏州市": "CN-320500", "南通市": "CN-320600",
@@ -541,6 +548,116 @@ SOURCE_SPECS = {
         "page_number": "PDF第9页表5",
         "note": "B2精确表格；表5为2024年贵州省各地级市（州）GDP、GDP增速和年末常住人口，均为全市/全州口径；不使用报告图表中的财政估读值。",
     },
+    "SRC-B2-ANHUI-REGIONAL-FISCAL-2024-FUND": {
+        "year": 2024,
+        "path": "raw/province_fiscal/2024/secondary/anhui_2024_city_fiscal_rating_report.pdf",
+        "text_path": "raw/province_fiscal/2024/secondary/anhui_2024_city_fiscal_rating_report_excerpt.txt",
+        "url": "https://www.sse.com.cn/",
+        "title": "马鞍山市宁博投资发展有限责任公司相关债券2025年跟踪评级报告",
+        "publisher": "公开披露评级报告",
+        "publication_date": "2025-07-03",
+        "page_number": "PDF第8页表2",
+        "note": "B2精确表格；摘录对应公开披露附件第8页表2，明确为2024年各地级市全市口径；仅录入表内明确数值，‘—’不转换为零。",
+    },
+    "SRC-B2-GUANGXI-REGIONAL-FISCAL-2024-FUND": {
+        "year": 2024,
+        "path": "raw/province_fiscal/2024/secondary/guangxi_2024_city_fiscal_rating_report.pdf",
+        "text_path": "raw/province_fiscal/2024/secondary/guangxi_2024_city_fiscal_rating_report_excerpt.txt",
+        "url": "https://www.sse.com.cn/",
+        "title": "广西相关债券2025年跟踪评级报告",
+        "publisher": "公开披露评级报告",
+        "publication_date": "2025-11-20",
+        "page_number": "PDF第7页表1",
+        "note": "B2精确表格；摘录对应公开披露附件第7页表1，明确为2024年各地级市全市口径；仅录入表内明确数值。",
+    },
+    "SRC-B2-HUBEI-REGIONAL-FISCAL-2024-FUND": {
+        "year": 2024,
+        "path": "raw/province_fiscal/2024/secondary/hubei_2024_city_fiscal_rating_report.pdf",
+        "text_path": "raw/province_fiscal/2024/secondary/hubei_2024_city_fiscal_rating_report_excerpt.txt",
+        "url": "https://www.sse.com.cn/",
+        "title": "黄冈新区投资开发有限公司相关债券2025年跟踪评级报告",
+        "publisher": "公开披露评级报告",
+        "publication_date": "2025-07-25",
+        "page_number": "PDF第5页表1",
+        "note": "B2精确表格；摘录对应公开披露附件第5页表1，明确为2024年各地级行政单元全市/全州口径；‘—’不转换为零。",
+    },
+    "SRC-B2-JIANGXI-REGIONAL-FISCAL-2024-FUND": {
+        "year": 2024,
+        "path": "raw/province_fiscal/2024/secondary/jiangxi_2024_city_fiscal_rating_report.pdf",
+        "text_path": "raw/province_fiscal/2024/secondary/jiangxi_2024_city_fiscal_rating_report_excerpt.txt",
+        "url": "https://www.sse.com.cn/",
+        "title": "吉安市家庐陵投资开发有限公司相关债券2025年跟踪评级报告",
+        "publisher": "公开披露评级报告",
+        "publication_date": "2025-07-17",
+        "page_number": "PDF第6页表1",
+        "note": "B2精确表格；摘录对应公开披露附件第6页表1，明确为2024年各地级市全市口径；仅录入表内明确数值。",
+    },
+    "SRC-B2-JILIN-REGIONAL-FISCAL-2024-FUND": {
+        "year": 2024,
+        "path": "raw/province_fiscal/2024/secondary/jilin_2024_city_fiscal_rating_report.pdf",
+        "text_path": "raw/province_fiscal/2024/secondary/jilin_2024_city_fiscal_rating_report_excerpt.txt",
+        "url": "https://www.lhratings.com/file/ffef41a3e31.pdf",
+        "title": "地方政府与城投企业债务风险研究报告——吉林篇（2025）",
+        "publisher": "联合资信评估股份有限公司",
+        "publication_date": "2025-09-28",
+        "page_number": "PDF表7",
+        "note": "B2精确表格；表7列示2023—2024年各地市（州）政府性基金收入，资料来源为各地市（州）财政决算报告和预算执行情况报告，明确为全市/全州口径；空白行保持缺失。",
+    },
+    "SRC-B2-QINGHAI-REGIONAL-FISCAL-2024-FUND": {
+        "year": 2024,
+        "path": "raw/province_fiscal/2024/secondary/qinghai_2024_city_fiscal_rating_report.pdf",
+        "text_path": "raw/province_fiscal/2024/secondary/qinghai_2024_city_fiscal_rating_report_excerpt.txt",
+        "url": "https://www.lhratings.com/file/ffef419b0cc.pdf",
+        "title": "地方政府与城投企业债务风险研究报告——青海篇（2025）",
+        "publisher": "联合资信评估股份有限公司",
+        "publication_date": "2025-09-26",
+        "page_number": "PDF表2.3",
+        "note": "B2精确表格；表2.3列示2023—2024年各州市政府性基金收入，资料来源为各州市财政决算报告和预算执行情况报告，明确为全市/全州口径。",
+    },
+    "SRC-B2-SHAANXI-REGIONAL-FISCAL-2024-FUND": {
+        "year": 2024,
+        "path": "raw/province_fiscal/2024/secondary/shaanxi_2024_city_fiscal_rating_report.pdf",
+        "text_path": "raw/province_fiscal/2024/secondary/shaanxi_2024_city_fiscal_rating_report_excerpt.txt",
+        "url": "https://www.sse.com.cn/",
+        "title": "渭南市城市投资集团有限责任公司绿色债券2025年跟踪评级报告",
+        "publisher": "公开披露评级报告",
+        "publication_date": "2025-06-16",
+        "page_number": "PDF第8页表2",
+        "note": "B2精确表格；摘录对应公开披露附件第8页表2，明确为2024年各地级市全市口径；‘—’不转换为零。",
+    },
+    "SRC-B2-SHANXI-REGIONAL-FISCAL-2024-FUND": {
+        "year": 2024,
+        "path": "raw/province_fiscal/2024/secondary/shanxi_2024_city_fiscal_rating_report.pdf",
+        "text_path": "raw/province_fiscal/2024/secondary/shanxi_2024_city_fiscal_rating_report_excerpt.txt",
+        "url": "https://www.sse.com.cn/",
+        "title": "朔州市投资建设开发有限公司相关债券2025年跟踪评级报告",
+        "publisher": "公开披露评级报告",
+        "publication_date": "2025-07-30",
+        "page_number": "PDF第6页表1",
+        "note": "B2精确表格；摘录对应公开披露附件第6页表1，明确为2024年各地级市全市口径；仅录入表内明确数值。",
+    },
+    "SRC-B2-YUNNAN-REGIONAL-FISCAL-2024-FUND": {
+        "year": 2024,
+        "path": "raw/province_fiscal/2024/secondary/yunnan_2024_city_fiscal_rating_report.pdf",
+        "text_path": "raw/province_fiscal/2024/secondary/yunnan_2024_city_fiscal_rating_report_excerpt.txt",
+        "url": "https://www.sse.com.cn/",
+        "title": "临沧市国有资本投资运营集团有限公司相关债券2025年跟踪评级报告",
+        "publisher": "公开披露评级报告",
+        "publication_date": "2025-06-30",
+        "page_number": "PDF第9页表2",
+        "note": "B2精确表格；摘录对应公开披露附件第9页表2，明确为2024年各地级行政区全市/全州口径；仅录入表内明确数值。",
+    },
+    "SRC-B2-ZHEJIANG-REGIONAL-FISCAL-2024-FUND": {
+        "year": 2024,
+        "path": "raw/province_fiscal/2024/secondary/zhejiang_2024_city_fiscal_rating_report.pdf",
+        "text_path": "raw/province_fiscal/2024/secondary/zhejiang_2024_city_fiscal_rating_report_excerpt.txt",
+        "url": "https://www.sse.com.cn/",
+        "title": "嘉兴科技城投资发展集团有限公司相关债券2025年跟踪评级报告",
+        "publisher": "公开披露评级报告",
+        "publication_date": "2025-06-30",
+        "page_number": "PDF第6页表1",
+        "note": "B2精确表格；摘录对应公开披露附件第6页表1，明确为2024年各地级市全市口径；仅录入表内明确数值。",
+    },
     "SRC-A2-HEILONGJIANG-HEGANG-FUND-2022": {
         "year": 2022,
         "path": "raw/province_fiscal/2022/official/hegang_2022_fund_excerpt.txt",
@@ -928,6 +1045,83 @@ ROWS.append(_r("SRC-A2-LIAONING-BENXI-FUND-2023", "本溪市", 2023, gov_fund_re
 ROWS.append(_r("SRC-A2-LIAONING-PANJIN-FUND-2023", "盘锦市", 2023, gov_fund_revenue_100m="5.9"))
 ROWS.append(_r("SRC-A2-LIAONING-SHENYANG-FUND-2023", "沈阳市", 2023, gov_fund_revenue_100m="104"))
 ROWS.append(_r("SRC-A2-LIAONING-FUXIN-FUND-2023", "阜新市", 2023, gov_fund_revenue_100m="3.5375"))
+
+# 2024年多省公开披露精确表格批次；仅录入明确的全市/全州政府性基金收入。
+for city, fund in [
+    ("合肥市", "606.20"), ("芜湖市", "167.50"), ("安庆市", "51.60"),
+    ("马鞍山市", "87.90"), ("宿州市", "80.64"), ("宣城市", "88.00"),
+    ("池州市", "11.41"),
+]:
+    ROWS.append(_r("SRC-B2-ANHUI-REGIONAL-FISCAL-2024-FUND", city, 2024, gov_fund_revenue_100m=fund))
+
+for city, fund in [
+    ("南宁市", "150.59"), ("柳州市", "60.66"), ("桂林市", "49.43"),
+    ("玉林市", "48.09"), ("北海市", "28.14"), ("梧州市", "67.73"),
+    ("河池市", "14.25"), ("崇左市", "38.91"), ("来宾市", "16.87"),
+]:
+    ROWS.append(_r("SRC-B2-GUANGXI-REGIONAL-FISCAL-2024-FUND", city, 2024, gov_fund_revenue_100m=fund))
+
+for city, fund in [
+    ("武汉市", "1485.61"), ("襄阳市", "232.11"), ("黄冈市", "76.41"),
+    ("十堰市", "99.01"), ("恩施州", "59.56"), ("随州市", "24.74"),
+    ("鄂州市", "113.06"),
+]:
+    ROWS.append(_r("SRC-B2-HUBEI-REGIONAL-FISCAL-2024-FUND", city, 2024, gov_fund_revenue_100m=fund))
+
+for city, fund in [
+    ("南昌市", "133.83"), ("赣州市", "293.80"), ("九江市", "155.30"),
+    ("上饶市", "226.90"), ("宜春市", "162.02"), ("吉安市", "74.18"),
+    ("抚州市", "140.85"), ("鹰潭市", "61.91"), ("萍乡市", "121.27"),
+    ("景德镇市", "209.50"), ("新余市", "56.00"),
+]:
+    ROWS.append(_r("SRC-B2-JIANGXI-REGIONAL-FISCAL-2024-FUND", city, 2024, gov_fund_revenue_100m=fund))
+
+for city, fund_2023, fund_2024 in [
+    ("长春市", "423.00", "332.65"), ("吉林市", "25.70", ""),
+    ("延边朝鲜族自治州", "19.97", "20.36"), ("松原市", "13.10", "6.51"),
+    ("四平市", "", ""), ("通化市", "8.99", "9.20"),
+    ("辽源市", "15.89", "15.63"), ("白城市", "1.17", "9.06"),
+    ("白山市", "4.30", "5.64"),
+]:
+    ROWS.append(_r("SRC-B2-JILIN-REGIONAL-FISCAL-2024-FUND", city, 2023, gov_fund_revenue_100m=fund_2023))
+    ROWS.append(_r("SRC-B2-JILIN-REGIONAL-FISCAL-2024-FUND", city, 2024, gov_fund_revenue_100m=fund_2024))
+
+for city, fund_2023, fund_2024 in [
+    ("西宁市", "32.08", "22.87"), ("海西蒙古族藏族自治州", "3.00", "5.75"),
+    ("海东市", "13.94", "8.99"), ("海南藏族自治州", "2.57", "2.99"),
+    ("黄南藏族自治州", "0.36", "0.25"), ("海北藏族自治州", "0.57", "0.79"),
+    ("玉树藏族自治州", "0.25", "0.25"), ("果洛藏族自治州", "0.15", "0.20"),
+]:
+    ROWS.append(_r("SRC-B2-QINGHAI-REGIONAL-FISCAL-2024-FUND", city, 2023, gov_fund_revenue_100m=fund_2023))
+    ROWS.append(_r("SRC-B2-QINGHAI-REGIONAL-FISCAL-2024-FUND", city, 2024, gov_fund_revenue_100m=fund_2024))
+
+for city, fund in [
+    ("西安市", "1214.91"), ("咸阳市", "67.42"), ("延安市", "47.84"),
+    ("渭南市", "64.69"), ("铜川市", "4.70"),
+]:
+    ROWS.append(_r("SRC-B2-SHAANXI-REGIONAL-FISCAL-2024-FUND", city, 2024, gov_fund_revenue_100m=fund))
+
+for city, fund in [
+    ("太原市", "154.49"), ("长治市", "39.13"), ("晋中市", "35.00"),
+    ("晋城市", "25.83"), ("运城市", "35.58"), ("大同市", "34.35"),
+    ("忻州市", "22.05"), ("朔州市", "22.10"),
+]:
+    ROWS.append(_r("SRC-B2-SHANXI-REGIONAL-FISCAL-2024-FUND", city, 2024, gov_fund_revenue_100m=fund))
+
+for city, fund in [
+    ("昆明市", "220.71"), ("曲靖市", "31.01"), ("红河哈尼族彝族自治州", "50.70"),
+    ("玉溪市", "64.79"), ("大理白族自治州", "16.65"), ("昭通市", "42.59"),
+    ("普洱市", "22.69"), ("临沧市", "20.23"), ("西双版纳傣族自治州", "24.55"),
+    ("丽江市", "15.13"),
+]:
+    ROWS.append(_r("SRC-B2-YUNNAN-REGIONAL-FISCAL-2024-FUND", city, 2024, gov_fund_revenue_100m=fund))
+
+for city, fund in [
+    ("杭州市", "1531.08"), ("宁波市", "716.61"), ("温州市", "938.53"),
+    ("嘉兴市", "446.62"), ("湖州市", "381.85"), ("绍兴市", "411.60"),
+    ("金华市", "572.48"), ("衢州市", "192.06"),
+]:
+    ROWS.append(_r("SRC-B2-ZHEJIANG-REGIONAL-FISCAL-2024-FUND", city, 2024, gov_fund_revenue_100m=fund))
 
 
 def _merge(values: dict[tuple[str, str], dict[str, Any]], key: tuple[str, str], candidate: dict[str, Any]) -> None:

@@ -8272,6 +8272,34 @@ CITY_YEAR_FUND_SOURCES += (
     },
 )
 
+# 鹤岗市财政局/市政府官网公开的2024年预算执行报告明确列示全市政府性基金收入。
+# 采用执行数，不使用同一报告中的市本级数或2025年预算安排数。
+CITY_YEAR_FUND_SOURCES += (
+    {
+        "year": 2024,
+        "city_name": "鹤岗市",
+        "city_id": "CN-230400",
+        "source_doc_id": "SRC-A2-HEGANG-CITY-FUND-EXECUTION-2024",
+        "url": "https://www.hegang.gov.cn/hegang/hgxw/202501/67427.shtml",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "hegang_2024_fund_execution_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "hegang_2024_fund_execution_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "关于鹤岗市2024年预算执行情况和2025年预算草案的报告",
+        "publisher": "鹤岗市财政局、鹤岗市人民政府",
+        "publisher_level": "市级财政机构及市政府官网",
+        "publication_date": "2025-01-21",
+        "source_grade": "A2",
+        "source_format": "html",
+        "pattern": r"全市政府性基金收入([0-9]+)万元",
+        "raw_unit": "万元",
+        "data_status": "execution",
+        "data_status_label": "2024年全市政府性基金预算执行数",
+        "document_type": "市级政府预算执行报告",
+        "page_number": "报告正文（二）政府性基金预算执行情况",
+        "note": "A2鹤岗市人民政府官网预算执行报告；明确列示2024年全市政府性基金收入40177万元，换算为4.0177亿元；不使用市本级28930万元或收入合计251884万元。",
+    },
+)
+
 # 本批补录：公开评级报告精确列示绵阳、眉山历史全市基金收入，
 # 以及湘西州官方预算执行报告列示的2024年全州基金收入。均保留执行数状态，
 # 不以预算预计数替代执行数。
