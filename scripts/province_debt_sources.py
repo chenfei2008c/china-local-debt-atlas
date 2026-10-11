@@ -1177,6 +1177,78 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.append(
 )
 
 
+# 2022 年临沂、开封、许昌三地全市政府债务余额缺口批次。临沂采用
+# 评级报告中的精确表格值（B2）；开封、许昌采用市级政府/财政部门公开
+# 报告中的全市口径文字值（A2）。三条均只写入余额，不以限额或发行额反推。
+OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
+    [
+        {
+            "source_doc_id": "SRC-B2-DEBT-SHANDONG-LINYI-2022-BALANCE",
+            "province_name": "山东省",
+            "year": 2022,
+            "path": RAW_DIR / "2022" / "official" / "linyi_2022_balance_excerpt.txt",
+            "text_path": RAW_DIR / "2022" / "official" / "linyi_2022_balance_excerpt.txt",
+            "source_url": "https://static.sse.com.cn/bond/bridge2/disclosure/announcement/c/202310/035575_20231023_DMK6.pdf",
+            "document_title": "中证鹏元地方政府债务及财政指标表（临沂市）",
+            "publication_date": "2023-10-23",
+            "publisher": "中证鹏元资信评估股份有限公司",
+            "publisher_level": "评级机构研究报告",
+            "source_grade": "B2",
+            "unit": "亿元",
+            "layout": "direct1",
+            "start": "【2022年临沂市全市政府债务余额】",
+            "end": None,
+            "table_name": "表3 临沂市主要财政指标情况；地方政府债务余额",
+            "data_status": "final",
+            "value_origin": "rating_table_exact",
+            "note": "B2 公开报告表3精确列示2022年临沂市全市地方政府债务余额1463.25亿元；不使用图表估读值，不接入市本级或区县口径。",
+        },
+        {
+            "source_doc_id": "SRC-A2-DEBT-HENAN-KAIFENG-2022-BALANCE",
+            "province_name": "河南省",
+            "year": 2022,
+            "path": RAW_DIR / "2022" / "official" / "kaifeng_2022_balance_excerpt.txt",
+            "text_path": RAW_DIR / "2022" / "official" / "kaifeng_2022_balance_excerpt.txt",
+            "source_url": "https://www.kaifeng.gov.cn/kfsrmzfwz/kfsrmzf/1737386599133782016/0zvPsCo3.pdf",
+            "document_title": "开封市十六届人大一次会议文件十三——关于开封市2022年预算执行情况和2023年预算草案的报告",
+            "publication_date": "2023-01-03",
+            "publisher": "开封市人民政府",
+            "publisher_level": "市级政府",
+            "source_grade": "A2",
+            "unit": "亿元",
+            "layout": "direct1",
+            "start": "【2022年开封市全市政府债务余额】",
+            "end": None,
+            "table_name": "2022年政府债务情况；全市政府债务余额",
+            "data_status": "execution",
+            "value_origin": "official_text_exact",
+            "note": "市级政府公开预算执行报告明确披露2022年末全市政府债务余额623.6亿元及一般/专项分项；该报告为预算执行口径，保留 execution 状态，不与更高精度评级转录值混写。",
+        },
+        {
+            "source_doc_id": "SRC-A2-DEBT-HENAN-XUCHANG-2022-BALANCE",
+            "province_name": "河南省",
+            "year": 2022,
+            "path": RAW_DIR / "2022" / "official" / "xuchang_2022_balance_excerpt.txt",
+            "text_path": RAW_DIR / "2022" / "official" / "xuchang_2022_balance_excerpt.txt",
+            "source_url": "https://dongchengqu.xuchang.gov.cn/uploadfile/0e641d76-6235-4c9a-b315-8d49484c2caa/20231023163830651.pdf",
+            "document_title": "关于许昌市2022年财政决算和2023年1—6月份财政预算执行情况的报告",
+            "publication_date": "2023-08-23",
+            "publisher": "许昌市财政局",
+            "publisher_level": "市级财政机构",
+            "source_grade": "A2",
+            "unit": "亿元",
+            "layout": "direct1",
+            "start": "【2022年许昌市全市政府债务余额】",
+            "end": None,
+            "table_name": "2022年财政决算情况——政府债务；全市政府债务余额",
+            "data_status": "final",
+            "value_origin": "official_text_exact",
+            "note": "许昌市财政局公开决算报告明确披露2022年末全市政府债务余额677.3亿元及一般/专项分项；仅接入全市口径。",
+        },
+    ]
+)
+
+
 # 2023 年官方城市债务限额补录批次。来源均为财政部门预算/决算公开或交易所
 # 债券披露；仅接入明确的全市行，限额-only 文件不反推或覆盖已有余额。
 OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
