@@ -8401,6 +8401,33 @@ CITY_YEAR_FUND_SOURCES += (
     },
 )
 
+CITY_YEAR_FUND_SOURCES += (
+    {
+        "year": 2024,
+        "city_name": "佳木斯市",
+        "city_id": "CN-230800",
+        "source_doc_id": "SRC-A1-JIAMUSI-CITY-FUND-2024",
+        "url": "https://www.jms.gov.cn/jms/c100144/202509/124984/files/2024%E5%B9%B4%E4%BD%B3%E6%9C%A8%E6%96%AF%E5%B8%82%E5%92%8C%E5%B8%82%E6%9C%AC%E7%BA%A7%E8%B4%A2%E6%94%BF%E5%86%B3%E7%AE%97-20251118150051102.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "jiamusi_2024_fund_decision_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "jiamusi_2024_fund_decision_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2024年度佳木斯市和市本级财政总决算",
+        "publisher": "佳木斯市财政局、佳木斯市人民政府",
+        "publisher_level": "市级财政机构及市政府官网",
+        "publication_date": "2025-09-30",
+        "source_grade": "A1",
+        "source_format": "pdf",
+        "pattern": r"合计276354([0-9]+)63\.391\.3",
+        "raw_unit": "万元",
+        "data_status": "final",
+        "data_status_label": "2024年全市政府性基金预算收入决算数",
+        "document_type": "城市财政总决算公开附件",
+        "page_number": "PDF第63页（表2.9）",
+        "page_count": "148",
+        "note": "佳木斯市财政局官方财政总决算附件表2.9明确列示2024年全市政府性基金预算收入决算数174993万元；不使用市本级表3.9的134404万元。",
+    },
+)
+
 # 本批补录：公开评级报告精确列示绵阳、眉山历史全市基金收入，
 # 以及湘西州官方预算执行报告列示的2024年全州基金收入。均保留执行数状态，
 # 不以预算预计数替代执行数。
