@@ -67,8 +67,13 @@ def load_celma_city_annual_sources(root: Path) -> tuple[dict[tuple[str, str], di
                 raise ValueError(f"财政部平台城市接口返回异常：{path}")
             records_by_field[field] = list(payload.get("data") or [])
         years: set[str] = set()
-        for field, records in records_by_field.items():
+        for indicator, field in INDICATOR_FIELDS.items():
+            records = records_by_field[field]
             for item in records:
+                # 同一接口文件可能同时返回多个 ZB_ID；必须按请求的精确
+                # 指标过滤，不能把一般/专项分项覆盖到法定总额字段。
+                if str(item.get("ZB_ID") or "") != indicator:
+                    continue
                 year = str(item.get("SET_YEAR") or "")
                 if not year.isdigit() or not 2018 <= int(year) <= 2025:
                     continue

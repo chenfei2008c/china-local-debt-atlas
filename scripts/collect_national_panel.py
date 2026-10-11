@@ -93,6 +93,7 @@ try:
     from scripts.nbs_city_annual_2024 import load_nbs_city_annual_2024
     from scripts.regional_fiscal_2022_2024 import load_regional_fiscal_sources
     from scripts.celma_city_annual import load_celma_city_annual_sources
+    from scripts.celma_city_gap_batch import load_celma_gap_batch_sources
     from scripts.gotohui_city_series import load_gotohui_city_series_sources
     from scripts.crei_city_bulletins import load_crei_city_bulletin_sources
     from scripts.hongheiku_city_bulletins import load_hongheiku_city_bulletin_sources
@@ -163,6 +164,7 @@ except ModuleNotFoundError:  # 允许以 python scripts/collect_national_panel.p
     from nbs_city_annual_2024 import load_nbs_city_annual_2024
     from regional_fiscal_2022_2024 import load_regional_fiscal_sources
     from celma_city_annual import load_celma_city_annual_sources
+    from celma_city_gap_batch import load_celma_gap_batch_sources
     from gotohui_city_series import load_gotohui_city_series_sources
     from crei_city_bulletins import load_crei_city_bulletin_sources
     from hongheiku_city_bulletins import load_hongheiku_city_bulletin_sources
@@ -20528,18 +20530,19 @@ def build_macro_rows(
                     continue
                 row[field] = q2(value)
                 lineage.append(_lineage_for_official_debt(row, field, debt_fact, row[field]))
-            # 设计文档允许来源只披露法定债务总额时直接入总额字段，但不得反推一般/专项分项。
-            # 只有在分项不完整时才采用总额直录，避免用总额覆盖可勾稽的分项合计。
-            if row.get("general_debt_balance_100m") is None or row.get("special_debt_balance_100m") is None:
-                for field in ("statutory_debt_limit_100m", "statutory_debt_balance_100m"):
-                    if field in debt_conflict_fields:
-                        continue
-                    value = debt_fact.get(field)
-                    if value is None:
-                        continue
-                    row[field] = q2(value)
-                    lineage.append(_lineage_for_official_debt(row, field, debt_fact, row[field]))
-            # 直接披露的合计用于证据记录；主表的合计仍由同口径一般/专项分项勾稽生成。
+            # 设计文档允许来源直接披露法定债务总额。无论分项是否完整，
+            # 都必须把来源明确披露的总额写入主表；不能因为一般/专项分项齐全，
+            # 就把法定总额错误地留空。分项仍然只在来源逐项披露时写入，不能
+            # 用总额反推一般/专项分项。
+            for field in ("statutory_debt_limit_100m", "statutory_debt_balance_100m"):
+                if field in debt_conflict_fields:
+                    continue
+                value = debt_fact.get(field)
+                if value is None:
+                    continue
+                row[field] = q2(value)
+                lineage.append(_lineage_for_official_debt(row, field, debt_fact, row[field]))
+            # 保留直接披露的合计，供后续一致性校验、证据记录和派生指标使用。
             row["_official_direct_statutory_limit"] = debt_fact.get("statutory_debt_limit_100m")
             row["_official_direct_statutory_balance"] = (
                 None
@@ -22271,6 +22274,11 @@ def main() -> None:
         if prior.get("data_status") in {None, "", "provisional", "not_collected"}:
             prior["data_status"] = str(candidate.get("data_status") or "reported")
     city_year_fiscal_sources.extend(celma_city_annual_sources)
+    # 财政部平台城市年度接口的全国批量快照。只接入已归档 JSON 中的精确总指标，
+    # 按字段等级补空或升级暂存值；不使用接口空响应，不把分项误当总额。
+    celma_gap_batch, celma_gap_batch_sources = load_celma_gap_batch_sources(ROOT, city_master)
+    merge_city_year_fiscal_batch(city_year_fiscal, celma_gap_batch)
+    city_year_fiscal_sources.extend(celma_gap_batch_sources)
     # 公开研究面板只作为 D 级临时补缺：仅填充经过前述高等级来源和
     # 年鉴来源仍为空的字段，不覆盖任何已有值，也不提高高等级完成率。
     dachuang_city_panel, dachuang_city_panel_sources = load_dachuang_city_panel_sources(ROOT, city_master)
