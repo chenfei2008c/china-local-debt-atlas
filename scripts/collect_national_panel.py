@@ -8428,6 +8428,57 @@ CITY_YEAR_FUND_SOURCES += (
     },
 )
 
+CITY_YEAR_FUND_SOURCES += (
+    {
+        "year": 2023,
+        "city_name": "廊坊市",
+        "city_id": "CN-131000",
+        "source_doc_id": "SRC-A2-LANGFANG-CITY-FUND-2023",
+        "url": "https://zfxxgk.lf.gov.cn/UserFiles/News/2024/3/14/a438deed-45a8-4c28-925e-61ccaec5206f.pdf",
+        "path": RAW_DIR / "province_fiscal" / "2024" / "official" / "langfang_2023_fund_execution_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2024" / "official" / "langfang_2023_fund_execution_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "廊坊市2023年市本级预算及全市总预算执行情况和2024年市本级预算及全市总预算草案的报告",
+        "publisher": "廊坊市财政局、廊坊市人民政府",
+        "publisher_level": "市级财政机构及市人大官方公开",
+        "publication_date": "2024-01-28",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "pattern": r"全市政府性基金收入完成([0-9]+)万元",
+        "raw_unit": "万元",
+        "data_status": "execution",
+        "data_status_label": "2023年全市政府性基金预算执行数",
+        "document_type": "城市财政预算执行报告",
+        "page_number": "PDF第5页",
+        "page_count": "24",
+        "note": "廊坊市财政局官方预算执行报告明确列示2023年全市政府性基金收入完成1356286万元；采用全市快报数，不使用市本级69478万元。",
+    },
+    {
+        "year": 2024,
+        "city_name": "廊坊市",
+        "city_id": "CN-131000",
+        "source_doc_id": "SRC-A2-LANGFANG-CITY-FUND-2024",
+        "url": "https://zhuanti.lf.gov.cn/Item/2845.aspx",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "official" / "langfang_2024_fund_execution_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "official" / "langfang_2024_fund_execution_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "廊坊市2024年市本级预算及全市总预算执行情况和2025年市本级预算及全市总预算草案的报告",
+        "publisher": "廊坊市财政局、廊坊市人民政府",
+        "publisher_level": "市级财政机构及市人大官方公开",
+        "publication_date": "2025-01-22",
+        "source_grade": "A2",
+        "source_format": "pdf",
+        "pattern": r"全市政府性基金收入完成([0-9.]+)亿元",
+        "raw_unit": "亿元",
+        "data_status": "execution",
+        "data_status_label": "2024年全市政府性基金预算执行数（快报）",
+        "document_type": "城市财政预算执行报告",
+        "page_number": "PDF第5—6页",
+        "page_count": "20",
+        "note": "廊坊市财政局官方预算执行报告明确列示2024年全市政府性基金收入完成82.8亿元，并注明为快报统计数；不使用市本级17亿元。附件为官方7z压缩包，原始报告 PDF 已解析归档为摘录。",
+    },
+)
+
 # 本批补录：公开评级报告精确列示绵阳、眉山历史全市基金收入，
 # 以及湘西州官方预算执行报告列示的2024年全州基金收入。均保留执行数状态，
 # 不以预算预计数替代执行数。
