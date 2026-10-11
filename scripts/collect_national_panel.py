@@ -10906,8 +10906,9 @@ CITY_YEAR_FISCAL_SOURCES = (
         "data_status_label": "2025年执行数",
         "document_type": "城市财政预算执行报告（官方附件摘录）",
         "page_number": "第28—29页",
+        "source_format": "html",
         "patterns": {
-            "gov_fund_revenue_100m": r"2025年市级政府性基金预算收入完成\s*([0-9.]+)\s*亿元",
+            "gov_fund_revenue_100m": r"市级政府性基金预算收入\s*([0-9.]+)\s*亿元",
         },
         "note": "嘉峪关市人民政府和财政局官方预算执行报告；嘉峪关为单一地级行政单元，采用市级（全市）政府性基金预算收入执行数2.06亿元，不将基金收入总量或专项债务转贷收入误作基金预算收入。",
     },
@@ -19027,6 +19028,8 @@ def load_jiangsu_city_fund_sources() -> tuple[dict[tuple[str, str], dict[str, An
         text_path = Path(config["text_path"])
         content_hash = ensure_download(str(config["url"]), source_path)
         report_text = text_path.read_text(encoding="utf-8")
+        if str(config.get("source_format") or "").lower() in {"html", "htm"}:
+            report_text = unescape(re.sub(r"<[^>]+>", "", report_text))
         year = int(config["year"])
         rows = [line.split() for line in report_text.splitlines() if line.strip()]
         facts, _rejects = parse_city_value_rows(
@@ -19630,6 +19633,8 @@ def load_city_year_fiscal_sources() -> tuple[dict[tuple[str, str], dict[str, Any
         text_path = Path(config["text_path"])
         content_hash = ensure_download(str(config.get("download_url") or config["url"]), source_path)
         report_text = text_path.read_text(encoding="utf-8")
+        if str(config.get("source_format") or "").lower() in {"html", "htm"}:
+            report_text = unescape(re.sub(r"<[^>]+>", "", report_text))
         # 部分已归档的摘录把入口页只写在原文首行；若配置没有重复抄录 URL，
         # 从原文中提取第一个入口页，确保 source_document 仍可回溯到公开来源。
         source_url = str(config.get("url") or "")
