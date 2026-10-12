@@ -7012,6 +7012,103 @@ JILIN_2024_FUND_SOURCE = {
 }
 CITY_YEAR_FUND_SOURCES += (JILIN_2024_FUND_SOURCE,)
 
+# 吉林篇表7补录当前缺口中的 2025 年全市/全州政府性基金收入。
+# 表格以图片形式发布，文字摘录保留入口页、图片地址、全市口径和“/”缺失标记；
+# 仅接入有精确数值的五个城市，不把吉林、松原、白城的“/”解释为零。
+_JILIN_2025_FUND_VALUES = {
+    "四平市": ("CN-220300", r"四平市\|/\|([0-9.]+)", "3.46"),
+    "辽源市": ("CN-220400", r"辽源市\|[0-9.]+\|([0-9.]+)", "7.78"),
+    "通化市": ("CN-220500", r"通化市\|[0-9.]+\|([0-9.]+)", "22.60"),
+    "白山市": ("CN-220600", r"白山市\|[0-9.]+\|([0-9.]+)", "4.61"),
+    "延边朝鲜族自治州": (
+        "CN-222400",
+        r"延边朝鲜族自治州\|[0-9.]+\|([0-9.]+)",
+        "15.95",
+    ),
+}
+JILIN_2025_FUND_SOURCES = tuple(
+    {
+        "year": 2025,
+        "city_name": city_name,
+        "city_id": city_id,
+        "source_doc_id": f"SRC-B2-JILIN-FUND-2025-{city_id[3:]}",
+        "url": "https://www.diaifu.net/post/39617.html",
+        "path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "jilin_2025_city_fund_table_excerpt.txt",
+        "text_path": RAW_DIR / "province_fiscal" / "2025" / "secondary" / "jilin_2025_city_fund_table_excerpt.txt",
+        "text_is_curated": True,
+        "document_title": "2024—2025年吉林省各地市（州）政府性基金收入情况（表7）",
+        "publisher": "吉林省区域经济财政研究报告公开转载",
+        "publisher_level": "精确表格二手来源",
+        "publication_date": "2026-10-09",
+        "source_grade": "B2",
+        "source_format": "html",
+        "pattern": pattern,
+        "raw_unit": "亿元",
+        "data_status": "reported",
+        "data_status_label": "2025年全市/全州政府性基金收入公开精确值",
+        "document_type": "区域经济财政研究报告精确表格",
+        "page_count": "表格图片",
+        "note": (
+            f"B2精确表格；明确列示{city_name}2025年全市/全州政府性基金收入{value}亿元；"
+            "仅接入有数值的行，不使用吉林、松原、白城的缺失标记，不将图表估读或市本级口径写入主表。"
+        ),
+    }
+    for city_name, (city_id, pattern, value) in _JILIN_2025_FUND_VALUES.items()
+)
+CITY_YEAR_FUND_SOURCES += JILIN_2025_FUND_SOURCES
+
+# 阳泉市财政局官方 2024 年预算执行报告补录全市政府性基金收入。
+YANGQUAN_2024_FUND_SOURCE = {
+    "year": 2024,
+    "city_name": "阳泉市",
+    "city_id": "CN-140300",
+    "source_doc_id": "SRC-A2-YANGQUAN-FUND-2024",
+    "url": "https://czj.yq.gov.cn/yjsgk/zfyjs/zfjs/jsgk2024/202509/P020250917362856003440.pdf",
+    "path": RAW_DIR / "province_fiscal" / "2024" / "official" / "yangquan_2024_fund_excerpt.txt",
+    "text_path": RAW_DIR / "province_fiscal" / "2024" / "official" / "yangquan_2024_fund_excerpt.txt",
+    "text_is_curated": True,
+    "document_title": "关于阳泉市2024年全市和市级预算执行情况与2025年全市和市级预算草案的报告",
+    "publisher": "阳泉市财政局",
+    "publisher_level": "市级财政机构",
+    "publication_date": "2025-09-17",
+    "source_grade": "A2",
+    "source_format": "pdf",
+    "pattern": r"2024年，全市政府性基金收入([0-9.]+)亿元",
+    "raw_unit": "亿元",
+    "data_status": "final",
+    "data_status_label": "2024年全市政府性基金收入决算/执行数",
+    "document_type": "城市财政预算执行报告",
+    "page_count": "公开PDF",
+    "note": "A2阳泉市财政局官方报告；明确列示2024年全市政府性基金收入15.66亿元，采用全市口径，不使用市本级数或预算预计数。",
+}
+CITY_YEAR_FUND_SOURCES += (YANGQUAN_2024_FUND_SOURCE,)
+
+# 郴州市 2024 年政府性基金收入采用交易所公开评级报告中的精确表格。
+CHENZHOU_2024_FUND_SOURCE = {
+    "year": 2024,
+    "city_name": "郴州市",
+    "city_id": "CN-431000",
+    "source_doc_id": "SRC-B2-CHENZHOU-FUND-2024",
+    "url": "https://static.sse.com.cn/disclosure/bond/announcement/corporate/c/new/2025-06-27/139031_20250627_61HT.pdf",
+    "path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "chenzhou_2024_fund_excerpt.txt",
+    "text_path": RAW_DIR / "province_fiscal" / "2024" / "secondary" / "chenzhou_2024_fund_excerpt.txt",
+    "text_is_curated": True,
+    "document_title": "郴州市及下辖各县（市、区）经济财政实力与债务研究",
+    "publisher": "公开评级报告",
+    "publisher_level": "评级机构精确表格二手来源",
+    "publication_date": "2025-06-27",
+    "source_grade": "B2",
+    "source_format": "pdf",
+    "pattern": r"郴州市\|2023年\|[0-9.]+\|2024年\|([0-9.]+)",
+    "raw_unit": "亿元",
+    "data_status": "reported",
+    "data_status_label": "2024年全市政府性基金收入公开精确值",
+    "document_type": "区域经济与债务研究报告精确财政表",
+    "page_count": "公开PDF",
+    "note": "B2交易所公开评级报告精确表格；明确列示郴州市2024年全市政府性基金收入135.96亿元，不使用市本级口径或预算数。",
+}
+CITY_YEAR_FUND_SOURCES += (CHENZHOU_2024_FUND_SOURCE,)
+
 # 山东省2024年政府性基金收入精确正文批次。来源为评级机构报告的公开正文转载，
 # 只接入当前主表缺失的四个地级市，济南、青岛、东营等已存在值不覆盖。
 _SHANDONG_2024_EXACT_FUND_VALUES = {
