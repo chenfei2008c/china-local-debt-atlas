@@ -9094,11 +9094,11 @@ OFFICIAL_PROVINCE_DEBT_SOURCES.extend(
             "source_grade": "A1",
             "unit": "万元",
             "unit_factor": Decimal("0.0001"),
-            "layout": "newlimit3_balance3",
+            "layout": "total_limit_new3_balance",
             "start": "2022年政府债务限额及余额决算情况表",
             "end": None,
             "table_name": "2022年西藏自治区各地市政府债务余额决算情况表",
-            "note": "官方决算附件一次覆盖七个地市全辖行；限额列中的第二、三列是新增一般/专项债务限额，不是一般/专项债务总限额，因此只接入余额三项，避免口径误用。",
+            "note": "官方决算附件一次覆盖七个地市全辖行；第一列是政府债务限额合计，第二、三列是新增一般/专项债务限额而非分项总限额，因此接入总限额合计和余额三项，不误用新增限额作为一般/专项总限额。",
         },
         {
             "source_doc_id": "SRC-OFFICIAL-DEBT-LIAONING-CITIES-2018",
