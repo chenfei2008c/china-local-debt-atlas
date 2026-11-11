@@ -21082,6 +21082,63 @@ def build_macro_rows(
             row["source_doc_id"] = ";".join(item for item in [prior_source, debt_source_id] if item)
             debt_grade = str(debt_fact.get("source_grade") or "A1")
             row["source_grade"] = debt_grade
+            debt_fields = (
+                "general_debt_limit_100m",
+                "general_debt_balance_100m",
+                "special_debt_limit_100m",
+                "special_debt_balance_100m",
+                "statutory_debt_limit_100m",
+                "statutory_debt_balance_100m",
+            )
+            field_sources = debt_fact.get("_field_sources") or {}
+            selected_debt_sources = [
+                field_sources.get(field, debt_fact)
+                for field in debt_fields
+                if debt_fact.get(field) is not None and field not in debt_conflict_fields
+            ] or [debt_fact]
+            debt_grades = [
+                str(source.get("source_grade") or debt_grade).upper()
+                for source in selected_debt_sources
+            ]
+            record_debt_grade = min(
+                debt_grades,
+                key=lambda grade: SOURCE_GRADE_RANK.get(grade, 0),
+            )
+            debt_source_ids = list(dict.fromkeys(
+                source_id.strip()
+                for source in selected_debt_sources
+                for source_id in str(source.get("source_doc_id") or debt_source_id).split(";")
+                if source_id.strip()
+            ))
+            explicit_debt_statuses = {
+                str(source.get("data_status") or "").strip()
+                for source in selected_debt_sources
+                if str(source.get("data_status") or "").strip()
+            }
+            if "execution" in explicit_debt_statuses:
+                debt_data_status = "execution"
+            elif explicit_debt_statuses == {"final"}:
+                debt_data_status = "final"
+            elif len(explicit_debt_statuses) == 1:
+                debt_data_status = next(iter(explicit_debt_statuses))
+            else:
+                debt_data_status = "official_debt" if record_debt_grade in {"A1", "A2"} else "secondary_debt"
+            debt_collection_status = (
+                "extracted" if record_debt_grade in {"A1", "A2"} else "needs_review"
+            )
+            debt_note = (
+                "债务字段来源状态与宏观财政字段分开记录；"
+                f"本债务记录按所选字段中的较低来源等级标记为{record_debt_grade}。"
+            )
+            if debt_fact.get("balance_limit_exception_note"):
+                debt_data_status = OFFICIAL_DEBT_EXCEPTION_STATUS
+                debt_collection_status = "needs_review"
+                debt_note = str(debt_fact["balance_limit_exception_note"])
+            row["_debt_data_status"] = debt_data_status
+            row["_debt_source_doc_id"] = ";".join(debt_source_ids)
+            row["_debt_source_grade"] = record_debt_grade
+            row["_debt_collection_status"] = debt_collection_status
+            row["_debt_note"] = debt_note
             if debt_grade == "D":
                 row["collection_status"] = "needs_review"
                 row["data_status"] = "secondary_debt"
@@ -22032,18 +22089,18 @@ def build_debt_rows(macro_rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "period_end": row["period_end"],
             "geo_scope": row["geo_scope"],
             **{field: row.get(field) for field in fields[5:12]},
-            "data_status": row["data_status"],
-            "source_doc_id": row.get("source_doc_id"),
-            "source_grade": row.get("source_grade"),
+            "data_status": row.get("_debt_data_status", row["data_status"]),
+            "source_doc_id": row.get("_debt_source_doc_id", row.get("source_doc_id")),
+            "source_grade": row.get("_debt_source_grade", row.get("source_grade")),
             "collection_status": (
                 "missing"
                 if row.get("statutory_debt_balance_100m") is None
-                else ("needs_review" if row.get("data_status") == OFFICIAL_DEBT_EXCEPTION_STATUS else (
+                else row.get("_debt_collection_status", "needs_review" if row.get("data_status") == OFFICIAL_DEBT_EXCEPTION_STATUS else (
                     "extracted" if row.get("source_grade") in {"A1", "A2"} else "needs_review"
                 ))
             ),
             "lineage_complete_flag": row.get("statutory_debt_balance_100m") is not None,
-            "note": row.get("note") or "法定债务四个分项保持独立；缺失值保留 null。",
+            "note": row.get("_debt_note") or row.get("note") or "法定债务四个分项保持独立；缺失值保留 null。",
         })
     return output
 
@@ -22127,6 +22184,36 @@ def build_collection_status(city_master: list[dict[str, Any]], macro_rows: list[
                     evidence_count = 1 if macro["source_doc_id"] else 0
                     next_action = "用官方年鉴、公报和决算表逐字段复核" if status == "needs_review" else "补抓官方年度来源"
                     missing_reason = "" if evidence_count else "未找到已归档且可审计的城市年度来源"
+            elif (
+                module_code == "debt"
+                and macro.get("general_debt_balance_100m") in (None, "")
+                and macro.get("statutory_debt_balance_100m") not in (None, "")
+            ):
+                debt_source_ids = [
+                    item
+                    for item in str(
+                        macro.get("_debt_source_doc_id")
+                        or macro.get("source_doc_id")
+                        or ""
+                    ).split(";")
+                    if item
+                ]
+                debt_collection_status = macro.get("_debt_collection_status")
+                debt_source_grade = str(
+                    macro.get("_debt_source_grade") or macro.get("source_grade") or ""
+                ).upper()
+                if debt_collection_status == "extracted" or (
+                    not debt_collection_status
+                    and debt_source_grade in {"A1", "A2"}
+                    and macro.get("data_status") in {"final", "execution", "official_debt"}
+                ):
+                    status = "validated"
+                    next_action = "保留已核验法定债务总额，并在来源覆盖扩展后复核"
+                else:
+                    status = "needs_review"
+                    next_action = "复核法定债务总额来源等级；适用时补充一般/专项分项"
+                evidence_count = len(set(debt_source_ids))
+                missing_reason = "" if evidence_count else "法定债务总额缺少可追溯来源记录"
             elif module_code == "debt" and macro.get("general_debt_balance_100m") is not None:
                 status, evidence_count, next_action, missing_reason = "validated", 1, "保留版本并在全国来源覆盖扩展后复核", ""
             elif module_code == "debt":

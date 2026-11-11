@@ -9,6 +9,30 @@ from scripts.province_debt_sources import extract_official_debt_facts
 
 
 class ProvinceDebtParserTests(unittest.TestCase):
+    def test_2022_yunnan_and_2025_yibin_limit_gap_batch(self):
+        city_master = [
+            {"city_id": "CN-530100", "city_name_cn": "昆明市", "province_name": "云南省", "metric_year": "2022"},
+            {"city_id": "CN-530300", "city_name_cn": "曲靖市", "province_name": "云南省", "metric_year": "2022"},
+            {"city_id": "CN-530400", "city_name_cn": "玉溪市", "province_name": "云南省", "metric_year": "2022"},
+            {"city_id": "CN-532500", "city_name_cn": "红河哈尼族彝族自治州", "province_name": "云南省", "metric_year": "2022"},
+            {"city_id": "CN-511500", "city_name_cn": "宜宾市", "province_name": "四川省", "metric_year": "2025"},
+        ]
+        facts, sources = extract_official_debt_facts(city_master)
+        expected_limits = {
+            "CN-530100": Decimal("2550.07"),
+            "CN-530300": Decimal("810.0813"),
+            "CN-530400": Decimal("736.33"),
+            "CN-532500": Decimal("731.33"),
+            "CN-511500": Decimal("1647.45"),
+        }
+        self.assertEqual(len(sources) >= 5, True)
+        for city_id, expected_limit in expected_limits.items():
+            year = "2025" if city_id == "CN-511500" else "2022"
+            self.assertEqual(facts[(city_id, year)]["statutory_debt_limit_100m"], expected_limit)
+        self.assertEqual(facts[("CN-530300", "2022")]["statutory_debt_balance_100m"], Decimal("773.4897"))
+        self.assertEqual(facts[("CN-511500", "2025")]["statutory_debt_balance_100m"], Decimal("1595.81"))
+        self.assertEqual(facts[("CN-511500", "2025")]["data_status"], "execution")
+
     def test_2022_hubei_henan_limit_gap_batch_is_registered(self):
         city_master = [
             {"city_id": "CN-420500", "city_name_cn": "宜昌市", "province_name": "湖北省", "metric_year": "2022"},
@@ -773,8 +797,8 @@ class ProvinceDebtParserTests(unittest.TestCase):
             {"city_id": "CN-533400", "province_name": "云南省", "city_name_cn": "迪庆藏族自治州", "metric_year": 2022},
         ]
         facts, _ = extract_official_debt_facts(city_master)
-        self.assertEqual(facts[("CN-530300", "2022")]["statutory_debt_balance_100m"], Decimal("773.56"))
-        self.assertEqual(facts[("CN-530300", "2022")]["general_debt_balance_100m"], Decimal("277.40"))
+        self.assertEqual(facts[("CN-530300", "2022")]["statutory_debt_balance_100m"], Decimal("773.4897"))
+        self.assertEqual(facts[("CN-530300", "2022")]["general_debt_balance_100m"], Decimal("277.3297"))
         self.assertEqual(facts[("CN-530300", "2022")]["special_debt_balance_100m"], Decimal("496.16"))
         self.assertEqual(facts[("CN-530700", "2022")]["statutory_debt_balance_100m"], Decimal("319.77"))
         self.assertEqual(facts[("CN-530900", "2022")]["statutory_debt_balance_100m"], Decimal("458.20"))

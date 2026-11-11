@@ -1813,6 +1813,38 @@ class NationalPanelTests(unittest.TestCase):
         filtered_rows = build_evidence_based_missing_rows(list(macro_rows_by_key.values()))
         self.assertEqual(len(filtered_rows), 54)
 
+    def test_total_only_debt_balance_is_not_reported_as_missing(self):
+        city = {
+            "city_id": "CN-530100",
+            "city_name_cn": "昆明市",
+            "province_name": "云南省",
+            "metric_year": "2022",
+        }
+        macro = {
+            "city_id": "CN-530100",
+            "metric_year": "2022",
+            "data_status": "preliminary",
+            "source_grade": "B2",
+            "source_doc_id": "SRC-B2-DEBT-YUNNAN-KUNMING-2022-LIMIT;SRC-SECONDARY-DEBT-YUNNAN-KUNMING-2022",
+            "_debt_source_doc_id": "SRC-B2-DEBT-YUNNAN-KUNMING-2022-LIMIT;SRC-SECONDARY-DEBT-YUNNAN-KUNMING-2022",
+            "_debt_source_grade": "B2",
+            "_debt_collection_status": "needs_review",
+            "general_debt_balance_100m": None,
+            "statutory_debt_limit_100m": "2550.07",
+            "statutory_debt_balance_100m": "2230.56",
+        }
+
+        debt_status = next(
+            item
+            for item in build_collection_status([city], [macro])
+            if item["module"] == "法定债务"
+        )
+
+        self.assertEqual(debt_status["collection_status"], "needs_review")
+        self.assertEqual(debt_status["evidence_count"], 2)
+        self.assertTrue(debt_status["lineage_complete_flag"])
+        self.assertEqual(debt_status["error_code"], "")
+
     def test_new_fund_calculations_are_appended_after_existing_lineages(self):
         rows = [
             {"target_record_id": "old", "target_field": "statutory_debt_to_gdp_pct", "calculation_id": "old-1"},
@@ -1949,6 +1981,33 @@ class NationalPanelTests(unittest.TestCase):
         self.assertEqual(rows[0]["data_status"], "secondary_debt")
         self.assertEqual(rows[0]["collection_status"], "needs_review")
         self.assertEqual(build_debt_rows(rows)[0]["collection_status"], "needs_review")
+
+    def test_debt_table_uses_debt_specific_source_status_and_grade(self):
+        city = {
+            "city_id": "CN-530300",
+            "admin_code_6": "530300",
+            "city_name_cn": "曲靖市",
+            "province_code": "53",
+            "province_name": "云南省",
+            "prefecture_type": "地级市",
+            "sample_tier": "core",
+            "metric_year": "2022",
+        }
+        facts = {
+            ("CN-530300", "2022"): {
+                "source_doc_id": "SRC-A2-DEBT-QUJING",
+                "source_grade": "A2",
+                "data_status": "final",
+                "statutory_debt_limit_100m": "810.0813",
+                "statutory_debt_balance_100m": "773.4897",
+            }
+        }
+        rows, _ = build_macro_rows([city], [], {}, facts)
+        debt = build_debt_rows(rows)[0]
+        self.assertEqual(debt["data_status"], "final")
+        self.assertEqual(debt["source_doc_id"], "SRC-A2-DEBT-QUJING")
+        self.assertEqual(debt["source_grade"], "A2")
+        self.assertEqual(debt["collection_status"], "extracted")
 
     def test_debt_fact_with_balance_above_limit_is_blocked(self):
         city = {
